@@ -102,3 +102,9 @@ pip-wheel-metadata/
 
 .github/copilot-instructions.md
 .tmp*
+
+.gitignore
+*.toml
+2_QWEN_SAM.ipynb
+1_GD_SAM.ipynb
+NOTEBOOKS.md
