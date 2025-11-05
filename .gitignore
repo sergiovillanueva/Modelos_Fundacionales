@@ -45,13 +45,12 @@ app/weights/*
 !app/weights/.gitkeep
 app/copy/*
 !app/copy/.gitkeep
-assets/*
 !assets/.gitkeep
 
 
 # Imágenes
-*.jpg
-*.jpeg
+# *.jpg
+# *.jpeg
 *.png
 *.gif
 *.bmp
