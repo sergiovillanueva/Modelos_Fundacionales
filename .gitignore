@@ -1,0 +1,105 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.pyo
+*.pyd
+*.pyc
+
+# Build artifacts
+build/
+dist/
+wheels/
+*.egg-info/
+*.spec
+
+# Virtual environments
+.venv
+.env
+.venv_
+emep_env/
+
+# IDEs
+.vscode/
+.idea/
+.claude/
+weights/
+bib/
+
+# Modelos y datos
+*.pt
+*.pth
+*.pkl
+*.safetensors
+*.ecm
+*.esm
+*.stl
+*.xyz
+*.ply
+*.obj
+*.off
+*.npy
+*.nii
+*.nii.gz
+# Ignorar todo en app/weights y app/copy
+app/weights/*
+!app/weights/.gitkeep
+app/copy/*
+!app/copy/.gitkeep
+assets/*
+!assets/.gitkeep
+
+
+# Imágenes
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+
+# Archivos comprimidos
+*.zip
+*.tar
+*.gz
+*.bz2
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+
+# Qt / PySide6 generados
+*.qrc
+*.qmlc
+*.rcc
+*.cpp
+*.h
+*.so
+*.dll
+*.exe
+*.bin
+*.obj
+*.o
+*.dmg
+*.deb
+*.rpm
+
+# Jupyter
+*.ipynb_checkpoints
+
+# Logs y temporales
+*.log
+*.tmp
+
+# Otros
+.DS_Store
+Thumbs.db
+.cache/
+pip-wheel-metadata/
+
+*_.txt
+
+*.pckl
+
+.github/copilot-instructions.md
+.tmp*

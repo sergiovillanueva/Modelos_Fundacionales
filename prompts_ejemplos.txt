@@ -1,0 +1,78 @@
+### CLIP
+classify_image(image_fruits, ["fruits", "cars", "dogs", "cats"])
+classify_image(image_fruits, ["kiwi", "orange", "lemon"])
+
+### BLIP
+caption_image(image_board)
+caption_image(image_carpet_ok)
+
+
+### Grounding Dino
+detect_objects(image_person_cars, ["yellow car"])
+
+
+### SAM
+box = [9.1007, 114.1038, 150.1338, 211.9607]    
+segment_box(image_person_cars, box)
+
+
+### Grounding Dino + SAM
+mask = segment_objects(image_person_cars, ["cars", "woman"], batch_mode=False) #True
+mask = segment_objects(image_cars, ["red car"], batch_mode=True)
+mask = segment_objects(image_cars, ["the car that is the same color of lemons"], batch_mode=True)
+
+
+################################################################################################
+
+
+### Qwen 2.5
+answer_question(image_person_cars, "How many cars are in the image?.")
+answer_question(image_fruits, "How many fruits are in the image?.")
+answer_question(image_fruits, "Detect fruits and provide bounding box coordinates and labels.")
+answer_question(image_carpet_ok, "Is there any surface defect in the image? Detect the defects and provide bounding box coordinates.")
+
+### QWEN + SAM
+
+
+mask = segment_objects(image_fruits, "Detect the fruits that are from New Zealand and provide bounding box coordinates.")
+
+mask = segment_objects(image_board, "Detect all the brown capacitors and provide bounding box coordinates.")
+mask = segment_objects(image_board, "Detect the red led and provide bounding box coordinates.")
+mask = segment_objects(image_carpet_ok, "Detect anomaly and provide bounding box coordinates.") 
+mask = segment_objects(image_cut, "Detect cuts and provide bounding box coordinates.")
+
+#### EJERCICIO PARK
+
+park_mask = segment_objects(image_park, "Detect the surface of central park and provide bounding box coordinates.")
+lake_mask = segment_objects(image_park, "Detect the lake of central park and provide bounding box coordinates.") 
+
+
+real_height_km = 4
+park_height_px = y_max - y_min
+km_per_pixel = real_height_km / park_height_px
+
+perimeter_km = perimeter_px * km_per_pixel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+real_height_km = 4
+
+park_coords = np.column_stack(np.where(park_mask > 0))
+km_per_pixel = real_height_km / (park_coords[:, 0].max() - park_coords[:, 0].min())
+contours, _ = cv2.findContours(lake_mask.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+perimeter_m = cv2.arcLength(max(contours, key=cv2.contourArea), True) * km_per_pixel
+
+print(f"Lake perimeter: {perimeter_m:.2f} km")
