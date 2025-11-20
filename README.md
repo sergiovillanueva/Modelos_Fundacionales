@@ -1,9 +1,9 @@
 
-# Curso: Modelos Fundacionales y Detección de Objetos en Visión Artificial
+# Curso: Modelos Fundacionales en Visión Artificial
 
-La evolución será: Detección (modelos con clases COCO, supervisados) -> Multimodales (imagen + texto) -> VLM (razonamiento visual y lingüístico) -> Auto-supervisados (DINO v3) -> Segmentación (SAM2) -> Pose -> Extras
+Evolución: Detección (modelos con clases COCO, supervisados) -> Multimodales (imagen + texto) -> VLM (razonamiento visual y lingüístico) -> Auto-supervisados (DINO v3) -> Segmentación (SAM2) -> Pose -> Extras
 
-- Cada apartado tendrá una parte práctica que se puede descargar de GitHub con todo incluido, y podrá ejecutarse en Colab o en local.
+- Cada apartado tiene una parte práctica que se puede descargar de GitHub con todo incluido, y podrá ejecutarse en Colab o en local.
 - Se incluirá un ejercicio opcional para que los alumnos practiquen y puedan escribirme un correo si necesitan ayuda.
 - Todo se hará con la librería Transformers de Hugging Face (excepto RFDTR). Es fácil de usar, con licencias permisivas y modelos SOTA.
 - La parte final es un bonus, si hay tiempo, para enseñar otras aplicaciones como OCR, Matching, Profundidad, Superresolución y Eliminación de Fondo.
@@ -21,7 +21,7 @@ Introducción a la detección de objetos, mostrando cómo las arquitecturas mode
 - YOLO: concepto, versiones y ventajas
 - RF-DETR: arquitectura basada en Transformers
 - Repaso del entorno / uso en Colab
-- Notebook práctico: detección en imágenes industriales con modelos preentrenados (RF-DETR)
+- Notebook práctico: detección en imágenes con modelos preentrenados (RF-DETR) y fine tunning
 - Limitaciones y evolución hacia arquitecturas fundacionales
 
 ### Hugging Face y gestión de entornos (30 min)
