@@ -1,12 +1,12 @@
 
 # Curso: Modelos Fundacionales en Visión Artificial
 
-Evolución: Detección (modelos con clases COCO, supervisados) -> Multimodales (imagen + texto) -> VLM (razonamiento visual y lingüístico) -> Auto-supervisados (DINO v3) -> Segmentación (SAM2) -> Pose -> Extras
+Evolución: Detección (modelos con clases COCO, supervisados) -> Multimodales (imagen + texto) -> VLM (razonamiento visual y lingüístico) -> Auto-supervisados (DINO v3) -> Segmentación (SAM2) -> Otras Tareas (Pose, OCR, Depth, etc.)
 
 - Cada apartado tiene una parte práctica que se puede descargar de GitHub con todo incluido, y podrá ejecutarse en Colab o en local.
 - Se incluirá un ejercicio opcional para que los alumnos practiquen y puedan escribirme un correo si necesitan ayuda.
 - Todo se hará con la librería Transformers de Hugging Face (excepto RFDTR). Es fácil de usar, con licencias permisivas y modelos SOTA.
-- La parte final es un bonus, si hay tiempo, para enseñar otras aplicaciones como OCR, Matching, Profundidad, Superresolución y Eliminación de Fondo.
+- La parte final es un bonus, si hay tiempo, para enseñar otras aplicaciones como Pose, OCR, Matching, Profundidad, Superresolución y Eliminación de Fondo.
 
 ---
 
@@ -74,20 +74,15 @@ Bloque centrado en los modelos de segmentación fundacional. SAM2 como modelo un
 
 Descanso (15 min)
 
-### Estimación de Pose (45 min)
-Qué es la estimación de pose humana y en qué casos se usa. Detectar puntos clave en imágenes.
+### Otras Tareas de Visión Fundacional (1h 45 min)
+Bloque final con una revisión de aplicaciones especializadas de la visión fundacional. Se verán ejemplos prácticos de diferentes modelos, todos con un notebook rápido y visual.
 
-- Qué es y para qué sirve
-- Modelos para keypoints humanos en Hugging Face
-- Notebook práctico: detección de pose humana sobre fotos o vídeo
-
-### Otras tareas de visión fundacional (1h)
-Bloque final con una revisión de aplicaciones adicionales de la visión fundacional. Se verán ejemplos prácticos de diferentes modelos, todos con un notebook rápido y visual.
-
-- OCR: reconocimiento de texto con EasyOCR
-- Superresolución: mejora de calidad visual con Swin2SR
-- Background Removal: eliminación de fondo con RMBG
-- Estimación de profundidad con Depth Anything V2
-- Matching: correspondencia de puntos con LightGlue + SuperPoint
+- Estimación de Pose: detección de keypoints humanos (15 min)
+- OCR: reconocimiento de texto con TrOCR y EasyOCR (10 min)
+- Superresolución: mejora de calidad visual con Swin2SR (10 min)
+- Background Removal: eliminación de fondo con RMBG (10 min)
+- Estimación de profundidad con Depth Anything V2 (15 min)
+- Matching: correspondencia de puntos con LightGlue + SuperPoint (15 min)
+- Integración de tareas y tendencias futuras (15 min)
 
 Cada modelo se mostrará con ejemplos sencillos para experimentar y entender su utilidad.
