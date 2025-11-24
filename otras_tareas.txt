@@ -1,0 +1,118 @@
+Pose:
+Una celda con un ejercicio, dejala vacia por ahora, luego la haremos
+
+
+
+OCR:
+
+microsoft/trocr-small-printed
+from transformers import TrOCRProcessor, VisionEncoderDecoderModel
+from PIL import Image
+import requests
+
+# load image from the IAM database (actually this model is meant to be used on printed text)
+url = 'https://fki.tic.heia-fr.ch/static/img/a01-122-02-00.jpg'
+image = Image.open(requests.get(url, stream=True).raw).convert("RGB")
+
+processor = TrOCRProcessor.from_pretrained('microsoft/trocr-small-printed')
+model = VisionEncoderDecoderModel.from_pretrained('microsoft/trocr-small-printed')
+pixel_values = processor(images=image, return_tensors="pt").pixel_values
+
+generated_ids = model.generate(pixel_values)
+generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+
+
+background removal:
+model_name = "briaai/RMBG-1.4"
+
+pipe = pipeline(
+                        task="image-segmentation", 
+                        model=model_name, 
+
+
+
+super resolution:
+model_name = "caidas/swin2SR-classical-sr-x4-64"
+
+pipe = pipeline(
+                        task="image-to-image", 
+                        model=model_name,
+
+super_resolution_image = model(image)
+
+
+matching:
+"ETH-CVG/lightglue_superpoint"
+AutoImageProcessor.from_pretrained
+model = AutoModel.from_pretrained(model_path
+
+from transformers import AutoImageProcessor, AutoModel
+import torch
+from PIL import Image
+import requests
+
+url_image1 = "https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/refs/heads/master/assets/phototourism_sample_images/united_states_capitol_98169888_3347710852.jpg"
+image1 = Image.open(requests.get(url_image1, stream=True).raw)
+url_image2 = "https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/refs/heads/master/assets/phototourism_sample_images/united_states_capitol_26757027_6717084061.jpg"
+image2 = Image.open(requests.get(url_image2, stream=True).raw)
+
+images = [image1, image2]
+
+processor = AutoImageProcessor.from_pretrained("ETH-CVG/lightglue_superpoint")
+model = AutoModel.from_pretrained("ETH-CVG/lightglue_superpoint")
+
+inputs = processor(images, return_tensors="pt")
+with torch.no_grad():
+    outputs = model(**inputs)
+
+image_sizes = [[(image.height, image.width) for image in images]]
+outputs = processor.post_process_keypoint_matching(outputs, image_sizes, threshold=0.2)
+for i, output in enumerate(outputs):
+    print("For the image pair", i)
+    for keypoint0, keypoint1, matching_score in zip(
+            output["keypoints0"], output["keypoints1"], output["matching_scores"]
+    ):
+        print(
+            f"Keypoint at coordinate {keypoint0.numpy()} in the first image matches with keypoint at coordinate {keypoint1.numpy()} in the second image with a score of {matching_score}."
+        )
+
+
+
+Depth estimation:
+import AutoModelForDepthEstimation
+depth-anything/Depth-Anything-V2-Small-hf
+pipe = pipeline(task="depth-estimation", model="depth-anything/Depth-Anything-V2-Small-hf")
+
+# load image
+url = 'http://images.cocodataset.org/val2017/000000039769.jpg'
+image = Image.open(requests.get(url, stream=True).raw)
+
+# inference
+depth = pipe(image)["depth"]
+
+from transformers import AutoImageProcessor, AutoModelForDepthEstimation
+import torch
+import numpy as np
+from PIL import Image
+import requests
+
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = Image.open(requests.get(url, stream=True).raw)
+
+image_processor = AutoImageProcessor.from_pretrained("depth-anything/Depth-Anything-V2-Small-hf")
+model = AutoModelForDepthEstimation.from_pretrained("depth-anything/Depth-Anything-V2-Small-hf")
+
+# prepare image for the model
+inputs = image_processor(images=image, return_tensors="pt")
+
+with torch.no_grad():
+    outputs = model(**inputs)
+    predicted_depth = outputs.predicted_depth
+
+# interpolate to original size
+prediction = torch.nn.functional.interpolate(
+    predicted_depth.unsqueeze(1),
+    size=image.size[::-1],
+    mode="bicubic",
+    align_corners=False,
+)
