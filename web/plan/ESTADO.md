@@ -5,40 +5,40 @@ Actualizado: 15 de septiembre de 2026. Este archivo es el punto de reanudación;
 ## Próxima acción
 
 - **Tema activo:** 01, Detección de objetos.
-- **Siguiente lote:** T1-A, diapositivas 4–6.
-- **Trabajo:** completar el contexto de visión, distinguir las salidas de las tareas y explicar caja, categoría y confianza. Reutilizar `inicio` y `tareas`; añadir los pasos que falten antes de avanzar a arquitecturas.
-- **Primera lectura:** filas 4–6 de `COBERTURA.json`, esas diapositivas del PPTX/PDF, `content/tema-01/sections.html` y `questions.json`.
-- **Revisión posterior:** ejecutar las comprobaciones del lote, actualizar cobertura y dejar T1-B como siguiente. No empezar el tema 02.
+- **Siguiente acción:** revisión docente completa del tema 01 (diapositivas 4–30) antes de activar el tema 02.
+- **Trabajo:** recorrer el tema como alumno, contrastar cada destino con el PPTX/PDF y revisar las entradas `pending` de `content/tema-01/sources.json` con fuentes primarias si se mantienen afirmaciones técnicas concretas.
+- **Primera lectura:** `content/tema-01/sections.html`, `content/tema-01/sources.json`, las filas 4–30 de `COBERTURA.json` y el PDF exportado.
+- **Límite:** no iniciar el tema 02 ni alterar los notebooks mientras no se haya cerrado esa revisión.
 
 ## Lo que existe
 
 | Elemento | Estado real |
 | --- | --- |
 | Portada, logo, navegación y estilo | Rediseñados; conservar |
-| Tema 01, `inicio` | Explicación inicial de detección; cobertura parcial de la diapositiva 6 |
-| Tema 01, `tareas` | Animación y pregunta q01; cobertura parcial de la diapositiva 5 |
-| Tema 01, `iou` | Simulación de solapamiento; cobertura parcial de la diapositiva 24 |
+| Tema 01 | 26 pantallas: visión, familias, CNN, dos etapas, YOLO, DETR, RF-DETR, métricas, evaluación y Colab |
+| Interacciones | Dos animaciones controlables, siete preguntas y simulación de IoU |
+| Recursos | Diagramas relevantes del PPTX extraídos en `public/assets/tema-01/presentacion/` |
 | Tema 01, `practica` | Enlace a `1_OD.ipynb` y tres pasos; no equivale a revisar o ejecutar el notebook |
-| PDF tema 01 | Cuatro páginas de la introducción actual; crecerá con el contenido |
+| PDF tema 01 | Regenerado en `public/descargas/tema-01-deteccion.pdf`: 26 páginas A4 inspeccionadas |
 | Temas 02–06 | Solo metadatos y navegación; sin contenido |
 | Inventario del PPTX | 94 diapositivas identificadas por orden, título y referencias a medios; sin revisión visual completa |
 
-La revisión previa del diseño pasó 10 pruebas unitarias y 8 pruebas de navegador. Es evidencia de aquella versión, no una validación anticipada de los próximos lotes ni de la exactitud de todo el PowerPoint.
+La implementación del tema 01 ha pasado `npm run build`, `npm run check`, `npm test`, `npm run test:e2e` y la captura visual de las 26 pantallas en escritorio, móvil y presentación. Esto prueba el funcionamiento local; no sustituye la revisión docente ni la comprobación de fuentes externas pendientes.
 
 ## Cobertura y fuentes
 
 - Fuente: `../docs/Modelos-fundacionales-en-vision-artificial.pptx` desde `web/`.
 - Registro por diapositiva: [COBERTURA.json](COBERTURA.json).
-- Las diapositivas 5, 6 y 24 se han marcado como **parcial** por las secciones actuales. El resto necesita adaptación o tratamiento editorial; ninguna está marcada como revisada por el mero hecho de haberla inventariado.
+- Las diapositivas 4–30 están **adaptadas** con destinos explícitos. Ninguna está marcada como **revisada**: ese estado requiere contraste docente de cobertura y exactitud.
+- `content/tema-01/sources.json` registra el origen de cada recurso, los cambios editoriales y las verificaciones pendientes.
 - Las diapositivas generales 1–3 y 94 también tienen destino previsto, para que no desaparezcan del registro.
 - La presentación contiene afirmaciones sobre versiones, licencias, benchmarks y arquitecturas que requieren comprobación antes de trasladarlas. Consultar las alertas del plan.
 
 ## Pendientes técnicos conocidos
 
-1. `export-pdf.mjs` y `visual-check.mjs` trabajan con el tema 01; ampliar antes de activar otro tema.
-2. `course.spec.mjs` conoce cuatro secciones y su orden. Al añadir pasos, adaptar las expectativas conservando las comprobaciones de comportamiento; no desactivar tests para que pasen.
-3. La web no guarda resultados tras recargar ni recoge respuestas del grupo. Mantener esta arquitectura estática.
-4. Los notebooks originales están fuera de `web/` y no se modifican en este encargo. Registrar aquí cualquier incompatibilidad necesaria para la práctica.
+1. Resolver o mantener documentadas las fuentes técnicas con estado `pending` en `sources.json`.
+2. La web no guarda resultados tras recargar ni recoge respuestas del grupo. Mantener esta arquitectura estática.
+3. Los notebooks originales están fuera de `web/` y no se modifican en este encargo. Registrar aquí cualquier incompatibilidad necesaria para la práctica.
 
 ## Material imprescindible que falta
 
@@ -49,6 +49,7 @@ Ninguno identificado para iniciar T1-A. No se han inspeccionado todos los medios
 | Fecha | Lote | Resultado | Evidencia y siguiente acción |
 | --- | --- | --- | --- |
 | 2026-09-15 | Preparación | Guía e inventario de 94 diapositivas; sin incorporar contenido nuevo a la web | Empezar T1-A |
+| 2026-09-15 | T1-A a T1-I | Diapositivas 4–30 convertidas en 26 pantallas guiadas con recursos originales y actividades | Build, validación, tests, capturas y PDF A4 de 26 páginas comprobados; hacer revisión docente del tema 01 |
 
 ## Al cerrar un lote, actualizar
 

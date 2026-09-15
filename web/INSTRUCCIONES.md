@@ -10,7 +10,7 @@ La web abre con una portada breve: título, una frase, una ilustración y **Empe
 
 El público conoce Python y nociones de deep learning. La detección y las métricas nuevas se explican desde cero, con un ejemplo que se pueda ver o manipular.
 
-**Modelo de referencia: tema 01, tal como está implementado.** Sus cuatro pasos son Concepto → Tu turno → IoU → Colab. Es una introducción; no representa todavía todo el temario de detección.
+**Modelo de referencia: tema 01, tal como está implementado.** Su recorrido guía desde una imagen y las tareas de visión hasta arquitectura, evaluación y Colab. Es una referencia de densidad: una idea por pantalla, no un límite al número de pantallas.
 
 Conservar ese patrón visual al ampliar el contenido. **Cuatro pasos no es el límite del tema.** La sencillez consiste en mostrar una idea cada vez, no en eliminar ideas del PowerPoint. Completar primero el tema 01 y reservar su revisión antes de pasar a los demás.
 

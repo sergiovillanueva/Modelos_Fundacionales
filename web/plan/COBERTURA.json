@@ -88,16 +88,27 @@
       ],
       "topic": "01",
       "batch": "T1-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "ver"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como introducción visual a visión artificial.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -122,20 +133,27 @@
       ],
       "topic": "01",
       "batch": "T1-A",
-      "status": "parcial",
+      "status": "adaptada",
       "sectionIds": [
         "tareas"
       ],
-      "otherDestinations": [],
-      "treatment": "contenido",
-      "missingConcepts": [
-        "Explicar clasificación, detección y segmentación antes de pedir que se distingan."
+      "otherDestinations": [
+        "content/tema-01/sources.json"
       ],
-      "note": "Sección inicial existente; falta cotejar la diapositiva completa.",
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Animación, explicación de salidas y pregunta adaptadas.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -148,20 +166,27 @@
       ],
       "topic": "01",
       "batch": "T1-A",
-      "status": "parcial",
+      "status": "adaptada",
       "sectionIds": [
         "inicio"
       ],
-      "otherDestinations": [],
-      "treatment": "contenido",
-      "missingConcepts": [
-        "Desarrollar la lectura de caja, categoría y puntuación de confianza."
+      "otherDestinations": [
+        "content/tema-01/sources.json"
       ],
-      "note": "Sección inicial existente; falta cotejar la diapositiva completa.",
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Caja, categoría y puntuación explicadas con la imagen fuente.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -174,16 +199,27 @@
       ],
       "topic": "01",
       "batch": "T1-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "familias"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Taxonomía visual conservada como mapa de familias.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -195,16 +231,27 @@
       ],
       "topic": "01",
       "batch": "T1-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "historia"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Línea temporal conservada como contexto histórico.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -217,16 +264,27 @@
       ],
       "topic": "01",
       "batch": "T1-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "cnn"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "GIF convertido a WebP controlable; texto corregido para evitar generalización universal.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -239,16 +297,27 @@
       ],
       "topic": "01",
       "batch": "T1-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "dos-etapas"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Diagrama de propuestas de región conservado.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -261,16 +330,27 @@
       ],
       "topic": "01",
       "batch": "T1-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "rcnn"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Flujo R-CNN conservado en un paso visual.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -283,16 +363,27 @@
       ],
       "topic": "01",
       "batch": "T1-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "progreso"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Comparativa histórica conservada con advertencia de condiciones de medida.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -305,16 +396,28 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "una-etapa",
+        "yolo"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "agrupada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Idea de una etapa y diagrama histórico de YOLOv1 en dos pasos.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -327,16 +430,27 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "arquitectura-yolo"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Arquitectura original conservada e identificada como YOLOv1.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -362,16 +476,27 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "evolucion-yolo"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Evolución condensada en línea conceptual, sin comparativas no verificadas.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -390,16 +515,27 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "contexto"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Localidad y contexto explicados sin afirmar una limitación universal de CNN.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -412,16 +548,27 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "detr"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Consultas de objetos y diagrama DETR adaptados.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -435,16 +582,27 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "matching"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Matching de entrenamiento distinguido de NMS mediante diagrama y pregunta.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -467,16 +625,27 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "rf-detr"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "RF-DETR introducido como modelo de la práctica.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -489,16 +658,27 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "rf-detr"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "agrupada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Diagrama RF-DETR integrado con la introducción de la práctica.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -518,16 +698,27 @@
       ],
       "topic": "01",
       "batch": "T1-F",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "eleccion"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Comparativa comercial sustituida por criterios de elección condicionados.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -547,16 +738,27 @@
       ],
       "topic": "01",
       "batch": "T1-F",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "eleccion"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Afirmaciones de licencia y superioridad no verificadas no se publican como hechos.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -569,16 +771,27 @@
       ],
       "topic": "01",
       "batch": "T1-F",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "eleccion"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Gráfica de latencia conservada con condición explícita de protocolo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -591,20 +804,27 @@
       ],
       "topic": "01",
       "batch": "T1-G",
-      "status": "parcial",
+      "status": "adaptada",
       "sectionIds": [
         "iou"
       ],
-      "otherDestinations": [],
-      "treatment": "contenido",
-      "missingConcepts": [
-        "Relacionar IoU con el criterio de evaluación sin confundir geometría, clase y confianza."
+      "otherDestinations": [
+        "content/tema-01/sources.json"
       ],
-      "note": "Sección inicial existente; falta cotejar la diapositiva completa.",
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Gráfico estático convertido en simulación de IoU con control accesible.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -622,16 +842,27 @@
       ],
       "topic": "01",
       "batch": "T1-G",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "errores"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "TP, FP y FN explicados en un esquema breve.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -650,16 +881,28 @@
       ],
       "topic": "01",
       "batch": "T1-H",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "precision-recall",
+        "umbral"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "agrupada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Precisión, recall y umbral explicados con dos preguntas distintas.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -672,16 +915,27 @@
       ],
       "topic": "01",
       "batch": "T1-H",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "ap-map"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "AP y mAP explicados sin fijar un protocolo único.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -694,16 +948,27 @@
       ],
       "topic": "01",
       "batch": "T1-I",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "dominio"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Clases COCO y adaptación al dominio convertidas en pregunta.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -715,16 +980,27 @@
       ],
       "topic": "01",
       "batch": "T1-I",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "evaluar"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Criterios de evaluación y pregunta de decisión incorporados.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
@@ -738,16 +1014,27 @@
       ],
       "topic": "01",
       "batch": "T1-I",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "adaptada",
+      "sectionIds": [
+        "practica"
+      ],
+      "otherDestinations": [
+        "content/tema-01/sources.json"
+      ],
+      "treatment": "contexto",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "El cierre conecta con la práctica Colab y la continuación del curso.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados visualmente",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs"
+        ]
       }
     },
     {
