@@ -8,8 +8,10 @@ import {buildSite} from './build.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WEB_ROOT = path.resolve(__dirname, '..');
-const PUBLIC_OUTPUT = path.resolve(WEB_ROOT, 'public', 'descargas', 'tema-01-deteccion.pdf');
-const DIST_OUTPUT = path.resolve(WEB_ROOT, 'dist', 'descargas', 'tema-01-deteccion.pdf');
+const topicId = process.argv[2] || '01-deteccion';
+const pdfName = `tema-${topicId}.pdf`;
+const PUBLIC_OUTPUT = path.resolve(WEB_ROOT, 'public', 'descargas', pdfName);
+const DIST_OUTPUT = path.resolve(WEB_ROOT, 'dist', 'descargas', pdfName);
 
 async function waitForServer(url) {
   for (let attempt = 0; attempt < 30; attempt += 1) {
@@ -35,7 +37,7 @@ async function exportPdf() {
 
   let browser;
   try {
-    const url = 'http://127.0.0.1:4173/temas/01-deteccion/index.html';
+    const url = `http://127.0.0.1:4173/temas/${topicId}/index.html`;
     await waitForServer(url);
     browser = await chromium.launch();
     const page = await browser.newPage();

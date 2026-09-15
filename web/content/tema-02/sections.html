@@ -1,0 +1,60 @@
+<section id="hub" data-title="Hub" data-layout="visual">
+  <div class="section-copy"><h2>Un punto de partida</h2><p class="lead">Hugging Face reúne modelos, datos, demos y herramientas.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-02/hugging-face.jpeg}}" alt="Logotipo de Hugging Face."><figcaption>El Hub aporta el identificador, los archivos y la documentación de cada modelo.</figcaption></figure>
+</section>
+
+<section id="ecosistema" data-title="Ecosistema" data-layout="visual">
+  <div class="section-copy"><h2>Cuatro piezas conectadas</h2><p class="lead">Busca el recurso que necesitas antes de escribir código.</p></div>
+  <ol class="evolution-line" aria-label="Componentes del ecosistema Hugging Face">
+    <li><strong>Models</strong><span>Pesos, configuración y model card.</span></li>
+    <li><strong>Datasets</strong><span>Datos para entrenar o evaluar.</span></li>
+    <li><strong>Spaces</strong><span>Demos para probar una interfaz.</span></li>
+  </ol>
+  <div class="print-detail"><p>Transformers ofrece una API común para muchas arquitecturas. El Hub contiene recursos de autores distintos, con calidad y condiciones de uso que se revisan por separado.</p></div>
+</section>
+
+<section id="buscar" data-title="Buscar" data-layout="question">
+  <div class="section-copy"><h2>Empieza por la tarea</h2><p class="lead">Un filtro reduce opciones; la model card permite decidir.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Tarea</strong> que quieres resolver.</p><p><strong>Dominio</strong> de tus imágenes o datos.</p><p><strong>Licencia</strong> y recursos que admite tu entorno.</p></div>{{QUIZ:q201}}</div>
+</section>
+
+<section id="model-card" data-title="Model card" data-layout="visual">
+  <div class="section-copy"><h2>Lee antes de descargar</h2><p class="lead">La model card explica qué se entrenó, cómo usarlo y cuándo puede fallar.</p></div>
+  <div class="outcome-flow" aria-label="Información esencial de una model card"><div><strong>Uso</strong><span>Tarea, entradas y ejemplo de inferencia.</span></div><div><strong>Límites</strong><span>Datos, sesgos y casos que requieren cuidado.</span></div><div><strong>Archivos</strong><span>Pesos, configuración y licencia de la versión.</span></div></div>
+</section>
+
+<section id="licencia" data-title="Licencia" data-layout="question">
+  <div class="section-copy"><h2>La licencia forma parte del modelo</h2><p class="lead">La licencia de código, pesos y datos puede diferir.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Comprueba</strong> el repositorio y los pesos exactos.</p><p><strong>Lee</strong> obligaciones, restricciones y avisos.</p><p><strong>Registra</strong> la versión que llevas a producción.</p></div>{{QUIZ:q202}}</div>
+  <div class="print-detail"><p>Esta lección no ofrece asesoramiento legal. Para un uso comercial o distribuido, revisar la licencia y los términos publicados de cada recurso concreto.</p></div>
+</section>
+
+<section id="carga" data-title="Carga" data-layout="visual">
+  <div class="section-copy"><h2>Del Hub a memoria</h2><p class="lead">La primera carga descarga archivos; después la caché puede reutilizarlos.</p></div>
+  <ol class="evolution-line" aria-label="Proceso de carga de un modelo"><li><strong>Identificador</strong><span>Elige una versión del Hub.</span></li><li><strong>Archivos</strong><span>Descarga configuración y pesos.</span></li><li><strong>Memoria</strong><span>Carga el modelo en CPU o GPU.</span></li></ol>
+</section>
+
+<section id="from-pretrained" data-title="Código" data-layout="visual">
+  <div class="section-copy"><h2>Una API, muchas arquitecturas</h2><p class="lead"><code>from_pretrained</code> carga los archivos que describe el identificador.</p></div>
+  <pre class="code-sample"><code>from transformers import AutoImageProcessor, AutoModelForImageClassification
+
+model_id = "google/vit-base-patch16-224"
+processor = AutoImageProcessor.from_pretrained(model_id)
+model = AutoModelForImageClassification.from_pretrained(model_id)</code></pre>
+  <div class="print-detail"><p>El notebook utiliza este patrón. El modelo, sus requisitos de memoria y las etiquetas dependen del identificador elegido.</p></div>
+</section>
+
+<section id="pipeline" data-title="Pipeline" data-layout="question">
+  <div class="section-copy"><h2>Una prueba rápida</h2><p class="lead">Un pipeline prepara la entrada y devuelve una salida con el formato de la tarea.</p></div>
+  <div class="question-layout question-layout--text"><pre class="code-sample"><code>from transformers import pipeline
+
+classifier = pipeline("image-classification",
+                      model="google/vit-base-patch16-224")
+result = classifier("imagen.jpg")</code></pre>{{QUIZ:q203}}</div>
+</section>
+
+<section id="practica" data-title="Colab" data-layout="practice">
+  <div class="section-copy"><h2>Busca y prueba un modelo</h2><p class="lead">Trabaja sobre tu propia copia del cuaderno.</p></div>
+  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Prueba el modelo de clasificación propuesto.</span></li><li><span>Elige otro modelo y lee su model card.</span></li></ol>
+  <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/2_HF_Intro.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+</section>

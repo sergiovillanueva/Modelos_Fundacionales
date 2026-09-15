@@ -19,7 +19,9 @@
       "number": "02",
       "title": "Ecosistema Hugging Face",
       "navTitle": "Hugging Face",
-      "status": "planned",
+      "status": "available",
+      "contentDir": "tema-02",
+      "notebookPath": "2_HF_Intro.ipynb",
       "description": "Pipelines, transformadores visuales, datasets y despliegue de modelos preentrenados para visión por computador."
     },
     {

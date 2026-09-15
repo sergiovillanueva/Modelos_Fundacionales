@@ -4,11 +4,9 @@ Actualizado: 15 de septiembre de 2026. Este archivo es el punto de reanudación;
 
 ## Próxima acción
 
-- **Tema activo:** 01, Detección de objetos.
-- **Siguiente acción:** revisión docente completa del tema 01 (diapositivas 4–30) antes de activar el tema 02.
-- **Trabajo:** recorrer el tema como alumno, contrastar cada destino con el PPTX/PDF y revisar las entradas `pending` de `content/tema-01/sources.json` con fuentes primarias si se mantienen afirmaciones técnicas concretas.
-- **Primera lectura:** `content/tema-01/sections.html`, `content/tema-01/sources.json`, las filas 4–30 de `COBERTURA.json` y el PDF exportado.
-- **Límite:** no iniciar el tema 02 ni alterar los notebooks mientras no se haya cerrado esa revisión.
+- **Tema activo:** 03, Modelos multimodales.
+- **Siguiente acción:** adaptar los lotes T3-A a T3-D, diapositivas 37–54 y `3_Multimodal.ipynb`.
+- **Trabajo:** conservar la navegación actual; explicar desde cero relación texto-imagen, CLIP, BLIP, Grounding DINO y el VLM del notebook.
 
 ## Lo que existe
 
@@ -20,7 +18,8 @@ Actualizado: 15 de septiembre de 2026. Este archivo es el punto de reanudación;
 | Recursos | Diagramas relevantes del PPTX extraídos en `public/assets/tema-01/presentacion/` |
 | Tema 01, `practica` | Enlace a `1_OD.ipynb` y tres pasos; no equivale a revisar o ejecutar el notebook |
 | PDF tema 01 | Regenerado en `public/descargas/tema-01-deteccion.pdf`: 26 páginas A4 inspeccionadas |
-| Temas 02–06 | Solo metadatos y navegación; sin contenido |
+| Tema 02 | 9 pantallas, 3 preguntas, Colab y PDF en `public/descargas/tema-02-hugging-face.pdf` |
+| Temas 03–06 | Pendientes de adaptación |
 | Inventario del PPTX | 94 diapositivas identificadas por orden, título y referencias a medios; sin revisión visual completa |
 
 La implementación del tema 01 ha pasado `npm run build`, `npm run check`, `npm test`, `npm run test:e2e` y la captura visual de las 26 pantallas en escritorio, móvil y presentación. Esto prueba el funcionamiento local; no sustituye la revisión docente ni la comprobación de fuentes externas pendientes.
@@ -50,6 +49,7 @@ Ninguno identificado para iniciar T1-A. No se han inspeccionado todos los medios
 | --- | --- | --- | --- |
 | 2026-09-15 | Preparación | Guía e inventario de 94 diapositivas; sin incorporar contenido nuevo a la web | Empezar T1-A |
 | 2026-09-15 | T1-A a T1-I | Diapositivas 4–30 convertidas en 26 pantallas guiadas con recursos originales y actividades | Build, validación, tests, capturas y PDF A4 de 26 páginas comprobados; hacer revisión docente del tema 01 |
+| 2026-09-15 | T2-A a T2-B | Diapositivas 31–36 convertidas en 9 pantallas sobre Hub, model cards, licencias e inferencia | Build, validación, tests y PDF A4 de 9 páginas comprobados; continuar tema 03 |
 
 ## Al cerrar un lote, actualizar
 

@@ -1047,16 +1047,27 @@
       ],
       "topic": "02",
       "batch": "T2-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "hub"
+      ],
+      "otherDestinations": [
+        "content/tema-02/sections.html",
+        "content/tema-02/questions.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como recorrido web del tema 02; contrastar las licencias concretas al elegir un modelo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e"
+        ]
       }
     },
     {
@@ -1081,16 +1092,27 @@
       ],
       "topic": "02",
       "batch": "T2-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "ecosistema"
+      ],
+      "otherDestinations": [
+        "content/tema-02/sections.html",
+        "content/tema-02/questions.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como recorrido web del tema 02; contrastar las licencias concretas al elegir un modelo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e"
+        ]
       }
     },
     {
@@ -1102,16 +1124,28 @@
       ],
       "topic": "02",
       "batch": "T2-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "buscar",
+        "model-card"
+      ],
+      "otherDestinations": [
+        "content/tema-02/sections.html",
+        "content/tema-02/questions.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como recorrido web del tema 02; contrastar las licencias concretas al elegir un modelo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e"
+        ]
       }
     },
     {
@@ -1124,16 +1158,27 @@
       ],
       "topic": "02",
       "batch": "T2-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "licencia"
+      ],
+      "otherDestinations": [
+        "content/tema-02/sections.html",
+        "content/tema-02/questions.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como recorrido web del tema 02; contrastar las licencias concretas al elegir un modelo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e"
+        ]
       }
     },
     {
@@ -1145,16 +1190,27 @@
       ],
       "topic": "02",
       "batch": "T2-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "carga"
+      ],
+      "otherDestinations": [
+        "content/tema-02/sections.html",
+        "content/tema-02/questions.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como recorrido web del tema 02; contrastar las licencias concretas al elegir un modelo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e"
+        ]
       }
     },
     {
@@ -1167,16 +1223,29 @@
       ],
       "topic": "02",
       "batch": "T2-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
+      "status": "adaptada",
+      "sectionIds": [
+        "from-pretrained",
+        "pipeline",
+        "practica"
+      ],
+      "otherDestinations": [
+        "content/tema-02/sections.html",
+        "content/tema-02/questions.json"
+      ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Adaptada como recorrido web del tema 02; contrastar las licencias concretas al elegir un modelo.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-15",
+        "reviewer": "Revisión local de implementación",
+        "evidence": [
+          "PPTX/PDF cotejados",
+          "npm run build",
+          "npm run check",
+          "npm test",
+          "npm run test:e2e"
+        ]
       }
     },
     {
