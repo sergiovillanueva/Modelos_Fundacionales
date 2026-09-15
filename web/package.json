@@ -16,5 +16,8 @@
     "@playwright/test": "^1.63.0",
     "http-server": "^14.1.1",
     "reveal.js": "^6.0.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.131.2"
   }
 }
