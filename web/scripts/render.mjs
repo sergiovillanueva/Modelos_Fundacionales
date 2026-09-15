@@ -40,9 +40,33 @@ export function extractSections(sectionsHtml) {
 }
 
 export function buildSidebarIndex(sections) {
-  return sections.map((sec) => {
-    return `<li><a href="#${sec.id}" class="topic-index-link">${sec.title}</a></li>`;
+  return sections.map((sec, index) => {
+    return `<li><a href="#${sec.id}" class="topic-index-link"><span>${String(index + 1).padStart(2, '0')}</span>${sec.title}</a></li>`;
   }).join('\n');
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
+
+function renderQuiz(question) {
+  const options = question.options.map((option) => `
+    <label class="quiz-option" data-feedback="${escapeHtml(option.explanation)}">
+      <input type="radio" name="${question.id}-answer" value="${option.id}" id="${question.id}-${option.id}">
+      <span><strong>${option.id.toUpperCase()}</strong>${escapeHtml(option.text)}</span>
+    </label>`).join('');
+
+  return `<div class="quiz-box" data-question-id="${question.id}" data-correct-option="${question.correctOptionId}">
+    <fieldset>
+      <legend>${escapeHtml(question.prompt)}</legend>
+      <div class="quiz-options">${options}</div>
+      <p class="quiz-status" role="status" aria-live="polite"></p>
+    </fieldset>
+  </div>`;
 }
 
 export function processSectionAssets(html, pageOutputPath) {
@@ -68,38 +92,19 @@ export function renderTopic(course, topic, mode = 'reading') {
   const rawSectionsHtml = fs.readFileSync(contentFile, 'utf8');
   const sections = extractSections(rawSectionsHtml);
   const topicIndexHtml = buildSidebarIndex(sections);
+  const questionsPath = path.resolve(CONTENT_DIR, topic.contentDir, 'questions.json');
+  const questions = fs.existsSync(questionsPath)
+    ? JSON.parse(fs.readFileSync(questionsPath, 'utf8'))
+    : [];
+  const questionsById = new Map(questions.map((question) => [question.id, question]));
 
   // Process ASSET tokens
   let content = processSectionAssets(rawSectionsHtml, pageOutputPath);
 
-  // In vertical slice (Tarea 2), replace quiz placeholders with clean accessible quiz markup
-  content = content.replace(/\{\{QUIZ:q01\}\}/g, () => {
-    return `
-      <div class="quiz-box" data-question-id="q01">
-        <fieldset>
-          <legend>Necesitas contar coches y saber dónde está cada uno. ¿Qué salida necesitas?</legend>
-          <div class="quiz-options">
-            <label class="quiz-option">
-              <input type="radio" name="q01-answer" value="a" id="q01-a">
-              <span>a. Una etiqueta para toda la imagen.</span>
-            </label>
-            <label class="quiz-option">
-              <input type="radio" name="q01-answer" value="b" id="q01-a">
-              <span>b. Una caja y una categoría por objeto.</span>
-            </label>
-            <label class="quiz-option">
-              <input type="radio" name="q01-answer" value="c" id="q01-c">
-              <span>c. Un vector de características sin localizaciones.</span>
-            </label>
-          </div>
-          <div class="quiz-actions">
-            <button type="button" class="btn-primary btn-sm" id="q01-btn-check" disabled>Comprobar</button>
-            <button type="button" class="btn-secondary btn-sm" id="q01-btn-retry" style="display: none;">Reintentar</button>
-          </div>
-          <div class="quiz-status" role="status" aria-live="polite" id="q01-status"></div>
-        </fieldset>
-      </div>
-    `;
+  content = content.replace(/\{\{QUIZ:([^}]+)\}\}/g, (_, questionId) => {
+    const question = questionsById.get(questionId);
+    if (!question) throw new Error(`Pregunta no encontrada: ${questionId}`);
+    return renderQuiz(question);
   });
 
   const readingUrl = relativeUrl(pageOutputPath, `temas/${topic.id}/index.html`);

@@ -3,126 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curso abierto de modelos fundacionales en visión artificial, con teoría, actividades y prácticas en Colab.">
   <title>{{TITLE}}</title>
   <link rel="stylesheet" href="{{REL_PATH:src/styles/tokens.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/base.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/course.css}}">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="{{REL_PATH:index.html}}" class="brand-group">
-        <img src="{{REL_PATH:assets/brand/logo-transparent.png}}" alt="Datamecum" class="brand-logo">
-        <span class="brand-title">Modelos Fundacionales</span>
+      <a href="{{REL_PATH:index.html}}" class="brand-group" aria-label="Inicio del curso">
+        <img src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="Datamecum" class="brand-logo">
+        <span>Curso abierto</span>
       </a>
-      <nav class="header-links" aria-label="Navegación del sitio">
-        <a href="{{REPO_URL}}" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="{{REL_PATH:creditos.html}}">Créditos</a>
-      </nav>
+      <a class="quiet-link" href="{{REPO_URL}}" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
   </header>
-
   <main id="main-content">
-    <section class="hero" aria-label="Presentación del curso">
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-content">
+        <div class="hero-copy">
+          <p class="eyebrow">Visión artificial · teoría y práctica</p>
           <h1>Modelos fundacionales en visión artificial</h1>
-          <p class="hero-subtitle">Un recorrido riguroso, interactivo y visual desde la detección clásica y transformers hasta modelos fundacionales multimodales.</p>
-          <a href="{{TOPIC_1_URL}}" class="cta-button">Empezar tema 1: Detección de objetos</a>
+          <p class="hero-summary">Aprende cómo una máquina localiza, relaciona y comprende lo que ve. Cada tema combina una explicación visual, una actividad breve y un cuaderno ejecutable.</p>
+          <a href="{{TOPIC_1_URL}}" class="primary-action">Empezar por detección <span aria-hidden="true">→</span></a>
         </div>
-        <div class="hero-visual">
-          <div class="hero-visual-figure">
-            <svg viewBox="0 0 500 300" width="100%" height="auto" aria-labelledby="hero-svg-title" role="img">
-              <title id="hero-svg-title">Representación gráfica de detección de objetos en una escena vial</title>
-              <rect width="500" height="300" fill="#0c1220"/>
-              <path d="M 0,220 L 500,220 L 500,300 L 0,300 Z" fill="#182236"/>
-              <line x1="250" y1="220" x2="250" y2="300" stroke="#485c7f" stroke-width="4" stroke-dasharray="12 8"/>
-              
-              <!-- Coche 1 -->
-              <rect x="70" y="160" width="120" height="70" rx="6" fill="#203a5c"/>
-              <rect x="65" y="150" width="130" height="85" fill="none" stroke="#00D0FF" stroke-width="2.5" stroke-dasharray="none"/>
-              <rect x="65" y="132" width="84" height="18" fill="#00D0FF" rx="3"/>
-              <text x="70" y="145" font-family="'Roboto', sans-serif" font-size="11" font-weight="700" fill="#10104D">car · 0.96</text>
-
-              <!-- Coche 2 -->
-              <rect x="290" y="150" width="140" height="80" rx="6" fill="#203a5c"/>
-              <rect x="285" y="140" width="150" height="95" fill="none" stroke="#00D0FF" stroke-width="2.5"/>
-              <rect x="285" y="122" width="84" height="18" fill="#00D0FF" rx="3"/>
-              <text x="290" y="135" font-family="'Roboto', sans-serif" font-size="11" font-weight="700" fill="#10104D">car · 0.94</text>
-            </svg>
-          </div>
-          <div class="hero-visual-caption">Cajas ilustrativas de predicción (coordenadas, categoría y confianza)</div>
-        </div>
+        <figure class="hero-figure">
+          <img src="{{REL_PATH:assets/tema-01/od.webp}}" alt="Comparación entre clasificación de una imagen y detección de varios objetos con cajas" width="900" height="457">
+          <figcaption>De una etiqueta global a objetos localizados.</figcaption>
+        </figure>
       </div>
     </section>
-
-    <section class="competencies" aria-labelledby="competencies-title">
-      <div class="container">
-        <h2 id="competencies-title">Qué aprenderás en este curso</h2>
-        <div class="competencies-grid">
-          <div class="competency-card">
-            <span class="competency-number">01</span>
-            <h3>Arquitecturas y paradigmas</h3>
-            <p>Comprende la evolución desde detectores de dos y una etapa hasta la predicción de conjuntos con transformers visuales.</p>
-          </div>
-          <div class="competency-card">
-            <span class="competency-number">02</span>
-            <h3>Evaluación y métricas rigurosas</h3>
-            <p>Calcula IoU, analiza matrices de confusión con emparejamiento bipartito y comprende la diferencia entre umbral de confianza y AP.</p>
-          </div>
-          <div class="competency-card">
-            <span class="competency-number">03</span>
-            <h3>Experimentación en código</h3>
-            <p>Abre cuadernos interactivos en Google Colab con arquitecturas punteras (RF-DETR, DINO, SAM) sin requerir GPU local.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="topics-section" aria-labelledby="topics-title">
       <div class="container">
-        <div class="topics-header">
-          <h2 id="topics-title">Temario del curso</h2>
-          <p>Seis temas estructurados para dominar la visión artificial moderna paso a paso.</p>
+        <div class="section-heading">
+          <p class="eyebrow">Recorrido</p>
+          <h2 id="topics-title">Seis temas, de la detección a los modelos multimodales</h2>
         </div>
-        <div class="topics-grid">
-          {{TOPICS_CARDS}}
-        </div>
-      </div>
-    </section>
-
-    <section class="guide-section" aria-labelledby="guide-title">
-      <div class="container">
-        <h2 id="guide-title">Cómo usar este curso</h2>
-        <div class="guide-grid">
-          <div class="guide-step">
-            <h3>1. Estudia la teoría</h3>
-            <p>Lee la explicación interactiva con diagramas limpios, notas en profundidad y controles visuales interactivos.</p>
-          </div>
-          <div class="guide-step">
-            <h3>2. Comprueba tu intuición</h3>
-            <p>Responde a los cuestionarios integrados y experimenta con los laboratorios locales de IoU y filtrado por confianza.</p>
-          </div>
-          <div class="guide-step">
-            <h3>3. Experimenta en Colab</h3>
-            <p>Abre el notebook oficial con un clic, guárdalo en tu Drive y ejecuta inferencias con modelos reales.</p>
-          </div>
-        </div>
+        <div class="topics-grid">{{TOPICS_CARDS}}</div>
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <p><strong>{{COURSE_TITLE}}</strong> · {{AUTHOR}}</p>
-        <p>Formación especializada en Inteligencia Artificial y Visión por Computador.</p>
-      </div>
-      <div>
-        <a href="{{REL_PATH:creditos.html}}">Créditos y referencias</a>
-      </div>
+      <p>{{COURSE_TITLE}} · {{AUTHOR}}</p>
+      <a href="{{REL_PATH:creditos.html}}">Créditos y referencias</a>
     </div>
   </footer>
 </body>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "q01",
+    "sectionId": "tareas",
+    "prompt": "Quieres contar coches y saber dónde está cada uno. ¿Qué salida necesitas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Una etiqueta para toda la imagen.",
+        "explanation": "La clasificación indica qué aparece, pero no separa ni localiza cada coche."
+      },
+      {
+        "id": "b",
+        "text": "Una caja y una categoría por objeto.",
+        "explanation": "Exacto: la detección localiza cada instancia y permite contarla."
+      },
+      {
+        "id": "c",
+        "text": "Un vector de características sin localizaciones.",
+        "explanation": "Un vector puede representar la imagen, pero no devuelve directamente las ubicaciones."
+      }
+    ],
+    "correctOptionId": "b"
+  }
+]
+

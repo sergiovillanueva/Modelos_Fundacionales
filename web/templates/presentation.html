@@ -3,34 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{TOPIC_TITLE}} (Presentación) · {{COURSE_TITLE}}</title>
+  <title>{{TOPIC_TITLE}} · Presentación</title>
   <link rel="stylesheet" href="{{REL_PATH:vendor/reveal/reset.css}}">
   <link rel="stylesheet" href="{{REL_PATH:vendor/reveal/reveal.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/tokens.css}}">
+  <link rel="stylesheet" href="{{REL_PATH:src/styles/base.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/presentation.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/widgets.css}}">
 </head>
 <body class="presentation-body">
-  <div class="presentation-header">
-    <div class="presentation-nav">
-      <a href="{{READING_URL}}" class="pres-btn" id="btn-back-reading">
-        ← Volver a Lectura
-      </a>
-      <span class="pres-brand-title">{{TOPIC_TITLE}}</span>
-    </div>
-    <div class="pres-actions">
-      <button type="button" class="pres-btn" id="btn-fullscreen">
-        ⛶ Pantalla completa
-      </button>
-    </div>
-  </div>
-
-  <div class="reveal">
-    <div class="slides">
-      {{CONTENT}}
-    </div>
-  </div>
-
+  <a href="{{READING_URL}}" class="presentation-exit" id="btn-back-reading">← Lectura</a>
+  <div class="reveal"><div class="slides">{{CONTENT}}</div></div>
   <script type="module" src="{{REL_PATH:src/js/presentation.js}}"></script>
 </body>
 </html>

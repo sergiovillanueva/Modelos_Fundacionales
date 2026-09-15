@@ -1,292 +1,301 @@
-/* Lab Layout */
-.lab-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  padding: var(--space-6);
-  margin: var(--space-6) 0;
-  box-shadow: inset 0 0 0 1px rgba(19, 19, 171, 0.05);
-}
-
-.lab-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #F8FAFC;
-  border-radius: var(--radius-control);
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-}
-
-.lab-visual svg {
-  max-width: 100%;
-  max-height: 280px;
-  display: block;
-}
-
-.lab-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-4);
-}
-
-.lab-formula {
-  background: var(--color-panel-soft);
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-control);
-  border: 1px solid #D9D7FF;
-}
-
-.formula-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-primary);
-  margin-bottom: 2px;
-}
-
-.formula-math {
-  font-family: var(--font-title);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-hero-bg);
-}
-
-.lab-metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2);
-}
-
-.metric-item {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: var(--space-2);
-  text-align: center;
-}
-
-.metric-item.highlight {
-  background: #ECFDF3;
-  border-color: #A6F4C5;
-}
-
-.metric-name {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-.metric-val {
-  display: block;
-  font-family: var(--font-title);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-text-main);
-  margin-top: 2px;
-}
-
-.metric-val.highlight-val {
-  color: #166534;
-}
-
-.lab-note {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.45;
-}
-
-.lab-controls {
-  background: var(--color-bg);
-  padding: var(--space-3);
-  border-radius: var(--radius-control);
-  border: 1px solid var(--color-border);
-}
-
-.slider-row {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-2);
-  font-size: 0.9rem;
-}
-
-.slider-row label {
-  min-width: 80px;
-  font-weight: 500;
-}
-
-.slider-row input[type="range"] {
-  flex-grow: 1;
+.media-toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 58px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  background: rgba(16, 16, 77, 0.86);
+  color: #fff;
   cursor: pointer;
-}
-
-.lab-button-group {
-  display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
-  flex-wrap: wrap;
-}
-
-/* Colab Card */
-.colab-card {
-  background: linear-gradient(135deg, #F9FBFF, #EEEDFF);
-  border: 1px solid #D0D8F0;
-  border-radius: var(--radius-card);
-  padding: var(--space-6);
-  margin: var(--space-6) 0;
-}
-
-.colab-info h3 {
-  font-size: 1.3rem;
-  margin-bottom: var(--space-2);
-  color: var(--color-primary);
-}
-
-.colab-actions {
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-.colab-notice {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid #D5DFEB;
-  border-radius: 8px;
-  padding: var(--space-3) var(--space-4);
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-/* Process Steps */
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-.step-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-control);
-  padding: var(--space-4);
-}
-
-.step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: var(--color-primary);
-  color: #FFFFFF;
-  font-family: var(--font-title);
+  font-size: 0.78rem;
   font-weight: 700;
-  border-radius: 50%;
-  font-size: 0.9rem;
-  margin-bottom: var(--space-2);
+  backdrop-filter: blur(8px);
 }
 
-.step-card h4 {
-  font-size: 1.05rem;
-  margin-bottom: var(--space-1);
-}
-
-.step-card p {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-  margin-bottom: 0;
-}
-
-/* Quiz Card Component */
 .quiz-box {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
+  max-width: 780px;
+  margin: 4px 0 0;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid #d9d9ff;
   border-radius: var(--radius-card);
-  padding: var(--space-6);
-  margin: var(--space-6) 0;
+  background: var(--color-panel-soft);
 }
 
 .quiz-box fieldset {
-  border: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .quiz-box legend {
-  font-size: 1.15rem;
+  max-width: 680px;
+  margin-bottom: var(--space-5);
+  font-family: var(--font-title);
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
   font-weight: 700;
-  color: var(--color-text-main);
-  margin-bottom: var(--space-4);
   line-height: 1.4;
 }
 
 .quiz-options {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
+  display: grid;
+  gap: 9px;
 }
 
 .quiz-option {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
   border-radius: var(--radius-control);
+  background: rgba(255, 255, 255, 0.78);
   cursor: pointer;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 0.94rem;
+  line-height: 1.45;
 }
 
-.quiz-option:hover {
+.quiz-option:hover,
+.quiz-option:has(input:focus-visible) {
   border-color: var(--color-primary);
 }
 
-.quiz-option input[type="radio"] {
-  margin-top: 3px;
+.quiz-option:has(input:checked) {
+  border-color: #aaaaeb;
+  background: #fff;
+}
+
+.quiz-option.is-correct {
+  border-color: #75c995;
+  background: var(--color-success-bg);
+}
+
+.quiz-option.is-incorrect {
+  border-color: #efaaa5;
+  background: var(--color-error-bg);
+}
+
+.quiz-option input {
+  flex: 0 0 auto;
+  margin-top: 4px;
   accent-color: var(--color-primary);
 }
 
-.quiz-actions {
-  display: flex;
-  gap: var(--space-3);
-  align-items: center;
+.quiz-option span strong {
+  margin-right: 8px;
+  color: var(--color-primary-dark);
 }
 
 .quiz-status {
-  margin-top: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-control);
-  font-size: 0.95rem;
   display: none;
+  margin: 13px 0 0;
+  padding: 11px 13px;
+  border-radius: var(--radius-control);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.quiz-status.correct,
+.quiz-status.incorrect {
+  display: block;
 }
 
 .quiz-status.correct {
-  display: block;
   background: var(--color-success-bg);
   color: var(--color-success-text);
-  border: 1px solid #A6F4C5;
 }
 
 .quiz-status.incorrect {
-  display: block;
   background: var(--color-error-bg);
   color: var(--color-error-text);
-  border: 1px solid #FECDCA;
 }
 
-/* Responsive */
-@media (max-width: 860px) {
-  .lab-card {
+.iou-lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.75fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: center;
+  padding: clamp(22px, 4vw, 40px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.iou-stage {
+  padding: clamp(12px, 3vw, 24px);
+  border-radius: 14px;
+  background: var(--color-bg);
+}
+
+.iou-stage svg {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+}
+
+.iou-controls {
+  min-width: 0;
+}
+
+.iou-score {
+  margin-bottom: var(--space-6);
+}
+
+.iou-score span {
+  display: block;
+  margin-bottom: -8px;
+  color: var(--color-text-muted);
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.iou-score strong {
+  color: var(--color-primary-dark);
+  font-family: var(--font-title);
+  font-size: clamp(3.3rem, 7vw, 5.6rem);
+  line-height: 1;
+}
+
+.iou-controls label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.iou-controls input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-primary);
+  cursor: ew-resize;
+}
+
+.iou-formula {
+  margin: 7px 0 14px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.iou-message {
+  min-height: 3em;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.colab-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding: clamp(24px, 4vw, 38px);
+  border-radius: var(--radius-card);
+  background: linear-gradient(120deg, var(--color-hero-bg), #20208a);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.colab-card .colab-label {
+  margin-bottom: 8px;
+  color: var(--color-brand-accent);
+}
+
+.colab-card h3 {
+  margin-bottom: 6px;
+  color: #fff;
+  font-size: clamp(1.3rem, 2.7vw, 1.8rem);
+}
+
+.colab-card p:last-child {
+  margin-bottom: 0;
+  color: #d7dff0;
+}
+
+.colab-card .primary-action {
+  flex: 0 0 auto;
+  border-color: #fff;
+  background: #fff;
+  color: var(--color-primary-dark);
+}
+
+.practice-path {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: practice;
+}
+
+.practice-path li {
+  min-width: 0;
+  padding: 24px 26px 24px 0;
+  border-bottom: 1px solid var(--color-border);
+  counter-increment: practice;
+}
+
+.practice-path li + li {
+  padding-left: 26px;
+  border-left: 1px solid var(--color-border);
+}
+
+.practice-path li::before {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+  content: "0" counter(practice);
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.practice-path strong,
+.practice-path span {
+  display: block;
+}
+
+.practice-path strong {
+  margin-bottom: 3px;
+  font-family: var(--font-title);
+  font-size: 0.96rem;
+}
+
+.practice-path span,
+.resource-note {
+  color: var(--color-text-muted);
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+
+.resource-note {
+  max-width: 760px;
+}
+
+@media (max-width: 700px) {
+  .iou-lab,
+  .practice-path {
     grid-template-columns: 1fr;
+  }
+
+  .colab-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .practice-path li,
+  .practice-path li + li {
+    padding: 18px 0;
+    border-left: 0;
+  }
+
+  .media-toggle {
+    bottom: 70px;
   }
 }

@@ -14,28 +14,26 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="{{REL_PATH:index.html}}" class="brand-group">
-        <img src="{{REL_PATH:assets/brand/logo-transparent.png}}" alt="Datamecum" class="brand-logo">
-        <span class="brand-title">Modelos Fundacionales</span>
+        <img src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="Datamecum" class="brand-logo">
+        <span>Curso abierto</span>
       </a>
-      <nav class="header-links" aria-label="Navegación del sitio">
-        <a href="{{REL_PATH:index.html}}">Volver al inicio</a>
-      </nav>
+      <a class="quiet-link" href="{{REL_PATH:index.html}}">← Curso</a>
     </div>
   </header>
 
-  <main id="main-content" class="container" style="text-align: center; padding: var(--space-16) var(--space-4);">
-    <h1 style="font-size: 3.5rem; color: var(--color-primary);">404</h1>
-    <h2 style="font-size: 1.5rem; margin-top: var(--space-2);">Página no encontrada</h2>
-    <p style="margin-top: var(--space-4); margin-bottom: var(--space-6); color: var(--color-text-muted);">
+  <main id="main-content" class="container not-found-page">
+    <p class="eyebrow">Error 404</p>
+    <h1>Página no encontrada</h1>
+    <p>
       El recurso solicitado no existe o ha sido movido en la plataforma.
     </p>
-    <a href="{{REL_PATH:index.html}}" class="cta-button">Ir a la portada del curso</a>
+    <a href="{{REL_PATH:index.html}}" class="primary-action">Ir al curso</a>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <p><strong>{{COURSE_TITLE}}</strong> · {{AUTHOR}}</p>
+        <p>{{COURSE_TITLE}} · {{AUTHOR}}</p>
       </div>
       <div>
         <a href="{{REL_PATH:index.html}}">Inicio</a>

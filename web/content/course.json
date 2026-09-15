@@ -11,7 +11,7 @@
       "status": "available",
       "contentDir": "tema-01",
       "notebookPath": "1_OD.ipynb",
-      "description": "De la imagen digital y el solapamiento de cajas delimitadoras a arquitecturas modernas basadas en transformers (DETR y RF-DETR)."
+      "description": "Qué hace un detector, cómo se distingue de otras tareas, cómo se mide con IoU y cómo probarlo en Colab."
     },
     {
       "id": "02-hugging-face",

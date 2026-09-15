@@ -1,7 +1,5 @@
 export function initMediaControls(root = document) {
-  const containers = root.querySelectorAll('.media-container[data-media-type="gif"]');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+  const containers = root.querySelectorAll('.media-container[data-media-type="animation"]');
   containers.forEach((container) => {
     const img = container.querySelector('.interactive-media');
     const btn = container.querySelector('.btn-toggle-anim');
@@ -17,12 +15,12 @@ export function initMediaControls(root = document) {
       isPlaying = !isPlaying;
       if (isPlaying) {
         img.src = animatedSrc;
-        label.textContent = '⏸ Pausar GIF';
-        btn.setAttribute('aria-label', 'Pausar animación');
+        label.textContent = 'Detener';
+        btn.setAttribute('aria-label', 'Detener animación');
       } else {
         img.src = posterSrc;
-        label.textContent = '▶ Reproducir GIF';
-        btn.setAttribute('aria-label', 'Reproducir animación');
+        label.textContent = 'Ver animación';
+        btn.setAttribute('aria-label', 'Ver animación');
       }
     });
   });

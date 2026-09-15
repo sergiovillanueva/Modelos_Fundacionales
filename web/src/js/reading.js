@@ -1,7 +1,16 @@
 import {initMediaControls} from './media.js';
+import {initQuizzes} from './quiz.js';
+import {initIouDemo} from './iou-demo.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initMediaControls();
+  initQuizzes();
+  initIouDemo();
+
+  const topicDetails = document.querySelector('.sidebar-details');
+  if (topicDetails && window.matchMedia('(max-width: 860px)').matches) {
+    topicDetails.removeAttribute('open');
+  }
 
   // Highlight active section on scroll and sync presentation URL
   const sections = document.querySelectorAll('.reading-content > section');

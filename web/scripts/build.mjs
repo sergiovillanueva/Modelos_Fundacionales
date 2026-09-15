@@ -86,38 +86,18 @@ function replaceTemplateTokens(template, tokens, pageOutputPath) {
 function buildTopicCards(topics, pageOutputPath) {
   return topics.map((t) => {
     const isAvailable = t.status === 'available';
-    const statusClass = isAvailable ? 'available' : 'planned';
-    const statusLabel = isAvailable ? 'Disponible' : 'Próximamente';
-
-    let actionHtml = '';
     if (isAvailable) {
       const readingUrl = relativeUrl(pageOutputPath, `temas/${t.id}/index.html`);
-      const presUrl = relativeUrl(pageOutputPath, `temas/${t.id}/presentar.html`);
-      actionHtml = `
-        <div class="topic-actions">
-          <a href="${readingUrl}" class="btn-primary">Leer tema</a>
-          <a href="${presUrl}" class="btn-secondary">Presentación</a>
-        </div>
-      `;
-    } else {
-      actionHtml = `
-        <div class="topic-actions">
-          <span class="status-label-planned">Próximamente</span>
-        </div>
-      `;
+      return `<a class="topic-card available" href="${readingUrl}">
+        <span class="topic-number">${t.number}</span>
+        <span class="topic-copy"><strong>${t.title}</strong><small>${t.description || ''}</small></span>
+        <span class="topic-arrow" aria-hidden="true">→</span>
+      </a>`;
     }
-
-    return `
-      <article class="topic-card ${statusClass}">
-        <div class="topic-meta">
-          <span class="topic-number">Tema ${t.number}</span>
-          <span class="topic-status ${statusClass}">${statusLabel}</span>
-        </div>
-        <h3>${t.title}</h3>
-        <p>${t.description || ''}</p>
-        ${actionHtml}
-      </article>
-    `;
+    return `<article class="topic-card planned">
+      <span class="topic-number">${t.number}</span>
+      <span class="topic-copy"><strong>${t.title}</strong><small>Próximamente</small></span>
+    </article>`;
   }).join('\n');
 }
 

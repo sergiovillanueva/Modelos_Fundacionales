@@ -14,40 +14,37 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="{{REL_PATH:index.html}}" class="brand-group">
-        <img src="{{REL_PATH:assets/brand/logo-transparent.png}}" alt="Datamecum" class="brand-logo">
-        <span class="brand-title">Modelos Fundacionales</span>
+        <img src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="Datamecum" class="brand-logo">
+        <span>Curso abierto</span>
       </a>
-      <nav class="header-links" aria-label="Navegación del sitio">
-        <a href="{{REL_PATH:index.html}}">Volver al inicio</a>
-        <a href="{{REPO_URL}}" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </nav>
+      <a class="quiet-link" href="{{REL_PATH:index.html}}">← Curso</a>
     </div>
   </header>
 
-  <main id="main-content" class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+  <main id="main-content" class="container credits-page">
     <h1>Créditos y referencias</h1>
-    <p style="margin-top: var(--space-4); margin-bottom: var(--space-8); color: var(--color-text-muted);">
+    <p class="credits-intro">
       Autoría docente, recursos de diseño y referencias académicas utilizadas en esta edición del curso.
     </p>
 
-    <section style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--radius-card); border: 1px solid var(--color-border); margin-bottom: var(--space-6);">
+    <section class="credits-section">
       <h2>Autoría y desarrollo docente</h2>
-      <p style="margin-top: var(--space-2);"><strong>Profesor / Autor:</strong> {{AUTHOR}}</p>
-      <p style="margin-top: var(--space-1);"><strong>Institución / Marca:</strong> Datamecum</p>
-      <p style="margin-top: var(--space-1);"><strong>Repositorio:</strong> <a href="{{REPO_URL}}" target="_blank" rel="noopener noreferrer">{{REPO_URL}}</a></p>
+      <p><strong>Profesor y autor:</strong> {{AUTHOR}}</p>
+      <p><strong>Institución:</strong> Datamecum</p>
+      <p><strong>Repositorio:</strong> <a href="{{REPO_URL}}" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     </section>
 
-    <section style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--radius-card); border: 1px solid var(--color-border); margin-bottom: var(--space-6);">
+    <section class="credits-section">
       <h2>Tipografías y licencias de fuentes</h2>
-      <ul style="margin-top: var(--space-3); padding-left: var(--space-6);">
+      <ul>
         <li><strong>Raleway:</strong> Matt McInerney, Pablo Impallari, Rodrigo Fuenzalida. Licencia SIL Open Font License (OFL 1.1).</li>
         <li><strong>Roboto:</strong> Christian Robertson. Licencia Apache License 2.0 / SIL Open Font License.</li>
       </ul>
     </section>
 
-    <section style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--radius-card); border: 1px solid var(--color-border);">
+    <section class="credits-section">
       <h2>Referencias clave (Tema 1)</h2>
-      <ul style="margin-top: var(--space-3); padding-left: var(--space-6); line-height: 1.8;">
+      <ul>
         <li>Carion et al. (2020). <em>End-to-End Object Detection with Transformers</em> (DETR). ECCV.</li>
         <li>Redmon et al. (2016). <em>You Only Look Once: Unified, Real-Time Object Detection</em> (YOLO). CVPR.</li>
         <li>Lin et al. (2014). <em>Microsoft COCO: Common Objects in Context</em>. ECCV.</li>
@@ -59,7 +56,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <p><strong>{{COURSE_TITLE}}</strong> · {{AUTHOR}}</p>
+        <p>{{COURSE_TITLE}} · {{AUTHOR}}</p>
       </div>
       <div>
         <a href="{{REL_PATH:index.html}}">Inicio</a>
