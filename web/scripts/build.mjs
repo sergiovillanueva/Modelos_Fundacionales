@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {relativeUrl} from './paths.mjs';
-import {renderTopic} from './render.mjs';
+import {renderTopic, buildTopicNavigation} from './render.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -95,10 +95,16 @@ export function buildSite() {
   const coursePath = path.resolve(CONTENT_DIR, 'course.json');
   const course = JSON.parse(fs.readFileSync(coursePath, 'utf8'));
 
-  // The course opens directly on the first lesson, using the same source and template.
+  // A short cover introduces the course; lessons share one reading template.
   const firstTopic = course.topics.find((topic) => topic.status === 'available' && topic.contentDir);
   if (!firstTopic) throw new Error('El curso necesita al menos un tema disponible.');
-  fs.writeFileSync(path.join(DIST_DIR, 'index.html'), renderTopic(course, firstTopic, 'reading', 'index.html'), 'utf8');
+  const homeTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'home.html'), 'utf8');
+  const home = replaceTemplateTokens(homeTemplate, {
+    COURSE_TITLE: course.title,
+    TOPIC_NAV: buildTopicNavigation(course, null, 'index.html'),
+    START_URL: `temas/${firstTopic.id}/index.html`
+  }, 'index.html');
+  fs.writeFileSync(path.join(DIST_DIR, 'index.html'), home, 'utf8');
 
   // Render creditos.html
   const creditsOutputPath = 'creditos.html';

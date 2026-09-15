@@ -1,10 +1,10 @@
 # Guía para continuar la web
 
-Referencia obligatoria antes de ampliar cualquier tema. Leer también [README.md](README.md). Esta guía sustituye las decisiones anteriores sobre portada, índice lateral, tarjetas y lectura continua en `docs/plan/web`. Trabajar exclusivamente dentro de `web/`.
+Referencia obligatoria antes de ampliar cualquier tema. Leer también [README.md](README.md). Esta guía sustituye las decisiones anteriores sobre portada, índice lateral, tarjetas y lectura continua en `../docs/plan-web/`. Trabajar exclusivamente dentro de `web/`.
 
 ## La experiencia que hay que conservar
 
-La web es un aula visual. Al entrar, el alumno ya está en el primer ejemplo. Arriba elige tema; debajo elige un paso. Puede avanzar con «Siguiente» o saltar directamente a cualquier paso. No necesita leer una explicación de la interfaz.
+La web abre con una portada breve: título, una frase, una ilustración y **Empezar**. Arriba el alumno elige tema. Dentro de cada tema avanza con **Siguiente** y **Anterior**, viendo una sola idea cada vez. No necesita leer una explicación de la interfaz.
 
 El público conoce Python y nociones de deep learning. La detección y las métricas nuevas se explican desde cero, con un ejemplo que se pueda ver o manipular.
 
@@ -13,9 +13,9 @@ El público conoce Python y nociones de deep learning. La detección y las métr
 ## Reglas visuales obligatorias
 
 1. **Una idea por vista.** Un título breve, como máximo una frase de contexto, y una imagen o actividad protagonista.
-2. **Texto sobre blanco.** Sin recuadros para explicaciones, tarjetas de Colab, sombras decorativas, gradientes ni etiquetas de relleno. Un área suavemente coloreada sí puede delimitar una simulación.
+2. **Texto sobre fondo claro.** Sin recuadros para explicaciones, tarjetas de Colab, sombras decorativas ni etiquetas de relleno. Un área suavemente coloreada puede delimitar una simulación; el halo suave de la portada es el único gradiente de fondo de la interfaz.
 3. **Acciones evidentes.** Una respuesta se corrige al seleccionarla. Un deslizador modifica el ejemplo. No añadir «Comprobar», «Reiniciar», tutoriales, consejos de navegación ni botones duplicados.
-4. **Identidad Datamecum.** Logo local, Raleway en títulos, Roboto en texto; azul marino y azul intenso, cian solo como acento. Usar los colores de `tokens.css`.
+4. **Identidad Datamecum como acento.** Logo local claramente visible (94 × 70 px en escritorio, 76 × 57 px en móvil), Raleway en títulos, Roboto en texto. Fondo casi blanco; azul y cian de la marca como acentos. La portada permite un halo de fondo suave, sin añadir paneles.
 5. **Espacio y jerarquía.** Título centrado y elemento visual grande. La interfaz ocupa menos atención que el contenido. Las preguntas usan filas con separadores finos.
 6. **Contenido real.** No rellenar temas pendientes con ejemplos ficticios, métricas inventadas ni llamadas a la acción sin destino.
 
@@ -36,12 +36,12 @@ Si falta espacio, dividir la idea en otro paso. Los matices adicionales pueden i
 
 ## Navegación
 
-- `index.html` abre el primer tema disponible. Se genera desde la misma plantilla que la ruta del tema; no crear una portada aparte.
+- `index.html` se genera desde `templates/home.html`: portada de una sola escena, sin tarjetas de temas ni secciones debajo. **Empezar** abre el primer tema disponible.
 - Cabecera: marca y menú discreto **Material**, con **Descargar PDF** y **Presentar**.
-- Primera fila: temas. Los disponibles son enlaces; los pendientes se muestran atenuados, sin enlace, con estado accesible «Próximamente».
-- Segunda fila: pasos del tema. Solo un panel visible con JavaScript activo. En móvil, mantener acceso a todos los pasos; si se añaden más de cuatro, adaptar y comprobar la fila para que no desborde.
+- Una única fila de navegación: temas. Los disponibles son enlaces; los pendientes se muestran atenuados, sin enlace, con estado accesible «Próximamente».
+- **No añadir pestañas de pasos, índices laterales ni otra fila de navegación.** Solo un panel visible con JavaScript activo.
 - Pie de la lección: **Anterior**, posición `n / total` y **Siguiente**. El último paso termina con Colab. El contador indica ubicación, nunca rendimiento ni progreso guardado.
-- No añadir barra lateral, portada promocional, pie con créditos, GitHub ni un tercer menú a la lección. Los créditos y licencias se conservan como información secundaria en los archivos existentes.
+- No añadir barra lateral, secciones promocionales, pie con créditos, GitHub ni menús adicionales a la lección. Los créditos y licencias se conservan como información secundaria en los archivos existentes.
 - La URL identifica el paso (`#iou`); recarga, enlaces directos y botones atrás/adelante del navegador deben conservarlo.
 - Presentar abre la diapositiva actual. Volver regresa al mismo paso.
 
@@ -93,7 +93,7 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 
 - Reveal.js reutiliza el contenido. Cada diapositiva debe caber a 1280 × 720, incluida la corrección de preguntas. Solo enlace discreto **Volver**, controles de Reveal y número de diapositiva.
 - En móvil: contenido apilado, controles táctiles cómodos, nada de desplazamiento horizontal de toda la página. La fila de temas puede desplazarse dentro de su propio espacio.
-- Pestañas con roles ARIA, flechas izquierda/derecha y Home/End. Al avanzar con botones, llevar el foco al título nuevo.
+- Temas con enlaces nativos, tema actual con `aria-current`, avance con botones nativos. Al avanzar, llevar el foco al título nuevo. Tab y Enter bastan; no interceptar las flechas del teclado para navegar la lección.
 - Contraste legible y foco visible. Respetar movimiento reducido. Ninguna información depende solo del color.
 - Sin JavaScript, todos los pasos siguen disponibles como HTML continuo. Al imprimir también aparecen todos, incluso si la web solo muestra uno.
 
@@ -108,8 +108,9 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 
 ## Lista de revisión antes de entregar
 
-- [ ] La entrada ya enseña algo y hay un solo paso visible.
-- [ ] No se han recuperado portada, índice lateral, tarjetas ni bloques de explicaciones.
+- [ ] La portada explica el curso en una frase y tiene una sola acción.
+- [ ] El logo se lee, hay una sola fila de temas y un solo paso visible en la lección.
+- [ ] No se han recuperado índice lateral, pestañas de pasos, tarjetas ni bloques de explicaciones.
 - [ ] El contenido es correcto y suficiente para la actividad, con métricas explicadas desde cero.
 - [ ] Respuestas, animación y simulación funcionan; la corrección cabe en móvil y presentación.
 - [ ] Temas, pasos, Material, Colab e historial tienen el comportamiento descrito.
@@ -120,4 +121,4 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 
 ## Rediseño aplicado en septiembre de 2026
 
-Se sustituyó la portada y la lectura larga por un aula con temas y pasos. Se eliminaron sidebar, tarjetas, subtítulos repetidos y pie de créditos de la lección. PDF y presentación se agruparon en Material. Se redujeron los textos, se conservaron las actividades y se añadió navegación accesible con historial. Las reglas de este documento son el patrón para los próximos temas.
+La versión final tiene una portada de una sola escena y lecciones guiadas. Se eliminaron tarjetas, subtítulos repetidos, índice lateral, pestañas de pasos y pie de créditos de la lección. El logo se amplió y se introdujo un fondo suave con acentos de la marca. PDF y presentación se agruparon en Material. Se redujeron los textos, se conservaron las actividades y se añadió navegación accesible con historial. Las reglas de este documento son el patrón para los próximos temas.

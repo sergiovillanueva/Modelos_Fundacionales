@@ -20,8 +20,12 @@ try {
   browser = await chromium.launch();
   for (const [mode, width, height] of [['desktop', 1440, 900], ['mobile', 390, 844], ['presentation', 1280, 720]]) {
     const page = await browser.newPage({viewport: {width, height}});
+    if (mode !== 'presentation') {
+      await page.goto(URL, {waitUntil: 'networkidle'});
+      await page.screenshot({path: path.join(OUTPUT_DIR, `${mode}-home.png`), fullPage: true});
+    }
     for (const id of ['inicio', 'tareas', 'iou', 'practica']) {
-      const route = mode === 'presentation' ? `/temas/01-deteccion/presentar.html#/${id}` : `/index.html#${id}`;
+      const route = mode === 'presentation' ? `/temas/01-deteccion/presentar.html#/${id}` : `/temas/01-deteccion/index.html#${id}`;
       await page.goto(URL + route, {waitUntil: 'networkidle'});
       await page.locator(mode === 'presentation' ? `.slides > #${id}.present` : `.reading-content > #${id}`).waitFor({state: 'visible'});
       await page.evaluate(() => document.fonts.ready);

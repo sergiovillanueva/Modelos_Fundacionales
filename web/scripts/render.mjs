@@ -39,20 +39,14 @@ export function extractSections(sectionsHtml) {
   return sections;
 }
 
-export function buildSidebarIndex(sections) {
-  return sections.map((sec, index) => {
-    return `<a href="#${sec.id}" id="step-${sec.id}" class="step-tab" aria-controls="${sec.id}"><span>${index + 1}</span> ${escapeHtml(sec.title)}</a>`;
-  }).join('\n');
-}
-
-function buildTopicNavigation(course, topic, pageOutputPath) {
+export function buildTopicNavigation(course, topic, pageOutputPath) {
   return course.topics.map((item) => {
     const label = escapeHtml(item.navTitle || item.title);
     if (item.status !== 'available') {
       return `<span class="topic-link is-pending" aria-disabled="true" title="${escapeHtml(item.title)} · Próximamente"><span class="topic-number">${item.number}</span> ${label}<span class="sr-only"> · Próximamente</span></span>`;
     }
     const href = relativeUrl(pageOutputPath, `temas/${item.id}/index.html`);
-    return `<a class="topic-link" href="${href}"${item.id === topic.id ? ' aria-current="page"' : ''}><span class="topic-number">${item.number}</span> ${label}</a>`;
+    return `<a class="topic-link" href="${href}"${item.id === topic?.id ? ' aria-current="page"' : ''}><span class="topic-number">${item.number}</span> ${label}</a>`;
   }).join('\n');
 }
 
@@ -103,8 +97,6 @@ export function renderTopic(course, topic, mode = 'reading', outputPath) {
   }
 
   const rawSectionsHtml = fs.readFileSync(contentFile, 'utf8');
-  const sections = extractSections(rawSectionsHtml);
-  const topicIndexHtml = buildSidebarIndex(sections);
   const questionsPath = path.resolve(CONTENT_DIR, topic.contentDir, 'questions.json');
   const questions = fs.existsSync(questionsPath)
     ? JSON.parse(fs.readFileSync(questionsPath, 'utf8'))
@@ -142,7 +134,6 @@ export function renderTopic(course, topic, mode = 'reading', outputPath) {
     PRESENTATION_URL: presentationUrl,
     PDF_URL: pdfUrl,
     TOPIC_NAV: buildTopicNavigation(course, topic, pageOutputPath),
-    TOPIC_INDEX: topicIndexHtml,
     CONTENT: content
   };
 

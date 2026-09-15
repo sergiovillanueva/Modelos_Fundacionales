@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 520" fill="none">
+  <defs>
+    <radialGradient id="sphere" cx=".3" cy=".24" r=".84"><stop stop-color="#a3f2fa"/><stop offset=".42" stop-color="#35c4e5"/><stop offset=".8" stop-color="#2186c7"/><stop offset="1" stop-color="#244d9b"/></radialGradient>
+    <linearGradient id="front" x1="260" y1="320" x2="420" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#5156df"/><stop offset="1" stop-color="#242477"/></linearGradient>
+    <linearGradient id="top" x1="245" y1="288" x2="439" y2="323" gradientUnits="userSpaceOnUse"><stop stop-color="#a2a8ff"/><stop offset="1" stop-color="#6067e7"/></linearGradient>
+    <radialGradient id="shade"><stop stop-color="#243a74" stop-opacity=".14"/><stop offset="1" stop-color="#243a74" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="190" cy="331" rx="118" ry="24" fill="url(#shade)"/>
+  <ellipse cx="350" cy="443" rx="127" ry="29" fill="url(#shade)"/>
+  <circle cx="188" cy="216" r="104" fill="url(#sphere)"/>
+  <path d="m270 311 87-49 93 53-87 53z" fill="url(#top)"/>
+  <path d="m270 311 93 57v102l-93-56z" fill="url(#front)"/>
+  <path d="m363 368 87-53v103l-87 52z" fill="#363ca7"/>
+  <g stroke="#008dac" stroke-width="1.7" stroke-linecap="round">
+    <path d="M68 157v-61h61M247 96h61v61M308 272v61h-61M129 333H68v-61"/>
+  </g>
+  <g stroke="#3536a9" stroke-width="1.7" stroke-linecap="round">
+    <path d="M250 297v-54h54M413 243h54v54M467 425v54h-54M304 479h-54v-54"/>
+  </g>
+  <g font-family="system-ui,sans-serif" font-size="14" letter-spacing=".6">
+    <text x="68" y="78" fill="#00728b">esfera</text>
+    <text x="418" y="226" fill="#3536a9">cubo</text>
+  </g>
+</svg>

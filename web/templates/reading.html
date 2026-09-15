@@ -14,11 +14,11 @@
 <body class="classroom">
   <a href="#reading-main" class="skip-link">Saltar al tema</a>
   <header class="course-header">
-    <div class="course-topbar">
+    <div class="header-inner">
       <a class="course-brand" href="{{REL_PATH:index.html}}" aria-label="Inicio del curso">
-        <img src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="Datamecum" width="48" height="40">
-        <span>Visión artificial</span>
+        <img src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="Datamecum" width="94" height="70">
       </a>
+      <nav class="topic-tabs" aria-label="Temas">{{TOPIC_NAV}}</nav>
       <details class="course-material">
         <summary>Material <span aria-hidden="true">⌄</span></summary>
         <div class="material-links">
@@ -27,11 +27,9 @@
         </div>
       </details>
     </div>
-    <nav class="topic-tabs" aria-label="Temas">{{TOPIC_NAV}}</nav>
   </header>
   <main id="reading-main" class="lesson" tabindex="-1">
     <h1 class="sr-only">{{TOPIC_TITLE}}</h1>
-    <nav class="step-tabs" aria-label="Pasos del tema">{{TOPIC_INDEX}}</nav>
     <div class="reading-content">{{CONTENT}}</div>
     <nav class="lesson-nav" aria-label="Avanzar por el tema">
       <button type="button" class="previous-step" data-step-previous aria-label="Anterior"><span aria-hidden="true">←</span> Anterior</button>

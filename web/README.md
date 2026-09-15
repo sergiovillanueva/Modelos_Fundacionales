@@ -2,7 +2,7 @@
 
 Sitio web estático interactivo del curso, desarrollado con HTML semántico, CSS modular, JavaScript en módulos estándar (ESM) y Reveal.js (modo presentación).
 
-La entrada abre directamente el tema 01. Los temas están arriba y cada tema se recorre paso a paso: **Concepto → Tu turno → IoU → Colab**. El menú **Material** reúne el PDF y la presentación. Los temas 02–06 están preparados en la navegación, pendientes de contenido.
+Una portada breve presenta el curso y abre el tema 01 con **Empezar**. Los temas están arriba y cada tema se recorre con **Anterior / Siguiente**: **Concepto → Tu turno → IoU → Colab**. El menú **Material** reúne el PDF y la presentación. Los temas 02–06 están preparados en la navegación, pendientes de contenido.
 
 Antes de crear o ampliar un tema, consulta [INSTRUCCIONES.md](INSTRUCCIONES.md). Ahí están las reglas visuales, los límites de texto, la estructura de las actividades y la lista de comprobación que deben seguir personas y agentes de programación.
 
@@ -32,7 +32,7 @@ web/
 - `npm test`: Ejecuta los tests unitarios con el ejecutor nativo `node:test`.
 - `npm run preview`: Inicia un servidor HTTP local en `http://localhost:4173` para previsualizar `dist/`.
 - `npm run test:e2e`: Ejecuta las pruebas automatizadas de navegador con Playwright.
-- `node tests/visual-check.mjs`: Captura cada paso del tema 01 en escritorio, móvil y presentación, en `test-results/visual/`.
+- `node tests/visual-check.mjs`: Captura la portada y cada paso del tema 01 en escritorio, móvil y presentación, en `test-results/visual/`.
 - `npm run pdf`: Regenera el PDF A4 de la lección en `public/descargas/` y lo copia a `dist/descargas/`.
 
 Trabajar desde `web/`. Tras editar contenido o estilos, ejecutar `npm run build`, `npm run check`, `npm test` y `npm run test:e2e`. Revisar las capturas con `node tests/visual-check.mjs` y regenerar el PDF. Los tests de navegador comprueban los cuatro pasos, historial, teclado, respuestas, IoU, animación, recursos, móvil a 390/320 px e impresión.
