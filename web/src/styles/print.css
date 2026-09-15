@@ -9,6 +9,9 @@ html, body.classroom { background: #fff; font-size: 11pt; min-height: 0; }
 .lead { font-size: 12pt; }
 .detection-example { max-width: 165mm; }
 .detection-example figcaption { font-size: 11pt; }
+.lesson-image--wide { max-width: 165mm; }
+.lesson-image--medium { max-width: 130mm; }
+.lesson-image figcaption { font-size: 10pt; }
 .question-layout { grid-template-columns: 1fr; gap: 8mm; margin: 0; }
 .question-layout .figure-media { max-width: 65mm; margin: 0 auto; }
 .quiz-box legend { font-size: 13pt; }
@@ -22,5 +25,9 @@ html, body.classroom { background: #fff; font-size: 11pt; min-height: 0; }
 .iou-controls input, .iou-controls label, .range-ends { display: none; }
 .practice-path { margin: 14mm auto 10mm; }
 .practice-path li { font-size: 13pt; }
+.outcome-flow { max-width: 100%; }
+.outcome-flow div { min-height: 0; padding: 6mm; }
+.evaluation-list { max-width: 100%; }
+.evolution-line { max-width: 100%; }
 .print-detail { display: block; margin-top: 12mm; color: var(--color-text-muted); font-size: 11pt; line-height: 1.6; }
 .print-detail p { margin: 0; }

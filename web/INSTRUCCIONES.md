@@ -2,6 +2,8 @@
 
 Referencia obligatoria antes de ampliar cualquier tema. Leer también [README.md](README.md). Esta guía sustituye las decisiones anteriores sobre portada, índice lateral, tarjetas y lectura continua en `../docs/plan-web/`. Trabajar exclusivamente dentro de `web/`.
 
+Para incorporar el PowerPoint por etapas, empezar por [CONTINUAR.md](CONTINUAR.md). El proceso y los lotes están en [plan/MIGRACION-POWERPOINT.md](plan/MIGRACION-POWERPOINT.md); el punto de reanudación está en [plan/ESTADO.md](plan/ESTADO.md) y la correspondencia de las 94 diapositivas, en [plan/COBERTURA.json](plan/COBERTURA.json).
+
 ## La experiencia que hay que conservar
 
 La web abre con una portada breve: título, una frase, una ilustración y **Empezar**. Arriba el alumno elige tema. Dentro de cada tema avanza con **Siguiente** y **Anterior**, viendo una sola idea cada vez. No necesita leer una explicación de la interfaz.
@@ -9,6 +11,8 @@ La web abre con una portada breve: título, una frase, una ilustración y **Empe
 El público conoce Python y nociones de deep learning. La detección y las métricas nuevas se explican desde cero, con un ejemplo que se pueda ver o manipular.
 
 **Modelo de referencia: tema 01, tal como está implementado.** Sus cuatro pasos son Concepto → Tu turno → IoU → Colab. Es una introducción; no representa todavía todo el temario de detección.
+
+Conservar ese patrón visual al ampliar el contenido. **Cuatro pasos no es el límite del tema.** La sencillez consiste en mostrar una idea cada vez, no en eliminar ideas del PowerPoint. Completar primero el tema 01 y reservar su revisión antes de pasar a los demás.
 
 ## Reglas visuales obligatorias
 
@@ -100,7 +104,7 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 ## Añadir el siguiente tema
 
 1. Leer esta guía y recorrer el tema 01 antes de escribir contenido.
-2. Preparar 4–7 pasos: ejemplo inicial, comprobación breve, exploración y práctica. Si hacen falta más ideas, distribuirlas sin amontonar texto.
+2. Trabajar por lotes pequeños según el plan de migración. El tema completo tendrá tantos pasos como necesite para cubrir sus ideas; no imponer un máximo de 4–7. Mantener el recorrido de ejemplos, conceptos, comprobaciones y práctica sin amontonar texto.
 3. Crear `content/tema-XX/sections.html`, `questions.json` y recursos en `public/assets/tema-XX/`.
 4. En `content/course.json`, completar `navTitle`, `contentDir`, `notebookPath` y pasar a `status: "available"` cuando haya contenido revisable. La URL de Colab de la sección debe apuntar al notebook correcto; `notebookPath` no la sustituye automáticamente.
 5. Preparar el PDF del nuevo tema con el nombre que espera el generador: `tema-<id>.pdf`. Actualmente `scripts/export-pdf.mjs` exporta solo el tema 01; ampliar ese script antes de publicar otro tema para que **Material** no enlace a un archivo inexistente.

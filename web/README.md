@@ -6,6 +6,8 @@ Una portada breve presenta el curso y abre el tema 01 con **Empezar**. Los temas
 
 Antes de crear o ampliar un tema, consulta [INSTRUCCIONES.md](INSTRUCCIONES.md). Ahí están las reglas visuales, los límites de texto, la estructura de las actividades y la lista de comprobación que deben seguir personas y agentes de programación.
 
+**Para que otro modelo continúe:** [CONTINUAR.md](CONTINUAR.md) contiene el prompt de trabajo. [plan/ESTADO.md](plan/ESTADO.md) señala el siguiente lote; [plan/MIGRACION-POWERPOINT.md](plan/MIGRACION-POWERPOINT.md) define el proceso y [plan/COBERTURA.json](plan/COBERTURA.json) registra las 94 diapositivas. Estos archivos son documentación de trabajo y no se copian a `dist/`.
+
 ## Estructura del proyecto
 
 ```text

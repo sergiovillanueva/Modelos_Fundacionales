@@ -24,7 +24,9 @@ try {
       await page.goto(URL, {waitUntil: 'networkidle'});
       await page.screenshot({path: path.join(OUTPUT_DIR, `${mode}-home.png`), fullPage: true});
     }
-    for (const id of ['inicio', 'tareas', 'iou', 'practica']) {
+    await page.goto(URL + (mode === 'presentation' ? '/temas/01-deteccion/presentar.html' : '/temas/01-deteccion/index.html'), {waitUntil: 'networkidle'});
+    const ids = await page.locator(mode === 'presentation' ? '.slides > section' : '.reading-content > section').evaluateAll(sections => sections.map(section => section.id));
+    for (const id of ids) {
       const route = mode === 'presentation' ? `/temas/01-deteccion/presentar.html#/${id}` : `/temas/01-deteccion/index.html#${id}`;
       await page.goto(URL + route, {waitUntil: 'networkidle'});
       await page.locator(mode === 'presentation' ? `.slides > #${id}.present` : `.reading-content > #${id}`).waitFor({state: 'visible'});

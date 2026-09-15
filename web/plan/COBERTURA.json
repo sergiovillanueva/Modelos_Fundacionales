@@ -1,0 +1,2372 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "relativeToWeb": "../docs/Modelos-fundacionales-en-vision-artificial.pptx",
+    "sha256": "4ade4fe4f8e9b688de6138a0e4b9350b052eca51d461923c0788d27d135a830d",
+    "slideCount": 94,
+    "inventoryDate": "2026-09-15",
+    "method": "Orden de presentation.xml y relaciones OOXML. Título: primer párrafo extraíble. Medios: relaciones image de cada diapositiva; no inventario exhaustivo de vídeos, notas o enlaces."
+  },
+  "statusMeaning": {
+    "pendiente": "No adaptada o sin comprobar su destino editorial.",
+    "parcial": "Existe algún contenido relacionado; aún falta cotejar o completar ideas.",
+    "adaptada": "Contenido íntegro con destino registrado y comprobaciones locales superadas.",
+    "revisada": "Cobertura y exactitud examinadas por el revisor del tema, con evidencia."
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "title": "Modelos fundacionales en visión artificial",
+      "part": "ppt/slides/slide1.xml",
+      "media": [
+        "ppt/media/image-1-1.jpeg"
+      ],
+      "topic": "general",
+      "batch": "G-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contexto",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 2,
+      "title": "Sergio Villanueva",
+      "part": "ppt/slides/slide2.xml",
+      "media": [
+        "ppt/media/image-2-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "general",
+      "batch": "G-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contexto",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 3,
+      "title": "Temario",
+      "part": "ppt/slides/slide3.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "general",
+      "batch": "G-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contexto",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 4,
+      "title": "Enseñando a las máquinas a ver",
+      "part": "ppt/slides/slide4.xml",
+      "media": [
+        "ppt/media/image-4-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 5,
+      "title": "Tareas principales en visión artificial",
+      "part": "ppt/slides/slide5.xml",
+      "media": [
+        "ppt/media/image-5-1.gif",
+        "ppt/media/image-5-2.png",
+        "ppt/media/image-5-3.svg",
+        "ppt/media/image-5-2.png",
+        "ppt/media/image-5-3.svg",
+        "ppt/media/image-5-6.png",
+        "ppt/media/image-5-7.svg",
+        "ppt/media/image-5-6.png",
+        "ppt/media/image-5-7.svg",
+        "ppt/media/image-5-10.png",
+        "ppt/media/image-5-11.svg",
+        "ppt/media/image-5-10.png",
+        "ppt/media/image-5-11.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-A",
+      "status": "parcial",
+      "sectionIds": [
+        "tareas"
+      ],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [
+        "Explicar clasificación, detección y segmentación antes de pedir que se distingan."
+      ],
+      "note": "Sección inicial existente; falta cotejar la diapositiva completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 6,
+      "title": "1. Detección de objetos",
+      "part": "ppt/slides/slide6.xml",
+      "media": [
+        "ppt/media/image-6-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-A",
+      "status": "parcial",
+      "sectionIds": [
+        "inicio"
+      ],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [
+        "Desarrollar la lectura de caja, categoría y puntuación de confianza."
+      ],
+      "note": "Sección inicial existente; falta cotejar la diapositiva completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 7,
+      "title": "Tipos de arquitecturas de Object Detection",
+      "part": "ppt/slides/slide7.xml",
+      "media": [
+        "ppt/media/image-7-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 8,
+      "title": "Evolución histórica de los detectores",
+      "part": "ppt/slides/slide8.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 9,
+      "title": "Redes neuronales convolucionales (CNNs)",
+      "part": "ppt/slides/slide9.xml",
+      "media": [
+        "ppt/media/image-9-1.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 10,
+      "title": "Two-Stage: Precisión a costa de complejidad",
+      "part": "ppt/slides/slide10.xml",
+      "media": [
+        "ppt/media/image-10-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 11,
+      "title": "R-CNN",
+      "part": "ppt/slides/slide11.xml",
+      "media": [
+        "ppt/media/image-11-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 12,
+      "title": "Comparación de velocidad de RCNNs",
+      "part": "ppt/slides/slide12.xml",
+      "media": [
+        "ppt/media/image-12-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 13,
+      "title": "YOLO: Detección como regresión directa",
+      "part": "ppt/slides/slide13.xml",
+      "media": [
+        "ppt/media/image-13-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 14,
+      "title": "La Arquitectura YOLO: Velocidad y Simplicidad",
+      "part": "ppt/slides/slide14.xml",
+      "media": [
+        "ppt/media/image-14-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 15,
+      "title": "Evolución de la familia YOLO (2016-2024)",
+      "part": "ppt/slides/slide15.xml",
+      "media": [
+        "ppt/media/image-15-1.png",
+        "ppt/media/image-15-2.svg",
+        "ppt/media/image-15-3.png",
+        "ppt/media/image-15-4.svg",
+        "ppt/media/image-15-5.png",
+        "ppt/media/image-15-6.svg",
+        "ppt/media/image-15-7.png",
+        "ppt/media/image-15-8.svg",
+        "ppt/media/image-15-9.png",
+        "ppt/media/image-15-10.svg",
+        "ppt/media/image-15-11.png",
+        "ppt/media/image-15-12.svg",
+        "ppt/media/image-15-13.png",
+        "ppt/media/image-15-14.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 16,
+      "title": "Por qué las CNNs no son suficientes",
+      "part": "ppt/slides/slide16.xml",
+      "media": [
+        "ppt/media/image-16-1.png",
+        "ppt/media/image-16-2.svg",
+        "ppt/media/image-16-1.png",
+        "ppt/media/image-16-2.svg",
+        "ppt/media/image-16-1.png",
+        "ppt/media/image-16-2.svg",
+        "ppt/media/image-16-7.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 17,
+      "title": "DETR: Transformers para detección",
+      "part": "ppt/slides/slide17.xml",
+      "media": [
+        "ppt/media/image-17-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-E",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 18,
+      "title": "Fin del NMS: matching húngaro",
+      "part": "ppt/slides/slide18.xml",
+      "media": [
+        "ppt/media/image-18-1.jpeg",
+        "ppt/media/image-18-2.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-E",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 19,
+      "title": "RF-DETR",
+      "part": "ppt/slides/slide19.xml",
+      "media": [
+        "ppt/media/image-19-1.png",
+        "ppt/media/image-19-2.svg",
+        "ppt/media/image-19-3.png",
+        "ppt/media/image-19-4.svg",
+        "ppt/media/image-19-1.png",
+        "ppt/media/image-19-2.svg",
+        "ppt/media/image-19-7.png",
+        "ppt/media/image-19-8.svg",
+        "ppt/media/image-19-1.png",
+        "ppt/media/image-19-2.svg",
+        "ppt/media/image-19-11.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-E",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 20,
+      "title": "RF-DETR",
+      "part": "ppt/slides/slide20.xml",
+      "media": [
+        "ppt/media/image-20-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-E",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 21,
+      "title": "Por qué NO usamos ultralytics en clase",
+      "part": "ppt/slides/slide21.xml",
+      "media": [
+        "ppt/media/image-21-1.png",
+        "ppt/media/image-21-2.svg",
+        "ppt/media/image-21-3.png",
+        "ppt/media/image-21-4.svg",
+        "ppt/media/image-21-5.png",
+        "ppt/media/image-21-6.svg",
+        "ppt/media/image-21-7.png",
+        "ppt/media/image-21-8.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-F",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 22,
+      "title": "Por qué SÍ usamos RF-DETR en clase",
+      "part": "ppt/slides/slide22.xml",
+      "media": [
+        "ppt/media/image-21-1.png",
+        "ppt/media/image-21-2.svg",
+        "ppt/media/image-22-3.png",
+        "ppt/media/image-22-4.svg",
+        "ppt/media/image-22-5.png",
+        "ppt/media/image-22-6.svg",
+        "ppt/media/image-22-7.png",
+        "ppt/media/image-22-8.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-F",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 23,
+      "title": "RF-DETR vs YOLO en producción",
+      "part": "ppt/slides/slide23.xml",
+      "media": [
+        "ppt/media/image-23-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-F",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 24,
+      "title": "IoU (Intersection over Union)",
+      "part": "ppt/slides/slide24.xml",
+      "media": [
+        "ppt/media/image-24-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-G",
+      "status": "parcial",
+      "sectionIds": [
+        "iou"
+      ],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [
+        "Relacionar IoU con el criterio de evaluación sin confundir geometría, clase y confianza."
+      ],
+      "note": "Sección inicial existente; falta cotejar la diapositiva completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 25,
+      "title": "Fundamentos: TP, FP, FN (y por qué no hay TN)",
+      "part": "ppt/slides/slide25.xml",
+      "media": [
+        "ppt/media/image-25-1.png",
+        "ppt/media/image-25-2.svg",
+        "ppt/media/image-25-3.png",
+        "ppt/media/image-25-4.svg",
+        "ppt/media/image-25-5.png",
+        "ppt/media/image-25-6.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-G",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 26,
+      "title": "Métricas de evaluación: precision y recall",
+      "part": "ppt/slides/slide26.xml",
+      "media": [
+        "ppt/media/image-26-1.png",
+        "ppt/media/image-26-2.svg",
+        "ppt/media/image-26-3.png",
+        "ppt/media/image-26-1.png",
+        "ppt/media/image-26-2.svg",
+        "ppt/media/image-26-6.png",
+        "ppt/media/image-26-7.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-H",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 27,
+      "title": "Métricas de evaluación: AP y mAP",
+      "part": "ppt/slides/slide27.xml",
+      "media": [
+        "ppt/media/image-27-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-H",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 28,
+      "title": "Límites prácticos: COCO y el mundo real",
+      "part": "ppt/slides/slide28.xml",
+      "media": [
+        "ppt/media/image-28-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-I",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 29,
+      "title": "Buenas prácticas al evaluar detectores",
+      "part": "ppt/slides/slide29.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-I",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 30,
+      "title": "El siguiente paso",
+      "part": "ppt/slides/slide30.xml",
+      "media": [
+        "ppt/media/image-30-1.png",
+        "ppt/media/image-30-2.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "01",
+      "batch": "T1-I",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 31,
+      "title": "2. El ecosistema de modelos de IA",
+      "part": "ppt/slides/slide31.xml",
+      "media": [
+        "ppt/media/image-31-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "02",
+      "batch": "T2-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 32,
+      "title": "El ecosistema Hugging Face",
+      "part": "ppt/slides/slide32.xml",
+      "media": [
+        "ppt/media/image-32-1.png",
+        "ppt/media/image-32-2.png",
+        "ppt/media/image-32-3.svg",
+        "ppt/media/image-32-4.png",
+        "ppt/media/image-32-5.png",
+        "ppt/media/image-32-6.svg",
+        "ppt/media/image-32-7.png",
+        "ppt/media/image-32-8.png",
+        "ppt/media/image-32-9.svg",
+        "ppt/media/image-32-10.png",
+        "ppt/media/image-32-11.png",
+        "ppt/media/image-32-12.svg",
+        "ppt/media/image-32-13.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "02",
+      "batch": "T2-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 33,
+      "title": "Cómo buscar modelos efectivamente",
+      "part": "ppt/slides/slide33.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "02",
+      "batch": "T2-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 34,
+      "title": "Licencias: evita problemas legales",
+      "part": "ppt/slides/slide34.xml",
+      "media": [
+        "ppt/media/image-34-1.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "02",
+      "batch": "T2-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 35,
+      "title": "Usar modelos",
+      "part": "ppt/slides/slide35.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "02",
+      "batch": "T2-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 36,
+      "title": "Inferencia en 3 líneas de código",
+      "part": "ppt/slides/slide36.xml",
+      "media": [
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "02",
+      "batch": "T2-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 37,
+      "title": "3. Multimodalidad: unir visión y lenguaje",
+      "part": "ppt/slides/slide37.xml",
+      "media": [
+        "ppt/media/image-37-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 38,
+      "title": "Modelos Fundacionales",
+      "part": "ppt/slides/slide38.xml",
+      "media": [
+        "ppt/media/image-38-1.png",
+        "ppt/media/image-38-2.svg",
+        "ppt/media/image-38-3.png",
+        "ppt/media/image-38-4.svg",
+        "ppt/media/image-38-1.png",
+        "ppt/media/image-38-2.svg",
+        "ppt/media/image-38-7.png",
+        "ppt/media/image-38-8.svg",
+        "ppt/media/image-38-9.png",
+        "ppt/media/image-38-10.svg",
+        "ppt/media/image-38-11.png",
+        "ppt/media/image-38-12.svg",
+        "ppt/media/image-38-9.png",
+        "ppt/media/image-38-10.svg",
+        "ppt/media/image-32-11.png",
+        "ppt/media/image-32-12.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 39,
+      "title": "Multimodalidad",
+      "part": "ppt/slides/slide39.xml",
+      "media": [
+        "ppt/media/image-39-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 40,
+      "title": "Zero-Shot y composicionalidad",
+      "part": "ppt/slides/slide40.xml",
+      "media": [
+        "ppt/media/image-40-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 41,
+      "title": "CLIP: imagen - texto (Retrieval/Zero-Shot)",
+      "part": "ppt/slides/slide41.xml",
+      "media": [
+        "ppt/media/image-41-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 42,
+      "title": "Cómo funciona CLIP",
+      "part": "ppt/slides/slide42.xml",
+      "media": [
+        "ppt/media/image-42-1.png",
+        "ppt/media/image-42-2.svg",
+        "ppt/media/image-42-3.png",
+        "ppt/media/image-42-4.svg",
+        "ppt/media/image-42-5.png",
+        "ppt/media/image-42-6.svg",
+        "ppt/media/image-42-7.png",
+        "ppt/media/image-42-8.svg",
+        "ppt/media/image-42-9.jpeg",
+        "ppt/media/image-42-10.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 43,
+      "title": "Entrenamiento de CLIP: Aprendiendo por asociación",
+      "part": "ppt/slides/slide43.xml",
+      "media": [
+        "ppt/media/image-43-1.png",
+        "ppt/media/image-43-2.png",
+        "ppt/media/image-43-2.png",
+        "ppt/media/image-43-4.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 44,
+      "title": "Limitaciones de CLIP",
+      "part": "ppt/slides/slide44.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 45,
+      "title": "BLIP: describe y responde (generativo)",
+      "part": "ppt/slides/slide45.xml",
+      "media": [
+        "ppt/media/image-45-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 46,
+      "title": "Grounding DINO: texto → cajas (Open-Vocabulary)",
+      "part": "ppt/slides/slide46.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 47,
+      "title": "Cómo funciona grounding DINO",
+      "part": "ppt/slides/slide47.xml",
+      "media": [
+        "ppt/media/image-47-1.png",
+        "ppt/media/image-47-2.svg",
+        "ppt/media/image-47-3.png",
+        "ppt/media/image-47-4.svg",
+        "ppt/media/image-47-5.png",
+        "ppt/media/image-47-6.svg",
+        "ppt/media/image-47-7.png",
+        "ppt/media/image-47-8.svg",
+        "ppt/media/image-47-9.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 48,
+      "title": "Innovaciones de Grounding Dino",
+      "part": "ppt/slides/slide48.xml",
+      "media": [
+        "ppt/media/image-48-1.png",
+        "ppt/media/image-48-2.svg",
+        "ppt/media/image-48-1.png",
+        "ppt/media/image-48-2.svg",
+        "ppt/media/image-48-1.png",
+        "ppt/media/image-48-2.svg",
+        "ppt/media/image-48-1.png",
+        "ppt/media/image-48-2.svg",
+        "ppt/media/image-48-1.png",
+        "ppt/media/image-48-2.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 49,
+      "title": "Casos de uso y limitaciones de Grounding DINO",
+      "part": "ppt/slides/slide49.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 50,
+      "title": "Anatomía de un VLM: ¿Cómo ve el LLM?",
+      "part": "ppt/slides/slide50.xml",
+      "media": [
+        "ppt/media/image-50-1.png",
+        "ppt/media/image-50-2.png",
+        "ppt/media/image-50-3.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 51,
+      "title": "VLM (Qwen2.5/3-VL): conversa y razona sobre imágenes",
+      "part": "ppt/slides/slide51.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 52,
+      "title": "Mejores prácticas de prompting",
+      "part": "ppt/slides/slide52.xml",
+      "media": [
+        "ppt/media/image-52-1.png",
+        "ppt/media/image-52-2.svg",
+        "ppt/media/image-52-1.png",
+        "ppt/media/image-52-2.svg",
+        "ppt/media/image-52-1.png",
+        "ppt/media/image-52-2.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 53,
+      "title": "¿Qué modelo uso para cada tarea?",
+      "part": "ppt/slides/slide53.xml",
+      "media": [
+        "ppt/media/image-53-1.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 54,
+      "title": "Limitaciones y buenas prácticas",
+      "part": "ppt/slides/slide54.xml",
+      "media": [
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "03",
+      "batch": "T3-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 55,
+      "title": "4. DINO (v1, v2, v3): ver sin etiquetas",
+      "part": "ppt/slides/slide55.xml",
+      "media": [
+        "ppt/media/image-55-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 56,
+      "title": "¿Por qué auto-supervisado?",
+      "part": "ppt/slides/slide56.xml",
+      "media": [
+        "ppt/media/image-56-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 57,
+      "title": "Self-supervised learning explicado",
+      "part": "ppt/slides/slide57.xml",
+      "media": [
+        "ppt/media/image-57-1.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 58,
+      "title": "Auto-Destilación",
+      "part": "ppt/slides/slide58.xml",
+      "media": [
+        "ppt/media/image-58-1.png",
+        "ppt/media/image-58-2.svg",
+        "ppt/media/image-58-3.png",
+        "ppt/media/image-58-4.svg",
+        "ppt/media/image-58-1.png",
+        "ppt/media/image-58-2.svg",
+        "ppt/media/image-58-7.png",
+        "ppt/media/image-58-8.svg",
+        "ppt/media/image-58-9.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 59,
+      "title": "Lo que DINO aprende solo",
+      "part": "ppt/slides/slide59.xml",
+      "media": [
+        "ppt/media/image-59-1.png",
+        "ppt/media/image-59-2.svg",
+        "ppt/media/image-59-3.png",
+        "ppt/media/image-59-4.svg",
+        "ppt/media/image-59-1.png",
+        "ppt/media/image-59-2.svg",
+        "ppt/media/image-59-7.png",
+        "ppt/media/image-59-8.svg",
+        "ppt/media/image-59-9.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 60,
+      "title": "DINO: Identificación de copias de imágenes",
+      "part": "ppt/slides/slide60.xml",
+      "media": [
+        "ppt/media/image-60-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 61,
+      "title": "Evolución de la familia DINO",
+      "part": "ppt/slides/slide61.xml",
+      "media": [
+        "ppt/media/image-61-1.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 62,
+      "title": "Pipeline de procesamiento de datos DINOv2",
+      "part": "ppt/slides/slide62.xml",
+      "media": [
+        "ppt/media/image-62-1.png",
+        "ppt/media/image-62-2.svg",
+        "ppt/media/image-62-1.png",
+        "ppt/media/image-62-2.svg",
+        "ppt/media/image-62-1.png",
+        "ppt/media/image-62-2.svg",
+        "ppt/media/image-62-1.png",
+        "ppt/media/image-62-2.svg",
+        "ppt/media/image-62-1.png",
+        "ppt/media/image-62-2.svg",
+        "ppt/media/image-62-11.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 63,
+      "title": "Cómo funciona DINO",
+      "part": "ppt/slides/slide63.xml",
+      "media": [
+        "ppt/media/image-63-1.png",
+        "ppt/media/image-63-2.png",
+        "ppt/media/image-63-3.png",
+        "ppt/media/image-63-4.png",
+        "ppt/media/image-63-5.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 64,
+      "title": "Lo que DINO aprende solo",
+      "part": "ppt/slides/slide64.xml",
+      "media": [
+        "ppt/media/image-64-1.jpeg",
+        "ppt/media/image-64-2.png",
+        "ppt/media/image-64-3.svg",
+        "ppt/media/image-64-2.png",
+        "ppt/media/image-64-3.svg",
+        "ppt/media/image-64-2.png",
+        "ppt/media/image-64-3.svg",
+        "ppt/media/image-64-2.png",
+        "ppt/media/image-64-3.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 65,
+      "title": "DINO como extractor de características",
+      "part": "ppt/slides/slide65.xml",
+      "media": [
+        "ppt/media/image-65-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 66,
+      "title": "Entendiendo qué aprende DINO",
+      "part": "ppt/slides/slide66.xml",
+      "media": [
+        "ppt/media/image-66-1.jpeg",
+        "ppt/media/image-66-2.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 67,
+      "title": "Dino v3",
+      "part": "ppt/slides/slide67.xml",
+      "media": [
+        "ppt/media/image-67-1.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 68,
+      "title": "Dino v3",
+      "part": "ppt/slides/slide68.xml",
+      "media": [
+        "ppt/media/image-68-1.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 69,
+      "title": "Cuándo usar (y cuándo no) DINO",
+      "part": "ppt/slides/slide69.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 70,
+      "title": "Anomalías con DINOv2/v3 (estilo PatchCore)",
+      "part": "ppt/slides/slide70.xml",
+      "media": [
+        "ppt/media/image-70-1.png",
+        "ppt/media/image-70-2.svg",
+        "ppt/media/image-70-3.png",
+        "ppt/media/image-70-4.svg",
+        "ppt/media/image-70-5.png",
+        "ppt/media/image-70-6.svg",
+        "ppt/media/image-70-7.png",
+        "ppt/media/image-70-8.svg",
+        "ppt/media/image-70-9.png",
+        "ppt/media/image-70-10.svg",
+        "ppt/media/image-70-11.png",
+        "ppt/media/image-70-12.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "04",
+      "batch": "T4-D",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 71,
+      "title": "5. SAM: Segment Anything (v1, v2, v3)",
+      "part": "ppt/slides/slide71.xml",
+      "media": [
+        "ppt/media/image-71-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 72,
+      "title": "¿Qué es segmentación?",
+      "part": "ppt/slides/slide72.xml",
+      "media": [
+        "ppt/media/image-72-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 73,
+      "title": "Arquitectura de SAM 1",
+      "part": "ppt/slides/slide73.xml",
+      "media": [
+        "ppt/media/image-73-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 74,
+      "title": "Arquitectura de SAM 2",
+      "part": "ppt/slides/slide74.xml",
+      "media": [
+        "ppt/media/image-74-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 75,
+      "title": "Arquitectura de SAM 3",
+      "part": "ppt/slides/slide75.xml",
+      "media": [
+        "ppt/media/image-75-1.png",
+        "ppt/media/image-75-2.png",
+        "ppt/media/image-75-3.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 76,
+      "title": "Evolution — SAM → SAM2 → SAM3",
+      "part": "ppt/slides/slide76.xml",
+      "media": [
+        "ppt/media/image-76-1.gif",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 77,
+      "title": "The data engine: cómo escalar a 1B de máscaras",
+      "part": "ppt/slides/slide77.xml",
+      "media": [
+        "ppt/media/image-77-1.png",
+        "ppt/media/image-77-2.png",
+        "ppt/media/image-77-3.svg",
+        "ppt/media/image-77-4.png",
+        "ppt/media/image-77-5.png",
+        "ppt/media/image-77-6.svg",
+        "ppt/media/image-77-7.png",
+        "ppt/media/image-77-8.png",
+        "ppt/media/image-77-9.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 78,
+      "title": "\"Promptable segmentation\": la idea central",
+      "part": "ppt/slides/slide78.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 79,
+      "title": "Cuándo usar (y cuándo no) SAM",
+      "part": "ppt/slides/slide79.xml",
+      "media": [
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "05",
+      "batch": "T5-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 80,
+      "title": "Otras tareas fundacionales de visión artificial",
+      "part": "ppt/slides/slide80.xml",
+      "media": [
+        "ppt/media/image-80-1.jpeg",
+        "ppt/media/image-80-2.png",
+        "ppt/media/image-80-3.svg",
+        "ppt/media/image-80-2.png",
+        "ppt/media/image-80-3.svg",
+        "ppt/media/image-80-2.png",
+        "ppt/media/image-80-3.svg",
+        "ppt/media/image-80-2.png",
+        "ppt/media/image-80-3.svg",
+        "ppt/media/image-80-2.png",
+        "ppt/media/image-80-3.svg",
+        "ppt/media/image-80-2.png",
+        "ppt/media/image-80-3.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 81,
+      "title": "Estimación de pose humana: de píxeles a esqueletos",
+      "part": "ppt/slides/slide81.xml",
+      "media": [
+        "ppt/media/image-81-1.png",
+        "ppt/media/image-81-2.jpeg",
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 82,
+      "title": "Enfoques de modelado: Top-down vs. Bottom-up",
+      "part": "ppt/slides/slide82.xml",
+      "media": [
+        "ppt/media/image-82-1.png",
+        "ppt/media/image-82-2.svg",
+        "ppt/media/image-82-1.png",
+        "ppt/media/image-82-2.svg",
+        "ppt/media/image-82-1.png",
+        "ppt/media/image-82-2.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 83,
+      "title": "Modelos destacados y evaluación",
+      "part": "ppt/slides/slide83.xml",
+      "media": [
+        "ppt/media/image-83-1.png",
+        "ppt/media/image-83-2.svg",
+        "ppt/media/image-83-1.png",
+        "ppt/media/image-83-2.svg",
+        "ppt/media/image-83-5.png",
+        "ppt/media/image-83-6.svg",
+        "ppt/media/image-83-5.png",
+        "ppt/media/image-83-6.svg",
+        "ppt/media/image-83-9.png",
+        "ppt/media/image-83-10.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 84,
+      "title": "Impacto real y desafíos técnicos",
+      "part": "ppt/slides/slide84.xml",
+      "media": [
+        "ppt/media/image-84-1.png",
+        "ppt/media/image-84-2.svg",
+        "ppt/media/image-84-3.png",
+        "ppt/media/image-84-4.svg",
+        "ppt/media/image-84-1.png",
+        "ppt/media/image-84-2.svg",
+        "ppt/media/image-84-7.png",
+        "ppt/media/image-84-8.svg",
+        "ppt/media/image-84-1.png",
+        "ppt/media/image-84-2.svg",
+        "ppt/media/image-84-11.png",
+        "ppt/media/image-84-12.svg",
+        "ppt/media/image-84-13.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-A",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 85,
+      "title": "OCR moderno: de leer caracteres a entender documentos",
+      "part": "ppt/slides/slide85.xml",
+      "media": [
+        "ppt/media/image-85-1.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 86,
+      "title": "Herramientas prácticas de OCR",
+      "part": "ppt/slides/slide86.xml",
+      "media": [
+        "ppt/media/image-86-1.png",
+        "ppt/media/image-86-2.svg",
+        "ppt/media/image-86-3.png",
+        "ppt/media/image-86-4.svg",
+        "ppt/media/image-86-1.png",
+        "ppt/media/image-86-2.svg",
+        "ppt/media/image-86-7.png",
+        "ppt/media/image-86-8.svg",
+        "ppt/media/image-86-1.png",
+        "ppt/media/image-86-2.svg",
+        "ppt/media/image-86-11.png",
+        "ppt/media/image-86-12.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 87,
+      "title": "Super-resolución: restaurando el detalle perdido",
+      "part": "ppt/slides/slide87.xml",
+      "media": [
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-87-2.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 88,
+      "title": "Aplicaciones reales y limitaciones",
+      "part": "ppt/slides/slide88.xml",
+      "media": [
+        "ppt/media/image-88-1.png",
+        "ppt/media/image-88-2.svg",
+        "ppt/media/image-88-3.png",
+        "ppt/media/image-88-4.svg",
+        "ppt/media/image-88-1.png",
+        "ppt/media/image-88-2.svg",
+        "ppt/media/image-88-7.png",
+        "ppt/media/image-88-8.svg",
+        "ppt/media/image-88-1.png",
+        "ppt/media/image-88-2.svg",
+        "ppt/media/image-88-11.png",
+        "ppt/media/image-88-12.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 89,
+      "title": "Eliminación de fondo profesional",
+      "part": "ppt/slides/slide89.xml",
+      "media": [
+        "ppt/media/image-89-1.png",
+        "ppt/media/image-89-2.svg",
+        "ppt/media/image-89-1.png",
+        "ppt/media/image-89-2.svg",
+        "ppt/media/image-89-5.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 90,
+      "title": "Image matching: encontrando parejas visuales",
+      "part": "ppt/slides/slide90.xml",
+      "media": [
+        "ppt/media/image-90-1.png",
+        "ppt/media/image-90-2.svg",
+        "ppt/media/image-90-3.png",
+        "ppt/media/image-90-4.svg",
+        "ppt/media/image-90-1.png",
+        "ppt/media/image-90-2.svg",
+        "ppt/media/image-90-7.png",
+        "ppt/media/image-90-8.svg",
+        "ppt/media/image-90-9.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 91,
+      "title": "Reconstruyendo el mundo en 3D",
+      "part": "ppt/slides/slide91.xml",
+      "media": [
+        "ppt/media/image-91-1.png",
+        "ppt/media/image-91-2.svg",
+        "ppt/media/image-91-3.png",
+        "ppt/media/image-91-4.svg",
+        "ppt/media/image-91-1.png",
+        "ppt/media/image-91-2.svg",
+        "ppt/media/image-91-7.png",
+        "ppt/media/image-91-8.svg",
+        "ppt/media/image-91-1.png",
+        "ppt/media/image-91-2.svg",
+        "ppt/media/image-91-11.png",
+        "ppt/media/image-91-12.svg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 92,
+      "title": "Depth estimation: 3D desde una sola imagen",
+      "part": "ppt/slides/slide92.xml",
+      "media": [
+        "ppt/media/image-92-1.jpeg",
+        "ppt/media/image-92-2.jpeg",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 93,
+      "title": "Aplicaciones depth",
+      "part": "ppt/slides/slide93.xml",
+      "media": [
+        "ppt/media/image-93-1.png",
+        "ppt/media/image-93-2.svg",
+        "ppt/media/image-93-3.png",
+        "ppt/media/image-93-4.svg",
+        "ppt/media/image-93-5.png",
+        "ppt/media/image-93-6.svg",
+        "ppt/media/image-93-7.png",
+        "ppt/media/image-93-8.svg",
+        "ppt/media/image-36-1.png",
+        "ppt/media/image-2-2.png"
+      ],
+      "topic": "06",
+      "batch": "T6-C",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contenido",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    },
+    {
+      "slide": 94,
+      "title": "¡Muchas gracias!",
+      "part": "ppt/slides/slide94.xml",
+      "media": [
+        "ppt/media/image-1-1.jpeg"
+      ],
+      "topic": "general",
+      "batch": "G-B",
+      "status": "pendiente",
+      "sectionIds": [],
+      "otherDestinations": [],
+      "treatment": "contexto",
+      "missingConcepts": [],
+      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "review": {
+        "date": null,
+        "reviewer": null,
+        "evidence": []
+      }
+    }
+  ]
+}

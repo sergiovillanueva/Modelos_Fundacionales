@@ -1,19 +1,17 @@
-<section id="inicio" data-title="Concepto" data-layout="visual">
+<section id="ver" data-title="Ver" data-layout="visual">
   <div class="section-copy">
-    <h2>Detectar es localizar</h2>
-    <p class="lead">Qué objetos hay en una imagen y dónde está cada uno.</p>
+    <h2>De píxeles a significado</h2>
+    <p class="lead">Una imagen empieza como números. La tarea decide qué información buscamos.</p>
   </div>
-  <figure class="figure-media detection-example">
-    <img src="{{ASSET:tema-01/od.webp}}" alt="Clasificación: una etiqueta para la imagen. Detección: una caja y una etiqueta para cada fruta." width="900" height="457">
-    <figcaption>Cada detección: <strong>caja · categoría · confianza</strong></figcaption>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/vision-humana-maquina.jpeg}}" alt="Comparación entre visión humana y visión computacional ante una misma escena.">
+    <figcaption>El modelo conecta patrones visuales con una salida útil.</figcaption>
   </figure>
-  <div class="print-detail">
-    <p>La clasificación describe la imagen completa. Un detector devuelve una colección de objetos: una caja delimita cada uno, una categoría lo identifica y una puntuación expresa la confianza del modelo.</p>
-  </div>
+  <div class="print-detail"><p>Las imágenes digitales son matrices de píxeles. La visión artificial aprende representaciones que permiten asociar esos valores con objetos, relaciones o regiones.</p></div>
 </section>
 
-<section id="tareas" data-title="Tu turno" data-layout="question">
-  <div class="section-copy"><h2>¿Qué salida necesitas?</h2></div>
+<section id="tareas" data-title="Tareas" data-layout="question">
+  <div class="section-copy"><h2>¿Qué salida necesitas?</h2><p class="lead">La misma imagen admite tareas distintas.</p></div>
   <div class="question-layout">
     <figure class="figure-media media-container" data-media-type="animation">
       <img src="{{ASSET:tema-01/car-task-poster.webp}}" data-animated-src="{{ASSET:tema-01/car-task.webp}}" alt="Un coche: la animación compara distintas tareas de visión" width="500" height="500" class="interactive-media">
@@ -21,6 +19,196 @@
     </figure>
     {{QUIZ:q01}}
   </div>
+  <div class="print-detail"><p>La clasificación da una etiqueta global. La detección devuelve cajas y categorías por instancia. La segmentación delimita píxeles. Otros problemas incluyen anomalías, pose, OCR, profundidad y superresolución.</p></div>
+</section>
+
+<section id="inicio" data-title="Detección" data-layout="visual">
+  <div class="section-copy">
+    <h2>Detectar es localizar</h2>
+    <p class="lead">Cada detección combina una caja, una categoría y una puntuación.</p>
+  </div>
+  <figure class="figure-media detection-example">
+    <img src="{{ASSET:tema-01/presentacion/deteccion-calle.jpeg}}" alt="Calle con coches y peatones, cada uno rodeado por una caja de detección.">
+    <figcaption>Caja · categoría · puntuación de confianza</figcaption>
+  </figure>
+  <div class="print-detail"><p>La puntuación ordena las predicciones según el modelo. No equivale automáticamente a una probabilidad calibrada y no dice por sí sola si la caja está bien situada.</p></div>
+</section>
+
+<section id="familias" data-title="Familias" data-layout="visual">
+  <div class="section-copy">
+    <h2>Tres familias de detectores</h2>
+    <p class="lead">Dos etapas, una etapa y detectores con transformer organizan el problema de formas diferentes.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/familias-deteccion.jpeg}}" alt="Árbol de familias de arquitecturas de detección, desde modelos CNN y transformers.">
+    <figcaption>El árbol sirve como mapa. Nos centraremos en las ideas que separan las familias.</figcaption>
+  </figure>
+  <div class="print-detail"><p>Las taxonomías cambian con el tiempo y hay modelos híbridos. Esta clasificación ayuda a situar los ejemplos del tema, no a decidir qué detector es mejor sin medirlo.</p></div>
+</section>
+
+<section id="historia" data-title="Historia" data-layout="visual">
+  <div class="section-copy">
+    <h2>Cómo cambió el recorrido</h2>
+    <p class="lead">La evolución redujo pasos intermedios y cambió la forma de asignar predicciones.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/historia-detectores.jpg}}" alt="Línea temporal de detectores de objetos desde R-CNN hasta detectores modernos.">
+    <figcaption>Una familia explica el flujo de cálculo, no una garantía de precisión o velocidad.</figcaption>
+  </figure>
+</section>
+
+<section id="cnn" data-title="CNN" data-layout="visual">
+  <div class="section-copy">
+    <h2>Patrones, capa a capa</h2>
+    <p class="lead">Las convoluciones extraen rasgos locales que capas posteriores combinan.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium media-container" data-media-type="animation">
+      <img src="{{ASSET:tema-01/presentacion/cnn-poster.webp}}" data-animated-src="{{ASSET:tema-01/presentacion/cnn.webp}}" alt="Animación de una red convolucional que transforma una imagen en mapas de características." class="interactive-media">
+    <button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button>
+  </figure>
+  <div class="print-detail"><p>Las CNN incorporan localidad e invariancia aproximada a traslaciones. Siguen siendo componentes útiles en muchos detectores; el contexto global y la atención son decisiones de arquitectura, no una carencia universal de todas las CNN.</p></div>
+</section>
+
+<section id="dos-etapas" data-title="Dos etapas" data-layout="visual">
+  <div class="section-copy">
+    <h2>Primero regiones, después clases</h2>
+    <p class="lead">Los detectores de dos etapas refinan candidatos antes de decidir qué objeto contienen.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/two-stage.jpeg}}" alt="Esquema de detector de dos etapas con propuestas de regiones, mapas de características y clasificación.">
+    <figcaption>La propuesta de región reduce dónde debe mirar el clasificador.</figcaption>
+  </figure>
+  <div class="print-detail"><p>R-CNN, Fast R-CNN y Faster R-CNN son hitos de esta familia. Las cifras de velocidad dependen de implementación, datos y hardware, así que una tabla histórica no basta para elegir un detector hoy.</p></div>
+</section>
+
+<section id="progreso" data-title="Progreso" data-layout="visual">
+  <div class="section-copy">
+    <h2>Eliminar trabajo repetido</h2>
+    <p class="lead">Cada cambio de diseño buscó compartir más cálculo entre las regiones de una imagen.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/rcnn-velocidad.jpeg}}" alt="Comparativa histórica del tiempo de inferencia de R-CNN, Fast R-CNN y Faster R-CNN.">
+    <figcaption>Comparación histórica: los tiempos solo se interpretan con su hardware y protocolo originales.</figcaption>
+  </figure>
+</section>
+
+<section id="rcnn" data-title="R-CNN" data-layout="visual">
+  <div class="section-copy">
+    <h2>Una propuesta se convierte en candidato</h2>
+    <p class="lead">R-CNN ilustra el recorrido de una región desde la imagen hasta la clase.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/rcnn.jpeg}}" alt="Diagrama de R-CNN: imagen, propuestas de región, CNN, vector de características y clasificadores.">
+  </figure>
+</section>
+
+<section id="una-etapa" data-title="Una etapa" data-layout="question">
+  <div class="section-copy">
+    <h2>Una pasada, muchas predicciones</h2>
+    <p class="lead">YOLOv1 popularizó la idea de producir cajas y clases directamente desde la imagen.</p>
+  </div>
+  <div class="question-layout">
+    <figure class="figure-media lesson-image lesson-image--medium">
+      <img src="{{ASSET:tema-01/presentacion/yolo-resumen.webp}}" alt="Resumen visual de YOLOv1: cuadrícula, cajas, confianza, clases y detecciones finales.">
+    </figure>
+    {{QUIZ:q02}}
+  </div>
+  <div class="print-detail"><p>La cuadrícula S×S es una explicación histórica de YOLOv1. Las variantes posteriores cambiaron detalles importantes, por lo que no debe describirse toda la familia moderna con ese único diagrama.</p></div>
+</section>
+
+<section id="yolo" data-title="YOLO" data-layout="visual">
+  <div class="section-copy">
+    <h2>La cuadrícula de YOLOv1</h2>
+    <p class="lead">En la formulación original, una celda responde por objetos cuyo centro cae en ella.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/yolo-v1.jpeg}}" alt="Diagrama de YOLOv1 con cuadrícula, cajas delimitadoras, confianza y mapa de clases.">
+    <figcaption>Esquema histórico de YOLOv1, no una descripción de todas las versiones posteriores.</figcaption>
+  </figure>
+</section>
+
+<section id="arquitectura-yolo" data-title="Arquitectura" data-layout="visual">
+  <div class="section-copy">
+    <h2>De la imagen a las cajas</h2>
+    <p class="lead">La red comparte representación visual antes de producir localizaciones y categorías.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/yolo-arquitectura.jpeg}}" alt="Arquitectura original de YOLOv1 desde la imagen de entrada hasta las predicciones de cajas y clases.">
+    <figcaption>Arquitectura de YOLOv1: un referente histórico para entender el enfoque de una etapa.</figcaption>
+  </figure>
+</section>
+
+<section id="evolucion-yolo" data-title="Evolución" data-layout="visual">
+  <div class="section-copy">
+    <h2>La familia siguió cambiando</h2>
+    <p class="lead">«YOLO» nombra una línea de trabajo, no una arquitectura fija.</p>
+  </div>
+  <ol class="evolution-line" aria-label="Evolución de la familia YOLO">
+    <li><strong>YOLOv1</strong><span>Una predicción directa sobre la imagen.</span></li>
+    <li><strong>Versiones posteriores</strong><span>Backbones, objetivos y estrategias de entrenamiento evolucionan.</span></li>
+    <li><strong>Tu decisión</strong><span>Compara la versión exacta en tus propias condiciones.</span></li>
+  </ol>
+  <div class="print-detail"><p>Las comparativas entre generaciones no deben tratar una versión, una implementación o un checkpoint como representante automático de toda una familia.</p></div>
+</section>
+
+<section id="contexto" data-title="Contexto" data-layout="visual">
+  <div class="section-copy">
+    <h2>Localidad y contexto global</h2>
+    <p class="lead">Una arquitectura decide cómo combina información cercana y relaciones lejanas.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/detr.jpeg}}" alt="Arquitectura de DETR con encoder, decoder, atención y consultas de objetos.">
+    <figcaption>La atención ofrece una forma de relacionar partes separadas de una imagen.</figcaption>
+  </figure>
+</section>
+
+<section id="detr" data-title="DETR" data-layout="visual">
+  <div class="section-copy">
+    <h2>Consultas para objetos</h2>
+    <p class="lead">DETR predice un conjunto de candidatos a partir de características visuales y consultas aprendidas.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/detr-resumen.webp}}" alt="Diagrama resumido de DETR con imagen, características, transformer y consultas de objetos.">
+    <figcaption>Una consulta puede acabar asociada a una caja y una clase.</figcaption>
+  </figure>
+  <div class="print-detail"><p>El diseño original utiliza un encoder y un decoder transformer. Los detalles concretos, como número de consultas o backbone, pertenecen a una versión específica.</p></div>
+</section>
+
+<section id="matching" data-title="Matching" data-layout="question">
+  <div class="section-copy">
+    <h2>Asignar antes de aprender</h2>
+    <p class="lead">Durante el entrenamiento, DETR relaciona predicciones y objetos reales uno a uno.</p>
+  </div>
+  <div class="question-layout">
+    <figure class="figure-media lesson-image lesson-image--medium">
+      <img src="{{ASSET:tema-01/presentacion/nms-comparacion.jpeg}}" alt="Comparación visual entre supresión de no máximos y asignación bipartita de predicciones a objetos de referencia.">
+    </figure>
+    {{QUIZ:q03}}
+  </div>
+  <div class="print-detail"><p>La asignación bipartita define objetivos para calcular la pérdida durante entrenamiento. No es el mismo proceso que aplicar supresión de no máximos durante inferencia.</p></div>
+</section>
+
+<section id="rf-detr" data-title="RF-DETR" data-layout="visual">
+  <div class="section-copy">
+    <h2>El detector de la práctica</h2>
+    <p class="lead">RF-DETR es el ejemplo que usaremos para ejecutar inferencia en el cuaderno.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/rf-detr.jpeg}}" alt="Diagrama de RF-DETR con combinación multiescala, atención deformable, queries y cajas de salida.">
+  </figure>
+  <div class="print-detail"><p>La arquitectura exacta depende de la variante y del checkpoint del notebook. La práctica debe describir el modelo que realmente carga, no inferir todos los detalles a partir de DETR original.</p></div>
+</section>
+
+<section id="eleccion" data-title="Elegir" data-layout="visual">
+  <div class="section-copy">
+    <h2>Elegir requiere condiciones</h2>
+    <p class="lead">Calidad, latencia, licencia y mantenimiento solo se comparan con versión, datos y hardware explícitos.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/comparativa-latencia.jpeg}}" alt="Gráficas de una comparativa de precisión y latencia entre detectores.">
+    <figcaption>Una gráfica tiene sentido solo con su protocolo de medida y versiones concretas.</figcaption>
+  </figure>
+  <div class="print-detail"><p>RF-DETR es la elección docente de este curso. Eso no demuestra que sea el mejor detector para cada producto: la decisión requiere una evaluación en el dominio, condiciones de despliegue y revisión de licencias de la versión concreta.</p></div>
 </section>
 
 <section id="iou" data-title="IoU" data-layout="lab">
@@ -47,7 +235,86 @@
       <div class="range-ends" aria-hidden="true"><span>Juntas</span><span>Separadas</span></div>
     </div>
   </div>
-  <div class="print-detail"><p>IoU vale 1 cuando ambas cajas coinciden y 0 cuando no comparten área. Solo mide geometría: para evaluar detecciones también hay que comprobar la categoría y evitar asignar varias predicciones al mismo objeto.</p></div>
+  <div class="print-detail"><p>IoU vale 1 cuando ambas cajas coinciden y 0 cuando no comparten área. Para decidir TP, FP y FN también se tiene en cuenta la clase, la correspondencia uno a uno y un protocolo de evaluación.</p></div>
+</section>
+
+<section id="errores" data-title="Errores" data-layout="visual">
+  <div class="section-copy">
+    <h2>Contar aciertos y fallos</h2>
+    <p class="lead">Una predicción puede acertar, duplicar un objeto o dejar un objeto sin detectar.</p>
+  </div>
+  <div class="outcome-flow" aria-label="Esquema de TP, FP y FN">
+    <div><strong>TP</strong><span>Caja y clase que corresponden a un objeto real.</span></div>
+    <div><strong>FP</strong><span>Falsa alarma o predicción duplicada.</span></div>
+    <div><strong>FN</strong><span>Objeto real que quedó sin predicción.</span></div>
+  </div>
+  <div class="print-detail"><p>En detección no se suele usar un recuento práctico de verdaderos negativos de fondo. Las ubicaciones sin objetos son enormes y no se enumeran como predicciones negativas individuales.</p></div>
+</section>
+
+<section id="precision-recall" data-title="Métricas" data-layout="question">
+  <div class="section-copy">
+    <h2>Precisión y recall responden a preguntas distintas</h2>
+    <p class="lead">La precisión mira las predicciones; el recall mira los objetos reales.</p>
+  </div>
+  <div class="question-layout">
+    <figure class="figure-media lesson-image lesson-image--medium">
+      <img src="{{ASSET:tema-01/presentacion/precision-recall.webp}}" alt="Curva de precisión y recall que muestra cómo cambian al variar un umbral de confianza.">
+      <figcaption>Precisión = TP / (TP + FP). Recall = TP / (TP + FN).</figcaption>
+    </figure>
+    {{QUIZ:q05}}
+  </div>
+</section>
+
+<section id="umbral" data-title="Umbral" data-layout="question">
+  <div class="section-copy">
+    <h2>Filtrar no cambia las cajas</h2>
+    <p class="lead">El umbral de confianza decide qué predicciones se muestran; IoU evalúa su solapamiento.</p>
+  </div>
+  <div class="question-layout">
+    <figure class="figure-media lesson-image lesson-image--medium">
+      <img src="{{ASSET:tema-01/presentacion/ap-map.jpeg}}" alt="Curva precisión recall con dos puntos que corresponden a umbrales de confianza diferentes.">
+    </figure>
+    {{QUIZ:q06}}
+  </div>
+</section>
+
+<section id="ap-map" data-title="AP" data-layout="visual">
+  <div class="section-copy">
+    <h2>Una curva resume umbrales</h2>
+    <p class="lead">AP resume precisión y recall al recorrer puntuaciones. mAP agrega AP según un protocolo.</p>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/ap-map.jpeg}}" alt="Curva de precisión recall cuya área representa average precision.">
+    <figcaption>AP50 y AP promediada entre varios umbrales IoU responden a protocolos distintos.</figcaption>
+  </figure>
+</section>
+
+<section id="dominio" data-title="Dominio" data-layout="question">
+  <div class="section-copy">
+    <h2>El vocabulario depende de los datos</h2>
+    <p class="lead">Un checkpoint aprende las clases de sus datos. Tu aplicación puede necesitar otras.</p>
+  </div>
+  <div class="question-layout">
+    <figure class="figure-media lesson-image lesson-image--medium">
+      <img src="{{ASSET:tema-01/presentacion/coco-ejemplos.jpeg}}" alt="Mosaico de ejemplos de COCO con cajas y categorías de objetos.">
+    </figure>
+    {{QUIZ:q07}}
+  </div>
+</section>
+
+<section id="evaluar" data-title="Evaluar" data-layout="question">
+  <div class="section-copy">
+    <h2>Mide donde vas a usarlo</h2>
+    <p class="lead">Un benchmark no sustituye datos representativos, latencia medida y análisis de errores.</p>
+  </div>
+  <div class="question-layout question-layout--text">
+    <div class="evaluation-list" aria-label="Qué revisar al evaluar un detector">
+      <p><strong>Datos</strong> que representen escenas, clases y condiciones reales.</p>
+      <p><strong>Latencia</strong> medida en el sistema de destino.</p>
+      <p><strong>Errores</strong> revisados: falsas alarmas, objetos omitidos y casos límite.</p>
+    </div>
+    {{QUIZ:q08}}
+  </div>
 </section>
 
 <section id="practica" data-title="Colab" data-layout="practice">

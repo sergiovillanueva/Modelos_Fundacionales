@@ -4,22 +4,76 @@
     "sectionId": "tareas",
     "prompt": "Quieres contar coches y localizar cada uno.",
     "options": [
-      {
-        "id": "a",
-        "text": "Una etiqueta para toda la imagen.",
-        "explanation": "La clasificación indica qué aparece, pero no separa ni localiza cada coche."
-      },
-      {
-        "id": "b",
-        "text": "Una caja y una categoría por objeto.",
-        "explanation": "Exacto: la detección localiza cada instancia y permite contarla."
-      },
-      {
-        "id": "c",
-        "text": "Una puntuación de confianza para la imagen.",
-        "explanation": "La confianza por sí sola no indica cuántos coches hay ni dónde están."
-      }
+      {"id": "a", "text": "Una etiqueta para toda la imagen.", "explanation": "La clasificación indica qué aparece, pero no separa ni localiza cada coche."},
+      {"id": "b", "text": "Una caja y una categoría por objeto.", "explanation": "Exacto: la detección localiza cada instancia y permite contarla."},
+      {"id": "c", "text": "Una puntuación de confianza para la imagen.", "explanation": "La confianza por sí sola no indica cuántos coches hay ni dónde están."}
     ],
     "correctOptionId": "b"
+  },
+  {
+    "id": "q02",
+    "sectionId": "una-etapa",
+    "prompt": "¿Qué describe la idea de un detector de una etapa?",
+    "options": [
+      {"id": "a", "text": "Propone regiones y las clasifica en un segundo recorrido.", "explanation": "Eso describe la organización clásica de dos etapas."},
+      {"id": "b", "text": "No necesita imágenes de entrenamiento.", "explanation": "La arquitectura no elimina la necesidad de datos para aprender."},
+      {"id": "c", "text": "Predice localización y categoría en una misma ruta de detección.", "explanation": "Exacto: esa es la idea central, aunque los detalles cambian entre versiones."}
+    ],
+    "correctOptionId": "c"
+  },
+  {
+    "id": "q03",
+    "sectionId": "matching",
+    "prompt": "¿Para qué sirve la asignación bipartita en DETR durante el entrenamiento?",
+    "options": [
+      {"id": "a", "text": "Relacionar predicciones y objetos reales uno a uno al calcular la pérdida.", "explanation": "Exacto: define qué objetivo supervisa cada predicción."},
+      {"id": "b", "text": "Aplicar NMS a las cajas de cada imagen al predecir.", "explanation": "Eso confunde la asignación de entrenamiento con el filtrado de inferencia."},
+      {"id": "c", "text": "Crear automáticamente etiquetas para entrenar.", "explanation": "El algoritmo usa anotaciones de referencia; no las crea a partir de la imagen."}
+    ],
+    "correctOptionId": "a"
+  },
+  {
+    "id": "q05",
+    "sectionId": "precision-recall",
+    "prompt": "Hay 3 TP, 1 FP y 2 FN. ¿Cuáles son precisión y recall?",
+    "options": [
+      {"id": "a", "text": "Precisión 0,60; recall 0,75.", "explanation": "Esos valores intercambian los denominadores."},
+      {"id": "b", "text": "Precisión 0,75; recall 0,75.", "explanation": "La precisión es 3/(3+1), pero el recall debe incluir los 2 FN."},
+      {"id": "c", "text": "Precisión 0,75; recall 0,60.", "explanation": "Exacto: 3/(3+1) y 3/(3+2)."}
+    ],
+    "correctOptionId": "c"
+  },
+  {
+    "id": "q06",
+    "sectionId": "umbral",
+    "prompt": "Subes el umbral de confianza y mantienes fijas las predicciones candidatas.",
+    "options": [
+      {"id": "a", "text": "Se conservan las mismas o menos cajas.", "explanation": "Exacto: el filtro elimina las puntuaciones que quedan por debajo del nuevo umbral."},
+      {"id": "b", "text": "Aparecen categorías nuevas.", "explanation": "El umbral filtra predicciones; no amplía el vocabulario del modelo."},
+      {"id": "c", "text": "Aumenta necesariamente la IoU de todas las cajas restantes.", "explanation": "La confianza no modifica las coordenadas ni garantiza mayor solapamiento."}
+    ],
+    "correctOptionId": "a"
+  },
+  {
+    "id": "q07",
+    "sectionId": "dominio",
+    "prompt": "Tu checkpoint solo conoce clases COCO y necesitas detectar un defecto industrial nuevo.",
+    "options": [
+      {"id": "a", "text": "Bajar mucho el umbral para crear la categoría.", "explanation": "El umbral no crea clases que el modelo no conoce."},
+      {"id": "b", "text": "Evaluar adaptación con datos etiquetados o un modelo adecuado al nuevo vocabulario.", "explanation": "Exacto: la nueva categoría exige una estrategia y una evaluación en el dominio."},
+      {"id": "c", "text": "Aumentar el tamaño de las cajas existentes.", "explanation": "Cambiar geometría no enseña una categoría nueva al modelo."}
+    ],
+    "correctOptionId": "b"
+  },
+  {
+    "id": "q08",
+    "sectionId": "evaluar",
+    "prompt": "Un detector logra mejor AP en un benchmark publicado. ¿Basta para elegirlo?",
+    "options": [
+      {"id": "a", "text": "Sí, cualquier mejora de AP garantiza mejor producción.", "explanation": "El benchmark puede no representar el dominio ni los costes de tu aplicación."},
+      {"id": "b", "text": "Sí, si es el modelo más reciente.", "explanation": "La fecha no sustituye medir las condiciones de uso reales."},
+      {"id": "c", "text": "No: hay que medir calidad y latencia con datos y condiciones representativos.", "explanation": "Exacto: la elección depende del problema, del entorno y de los errores que aceptas."}
+    ],
+    "correctOptionId": "c"
   }
 ]

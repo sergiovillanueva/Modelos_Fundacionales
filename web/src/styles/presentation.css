@@ -8,6 +8,10 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .detection-example { max-width: 680px; width: 100%; }
 .reveal .detection-example img { max-height: 345px; }
 .reveal .detection-example figcaption { font-size: 18px; }
+.reveal .lesson-image--wide { max-width: 900px; }
+.reveal .lesson-image--medium { max-width: 560px; }
+.reveal .lesson-image img { max-height: 350px; }
+.reveal .lesson-image figcaption { font-size: 17px; }
 .reveal .question-layout { width: 100%; grid-template-columns: 280px 1fr; gap: 60px; max-width: 1020px; margin-top: 10px; }
 .reveal .quiz-box legend { font-size: 24px; }
 .reveal .quiz-option { font-size: 22px; padding: 16px 10px; }
@@ -18,6 +22,13 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .practice-path { margin-top: 32px; }
 .reveal .practice-path li { font-size: 25px; margin-bottom: 20px; }
 .reveal .colab-action { font-size: 22px; }
+.reveal .outcome-flow { max-width: 960px; }
+.reveal .outcome-flow div { min-height: 145px; padding: 22px; }
+.reveal .outcome-flow span { font-size: 19px; }
+.reveal .evaluation-list p { font-size: 20px; }
+.reveal .evolution-line { max-width: 960px; }
+.reveal .evolution-line strong { font-size: 24px; }
+.reveal .evolution-line span { font-size: 18px; }
 .reveal .print-detail { display: none; }
 .reveal .controls { color: var(--color-primary-dark); }
 .reveal .progress { height: 3px; color: var(--color-primary-dark); }
