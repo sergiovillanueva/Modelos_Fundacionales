@@ -29,7 +29,9 @@
       "number": "03",
       "title": "Modelos multimodales",
       "navTitle": "Multimodal",
-      "status": "planned",
+      "status": "available",
+      "contentDir": "tema-03",
+      "notebookPath": "3_Multimodal.ipynb",
       "description": "Integración de texto y visión con modelos tipo CLIP y BLIP para búsqueda semántica y razonamiento visual."
     },
     {
@@ -37,7 +39,9 @@
       "number": "04",
       "title": "DINO y representaciones visuales",
       "navTitle": "DINO",
-      "status": "planned",
+      "status": "available",
+      "contentDir": "tema-04",
+      "notebookPath": "4_DINO.ipynb",
       "description": "Aprendizaje auto-supervisado en visión, mapas de atención interpretables y extracción densa de características."
     },
     {
@@ -45,7 +49,9 @@
       "number": "05",
       "title": "Segmentación con SAM",
       "navTitle": "SAM",
-      "status": "planned",
+      "status": "available",
+      "contentDir": "tema-05",
+      "notebookPath": "5_SAM.ipynb",
       "description": "Segment Anything Model: segmentación 'zero-shot' mediante puntos, cajas y máscaras guiadas por prompts."
     },
     {
