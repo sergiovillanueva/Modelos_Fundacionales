@@ -41,7 +41,18 @@ export function extractSections(sectionsHtml) {
 
 export function buildSidebarIndex(sections) {
   return sections.map((sec, index) => {
-    return `<li><a href="#${sec.id}" class="topic-index-link"><span>${String(index + 1).padStart(2, '0')}</span>${sec.title}</a></li>`;
+    return `<a href="#${sec.id}" id="step-${sec.id}" class="step-tab" aria-controls="${sec.id}"><span>${index + 1}</span> ${escapeHtml(sec.title)}</a>`;
+  }).join('\n');
+}
+
+function buildTopicNavigation(course, topic, pageOutputPath) {
+  return course.topics.map((item) => {
+    const label = escapeHtml(item.navTitle || item.title);
+    if (item.status !== 'available') {
+      return `<span class="topic-link is-pending" aria-disabled="true" title="${escapeHtml(item.title)} · Próximamente"><span class="topic-number">${item.number}</span> ${label}<span class="sr-only"> · Próximamente</span></span>`;
+    }
+    const href = relativeUrl(pageOutputPath, `temas/${item.id}/index.html`);
+    return `<a class="topic-link" href="${href}"${item.id === topic.id ? ' aria-current="page"' : ''}><span class="topic-number">${item.number}</span> ${label}</a>`;
   }).join('\n');
 }
 
@@ -54,6 +65,7 @@ function escapeHtml(value) {
 }
 
 function renderQuiz(question) {
+  const answer = question.options.find(option => option.id === question.correctOptionId);
   const options = question.options.map((option) => `
     <label class="quiz-option" data-feedback="${escapeHtml(option.explanation)}">
       <input type="radio" name="${question.id}-answer" value="${option.id}" id="${question.id}-${option.id}">
@@ -66,6 +78,7 @@ function renderQuiz(question) {
       <div class="quiz-options">${options}</div>
       <p class="quiz-status" role="status" aria-live="polite"></p>
     </fieldset>
+    <p class="print-detail quiz-solution">Respuesta ${escapeHtml(answer.id.toUpperCase())}. ${escapeHtml(answer.explanation)}</p>
   </div>`;
 }
 
@@ -75,11 +88,11 @@ export function processSectionAssets(html, pageOutputPath) {
   });
 }
 
-export function renderTopic(course, topic, mode = 'reading') {
+export function renderTopic(course, topic, mode = 'reading', outputPath) {
   const isReading = mode === 'reading';
-  const pageOutputPath = isReading
+  const pageOutputPath = outputPath || (isReading
     ? `temas/${topic.id}/index.html`
-    : `temas/${topic.id}/presentar.html`;
+    : `temas/${topic.id}/presentar.html`);
 
   const templateName = isReading ? 'reading.html' : 'presentation.html';
   const template = fs.readFileSync(path.resolve(TEMPLATES_DIR, templateName), 'utf8');
@@ -128,6 +141,7 @@ export function renderTopic(course, topic, mode = 'reading') {
     READING_URL: readingUrl,
     PRESENTATION_URL: presentationUrl,
     PDF_URL: pdfUrl,
+    TOPIC_NAV: buildTopicNavigation(course, topic, pageOutputPath),
     TOPIC_INDEX: topicIndexHtml,
     CONTENT: content
   };

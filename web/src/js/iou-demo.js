@@ -6,6 +6,7 @@ export function initIouDemo(root = document) {
 
   const slider = lab.querySelector('[data-iou-offset]');
   const predicted = lab.querySelector('[data-iou-prediction]');
+  const predictionLabel = lab.querySelector('[data-iou-label]');
   const intersection = lab.querySelector('[data-iou-intersection]');
   const output = lab.querySelector('[data-iou-value]');
   const message = lab.querySelector('[data-iou-message]');
@@ -22,15 +23,15 @@ export function initIouDemo(root = document) {
     const overlapEnd = Math.min(60, x + 40);
 
     predicted.setAttribute('x', String(x));
+    predictionLabel?.setAttribute('x', String(x + 20));
     intersection.setAttribute('x', String(overlapStart));
     intersection.setAttribute('width', String(Math.max(0, overlapEnd - overlapStart)));
     output.textContent = value.toFixed(2);
-    message.textContent = value >= 0.5
-      ? 'Con IoU ≥ 0,50, la localización supera este criterio geométrico.'
-      : 'Con IoU < 0,50, la localización no supera este criterio geométrico.';
+    message.textContent = value === 1 ? 'Coincidencia perfecta.'
+      : value === 0 ? 'Sin solapamiento.' : 'Solapamiento parcial.';
+    slider.setAttribute('aria-valuetext', `IoU ${value.toFixed(2)}. ${message.textContent}`);
   }
 
   slider.addEventListener('input', update);
   update();
 }
-

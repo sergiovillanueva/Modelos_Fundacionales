@@ -2,7 +2,7 @@
   {
     "id": "q01",
     "sectionId": "tareas",
-    "prompt": "Quieres contar coches y saber dónde está cada uno. ¿Qué salida necesitas?",
+    "prompt": "Quieres contar coches y localizar cada uno.",
     "options": [
       {
         "id": "a",
@@ -16,11 +16,10 @@
       },
       {
         "id": "c",
-        "text": "Un vector de características sin localizaciones.",
-        "explanation": "Un vector puede representar la imagen, pero no devuelve directamente las ubicaciones."
+        "text": "Una puntuación de confianza para la imagen.",
+        "explanation": "La confianza por sí sola no indica cuántos coches hay ni dónde están."
       }
     ],
     "correctOptionId": "b"
   }
 ]
-

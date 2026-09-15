@@ -83,24 +83,6 @@ function replaceTemplateTokens(template, tokens, pageOutputPath) {
   return result;
 }
 
-function buildTopicCards(topics, pageOutputPath) {
-  return topics.map((t) => {
-    const isAvailable = t.status === 'available';
-    if (isAvailable) {
-      const readingUrl = relativeUrl(pageOutputPath, `temas/${t.id}/index.html`);
-      return `<a class="topic-card available" href="${readingUrl}">
-        <span class="topic-number">${t.number}</span>
-        <span class="topic-copy"><strong>${t.title}</strong><small>${t.description || ''}</small></span>
-        <span class="topic-arrow" aria-hidden="true">→</span>
-      </a>`;
-    }
-    return `<article class="topic-card planned">
-      <span class="topic-number">${t.number}</span>
-      <span class="topic-copy"><strong>${t.title}</strong><small>Próximamente</small></span>
-    </article>`;
-  }).join('\n');
-}
-
 export function buildSite() {
   cleanDist();
 
@@ -113,22 +95,10 @@ export function buildSite() {
   const coursePath = path.resolve(CONTENT_DIR, 'course.json');
   const course = JSON.parse(fs.readFileSync(coursePath, 'utf8'));
 
-  // Tokens for home page
-  const homeOutputPath = 'index.html';
-  const topic1Url = relativeUrl(homeOutputPath, 'temas/01-deteccion/index.html');
-  const homeTemplate = fs.readFileSync(path.resolve(TEMPLATES_DIR, 'home.html'), 'utf8');
-
-  const homeTokens = {
-    TITLE: course.title,
-    COURSE_TITLE: course.title,
-    AUTHOR: course.author,
-    REPO_URL: course.repository,
-    TOPIC_1_URL: topic1Url,
-    TOPICS_CARDS: buildTopicCards(course.topics, homeOutputPath)
-  };
-
-  const renderedHome = replaceTemplateTokens(homeTemplate, homeTokens, homeOutputPath);
-  fs.writeFileSync(path.resolve(DIST_DIR, homeOutputPath), renderedHome, 'utf8');
+  // The course opens directly on the first lesson, using the same source and template.
+  const firstTopic = course.topics.find((topic) => topic.status === 'available' && topic.contentDir);
+  if (!firstTopic) throw new Error('El curso necesita al menos un tema disponible.');
+  fs.writeFileSync(path.join(DIST_DIR, 'index.html'), renderTopic(course, firstTopic, 'reading', 'index.html'), 'utf8');
 
   // Render creditos.html
   const creditsOutputPath = 'creditos.html';

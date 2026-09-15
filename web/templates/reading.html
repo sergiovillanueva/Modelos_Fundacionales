@@ -3,36 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tema introductorio sobre detección de objetos y evaluación mediante IoU.">
+  <meta name="description" content="Aprende visión artificial con ejemplos visuales y prácticas en Colab.">
   <title>{{TOPIC_TITLE}} · {{COURSE_TITLE}}</title>
   <link rel="stylesheet" href="{{REL_PATH:src/styles/tokens.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/base.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/reading.css}}">
   <link rel="stylesheet" href="{{REL_PATH:src/styles/widgets.css}}">
+  <link rel="stylesheet" href="{{REL_PATH:src/styles/print.css}}" media="print">
 </head>
-<body>
+<body class="classroom">
   <a href="#reading-main" class="skip-link">Saltar al tema</a>
-  <header class="reading-header">
-    <a href="{{REL_PATH:index.html}}" class="back-link"><span aria-hidden="true">←</span> Curso</a>
-    <span class="reading-topic-title">{{TOPIC_TITLE}}</span>
-    <a href="{{PRESENTATION_URL}}" class="presentation-link" id="btn-mode-presentation">Presentar</a>
-  </header>
-  <div class="reading-layout">
-    <aside class="reading-sidebar" aria-label="Índice del tema">
-      <details open class="sidebar-details">
-        <summary>En este tema</summary>
-        <ol class="topic-index-list">{{TOPIC_INDEX}}</ol>
+  <header class="course-header">
+    <div class="course-topbar">
+      <a class="course-brand" href="{{REL_PATH:index.html}}" aria-label="Inicio del curso">
+        <img src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="Datamecum" width="48" height="40">
+        <span>Visión artificial</span>
+      </a>
+      <details class="course-material">
+        <summary>Material <span aria-hidden="true">⌄</span></summary>
+        <div class="material-links">
+          <a href="{{PDF_URL}}" download>Descargar PDF</a>
+          <a href="{{PRESENTATION_URL}}" id="btn-mode-presentation">Presentar</a>
+        </div>
       </details>
-    </aside>
-    <main id="reading-main" class="reading-content">{{CONTENT}}</main>
-  </div>
-  <footer class="reading-footer">
-    <a href="{{REL_PATH:index.html}}">← Volver al curso</a>
-    <span class="reading-footer-links">
-      <a href="{{PDF_URL}}" download>Descargar PDF</a>
-      <a href="{{REL_PATH:creditos.html}}">Créditos</a>
-    </span>
-  </footer>
+    </div>
+    <nav class="topic-tabs" aria-label="Temas">{{TOPIC_NAV}}</nav>
+  </header>
+  <main id="reading-main" class="lesson" tabindex="-1">
+    <h1 class="sr-only">{{TOPIC_TITLE}}</h1>
+    <nav class="step-tabs" aria-label="Pasos del tema">{{TOPIC_INDEX}}</nav>
+    <div class="reading-content">{{CONTENT}}</div>
+    <nav class="lesson-nav" aria-label="Avanzar por el tema">
+      <button type="button" class="previous-step" data-step-previous aria-label="Anterior"><span aria-hidden="true">←</span> Anterior</button>
+      <span class="step-counter" data-step-counter aria-live="polite"></span>
+      <button type="button" class="next-step" data-step-next aria-label="Siguiente">Siguiente <span aria-hidden="true">→</span></button>
+    </nav>
+  </main>
   <script type="module" src="{{REL_PATH:src/js/reading.js}}"></script>
 </body>
 </html>

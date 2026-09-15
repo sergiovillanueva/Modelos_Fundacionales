@@ -1,131 +1,123 @@
-# Instrucciones de diseño y contenido
+# Guía para continuar la web
 
-Este documento es la referencia obligatoria para completar los temas 02–06. Antes de modificar la web, hay que leerlo junto con [README.md](README.md).
+Referencia obligatoria antes de ampliar cualquier tema. Leer también [README.md](README.md). Esta guía sustituye las decisiones anteriores sobre portada, índice lateral, tarjetas y lectura continua en `docs/plan/web`. Trabajar exclusivamente dentro de `web/`.
 
-## Objetivo
+## La experiencia que hay que conservar
 
-La web debe ayudar a un alumno con conocimientos de Python y nociones de *deep learning* a aprender sin necesitar instrucciones previas. Cada pantalla debe dejar claro qué mirar, qué idea recordar y cuál es el siguiente paso.
+La web es un aula visual. Al entrar, el alumno ya está en el primer ejemplo. Arriba elige tema; debajo elige un paso. Puede avanzar con «Siguiente» o saltar directamente a cualquier paso. No necesita leer una explicación de la interfaz.
 
-La identidad visual parte de Datamecum: azul marino, azul intenso, cian, Raleway para títulos y Roboto para texto. El resultado debe ser elegante, ligero y académico.
+El público conoce Python y nociones de deep learning. La detección y las métricas nuevas se explican desde cero, con un ejemplo que se pueda ver o manipular.
 
-## Reglas que no se deben romper
+**Modelo de referencia: tema 01, tal como está implementado.** Sus cuatro pasos son Concepto → Tu turno → IoU → Colab. Es una introducción; no representa todavía todo el temario de detección.
 
-1. **Una idea principal por sección.** Si una sección intenta explicar dos conceptos independientes, hay que dividirla.
-2. **Una acción principal por pantalla.** No repetir enlaces con etiquetas diferentes ni añadir botones de ayuda, reinicio o comprobación cuando la interacción ya se entiende por sí sola.
-3. **Primero lo visual.** Título corto, una frase de contexto y una imagen, comparación o actividad. El detalle se añade después y solo si ayuda a estudiar.
-4. **Sin tarjetas decorativas.** Las cajas con borde y sombra se reservan para imágenes, laboratorios, preguntas y llamadas a la acción. El texto normal vive sobre el fondo de la página.
-5. **Sin texto duplicado.** El título, la entradilla, el pie de imagen y el detalle deben aportar información diferente.
-6. **Una sola fuente de contenido.** `content/tema-XX/sections.html` alimenta tanto la lectura como la presentación.
-7. **Funciona sin backend.** Todo debe compilarse como HTML, CSS y JavaScript estático para GitHub y Cloudflare Pages.
+## Reglas visuales obligatorias
 
-## Límites de texto
+1. **Una idea por vista.** Un título breve, como máximo una frase de contexto, y una imagen o actividad protagonista.
+2. **Texto sobre blanco.** Sin recuadros para explicaciones, tarjetas de Colab, sombras decorativas, gradientes ni etiquetas de relleno. Un área suavemente coloreada sí puede delimitar una simulación.
+3. **Acciones evidentes.** Una respuesta se corrige al seleccionarla. Un deslizador modifica el ejemplo. No añadir «Comprobar», «Reiniciar», tutoriales, consejos de navegación ni botones duplicados.
+4. **Identidad Datamecum.** Logo local, Raleway en títulos, Roboto en texto; azul marino y azul intenso, cian solo como acento. Usar los colores de `tokens.css`.
+5. **Espacio y jerarquía.** Título centrado y elemento visual grande. La interfaz ocupa menos atención que el contenido. Las preguntas usan filas con separadores finos.
+6. **Contenido real.** No rellenar temas pendientes con ejemplos ficticios, métricas inventadas ni llamadas a la acción sin destino.
 
-- Título de sección: idealmente 3–7 palabras.
-- Entradilla: una frase, hasta 30 palabras.
-- Párrafo de estudio: hasta 80 palabras.
-- Comparación: hasta 3 alternativas y una frase por alternativa.
-- Pregunta: 3 respuestas breves y una explicación concreta por respuesta.
-- Práctica de Colab: una llamada a la acción y un máximo de 3 pasos.
+### Límites de texto visible
 
-Si el material original excede estos límites, se conserva la idea central en la página y se traslada el desarrollo técnico al notebook o a una sección nueva.
+| Elemento | Límite orientativo |
+| --- | --- |
+| Nombre de tema en navegación (`navTitle`) | 1–3 palabras |
+| Nombre de paso (`data-title`) | 1–2 palabras |
+| Título de la vista | 3–7 palabras |
+| Frase de contexto | Hasta 20 palabras, una sola frase |
+| Pie de imagen | Una línea útil; no repetir el título |
+| Pregunta | Una situación breve y 3 respuestas |
+| Corrección | 1–2 frases, visibles después de responder |
+| Colab | Hasta 3 pasos cortos y un enlace principal |
 
-## Anatomía de una sección
+Si falta espacio, dividir la idea en otro paso. Los matices adicionales pueden ir en el notebook o en `.print-detail`, que solo se muestra en el PDF. **Nunca ocultar una definición imprescindible para resolver la actividad web.**
 
-Cada `<section>` necesita `id`, `data-title` y `data-layout`:
+## Navegación
+
+- `index.html` abre el primer tema disponible. Se genera desde la misma plantilla que la ruta del tema; no crear una portada aparte.
+- Cabecera: marca y menú discreto **Material**, con **Descargar PDF** y **Presentar**.
+- Primera fila: temas. Los disponibles son enlaces; los pendientes se muestran atenuados, sin enlace, con estado accesible «Próximamente».
+- Segunda fila: pasos del tema. Solo un panel visible con JavaScript activo. En móvil, mantener acceso a todos los pasos; si se añaden más de cuatro, adaptar y comprobar la fila para que no desborde.
+- Pie de la lección: **Anterior**, posición `n / total` y **Siguiente**. El último paso termina con Colab. El contador indica ubicación, nunca rendimiento ni progreso guardado.
+- No añadir barra lateral, portada promocional, pie con créditos, GitHub ni un tercer menú a la lección. Los créditos y licencias se conservan como información secundaria en los archivos existentes.
+- La URL identifica el paso (`#iou`); recarga, enlaces directos y botones atrás/adelante del navegador deben conservarlo.
+- Presentar abre la diapositiva actual. Volver regresa al mismo paso.
+
+## Fuente única de contenido
+
+`content/tema-XX/sections.html` alimenta web, presentación y PDF. No duplicar texto entre modos. No editar `dist/` a mano.
 
 ```html
-<section id="concepto" data-title="Nombre en el índice" data-layout="split">
+<section id="concepto" data-title="Concepto" data-layout="visual">
   <div class="section-copy">
-    <p class="section-kicker">Contexto breve</p>
     <h2>Una idea clara</h2>
-    <p class="lead">Una frase que permita interpretar el elemento visual.</p>
+    <p class="lead">Una frase para interpretar el ejemplo.</p>
   </div>
-  <figure class="figure-media">...</figure>
-  <div class="study-detail">Detalle útil para estudiar en casa.</div>
+  <figure class="figure-media detection-example">
+    <img src="{{ASSET:tema-XX/ejemplo.webp}}"
+         alt="Descripción de lo que el ejemplo enseña." width="900" height="457">
+    <figcaption>Una conclusión breve.</figcaption>
+  </figure>
+  <div class="print-detail"><p>Matiz adicional para estudiar en PDF.</p></div>
 </section>
 ```
 
-Layouts permitidos:
-
-- `split`: texto y elemento visual en dos columnas; se apilan en móvil.
-- `lab`: explicación breve y una simulación interactiva.
-- `process`: práctica, notebook o recorrido de pasos.
-
-No se crean layouts nuevos salvo que ninguno de estos permita explicar bien el concepto.
-
-## Portada
-
-La portada contiene únicamente:
-
-1. Cabecera con logo, nombre breve y GitHub.
-2. Hero con título, resumen, una imagen real del curso y una acción para empezar.
-3. Índice de temas. El tema disponible es un único enlace completo; los pendientes son filas sin botones.
-4. Pie con autor y créditos.
-
-No añadir bloques de competencias, instrucciones de uso, estadísticas, ventajas, iconos de relleno ni un segundo menú.
-
-## Lectura
-
-- La cabecera solo ofrece `Curso`, el título actual y `Presentar`.
-- El índice lateral es discreto y se pliega en móvil.
-- Las secciones forman una narración continua separada por espacio y una línea fina.
-- No mostrar progreso si no existe un progreso real y persistente.
-- El alumno debe poder entender la página desplazándose de arriba abajo sin abrir ayudas.
-
-## Presentación
-
-- Reutiliza las mismas secciones y actividades.
-- Oculta `.study-detail` y otros matices largos.
-- Cada diapositiva debe caber completa a 1280 × 720 sin desplazamiento.
-- Solo se muestra el enlace discreto `Lectura`; Reveal.js aporta avance, número de diapositiva y teclado.
-- Si una sección queda densa, se oculta el apoyo menos importante en CSS de presentación o se divide la sección en la fuente.
-
-## Preguntas y laboratorios
+Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practice`. Son descriptores: el diseño lo aplican las clases compartidas de `widgets.css`. Reutilizar componentes existentes antes de añadir estilos. No anidar `<section>` dentro de otra; el generador extrae secciones de primer nivel. Usar identificadores únicos y estables dentro del tema.
 
 ### Preguntas
 
-Las preguntas viven en `content/tema-XX/questions.json` y se insertan con `{{QUIZ:id}}`.
+- Datos en `questions.json`; insertar con `{{QUIZ:id}}`.
+- Cada respuesta incluye una explicación concreta. Indicar qué significa el error, sin regañar.
+- Corregir al seleccionar, con texto y color. Mantener `fieldset`, `legend`, radios nativos y `role="status"`.
+- La respuesta se conserva al cambiar de paso en la misma página. No prometer persistencia después de recargar ni recogida de resultados del grupo.
+- Para el PDF, asegurar que la solución puede consultarse en papel; el generador incluye la respuesta correcta debajo del ejercicio.
 
-- La respuesta se corrige al seleccionarla.
-- No añadir botones `Comprobar` o `Reintentar`.
-- Cada opción explica por qué es correcta o incorrecta.
-- El mensaje usa `role="status"` y `aria-live="polite"`.
+### Simulaciones
 
-### Laboratorios
+- Una variable principal, resultado inmediato y etiquetas junto al control.
+- Explicar el nombre y significado de una métrica antes de usarla. No introducir umbrales de «bueno/malo» sin contexto.
+- Mantener un ejemplo estático comprensible al imprimir.
+- Los controles deben funcionar con teclado; las flechas de un deslizador nunca cambian de diapositiva o paso.
 
-- Un laboratorio debe enseñar una relación causal visible.
-- Empieza con una sola variable controlable. Solo se añade otra si es necesaria para el objetivo didáctico.
-- El resultado cambia en directo y se expresa con número y una frase interpretativa.
-- No añadir presets, reinicios o modos si el deslizador o control principal basta.
+### Recursos y Colab
 
-## Imágenes, animaciones y Colab
+- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo.
+- Animaciones con póster inicial y un solo control **Ver animación / Detener**. Preferir WebP animado para las exclusiones de Git existentes.
+- Colab se abre mediante un enlace real al notebook en GitHub. El alumno guarda su copia en Drive.
+- Una lista sencilla y un único enlace **Abrir en Colab**. No crear tarjetas coloreadas, autenticar con Google ni cargar modelos pesados en esta web.
+- Mantener autorías y licencias en los archivos correspondientes, sin ocupar la pantalla de aprendizaje.
 
-- Usar recursos locales en `public/assets/tema-XX/` y texto alternativo que explique su propósito.
-- Una animación comienza como imagen estática y ofrece un solo control `Ver animación` / `Detener`. Se prefiere WebP animado para que Git lo incluya y pese menos.
-- El notebook se abre con una URL de Colab que apunte al archivo de GitHub.
-- La tarjeta de Colab incluye el nombre del ejercicio, una frase y un solo botón.
-- Los alumnos guardan su propia copia en Drive; la web no necesita permisos de Google ni integración con una API.
+## Presentación, móvil y accesibilidad
 
-## Cómo añadir el siguiente tema
+- Reveal.js reutiliza el contenido. Cada diapositiva debe caber a 1280 × 720, incluida la corrección de preguntas. Solo enlace discreto **Volver**, controles de Reveal y número de diapositiva.
+- En móvil: contenido apilado, controles táctiles cómodos, nada de desplazamiento horizontal de toda la página. La fila de temas puede desplazarse dentro de su propio espacio.
+- Pestañas con roles ARIA, flechas izquierda/derecha y Home/End. Al avanzar con botones, llevar el foco al título nuevo.
+- Contraste legible y foco visible. Respetar movimiento reducido. Ninguna información depende solo del color.
+- Sin JavaScript, todos los pasos siguen disponibles como HTML continuo. Al imprimir también aparecen todos, incluso si la web solo muestra uno.
 
-1. Crear `content/tema-XX/sections.html` con 4–7 secciones breves.
-2. Crear `content/tema-XX/questions.json` con las preguntas del tema.
-3. Copiar las imágenes optimizadas a `public/assets/tema-XX/`.
-4. Añadir `contentDir`, `notebookPath` y `status: "available"` en `content/course.json`.
-5. Mantener una imagen, una interacción o una práctica relevante por sección; no llenar huecos con componentes.
-6. Ejecutar `npm test`, `npm run build`, `npm run check`, `npm run test:e2e` y `npm run pdf`.
-7. Revisar la portada, la lectura completa en escritorio y móvil, todas las diapositivas a 1280 × 720 y las páginas del PDF renderizadas.
+## Añadir el siguiente tema
 
-## Criterio de terminado
+1. Leer esta guía y recorrer el tema 01 antes de escribir contenido.
+2. Preparar 4–7 pasos: ejemplo inicial, comprobación breve, exploración y práctica. Si hacen falta más ideas, distribuirlas sin amontonar texto.
+3. Crear `content/tema-XX/sections.html`, `questions.json` y recursos en `public/assets/tema-XX/`.
+4. En `content/course.json`, completar `navTitle`, `contentDir`, `notebookPath` y pasar a `status: "available"` cuando haya contenido revisable. La URL de Colab de la sección debe apuntar al notebook correcto; `notebookPath` no la sustituye automáticamente.
+5. Preparar el PDF del nuevo tema con el nombre que espera el generador: `tema-<id>.pdf`. Actualmente `scripts/export-pdf.mjs` exporta solo el tema 01; ampliar ese script antes de publicar otro tema para que **Material** no enlace a un archivo inexistente.
+6. Ejecutar compilación, validación, tests y revisión visual según README. Ampliar las pruebas para el nuevo tema y revisar todos sus pasos, no solo los del tema 01.
 
-Un tema está listo cuando:
+## Lista de revisión antes de entregar
 
-- se entiende su recorrido sin instrucciones;
-- no repite títulos, texto ni acciones;
-- explica desde cero las métricas nuevas que utilice;
-- las preguntas y simulaciones responden inmediatamente;
-- todos los enlaces y recursos cargan;
-- no existe desbordamiento horizontal en móvil;
-- cada diapositiva cabe y puede leerse desde el aula;
-- el PDF abre, mantiene una jerarquía legible y no muestra controles web;
-- pasan todas las comprobaciones indicadas arriba.
+- [ ] La entrada ya enseña algo y hay un solo paso visible.
+- [ ] No se han recuperado portada, índice lateral, tarjetas ni bloques de explicaciones.
+- [ ] El contenido es correcto y suficiente para la actividad, con métricas explicadas desde cero.
+- [ ] Respuestas, animación y simulación funcionan; la corrección cabe en móvil y presentación.
+- [ ] Temas, pasos, Material, Colab e historial tienen el comportamiento descrito.
+- [ ] Los recursos cargan tanto desde la raíz como desde la ruta del tema.
+- [ ] Sin desbordamientos a 390 px y 320 px; teclado y movimiento reducido funcionan.
+- [ ] Todas las diapositivas caben a 1280 × 720 y el PDF se ha revisado página por página.
+- [ ] README e instrucciones reflejan cualquier decisión nueva y todos los cambios están dentro de `web/`.
+
+## Rediseño aplicado en septiembre de 2026
+
+Se sustituyó la portada y la lectura larga por un aula con temas y pasos. Se eliminaron sidebar, tarjetas, subtítulos repetidos y pie de créditos de la lección. PDF y presentación se agruparon en Material. Se redujeron los textos, se conservaron las actividades y se añadió navegación accesible con historial. Las reglas de este documento son el patrón para los próximos temas.

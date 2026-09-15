@@ -1,0 +1,26 @@
+@page { size: A4; margin: 16mm; }
+html, body { background: #fff; font-size: 11pt; }
+.course-header, .step-tabs, .lesson-nav, .skip-link, .media-toggle { display: none !important; }
+.lesson { width: 100%; margin: 0; }
+.reading-content > section, .course-ready .reading-content > section, .reading-content > section[hidden] { display: block !important; min-height: 0; padding: 0; }
+.reading-content > section + section { break-before: page; }
+.section-copy { margin-bottom: 10mm; }
+.section-copy h2 { font-size: 27pt; }
+.lead { font-size: 12pt; }
+.detection-example { max-width: 165mm; }
+.detection-example figcaption { font-size: 11pt; }
+.question-layout { grid-template-columns: 1fr; gap: 8mm; margin: 0; }
+.question-layout .figure-media { max-width: 65mm; margin: 0 auto; }
+.quiz-box legend { font-size: 13pt; }
+.quiz-option { font-size: 11pt; padding: 4mm 2mm; }
+.quiz-status { min-height: 0; margin: 0; }
+.iou-lab { grid-template-columns: 1.2fr 1fr; gap: 8mm; }
+.iou-controls { display: block; }
+.iou-stage { padding: 3mm; }
+.iou-score strong { font-size: 52pt; }
+.iou-message { margin: 3mm 0; font-size: 11pt; text-align: left; }
+.iou-controls input, .iou-controls label, .range-ends { display: none; }
+.practice-path { margin: 14mm auto 10mm; }
+.practice-path li { font-size: 13pt; }
+.print-detail { display: block; margin-top: 12mm; color: var(--color-text-muted); font-size: 11pt; line-height: 1.6; }
+.print-detail p { margin: 0; }

@@ -8,6 +8,7 @@
       "id": "01-deteccion",
       "number": "01",
       "title": "Detección de objetos",
+      "navTitle": "Detección",
       "status": "available",
       "contentDir": "tema-01",
       "notebookPath": "1_OD.ipynb",
@@ -17,6 +18,7 @@
       "id": "02-hugging-face",
       "number": "02",
       "title": "Ecosistema Hugging Face",
+      "navTitle": "Hugging Face",
       "status": "planned",
       "description": "Pipelines, transformadores visuales, datasets y despliegue de modelos preentrenados para visión por computador."
     },
@@ -24,6 +26,7 @@
       "id": "03-multimodalidad",
       "number": "03",
       "title": "Modelos multimodales",
+      "navTitle": "Multimodal",
       "status": "planned",
       "description": "Integración de texto y visión con modelos tipo CLIP y BLIP para búsqueda semántica y razonamiento visual."
     },
@@ -31,6 +34,7 @@
       "id": "04-dino",
       "number": "04",
       "title": "DINO y representaciones visuales",
+      "navTitle": "DINO",
       "status": "planned",
       "description": "Aprendizaje auto-supervisado en visión, mapas de atención interpretables y extracción densa de características."
     },
@@ -38,6 +42,7 @@
       "id": "05-sam",
       "number": "05",
       "title": "Segmentación con SAM",
+      "navTitle": "SAM",
       "status": "planned",
       "description": "Segment Anything Model: segmentación 'zero-shot' mediante puntos, cajas y máscaras guiadas por prompts."
     },
@@ -45,6 +50,7 @@
       "id": "06-otras-tareas",
       "number": "06",
       "title": "Otras tareas de visión",
+      "navTitle": "Más visión",
       "status": "planned",
       "description": "Estimación de profundidad monocromática, detección de pose humana y visión 3D con modelos fundacionales."
     }

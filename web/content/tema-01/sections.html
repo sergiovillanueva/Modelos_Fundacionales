@@ -1,94 +1,65 @@
-<section id="inicio" data-title="Qué hace un detector" data-layout="split" class="topic-opening">
+<section id="inicio" data-title="Concepto" data-layout="visual">
   <div class="section-copy">
-    <p class="section-kicker">Tema 01</p>
-    <h2>Localizar y reconocer</h2>
-    <p class="lead">Un detector responde dos preguntas: <strong>qué objetos aparecen</strong> y <strong>dónde está cada uno</strong>.</p>
-    <div class="concept-strip" aria-label="Salida de un detector">
-      <span><b>01</b>Caja</span>
-      <span><b>02</b>Categoría</span>
-      <span><b>03</b>Confianza</span>
-    </div>
+    <h2>Detectar es localizar</h2>
+    <p class="lead">Qué objetos hay en una imagen y dónde está cada uno.</p>
   </div>
-  <figure class="figure-media figure-clean">
-    <img src="{{ASSET:tema-01/od.webp}}" alt="Una manzana clasificada con una etiqueta y varias frutas detectadas con cajas" loading="eager" width="900" height="457">
-    <figcaption>Clasificar describe la imagen; detectar separa y localiza sus objetos.</figcaption>
+  <figure class="figure-media detection-example">
+    <img src="{{ASSET:tema-01/od.webp}}" alt="Clasificación: una etiqueta para la imagen. Detección: una caja y una etiqueta para cada fruta." width="900" height="457">
+    <figcaption>Cada detección: <strong>caja · categoría · confianza</strong></figcaption>
   </figure>
-  <div class="study-detail">
-    <p>El número de objetos cambia de una imagen a otra. Por eso la salida de un detector es una colección de predicciones: cada una combina una región, una categoría y una puntuación.</p>
+  <div class="print-detail">
+    <p>La clasificación describe la imagen completa. Un detector devuelve una colección de objetos: una caja delimita cada uno, una categoría lo identifica y una puntuación expresa la confianza del modelo.</p>
   </div>
 </section>
 
-<section id="tareas" data-title="Elegir la tarea" data-layout="split">
-  <div class="section-copy">
-    <p class="section-kicker">Antes de elegir un modelo</p>
-    <h2>¿Qué resultado necesitas?</h2>
-    <div class="task-comparison">
-      <p><strong>Clasificación</strong><span>Qué aparece en la imagen.</span></p>
-      <p><strong>Detección</strong><span>Qué aparece y dónde está cada instancia.</span></p>
-      <p><strong>Segmentación</strong><span>Qué píxeles pertenecen a cada región.</span></p>
-    </div>
+<section id="tareas" data-title="Tu turno" data-layout="question">
+  <div class="section-copy"><h2>¿Qué salida necesitas?</h2></div>
+  <div class="question-layout">
+    <figure class="figure-media media-container" data-media-type="animation">
+      <img src="{{ASSET:tema-01/car-task-poster.webp}}" data-animated-src="{{ASSET:tema-01/car-task.webp}}" alt="Un coche: la animación compara distintas tareas de visión" width="500" height="500" class="interactive-media">
+      <button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button>
+    </figure>
+    {{QUIZ:q01}}
   </div>
-  <figure class="figure-media media-container" data-media-type="animation">
-    <img src="{{ASSET:tema-01/car-task-poster.webp}}" data-animated-src="{{ASSET:tema-01/car-task.webp}}" alt="Ejemplo de clasificación de un coche que evoluciona a otras salidas visuales" width="500" height="500" class="interactive-media">
-    <button type="button" class="media-toggle btn-toggle-anim screen-only" aria-label="Ver animación"><span class="anim-status-label">Ver animación</span></button>
-    <figcaption>La misma imagen puede responder preguntas diferentes.</figcaption>
-  </figure>
-  <div class="quiz-placeholder" data-quiz-id="q01">{{QUIZ:q01}}</div>
 </section>
 
-<section id="iou" data-title="Medir el solapamiento" data-layout="lab">
+<section id="iou" data-title="IoU" data-layout="lab">
   <div class="section-copy">
-    <p class="section-kicker">Evaluación</p>
-    <h2>¿Cuánto coinciden dos cajas?</h2>
-    <p class="lead">IoU divide el área compartida entre el área total ocupada por ambas cajas.</p>
+    <h2>¿Cuánto coinciden las cajas?</h2>
+    <p class="lead">IoU = área compartida ÷ área total ocupada.</p>
   </div>
   <div class="iou-lab" data-iou-demo>
     <div class="iou-stage">
-      <svg viewBox="0 0 100 100" role="img" aria-label="Caja de referencia y caja de predicción parcialmente superpuestas">
-        <defs>
-          <pattern id="iou-pattern" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="4" stroke="#10104d" stroke-width="1" opacity="0.35"/>
-          </pattern>
-        </defs>
-        <rect width="100" height="100" rx="5" fill="#f7f8fc"/>
-        <rect x="20" y="20" width="40" height="40" fill="#1313ab" fill-opacity="0.12" stroke="#1313ab" stroke-width="1.5"/>
-        <rect data-iou-prediction x="40" y="20" width="40" height="40" fill="#00d0ff" fill-opacity="0.14" stroke="#007b98" stroke-width="1.5"/>
+      <svg viewBox="0 0 100 82" role="img" aria-label="Caja de referencia y predicción: mueve la predicción para comparar su solapamiento">
+        <defs><pattern id="iou-pattern" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="#1313ab" stroke-width="0.7" opacity="0.35"/></pattern></defs>
+        <rect x="20" y="20" width="40" height="40" fill="#1313ab" fill-opacity="0.09" stroke="#1313ab" stroke-width="1"/>
+        <rect data-iou-prediction x="40" y="20" width="40" height="40" fill="#00d0ff" fill-opacity="0.12" stroke="#007b98" stroke-width="1"/>
         <rect data-iou-intersection x="40" y="20" width="20" height="40" fill="url(#iou-pattern)"/>
-        <text x="22" y="17" font-size="5" font-weight="700" fill="#1313ab">Referencia</text>
-        <text x="62" y="67" font-size="5" font-weight="700" fill="#006a83">Predicción</text>
+        <text x="20" y="16" font-size="4" font-weight="500" fill="#1313ab">Referencia</text>
+        <text data-iou-label x="60" y="67" text-anchor="middle" font-size="4" font-weight="500" fill="#006a83">Predicción</text>
       </svg>
     </div>
     <div class="iou-controls">
       <p class="iou-score"><span>IoU</span><strong data-iou-value>0.33</strong></p>
-      <label for="iou-offset">Desplaza la predicción</label>
+      <p class="iou-message" data-iou-message aria-live="polite">Solapamiento parcial.</p>
+      <label for="iou-offset">Mover predicción</label>
       <input type="range" id="iou-offset" data-iou-offset min="20" max="60" value="40" step="1">
-      <p class="iou-formula">intersección ÷ unión</p>
-      <p class="iou-message" data-iou-message aria-live="polite"></p>
+      <div class="range-ends" aria-hidden="true"><span>Juntas</span><span>Separadas</span></div>
     </div>
   </div>
-  <div class="study-detail">
-    <p>IoU solo mide geometría. Para evaluar una detección también hay que comprobar la categoría y evitar asignar varias predicciones al mismo objeto.</p>
-  </div>
+  <div class="print-detail"><p>IoU vale 1 cuando ambas cajas coinciden y 0 cuando no comparten área. Solo mide geometría: para evaluar detecciones también hay que comprobar la categoría y evitar asignar varias predicciones al mismo objeto.</p></div>
 </section>
 
-<section id="practica" data-title="Practicar en Colab" data-layout="process">
+<section id="practica" data-title="Colab" data-layout="practice">
   <div class="section-copy">
-    <p class="section-kicker">Ahora tú</p>
-    <h2>Prueba el detector</h2>
-    <p class="lead">Ejecuta RF-DETR, cambia el umbral y observa qué predicciones aparecen o desaparecen.</p>
-  </div>
-  <div class="colab-card">
-    <div>
-      <p class="colab-label">Notebook 01</p>
-      <h3>Detección de objetos con RF-DETR</h3>
-      <p>Trabajarás en tu propia copia del cuaderno.</p>
-    </div>
-    <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/1_OD.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+    <h2>Ahora, con tu propia imagen</h2>
+    <p class="lead">Prueba RF-DETR en tu copia del cuaderno.</p>
   </div>
   <ol class="practice-path">
-    <li><strong>Guarda una copia</strong><span>Archivo → Guardar una copia en Drive.</span></li>
-    <li><strong>Compara umbrales</strong><span>Prueba 0,25 · 0,50 · 0,75.</span></li>
-    <li><strong>Usa una imagen propia</strong><span>Localiza un acierto y un fallo.</span></li>
+    <li><span>Guarda una copia en Drive.</span></li>
+    <li><span>Ejecuta el detector con una imagen.</span></li>
+    <li><span>Cambia el umbral de confianza: <strong>0,25 · 0,50 · 0,75</strong>.</span></li>
   </ol>
-  <p class="resource-note">La disponibilidad de GPU en Colab puede variar. La parte de inferencia es el recorrido principal; el entrenamiento requiere además el dataset indicado en el cuaderno.</p>
+  <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/1_OD.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+  <div class="print-detail"><p>En Colab: Archivo → Guardar una copia en Drive. Empieza por inferencia. La disponibilidad de GPU varía; el entrenamiento necesita además el dataset indicado en el notebook.</p></div>
 </section>
