@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TOPIC_TITLE}} · {{COURSE_TITLE}}</title>
+  <link rel="stylesheet" href="{{REL_PATH:src/styles/tokens.css}}">
+  <link rel="stylesheet" href="{{REL_PATH:src/styles/base.css}}">
+  <link rel="stylesheet" href="{{REL_PATH:src/styles/reading.css}}">
+  <link rel="stylesheet" href="{{REL_PATH:src/styles/widgets.css}}">
+</head>
+<body>
+  <a href="#reading-main" class="skip-link">Saltar al contenido de lectura</a>
+
+  <header class="reading-header">
+    <div class="reading-header-inner">
+      <div class="reading-nav-group">
+        <a href="{{REL_PATH:index.html}}" class="back-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Curso</span>
+        </a>
+        <span class="reading-topic-title">{{TOPIC_TITLE}}</span>
+      </div>
+
+      <div class="reading-actions">
+        <a href="{{PRESENTATION_URL}}" class="btn-secondary btn-sm" id="btn-mode-presentation">
+          Modo Presentación
+        </a>
+        <a href="{{PDF_URL}}" class="btn-secondary btn-sm" id="btn-download-pdf" style="display: none;">
+          Descargar PDF
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-container" role="status" aria-live="polite">
+      <span class="progress-text" id="progress-summary">0 de 8 preguntas respondidas · 0 correctas</span>
+      <span id="reading-current-section">Introducción</span>
+    </div>
+  </header>
+
+  <div class="reading-layout">
+    <aside class="reading-sidebar" aria-label="Índice del tema">
+      <details open class="sidebar-details">
+        <summary class="sidebar-summary">Índice del tema</summary>
+        <ul class="topic-index-list">
+          {{TOPIC_INDEX}}
+        </ul>
+      </details>
+    </aside>
+
+    <main id="reading-main" class="reading-content">
+      {{CONTENT}}
+    </main>
+  </div>
+
+  <footer class="site-footer" style="margin-top: var(--space-12);">
+    <div class="container footer-inner">
+      <div>
+        <p><strong>{{COURSE_TITLE}}</strong> · {{AUTHOR}}</p>
+      </div>
+      <div>
+        <a href="{{REL_PATH:creditos.html}}">Créditos y referencias</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="{{REL_PATH:src/js/reading.js}}"></script>
+</body>
+</html>

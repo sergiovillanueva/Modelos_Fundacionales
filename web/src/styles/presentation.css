@@ -1,0 +1,141 @@
+/* Reveal Isolation and Container */
+html, body.presentation-body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: var(--color-hero-bg);
+}
+
+.presentation-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: rgba(16, 16, 77, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.presentation-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.pres-brand-title {
+  color: #FFFFFF;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.pres-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pres-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pres-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Reveal slides styling */
+.reveal {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--color-text-main);
+  background: var(--color-bg);
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - 50px) !important;
+}
+
+.reveal .slides section {
+  text-align: left;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.reveal h2 {
+  font-size: 44px;
+  margin-bottom: 20px;
+  color: var(--color-hero-bg);
+  line-height: 1.2;
+}
+
+.reveal p.lead {
+  font-size: 28px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.reveal .study-detail {
+  display: none !important;
+}
+
+.reveal .figure-media {
+  max-height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.reveal .figure-media img {
+  max-height: 380px;
+  width: auto;
+  object-fit: contain;
+}
+
+.reveal .lab-card {
+  margin: 10px 0;
+  padding: 16px;
+}
+
+.reveal .lab-visual svg {
+  max-height: 220px;
+}
+
+.reveal .process-steps {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.reveal .step-card {
+  padding: 12px;
+}
+
+.reveal .step-card h4 {
+  font-size: 20px;
+}
+
+.reveal .step-card p {
+  font-size: 16px;
+}

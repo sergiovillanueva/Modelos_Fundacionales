@@ -1,0 +1,20 @@
+{
+  "name": "curso-modelos-fundacionales-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "http-server dist -p 4173 -c-1",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "check": "node scripts/validate.mjs",
+    "pdf": "node scripts/export-pdf.mjs",
+    "check:prefix": "node scripts/check-prefix.mjs"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.63.0",
+    "http-server": "^14.1.1",
+    "reveal.js": "^6.0.2"
+  }
+}

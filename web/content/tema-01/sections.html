@@ -1,0 +1,148 @@
+<section id="inicio" data-title="Detección de objetos" data-layout="split">
+  <h2>Localizar, reconocer y evaluar</h2>
+  <p class="lead">La detección de objetos combina dos problemas fundamentales de la visión artificial: responder qué objetos aparecen en la escena y determinar con precisión dónde se ubican.</p>
+  <figure class="figure-media">
+    <img src="{{ASSET:tema-01/od.webp}}" alt="Escena urbana con múltiples detecciones de personas, vehículos y señales acotadas por rectángulos" loading="eager" width="800" height="407">
+    <figcaption>Una predicción típica incluye cajas delimitadoras, etiquetas de categoría y puntuaciones de confianza.</figcaption>
+  </figure>
+  <div class="study-detail">
+    <p>A diferencia de la clasificación simple, donde una etiqueta describe toda la imagen, en detección debemos predecir un número variable de instancias. Cada predicción define una región espacial y una distribución sobre las clases del modelo.</p>
+  </div>
+</section>
+
+<section id="tareas" data-title="Tareas de visión" data-layout="split">
+  <h2>La tarea determina la salida deseada</h2>
+  <p class="lead">Clasificar identifica categorías globales; detectar localiza cada instancia mediante cajas delimitadoras; segmentar aisla la silueta exacta píxel a píxel.</p>
+  <figure class="figure-media media-container" data-media-type="gif">
+    <img src="{{ASSET:tema-01/car-task-poster.webp}}" data-animated-src="{{ASSET:tema-01/car-task.gif}}" alt="Comparación visual entre clasificación, detección de objetos y segmentación semántica de un coche" width="500" height="500" class="interactive-media">
+    <div class="media-controls screen-only">
+      <button type="button" class="btn-secondary btn-sm btn-toggle-anim" aria-label="Reproducir animación">
+        <span class="anim-status-label">▶ Reproducir GIF</span>
+      </button>
+    </div>
+    <figcaption>Evolución de granularidad: clasificación global vs. detección por rectángulos vs. segmentación a nivel de píxel.</figcaption>
+  </figure>
+  <div class="study-detail">
+    <p>Para aplicaciones como el recuento de vehículos, el seguimiento o la conducción autónoma, la clasificación global es insuficiente porque no separa objetos individuales. La detección ofrece el equilibrio óptimo entre riqueza geométrica y coste computacional.</p>
+  </div>
+  <div class="quiz-placeholder" data-quiz-id="q01">
+    {{QUIZ:q01}}
+  </div>
+</section>
+
+<section id="iou" data-title="Intersección sobre unión (IoU)" data-layout="lab">
+  <h2>IoU: midiendo el solapamiento geométrico</h2>
+  <p class="lead">La Intersección sobre la Unión (IoU) cuantifica cuánto coincide una caja predicha con la caja de referencia real (ground truth), dividiendo el área compartida entre el área total que abarcan juntas.</p>
+  
+  <div class="lab-card" id="iou-lab-container">
+    <div class="lab-visual">
+      <svg viewBox="0 0 100 100" class="iou-svg" role="img" aria-label="Demostración visual de solapamiento de cajas">
+        <!-- Fondo rejilla -->
+        <rect width="100" height="100" fill="#F8FAFC" stroke="#D5DFEB" stroke-width="1"/>
+        
+        <!-- Caja Ground Truth fija [20, 20, 60, 60] (x=20, y=20, w=40, h=40) -->
+        <rect x="20" y="20" width="40" height="40" fill="rgba(19, 19, 171, 0.12)" stroke="#1313AB" stroke-width="1.8" stroke-dasharray="none"/>
+        <text x="22" y="32" font-size="5" font-weight="700" fill="#1313AB">Referencia (GT)</text>
+
+        <!-- Caja Predicción inicial [40, 20, 80, 60] (x=40, y=20, w=40, h=40) -->
+        <rect id="iou-pred-rect" x="40" y="20" width="40" height="40" fill="rgba(0, 208, 255, 0.18)" stroke="#0088A8" stroke-width="1.8"/>
+        <text id="iou-pred-text" x="42" y="57" font-size="5" font-weight="700" fill="#006A83">Predicción</text>
+
+        <!-- Intersección sombreada [40, 20, 60, 60] (x=40, y=20, w=20, h=40) = área 800 -->
+        <rect id="iou-inter-rect" x="40" y="20" width="20" height="40" fill="rgba(19, 19, 171, 0.35)" stroke="#14243A" stroke-width="1" stroke-dasharray="2 1"/>
+      </svg>
+    </div>
+    
+    <div class="lab-panel">
+      <div class="lab-formula">
+        <div class="formula-title">Fórmula IoU</div>
+        <div class="formula-math">IoU = Área(Intersección) / Área(Unión)</div>
+      </div>
+      
+      <div class="lab-metrics-grid">
+        <div class="metric-item">
+          <span class="metric-name">Intersección:</span>
+          <span class="metric-val" id="iou-area-inter">800 px²</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-name">Unión:</span>
+          <span class="metric-val" id="iou-area-union">2400 px²</span>
+        </div>
+        <div class="metric-item highlight">
+          <span class="metric-name">IoU calculada:</span>
+          <span class="metric-val highlight-val" id="iou-value">0.33</span>
+        </div>
+      </div>
+
+      <p class="lab-note">
+        <em>Nota didáctica:</em> La IoU evalúa únicamente el solapamiento espacial. Para considerar una detección como verdadero positivo (TP), debe coincidir también la categoría predicha.
+      </p>
+
+      <div class="screen-only lab-controls" id="iou-controls">
+        <!-- En Tarea 4 se enlazan sliders interactivos -->
+        <div class="slider-row">
+          <label for="iou-slider-x">Posición X:</label>
+          <input type="range" id="iou-slider-x" min="0" max="60" value="40" step="1">
+          <span id="iou-val-x">40</span>
+        </div>
+        <div class="slider-row">
+          <label for="iou-slider-y">Posición Y:</label>
+          <input type="range" id="iou-slider-y" min="0" max="60" value="20" step="1">
+          <span id="iou-val-y">20</span>
+        </div>
+        <div class="lab-button-group">
+          <button type="button" class="btn-secondary btn-sm" id="btn-iou-coincidir">Coincidir (1.0)</button>
+          <button type="button" class="btn-secondary btn-sm" id="btn-iou-separar">Separar (0.0)</button>
+          <button type="button" class="btn-secondary btn-sm" id="btn-iou-reset">Reiniciar (0.33)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="study-detail">
+    <p>En los protocolos de evaluación convencionales (como PASCAL VOC o COCO), se fija un umbral mínimo de IoU (por ejemplo, IoU ≥ 0.50) para determinar si una predicción emparejada con un objeto real cuenta como acierto (Verdadero Positivo).</p>
+  </div>
+</section>
+
+<section id="practica" data-title="Práctica en Colab" data-layout="process">
+  <h2>Experimentación práctica con modelos reales</h2>
+  <p class="lead">Para fijar los conceptos aprendidos, ejecutarás inferencias reales con un detector moderno en un cuaderno interactivo de Google Colab, sin necesidad de instalar entornos ni disponer de GPU local.</p>
+
+  <div class="colab-card">
+    <div class="colab-info">
+      <h3>Cuaderno oficial: Detección con RF-DETR</h3>
+      <p>El cuaderno incluye carga del modelo preentrenado, visualización de detecciones con diferentes umbrales de confianza y análisis de falsos positivos y falsos negativos en imágenes de prueba.</p>
+      <div class="colab-actions">
+        <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/1_OD.ipynb" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Abrir cuaderno en Google Colab
+        </a>
+      </div>
+    </div>
+    <div class="colab-notice">
+      <p><strong>Pauta de trabajo:</strong> Al abrir el cuaderno, haz clic en <em>«Archivo → Guardar una copia en Drive»</em> para conservar tus cambios y resultados de ejecución.</p>
+    </div>
+  </div>
+
+  <div class="process-steps">
+    <div class="step-card">
+      <span class="step-num">1</span>
+      <h4>Abrir y guardar</h4>
+      <p>Abre el enlace y guarda una copia personal en tu cuenta de Google Drive.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">2</span>
+      <h4>Ejecutar inferencia</h4>
+      <p>Carga el detector y ejecuta la primera predicción sobre la imagen por defecto.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">3</span>
+      <h4>Variar umbral</h4>
+      <p>Compara los resultados al aplicar umbrales de 0.25, 0.50 y 0.75 sobre las predicciones.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">4</span>
+      <h4>Probar imagen propia</h4>
+      <p>Sube una fotografía de tu entorno e identifica al menos un acierto y un posible fallo de detección.</p>
+    </div>
+  </div>
+</section>

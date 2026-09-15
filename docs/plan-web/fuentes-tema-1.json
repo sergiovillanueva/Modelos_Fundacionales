@@ -1,0 +1,669 @@
+{
+  "inspectionDate": "2026-09-15",
+  "sourcePptx": "docs/Modelos-fundacionales-en-vision-artificial.pptx",
+  "sha256": "4ade4fe4f8e9b688de6138a0e4b9350b052eca51d461923c0788d27d135a830d",
+  "totalSlides": 94,
+  "scope": "Slides 1-3 context; 4-30 first topic; text extracted, not fact checked",
+  "slides": [
+    {
+      "slide": 1,
+      "text": [
+        "Modelos fundacionales en visión artificial",
+        "Sergio Villanueva",
+        "Máster en Deep Learning e IA Generativa",
+        "Datamecum",
+        "28 y 29 de Noviembre de 2025"
+      ],
+      "media": [
+        "../media/image-1-1.jpeg"
+      ]
+    },
+    {
+      "slide": 2,
+      "text": [
+        "Sergio Villanueva",
+        "Investigador en Visión Artificial",
+        "UV",
+        "Ing. Electrónica de Teleco",
+        "VIU",
+        "Máster en IA",
+        "Datamecum",
+        "Programa Data Science",
+        "Master Deep Learning",
+        "Eines Vision Systems",
+        "8 años",
+        "Visión artificial e IA",
+        "IDAL",
+        "Cursando Doctorado en visión y deep learning"
+      ],
+      "media": [
+        "../media/image-2-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 3,
+      "text": [
+        "Temario",
+        "Viernes: Fundamentos y ecosistemas",
+        "Detección de Objetos",
+        "Hugging Face",
+        "Modelos Fundacionales Multimodales",
+        "Sábado: Avances y aplicaciones",
+        "DINO",
+        "SAM",
+        "Otras Tareas Fundacionales de Visión"
+      ],
+      "media": [
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 4,
+      "text": [
+        "Enseñando a las máquinas a ver",
+        "La Visión Artificial es la disciplina de la inteligencia artificial que busca capacitar a las máquinas para ",
+        "extraer información significativa y comprender el mundo a partir de imágenes y vídeos digitales",
+        ", imitando la percepción humana.",
+        "La brecha semántica: ¿Cómo lo ve un humano vs. una máquina?",
+        "Visión humana:",
+        "Inmediatamente identificamos \"un gato naranja durmiendo en un sofá\" y comprendemos su contexto.",
+        "Visión computacional:",
+        "Una máquina percibe una compleja ",
+        "matriz de millones de píxeles",
+        ", cada uno con valores numéricos RGB como [255, 128, 64…]."
+      ],
+      "media": [
+        "../media/image-4-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 5,
+      "text": [
+        "Tareas principales en visión artificial",
+        "Clasificación",
+        "Identifica qué objetos están presentes en una imagen.",
+        "Detección de objetos",
+        "Localiza y clasifica los objetos individuales dentro de un recuadro delimitador.",
+        "Segmentación",
+        "Define el contorno exacto de cada objeto a nivel de píxel.",
+        "Detección de anomalías",
+        "Identifica eventos o datos inusuales que no coinciden con un patrón esperado.",
+        "Estimación de pose",
+        "Localiza puntos clave (articulaciones) en personas o animales para comprender su postura.",
+        "Otras",
+        "OCR, Estimación de profundidad, Super resolución, keypoint matching…"
+      ],
+      "media": [
+        "../media/image-5-1.gif",
+        "../media/image-5-2.png",
+        "../media/image-5-3.svg",
+        "../media/image-5-2.png",
+        "../media/image-5-3.svg",
+        "../media/image-5-6.png",
+        "../media/image-5-7.svg",
+        "../media/image-5-6.png",
+        "../media/image-5-7.svg",
+        "../media/image-5-10.png",
+        "../media/image-5-11.svg",
+        "../media/image-5-10.png",
+        "../media/image-5-11.svg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 6,
+      "text": [
+        "1. Detección de objetos",
+        "La detección de objetos va más allá de la simple clasificación. Su ",
+        "objetivo principal es localizar y clasificar múltiples objetos simultáneamente",
+        " dentro de una imagen, proporcionando para cada uno una caja delimitadora, su categoría y un score de confianza.",
+        "Diferencias clave:",
+        "Clasificación:",
+        " identifica qué hay en la imagen (una etiqueta global)",
+        "Detección:",
+        " localiza cada objeto con cajas y etiquetas múltiples",
+        "Segmentación:",
+        " delimita el contorno exacto píxel a píxel",
+        "Detección de anomalías",
+        ": hay algo raro en está imagen"
+      ],
+      "media": [
+        "../media/image-6-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 7,
+      "text": [
+        "Tipos de arquitecturas de Object Detection",
+        "Hay muchos tipos de arquitecturas, estas son las familias más importantes"
+      ],
+      "media": [
+        "../media/image-7-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 8,
+      "text": [
+        "Evolución histórica de los detectores",
+        "Los modelos de detección de objetos han evolucionado significativamente en la última década, nos centraremos en tres grandes etapas arquitectónicas:",
+        "1",
+        "Two-Stage (2014-2016)",
+        "R-CNN, Fast R-CNN, Faster R-CNN: arquitecturas de dos etapas que primero proponen regiones candidatas y luego las clasifican. Precisos pero complejos y lentos.",
+        "2",
+        "One-Stage (2015→)",
+        "YOLO revoluciona el campo: una sola red neuronal procesa la imagen completa en tiempo real, predicando cajas y clases simultáneamente mediante una cuadrícula.",
+        "3",
+        "Transformers (2020→)",
+        "DETR y RF-DETR: pipelines limpios basados en atención, sin anchors predefinidos ni supresión de no-máximos (NMS). Arquitectura más simple y generalizable."
+      ],
+      "media": [
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 9,
+      "text": [
+        "Redes neuronales convolucionales (CNNs)",
+        "Las Redes Neuronales Convolucionales (CNNs) son una parte muy importante de la visión artificial moderna. Están diseñadas para procesar datos visuales directamente, utilizando capas especializadas que detectan características como bordes, texturas y patrones en las imágenes de manera jerárquica.",
+        "Este enfoque permite a las CNNs aprender representaciones complejas de las imágenes, lo que las hace excepcionalmente potentes para estas tareas."
+      ],
+      "media": [
+        "../media/image-9-1.gif",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 10,
+      "text": [
+        "Two-Stage: Precisión a costa de complejidad",
+        "Los detectores de dos etapas, como la familia R-CNN, dividen el problema en ",
+        "dos fases secuenciales",
+        ": primero generan propuestas de regiones candidatas (lugares donde podría haber objetos), y luego clasifican y refinan cada propuesta.",
+        "ROI Pooling",
+        " acelera el proceso al extraer features de forma eficiente, pero el pipeline sigue siendo computacionalmente costoso. La generación inicial de regiones puede proponer cientos de candidatos, ralentizando la inferencia.",
+        "Trade-off característico:",
+        " excelente precisión en benchmarks, pero latencia elevada para aplicaciones en tiempo real. Ideales cuando la exactitud es más importante que la velocidad. Difícil de optimizar"
+      ],
+      "media": [
+        "../media/image-10-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 11,
+      "text": [
+        "R-CNN",
+        "Region proposal + CNN + Clasificador"
+      ],
+      "media": [
+        "../media/image-11-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 12,
+      "text": [
+        "Comparación de velocidad de RCNNs"
+      ],
+      "media": [
+        "../media/image-12-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 13,
+      "text": [
+        "YOLO: Detección como regresión directa",
+        "YOLO (You Only Look Once) reformula la detección como un ",
+        "problema de regresión único",
+        ". La imagen se divide en una cuadrícula S×S, donde cada celda predice directamente las cajas delimitadoras y las probabilidades de clase de los objetos cuyo centro cae en ella.",
+        "Ventaja clave:",
+        " una única pasada hacia adelante por la red permite velocidades de procesamiento en tiempo real (30+ FPS), manteniendo precisión competitiva. Esta arquitectura one-stage elimina la necesidad de generar propuestas de región por separado.",
+        "Cada celda predice múltiples cajas con sus scores de confianza",
+        "Las predicciones ocurren simultáneamente para toda la imagen",
+        "Ideal para aplicaciones que requieren latencia mínima"
+      ],
+      "media": [
+        "../media/image-13-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 14,
+      "text": [
+        "La Arquitectura YOLO: Velocidad y Simplicidad",
+        "Cómo el modelo procesa la imagen en una sola pasada (\"You Only Look Once\")",
+        "1. La estrategia de la cuadrícula (SxS Grid)",
+        "YOLO divide la imagen de entrada en una cuadrícula. Si el centro de un objeto cae en una celda específica, esa celda es la responsable de detectarlo.",
+        "2. Predicción simultánea (Bounding Boxes + Clases)",
+        "Cada celda predice recuadros (bounding boxes) con su ubicación, tamaño y nivel de confianza, y la categoría del objeto (mapa de probabilidad), todo al mismo tiempo.",
+        "3. Arquitectura unificada (CNN)",
+        "Una única Red Neuronal Convolucional (CNN) procesa la imagen completa, conectando directamente los píxeles de entrada con las coordenadas y clases de salida, eliminando etapas intermedias complejas."
+      ],
+      "media": [
+        "../media/image-14-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 15,
+      "text": [
+        "Evolución de la familia YOLO (2016-2024)",
+        "La serie YOLO ha transformado la detección de objetos, pasando de un concepto novedoso a un ecosistema robusto y versátil.",
+        "2016 - YOLOv1",
+        "El origen de la detección en tiempo real: un solo vistazo para detectar objetos, superando a los métodos de dos etapas.",
+        "2018 - YOLOv3",
+        "Estableció el estándar con predicción multiescala y el backbone Darknet-53, optimizando la detección de objetos pequeños.",
+        "2020 - YOLOv4",
+        "Maximizó la velocidad con CSPDarknet y 'Bag of Freebies' (e.g., Mosaic), optimizado para rendimiento en C++.",
+        "2020 - YOLOv5",
+        "Democratizó YOLO con su implementación en PyTorch, destacando por su facilidad de uso y accesibilidad.",
+        "2022 - YOLOv7",
+        "Alcanzó el estado del arte en velocidad/precisión para dispositivos Edge con la innovadora arquitectura E-ELAN.",
+        "2023 - YOLOv8 (ultralytics)",
+        "Cambio a ",
+        "Anchor-Free",
+        " y unificó la API para detección, segmentación y estimación de pose.",
+        "2024 - YOLOv9",
+        "Introdujo PGI y GELAN para resolver la pérdida de información en redes profundas sin coste computacional adicional."
+      ],
+      "media": [
+        "../media/image-15-1.png",
+        "../media/image-15-2.svg",
+        "../media/image-15-3.png",
+        "../media/image-15-4.svg",
+        "../media/image-15-5.png",
+        "../media/image-15-6.svg",
+        "../media/image-15-7.png",
+        "../media/image-15-8.svg",
+        "../media/image-15-9.png",
+        "../media/image-15-10.svg",
+        "../media/image-15-11.png",
+        "../media/image-15-12.svg",
+        "../media/image-15-13.png",
+        "../media/image-15-14.svg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 16,
+      "text": [
+        "Por qué las CNNs no son suficientes",
+        "Aunque las CNNs revolucionaron la visión artificial, presentan limitaciones arquitectónicas que restringen su capacidad para tareas más complejas, especialmente en escenarios con objetos distantes o relaciones espaciales no evidentes.",
+        "Campo receptivo limitado",
+        "Las CNNs procesan información en parches locales. Para entender relaciones a larga distancia, necesitan muchas capas, lo que aumenta la profundidad del modelo y dificulta la propagación de gradientes. Esto es ineficiente para capturar el contexto global de una imagen.",
+        "Sesgo inductivo fuerte",
+        "Asumen una fuerte localidad espacial e invarianza a traslación. Esto es útil para objetos que aparecen en cualquier lugar de la imagen, pero dificulta la modelización de relaciones abstractas o estructuras que no se ajustan a patrones de vecindad directa.",
+        "Componentes Ad-Hoc",
+        "Dependen de elementos manuales y heurísticos como los \"anchors\" predefinidos (cajas de diferente tamaño y aspecto) y el proceso de Supresión de No Máximos (NMS) para eliminar redundancia. Estos componentes añaden complejidad, hiperparámetros y son difíciles de optimizar globalmente."
+      ],
+      "media": [
+        "../media/image-16-1.png",
+        "../media/image-16-2.svg",
+        "../media/image-16-1.png",
+        "../media/image-16-2.svg",
+        "../media/image-16-1.png",
+        "../media/image-16-2.svg",
+        "../media/image-16-7.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 17,
+      "text": [
+        "DETR: Transformers para detección",
+        "DETR (DEtection TRansformer) introduce un ",
+        "paradigma completamente nuevo",
+        ": utiliza una arquitectura encoder-decoder con \"object queries\" aprendibles que predicen un conjunto fijo de objetos directamente.",
+        "Pipeline simplificado:",
+        " Un backbone (como ResNet) extrae features visuales, el encoder Transformer las procesa globalmente, y el decoder utiliza N queries (típicamente 100) para predecir N potenciales objetos, cada uno con su caja y clase.",
+        "Sin hyperparámetros de NMS que ajustar",
+        "Sin anchors dependientes del dataset",
+        "Arquitectura end-to-end diferenciable y limpia"
+      ],
+      "media": [
+        "../media/image-17-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 18,
+      "text": [
+        "Fin del NMS: matching húngaro",
+        "Una de las mayores innovaciones de DETR es la eliminación del proceso de Supresión de No Máximos (NMS) gracias al matching húngaro, simplificando radicalmente el pipeline de detección, un algoritmo de asignación bipartita que encuentra la correspondencia óptima entre predicciones y objetos reales durante el entrenamiento. Esto elimina la necesidad de anchors predefinidos y supresión de no-máximos (NMS).",
+        "YOLO (pre-NMS): predicciones redundantes",
+        "DETR: predicciones directas y únicas",
+        "Predice miles de cajas candidatas y necesita un proceso de filtrado (NMS) para eliminar las duplicadas.",
+        "Asigna una predicción única a cada objeto real utilizando un algoritmo de matching húngaro basado en un coste global."
+      ],
+      "media": [
+        "../media/image-18-1.jpeg",
+        "../media/image-18-2.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 19,
+      "text": [
+        "RF-DETR",
+        "RF-DETR representa un avance significativo al integrar eficientemente la potencia de los Transformers con innovaciones clave, superando a menudo a otros modelos en velocidad y precisión. Su diseño permite una detección de objetos en tiempo real, adaptable a diversas tareas.",
+        "Backbone DINOv2 pre-entrenado",
+        "Utiliza un potente vision transformer pre-entrenado para un reconocimiento robusto de patrones visuales, lo que facilita una rápida adaptación y reduce la necesidad de grandes volúmenes de datos para nuevas tareas.",
+        "Atención deformable eficiente",
+        "A diferencia de la autoatención estándar, este mecanismo se centra en un pequeño conjunto de puntos de muestreo clave, permitiendo procesar mapas de características de alta resolución de manera eficiente y mejorando la detección de objetos pequeños.",
+        "Pipeline modular y sin anchors",
+        "Su diseño flexible elimina la necesidad de anchors predefinidos y la supresión de no-máximos (NMS), simplificando la arquitectura y haciéndola más generalizable y fácil de optimizar para distintas aplicaciones."
+      ],
+      "media": [
+        "../media/image-19-1.png",
+        "../media/image-19-2.svg",
+        "../media/image-19-3.png",
+        "../media/image-19-4.svg",
+        "../media/image-19-1.png",
+        "../media/image-19-2.svg",
+        "../media/image-19-7.png",
+        "../media/image-19-8.svg",
+        "../media/image-19-1.png",
+        "../media/image-19-2.svg",
+        "../media/image-19-11.png",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 20,
+      "text": [
+        "RF-DETR",
+        "El funcionamiento de RF-DETR se basa en una arquitectura de transformer diseñada para la detección de objetos, procesando la información visual a través de una serie de pasos secuenciales y refinamientos.",
+        "01",
+        "Combinación de features multi-escala",
+        "RF-DETR integra features provenientes de diferentes escalas de resolución de la imagen. Esto se realiza antes de que los datos lleguen al encoder del Transformer, asegurando una comprensión contextual rica desde el principio.",
+        "02",
+        "Alineación con atención deformable en el encoder",
+        "El encoder del Transformer procesa estas features multiescala y utiliza un mecanismo de atención deformable. Este enfoque permite alinear y enfocar eficientemente las características más relevantes, ajustándose dinámicamente.",
+        "03",
+        "Interacción de queries con Cross-Attention",
+        "Las \"object queries\" interactúan con los niveles de features del encoder a través de un mecanismo de cross-attention. Esto permite que cada query acceda a información relevante de diversas escalas para proponer ubicaciones.",
+        "04",
+        "Refinamiento de predicciones en el decoder",
+        "El decoder de RF-DETR consta de múltiples capas que refinan iterativamente las predicciones de los objetos. Cada capa toma las predicciones de la anterior y las mejora.",
+        "05",
+        "Salida final de bounding boxes",
+        "Finalmente, el modelo genera directamente las bounding boxes para cada objeto, sin la necesidad de post-procesamiento como NMS, lo que agiliza el proceso de detección."
+      ],
+      "media": [
+        "../media/image-20-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 21,
+      "text": [
+        "Por qué NO usamos ultralytics en clase",
+        "Ultralytics, a pesar de su popularidad, presenta varias características que lo hacen inadecuado para el entorno académico y de investigación que buscamos promover, especialmente porque queremos fomentar el uso de código verdaderamente open source, transparente y con licencias que no limiten la investigación ni el desarrollo industrial.",
+        "Licencia problemática",
+        "La combinación de licencias AGPL y comercial fuerza a los usuarios a liberar su código o a pagar, lo que contradice el espíritu de un verdadero open-source y limita su uso comercial.",
+        "Apropiación de marca YOLO",
+        "La designación de sus versiones (YOLOv5-YOLOv11) como \"YOLO oficial\" es engañosa, ya que no provienen de la familia original de Joseph Redmon ni de la línea académica, causando desinformación generalizada.",
+        "Código no modular",
+        "El código está fuertemente orientado a su interfaz de línea de comandos (CLI), lo que dificulta su estudio, comprensión interna y adaptación para fines de investigación o proyectos más personalizados.",
+        "Limitaciones académicas",
+        "Su enfoque lo hace poco apto para la enseñanza y la investigación seria. La falta de modularidad y la escasa reproducibilidad científica lo alejan de los estándares de los papers académicos."
+      ],
+      "media": [
+        "../media/image-21-1.png",
+        "../media/image-21-2.svg",
+        "../media/image-21-3.png",
+        "../media/image-21-4.svg",
+        "../media/image-21-5.png",
+        "../media/image-21-6.svg",
+        "../media/image-21-7.png",
+        "../media/image-21-8.svg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 22,
+      "text": [
+        "Por qué SÍ usamos RF-DETR en clase",
+        "RF-DETR es la base de nuestro currículo de detección de objetos por su diseño avanzado, su alineación con los principios de la investigación y la enseñanza moderna en visión artificial, y porque es un proyecto completamente open source bajo licencia Apache 2.0.",
+        "Licencia apache 2.0",
+        "Libre para industria, investigación y enseñanza. Sin obligaciones ocultas que limiten la innovación o el despliegue de proyectos.",
+        "Arquitectura moderna y clara",
+        "Basado en la familia DETR, ofrece una comprensión profunda de cómo funciona un detector de objetos de vanguardia, sin la complejidad de sistemas heredados.",
+        "Código limpio y modular",
+        "Diseñado para ser fácil de leer, modificar y explicar a alumnos, facilitando la experimentación y el aprendizaje de la implementación práctica.",
+        "Muy buen rendimiento",
+        "Ofrece una velocidad de inferencia y entrenamiento superior a muchos modelos YOLO modernos, optimizando los tiempos de desarrollo y prueba en el aula."
+      ],
+      "media": [
+        "../media/image-21-1.png",
+        "../media/image-21-2.svg",
+        "../media/image-22-3.png",
+        "../media/image-22-4.svg",
+        "../media/image-22-5.png",
+        "../media/image-22-6.svg",
+        "../media/image-22-7.png",
+        "../media/image-22-8.svg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 23,
+      "text": [
+        "RF-DETR vs YOLO en producción",
+        "La elección entre RF-DETR y YOLO depende de tus ",
+        "prioridades específicas de producción",
+        ".",
+        "Consideraciones prácticas:",
+        "Licencia:",
+        " YOLO suele usar AGPL (obliga a publicar código modificado); RF-DETR usa Apache 2.0 (más permisiva)",
+        "Mantenibilidad:",
+        " RF-DETR evita el ajuste manual de anchors y thresholds de NMS",
+        "Adopción:",
+        " YOLO tiene ecosistema más maduro y extenso"
+      ],
+      "media": [
+        "../media/image-23-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 24,
+      "text": [
+        "IoU (Intersection over Union)",
+        "La ",
+        "Intersection over Union (IoU)",
+        " es una métrica fundamental que mide el solapamiento entre dos cajas delimitadoras: una caja predicha por nuestro modelo y una caja de verdad (ground truth). Esta métrica es crucial para determinar si una predicción es correcta (True Positive) o no (False Positive), y su valor se encuentra en un rango de 0 (sin solapamiento) a 1 (solapamiento perfecto).",
+        "Para visualizarlo, considera una caja delimitadora predicha por el modelo (en rojo) y la caja de verdad que marca la ubicación real de un objeto (en verde). La IoU calcula el área donde ambas cajas se superponen, dividida por el área total que ocupan ambas cajas combinadas.",
+        "Umbrales típicos de IoU",
+        "IoU > 0.5:",
+        " Es el umbral común para considerar una detección como True Positive (TP), especialmente utilizado en el conjunto de datos COCO.",
+        "IoU > 0.75:",
+        " Un umbral más estricto que se usa para evaluar la alta precisión de las detecciones.",
+        "IoU < umbral:",
+        " Cualquier detección con un IoU inferior al umbral establecido se clasifica como False Positive (FP).",
+        "¿Por qué es importante?",
+        "Sin IoU, no podríamos distinguir eficazmente entre True Positives (detecciones correctas) y False Positives (falsas alarmas).",
+        "Es la base para el cálculo de métricas más complejas como la Precisión, el Recall, la Average Precision (AP) y la mean Average Precision (mAP).",
+        "Determina directamente la calidad y la exactitud espacial de las detecciones de objetos de nuestro modelo."
+      ],
+      "media": [
+        "../media/image-24-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 25,
+      "text": [
+        "Fundamentos: TP, FP, FN (y por qué no hay TN)",
+        "TP (True positives)",
+        "Detecciones correctas: cajas predichas que coinciden con objetos reales (IoU > umbral)",
+        "FP (False positives)",
+        "Falsas alarmas: cajas predichas donde no hay objeto real o con IoU muy bajo",
+        "FN (False negatives)",
+        "Objetos perdidos: objetos reales que el modelo no detectó",
+        "Por qué NO existen True Negatives (TN) en object detection",
+        "La métrica de True Negatives, común en problemas de clasificación binaria, no aplica de la misma manera en la detección de objetos:",
+        "En clasificación binaria:",
+        " TN = \"predice que no hay gato y efectivamente no hay gato\".",
+        "En detección de objetos:",
+        " El modelo predice cajas delimitadoras en ubicaciones específicas donde cree que hay un objeto.",
+        "No existe el concepto explícito de \"predecir ausencia de objeto en una ubicación\".",
+        "Las ubicaciones donde no se predice nada son infinitas e impracticables de medir.",
+        "Por esta razón, las métricas en detección de objetos se enfocan únicamente en ",
+        "TP, FP y FN",
+        ", ya que son los resultados relevantes de las predicciones del modelo."
+      ],
+      "media": [
+        "../media/image-25-1.png",
+        "../media/image-25-2.svg",
+        "../media/image-25-3.png",
+        "../media/image-25-4.svg",
+        "../media/image-25-5.png",
+        "../media/image-25-6.svg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 26,
+      "text": [
+        "Métricas de evaluación: precision y recall",
+        "En la detección de objetos, entender la calidad de las predicciones va más allá de solo saber si se detectó algo. Precision y recall nos dan una visión completa de la fiabilidad y exhaustividad del modelo.",
+        "La importancia de la precisión",
+        "Mide la ",
+        "confiabilidad de las detecciones positivas",
+        ". Un detector con alta precisión minimiza los falsos positivos (detectar algo que no está ahí o identificarlo incorrectamente). Es crucial en aplicaciones donde un error de detección tiene costes elevados, como en inspección de calidad o sistemas de seguridad.",
+        "Esto responde a la pregunta: \"De todas mis predicciones, ¿cuántas son correctas?\"",
+        "La importancia del recall",
+        "Mide la ",
+        "capacidad del modelo para encontrar todos los objetos relevantes",
+        " en una imagen. Un alto recall significa pocos falsos negativos (no detectar un objeto que sí está presente). Es vital en escenarios donde es crítico no omitir ningún objeto, como la detección de personas en vigilancia o tumores en imágenes médicas.",
+        "Esto responde a la pregunta: \"De todos los objetos reales, ¿cuántos detecté?\"",
+        "Ejemplos prácticos de interpretación:",
+        "Si un modelo tiene una precision alta (por ejemplo, 0.9), significa que el 90% de las detecciones que realiza son correctas. Es muy fiable en lo que afirma haber encontrado.",
+        "Si un modelo tiene un Recall alto (por ejemplo, 0.8), significa que detectó el 80% de todos los objetos que realmente estaban presentes en las imágenes. Es bueno para no perder objetos.",
+        "Es importante entender que Precision y Recall a menudo presentan un ",
+        "trade-off",
+        ". Mejorar una métrica a menudo puede llevar a la disminución de la otra. Por ejemplo, si un modelo es muy agresivo en sus detecciones para asegurar que no se pierda nada (alto Recall), podría también generar más falsas alarmas (baja Precision). La elección del equilibrio adecuado depende de los requisitos específicos de la aplicación."
+      ],
+      "media": [
+        "../media/image-26-1.png",
+        "../media/image-26-2.svg",
+        "../media/image-26-3.png",
+        "../media/image-26-1.png",
+        "../media/image-26-2.svg",
+        "../media/image-26-6.png",
+        "../media/image-26-7.png",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 27,
+      "text": [
+        "Métricas de evaluación: AP y mAP",
+        "AP (Average Precision):",
+        " Representa el área bajo la curva Precision-Recall. Mide la habilidad del modelo para detectar todos los objetos relevantes (recall alto) mientras mantiene un número bajo de falsos positivos (precisión alta). Un valor de AP más alto indica un mejor rendimiento.",
+        "mAP (mean Average Precision):",
+        " Es la métrica estándar para evaluar detectores de objetos. Se calcula promediando los valores de AP para todas las clases de objetos detectadas, y a menudo, en diferentes umbrales de IoU (ej., mAP@0.5 o mAP@[0.5:0.95])."
+      ],
+      "media": [
+        "../media/image-27-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 28,
+      "text": [
+        "Límites prácticos: COCO y el mundo real",
+        "El dataset COCO, con sus 80 clases estándar (persona, coche, perro, silla...), es excelente para benchmarking pero normalmente ",
+        "no cubre las necesidades reales de industria o dominios especializados",
+        ".",
+        "Problema del dominio:",
+        " Una fábrica necesita detectar \"tornillo oxidado\", \"conector suelto\", \"clip roto\" o \"soldadura defectuosa\". Estos objetos específicos no existen en COCO.",
+        "Coste de adaptación:",
+        " Re-anotar miles de imágenes para nuevas categorías es caro y lento. Entrenar desde cero o fine-tunear requiere tiempo de GPU, experimentación y validación.",
+        "Esta limitación motiva la necesidad de ",
+        "métodos más flexibles",
+        ": detectores guiados por texto (zero-shot), modelos fundacionales multimodales, y técnicas que puedan adaptarse rápidamente a nuevos dominios sin anotación exhaustiva."
+      ],
+      "media": [
+        "../media/image-28-1.jpeg",
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 29,
+      "text": [
+        "Buenas prácticas al evaluar detectores",
+        "Evaluar detectores va más allá de mirar mAP en COCO. Para deployment real, debes:",
+        "1. Medir en tu dominio específico:",
+        " Crea un conjunto de validación representativo de tus datos reales. Un modelo con 60% mAP en COCO puede tener 40% o 80% en tu caso de uso particular.",
+        "2. Balancear velocidad vs precisión:",
+        " Un detector con 2% más de AP pero 50% más lento puede no valer la pena si necesitas procesar 30 FPS. Mide latencia end-to-end, no solo teóricos.",
+        "3. Analizar errores cualitativamente:",
+        " Inspecciona visualmente los casos de:",
+        "Falsos Positivos (FP):",
+        " detecciones donde no hay objeto",
+        "Falsos Negativos (FN):",
+        " objetos que el modelo no detectó",
+        "Casos límite:",
+        " objetos parcialmente ocluidos, muy pequeños, o en condiciones de iluminación extrema",
+        "Los patrones de error te dirán si necesitas más datos, data augmentation específico, o cambiar de arquitectura."
+      ],
+      "media": [
+        "../media/image-2-2.png"
+      ]
+    },
+    {
+      "slide": 30,
+      "text": [
+        "El siguiente paso",
+        "La evolución de la Visión Artificial nos ayuda a superar limitaciones clave de estos modelos, abriendo paso a nuevas arquitecturas más flexibles y potentes.",
+        "Limitaciones actuales",
+        "Solo 80 clases COCO",
+        "No entienden lenguaje",
+        "Requieren reentrenamiento",
+        "Modelos multimodales",
+        "Entienden texto + imagen",
+        "Zero-shot con lenguaje natural",
+        "Sin reentrenamiento constante"
+      ],
+      "media": [
+        "../media/image-30-1.png",
+        "../media/image-30-2.png",
+        "../media/image-2-2.png"
+      ]
+    }
+  ],
+  "originalAssets": [
+    "docs/img/Datamecum_LOGO fondo azul.png",
+    "docs/img/Datamecum_LOGO fondo transparente.png",
+    "docs/img/tema 1/cars_od.gif",
+    "docs/img/tema 1/detr1.webp",
+    "docs/img/tema 1/detr2.webp",
+    "docs/img/tema 1/history_od.jpg",
+    "docs/img/tema 1/od.jpg",
+    "docs/img/tema 1/pr_ap.webp",
+    "docs/img/tema 1/Raleway,Roboto.zip",
+    "docs/img/tema 1/Raleway.zip",
+    "docs/img/tema 1/rf_vs_yolo.png",
+    "docs/img/tema 1/There is a car.gif",
+    "docs/img/tema 1/yolo_design.webp",
+    "docs/img/tema 3/cat_dog_distance.avif",
+    "docs/img/tema4/dino v3 evolution.gif",
+    "docs/img/tema4/dino v3.gif",
+    "docs/img/tema5/sam_evolution.gif"
+  ],
+  "notebooks": [
+    "1_OD.ipynb",
+    "2_HF_Intro.ipynb",
+    "3_Multimodal.ipynb",
+    "4_DINO.ipynb",
+    "5_SAM.ipynb",
+    "6_Otras_tareas.ipynb"
+  ]
+}
