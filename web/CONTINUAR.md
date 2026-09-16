@@ -2,7 +2,7 @@
 
 ## Prompt listo para usar
 
-> Continúa la migración del PowerPoint a la web. Lee `INSTRUCCIONES.md`, `plan/ESTADO.md`, `plan/AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md`, `plan/AUDITORIA-TEMAS-02-05.md` y `plan/MIGRACION-POWERPOINT.md`, tomando `web/` como directorio de trabajo. Ejecuta **solo la siguiente acción pendiente** del tema activo y completa su comprobación antes de terminar. Consulta las diapositivas completas, el PDF, los recursos y el notebook del lote. Conserva el diseño actual: portada breve, logo Datamecum visible, una sola navegación por temas, un concepto por pantalla y avance con Anterior/Siguiente. Incorpora todas las ideas docentes en pasos breves; el total de pantallas debe surgir de las ideas y nunca de un máximo artificial. Reutiliza imágenes y animaciones que enseñan; no copies iconos decorativos ni la marca de agua de Gamma. No reutilices una misma imagen para conceptos distintos salvo que sea una comparación progresiva explícita. Registra cada diapositiva y cualquier corrección en `plan/COBERTURA.json`, registra recursos y afirmaciones en `content/tema-XX/sources.json`, y deja actualizado `plan/ESTADO.md` con resultados, pendientes y la siguiente acción. Solo puedes escribir dentro de `web/`. No cambies el diseño general, no modifiques los originales, no descargues modelos ni publiques. Resuelve las decisiones rutinarias por tu cuenta; pregunta únicamente por un material imprescindible que realmente falte o una decisión que no se pueda inferir de estas instrucciones.
+> Mantén y mejora el curso web ya migrado. Lee `INSTRUCCIONES.md`, `plan/ESTADO.md`, las auditorías y `plan/COBERTURA.json`, tomando `web/` como directorio de trabajo. Los seis temas y las 94 diapositivas ya tienen destino: no rehagas ni resumas contenido sin una petición concreta del profesor. Para cualquier cambio, contrasta PPTX, PDF, recurso y notebook afectados; conserva la portada breve, el logo Datamecum visible, una sola navegación por temas, un concepto por pantalla y avance con Anterior/Siguiente. Reutiliza imágenes y animaciones que enseñan; no copies iconos decorativos ni marcas de agua. Registra cambios de cobertura, fuentes y correcciones, actualiza `plan/ESTADO.md`, regenera el PDF afectado y revisa web, móvil y presentación. Solo puedes escribir dentro de `web/`. No modifiques los originales, no descargues modelos ni publiques salvo petición expresa.
 
 Si este repositorio contiene directamente el contenido de `web/`, sus rutas empiezan en la raíz actual. No crear una segunda carpeta `web/web/`.
 
@@ -12,7 +12,7 @@ Si este repositorio contiene directamente el contenido de `web/`, sus rutas empi
 2. [Estado](plan/ESTADO.md): punto exacto para continuar.
 3. [Plan de migración](plan/MIGRACION-POWERPOINT.md): proceso, lotes, fidelidad y revisión.
 4. [Auditoría completa](plan/AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md): pérdidas, repeticiones y correcciones ya aplicadas.
-5. [Auditoría 02–05](plan/AUDITORIA-TEMAS-02-05.md): nivel de detalle y correcciones que sirven de referencia.
+5. [Auditoría 02–05](plan/AUDITORIA-TEMAS-02-05.md) y [auditoría 06](plan/AUDITORIA-TEMA-06.md): nivel de detalle, decisiones y correcciones de referencia.
 6. [Cobertura](plan/COBERTURA.json): filtrar las diapositivas del lote, sin volcar el archivo entero.
 7. [README.md](README.md): comandos y estructura, cuando haga falta ejecutarlos.
 
@@ -20,6 +20,6 @@ El PPTX es la fuente de contenido. La web actual es la referencia de diseño. La
 
 ## Alcance actual
 
-Los **temas 01–05 están adaptados** y el tema 06 sigue pendiente. «Continuar» significa tomar la siguiente acción de `ESTADO.md`, sin resumir ni rehacer temas ya auditados salvo que el profesor señale un problema concreto.
+Los **temas 01–06 están adaptados**, sus PDF existen y las 94 diapositivas tienen destino. «Continuar» significa resolver la petición concreta del profesor o una incidencia registrada en `ESTADO.md`; no hay un siguiente lote de migración automático.
 
 No generar tareas nuevas, subagentes, commits o despliegues por el mero hecho de leer este documento.

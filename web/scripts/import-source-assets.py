@@ -51,6 +51,16 @@ STATIC = {
         "image-74-1.jpeg": "arquitectura-sam2.jpeg",
         "image-75-3.jpeg": "arquitectura-sam3.jpeg",
     },
+    "tema-06": {
+        "image-81-2.jpeg": "pose-keypoints.jpeg",
+        "image-83-10.jpeg": "pose-evaluacion.jpeg",
+        "image-84-13.jpeg": "pose-aplicaciones.jpeg",
+        "image-87-2.jpeg": "superresolucion.jpeg",
+        "image-89-5.jpeg": "eliminacion-fondo.jpeg",
+        "image-90-9.jpeg": "image-matching.jpeg",
+        "image-92-1.jpeg": "profundidad-rgb.jpeg",
+        "image-92-2.jpeg": "profundidad-mapa.jpeg",
+    },
 }
 
 ANIMATED = {

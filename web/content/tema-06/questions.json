@@ -1,0 +1,35 @@
+[
+  {
+    "id": "q601",
+    "sectionId": "oks",
+    "prompt": "Dos articulaciones fallan cinco píxeles. ¿Penaliza OKS siempre igual?",
+    "options": [
+      {"id": "a", "text": "Sí, solo cuenta la distancia en píxeles.", "explanation": "OKS también considera la escala de la persona y la tolerancia del punto."},
+      {"id": "b", "text": "No, depende de escala y articulación.", "explanation": "Exacto: normaliza por tamaño y usa una tolerancia específica por keypoint."},
+      {"id": "c", "text": "No, solo cuenta cuántas personas hay.", "explanation": "El número de personas no sustituye la comparación de puntos."}
+    ],
+    "correctOptionId": "b"
+  },
+  {
+    "id": "q602",
+    "sectionId": "superresolucion-usos",
+    "prompt": "Una superresolución muestra una mancha nueva en una imagen médica. ¿Qué concluyes?",
+    "options": [
+      {"id": "a", "text": "La mancha estaba en el original.", "explanation": "El modelo puede generar detalle plausible que no estaba observado."},
+      {"id": "b", "text": "Hay que validarla contra el original y el proceso clínico.", "explanation": "Exacto: la mejora visual no convierte el detalle generado en evidencia."},
+      {"id": "c", "text": "Una mayor resolución siempre elimina el error.", "explanation": "Más píxeles no garantizan mayor fidelidad."}
+    ],
+    "correctOptionId": "b"
+  },
+  {
+    "id": "q603",
+    "sectionId": "profundidad-metrica",
+    "prompt": "Necesitas saber si un obstáculo está a 1,5 metros. ¿Basta un mapa relativo normalizado?",
+    "options": [
+      {"id": "a", "text": "Sí, porque el color ya representa metros.", "explanation": "El color solo visualiza valores; no fija una escala física."},
+      {"id": "b", "text": "Sí, si la imagen tiene buena resolución.", "explanation": "La resolución no aporta por sí sola la escala métrica."},
+      {"id": "c", "text": "No, hace falta escala métrica o calibración.", "explanation": "Exacto: necesitas un modelo métrico, calibración u otra referencia de escala."}
+    ],
+    "correctOptionId": "c"
+  }
+]

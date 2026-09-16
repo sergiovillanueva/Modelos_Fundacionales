@@ -1,10 +1,16 @@
 import {initMediaControls} from './media.js';
 import {initQuizzes} from './quiz.js';
 import {initIouDemo} from './iou-demo.js';
+import {initThresholdLab} from './threshold-lab.js';
+import {initPromptLab} from './prompt-lab.js';
+import {initSimilarityLab} from './similarity-lab.js';
 
 initMediaControls();
 initQuizzes();
 initIouDemo();
+initThresholdLab();
+initPromptLab();
+initSimilarityLab();
 
 const panels = [...document.querySelectorAll('.reading-content > section')];
 const previous = document.querySelector('[data-step-previous]');
@@ -33,7 +39,12 @@ function showStep(index, {navigate = false} = {}) {
   const panel = panels[activeIndex];
   previous.disabled = activeIndex === 0;
   next.hidden = activeIndex === panels.length - 1;
-  counter.textContent = `${activeIndex + 1} / ${panels.length} · ${panel.dataset.title}`;
+  counter.replaceChildren(
+    document.createTextNode(`${activeIndex + 1} / ${panels.length} · `),
+    Object.assign(document.createElement('em'), {textContent: panel.dataset.title})
+  );
+  const advance = panels.length > 1 ? activeIndex / (panels.length - 1) : 1;
+  counter.closest('.lesson-nav')?.style.setProperty('--step-progress', String(advance));
   presentation.href = `${presentation.getAttribute('href').split('#')[0]}#/${panel.id}`;
   if (navigate) {
     if (location.hash !== `#${panel.id}`) history.pushState(null, '', `#${panel.id}`);

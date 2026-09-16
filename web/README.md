@@ -2,7 +2,7 @@
 
 Sitio web estático interactivo del curso, desarrollado con HTML semántico, CSS modular, JavaScript en módulos estándar (ESM) y Reveal.js (modo presentación).
 
-Una portada breve presenta el curso y abre el tema 01 con **Empezar**. Los temas están arriba y cada tema se recorre con **Anterior / Siguiente**, una idea por pantalla y Colab al final. El menú **Material** reúne el PDF y la presentación. Los temas 01–05 tienen contenido; el tema 06 sigue preparado como pendiente.
+Una portada breve presenta el curso y abre el tema 01 con **Empezar**. Los seis temas están arriba y cada uno se recorre con **Anterior / Siguiente**, una idea por pantalla y Colab al final. El menú **Material** reúne el PDF y la presentación.
 
 Antes de crear o ampliar un tema, consulta [INSTRUCCIONES.md](INSTRUCCIONES.md). Ahí están las reglas visuales, los límites de texto, la estructura de las actividades y la lista de comprobación que deben seguir personas y agentes de programación.
 
@@ -17,7 +17,7 @@ web/
   src/
     styles/            CSS compartido, aula, presentación e impresión (print.css)
     js/                Módulos JavaScript de interacción y montaje
-    lib/               Lógica de evaluación pura y tests
+    lib/               Lógica pura y comprobable: métricas, embeddings y prompting
   public/
     assets/            Recursos estáticos (logos, diagramas, demostraciones)
     fonts/             Tipografías locales (Raleway, Roboto con licencias OFL)
@@ -31,20 +31,20 @@ web/
 
 - `npm run build`: Genera el sitio estático en `dist/` a partir del contenido y plantillas.
 - `npm run check`: Valida los datos básicos del curso, identificadores de temas, archivos de salida y ausencia de marcadores sin resolver.
-- `npm test`: Ejecuta los tests unitarios con el ejecutor nativo `node:test`.
+- `npm test`: Ejecuta los tests unitarios con el ejecutor nativo `node:test`, incluidas las métricas de detección y la similitud coseno.
 - `npm run preview`: Inicia un servidor HTTP local en `http://localhost:4173` para previsualizar `dist/`.
 - `npm run test:e2e`: Ejecuta las pruebas automatizadas de navegador con Playwright.
-- `node tests/visual-check.mjs`: Captura la portada y cada paso del tema 01 en escritorio, móvil y presentación, en `test-results/visual/`.
+- `node tests/visual-check.mjs <id-del-tema>`: captura cada paso del tema indicado en escritorio, móvil y presentación. Sin argumento usa `01-deteccion`.
 - `npm run pdf`: Regenera el PDF A4 del tema 01.
-- `npm run pdf:tema-02`, `pdf:tema-03`, `pdf:tema-04` y `pdf:tema-05`: regeneran el PDF A4 del tema correspondiente.
-- `python scripts/audit-source.py`: extrae texto y renderiza las diapositivas 31–79 para una auditoría local en `tmp/`.
+- `npm run pdf:tema-02` a `npm run pdf:tema-06`: regeneran el PDF A4 del tema correspondiente.
+- `python scripts/audit-source.py`: extrae texto y renderiza por defecto las diapositivas 31–93 para una auditoría local en `tmp/`; acepta `--start`, `--end` y `--out`.
 - `python scripts/import-source-assets.py`: vuelve a importar las imágenes seleccionadas y convierte las animaciones a WebP controlable.
 
 Trabajar desde `web/`. Tras editar contenido o estilos, ejecutar `npm run build` y `npm run check`. Ejecutar tests y auditoría visual proporcionados al comportamiento que haya cambiado; no repetir suites completas sin motivo. Regenerar e inspeccionar el PDF del tema afectado.
 
 El HTML de `content/tema-XX/sections.html` es la fuente de los tres formatos. `.print-detail` añade matices solo al PDF y las preguntas incluyen su solución impresa. Las fuentes y las imágenes se sirven localmente. No hay backend, cuentas, resultados compartidos ni modelos ejecutándose en la web.
 
-Los PDF existen para los temas 01–05. El enlace de Colab abre el notebook externo; los tests de esta web no ejecutan ese cuaderno ni comprueban la disponibilidad de GPU.
+Los PDF existen para los temas 01–06. El enlace de Colab abre el notebook externo; los tests de esta web no ejecutan ese cuaderno ni comprueban la disponibilidad de GPU.
 
 ## Despliegue en Cloudflare Pages
 

@@ -2,7 +2,9 @@
 
 > **Para el modelo ejecutor:** trabajar lote a lote. Si está disponible, utilizar `superpowers:executing-plans` para la ejecución; estas instrucciones son también autosuficientes para un modelo sin esa skill. Los pasos con casillas describen la comprobación de cada entrega. El estado persistente se guarda en `ESTADO.md` y `COBERTURA.json`.
 
-**Objetivo:** transformar todo el contenido docente del PPTX en un curso público, visual, sencillo e interactivo, empezando por completar el tema 01.
+**Objetivo:** transformar todo el contenido docente del PPTX en un curso público, visual, sencillo e interactivo.
+
+**Estado a 16 de septiembre de 2026:** migración completada. Las 94 diapositivas tienen destino editorial o didáctico; este documento queda como procedimiento para revisiones y ampliaciones.
 
 **Arquitectura:** conservar el generador estático actual. Una única fuente HTML por tema produce la lección guiada, Reveal.js y el PDF. Los ejercicios ligeros se resuelven en el navegador; los modelos se ejecutan en el Colab de cada alumno.
 
@@ -14,7 +16,7 @@
 
 1. Las nuevas instrucciones del profesor prevalecen; después, `INSTRUCCIONES.md` y este plan.
 2. Escribir únicamente dentro de `web/`. Leer PPTX, PDF, imágenes y notebooks del repositorio está permitido. Conservar originales y cambios del usuario.
-3. Primero completar el tema 01, revisarlo y pulirlo. Los demás siguen preparados en el registro y en la arquitectura, sin pantallas vacías ni contenido inventado.
+3. Conservar el tema 01 como referencia del recorrido aprobado y las auditorías 02–06 como referencia de densidad.
 4. Trabajar en lotes pequeños completos. No dejar un lote a medias por pasar a otro más atractivo.
 5. No instalar frameworks, introducir backend, cuentas, analítica, clasificaciones de alumnos ni almacenamiento compartido.
 6. No descargar pesos de Hugging Face, ejecutar entrenamiento ni consumir GPU para construir o comprobar la web.
@@ -137,7 +139,7 @@ Los rangos se han obtenido de la exportación de 94 diapositivas. Las etiquetas 
 
 G-A se resuelve como comprobación editorial al completar el tema 01; la primera entrega de contenido sigue siendo T1-A. G-B se cierra al final de la migración.
 
-**No desarrollar temas futuros solo por estar listados.** Al terminar T1-I, preparar la revisión del tema 01. Activar el siguiente tema cuando el profesor indique continuar con él tras esa revisión.
+Los lotes T1–T6 y los destinos generales G-A/G-B ya están cerrados. Cualquier trabajo posterior parte de una petición concreta, una revisión docente o una ampliación explícita.
 
 ## 5. Procedimiento obligatorio de cada lote
 

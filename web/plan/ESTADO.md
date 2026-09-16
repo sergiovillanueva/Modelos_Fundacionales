@@ -4,68 +4,97 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 
 ## Próxima acción
 
-- **Temas revisables:** 01–05.
-- **Siguiente tema pendiente:** 06, otras tareas de visión, diapositivas 80–93 y `6_Otras_tareas.ipynb`.
-- **Antes de continuar:** el profesor puede revisar la nueva densidad de los temas 02–05. No reducirlos otra vez para ahorrar pantallas.
+- **Migración del curso:** completada; no existe un siguiente lote automático.
+- **Siguiente trabajo válido:** una corrección concreta del profesor, revisión docente final o publicación cuando se solicite.
+- **Regla de continuidad:** no resumir ni rehacer temas ya cotejados para reducir pantallas. Mantener una idea por pantalla y actualizar cobertura, fuentes, PDF y evidencia del tema afectado.
 
 ## Estado real
 
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 26 pantallas, 7 preguntas, 2 animaciones, IoU y Colab |
+| Tema 01 · Detección | 27 pantallas, 7 preguntas, 2 animaciones, IoU, umbral en vivo y Colab |
 | Tema 02 · Hugging Face | 12 pantallas, 3 preguntas, 2 recursos y Colab |
-| Tema 03 · Multimodal | 19 pantallas, 3 preguntas, 9 recursos y Colab |
+| Tema 03 · Multimodal | 20 pantallas, 3 preguntas, 9 recursos, similitud coseno en vivo y Colab |
 | Tema 04 · DINO | 20 pantallas, 3 preguntas, 5 animaciones, 9 imágenes y Colab |
-| Tema 05 · SAM | 14 pantallas, 3 preguntas, 1 animación, 5 imágenes y Colab |
-| Tema 06 · Más visión | Pendiente |
-| Cobertura PPTX | Diapositivas 4–79 con destino; 31–79 reauditas contra PPTX y PDF |
-| Fuentes | `content/tema-01/sources.json` a `content/tema-05/sources.json` |
-| PDFs | Temas 01–05 disponibles; 02–05 regenerados e inspeccionados tras la ampliación |
+| Tema 05 · SAM | 15 pantallas, 3 preguntas, 1 animación, 5 imágenes, prompts por puntos y Colab |
+| Tema 06 · Más visión | 19 pantallas, 3 preguntas, 8 imágenes y Colab |
+| Cobertura PPTX | 94/94 diapositivas con destino; 77 revisadas y 17 adaptadas |
+| Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
+| PDFs | Temas 01–06 disponibles y regenerados: 27, 12, 20, 20, 15 y 19 páginas |
 
-## Revisión de fidelidad del 16 de septiembre
+## Tema 06 · cierre de la migración
 
-Se aplicó la auditoría completa de PPTX, PDF y web sin cambiar el número ni el orden de pantallas:
+Las diapositivas 80–93 y las 27 celdas de `6_Otras_tareas.ipynb` se distribuyen en 19 pasos breves:
 
-- Tema 01: restauradas la cronología histórica, RPN/ROI Pooling, los tres mecanismos de YOLOv1, los hitos de YOLOv1–v9, las decisiones de CNN/DETR y el flujo de RF-DETR.
-- Tema 01: `historia` deja de repetir la taxonomía de `familias`; `umbral` usa una escala propia y `ap-map` conserva la curva precisión-recall.
-- Tema 01: el cierre vuelve a conectar detectores de vocabulario cerrado con multimodalidad y zero-shot.
-- Tema 04: t-SNE/UMAP y la sección `similitud` quedan explicados y registrados en cobertura.
-- Tema 05: SAM 3 recupera Presence Token, detector y tracker.
-- Temas 02–05: los pasos de Colab incluyen contexto de estudio en el PDF sin cargar la interfaz web.
+- Pose: COCO-17, pipeline top-down, comparación con bottom-up y una etapa, familias de modelos, OKS, aplicaciones y oclusiones.
+- OCR: localización, reconocimiento, estructura y elección entre EasyOCR, TrOCR y VLM según la salida.
+- Superresolución: Swin2SR, aplicaciones y el riesgo de confundir detalle generado con evidencia.
+- Eliminación de fondo: máscara suave, canal alfa y revisión de bordes difíciles.
+- Matching y 3D: detector, matcher, verificación geométrica, fotogrametría, SLAM y panoramas.
+- Profundidad: Depth Anything V2, aplicaciones y separación entre profundidad relativa y métrica.
+- Colab: cinco tareas ejecutables por separado y ampliación para combinar dos pipelines.
 
-La fuente del cotejo y las decisiones se documentan en [AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md](AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md).
+La diapositiva 94 se integra en la práctica final como cierre; las diapositivas 1–3 se resuelven mediante portada, créditos y navegación. Las correcciones y omisiones intencionales se detallan en [AUDITORIA-TEMA-06.md](AUDITORIA-TEMA-06.md).
 
-## Auditoría de los temas 02–05
+## Revisión visual e interactiva del 16 de septiembre
 
-La versión anterior resumía 49 diapositivas del PPTX en 34 pantallas y solo conservaba ocho imágenes. La revisión actual recupera mecanismo, arquitectura, límites, elección y recursos fuente sin cambiar la interfaz general. El detalle completo está en [AUDITORIA-TEMAS-02-05.md](AUDITORIA-TEMAS-02-05.md).
+Encargo del profesor: dejar la web más clara y moderna y añadir actividades que enseñen, sin multiplicar las pantallas. Se conservan la portada, el logo, la fila única de temas, la barra Anterior/Siguiente y la regla de una idea por pantalla.
 
-Correcciones docentes registradas:
+Tres pantallas nuevas, una por concepto que costaba entender sin manipularlo:
 
-- Las licencias se revisan por artefacto y versión; se retiraron conclusiones jurídicas absolutas.
+| Paso | Tema | Qué se aprende manipulándolo |
+| --- | --- | --- |
+| `equilibrio` | 01 | El umbral de confianza sube la precisión y baja el recall sobre la misma escena, y una predicción duplicada cuenta como falsa alarma |
+| `cercania` | 03 | La clasificación zero-shot elige el texto con mayor similitud coseno, y un giro pequeño cambia el ganador |
+| `marcar` | 05 | Un punto positivo propone el objeto entero y uno negativo retira una parte sin volver a empezar |
+
+Las cifras se calculan en `src/lib/` y no se escriben a mano: `matchDetections` aplica el protocolo de emparejamiento por puntuación con umbral IoU, `cosineSimilarity` compara direcciones y `predictMask` resuelve la propuesta a partir de los puntos. La escena de SAM simula el comportamiento esperado y lo dice en pantalla y en el PDF, porque no es la salida de un modelo.
+
+Ajustes visuales, sin renombrar ni retirar ninguna clase existente:
+
+- Cada paso centra su contenido en vertical, así que las pantallas con poco material dejan de quedar descolgadas arriba.
+- Las imágenes de diapositiva llevan filete, esquina redondeada y sombra muy suave para asentarse sobre el fondo casi blanco.
+- Las respuestas ganan área de clic, esquina redondeada y una marca de acierto o error que no depende solo del color.
+- La cronología deja de parecer una tabla: línea continua, puntos sobre ella y sin filetes verticales.
+- La barra flotante incorpora una línea de posición dentro del tema; sigue indicando ubicación y no rendimiento.
+- La fila de temas marca el tema actual con un subrayado propio, con estados de paso del ratón y foco.
+
+Comprobaciones: `npm run build`, `npm run check` y `npm test` correctos, con 15 pruebas unitarias. `npm run test:e2e` correcto con 17 pruebas, incluidas las 8 nuevas de `tests/labs.spec.mjs`, que cubren teclado, ausencia de JavaScript y anchuras de 390 y 320 px. Los tres laboratorios caben a 1280 × 720. Los seis PDF se han regenerado y se han revisado las páginas nuevas.
+
+Pendiente de la revisión docente del profesor: el guion de las tres pantallas nuevas y su ubicación dentro de cada tema.
+
+## Revisiones anteriores
+
+La auditoría de fidelidad de los temas 01–05 recuperó mecanismos, arquitecturas, límites, criterios de elección y recursos que una primera adaptación había resumido en exceso. El detalle se conserva en [AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md](AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md) y [AUDITORIA-TEMAS-02-05.md](AUDITORIA-TEMAS-02-05.md).
+
+Correcciones docentes que siguen vigentes:
+
+- Las licencias se revisan por artefacto y versión; no se presentan conclusiones jurídicas absolutas.
 - CLIP, BLIP, Grounding DINO y VLM se distinguen por su salida.
-- DINOv2 se fecha en 2023 y DINOv3 en 2025; la web no presenta atención como máscara garantizada.
-- SAM 1, 2 y 3 tienen prompts y capacidades distintas; SAM 1 no se presenta con texto nativo.
-- Umbrales, rendimiento y hardware se validan en el dominio en lugar de darse como reglas universales.
+- DINOv2 y DINOv3 se separan por versión y mecanismo; la atención no se presenta como máscara garantizada.
+- SAM 1, 2 y 3 tienen prompts y capacidades distintas.
+- Pose, OCR, superresolución, matching y profundidad se explican por pipeline, salida y límites, sin declarar un modelo ganador universal.
+- Umbrales, rendimiento y hardware se validan en el dominio en vez de darse como reglas universales.
 
-## Evidencia técnica de esta revisión
+## Evidencia técnica actual
 
-- `npm run build`, `npm run check` y `npm test`: correctos; 10 pruebas unitarias superadas.
-- `npm run test:e2e`: 9 pruebas de navegador superadas.
-- Auditoría Playwright de todos los pasos de los temas 02–05 a 1440 × 900, 390 × 844 y 1280 × 720: sin desbordamientos.
-- Tema 01 recapturado completo en escritorio, móvil y presentación después de recuperar el contenido.
-- Auditoría de cobertura: 76/76 diapositivas de los temas 01–05 con destino; ninguna sección huérfana, texto casi duplicado o imagen repetida entre pantallas.
-- Seis animaciones nuevas: reproducción y parada comprobadas.
-- PDF 01: 26 páginas; PDF 02: 12; PDF 03: 19; PDF 04: 20; PDF 05: 14. Todos regenerados, inspeccionados y sin páginas en blanco.
-- Capturas representativas en `tmp/visual-audit/` durante la revisión; la carpeta es temporal y no se publica.
-- PPTX y PDF cotejados diapositiva a diapositiva para 31–79.
+- `npm run build` y `npm run check`: correctos.
+- `npm test`: 15 pruebas unitarias superadas.
+- `npm run test:e2e`: 9 pruebas de navegador superadas; la estabilidad de navegación recorre los seis temas.
+- Tema 06 revisado en todos sus pasos a 1440 × 900, 390 × 844 y presentación 1280 × 720; sin desbordamiento horizontal a 320 px.
+- PDF 06: 19 páginas renderizadas e inspeccionadas, sin páginas vacías.
+- PPTX y PDF cotejados diapositiva a diapositiva para 80–93; recursos fuente inspeccionados individualmente.
+- Registro de cobertura: ninguna de las 94 entradas queda sin `sectionIds` u `otherDestinations`.
 
-Esto demuestra que la implementación local carga y cabe. La revisión docente del profesor sigue siendo la aceptación final del guion.
+Esto demuestra que la implementación local carga, navega y cabe. La aceptación docente del guion y la publicación siguen siendo decisiones del profesor.
 
-## Pendientes concretos
+## Pendientes externos
 
 1. Los notebooks se enlazan pero no se han ejecutado ni modificado; los modelos pesados siguen en Colab.
-2. No hay almacenamiento de respuestas, cuentas ni resultados compartidos; la web permanece estática.
+2. El enlace de Colab usa el remoto `sergiovillanueva/Modelos_Fundacionales` y quedará disponible al subir el notebook y la web a la rama `main`.
+3. No hay almacenamiento de respuestas, cuentas ni resultados compartidos; la web permanece estática.
+4. Este trabajo no publica ni despliega cambios.
 
 ## Historial
 
@@ -76,13 +105,12 @@ Esto demuestra que la implementación local carga y cabe. La revisión docente d
 | 2026-09-15 | Primera pasada T2–T5 | Adaptación demasiado resumida; quedó señalada para auditoría |
 | 2026-09-16 | Auditoría T2–T5 | Diapositivas 31–79 recuperadas en 65 pantallas con 27 recursos fuente y correcciones registradas |
 | 2026-09-16 | Fidelidad T1–T5 | Pérdidas y repeticiones corregidas sin alterar el recorrido de pantallas |
+| 2026-09-16 | T6-A a T6-C y G-B | Diapositivas 80–94 en 19 pantallas, práctica, PDF y cierre del curso |
 
-## Al cerrar el siguiente lote
+## Al modificar un tema
 
-1. Registrar cada diapositiva y sus secciones en `COBERTURA.json`.
-2. Registrar recursos, correcciones y fuentes en `content/tema-XX/sources.json`.
-3. Ejecutar build, validación y revisión visual proporcionada al alcance del cambio.
-4. Regenerar e inspeccionar el PDF del tema.
-5. Actualizar este archivo con un único siguiente paso.
-
-No escribir «terminado» si quedan conceptos sin destino, medios sin inspeccionar o PDF sin revisar.
+1. Cotejar únicamente las diapositivas, recursos y notebook afectados.
+2. Registrar secciones y correcciones en `COBERTURA.json` y `content/tema-XX/sources.json`.
+3. Ejecutar build, validación y las pruebas proporcionadas al cambio.
+4. Revisar web, móvil, presentación y regenerar el PDF del tema.
+5. Limpiar capturas, extracciones y resultados temporales antes de entregar.

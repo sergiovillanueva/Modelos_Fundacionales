@@ -81,7 +81,8 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 - Conservar definiciones, mecanismo, ejemplo, límites y criterio de elección cuando existan en la fuente. El notebook no sustituye la teoría necesaria para entender la práctica.
 - Reutilizar diagramas, matrices, mapas y animaciones con valor docente. Omitir iconos decorativos, capturas redundantes y la marca de agua de Gamma.
 - Convertir GIF largos con `scripts/import-source-assets.py`: WebP optimizado, póster representativo y reproducción iniciada por el alumno.
-- Tomar [plan/AUDITORIA-TEMAS-02-05.md](plan/AUDITORIA-TEMAS-02-05.md) como referencia de densidad y trazabilidad para el tema 06.
+- Tomar [plan/AUDITORIA-TEMAS-02-05.md](plan/AUDITORIA-TEMAS-02-05.md) y [plan/AUDITORIA-TEMA-06.md](plan/AUDITORIA-TEMA-06.md) como referencias de densidad, trazabilidad y correcciones docentes.
+- En pose, explicar el orden del pipeline antes de comparar modelos y definir OKS antes de preguntar por él. En OCR, superresolución, matching y profundidad, evitar superlativos o sustituciones universales: especificar entrada, salida, escala, validación y límites del checkpoint concreto.
 - Tras cambiar contenido, comparar las hojas de contacto del PDF fuente y del PDF web. La cobertura mecánica no basta: comprobar que no haya cronologías, mecanismos o límites sustituidos por una frase genérica.
 
 ### Preguntas
@@ -98,10 +99,32 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 - Explicar el nombre y significado de una métrica antes de usarla. No introducir umbrales de «bueno/malo» sin contexto.
 - Mantener un ejemplo estático comprensible al imprimir.
 - Los controles deben funcionar con teclado; las flechas de un deslizador nunca cambian de diapositiva o paso.
+- **Los números se calculan, no se escriben.** La lógica vive en `src/lib/` con tests unitarios y el módulo de `src/js/` solo la conecta con el DOM. Nunca poner en pantalla una métrica inventada.
+- **El HTML de la sección contiene el estado inicial ya resuelto**, con sus clases y sus cifras. De ahí salen el PDF y la versión sin JavaScript; el módulo se limita a actualizarlo después.
+- Si una escena simula el comportamiento de un modelo en vez de mostrar su salida real, decirlo en la propia pantalla o en `.print-detail`.
+
+#### Componentes compartidos de laboratorio
+
+Antes de crear estilos nuevos, reutilizar los que ya existen en `widgets.css`:
+
+| Clase | Para qué sirve |
+| --- | --- |
+| `lab-layout` | Rejilla de escena y lectura de resultados; `lab-layout--wide` da más sitio a la escena |
+| `lab-stage` | Área suavemente coloreada que delimita la simulación, con `lab-note` para una aclaración breve |
+| `lab-readout` | Columna de resultados: admite etiqueta, deslizador y `range-ends` |
+| `metric-pair` y `metric` | Una o dos cifras grandes con su nombre encima |
+| `metric-counts` y `tally` | Recuentos pequeños en línea, con modificadores `tally--tp`, `--fp` y `--fn` |
+| `lab-message` | Frase que interpreta el estado actual; siempre con `aria-live="polite"` |
+| `candidate-list` | Ranking con barra y valor por fila, resaltando `is-winner` |
+| `prompt-modes` | Control segmentado de dos opciones con `aria-pressed` |
+
+Los tres laboratorios actuales son `equilibrio` (tema 01, umbral y métricas), `cercania` (tema 03, similitud coseno) y `marcar` (tema 05, puntos positivos y negativos). Su lógica está en `src/lib/metrics.js`, `src/lib/embeddings.js` y `src/lib/prompting.js`, y sus comprobaciones de navegador en `tests/labs.spec.mjs`.
+
+Un módulo nuevo se conecta en `src/js/reading.js` y en `src/js/presentation.js`. Si la interacción usa `role="button"`, comprobar que sigue en el selector de `keyboardCondition` de `presentation.js` para que Reveal no se quede con la barra espaciadora.
 
 ### Recursos y Colab
 
-- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo. En lectura, limitar su altura en relación con la ventana y usar `object-fit: contain`: una imagen alta puede reducirse, pero nunca deformarse ni desplazar la navegación.
+- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo. En lectura, limitar su altura en relación con la ventana y usar `object-fit: contain`: una imagen alta puede reducirse, pero nunca deformarse ni desplazar la navegación. Para una comparación inseparable —por ejemplo, RGB frente a profundidad— usar `visual-pair`; apilarla en móvil.
 - Animaciones con póster inicial y un solo control **Ver animación / Detener**. Preferir WebP animado para las exclusiones de Git existentes.
 - Colab se abre mediante un enlace real al notebook en GitHub. El alumno guarda su copia en Drive.
 - Una lista sencilla y un único enlace **Abrir en Colab**. No crear tarjetas coloreadas, autenticar con Google ni cargar modelos pesados en esta web.
@@ -115,13 +138,13 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 - Contraste legible y foco visible. Los cambios de paso pueden usar una entrada breve y sutil; desactivarla con `prefers-reduced-motion`. Ninguna información depende solo del color.
 - Sin JavaScript, todos los pasos siguen disponibles como HTML continuo. Al imprimir también aparecen todos, incluso si la web solo muestra uno.
 
-## Añadir el siguiente tema
+## Añadir un tema nuevo
 
 1. Leer esta guía y recorrer el tema 01 antes de escribir contenido.
 2. Trabajar por lotes pequeños según el plan de migración. El tema completo tendrá tantos pasos como necesite para cubrir sus ideas; no imponer un máximo de 4–7. Mantener el recorrido de ejemplos, conceptos, comprobaciones y práctica sin amontonar texto.
 3. Crear `content/tema-XX/sections.html`, `questions.json` y recursos en `public/assets/tema-XX/`.
 4. En `content/course.json`, completar `navTitle`, `contentDir`, `notebookPath` y pasar a `status: "available"` cuando haya contenido revisable. La URL de Colab de la sección debe apuntar al notebook correcto; `notebookPath` no la sustituye automáticamente.
-5. Preparar el PDF del nuevo tema con el nombre que espera el generador: `tema-<id>.pdf`. Actualmente `scripts/export-pdf.mjs` exporta solo el tema 01; ampliar ese script antes de publicar otro tema para que **Material** no enlace a un archivo inexistente.
+5. Preparar el PDF del nuevo tema con `node scripts/export-pdf.mjs <id-del-tema>` y añadir el alias correspondiente en `package.json` para que **Material** no enlace a un archivo inexistente.
 6. Ejecutar compilación, validación, tests y revisión visual según README. Ampliar las pruebas para el nuevo tema y revisar todos sus pasos, no solo los del tema 01.
 
 ## Lista de revisión antes de entregar

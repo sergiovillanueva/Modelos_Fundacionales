@@ -2,11 +2,17 @@ import Reveal from '../../vendor/reveal/reveal.mjs';
 import {initMediaControls} from './media.js';
 import {initQuizzes} from './quiz.js';
 import {initIouDemo} from './iou-demo.js';
+import {initThresholdLab} from './threshold-lab.js';
+import {initPromptLab} from './prompt-lab.js';
+import {initSimilarityLab} from './similarity-lab.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
   initQuizzes();
   initIouDemo();
+  initThresholdLab();
+  initPromptLab();
+  initSimilarityLab();
 
   const deck = new Reveal({
     hash: true,
@@ -20,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     scrollActivationWidth: null,
     keyboardCondition: (event) => {
       // Don't intercept arrow keys or typing inside form controls
-      if (event.target && event.target.closest('input, textarea, select, button, a, [contenteditable="true"], [role="slider"]')) {
+      if (event.target && event.target.closest('input, textarea, select, button, a, [contenteditable="true"], [role="slider"], [role="button"]')) {
         return false;
       }
       return true;

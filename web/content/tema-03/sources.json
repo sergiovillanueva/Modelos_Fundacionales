@@ -1,18 +1,223 @@
 [
-  {"sectionId":"unir","sourceSlides":[37],"originalAsset":"ppt/media/image-37-1.jpeg","webAsset":"public/assets/tema-03/presentacion/portada-multimodal.jpeg","claim":"El tema diferencia comparación, generación, localización y razonamiento multimodal.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Portada y alcance cotejados con PDF y PPTX."},
-  {"sectionId":"fundacionales","sourceSlides":[38],"originalAsset":"ppt/media/image-38-*","webAsset":"","claim":"El preentrenamiento produce representaciones generales que se transfieren a otras tareas.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"Se conservaron definición, importancia y capacidades sin repetir cifras promocionales."},
-  {"sectionId":"multimodalidad","sourceSlides":[39],"originalAsset":"ppt/media/image-39-1.jpeg","webAsset":"public/assets/tema-03/presentacion/espacio-multimodal.jpeg","claim":"Imagen y texto pueden alinearse en una representación compartida.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Diagrama original reutilizado."},
-  {"sectionId":"zero-shot","sourceSlides":[40],"originalAsset":"ppt/media/image-40-1.jpeg","webAsset":"public/assets/tema-03/presentacion/zero-shot.jpeg","claim":"Las categorías de una clasificación zero-shot pueden expresarse como texto.","url":"https://arxiv.org/abs/2103.00020","checkedOn":"2026-09-16","status":"verified","note":"Se mantiene la composicionalidad y se añade cautela sobre prompts y dominio."},
-  {"sectionId":"clip","sourceSlides":[41,42],"originalAsset":"ppt/media/image-41-1.jpeg; ppt/media/image-42-9.jpeg","webAsset":"public/assets/tema-03/presentacion/clip-arquitectura.jpeg; public/assets/tema-03/presentacion/clip-similitud.jpeg","claim":"CLIP usa dos encoders y compara embeddings de imagen y texto.","url":"https://arxiv.org/abs/2103.00020","checkedOn":"2026-09-16","status":"verified","note":"Arquitectura e inferencia se explican en dos pantallas."},
-  {"sectionId":"clip-entrenamiento","sourceSlides":[43],"originalAsset":"ppt/media/image-42-10.png","webAsset":"public/assets/tema-03/presentacion/clip-matriz.webp","claim":"La pérdida contrastiva acerca los pares correctos y separa los demás pares del lote.","url":"https://arxiv.org/abs/2103.00020","checkedOn":"2026-09-16","status":"verified","note":"La matriz diagonal del PPTX se recuperó como visual principal."},
-  {"sectionId":"clip-limites","sourceSlides":[44],"originalAsset":"","webAsset":"","claim":"CLIP no genera frases, cajas o máscaras por sí solo y es sensible al dominio y al prompt.","url":"https://arxiv.org/abs/2103.00020","checkedOn":"2026-09-16","status":"verified","note":"Limitaciones completas conservadas en web y detalle impreso."},
-  {"sectionId":"blip","sourceSlides":[45],"originalAsset":"ppt/media/image-45-1.jpeg","webAsset":"public/assets/tema-03/presentacion/blip.jpeg","claim":"BLIP genera texto condicionado por imagen y admite VQA.","url":"https://arxiv.org/abs/2201.12086","checkedOn":"2026-09-16","status":"verified","note":"Se conserva arquitectura, usos y riesgo de generación no fiel."},
-  {"sectionId":"grounding","sourceSlides":[46,47],"originalAsset":"ppt/media/image-47-9.jpeg","webAsset":"public/assets/tema-03/presentacion/grounding-dino.jpeg","claim":"Grounding DINO localiza con consultas de texto mediante fusión visión-lenguaje.","url":"https://github.com/IDEA-Research/GroundingDINO","checkedOn":"2026-09-16","status":"verified","note":"Introducción, arquitectura y autoetiquetado se distribuyen en varias pantallas."},
-  {"sectionId":"grounding-claves","sourceSlides":[48],"originalAsset":"ppt/media/image-48-*","webAsset":"","claim":"El detector usa queries guiadas por lenguaje y vocabulario abierto.","url":"https://arxiv.org/abs/2303.05499","checkedOn":"2026-09-16","status":"corrected","note":"Se omitió la afirmación infinita literal y se explica la salida como detección abierta condicionada por texto."},
-  {"sectionId":"grounding-limites","sourceSlides":[49],"originalAsset":"","webAsset":"","claim":"Prompts ambiguos, objetos pequeños y escenas densas requieren validación.","url":"https://github.com/IDEA-Research/GroundingDINO","checkedOn":"2026-09-16","status":"verified","note":"Casos de uso y límites recuperados."},
-  {"sectionId":"vlm","sourceSlides":[50],"originalAsset":"ppt/media/image-50-*","webAsset":"","claim":"Un encoder visual y un adaptador producen tokens que consume el LLM.","url":"","checkedOn":"2026-09-16","status":"verified","note":"La anatomía se recreó como diagrama semántico accesible."},
-  {"sectionId":"qwen","sourceSlides":[51],"originalAsset":"","webAsset":"","claim":"Qwen2.5-VL puede analizar documentos, gráficos y salidas estructuradas.","url":"https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct","checkedOn":"2026-09-16","status":"verified","note":"Se conserva el modelo usado en el notebook y su coste relativo."},
-  {"sectionId":"prompting","sourceSlides":[52],"originalAsset":"","webAsset":"","claim":"CLIP, Grounding DINO y los VLM necesitan prompts acordes a su salida.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Ejemplos buenos y malos se conservan en el detalle impreso."},
-  {"sectionId":"elegir","sourceSlides":[53],"originalAsset":"ppt/media/image-53-1.png","webAsset":"public/assets/tema-03/presentacion/comparativa-modelos.webp","claim":"La salida y la latencia orientan la familia de modelo.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"La gráfica queda como material impreso; la web usa una regla de decisión cualitativa."},
-  {"sectionId":"validar","sourceSlides":[54],"originalAsset":"","webAsset":"","claim":"Alucinaciones, sesgos y prompts ambiguos requieren datos propios y revisión.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Se retiró un umbral universal y se vincula el umbral al coste del error."}
+  {
+    "sectionId": "unir",
+    "sourceSlides": [
+      37
+    ],
+    "originalAsset": "ppt/media/image-37-1.jpeg",
+    "webAsset": "public/assets/tema-03/presentacion/portada-multimodal.jpeg",
+    "claim": "El tema diferencia comparación, generación, localización y razonamiento multimodal.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Portada y alcance cotejados con PDF y PPTX."
+  },
+  {
+    "sectionId": "fundacionales",
+    "sourceSlides": [
+      38
+    ],
+    "originalAsset": "ppt/media/image-38-*",
+    "webAsset": "",
+    "claim": "El preentrenamiento produce representaciones generales que se transfieren a otras tareas.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se conservaron definición, importancia y capacidades sin repetir cifras promocionales."
+  },
+  {
+    "sectionId": "multimodalidad",
+    "sourceSlides": [
+      39
+    ],
+    "originalAsset": "ppt/media/image-39-1.jpeg",
+    "webAsset": "public/assets/tema-03/presentacion/espacio-multimodal.jpeg",
+    "claim": "Imagen y texto pueden alinearse en una representación compartida.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Diagrama original reutilizado."
+  },
+  {
+    "sectionId": "zero-shot",
+    "sourceSlides": [
+      40
+    ],
+    "originalAsset": "ppt/media/image-40-1.jpeg",
+    "webAsset": "public/assets/tema-03/presentacion/zero-shot.jpeg",
+    "claim": "Las categorías de una clasificación zero-shot pueden expresarse como texto.",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se mantiene la composicionalidad y se añade cautela sobre prompts y dominio."
+  },
+  {
+    "sectionId": "clip",
+    "sourceSlides": [
+      41,
+      42
+    ],
+    "originalAsset": "ppt/media/image-41-1.jpeg; ppt/media/image-42-9.jpeg",
+    "webAsset": "public/assets/tema-03/presentacion/clip-arquitectura.jpeg; public/assets/tema-03/presentacion/clip-similitud.jpeg",
+    "claim": "CLIP usa dos encoders y compara embeddings de imagen y texto.",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Arquitectura e inferencia se explican en dos pantallas."
+  },
+  {
+    "sectionId": "clip-entrenamiento",
+    "sourceSlides": [
+      43
+    ],
+    "originalAsset": "ppt/media/image-42-10.png",
+    "webAsset": "public/assets/tema-03/presentacion/clip-matriz.webp",
+    "claim": "La pérdida contrastiva acerca los pares correctos y separa los demás pares del lote.",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "La matriz diagonal del PPTX se recuperó como visual principal."
+  },
+  {
+    "sectionId": "clip-limites",
+    "sourceSlides": [
+      44
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "CLIP no genera frases, cajas o máscaras por sí solo y es sensible al dominio y al prompt.",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Limitaciones completas conservadas en web y detalle impreso."
+  },
+  {
+    "sectionId": "blip",
+    "sourceSlides": [
+      45
+    ],
+    "originalAsset": "ppt/media/image-45-1.jpeg",
+    "webAsset": "public/assets/tema-03/presentacion/blip.jpeg",
+    "claim": "BLIP genera texto condicionado por imagen y admite VQA.",
+    "url": "https://arxiv.org/abs/2201.12086",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se conserva arquitectura, usos y riesgo de generación no fiel."
+  },
+  {
+    "sectionId": "grounding",
+    "sourceSlides": [
+      46,
+      47
+    ],
+    "originalAsset": "ppt/media/image-47-9.jpeg",
+    "webAsset": "public/assets/tema-03/presentacion/grounding-dino.jpeg",
+    "claim": "Grounding DINO localiza con consultas de texto mediante fusión visión-lenguaje.",
+    "url": "https://github.com/IDEA-Research/GroundingDINO",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Introducción, arquitectura y autoetiquetado se distribuyen en varias pantallas."
+  },
+  {
+    "sectionId": "grounding-claves",
+    "sourceSlides": [
+      48
+    ],
+    "originalAsset": "ppt/media/image-48-*",
+    "webAsset": "",
+    "claim": "El detector usa queries guiadas por lenguaje y vocabulario abierto.",
+    "url": "https://arxiv.org/abs/2303.05499",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se omitió la afirmación infinita literal y se explica la salida como detección abierta condicionada por texto."
+  },
+  {
+    "sectionId": "grounding-limites",
+    "sourceSlides": [
+      49
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Prompts ambiguos, objetos pequeños y escenas densas requieren validación.",
+    "url": "https://github.com/IDEA-Research/GroundingDINO",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Casos de uso y límites recuperados."
+  },
+  {
+    "sectionId": "vlm",
+    "sourceSlides": [
+      50
+    ],
+    "originalAsset": "ppt/media/image-50-*",
+    "webAsset": "",
+    "claim": "Un encoder visual y un adaptador producen tokens que consume el LLM.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "La anatomía se recreó como diagrama semántico accesible."
+  },
+  {
+    "sectionId": "qwen",
+    "sourceSlides": [
+      51
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Qwen2.5-VL puede analizar documentos, gráficos y salidas estructuradas.",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se conserva el modelo usado en el notebook y su coste relativo."
+  },
+  {
+    "sectionId": "prompting",
+    "sourceSlides": [
+      52
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "CLIP, Grounding DINO y los VLM necesitan prompts acordes a su salida.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Ejemplos buenos y malos se conservan en el detalle impreso."
+  },
+  {
+    "sectionId": "elegir",
+    "sourceSlides": [
+      53
+    ],
+    "originalAsset": "ppt/media/image-53-1.png",
+    "webAsset": "public/assets/tema-03/presentacion/comparativa-modelos.webp",
+    "claim": "La salida y la latencia orientan la familia de modelo.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "La gráfica queda como material impreso; la web usa una regla de decisión cualitativa."
+  },
+  {
+    "sectionId": "validar",
+    "sourceSlides": [
+      54
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Alucinaciones, sesgos y prompts ambiguos requieren datos propios y revisión.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se retiró un umbral universal y se vincula el umbral al coste del error."
+  },
+  {
+    "sectionId": "cercania",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "src/js/similarity-lab.js",
+    "claim": "La clasificación zero-shot se resuelve quedándose con el texto candidato de mayor similitud coseno con la imagen.",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Pantalla nueva, sin diapositiva de origen. Espacio esquemático de dos dimensiones, declarado como tal en pantalla; los valores salen de cosineSimilarity y no están escritos a mano."
+  }
 ]

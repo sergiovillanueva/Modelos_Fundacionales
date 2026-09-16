@@ -33,3 +33,20 @@ body.course-ready { padding-bottom: 0; }
 .evolution-line { max-width: 100%; }
 .print-detail { display: block; margin-top: 12mm; color: var(--color-text-muted); font-size: 11pt; line-height: 1.6; }
 .print-detail p { margin: 0; }
+
+/* Laboratorios en papel: se conserva el ejemplo y su lectura; desaparecen los controles. */
+.lab-layout { grid-template-columns: 1.15fr 1fr; gap: 8mm; margin: 6mm 0 0; }
+.lab-layout--wide { grid-template-columns: 1.3fr 1fr; }
+.lab-stage { padding: 3mm; background: #f7fbfd; }
+.lab-stage svg { max-height: none; }
+.lab-note { margin-top: 3mm; font-size: 9pt; }
+.lab-readout label, .lab-readout input[type="range"], .prompt-modes { display: none; }
+.prompt-dot.is-empty { display: none; }
+.lab-message { min-height: 0; margin: 4mm 0 0; font-size: 11pt; }
+.metric-pair { gap: 6mm; }
+.metric strong { font-size: 30pt; }
+.metric span { font-size: 10pt; }
+.metric-counts { margin-top: 4mm; font-size: 10pt; }
+.candidate-list { gap: 4mm; margin-bottom: 0; }
+.candidate { font-size: 10pt; }
+.candidate-track { height: 4px; }

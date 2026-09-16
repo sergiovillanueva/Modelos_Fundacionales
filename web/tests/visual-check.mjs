@@ -5,7 +5,8 @@ import fs from 'node:fs';
 import {fileURLToPath} from 'node:url';
 
 const WEB_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUTPUT_DIR = path.join(WEB_ROOT, 'test-results', 'visual');
+const TOPIC_ID = process.argv[2] || '01-deteccion';
+const OUTPUT_DIR = path.join(WEB_ROOT, 'test-results', 'visual', TOPIC_ID);
 const URL = 'http://127.0.0.1:4173';
 fs.mkdirSync(OUTPUT_DIR, {recursive: true});
 
@@ -24,10 +25,10 @@ try {
       await page.goto(URL, {waitUntil: 'networkidle'});
       await page.screenshot({path: path.join(OUTPUT_DIR, `${mode}-home.png`), fullPage: true});
     }
-    await page.goto(URL + (mode === 'presentation' ? '/temas/01-deteccion/presentar.html' : '/temas/01-deteccion/index.html'), {waitUntil: 'networkidle'});
+    await page.goto(URL + (mode === 'presentation' ? `/temas/${TOPIC_ID}/presentar.html` : `/temas/${TOPIC_ID}/index.html`), {waitUntil: 'networkidle'});
     const ids = await page.locator(mode === 'presentation' ? '.slides > section' : '.reading-content > section').evaluateAll(sections => sections.map(section => section.id));
     for (const id of ids) {
-      const route = mode === 'presentation' ? `/temas/01-deteccion/presentar.html#/${id}` : `/temas/01-deteccion/index.html#${id}`;
+      const route = mode === 'presentation' ? `/temas/${TOPIC_ID}/presentar.html#/${id}` : `/temas/${TOPIC_ID}/index.html#${id}`;
       await page.goto(URL + route, {waitUntil: 'networkidle'});
       await page.locator(mode === 'presentation' ? `.slides > #${id}.present` : `.reading-content > #${id}`).waitFor({state: 'visible'});
       await page.evaluate(() => document.fonts.ready);

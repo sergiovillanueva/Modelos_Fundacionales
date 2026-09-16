@@ -23,16 +23,24 @@
       ],
       "topic": "general",
       "batch": "G-A",
-      "status": "pendiente",
+      "status": "revisada",
       "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contexto",
+      "otherDestinations": [
+        "templates/home.html"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Portada, autor y temario resueltos mediante la portada breve, créditos y navegación de temas.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -45,16 +53,24 @@
       ],
       "topic": "general",
       "batch": "G-A",
-      "status": "pendiente",
+      "status": "revisada",
       "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contexto",
+      "otherDestinations": [
+        "templates/credits.html"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Portada, autor y temario resueltos mediante la portada breve, créditos y navegación de temas.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -66,16 +82,25 @@
       ],
       "topic": "general",
       "batch": "G-A",
-      "status": "pendiente",
+      "status": "revisada",
       "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contexto",
+      "otherDestinations": [
+        "content/course.json",
+        "templates/home.html"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Portada, autor y temario resueltos mediante la portada breve, créditos y navegación de temas.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2804,16 +2829,26 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "panorama"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2828,16 +2863,26 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "pose"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2855,16 +2900,27 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "pose-top-down",
+        "pose-enfoques"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2886,16 +2942,27 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "pose-modelos",
+        "oks"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2920,16 +2987,27 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "pose-usos",
+        "pose-retos"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2942,16 +3020,26 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "ocr"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2975,16 +3063,26 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "ocr-herramientas"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -2998,16 +3096,26 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "superresolucion"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3031,16 +3139,26 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "superresolucion-usos"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3057,16 +3175,26 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "fondo"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3087,16 +3215,26 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "matching"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3120,16 +3258,26 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "reconstruccion"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3143,16 +3291,26 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "profundidad"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3173,16 +3331,27 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contenido",
+      "status": "revisada",
+      "sectionIds": [
+        "profundidad-usos",
+        "profundidad-metrica"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     },
     {
@@ -3194,16 +3363,26 @@
       ],
       "topic": "general",
       "batch": "G-B",
-      "status": "pendiente",
-      "sectionIds": [],
-      "otherDestinations": [],
-      "treatment": "contexto",
+      "status": "revisada",
+      "sectionIds": [
+        "practica"
+      ],
+      "otherDestinations": [
+        "content/tema-06/sources.json"
+      ],
+      "treatment": "adaptada",
       "missingConcepts": [],
-      "note": "Inventario mecánico de título y medios. Leer y cotejar el contenido al iniciar el lote; sin revisión visual ni científica completa.",
+      "note": "Cierre general integrado en la práctica final, sin añadir una pantalla vacía.",
       "review": {
-        "date": null,
-        "reviewer": null,
-        "evidence": []
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
+        "evidence": [
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-06/sources.json",
+          "npm run build y npm run check",
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
+        ]
       }
     }
   ]

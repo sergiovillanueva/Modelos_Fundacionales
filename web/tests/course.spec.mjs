@@ -30,7 +30,7 @@ test('siguiente, anterior y el historial mantienen el paso', async ({page}) => {
 
 test('la navegación permanece estable aunque cambie la altura del contenido', async ({page}) => {
   await page.setViewportSize({width: 1280, height: 800});
-  const topics = ['01-deteccion', '02-hugging-face', '03-multimodalidad', '04-dino', '05-sam'];
+  const topics = ['01-deteccion', '02-hugging-face', '03-multimodalidad', '04-dino', '05-sam', '06-otras-tareas'];
 
   for (const topic of topics) {
     const topicUrl = `/temas/${topic}/index.html`;

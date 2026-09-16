@@ -1,11 +1,130 @@
 [
-  {"sectionId":"sam","sourceSlides":[71],"originalAsset":"ppt/media/image-71-1.jpeg","webAsset":"public/assets/tema-05/presentacion/portada-sam.jpeg","claim":"La familia SAM ofrece segmentación promptable en imagen y vídeo según la versión.","url":"https://ai.meta.com/research/sam3/","checkedOn":"2026-09-16","status":"corrected","note":"La portada distingue explícitamente las capacidades de SAM 1, 2 y 3."},
-  {"sectionId":"segmentacion","sourceSlides":[72],"originalAsset":"ppt/media/image-72-1.jpeg","webAsset":"public/assets/tema-05/presentacion/tipos-segmentacion.jpeg","claim":"Segmentación semántica, por instancias y panóptica responden a objetivos distintos.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Definición e imagen fuente recuperadas en dos pantallas."},
-  {"sectionId":"sam1","sourceSlides":[73],"originalAsset":"ppt/media/image-73-1.jpeg","webAsset":"public/assets/tema-05/presentacion/arquitectura-sam1.jpeg","claim":"SAM 1 desacopla encoder de imagen, encoder de prompt y decoder de máscaras.","url":"https://arxiv.org/abs/2304.02643","checkedOn":"2026-09-16","status":"corrected","note":"Se retiró el texto como prompt nativo de SAM 1 y se conservaron puntos, cajas y máscaras."},
-  {"sectionId":"sam2","sourceSlides":[74],"originalAsset":"ppt/media/image-74-1.jpeg","webAsset":"public/assets/tema-05/presentacion/arquitectura-sam2.jpeg","claim":"SAM 2 usa memoria para propagar máscaras en vídeo.","url":"https://ai.meta.com/sam2/","checkedOn":"2026-09-16","status":"verified","note":"Backbone, memory attention, decoder y corrección temporal recuperados."},
-  {"sectionId":"sam3","sourceSlides":[75],"originalAsset":"ppt/media/image-75-3.jpeg","webAsset":"public/assets/tema-05/presentacion/arquitectura-sam3.jpeg","claim":"SAM 3 separa presencia global del concepto, localización de instancias y seguimiento temporal.","url":"https://ai.meta.com/research/sam3/","checkedOn":"2026-09-16","status":"verified","note":"Se recuperaron Presence Token, detector, tracker y prompts abiertos sin cifras de latencia dependientes del hardware."},
-  {"sectionId":"evolucion","sourceSlides":[76],"originalAsset":"ppt/media/image-76-1.gif","webAsset":"public/assets/tema-05/presentacion/evolucion-sam.webp","claim":"SAM 1 amplía a SAM 2 con vídeo y a SAM 3 con conceptos abiertos.","url":"https://ai.meta.com/research/sam3/","checkedOn":"2026-09-16","status":"verified","note":"GIF convertido a WebP controlable y cronología cotejada."},
-  {"sectionId":"motor-datos","sourceSlides":[77],"originalAsset":"ppt/media/image-77-*","webAsset":"","claim":"El dataset SA-1B se construyó mediante fases manual, asistida y automática.","url":"https://arxiv.org/abs/2304.02643","checkedOn":"2026-09-16","status":"verified","note":"Motor de datos y escala conservados en el detalle de estudio."},
-  {"sectionId":"promptable","sourceSlides":[78],"originalAsset":"","webAsset":"","claim":"Puntos, cajas y máscaras guían SAM; SAM 3 añade texto y ejemplares nativos.","url":"https://ai.meta.com/research/sam3/","checkedOn":"2026-09-16","status":"corrected","note":"Se separan los prompts nativos por versión y la integración externa con texto."},
-  {"sectionId":"limites","sourceSlides":[79],"originalAsset":"","webAsset":"","claim":"SAM es apropiado para segmentación flexible y anotación; una solución específica puede ser mejor en entornos fijos.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"Se eliminaron afirmaciones universales de hardware y se mantienen criterios de elección."}
+  {
+    "sectionId": "sam",
+    "sourceSlides": [
+      71
+    ],
+    "originalAsset": "ppt/media/image-71-1.jpeg",
+    "webAsset": "public/assets/tema-05/presentacion/portada-sam.jpeg",
+    "claim": "La familia SAM ofrece segmentación promptable en imagen y vídeo según la versión.",
+    "url": "https://ai.meta.com/research/sam3/",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "La portada distingue explícitamente las capacidades de SAM 1, 2 y 3."
+  },
+  {
+    "sectionId": "segmentacion",
+    "sourceSlides": [
+      72
+    ],
+    "originalAsset": "ppt/media/image-72-1.jpeg",
+    "webAsset": "public/assets/tema-05/presentacion/tipos-segmentacion.jpeg",
+    "claim": "Segmentación semántica, por instancias y panóptica responden a objetivos distintos.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Definición e imagen fuente recuperadas en dos pantallas."
+  },
+  {
+    "sectionId": "sam1",
+    "sourceSlides": [
+      73
+    ],
+    "originalAsset": "ppt/media/image-73-1.jpeg",
+    "webAsset": "public/assets/tema-05/presentacion/arquitectura-sam1.jpeg",
+    "claim": "SAM 1 desacopla encoder de imagen, encoder de prompt y decoder de máscaras.",
+    "url": "https://arxiv.org/abs/2304.02643",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se retiró el texto como prompt nativo de SAM 1 y se conservaron puntos, cajas y máscaras."
+  },
+  {
+    "sectionId": "sam2",
+    "sourceSlides": [
+      74
+    ],
+    "originalAsset": "ppt/media/image-74-1.jpeg",
+    "webAsset": "public/assets/tema-05/presentacion/arquitectura-sam2.jpeg",
+    "claim": "SAM 2 usa memoria para propagar máscaras en vídeo.",
+    "url": "https://ai.meta.com/sam2/",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Backbone, memory attention, decoder y corrección temporal recuperados."
+  },
+  {
+    "sectionId": "sam3",
+    "sourceSlides": [
+      75
+    ],
+    "originalAsset": "ppt/media/image-75-3.jpeg",
+    "webAsset": "public/assets/tema-05/presentacion/arquitectura-sam3.jpeg",
+    "claim": "SAM 3 separa presencia global del concepto, localización de instancias y seguimiento temporal.",
+    "url": "https://ai.meta.com/research/sam3/",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se recuperaron Presence Token, detector, tracker y prompts abiertos sin cifras de latencia dependientes del hardware."
+  },
+  {
+    "sectionId": "evolucion",
+    "sourceSlides": [
+      76
+    ],
+    "originalAsset": "ppt/media/image-76-1.gif",
+    "webAsset": "public/assets/tema-05/presentacion/evolucion-sam.webp",
+    "claim": "SAM 1 amplía a SAM 2 con vídeo y a SAM 3 con conceptos abiertos.",
+    "url": "https://ai.meta.com/research/sam3/",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "GIF convertido a WebP controlable y cronología cotejada."
+  },
+  {
+    "sectionId": "motor-datos",
+    "sourceSlides": [
+      77
+    ],
+    "originalAsset": "ppt/media/image-77-*",
+    "webAsset": "",
+    "claim": "El dataset SA-1B se construyó mediante fases manual, asistida y automática.",
+    "url": "https://arxiv.org/abs/2304.02643",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Motor de datos y escala conservados en el detalle de estudio."
+  },
+  {
+    "sectionId": "promptable",
+    "sourceSlides": [
+      78
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Puntos, cajas y máscaras guían SAM; SAM 3 añade texto y ejemplares nativos.",
+    "url": "https://ai.meta.com/research/sam3/",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se separan los prompts nativos por versión y la integración externa con texto."
+  },
+  {
+    "sectionId": "limites",
+    "sourceSlides": [
+      79
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "SAM es apropiado para segmentación flexible y anotación; una solución específica puede ser mejor en entornos fijos.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se eliminaron afirmaciones universales de hardware y se mantienen criterios de elección."
+  },
+  {
+    "sectionId": "marcar",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "src/js/prompt-lab.js",
+    "claim": "Un punto positivo propone el objeto al que pertenece la región señalada y un punto negativo retira esa región sin reentrenar ni reiniciar.",
+    "url": "https://arxiv.org/abs/2304.02643",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Pantalla nueva, sin diapositiva de origen. La escena simula el comportamiento que el alumno debe anticipar y no es la salida de un modelo; así se indica en el detalle impreso. La ambigüedad entre objeto, parte y subparte queda explicada en ese mismo texto."
+  }
 ]

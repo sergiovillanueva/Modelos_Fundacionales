@@ -88,7 +88,7 @@ def contact_sheet(items, target: Path, columns: int = 3):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--start", type=int, default=31)
-    parser.add_argument("--end", type=int, default=79)
+    parser.add_argument("--end", type=int, default=93)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     args = parser.parse_args()
 
@@ -106,7 +106,13 @@ def main():
         encoding="utf-8",
     )
     rendered = render_pages(DEFAULT_PDF, args.out, args.start, args.end)
-    ranges = {"tema-02": (31, 36), "tema-03": (37, 54), "tema-04": (55, 70), "tema-05": (71, 79)}
+    ranges = {
+        "tema-02": (31, 36),
+        "tema-03": (37, 54),
+        "tema-04": (55, 70),
+        "tema-05": (71, 79),
+        "tema-06": (80, 93),
+    }
     for name, (start, end) in ranges.items():
         subset = [item for item in rendered if start <= item[0] <= end]
         contact_sheet(subset, args.out / f"{name}-contact.png")

@@ -304,6 +304,63 @@
   <div class="print-detail"><p>Al subir el umbral suelen desaparecer predicciones de baja puntuación: pueden bajar los falsos positivos y también aumentar los falsos negativos. La curva precisión-recall estudia ese intercambio recorriendo muchos umbrales.</p></div>
 </section>
 
+<section id="equilibrio" data-title="Equilibrio" data-layout="lab">
+  <div class="section-copy">
+    <h2>Subir el umbral cambia el equilibrio</h2>
+    <p class="lead">Precisión y recall se mueven en direcciones opuestas cuando filtras por puntuación.</p>
+  </div>
+  <div class="lab-layout" data-threshold-lab>
+    <div class="lab-stage">
+      <svg viewBox="0 0 160 92" role="img" aria-label="Escena con tres objetos reales y cinco predicciones puntuadas. Al mover el umbral se filtran las predicciones y cambian precisión y recall.">
+        <g class="truth-layer">
+          <rect class="truth" data-truth="t1" x="14" y="40" width="40" height="34"/>
+          <rect class="truth" data-truth="t2" x="62" y="34" width="34" height="32"/>
+          <rect class="truth" data-truth="t3" x="106" y="44" width="40" height="34"/>
+          <text class="stage-note" x="62" y="72">Objeto real</text>
+        </g>
+        <g class="prediction-layer">
+          <g class="prediction is-tp" data-prediction="p1" data-score="0.92">
+            <rect x="15" y="41" width="40" height="34"/>
+            <text x="15" y="38">0,92 · TP</text>
+          </g>
+          <g class="prediction is-tp" data-prediction="p2" data-score="0.78">
+            <rect x="64" y="36" width="34" height="32"/>
+            <text x="64" y="33">0,78 · TP</text>
+          </g>
+          <g class="prediction is-tp" data-prediction="p3" data-score="0.55">
+            <rect x="104" y="46" width="38" height="30"/>
+            <text x="104" y="43">0,55 · TP</text>
+          </g>
+          <g class="prediction is-fp" data-prediction="p4" data-score="0.41">
+            <rect x="30" y="20" width="28" height="20"/>
+            <text x="30" y="17">0,41 · FP</text>
+          </g>
+          <g class="prediction is-filtered" data-prediction="p5" data-score="0.24">
+            <rect x="108" y="46" width="40" height="34"/>
+            <text x="108" y="86">0,24</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="lab-readout">
+      <div class="metric-pair">
+        <p class="metric"><span>Precisión</span><strong data-threshold-precision>0,75</strong></p>
+        <p class="metric"><span>Recall</span><strong data-threshold-recall>1,00</strong></p>
+      </div>
+      <p class="metric-counts">
+        <span class="tally tally--tp">TP <strong data-threshold-tp>3</strong></span>
+        <span class="tally tally--fp">FP <strong data-threshold-fp>1</strong></span>
+        <span class="tally tally--fn">FN <strong data-threshold-fn>0</strong></span>
+      </p>
+      <p class="lab-message" data-threshold-message aria-live="polite">Se ven todos los objetos, pero también sobran predicciones.</p>
+      <label for="threshold-score">Umbral de confianza <b data-threshold-value>0,30</b></label>
+      <input type="range" id="threshold-score" data-threshold-score min="0" max="100" value="30" step="1">
+      <div class="range-ends" aria-hidden="true"><span>Mostrar todo</span><span>Solo lo seguro</span></div>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el estado con umbral 0,30. El emparejamiento sigue el protocolo habitual: las predicciones se ordenan por puntuación y cada una reclama el objeto libre con el que comparte más área, siempre que el IoU llegue a 0,50. La predicción de 0,24 solapa con el tercer objeto, pero llega tarde: ese objeto ya está emparejado, así que cuenta como falso positivo duplicado. Al subir el umbral desaparecen antes las predicciones dudosas: sube la precisión y baja el recall. La curva precisión-recall recorre ese intercambio umbral a umbral.</p></div>
+</section>
+
 <section id="ap-map" data-title="AP" data-layout="visual">
   <div class="section-copy">
     <h2>Una curva resume umbrales</h2>

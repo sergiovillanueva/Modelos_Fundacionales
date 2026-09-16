@@ -43,6 +43,59 @@
   <figure class="figure-media lesson-image lesson-image--medium print-detail"><img src="{{ASSET:tema-03/presentacion/clip-similitud.jpeg}}" alt="Vectores con distinta similitud angular."></figure>
 </section>
 
+<section id="cercania" data-title="Cercanía" data-layout="lab">
+  <div class="section-copy">
+    <h2>Gana el texto más cercano</h2>
+    <p class="lead">La similitud coseno compara direcciones: mueve la imagen y mira qué texto se queda más cerca.</p>
+  </div>
+  <div class="lab-layout" data-similarity-lab data-centre-x="80" data-centre-y="86" data-radius="46">
+    <div class="lab-stage">
+      <svg viewBox="0 0 160 104" role="img" aria-label="Espacio de embeddings esquemático: cuatro textos fijos y un vector de imagen que gira. El texto con mayor similitud coseno queda resaltado.">
+        <path class="space-arc" d="M 34 86 A 46 46 0 0 1 126 86"/>
+        <g class="space-anchors">
+          <g class="anchor is-winner" data-anchor="gato"><line x1="80" y1="86" x2="123.2" y2="70.3"/><text x="130.7" y="69.5">un gato</text></g>
+          <g class="anchor" data-anchor="perro"><line x1="80" y1="86" x2="103" y2="46.2"/><text x="107" y="41.2">un perro</text></g>
+          <g class="anchor" data-anchor="bicicleta"><line x1="80" y1="86" x2="60.6" y2="44.3"/><text x="57.2" y="39.1" text-anchor="end">una bicicleta</text></g>
+          <g class="anchor" data-anchor="coche"><line x1="80" y1="86" x2="38.3" y2="66.6"/><text x="31.1" y="65.2" text-anchor="end">un coche</text></g>
+        </g>
+        <line class="image-vector" data-similarity-arrow x1="80" y1="86" x2="117.7" y2="59.6"/>
+        <circle class="space-origin" cx="80" cy="86" r="2.6"/>
+        <text class="space-note" x="80" y="99" text-anchor="middle">la imagen</text>
+      </svg>
+      <p class="lab-note">Esquema con dos dimensiones. CLIP compara vectores de varios cientos.</p>
+    </div>
+    <div class="lab-readout">
+      <ul class="candidate-list">
+        <li class="candidate is-winner" data-candidate="gato" data-label="un gato" data-angle="20">
+          <span class="candidate-name">un gato</span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .9830"></span></span>
+          <span class="candidate-value" data-candidate-value>0,97</span>
+        </li>
+        <li class="candidate" data-candidate="perro" data-label="un perro" data-angle="60">
+          <span class="candidate-name">un perro</span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .9532"></span></span>
+          <span class="candidate-value" data-candidate-value>0,91</span>
+        </li>
+        <li class="candidate" data-candidate="bicicleta" data-label="una bicicleta" data-angle="115">
+          <span class="candidate-name">una bicicleta</span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .5868"></span></span>
+          <span class="candidate-value" data-candidate-value>0,17</span>
+        </li>
+        <li class="candidate" data-candidate="coche" data-label="un coche" data-angle="155">
+          <span class="candidate-name">un coche</span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .2500"></span></span>
+          <span class="candidate-value" data-candidate-value>&minus;0,50</span>
+        </li>
+      </ul>
+      <p class="lab-message" data-similarity-winner aria-live="polite">El texto más cercano es «un gato», con similitud 0,97.</p>
+      <label for="similarity-angle">Girar el vector de la imagen</label>
+      <input type="range" id="similarity-angle" data-similarity-angle min="0" max="175" value="35" step="1">
+      <div class="range-ends" aria-hidden="true"><span>0°</span><span>175°</span></div>
+    </div>
+  </div>
+  <div class="print-detail"><p>La similitud coseno solo mira el ángulo entre vectores normalizados: vale 1 cuando apuntan igual, 0 cuando son perpendiculares y −1 cuando se oponen. La clasificación zero-shot consiste en escribir los candidatos, codificarlos y quedarse con el más cercano. De ahí se siguen dos consecuencias prácticas: la lista de candidatos condiciona la respuesta, porque el modelo elige siempre uno, y la formulación del texto desplaza su vector, así que reescribir el prompt puede cambiar el ganador sin tocar la imagen.</p></div>
+</section>
+
 <section id="clip-entrenamiento" data-title="Contraste" data-layout="visual">
   <div class="section-copy"><h2>Aprender por asociación</h2><p class="lead">En cada lote, CLIP acerca las parejas correctas y separa las combinaciones incorrectas.</p></div>
   <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-03/presentacion/clip-matriz.webp}}" alt="Matriz de similitud entre imágenes y textos donde la diagonal contiene las parejas correctas."><figcaption>La diagonal representa los pares imagen-texto que sí corresponden.</figcaption></figure>

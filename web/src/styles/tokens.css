@@ -77,3 +77,24 @@
   --font-body: "Roboto", system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+
+/* Refuerzos de septiembre de 2026: profundidad discreta, escala tipográfica y movimiento compartido. */
+:root {
+  --color-ink-soft: #3d4761;
+  --color-line: #e4e9f2;
+  --color-line-strong: #d3dbe8;
+  --color-wash: #f4f7fd;
+  --color-wash-accent: #edf7fc;
+  --color-primary-soft: #ececfb;
+  --color-warning-text: #8a5a00;
+  --color-warning-bg: #fff8e8;
+  --radius-media: 14px;
+  --radius-pill: 999px;
+  --shadow-media: 0 1px 2px rgba(23, 32, 58, .04), 0 12px 28px rgba(23, 32, 58, .06);
+  --shadow-raised: 0 18px 45px rgba(23, 32, 58, .1), 0 2px 8px rgba(23, 32, 58, .05);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --step-title: clamp(2rem, 3.3vw, 2.8rem);
+  --step-lead: 1.05rem;
+}

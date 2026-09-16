@@ -1,27 +1,342 @@
 [
-  {"sectionId":"ver","sourceSlides":[4],"originalAsset":"ppt/media/image-4-1.jpeg","webAsset":"public/assets/tema-01/presentacion/vision-humana-maquina.jpeg","claim":"De píxeles a una salida de visión artificial.","url":"","checkedOn":"2026-09-15","status":"verified","note":"Composición y recurso cotejados con el PDF exportado."},
-  {"sectionId":"tareas","sourceSlides":[5],"originalAsset":"ppt/media/image-5-1.gif","webAsset":"public/assets/tema-01/car-task.webp","claim":"Clasificación, detección y segmentación producen salidas distintas.","url":"","checkedOn":"2026-09-15","status":"verified","note":"GIF original reutilizado como animación controlable."},
-  {"sectionId":"inicio","sourceSlides":[6],"originalAsset":"ppt/media/image-6-1.jpeg","webAsset":"public/assets/tema-01/presentacion/deteccion-calle.jpeg","claim":"Una detección reúne caja, categoría y puntuación.","url":"","checkedOn":"2026-09-15","status":"verified","note":"Diagrama y terminología cotejados visualmente."},
-  {"sectionId":"familias","sourceSlides":[7],"originalAsset":"ppt/media/image-7-1.jpeg","webAsset":"public/assets/tema-01/presentacion/familias-deteccion.jpeg","claim":"Mapa de familias de detectores.","url":"","checkedOn":"2026-09-15","status":"pending","note":"Taxonomía conservada como mapa docente; revisar versiones si se actualiza."},
-  {"sectionId":"historia","sourceSlides":[8],"originalAsset":"","webAsset":"","claim":"La evolución didáctica distingue detectores de dos etapas, una etapa y basados en transformers.","url":"","checkedOn":"2026-09-16","status":"verified","note":"La cronología se reconstruyó como HTML; se retiró el árbol repetido de familias."},
-  {"sectionId":"cnn","sourceSlides":[9],"originalAsset":"ppt/media/image-9-1.gif","webAsset":"public/assets/tema-01/presentacion/cnn.webp","claim":"Las convoluciones forman representaciones visuales capa a capa.","url":"","checkedOn":"2026-09-15","status":"corrected","note":"Se evitó la generalización de que toda CNN carece de contexto global."},
-  {"sectionId":"dos-etapas","sourceSlides":[10],"originalAsset":"ppt/media/image-10-1.jpeg","webAsset":"public/assets/tema-01/presentacion/two-stage.jpeg","claim":"RPN, ROI Pooling y una segunda cabeza forman el flujo clásico de dos etapas.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Se restauraron mecanismo, coste de candidatos y trade-off entre exactitud y latencia."},
-  {"sectionId":"rcnn","sourceSlides":[11],"originalAsset":"ppt/media/image-11-1.jpeg","webAsset":"public/assets/tema-01/presentacion/rcnn.jpeg","claim":"Flujo de una propuesta de región en R-CNN.","url":"","checkedOn":"2026-09-15","status":"verified","note":"Diagrama original reutilizado."},
-  {"sectionId":"progreso","sourceSlides":[12],"originalAsset":"ppt/media/image-12-1.jpeg","webAsset":"public/assets/tema-01/presentacion/rcnn-velocidad.jpeg","claim":"Comparativa histórica de R-CNN, Fast R-CNN y Faster R-CNN.","url":"","checkedOn":"2026-09-15","status":"corrected","note":"La web advierte que los valores dependen de condiciones históricas."},
-  {"sectionId":"una-etapa","sourceSlides":[13],"originalAsset":"ppt/media/image-13-1.jpeg","webAsset":"public/assets/tema-01/presentacion/yolo-v1.jpeg","claim":"YOLOv1 plantea detección directa.","url":"","checkedOn":"2026-09-15","status":"verified","note":"La pregunta distingue una etapa de dos etapas."},
-  {"sectionId":"arquitectura-yolo","sourceSlides":[14],"originalAsset":"ppt/media/image-14-1.jpeg","webAsset":"public/assets/tema-01/presentacion/yolo-arquitectura.jpeg","claim":"YOLOv1 comparte una CNN y predice cuadrícula, cajas, confianza y clases conjuntamente.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"Se restauraron los tres mecanismos del original y se identifican como formulación histórica de YOLOv1."},
-  {"sectionId":"evolucion-yolo","sourceSlides":[15],"originalAsset":"ppt/media/image-15-*","webAsset":"","claim":"YOLOv1, v3, v4, v5, v7, v8 y v9 introducen hitos distintos entre 2016 y 2024.","url":"","checkedOn":"2026-09-16","status":"verified","note":"La cronología se recuperó sin convertirla en una clasificación universal de rendimiento."},
-  {"sectionId":"contexto","sourceSlides":[16],"originalAsset":"ppt/media/image-16-*","webAsset":"","claim":"Localidad, sesgo inductivo y heurísticas condicionan el diseño de detectores clásicos.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"Se restauraron los tres argumentos y se evitó afirmar que toda CNN carece de contexto global."},
-  {"sectionId":"detr","sourceSlides":[17],"originalAsset":"ppt/media/image-17-1.jpeg","webAsset":"public/assets/tema-01/presentacion/detr-resumen.webp","claim":"DETR usa características visuales y consultas de objetos.","url":"","checkedOn":"2026-09-15","status":"pending","note":"Revisar detalles de variante si se amplía el contenido."},
-  {"sectionId":"matching","sourceSlides":[18],"originalAsset":"ppt/media/image-18-1.jpeg","webAsset":"public/assets/tema-01/presentacion/nms-comparacion.jpeg","claim":"Matching durante entrenamiento y NMS durante inferencia son procesos distintos.","url":"","checkedOn":"2026-09-15","status":"verified","note":"La pregunta comprueba explícitamente esa diferencia."},
-  {"sectionId":"rf-detr","sourceSlides":[19,20],"originalAsset":"ppt/media/image-19-*; ppt/media/image-20-1.jpeg","webAsset":"public/assets/tema-01/presentacion/rf-detr.jpeg","claim":"RF-DETR combina features multiescala, atención deformable, queries y refinamiento directo de cajas.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"Se recuperó el flujo de cinco pasos; los detalles dependientes de variante se mantienen como contexto, no como regla universal."},
-  {"sectionId":"eleccion","sourceSlides":[21,22,23],"originalAsset":"ppt/media/image-23-1.jpeg","webAsset":"public/assets/tema-01/presentacion/comparativa-latencia.jpeg","claim":"La elección de detector exige condiciones de medida explícitas.","url":"","checkedOn":"2026-09-15","status":"corrected","note":"Se retiraron conclusiones absolutas, comparativas comerciales y afirmaciones de licencia no verificadas."},
-  {"sectionId":"iou","sourceSlides":[24],"originalAsset":"ppt/media/image-24-1.jpeg","webAsset":"","claim":"IoU relaciona intersección y unión de dos cajas.","url":"","checkedOn":"2026-09-15","status":"verified","note":"Se sustituyó el gráfico estático por una simulación local comprobada con tests."},
-  {"sectionId":"errores","sourceSlides":[25],"originalAsset":"ppt/media/image-25-1.jpeg","webAsset":"","claim":"TP, FP y FN describen aciertos, falsas alarmas y objetos omitidos.","url":"","checkedOn":"2026-09-15","status":"verified","note":"Explicación adaptada a detección de objetos."},
-  {"sectionId":"precision-recall","sourceSlides":[26],"originalAsset":"ppt/media/image-26-1.jpeg","webAsset":"public/assets/tema-01/presentacion/precision-recall.webp","claim":"Precisión y recall usan denominadores distintos.","url":"","checkedOn":"2026-09-15","status":"verified","note":"Incluye ejercicio numérico de comprobación."},
-  {"sectionId":"umbral","sourceSlides":[26,27],"originalAsset":"","webAsset":"","claim":"El umbral de confianza filtra predicciones sin modificar sus cajas.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Se creó una escala HTML específica para evitar repetir la curva de AP."},
-  {"sectionId":"ap-map","sourceSlides":[27],"originalAsset":"ppt/media/image-27-1.jpeg","webAsset":"public/assets/tema-01/presentacion/ap-map.jpeg","claim":"AP resume una curva precisión-recall y mAP agrega AP según un protocolo.","url":"","checkedOn":"2026-09-16","status":"verified","note":"La curva queda reservada a AP; la web diferencia AP50 de la media sobre varios IoU."},
-  {"sectionId":"dominio","sourceSlides":[28],"originalAsset":"ppt/media/image-28-1.jpeg","webAsset":"public/assets/tema-01/presentacion/coco-ejemplos.jpeg","claim":"Las clases de un checkpoint dependen de sus datos de entrenamiento.","url":"","checkedOn":"2026-09-15","status":"verified","note":"La pregunta evita confundir umbral con vocabulario."},
-  {"sectionId":"evaluar","sourceSlides":[29],"originalAsset":"ppt/media/image-29-1.jpeg","webAsset":"","claim":"La evaluación debe incluir datos representativos, latencia y análisis de errores.","url":"","checkedOn":"2026-09-15","status":"verified","note":"La pregunta evita elegir un modelo solo por un benchmark."},
-  {"sectionId":"practica","sourceSlides":[30],"originalAsset":"ppt/media/image-30-*","webAsset":"","claim":"La práctica conecta la detección de vocabulario cerrado con modelos multimodales y zero-shot.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Se restauró la transición conceptual y se conserva el enlace a Colab; el notebook no se ejecutó ni modificó."}
+  {
+    "sectionId": "ver",
+    "sourceSlides": [
+      4
+    ],
+    "originalAsset": "ppt/media/image-4-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/vision-humana-maquina.jpeg",
+    "claim": "De píxeles a una salida de visión artificial.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "Composición y recurso cotejados con el PDF exportado."
+  },
+  {
+    "sectionId": "tareas",
+    "sourceSlides": [
+      5
+    ],
+    "originalAsset": "ppt/media/image-5-1.gif",
+    "webAsset": "public/assets/tema-01/car-task.webp",
+    "claim": "Clasificación, detección y segmentación producen salidas distintas.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "GIF original reutilizado como animación controlable."
+  },
+  {
+    "sectionId": "inicio",
+    "sourceSlides": [
+      6
+    ],
+    "originalAsset": "ppt/media/image-6-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/deteccion-calle.jpeg",
+    "claim": "Una detección reúne caja, categoría y puntuación.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "Diagrama y terminología cotejados visualmente."
+  },
+  {
+    "sectionId": "familias",
+    "sourceSlides": [
+      7
+    ],
+    "originalAsset": "ppt/media/image-7-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/familias-deteccion.jpeg",
+    "claim": "Mapa de familias de detectores.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "pending",
+    "note": "Taxonomía conservada como mapa docente; revisar versiones si se actualiza."
+  },
+  {
+    "sectionId": "historia",
+    "sourceSlides": [
+      8
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "La evolución didáctica distingue detectores de dos etapas, una etapa y basados en transformers.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "La cronología se reconstruyó como HTML; se retiró el árbol repetido de familias."
+  },
+  {
+    "sectionId": "cnn",
+    "sourceSlides": [
+      9
+    ],
+    "originalAsset": "ppt/media/image-9-1.gif",
+    "webAsset": "public/assets/tema-01/presentacion/cnn.webp",
+    "claim": "Las convoluciones forman representaciones visuales capa a capa.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "corrected",
+    "note": "Se evitó la generalización de que toda CNN carece de contexto global."
+  },
+  {
+    "sectionId": "dos-etapas",
+    "sourceSlides": [
+      10
+    ],
+    "originalAsset": "ppt/media/image-10-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/two-stage.jpeg",
+    "claim": "RPN, ROI Pooling y una segunda cabeza forman el flujo clásico de dos etapas.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se restauraron mecanismo, coste de candidatos y trade-off entre exactitud y latencia."
+  },
+  {
+    "sectionId": "rcnn",
+    "sourceSlides": [
+      11
+    ],
+    "originalAsset": "ppt/media/image-11-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/rcnn.jpeg",
+    "claim": "Flujo de una propuesta de región en R-CNN.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "Diagrama original reutilizado."
+  },
+  {
+    "sectionId": "progreso",
+    "sourceSlides": [
+      12
+    ],
+    "originalAsset": "ppt/media/image-12-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/rcnn-velocidad.jpeg",
+    "claim": "Comparativa histórica de R-CNN, Fast R-CNN y Faster R-CNN.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "corrected",
+    "note": "La web advierte que los valores dependen de condiciones históricas."
+  },
+  {
+    "sectionId": "una-etapa",
+    "sourceSlides": [
+      13
+    ],
+    "originalAsset": "ppt/media/image-13-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/yolo-v1.jpeg",
+    "claim": "YOLOv1 plantea detección directa.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "La pregunta distingue una etapa de dos etapas."
+  },
+  {
+    "sectionId": "arquitectura-yolo",
+    "sourceSlides": [
+      14
+    ],
+    "originalAsset": "ppt/media/image-14-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/yolo-arquitectura.jpeg",
+    "claim": "YOLOv1 comparte una CNN y predice cuadrícula, cajas, confianza y clases conjuntamente.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se restauraron los tres mecanismos del original y se identifican como formulación histórica de YOLOv1."
+  },
+  {
+    "sectionId": "evolucion-yolo",
+    "sourceSlides": [
+      15
+    ],
+    "originalAsset": "ppt/media/image-15-*",
+    "webAsset": "",
+    "claim": "YOLOv1, v3, v4, v5, v7, v8 y v9 introducen hitos distintos entre 2016 y 2024.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "La cronología se recuperó sin convertirla en una clasificación universal de rendimiento."
+  },
+  {
+    "sectionId": "contexto",
+    "sourceSlides": [
+      16
+    ],
+    "originalAsset": "ppt/media/image-16-*",
+    "webAsset": "",
+    "claim": "Localidad, sesgo inductivo y heurísticas condicionan el diseño de detectores clásicos.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se restauraron los tres argumentos y se evitó afirmar que toda CNN carece de contexto global."
+  },
+  {
+    "sectionId": "detr",
+    "sourceSlides": [
+      17
+    ],
+    "originalAsset": "ppt/media/image-17-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/detr-resumen.webp",
+    "claim": "DETR usa características visuales y consultas de objetos.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "pending",
+    "note": "Revisar detalles de variante si se amplía el contenido."
+  },
+  {
+    "sectionId": "matching",
+    "sourceSlides": [
+      18
+    ],
+    "originalAsset": "ppt/media/image-18-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/nms-comparacion.jpeg",
+    "claim": "Matching durante entrenamiento y NMS durante inferencia son procesos distintos.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "La pregunta comprueba explícitamente esa diferencia."
+  },
+  {
+    "sectionId": "rf-detr",
+    "sourceSlides": [
+      19,
+      20
+    ],
+    "originalAsset": "ppt/media/image-19-*; ppt/media/image-20-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/rf-detr.jpeg",
+    "claim": "RF-DETR combina features multiescala, atención deformable, queries y refinamiento directo de cajas.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se recuperó el flujo de cinco pasos; los detalles dependientes de variante se mantienen como contexto, no como regla universal."
+  },
+  {
+    "sectionId": "eleccion",
+    "sourceSlides": [
+      21,
+      22,
+      23
+    ],
+    "originalAsset": "ppt/media/image-23-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/comparativa-latencia.jpeg",
+    "claim": "La elección de detector exige condiciones de medida explícitas.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "corrected",
+    "note": "Se retiraron conclusiones absolutas, comparativas comerciales y afirmaciones de licencia no verificadas."
+  },
+  {
+    "sectionId": "iou",
+    "sourceSlides": [
+      24
+    ],
+    "originalAsset": "ppt/media/image-24-1.jpeg",
+    "webAsset": "",
+    "claim": "IoU relaciona intersección y unión de dos cajas.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "Se sustituyó el gráfico estático por una simulación local comprobada con tests."
+  },
+  {
+    "sectionId": "errores",
+    "sourceSlides": [
+      25
+    ],
+    "originalAsset": "ppt/media/image-25-1.jpeg",
+    "webAsset": "",
+    "claim": "TP, FP y FN describen aciertos, falsas alarmas y objetos omitidos.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "Explicación adaptada a detección de objetos."
+  },
+  {
+    "sectionId": "precision-recall",
+    "sourceSlides": [
+      26
+    ],
+    "originalAsset": "ppt/media/image-26-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/precision-recall.webp",
+    "claim": "Precisión y recall usan denominadores distintos.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "Incluye ejercicio numérico de comprobación."
+  },
+  {
+    "sectionId": "umbral",
+    "sourceSlides": [
+      26,
+      27
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "El umbral de confianza filtra predicciones sin modificar sus cajas.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se creó una escala HTML específica para evitar repetir la curva de AP."
+  },
+  {
+    "sectionId": "ap-map",
+    "sourceSlides": [
+      27
+    ],
+    "originalAsset": "ppt/media/image-27-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/ap-map.jpeg",
+    "claim": "AP resume una curva precisión-recall y mAP agrega AP según un protocolo.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "La curva queda reservada a AP; la web diferencia AP50 de la media sobre varios IoU."
+  },
+  {
+    "sectionId": "dominio",
+    "sourceSlides": [
+      28
+    ],
+    "originalAsset": "ppt/media/image-28-1.jpeg",
+    "webAsset": "public/assets/tema-01/presentacion/coco-ejemplos.jpeg",
+    "claim": "Las clases de un checkpoint dependen de sus datos de entrenamiento.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "La pregunta evita confundir umbral con vocabulario."
+  },
+  {
+    "sectionId": "evaluar",
+    "sourceSlides": [
+      29
+    ],
+    "originalAsset": "ppt/media/image-29-1.jpeg",
+    "webAsset": "",
+    "claim": "La evaluación debe incluir datos representativos, latencia y análisis de errores.",
+    "url": "",
+    "checkedOn": "2026-09-15",
+    "status": "verified",
+    "note": "La pregunta evita elegir un modelo solo por un benchmark."
+  },
+  {
+    "sectionId": "practica",
+    "sourceSlides": [
+      30
+    ],
+    "originalAsset": "ppt/media/image-30-*",
+    "webAsset": "",
+    "claim": "La práctica conecta la detección de vocabulario cerrado con modelos multimodales y zero-shot.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se restauró la transición conceptual y se conserva el enlace a Colab; el notebook no se ejecutó ni modificó."
+  },
+  {
+    "sectionId": "equilibrio",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "src/js/threshold-lab.js",
+    "claim": "Al subir el umbral de confianza sube la precisión y baja el recall, y una predicción duplicada sobre un objeto ya emparejado cuenta como falso positivo.",
+    "url": "https://cocodataset.org/#detection-eval",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Pantalla nueva, sin diapositiva de origen. Los recuentos los calcula matchDetections con el protocolo de emparejamiento por puntuación y umbral IoU 0,50; hay pruebas unitarias en tests/metrics.test.mjs."
+  }
 ]

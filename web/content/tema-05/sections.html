@@ -64,6 +64,43 @@
   <div class="print-detail"><p>Un prompt no modifica los pesos. SAM 1 y SAM 2 trabajan de forma nativa con indicaciones visuales; el texto suele requerir un modelo externo como Grounding DINO. SAM 3 incorpora texto y ejemplares como prompts nativos para conceptos.</p></div>
 </section>
 
+<section id="marcar" data-title="Marcar" data-layout="lab">
+  <div class="section-copy">
+    <h2>Marca un punto y mira la máscara</h2>
+    <p class="lead">Un punto positivo propone el objeto entero; uno negativo retira la parte que sobra.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-prompt-lab>
+    <div class="lab-stage">
+      <svg viewBox="0 0 200 124" aria-label="Escena esquemática con una furgoneta, un árbol y la carretera. Cada zona acepta un punto de inclusión o exclusión.">
+        <rect class="scene-prop" x="29" y="66" width="6" height="32"/>
+        <g class="scene-regions">
+          <rect class="region" data-region="carretera" data-object="carretera" data-name="la carretera" role="button" tabindex="0" x="0" y="98" width="200" height="26" rx="3"/>
+          <circle class="region" data-region="arbol" data-object="arbol" data-name="el árbol" role="button" tabindex="0" cx="32" cy="52" r="17"/>
+          <rect class="region is-inside" data-region="carroceria" data-object="furgoneta" data-name="la carrocería" data-start="positive" role="button" tabindex="0" x="62" y="62" width="104" height="36" rx="7"/>
+          <rect class="region is-inside" data-region="cabina" data-object="furgoneta" data-name="la cabina" role="button" tabindex="0" x="86" y="40" width="56" height="24" rx="6"/>
+          <path class="region is-inside" data-region="ruedas" data-object="furgoneta" data-name="las ruedas" role="button" tabindex="0" d="M 76 100 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0 M 134 100 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0"/>
+        </g>
+        <g class="scene-dots">
+          <g class="prompt-dot is-empty" data-dot="carretera" transform="translate(46,112)"><circle r="7"/><text y="3">+</text></g>
+          <g class="prompt-dot is-empty" data-dot="arbol" transform="translate(32,52)"><circle r="7"/><text y="3">+</text></g>
+          <g class="prompt-dot is-positive" data-dot="carroceria" transform="translate(118,80)"><circle r="7"/><text y="3">+</text></g>
+          <g class="prompt-dot is-empty" data-dot="cabina" transform="translate(114,52)"><circle r="7"/><text y="3">+</text></g>
+          <g class="prompt-dot is-empty" data-dot="ruedas" transform="translate(86,100)"><circle r="7"/><text y="3">+</text></g>
+        </g>
+      </svg>
+    </div>
+    <div class="lab-readout">
+      <div class="prompt-modes" role="group" aria-label="Qué hace el siguiente clic">
+        <button type="button" data-prompt-mode="positive" aria-pressed="true">Incluir</button>
+        <button type="button" data-prompt-mode="negative" aria-pressed="false">Excluir</button>
+      </div>
+      <p class="lab-message" data-prompt-message aria-live="polite">La máscara cubre la carrocería, la cabina y las ruedas.</p>
+      <p class="metric-counts"><span class="tally">Puntos colocados <strong data-prompt-count>1</strong></span></p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta escena reproduce el comportamiento que conviene anticipar, no la salida de un modelo concreto. Un punto positivo sobre la carrocería propone la furgoneta completa: carrocería, cabina y ruedas. Un punto negativo sobre las ruedas las retira sin volver a empezar. Un punto sobre el árbol añade otro objeto, porque el prompt señala una región y no una categoría. En SAM real la primera indicación puede resultar ambigua entre objeto, parte y subparte, y por eso algunas versiones devuelven varias máscaras candidatas con su puntuación.</p></div>
+</section>
+
 <section id="prompt" data-title="Puntos" data-layout="question">
   <div class="section-copy"><h2>Un clic elige el objeto</h2><p class="lead">El punto positivo señala una región que debe pertenecer a la máscara.</p></div>
   <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Positivo</strong> dentro del objeto.</p><p><strong>Negativo</strong> en una zona que sobra.</p><p><strong>Varios</strong> para resolver ambigüedad.</p></div>{{QUIZ:q501}}</div>

@@ -59,8 +59,10 @@
       "number": "06",
       "title": "Otras tareas de visión",
       "navTitle": "Más visión",
-      "status": "planned",
-      "description": "Estimación de profundidad monocromática, detección de pose humana y visión 3D con modelos fundacionales."
+      "status": "available",
+      "contentDir": "tema-06",
+      "notebookPath": "6_Otras_tareas.ipynb",
+      "description": "Pose humana, OCR, superresolución, eliminación de fondo, correspondencias visuales y profundidad monocular."
     }
   ]
 }

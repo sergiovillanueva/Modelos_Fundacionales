@@ -13,3 +13,53 @@ export function iou(a, b) {
   return union > 0 ? intersection / union : 0;
 }
 
+/**
+ * Empareja predicciones con objetos reales según el protocolo habitual de detección:
+ * se filtran por puntuación, se recorren de mayor a menor y cada una reclama el objeto
+ * libre con mayor IoU siempre que alcance el umbral. Devuelve el recuento y las métricas.
+ */
+export function matchDetections(truths, predictions, {scoreThreshold = 0.5, iouThreshold = 0.5} = {}) {
+  const kept = predictions
+    .filter((prediction) => prediction.score >= scoreThreshold)
+    .sort((left, right) => right.score - left.score);
+  const claimed = new Set();
+  const outcomes = new Map();
+
+  for (const prediction of kept) {
+    let best = null;
+    let bestFree = 0;
+    let bestOverlap = 0;
+    for (const truth of truths) {
+      const overlap = iou(truth.box, prediction.box);
+      // El solapamiento máximo se informa siempre; solo los objetos libres pueden emparejarse,
+      // de modo que una predicción duplicada queda como falso positivo aunque solape mucho.
+      if (overlap > bestOverlap) bestOverlap = overlap;
+      if (claimed.has(truth.id)) continue;
+      if (overlap > bestFree) {
+        best = truth;
+        bestFree = overlap;
+      }
+    }
+    if (best && bestFree >= iouThreshold) {
+      claimed.add(best.id);
+      outcomes.set(prediction.id, {outcome: 'tp', truthId: best.id, overlap: bestFree});
+    } else {
+      outcomes.set(prediction.id, {outcome: 'fp', truthId: null, overlap: bestOverlap});
+    }
+  }
+
+  const truePositives = claimed.size;
+  const falsePositives = kept.length - truePositives;
+  const falseNegatives = truths.length - truePositives;
+
+  return {
+    outcomes,
+    missed: truths.filter((truth) => !claimed.has(truth.id)).map((truth) => truth.id),
+    truePositives,
+    falsePositives,
+    falseNegatives,
+    precision: kept.length > 0 ? truePositives / kept.length : null,
+    recall: truths.length > 0 ? truePositives / truths.length : null
+  };
+}
+
