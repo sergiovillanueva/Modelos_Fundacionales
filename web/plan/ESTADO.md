@@ -23,6 +23,19 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Fuentes | `content/tema-01/sources.json` a `content/tema-05/sources.json` |
 | PDFs | Temas 01–05 disponibles; 02–05 regenerados e inspeccionados tras la ampliación |
 
+## Revisión de fidelidad del 16 de septiembre
+
+Se aplicó la auditoría completa de PPTX, PDF y web sin cambiar el número ni el orden de pantallas:
+
+- Tema 01: restauradas la cronología histórica, RPN/ROI Pooling, los tres mecanismos de YOLOv1, los hitos de YOLOv1–v9, las decisiones de CNN/DETR y el flujo de RF-DETR.
+- Tema 01: `historia` deja de repetir la taxonomía de `familias`; `umbral` usa una escala propia y `ap-map` conserva la curva precisión-recall.
+- Tema 01: el cierre vuelve a conectar detectores de vocabulario cerrado con multimodalidad y zero-shot.
+- Tema 04: t-SNE/UMAP y la sección `similitud` quedan explicados y registrados en cobertura.
+- Tema 05: SAM 3 recupera Presence Token, detector y tracker.
+- Temas 02–05: los pasos de Colab incluyen contexto de estudio en el PDF sin cargar la interfaz web.
+
+La fuente del cotejo y las decisiones se documentan en [AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md](AUDITORIA-CONTENIDO-PPTX-PDF-WEB.md).
+
 ## Auditoría de los temas 02–05
 
 La versión anterior resumía 49 diapositivas del PPTX en 34 pantallas y solo conservaba ocho imágenes. La revisión actual recupera mecanismo, arquitectura, límites, elección y recursos fuente sin cambiar la interfaz general. El detalle completo está en [AUDITORIA-TEMAS-02-05.md](AUDITORIA-TEMAS-02-05.md).
@@ -37,11 +50,13 @@ Correcciones docentes registradas:
 
 ## Evidencia técnica de esta revisión
 
-- `npm run build`: correcto.
-- `npm run check`: correcto.
+- `npm run build`, `npm run check` y `npm test`: correctos; 10 pruebas unitarias superadas.
+- `npm run test:e2e`: 9 pruebas de navegador superadas.
 - Auditoría Playwright de todos los pasos de los temas 02–05 a 1440 × 900, 390 × 844 y 1280 × 720: sin desbordamientos.
+- Tema 01 recapturado completo en escritorio, móvil y presentación después de recuperar el contenido.
+- Auditoría de cobertura: 76/76 diapositivas de los temas 01–05 con destino; ninguna sección huérfana, texto casi duplicado o imagen repetida entre pantallas.
 - Seis animaciones nuevas: reproducción y parada comprobadas.
-- PDF 02: 12 páginas; PDF 03: 19; PDF 04: 20; PDF 05: 14. Todas inspeccionadas y sin páginas en blanco.
+- PDF 01: 26 páginas; PDF 02: 12; PDF 03: 19; PDF 04: 20; PDF 05: 14. Todos regenerados, inspeccionados y sin páginas en blanco.
 - Capturas representativas en `tmp/visual-audit/` durante la revisión; la carpeta es temporal y no se publica.
 - PPTX y PDF cotejados diapositiva a diapositiva para 31–79.
 
@@ -60,6 +75,7 @@ Esto demuestra que la implementación local carga y cabe. La revisión docente d
 | 2026-09-15 | T1-A a T1-I | Diapositivas 4–30 en 26 pantallas, actividades y PDF |
 | 2026-09-15 | Primera pasada T2–T5 | Adaptación demasiado resumida; quedó señalada para auditoría |
 | 2026-09-16 | Auditoría T2–T5 | Diapositivas 31–79 recuperadas en 65 pantallas con 27 recursos fuente y correcciones registradas |
+| 2026-09-16 | Fidelidad T1–T5 | Pérdidas y repeticiones corregidas sin alterar el recorrido de pantallas |
 
 ## Al cerrar el siguiente lote
 

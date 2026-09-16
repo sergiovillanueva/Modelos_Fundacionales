@@ -231,26 +231,26 @@
       ],
       "topic": "01",
       "batch": "T1-B",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "historia"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "contenido",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Línea temporal conservada como contexto histórico.",
+      "note": "Cronología restaurada; eliminado el recurso visual que repetía la taxonomía de la diapositiva 7.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -297,26 +297,26 @@
       ],
       "topic": "01",
       "batch": "T1-C",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "dos-etapas"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "contenido",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Diagrama de propuestas de región conservado.",
+      "note": "RPN, ROI Pooling, candidatos y trade-off de latencia restaurados.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -430,26 +430,26 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "arquitectura-yolo"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "contenido",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Arquitectura original conservada e identificada como YOLOv1.",
+      "note": "Rejilla, predicción simultánea y arquitectura unificada recuperadas como formulación de YOLOv1.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -476,7 +476,7 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "evolucion-yolo"
       ],
@@ -485,17 +485,17 @@
       ],
       "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Evolución condensada en línea conceptual, sin comparativas no verificadas.",
+      "note": "Hitos YOLOv1, v3, v4, v5, v7, v8 y v9 recuperados sin comparativa universal de rendimiento.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -515,7 +515,7 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "contexto"
       ],
@@ -524,17 +524,17 @@
       ],
       "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Localidad y contexto explicados sin afirmar una limitación universal de CNN.",
+      "note": "Localidad, sesgo inductivo y heurísticas restaurados con una formulación no universal sobre CNN.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -625,26 +625,26 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "rf-detr"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "contenido",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "RF-DETR introducido como modelo de la práctica.",
+      "note": "Backbone preentrenado, atención deformable y diseño sin anchors explicados con cautela de variante.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -658,26 +658,26 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "rf-detr"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "agrupada",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Diagrama RF-DETR integrado con la introducción de la práctica.",
+      "note": "Flujo multiescala de cinco pasos restaurado en la sección RF-DETR.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -881,7 +881,7 @@
       ],
       "topic": "01",
       "batch": "T1-H",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "precision-recall",
         "umbral"
@@ -889,19 +889,19 @@
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "agrupada",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Precisión, recall y umbral explicados con dos preguntas distintas.",
+      "note": "Precisión, recall y efecto del umbral conectados sin repetir la visual de AP.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -915,26 +915,26 @@
       ],
       "topic": "01",
       "batch": "T1-H",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "ap-map"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "contenido",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "AP y mAP explicados sin fijar un protocolo único.",
+      "note": "Curva reservada a AP y mAP; protocolos de IoU distinguidos.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -1014,26 +1014,26 @@
       ],
       "topic": "01",
       "batch": "T1-I",
-      "status": "adaptada",
+      "status": "revisada",
       "sectionIds": [
         "practica"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "contexto",
+      "treatment": "corregida",
       "missingConcepts": [],
-      "note": "El cierre conecta con la práctica Colab y la continuación del curso.",
+      "note": "Transición desde vocabulario cerrado a modelos multimodales restaurada junto a la práctica.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-16",
+        "reviewer": "Auditoría local de cobertura y presentación",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
+          "PPTX y PDF cotejados diapositiva a diapositiva",
+          "content/tema-01/sources.json",
           "npm run build",
           "npm run check",
-          "npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "auditoría Playwright en escritorio, móvil y presentación",
+          "PDF regenerado e inspeccionado página a página"
         ]
       }
     },
@@ -2307,6 +2307,7 @@
       "batch": "T4-C",
       "status": "revisada",
       "sectionIds": [
+        "similitud",
         "pca",
         "vecinos"
       ],
@@ -2315,7 +2316,7 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Mapas de atención, PCA, t-SNE/UMAP, similitud y vecinos cercanos quedan trazados en la web.",
       "review": {
         "date": "2026-09-16",
         "reviewer": "Auditoría local de cobertura y presentación",
@@ -2626,7 +2627,7 @@
       ],
       "treatment": "corregida",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Presence Token, detector y tracker recuperados; reconocimiento y localización se explican por separado.",
       "review": {
         "date": "2026-09-16",
         "reviewer": "Auditoría local de cobertura y presentación",

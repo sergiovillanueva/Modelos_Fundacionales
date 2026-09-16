@@ -33,9 +33,9 @@
 </section>
 
 <section id="sam3" data-title="SAM 3" data-layout="visual">
-  <div class="section-copy"><h2>Un concepto encuentra sus instancias</h2><p class="lead">SAM 3 detecta, segmenta y sigue objetos descritos con texto o ejemplos visuales.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam3.jpeg}}" alt="Arquitectura de SAM 3 con encoder de percepción, detector y tracker."><figcaption>El detector encuentra nuevas instancias; el tracker mantiene su identidad.</figcaption></figure>
-  <div class="print-detail"><p>SAM 3 añade promptable concept segmentation: frases nominales abiertas y ejemplares definen el concepto. Una arquitectura unificada combina detección y seguimiento sobre imagen o vídeo, manteniendo también los prompts visuales de la familia.</p></div>
+  <div class="section-copy"><h2>Primero presencia, después posición</h2><p class="lead">Un token estima si el concepto existe; detector y tracker localizan y mantienen sus instancias.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam3.jpeg}}" alt="Arquitectura de SAM 3 con encoder de percepción, detector, token de presencia y tracker."><figcaption>Separar reconocimiento y localización ayuda a reducir falsos positivos de vocabulario abierto.</figcaption></figure>
+  <div class="print-detail"><p>SAM 3 condiciona la percepción con texto o ejemplares visuales. El Presence Token estima de forma global si el concepto solicitado aparece en la imagen; las object queries se concentran en localizar sus instancias. Un detector basado en DETR encuentra objetos nuevos y el tracker heredado de SAM 2 conserva identidades mediante memoria, pudiendo reiniciarse cuando reaparece una instancia.</p></div>
 </section>
 
 <section id="evolucion" data-title="Evolución" data-layout="visual">
@@ -95,4 +95,5 @@
   <div class="section-copy"><h2>Segmenta y corrige</h2><p class="lead">Prueba cómo cambian las máscaras con puntos positivos y negativos.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Segmenta con un punto.</span></li><li><span>Refina y compara máscaras.</span></li></ol>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/5_SAM.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+  <div class="print-detail"><p>Empieza con un punto positivo y añade un punto negativo donde la máscara invada el fondo. Compara número de interacciones, contorno y objetos pequeños. Comprueba qué versión carga el cuaderno: texto, memoria temporal y ejemplares no están disponibles en todos los modelos SAM.</p></div>
 </section>

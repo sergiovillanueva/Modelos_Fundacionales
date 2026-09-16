@@ -49,12 +49,14 @@
 <section id="historia" data-title="Historia" data-layout="visual">
   <div class="section-copy">
     <h2>Cómo cambió el recorrido</h2>
-    <p class="lead">La evolución redujo pasos intermedios y cambió la forma de asignar predicciones.</p>
+    <p class="lead">Tres etapas cambiaron cómo se proponen, predicen y asignan las cajas.</p>
   </div>
-  <figure class="figure-media lesson-image lesson-image--wide">
-    <img src="{{ASSET:tema-01/presentacion/historia-detectores.jpg}}" alt="Línea temporal de detectores de objetos desde R-CNN hasta detectores modernos.">
-    <figcaption>Una familia explica el flujo de cálculo, no una garantía de precisión o velocidad.</figcaption>
-  </figure>
+  <ol class="evolution-line" aria-label="Evolución histórica de los detectores de objetos">
+    <li><strong>2014–2016 · Dos etapas</strong><span>R-CNN propone regiones y después las clasifica.</span></li>
+    <li><strong>2015→ · Una etapa</strong><span>YOLO predice cajas y clases en una sola pasada.</span></li>
+    <li><strong>2020→ · Transformers</strong><span>DETR aprende queries y asignación uno a uno.</span></li>
+  </ol>
+  <div class="print-detail"><p>Las fechas sitúan la aparición de las ideas, no el fin de cada familia. Los modelos de dos etapas, una etapa y transformer siguen coexistiendo, y hay diseños híbridos.</p></div>
 </section>
 
 <section id="cnn" data-title="CNN" data-layout="visual">
@@ -72,13 +74,13 @@
 <section id="dos-etapas" data-title="Dos etapas" data-layout="visual">
   <div class="section-copy">
     <h2>Primero regiones, después clases</h2>
-    <p class="lead">Los detectores de dos etapas refinan candidatos antes de decidir qué objeto contienen.</p>
+    <p class="lead">Una RPN propone regiones; ROI Pooling reutiliza features; otra cabeza clasifica y refina.</p>
   </div>
   <figure class="figure-media lesson-image lesson-image--medium">
     <img src="{{ASSET:tema-01/presentacion/two-stage.jpeg}}" alt="Esquema de detector de dos etapas con propuestas de regiones, mapas de características y clasificación.">
-    <figcaption>La propuesta de región reduce dónde debe mirar el clasificador.</figcaption>
+    <figcaption>Más candidatos permiten refinar mejor, pero aumentan cálculo y latencia.</figcaption>
   </figure>
-  <div class="print-detail"><p>R-CNN, Fast R-CNN y Faster R-CNN son hitos de esta familia. Las cifras de velocidad dependen de implementación, datos y hardware, así que una tabla histórica no basta para elegir un detector hoy.</p></div>
+  <div class="print-detail"><p>R-CNN, Fast R-CNN y Faster R-CNN son hitos de esta familia. La primera etapa puede producir cientos de candidatos. La segunda extrae features de cada región, asigna una clase y ajusta la caja. Es una opción razonable cuando la exactitud pesa más que la latencia, pero las cifras concretas dependen de implementación, datos y hardware.</p></div>
 </section>
 
 <section id="progreso" data-title="Progreso" data-layout="visual">
@@ -130,36 +132,43 @@
 <section id="arquitectura-yolo" data-title="Arquitectura" data-layout="visual">
   <div class="section-copy">
     <h2>De la imagen a las cajas</h2>
-    <p class="lead">La red comparte representación visual antes de producir localizaciones y categorías.</p>
+    <p class="lead">YOLOv1 usa una cuadrícula y predice cajas, confianza y clases de forma conjunta.</p>
   </div>
   <figure class="figure-media lesson-image lesson-image--wide">
     <img src="{{ASSET:tema-01/presentacion/yolo-arquitectura.jpeg}}" alt="Arquitectura original de YOLOv1 desde la imagen de entrada hasta las predicciones de cajas y clases.">
-    <figcaption>Arquitectura de YOLOv1: un referente histórico para entender el enfoque de una etapa.</figcaption>
+    <figcaption>Una sola CNN conecta la imagen completa con todas las predicciones.</figcaption>
   </figure>
+  <div class="print-detail"><p>En YOLOv1, la celda que contiene el centro del objeto asume su detección. Cada celda predice cajas, confianza y probabilidades de clase. Las versiones posteriores cambiaron asignación, backbones, objetivos y posprocesado; la cuadrícula es una referencia histórica, no una plantilla universal.</p></div>
 </section>
 
 <section id="evolucion-yolo" data-title="Evolución" data-layout="visual">
   <div class="section-copy">
     <h2>La familia siguió cambiando</h2>
-    <p class="lead">«YOLO» nombra una línea de trabajo, no una arquitectura fija.</p>
+    <p class="lead">Cada versión cambió una parte del entrenamiento, la arquitectura o la experiencia de uso.</p>
   </div>
-  <ol class="evolution-line" aria-label="Evolución de la familia YOLO">
-    <li><strong>YOLOv1</strong><span>Una predicción directa sobre la imagen.</span></li>
-    <li><strong>Versiones posteriores</strong><span>Backbones, objetivos y estrategias de entrenamiento evolucionan.</span></li>
-    <li><strong>Tu decisión</strong><span>Compara la versión exacta en tus propias condiciones.</span></li>
+  <ol class="evolution-line evolution-line--7" aria-label="Evolución de la familia YOLO entre 2016 y 2024">
+    <li><strong>2016 · v1</strong><span>Predicción directa.</span></li>
+    <li><strong>2018 · v3</strong><span>Varias escalas.</span></li>
+    <li><strong>2020 · v4</strong><span>CSP y Mosaic.</span></li>
+    <li><strong>2020 · v5</strong><span>Flujo PyTorch.</span></li>
+    <li><strong>2022 · v7</strong><span>E-ELAN.</span></li>
+    <li><strong>2023 · v8</strong><span>Anchor-free y multitarea.</span></li>
+    <li><strong>2024 · v9</strong><span>PGI y GELAN.</span></li>
   </ol>
-  <div class="print-detail"><p>Las comparativas entre generaciones no deben tratar una versión, una implementación o un checkpoint como representante automático de toda una familia.</p></div>
+  <div class="print-detail"><p>La cronología resume hitos del material original. “YOLO” no identifica una única arquitectura ni una única organización. Las comparativas entre generaciones deben indicar implementación, checkpoint, resolución, hardware y protocolo; no se puede inferir el mejor modelo solo por el número de versión.</p></div>
 </section>
 
 <section id="contexto" data-title="Contexto" data-layout="visual">
   <div class="section-copy">
-    <h2>Localidad y contexto global</h2>
-    <p class="lead">Una arquitectura decide cómo combina información cercana y relaciones lejanas.</p>
+    <h2>Qué intenta simplificar DETR</h2>
+    <p class="lead">Las CNN aportan localidad; los detectores clásicos añaden heurísticas para relacionar y depurar predicciones.</p>
   </div>
-  <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/detr.jpeg}}" alt="Arquitectura de DETR con encoder, decoder, atención y consultas de objetos.">
-    <figcaption>La atención ofrece una forma de relacionar partes separadas de una imagen.</figcaption>
-  </figure>
+  <div class="plain-columns plain-columns--3" aria-label="Decisiones arquitectónicas previas a DETR">
+    <div><strong>Contexto</strong><span>Las capas locales necesitan combinarse para relacionar zonas lejanas.</span></div>
+    <div><strong>Sesgo</strong><span>La localidad es útil, pero condiciona qué patrones se aprenden con facilidad.</span></div>
+    <div><strong>Heurísticas</strong><span>Anchors y NMS añaden reglas e hiperparámetros al pipeline.</span></div>
+  </div>
+  <div class="print-detail"><p>Estas propiedades no convierten a toda CNN en insuficiente: son decisiones con ventajas y costes. DETR propone otra formulación basada en atención, queries y predicción de conjuntos para optimizar el detector de extremo a extremo y evitar anchors y NMS en su diseño original.</p></div>
 </section>
 
 <section id="detr" data-title="DETR" data-layout="visual">
@@ -190,13 +199,22 @@
 
 <section id="rf-detr" data-title="RF-DETR" data-layout="visual">
   <div class="section-copy">
-    <h2>El detector de la práctica</h2>
-    <p class="lead">RF-DETR es el ejemplo que usaremos para ejecutar inferencia en el cuaderno.</p>
+    <h2>Del backbone a las cajas</h2>
+    <p class="lead">RF-DETR combina features multiescala, atención deformable y queries que se refinan.</p>
   </div>
-  <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/rf-detr.jpeg}}" alt="Diagrama de RF-DETR con combinación multiescala, atención deformable, queries y cajas de salida.">
-  </figure>
-  <div class="print-detail"><p>La arquitectura exacta depende de la variante y del checkpoint del notebook. La práctica debe describir el modelo que realmente carga, no inferir todos los detalles a partir de DETR original.</p></div>
+  <div class="question-layout question-layout--text architecture-walkthrough">
+    <figure class="figure-media lesson-image lesson-image--medium">
+      <img src="{{ASSET:tema-01/presentacion/rf-detr.jpeg}}" alt="Diagrama de RF-DETR con combinación multiescala, atención deformable, queries y cajas de salida.">
+    </figure>
+    <ol class="compact-process" aria-label="Flujo de RF-DETR">
+      <li><span><strong>Combina</strong> features de varias escalas.</span></li>
+      <li><span><strong>Alinea</strong> puntos relevantes con atención deformable.</span></li>
+      <li><span><strong>Consulta</strong> el encoder mediante object queries.</span></li>
+      <li><span><strong>Refina</strong> las predicciones en el decoder.</span></li>
+      <li><span><strong>Entrega</strong> cajas sin anchors ni NMS.</span></li>
+    </ol>
+  </div>
+  <div class="print-detail"><p>La descripción del material usa un backbone visual preentrenado de la familia DINOv2, features multiescala, atención deformable y un decoder que refina iterativamente las queries. La arquitectura exacta depende de la variante y del checkpoint cargado por el notebook.</p></div>
 </section>
 
 <section id="eleccion" data-title="Elegir" data-layout="visual">
@@ -271,11 +289,19 @@
     <p class="lead">El umbral de confianza decide qué predicciones se muestran; IoU evalúa su solapamiento.</p>
   </div>
   <div class="question-layout">
-    <figure class="figure-media lesson-image lesson-image--medium">
-      <img src="{{ASSET:tema-01/presentacion/ap-map.jpeg}}" alt="Curva precisión recall con dos puntos que corresponden a umbrales de confianza diferentes.">
+    <figure class="figure-media confidence-figure">
+      <div class="confidence-scale" role="img" aria-label="Tres puntuaciones de confianza. Con un umbral de 0,50 se muestran 0,62 y 0,91, mientras 0,28 queda oculta.">
+        <div class="confidence-track" aria-hidden="true"></div>
+        <div class="confidence-threshold" aria-hidden="true"><span>umbral 0,50</span></div>
+        <div class="confidence-marker confidence-marker--hidden" style="--position: 28%"><strong>0,28</strong><span>ocultar</span></div>
+        <div class="confidence-marker" style="--position: 62%"><strong>0,62</strong><span>mostrar</span></div>
+        <div class="confidence-marker confidence-marker--high" style="--position: 91%"><strong>0,91</strong><span>mostrar</span></div>
+      </div>
+      <figcaption>El filtro cambia qué predicciones ves, no sus coordenadas.</figcaption>
     </figure>
     {{QUIZ:q06}}
   </div>
+  <div class="print-detail"><p>Al subir el umbral suelen desaparecer predicciones de baja puntuación: pueden bajar los falsos positivos y también aumentar los falsos negativos. La curva precisión-recall estudia ese intercambio recorriendo muchos umbrales.</p></div>
 </section>
 
 <section id="ap-map" data-title="AP" data-layout="visual">
@@ -327,6 +353,7 @@
     <li><span>Ejecuta el detector con una imagen.</span></li>
     <li><span>Cambia el umbral de confianza: <strong>0,25 · 0,50 · 0,75</strong>.</span></li>
   </ol>
+  <p class="lesson-bridge">Un detector cerrado reconoce sus clases; el siguiente bloque añadirá lenguaje y zero-shot.</p>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/1_OD.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
-  <div class="print-detail"><p>En Colab: Archivo → Guardar una copia en Drive. Empieza por inferencia. La disponibilidad de GPU varía; el entrenamiento necesita además el dataset indicado en el notebook.</p></div>
+  <div class="print-detail"><p>En Colab: Archivo → Guardar una copia en Drive. Empieza por inferencia. La disponibilidad de GPU varía; el entrenamiento necesita además el dataset indicado en el notebook. La comparación entre 0,25, 0,50 y 0,75 permite observar qué predicciones desaparecen sin confundir confianza con IoU. El siguiente tema amplía el vocabulario cerrado mediante modelos que relacionan visión y lenguaje.</p></div>
 </section>

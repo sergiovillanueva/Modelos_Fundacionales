@@ -81,9 +81,9 @@
 </section>
 
 <section id="pca" data-title="PCA" data-layout="visual">
-  <div class="section-copy"><h2>Colorear las características</h2><p class="lead">PCA reduce los embeddings densos y revela variaciones espaciales dominantes.</p></div>
+  <div class="section-copy"><h2>De features a un mapa visible</h2><p class="lead">PCA colorea patches; t-SNE y UMAP proyectan grupos de embeddings en dos dimensiones.</p></div>
   <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/pca-dino.jpeg}}" alt="Imágenes y visualización RGB de componentes principales de características DINO."><figcaption>Los tres primeros componentes pueden mapearse a RGB para inspeccionar regiones.</figcaption></figure>
-  <div class="print-detail"><p>PCA es una proyección lineal para explorar estructura. Los colores no son clases predefinidas y pueden cambiar entre conjuntos o ajustes.</p></div>
+  <div class="print-detail"><p>PCA es una proyección lineal útil para colorear características densas y observar variación espacial. t-SNE y UMAP son técnicas no lineales que proyectan embeddings globales o de patches a 2D para explorar vecindarios y grupos. Ninguna de ellas crea etiquetas ni demuestra por sí sola que un cluster sea una clase real.</p></div>
 </section>
 
 <section id="vecinos" data-title="Vecinos" data-layout="visual">
@@ -135,4 +135,5 @@
   <div class="section-copy"><h2>Explora los embeddings</h2><p class="lead">Extrae representaciones globales y densas con DINOv2.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Compara dos imágenes.</span></li><li><span>Interpreta patches y PCA.</span></li></ol>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/4_DINO.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+  <div class="print-detail"><p>Compara el token global para similitud entre imágenes y los tokens de patch para estructura espacial. Observa si PCA, vecinos cercanos y distancia coseno cuentan una historia coherente; una visualización atractiva no sustituye la validación de la tarea final.</p></div>
 </section>

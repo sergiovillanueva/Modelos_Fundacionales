@@ -29,6 +29,14 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .evolution-line { max-width: 960px; }
 .reveal .evolution-line strong { font-size: 24px; }
 .reveal .evolution-line span { font-size: 18px; }
+.reveal .evolution-line--7 { max-width: 1120px; }
+.reveal .evolution-line--7 li { padding-inline: 10px; }
+.reveal .evolution-line--7 strong { font-size: 17px; }
+.reveal .evolution-line--7 span { font-size: 14px; }
+.reveal .architecture-walkthrough { max-width: 1050px; grid-template-columns: 480px 1fr; gap: 52px; }
+.reveal .compact-process li { padding-block: 8px; font-size: 17px; }
+.reveal .confidence-figure { max-width: 320px; }
+.reveal .lesson-bridge { font-size: 18px; }
 .reveal .print-detail { display: none; }
 .reveal .controls { color: var(--color-primary-dark); }
 .reveal .progress { height: 3px; color: var(--color-primary-dark); }

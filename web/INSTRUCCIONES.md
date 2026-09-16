@@ -75,11 +75,14 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 
 - Comparar **PPTX y PDF**: el XML aporta texto y relaciones; el PDF revela composición, flechas, etiquetas rasterizadas y qué imagen era protagonista.
 - Una diapositiva densa suele necesitar varias pantallas. No sustituir una arquitectura por una frase ni una lista de límites por una mención genérica.
+- No reutilizar el mismo recurso visual para dos conceptos consecutivos salvo que la repetición sea una comparación progresiva explícita. Cada imagen debe ayudar a responder la pregunta concreta de su pantalla.
+- Si una revisión debe conservar el número de pantallas, recuperar el mecanismo mediante secuencias breves, cronologías o listas compactas. El detalle puede ampliarse en `.print-detail`, pero la idea imprescindible debe seguir visible en la web.
 - Cada diapositiva debe tener destino en `plan/COBERTURA.json`. Cada recurso, corrección o afirmación comprobada se registra en `content/tema-XX/sources.json`.
 - Conservar definiciones, mecanismo, ejemplo, límites y criterio de elección cuando existan en la fuente. El notebook no sustituye la teoría necesaria para entender la práctica.
 - Reutilizar diagramas, matrices, mapas y animaciones con valor docente. Omitir iconos decorativos, capturas redundantes y la marca de agua de Gamma.
 - Convertir GIF largos con `scripts/import-source-assets.py`: WebP optimizado, póster representativo y reproducción iniciada por el alumno.
 - Tomar [plan/AUDITORIA-TEMAS-02-05.md](plan/AUDITORIA-TEMAS-02-05.md) como referencia de densidad y trazabilidad para el tema 06.
+- Tras cambiar contenido, comparar las hojas de contacto del PDF fuente y del PDF web. La cobertura mecánica no basta: comprobar que no haya cronologías, mecanismos o límites sustituidos por una frase genérica.
 
 ### Preguntas
 
