@@ -17,7 +17,7 @@ Conservar ese patrón visual al ampliar el contenido. **Cuatro pasos no es el l�
 ## Reglas visuales obligatorias
 
 1. **Una idea por vista.** Un título breve, como máximo una frase de contexto, y una imagen o actividad protagonista.
-2. **Texto sobre fondo claro.** Sin recuadros para explicaciones, tarjetas de Colab, sombras decorativas ni etiquetas de relleno. Un área suavemente coloreada puede delimitar una simulación; el halo suave de la portada es el único gradiente de fondo de la interfaz.
+2. **Texto sobre fondo claro.** Sin recuadros para explicaciones, tarjetas de Colab, sombras decorativas ni etiquetas de relleno. Un área suavemente coloreada puede delimitar una simulación. El fondo admite únicamente un degradado ambiental blanco-azulado casi imperceptible; nunca paneles o manchas que compitan con el contenido.
 3. **Acciones evidentes.** Una respuesta se corrige al seleccionarla. Un deslizador modifica el ejemplo. No añadir «Comprobar», «Reiniciar», tutoriales, consejos de navegación ni botones duplicados.
 4. **Identidad Datamecum como acento.** Logo local claramente visible (94 × 70 px en escritorio, 76 × 57 px en móvil), Raleway en títulos, Roboto en texto. Fondo casi blanco; azul y cian de la marca como acentos. La portada permite un halo de fondo suave, sin añadir paneles.
 5. **Espacio y jerarquía.** Título centrado y elemento visual grande. La interfaz ocupa menos atención que el contenido. Las preguntas usan filas con separadores finos.
@@ -44,7 +44,8 @@ Si falta espacio, dividir la idea en otro paso. Los matices adicionales pueden i
 - Cabecera: marca y menú discreto **Material**, con **Descargar PDF** y **Presentar**.
 - Una única fila de navegación: temas. Los disponibles son enlaces; los pendientes se muestran atenuados, sin enlace, con estado accesible «Próximamente».
 - **No añadir pestañas de pasos, índices laterales ni otra fila de navegación.** Solo un panel visible con JavaScript activo.
-- Pie de la lección: **Anterior**, posición `n / total` y **Siguiente**. El último paso termina con Colab. El contador indica ubicación, nunca rendimiento ni progreso guardado.
+- Pie de la lección: una única barra flotante y translúcida con **Anterior**, posición `n / total` y **Siguiente**. Se mantiene en el mismo lugar de la ventana aunque cambien las dimensiones de la imagen; nunca debe saltar entre pasos. El último paso termina con Colab. El contador indica ubicación, nunca rendimiento ni progreso guardado.
+- La barra deja espacio inferior en el documento para no ocultar texto ni controles. En móvil respeta el área segura del dispositivo. Al imprimir se oculta y se eliminan ese espacio y los límites de altura de pantalla.
 - No añadir barra lateral, secciones promocionales, pie con créditos, GitHub ni menús adicionales a la lección. Los créditos y licencias se conservan como información secundaria en los archivos existentes.
 - La URL identifica el paso (`#iou`); recarga, enlaces directos y botones atrás/adelante del navegador deben conservarlo.
 - Presentar abre la diapositiva actual. Volver regresa al mismo paso.
@@ -97,7 +98,7 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 
 ### Recursos y Colab
 
-- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo.
+- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo. En lectura, limitar su altura en relación con la ventana y usar `object-fit: contain`: una imagen alta puede reducirse, pero nunca deformarse ni desplazar la navegación.
 - Animaciones con póster inicial y un solo control **Ver animación / Detener**. Preferir WebP animado para las exclusiones de Git existentes.
 - Colab se abre mediante un enlace real al notebook en GitHub. El alumno guarda su copia en Drive.
 - Una lista sencilla y un único enlace **Abrir en Colab**. No crear tarjetas coloreadas, autenticar con Google ni cargar modelos pesados en esta web.
@@ -108,7 +109,7 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 - Reveal.js reutiliza el contenido. Cada diapositiva debe caber a 1280 × 720, incluida la corrección de preguntas. Solo enlace discreto **Volver**, controles de Reveal y número de diapositiva.
 - En móvil: contenido apilado, controles táctiles cómodos, nada de desplazamiento horizontal de toda la página. La fila de temas puede desplazarse dentro de su propio espacio.
 - Temas con enlaces nativos, tema actual con `aria-current`, avance con botones nativos. Al avanzar, llevar el foco al título nuevo. Tab y Enter bastan; no interceptar las flechas del teclado para navegar la lección.
-- Contraste legible y foco visible. Respetar movimiento reducido. Ninguna información depende solo del color.
+- Contraste legible y foco visible. Los cambios de paso pueden usar una entrada breve y sutil; desactivarla con `prefers-reduced-motion`. Ninguna información depende solo del color.
 - Sin JavaScript, todos los pasos siguen disponibles como HTML continuo. Al imprimir también aparecen todos, incluso si la web solo muestra uno.
 
 ## Añadir el siguiente tema
@@ -128,6 +129,7 @@ Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practic
 - [ ] El contenido es correcto y suficiente para la actividad, con métricas explicadas desde cero.
 - [ ] Respuestas, animación y simulación funcionan; la corrección cabe en móvil y presentación.
 - [ ] Temas, pasos, Material, Colab e historial tienen el comportamiento descrito.
+- [ ] La barra Anterior/Siguiente conserva exactamente su posición con imágenes altas, bajas, preguntas y simulaciones, en escritorio y móvil.
 - [ ] Los recursos cargan tanto desde la raíz como desde la ruta del tema.
 - [ ] Sin desbordamientos a 390 px y 320 px; teclado y movimiento reducido funcionan.
 - [ ] Todas las diapositivas caben a 1280 × 720 y el PDF se ha revisado página por página.

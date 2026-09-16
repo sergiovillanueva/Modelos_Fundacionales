@@ -28,6 +28,33 @@ test('siguiente, anterior y el historial mantienen el paso', async ({page}) => {
   await expect(page.locator('#tareas')).toBeVisible();
 });
 
+test('la navegación permanece estable aunque cambie la altura del contenido', async ({page}) => {
+  await page.setViewportSize({width: 1280, height: 800});
+  const topics = ['01-deteccion', '02-hugging-face', '03-multimodalidad', '04-dino', '05-sam'];
+
+  for (const topic of topics) {
+    const topicUrl = `/temas/${topic}/index.html`;
+    await page.goto(topicUrl, {waitUntil: 'networkidle'});
+    const ids = await page.locator('.reading-content > section').evaluateAll((sections) =>
+      sections.map((section) => section.id)
+    );
+    const positions = [];
+
+    for (const id of ids) {
+      await page.goto(`${topicUrl}#${id}`);
+      await page.locator(`#${id} img`).evaluateAll((images) =>
+        Promise.all(images.map((image) => image.decode()))
+      );
+      const box = await page.locator('.lesson-nav').boundingBox();
+      positions.push(Math.round(box.y));
+      expect(800 - Math.round(box.y + box.height)).toBeGreaterThanOrEqual(10);
+      expect(800 - Math.round(box.y + box.height)).toBeLessThanOrEqual(24);
+    }
+
+    expect(Math.max(...positions) - Math.min(...positions)).toBeLessThanOrEqual(1);
+  }
+});
+
 test('se puede avanzar con teclado y usar las flechas del deslizador', async ({page}) => {
   await page.goto('/temas/01-deteccion/index.html#tareas');
   await page.getByRole('button', {name: 'Siguiente'}).focus();

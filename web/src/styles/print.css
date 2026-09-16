@@ -1,8 +1,10 @@
 @page { size: A4; margin: 16mm; }
 html, body.classroom { background: #fff; font-size: 11pt; min-height: 0; }
+body.course-ready { padding-bottom: 0; }
 .course-header, .lesson-nav, .skip-link, .media-toggle { display: none !important; }
 .lesson { width: 100%; margin: 0; }
 .reading-content > section, .course-ready .reading-content > section, .reading-content > section[hidden] { display: block !important; min-height: 0; padding: 0; }
+.course-ready .lesson-image img { max-height: none; }
 .reading-content > section + section { break-before: page; }
 .section-copy { margin-bottom: 10mm; }
 .section-copy h2 { font-size: 27pt; }

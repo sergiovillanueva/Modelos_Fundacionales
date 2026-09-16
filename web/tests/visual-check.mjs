@@ -31,6 +31,7 @@ try {
       await page.goto(URL + route, {waitUntil: 'networkidle'});
       await page.locator(mode === 'presentation' ? `.slides > #${id}.present` : `.reading-content > #${id}`).waitFor({state: 'visible'});
       await page.evaluate(() => document.fonts.ready);
+      if (mode !== 'presentation') await page.waitForTimeout(320);
       if (mode === 'presentation') {
         await page.waitForFunction(() => [...document.querySelectorAll('.slides > section')].every(section => {
           const opacity = Number(getComputedStyle(section).opacity);
