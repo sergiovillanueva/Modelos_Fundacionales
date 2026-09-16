@@ -1,8 +1,150 @@
-<section id="unir" data-title="Unir" data-layout="visual"><div class="section-copy"><h2>Imagen y lenguaje juntos</h2><p class="lead">Un modelo multimodal conecta lo que ve con lo que puede expresar.</p></div><figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-03/multimodal.jpeg}}" alt="Ilustración de modelos multimodales que conectan imagen y lenguaje."></figure></section>
-<section id="zero-shot" data-title="Zero-shot" data-layout="question"><div class="section-copy"><h2>Una categoría escrita</h2><p class="lead">Zero-shot compara una imagen con descripciones que propones en ese momento.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Imagen</strong> convertida en representación.</p><p><strong>Textos</strong> que expresan categorías candidatas.</p><p><strong>Similitud</strong> para ordenar las opciones.</p></div>{{QUIZ:q301}}</div></section>
-<section id="clip" data-title="CLIP" data-layout="visual"><div class="section-copy"><h2>CLIP compara significados</h2><p class="lead">Sitúa imágenes y textos en un espacio donde se pueden comparar.</p></div><ol class="evolution-line"><li><strong>Imagen</strong><span>Un codificador visual produce un vector.</span></li><li><strong>Texto</strong><span>Un codificador textual produce otro vector.</span></li><li><strong>Consulta</strong><span>La similitud ordena los textos.</span></li></ol></section>
-<section id="blip" data-title="BLIP" data-layout="visual"><div class="section-copy"><h2>Una imagen se convierte en frase</h2><p class="lead">BLIP genera una descripción condicionada por la imagen.</p></div><div class="print-detail"><p>Una descripción plausible puede omitir detalles o equivocarse. Contrástala si afecta a una decisión.</p></div></section>
-<section id="grounding" data-title="Grounding" data-layout="question"><div class="section-copy"><h2>Texto que apunta a una caja</h2><p class="lead">Grounding DINO busca regiones que correspondan a una consulta escrita.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Imagen</strong> con características visuales.</p><p><strong>Prompt</strong> que nombra el objeto buscado.</p><p><strong>Salida</strong> con cajas candidatas.</p></div>{{QUIZ:q302}}</div></section>
-<section id="vlm" data-title="VLM" data-layout="visual"><div class="section-copy"><h2>Un LLM con visión</h2><p class="lead">Un VLM combina un codificador visual con un modelo de lenguaje.</p></div><ol class="evolution-line"><li><strong>Imagen</strong><span>Representación visual.</span></li><li><strong>Instrucción</strong><span>Define la tarea.</span></li><li><strong>Texto</strong><span>Respuesta que debes evaluar.</span></li></ol></section>
-<section id="elegir" data-title="Elegir" data-layout="question"><div class="section-copy"><h2>La salida decide la herramienta</h2><p class="lead">Recuperación, descripción, cajas y conversación son problemas distintos.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>CLIP</strong> compara imagen y texto.</p><p><strong>BLIP</strong> genera una descripción.</p><p><strong>Grounding DINO</strong> localiza con texto.</p></div>{{QUIZ:q303}}</div></section>
-<section id="practica" data-title="Colab" data-layout="practice"><div class="section-copy"><h2>Prueba cuatro formas de mirar</h2><p class="lead">Trabaja con CLIP, BLIP, Grounding DINO y Qwen en tu copia.</p></div><ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Prueba una imagen y un prompt por modelo.</span></li><li><span>Compara qué salida te sirve.</span></li></ol><a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/3_Multimodal.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a></section>
+<section id="unir" data-title="Inicio" data-layout="visual">
+  <div class="section-copy"><h2>Unir visión y lenguaje</h2><p class="lead">Los modelos multimodales relacionan píxeles, palabras e instrucciones.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-03/presentacion/portada-multimodal.jpeg}}" alt="Representación de un sistema que analiza una imagen y lenguaje."><figcaption>El tipo de salida distingue comparar, describir, localizar y razonar.</figcaption></figure>
+  <div class="print-detail"><p>El tema recorre CLIP, BLIP, Grounding DINO y un VLM como Qwen2.5-VL. Los cuatro aceptan información visual y lingüística, pero resuelven tareas distintas.</p></div>
+</section>
+
+<section id="fundacionales" data-title="Base" data-layout="visual">
+  <div class="section-copy"><h2>Una representación reutilizable</h2><p class="lead">El preentrenamiento masivo produce características transferibles a tareas nuevas.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Qué caracteriza a un modelo fundacional">
+    <div><strong>General</strong><span>Aprende patrones que sirven en varios problemas.</span></div>
+    <div><strong>Transferible</strong><span>Se adapta con prompts, ejemplos o ajuste.</span></div>
+    <div><strong>Evaluable</strong><span>Su utilidad depende del dominio y la tarea.</span></div>
+  </div>
+  <div class="print-detail"><p>CLIP aprende con pares imagen-texto; DINO con imágenes sin etiquetas; SAM con un gran motor de máscaras. La escala ayuda a generalizar, pero no garantiza rendimiento en una aplicación concreta.</p></div>
+</section>
+
+<section id="multimodalidad" data-title="Modalidades" data-layout="visual">
+  <div class="section-copy"><h2>Dos dominios, un espacio común</h2><p class="lead">Imagen y texto se convierten en representaciones que el modelo puede relacionar.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-03/presentacion/espacio-multimodal.jpeg}}" alt="Diagrama que proyecta imagen y texto en un espacio multimodal compartido."><figcaption>La unión puede servir para medir similitud o alimentar un generador de lenguaje.</figcaption></figure>
+  <div class="print-detail"><p>CLIP compara representaciones; BLIP genera texto condicionado por imagen; Grounding DINO alinea expresiones con regiones; un VLM inserta tokens visuales en el contexto de un modelo de lenguaje.</p></div>
+</section>
+
+<section id="zero-shot" data-title="Zero-shot" data-layout="question">
+  <div class="section-copy"><h2>Nuevas categorías escritas</h2><p class="lead">En zero-shot, las clases llegan como texto y no como una cabeza reentrenada.</p></div>
+  <div class="question-layout"><figure class="figure-media lesson-image"><img src="{{ASSET:tema-03/presentacion/zero-shot.jpeg}}" alt="Ejemplo de imágenes nuevas situadas cerca de conceptos conocidos en un espacio semántico."></figure>{{QUIZ:q301}}</div>
+  <div class="print-detail"><p>La composicionalidad permite combinar atributos como “rojo”, “perro” y “corriendo”. Esto acelera la experimentación, aunque las categorías propuestas y la formulación de los textos pueden cambiar el resultado.</p></div>
+</section>
+
+<section id="clip" data-title="CLIP" data-layout="visual">
+  <div class="section-copy"><h2>Comparar imagen y texto</h2><p class="lead">CLIP acerca pares compatibles en un espacio de embeddings compartido.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-03/presentacion/clip-arquitectura.jpeg}}" alt="Arquitectura de dos codificadores de CLIP para imagen y texto."><figcaption>Dos codificadores producen vectores comparables mediante similitud coseno.</figcaption></figure>
+  <div class="print-detail"><p>Usos habituales: clasificación zero-shot, búsqueda de imágenes mediante texto y filtrado inicial de catálogos. CLIP recupera o clasifica entre textos candidatos; no genera frases ni cajas.</p></div>
+</section>
+
+<section id="clip-flujo" data-title="Flujo CLIP" data-layout="visual">
+  <div class="section-copy"><h2>De una foto a una opción</h2><p class="lead">La predicción es el texto cuyo vector queda más cerca de la imagen.</p></div>
+  <ol class="evolution-line evolution-line--4" aria-label="Inferencia de clasificación zero-shot con CLIP">
+    <li><strong>Imagen</strong><span>El encoder produce un vector.</span></li>
+    <li><strong>Textos</strong><span>Cada opción produce otro vector.</span></li>
+    <li><strong>Similitud</strong><span>Se comparan todos los pares.</span></li>
+    <li><strong>Orden</strong><span>La puntuación prioriza opciones.</span></li>
+  </ol>
+  <figure class="figure-media lesson-image lesson-image--medium print-detail"><img src="{{ASSET:tema-03/presentacion/clip-similitud.jpeg}}" alt="Vectores con distinta similitud angular."></figure>
+</section>
+
+<section id="clip-entrenamiento" data-title="Contraste" data-layout="visual">
+  <div class="section-copy"><h2>Aprender por asociación</h2><p class="lead">En cada lote, CLIP acerca las parejas correctas y separa las combinaciones incorrectas.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-03/presentacion/clip-matriz.webp}}" alt="Matriz de similitud entre imágenes y textos donde la diagonal contiene las parejas correctas."><figcaption>La diagonal representa los pares imagen-texto que sí corresponden.</figcaption></figure>
+  <div class="print-detail"><p>Un encoder visual y otro textual trabajan en paralelo. La pérdida contrastiva aumenta la similitud de cada imagen con su texto asociado y la reduce frente a los demás textos del lote.</p></div>
+</section>
+
+<section id="clip-limites" data-title="Límites CLIP" data-layout="visual">
+  <div class="section-copy"><h2>CLIP no resuelve todo</h2><p class="lead">Un embedding global no equivale a una explicación detallada de la escena.</p></div>
+  <div class="comparison-lanes comparison-lanes--two" aria-label="Capacidades y límites de CLIP">
+    <div><strong>Sí aporta</strong><span>Similitud, recuperación y clasificación entre textos candidatos.</span></div>
+    <div><strong>No aporta solo</strong><span>Frases, cajas, máscaras, OCR fiable o conteo preciso.</span></div>
+  </div>
+  <div class="print-detail"><p>También puede heredar sesgos del entrenamiento, confundir atributos finos y ser sensible a la plantilla textual. Las negaciones suelen ser especialmente difíciles; conviene comparar formulaciones afirmativas y validar con datos propios.</p></div>
+</section>
+
+<section id="blip" data-title="BLIP" data-layout="visual">
+  <div class="section-copy"><h2>De la imagen a una frase</h2><p class="lead">BLIP genera texto condicionado por características visuales.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-03/presentacion/blip.jpeg}}" alt="Diagrama de BLIP para descripción de imágenes y preguntas visuales."><figcaption>La atención cruzada permite al decodificador consultar la representación visual.</figcaption></figure>
+  <div class="print-detail"><p>BLIP combina un encoder de imagen con componentes de lenguaje. Se puede usar para captioning y preguntas visuales sencillas. Una descripción plausible puede omitir elementos o inventar detalles, por lo que debe contrastarse cuando afecte a una decisión.</p></div>
+</section>
+
+<section id="grounding" data-title="Grounding" data-layout="question">
+  <div class="section-copy"><h2>Texto que señala una región</h2><p class="lead">Grounding DINO devuelve cajas para los objetos que coinciden con el prompt.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Prompt</strong> que nombra el concepto.</p><p><strong>Cajas</strong> asociadas a fragmentos del texto.</p><p><strong>Umbral</strong> que se valida en tu dominio.</p></div>{{QUIZ:q302}}</div>
+  <div class="print-detail"><p>El vocabulario abierto permite cambiar el concepto sin reentrenar una cabeza de clases fijas. Es útil para autoetiquetado y búsquedas ad hoc, pero no elimina falsos positivos ni falsos negativos.</p></div>
+</section>
+
+<section id="grounding-flujo" data-title="Fusión" data-layout="visual">
+  <div class="section-copy"><h2>El lenguaje guía dónde mirar</h2><p class="lead">Las características visuales y textuales se fusionan antes de predecir las cajas.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-03/presentacion/grounding-dino.jpeg}}" alt="Arquitectura de Grounding DINO con codificador de texto, codificador de imagen, fusión y decoder."><figcaption>La atención entre modalidades alinea palabras con regiones de la imagen.</figcaption></figure>
+  <div class="print-detail"><p>El texto se codifica con un modelo lingüístico y la imagen con un backbone visual. Un bloque de fusión y un decoder basado en Transformer usan queries condicionadas por lenguaje para producir cajas y puntuaciones alineadas con el prompt.</p></div>
+</section>
+
+<section id="grounding-claves" data-title="Claves" data-layout="visual">
+  <div class="section-copy"><h2>Detección abierta y dirigida</h2><p class="lead">La consulta define qué buscar y puede incluir atributos o referencias espaciales.</p></div>
+  <ol class="evolution-line evolution-line--4" aria-label="Propiedades de Grounding DINO">
+    <li><strong>Sin clases fijas</strong><span>El vocabulario llega en el prompt.</span></li>
+    <li><strong>Sin anchors</strong><span>Las queries predicen cajas directamente.</span></li>
+    <li><strong>Fusión</strong><span>Texto e imagen interactúan.</span></li>
+    <li><strong>Autoetiquetado</strong><span>Las cajas pueden iniciar un dataset.</span></li>
+  </ol>
+  <div class="print-detail"><p>Las expresiones compositivas y referenciales permiten pedir “coche rojo” o “persona de la izquierda”. La calidad depende de la formulación y de cuánto se parezca el dominio al preentrenamiento.</p></div>
+</section>
+
+<section id="grounding-limites" data-title="Límites" data-layout="visual">
+  <div class="section-copy"><h2>El prompt también puede fallar</h2><p class="lead">Ambigüedad, objetos pequeños y escenas densas exigen validación específica.</p></div>
+  <div class="comparison-lanes comparison-lanes--two" aria-label="Usos y límites de Grounding DINO">
+    <div><strong>Funciona bien como punto de partida</strong><span>Inspección, retail, seguridad, agricultura y anotación asistida.</span></div>
+    <div><strong>Requiere atención</strong><span>Jerga, solapes, conceptos vagos y detalles diminutos.</span></div>
+  </div>
+  <div class="print-detail"><p>En escenas críticas hay que medir precisión y exhaustividad por clase, tamaño y condición visual. Una caja generada automáticamente puede revisarse o combinarse con SAM para obtener una máscara.</p></div>
+</section>
+
+<section id="vlm" data-title="VLM" data-layout="visual">
+  <div class="section-copy"><h2>Cómo ve un modelo de lenguaje</h2><p class="lead">Un adaptador convierte las características visuales en tokens que el LLM puede recibir.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Anatomía de un vision-language model">
+    <div><strong>Visión</strong><span>El encoder transforma píxeles en características.</span></div>
+    <div><strong>Adaptador</strong><span>Alinea dimensión y formato con el lenguaje.</span></div>
+    <div><strong>LLM</strong><span>Procesa tokens visuales e instrucción.</span></div>
+  </div>
+  <div class="print-detail"><p>La imagen suele convertirse en una secuencia de tokens visuales que se combina con tokens de sistema y de usuario. El LLM genera la respuesta condicionado por ese contexto multimodal.</p></div>
+</section>
+
+<section id="qwen" data-title="Qwen VL" data-layout="visual">
+  <div class="section-copy"><h2>Conversar y estructurar</h2><p class="lead">Un VLM puede describir, leer documentos y devolver información con un formato pedido.</p></div>
+  <div class="comparison-lanes" aria-label="Capacidades frecuentes de un VLM">
+    <div><strong>Comprender</strong><span>OCR contextual, gráficos y diagramas.</span></div>
+    <div><strong>Razonar</strong><span>Comparaciones e instrucciones paso a paso.</span></div>
+    <div><strong>Estructurar</strong><span>JSON o campos definidos por el usuario.</span></div>
+  </div>
+  <div class="print-detail"><p>Qwen2.5-VL admite distintas relaciones de aspecto y puede producir coordenadas o datos estructurados. Un VLM suele requerir más memoria y tiempo que CLIP, BLIP o Grounding DINO; conviene reservarlo para tareas donde el razonamiento o la generación aportan valor.</p></div>
+</section>
+
+<section id="prompting" data-title="Prompts" data-layout="visual">
+  <div class="section-copy"><h2>Cada modelo pide otro lenguaje</h2><p class="lead">El prompt debe describir la salida que el modelo realmente puede producir.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Buenas prácticas de prompting por familia">
+    <div><strong>CLIP</strong><span>Plantillas afirmativas y varias formulaciones.</span></div>
+    <div><strong>Grounding</strong><span>Conceptos breves separados y atributos visibles.</span></div>
+    <div><strong>VLM</strong><span>Instrucción, criterio y formato de salida.</span></div>
+  </div>
+  <div class="print-detail"><p>Ejemplos: CLIP “una foto de {clase}”; Grounding DINO “persona con casco . persona sin casco”; VLM “lista los defectos visibles y devuelve JSON con tipo y evidencia”. Evitar preguntas vagas como “¿está bien?”.</p></div>
+</section>
+
+<section id="elegir" data-title="Elegir" data-layout="question">
+  <div class="section-copy"><h2>La salida elige el modelo</h2><p class="lead">Usa la herramienta más sencilla que produzca la respuesta necesaria.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>CLIP</strong> recupera o clasifica.</p><p><strong>BLIP</strong> describe o responde algo sencillo.</p><p><strong>Grounding DINO</strong> localiza; un VLM razona.</p></div>{{QUIZ:q303}}</div>
+  <figure class="figure-media lesson-image lesson-image--medium print-detail"><img src="{{ASSET:tema-03/presentacion/comparativa-modelos.webp}}" alt="Comparación orientativa de familias multimodales por tarea."></figure>
+</section>
+
+<section id="validar" data-title="Validar" data-layout="visual">
+  <div class="section-copy"><h2>Una respuesta fluida puede ser falsa</h2><p class="lead">Evalúa alucinaciones, sesgos y errores con ejemplos representativos.</p></div>
+  <ol class="evolution-line evolution-line--4" aria-label="Ciclo de validación multimodal">
+    <li><strong>Datos</strong><span>Casos reales y difíciles.</span></li>
+    <li><strong>Métricas</strong><span>Según clasificación, cajas o texto.</span></li>
+    <li><strong>Umbrales</strong><span>Ajustados al coste del error.</span></li>
+    <li><strong>Revisión</strong><span>Humana cuando la decisión es crítica.</span></li>
+  </ol>
+  <div class="print-detail"><p>Los benchmarks públicos no garantizan rendimiento en tu población o entorno. Conviene registrar prompts, versiones y condiciones; analizar falsos positivos y negativos; y exigir evidencia visual o un formato verificable cuando el modelo genere texto.</p></div>
+</section>
+
+<section id="practica" data-title="Colab" data-layout="practice">
+  <div class="section-copy"><h2>Cuatro formas de mirar</h2><p class="lead">Compara CLIP, BLIP, Grounding DINO y Qwen con la misma imagen.</p></div>
+  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Cambia imagen y prompts.</span></li><li><span>Contrasta salidas y errores.</span></li></ol>
+  <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/3_Multimodal.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+</section>

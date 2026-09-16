@@ -70,6 +70,16 @@ Si falta espacio, dividir la idea en otro paso. Los matices adicionales pueden i
 
 Los valores actuales de `data-layout` son `visual`, `question`, `lab` y `practice`. Son descriptores: el diseño lo aplican las clases compartidas de `widgets.css`. Reutilizar componentes existentes antes de añadir estilos. No anidar `<section>` dentro de otra; el generador extrae secciones de primer nivel. Usar identificadores únicos y estables dentro del tema.
 
+### Fidelidad al PowerPoint
+
+- Comparar **PPTX y PDF**: el XML aporta texto y relaciones; el PDF revela composición, flechas, etiquetas rasterizadas y qué imagen era protagonista.
+- Una diapositiva densa suele necesitar varias pantallas. No sustituir una arquitectura por una frase ni una lista de límites por una mención genérica.
+- Cada diapositiva debe tener destino en `plan/COBERTURA.json`. Cada recurso, corrección o afirmación comprobada se registra en `content/tema-XX/sources.json`.
+- Conservar definiciones, mecanismo, ejemplo, límites y criterio de elección cuando existan en la fuente. El notebook no sustituye la teoría necesaria para entender la práctica.
+- Reutilizar diagramas, matrices, mapas y animaciones con valor docente. Omitir iconos decorativos, capturas redundantes y la marca de agua de Gamma.
+- Convertir GIF largos con `scripts/import-source-assets.py`: WebP optimizado, póster representativo y reproducción iniciada por el alumno.
+- Tomar [plan/AUDITORIA-TEMAS-02-05.md](plan/AUDITORIA-TEMAS-02-05.md) como referencia de densidad y trazabilidad para el tema 06.
+
 ### Preguntas
 
 - Datos en `questions.json`; insertar con `{{QUIZ:id}}`.

@@ -1,62 +1,72 @@
 # Estado de la migración
 
-Actualizado: 15 de septiembre de 2026. Este archivo es el punto de reanudación; sobrescribir el resumen actual al finalizar cada lote y añadir una fila breve al historial.
+Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 
 ## Próxima acción
 
-- **Tema activo:** 03, Modelos multimodales.
-- **Siguiente acción:** adaptar los lotes T3-A a T3-D, diapositivas 37–54 y `3_Multimodal.ipynb`.
-- **Trabajo:** conservar la navegación actual; explicar desde cero relación texto-imagen, CLIP, BLIP, Grounding DINO y el VLM del notebook.
+- **Temas revisables:** 01–05.
+- **Siguiente tema pendiente:** 06, otras tareas de visión, diapositivas 80–93 y `6_Otras_tareas.ipynb`.
+- **Antes de continuar:** el profesor puede revisar la nueva densidad de los temas 02–05. No reducirlos otra vez para ahorrar pantallas.
 
-## Lo que existe
+## Estado real
 
-| Elemento | Estado real |
+| Elemento | Estado |
 | --- | --- |
-| Portada, logo, navegación y estilo | Rediseñados; conservar |
-| Tema 01 | 26 pantallas: visión, familias, CNN, dos etapas, YOLO, DETR, RF-DETR, métricas, evaluación y Colab |
-| Interacciones | Dos animaciones controlables, siete preguntas y simulación de IoU |
-| Recursos | Diagramas relevantes del PPTX extraídos en `public/assets/tema-01/presentacion/` |
-| Tema 01, `practica` | Enlace a `1_OD.ipynb` y tres pasos; no equivale a revisar o ejecutar el notebook |
-| PDF tema 01 | Regenerado en `public/descargas/tema-01-deteccion.pdf`: 26 páginas A4 inspeccionadas |
-| Tema 02 | 9 pantallas, 3 preguntas, Colab y PDF en `public/descargas/tema-02-hugging-face.pdf` |
-| Temas 03–06 | Pendientes de adaptación |
-| Inventario del PPTX | 94 diapositivas identificadas por orden, título y referencias a medios; sin revisión visual completa |
+| Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
+| Tema 01 · Detección | 26 pantallas, 7 preguntas, 2 animaciones, IoU y Colab |
+| Tema 02 · Hugging Face | 12 pantallas, 3 preguntas, 2 recursos y Colab |
+| Tema 03 · Multimodal | 19 pantallas, 3 preguntas, 9 recursos y Colab |
+| Tema 04 · DINO | 20 pantallas, 3 preguntas, 5 animaciones, 9 imágenes y Colab |
+| Tema 05 · SAM | 14 pantallas, 3 preguntas, 1 animación, 5 imágenes y Colab |
+| Tema 06 · Más visión | Pendiente |
+| Cobertura PPTX | Diapositivas 4–79 con destino; 31–79 reauditas contra PPTX y PDF |
+| Fuentes | `content/tema-01/sources.json` a `content/tema-05/sources.json` |
+| PDFs | Temas 01–05 disponibles; 02–05 regenerados e inspeccionados tras la ampliación |
 
-La implementación del tema 01 ha pasado `npm run build`, `npm run check`, `npm test`, `npm run test:e2e` y la captura visual de las 26 pantallas en escritorio, móvil y presentación. Esto prueba el funcionamiento local; no sustituye la revisión docente ni la comprobación de fuentes externas pendientes.
+## Auditoría de los temas 02–05
 
-## Cobertura y fuentes
+La versión anterior resumía 49 diapositivas del PPTX en 34 pantallas y solo conservaba ocho imágenes. La revisión actual recupera mecanismo, arquitectura, límites, elección y recursos fuente sin cambiar la interfaz general. El detalle completo está en [AUDITORIA-TEMAS-02-05.md](AUDITORIA-TEMAS-02-05.md).
 
-- Fuente: `../docs/Modelos-fundacionales-en-vision-artificial.pptx` desde `web/`.
-- Registro por diapositiva: [COBERTURA.json](COBERTURA.json).
-- Las diapositivas 4–30 están **adaptadas** con destinos explícitos. Ninguna está marcada como **revisada**: ese estado requiere contraste docente de cobertura y exactitud.
-- `content/tema-01/sources.json` registra el origen de cada recurso, los cambios editoriales y las verificaciones pendientes.
-- Las diapositivas generales 1–3 y 94 también tienen destino previsto, para que no desaparezcan del registro.
-- La presentación contiene afirmaciones sobre versiones, licencias, benchmarks y arquitecturas que requieren comprobación antes de trasladarlas. Consultar las alertas del plan.
+Correcciones docentes registradas:
 
-## Pendientes técnicos conocidos
+- Las licencias se revisan por artefacto y versión; se retiraron conclusiones jurídicas absolutas.
+- CLIP, BLIP, Grounding DINO y VLM se distinguen por su salida.
+- DINOv2 se fecha en 2023 y DINOv3 en 2025; la web no presenta atención como máscara garantizada.
+- SAM 1, 2 y 3 tienen prompts y capacidades distintas; SAM 1 no se presenta con texto nativo.
+- Umbrales, rendimiento y hardware se validan en el dominio en lugar de darse como reglas universales.
 
-1. Resolver o mantener documentadas las fuentes técnicas con estado `pending` en `sources.json`.
-2. La web no guarda resultados tras recargar ni recoge respuestas del grupo. Mantener esta arquitectura estática.
-3. Los notebooks originales están fuera de `web/` y no se modifican en este encargo. Registrar aquí cualquier incompatibilidad necesaria para la práctica.
+## Evidencia técnica de esta revisión
 
-## Material imprescindible que falta
+- `npm run build`: correcto.
+- `npm run check`: correcto.
+- Auditoría Playwright de todos los pasos de los temas 02–05 a 1440 × 900, 390 × 844 y 1280 × 720: sin desbordamientos.
+- Seis animaciones nuevas: reproducción y parada comprobadas.
+- PDF 02: 12 páginas; PDF 03: 19; PDF 04: 20; PDF 05: 14. Todas inspeccionadas y sin páginas en blanco.
+- Capturas representativas en `tmp/visual-audit/` durante la revisión; la carpeta es temporal y no se publica.
+- PPTX y PDF cotejados diapositiva a diapositiva para 31–79.
 
-Ninguno identificado para iniciar T1-A. No se han inspeccionado todos los medios del PPTX; no interpretar esto como garantía de calidad o disponibilidad de cada animación.
+Esto demuestra que la implementación local carga y cabe. La revisión docente del profesor sigue siendo la aceptación final del guion.
+
+## Pendientes concretos
+
+1. Los notebooks se enlazan pero no se han ejecutado ni modificado; los modelos pesados siguen en Colab.
+2. No hay almacenamiento de respuestas, cuentas ni resultados compartidos; la web permanece estática.
 
 ## Historial
 
-| Fecha | Lote | Resultado | Evidencia y siguiente acción |
-| --- | --- | --- | --- |
-| 2026-09-15 | Preparación | Guía e inventario de 94 diapositivas; sin incorporar contenido nuevo a la web | Empezar T1-A |
-| 2026-09-15 | T1-A a T1-I | Diapositivas 4–30 convertidas en 26 pantallas guiadas con recursos originales y actividades | Build, validación, tests, capturas y PDF A4 de 26 páginas comprobados; hacer revisión docente del tema 01 |
-| 2026-09-15 | T2-A a T2-B | Diapositivas 31–36 convertidas en 9 pantallas sobre Hub, model cards, licencias e inferencia | Build, validación, tests y PDF A4 de 9 páginas comprobados; continuar tema 03 |
+| Fecha | Lote | Resultado |
+| --- | --- | --- |
+| 2026-09-15 | Preparación | Guía e inventario de 94 diapositivas |
+| 2026-09-15 | T1-A a T1-I | Diapositivas 4–30 en 26 pantallas, actividades y PDF |
+| 2026-09-15 | Primera pasada T2–T5 | Adaptación demasiado resumida; quedó señalada para auditoría |
+| 2026-09-16 | Auditoría T2–T5 | Diapositivas 31–79 recuperadas en 65 pantallas con 27 recursos fuente y correcciones registradas |
 
-## Al cerrar un lote, actualizar
+## Al cerrar el siguiente lote
 
-1. Qué diapositivas se adaptaron y en qué IDs de sección.
-2. Qué conceptos faltan, qué recursos faltan y qué afirmaciones se corrigieron.
-3. Comandos ejecutados y resultado real; rutas de capturas/PDF revisados.
-4. Estado de la revisión docente, separado de los tests técnicos.
-5. Un único siguiente lote, con una acción concreta para retomarlo.
+1. Registrar cada diapositiva y sus secciones en `COBERTURA.json`.
+2. Registrar recursos, correcciones y fuentes en `content/tema-XX/sources.json`.
+3. Ejecutar build, validación y revisión visual proporcionada al alcance del cambio.
+4. Regenerar e inspeccionar el PDF del tema.
+5. Actualizar este archivo con un único siguiente paso.
 
-No escribir «terminado» si quedan conceptos sin destino o errores abiertos. Si un recurso impide una parte del lote, describirlo con su diapositiva y continuar las partes independientes.
+No escribir «terminado» si quedan conceptos sin destino, medios sin inspeccionar o PDF sin revisar.

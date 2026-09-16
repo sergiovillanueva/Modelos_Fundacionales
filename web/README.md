@@ -2,11 +2,11 @@
 
 Sitio web estático interactivo del curso, desarrollado con HTML semántico, CSS modular, JavaScript en módulos estándar (ESM) y Reveal.js (modo presentación).
 
-Una portada breve presenta el curso y abre el tema 01 con **Empezar**. Los temas están arriba y cada tema se recorre con **Anterior / Siguiente**: **Concepto → Tu turno → IoU → Colab**. El menú **Material** reúne el PDF y la presentación. Los temas 02–06 están preparados en la navegación, pendientes de contenido.
+Una portada breve presenta el curso y abre el tema 01 con **Empezar**. Los temas están arriba y cada tema se recorre con **Anterior / Siguiente**, una idea por pantalla y Colab al final. El menú **Material** reúne el PDF y la presentación. Los temas 01–05 tienen contenido; el tema 06 sigue preparado como pendiente.
 
 Antes de crear o ampliar un tema, consulta [INSTRUCCIONES.md](INSTRUCCIONES.md). Ahí están las reglas visuales, los límites de texto, la estructura de las actividades y la lista de comprobación que deben seguir personas y agentes de programación.
 
-**Para que otro modelo continúe:** [CONTINUAR.md](CONTINUAR.md) contiene el prompt de trabajo. [plan/ESTADO.md](plan/ESTADO.md) señala el siguiente lote; [plan/MIGRACION-POWERPOINT.md](plan/MIGRACION-POWERPOINT.md) define el proceso y [plan/COBERTURA.json](plan/COBERTURA.json) registra las 94 diapositivas. Estos archivos son documentación de trabajo y no se copian a `dist/`.
+**Para que otro modelo continúe:** [CONTINUAR.md](CONTINUAR.md) contiene el prompt de trabajo. [plan/ESTADO.md](plan/ESTADO.md) señala el siguiente lote; [plan/MIGRACION-POWERPOINT.md](plan/MIGRACION-POWERPOINT.md) define el proceso; [plan/AUDITORIA-TEMAS-02-05.md](plan/AUDITORIA-TEMAS-02-05.md) fija el nivel de fidelidad y [plan/COBERTURA.json](plan/COBERTURA.json) registra las 94 diapositivas. Estos archivos son documentación de trabajo y no se copian a `dist/`.
 
 ## Estructura del proyecto
 
@@ -35,13 +35,16 @@ web/
 - `npm run preview`: Inicia un servidor HTTP local en `http://localhost:4173` para previsualizar `dist/`.
 - `npm run test:e2e`: Ejecuta las pruebas automatizadas de navegador con Playwright.
 - `node tests/visual-check.mjs`: Captura la portada y cada paso del tema 01 en escritorio, móvil y presentación, en `test-results/visual/`.
-- `npm run pdf`: Regenera el PDF A4 de la lección en `public/descargas/` y lo copia a `dist/descargas/`.
+- `npm run pdf`: Regenera el PDF A4 del tema 01.
+- `npm run pdf:tema-02`, `pdf:tema-03`, `pdf:tema-04` y `pdf:tema-05`: regeneran el PDF A4 del tema correspondiente.
+- `python scripts/audit-source.py`: extrae texto y renderiza las diapositivas 31–79 para una auditoría local en `tmp/`.
+- `python scripts/import-source-assets.py`: vuelve a importar las imágenes seleccionadas y convierte las animaciones a WebP controlable.
 
-Trabajar desde `web/`. Tras editar contenido o estilos, ejecutar `npm run build`, `npm run check`, `npm test` y `npm run test:e2e`. Revisar las capturas con `node tests/visual-check.mjs` y regenerar el PDF. Los tests de navegador comprueban los cuatro pasos, historial, teclado, respuestas, IoU, animación, recursos, móvil a 390/320 px e impresión.
+Trabajar desde `web/`. Tras editar contenido o estilos, ejecutar `npm run build` y `npm run check`. Ejecutar tests y auditoría visual proporcionados al comportamiento que haya cambiado; no repetir suites completas sin motivo. Regenerar e inspeccionar el PDF del tema afectado.
 
-El HTML de `content/tema-01/sections.html` es la fuente de los tres formatos. `.print-detail` añade matices solo al PDF y las preguntas incluyen su solución impresa. Las fuentes y las imágenes se sirven localmente. No hay backend, cuentas, resultados compartidos ni modelos ejecutándose en la web.
+El HTML de `content/tema-XX/sections.html` es la fuente de los tres formatos. `.print-detail` añade matices solo al PDF y las preguntas incluyen su solución impresa. Las fuentes y las imágenes se sirven localmente. No hay backend, cuentas, resultados compartidos ni modelos ejecutándose en la web.
 
-El PDF y las capturas se exportan actualmente para el tema 01; hay que ampliar los scripts al publicar otro tema. El enlace de Colab abre el notebook externo; los tests de esta web no ejecutan ese cuaderno ni comprueban la disponibilidad de GPU.
+Los PDF existen para los temas 01–05. El enlace de Colab abre el notebook externo; los tests de esta web no ejecutan ese cuaderno ni comprueban la disponibilidad de GPU.
 
 ## Despliegue en Cloudflare Pages
 

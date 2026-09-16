@@ -1,9 +1,138 @@
-<section id="ver" data-title="DINO" data-layout="visual"><div class="section-copy"><h2>Ver sin etiquetas</h2><p class="lead">DINO aprende representaciones visuales a partir de imágenes sin categorías humanas.</p></div><figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/image-55-1.jpeg}}" alt="Introducción visual a DINO y aprendizaje auto-supervisado."></figure></section>
-<section id="auto-supervision" data-title="Aprender" data-layout="visual"><div class="section-copy"><h2>Una imagen crea su propia señal</h2><p class="lead">Dos vistas de la misma imagen deben conservar una representación coherente.</p></div><ol class="evolution-line"><li><strong>Vista</strong><span>Recorte o transformación de una imagen.</span></li><li><strong>Modelo</strong><span>Produce una representación de cada vista.</span></li><li><strong>Objetivo</strong><span>Acerca representaciones compatibles.</span></li></ol></section>
-<section id="destilacion" data-title="Teacher" data-layout="question"><div class="section-copy"><h2>Dos redes, una referencia</h2><p class="lead">DINO usa una red estudiante y otra profesora para definir un objetivo de aprendizaje.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Estudiante</strong> aprende mediante gradiente.</p><p><strong>Profesora</strong> ofrece objetivos estables.</p><p><strong>Vistas</strong> cambian sin perder identidad visual.</p></div>{{QUIZ:q401}}</div></section>
-<section id="embedding" data-title="Embedding" data-layout="visual"><div class="section-copy"><h2>Una imagen como vector</h2><p class="lead">El embedding resume patrones visuales que permiten comparar imágenes.</p></div><figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/image-65-1.jpeg}}" alt="Ilustración de DINO como extractor de características visuales."></figure></section>
-<section id="similitud" data-title="Similitud" data-layout="question"><div class="section-copy"><h2>Comparar sin clasificar</h2><p class="lead">Embeddings cercanos sugieren semejanza bajo la representación elegida.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Consulta</strong> que actúa como referencia.</p><p><strong>Base</strong> de imágenes candidatas.</p><p><strong>Distancia</strong> para ordenar coincidencias.</p></div>{{QUIZ:q402}}</div></section>
-<section id="patches" data-title="Patches" data-layout="visual"><div class="section-copy"><h2>También mira regiones</h2><p class="lead">Los embeddings por patch permiten comparar partes de una imagen.</p></div><div class="print-detail"><p>El notebook extrae un embedding global y embeddings por patch; PCA permite visualizar algunas variaciones, no demostrar categorías definitivas.</p></div></section>
-<section id="anomalías" data-title="Anomalías" data-layout="visual"><div class="section-copy"><h2>¿Se parece a lo normal?</h2><p class="lead">Un detector de anomalías compara regiones con ejemplos de referencia sin defecto.</p></div><ol class="evolution-line"><li><strong>Normalidad</strong><span>Embeddings de ejemplos correctos.</span></li><li><strong>Consulta</strong><span>Embeddings de una imagen nueva.</span></li><li><strong>Distancia</strong><span>Regiones alejadas que revisar.</span></li></ol></section>
-<section id="eleccion" data-title="Elegir" data-layout="question"><div class="section-copy"><h2>Representar no es decidir</h2><p class="lead">DINO aporta características; la tarea final necesita datos y evaluación propios.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Úsalo</strong> para similitud, recuperación o rasgos.</p><p><strong>Añade</strong> una cabeza supervisada si necesitas clases.</p><p><strong>Evalúa</strong> umbrales y errores con tu dominio.</p></div>{{QUIZ:q403}}</div></section>
-<section id="practica" data-title="Colab" data-layout="practice"><div class="section-copy"><h2>Explora los embeddings</h2><p class="lead">Extrae, compara y visualiza representaciones en tu copia.</p></div><ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Extrae embeddings de dos imágenes.</span></li><li><span>Compara similitud y PCA.</span></li></ol><a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/4_DINO.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a></section>
+<section id="ver" data-title="Inicio" data-layout="visual">
+  <div class="section-copy"><h2>Ver sin etiquetas</h2><p class="lead">DINO aprende representaciones visuales generales directamente de las imágenes.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/portada-dino.jpeg}}" alt="Varias imágenes junto a mapas de características producidos por DINO."><figcaption>La representación puede reutilizarse para buscar, agrupar, localizar o comparar.</figcaption></figure>
+  <div class="print-detail"><p>DINO significa self-distillation with no labels. Su objetivo principal es aprender un backbone visual transferible, no resolver por sí solo una única tarea final.</p></div>
+</section>
+
+<section id="supervision" data-title="Etiquetas" data-layout="visual">
+  <div class="section-copy"><h2>La señal está en los datos</h2><p class="lead">La auto-supervisión crea objetivos de entrenamiento sin categorías anotadas por personas.</p></div>
+  <div class="comparison-lanes comparison-lanes--two" aria-label="Aprendizaje supervisado y auto-supervisado">
+    <div><strong>Supervisado</strong><span>Predice etiquetas humanas y queda ligado a su taxonomía.</span></div>
+    <div><strong>Auto-supervisado</strong><span>Explota estructura, vistas y relaciones presentes en las imágenes.</span></div>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--medium print-detail"><img src="{{ASSET:tema-04/presentacion/auto-supervision.jpeg}}" alt="Ejemplo de un conjunto de imágenes etiquetadas manualmente."></figure>
+  <div class="print-detail"><p>La ventaja principal es escalar el preentrenamiento y reutilizar las características en dominios donde anotar resulta caro. La tarea final aún puede necesitar etiquetas para entrenar o evaluar una cabeza específica.</p></div>
+</section>
+
+<section id="pretextos" data-title="Señales" data-layout="visual">
+  <div class="section-copy"><h2>El modelo fabrica su ejercicio</h2><p class="lead">Transformaciones, partes ocultas o agrupaciones proporcionan una señal de aprendizaje.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium media-container" data-media-type="animation"><img src="{{ASSET:tema-04/presentacion/auto-supervision-poster.webp}}" data-animated-src="{{ASSET:tema-04/presentacion/auto-supervision.webp}}" alt="Animación con ejemplos de aprendizaje contrastivo, predicción enmascarada, rotación y clustering." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>
+  <div class="print-detail"><p>En aprendizaje contrastivo se relacionan vistas compatibles; en masked prediction se reconstruyen regiones ocultas; otras tareas históricas incluyen predecir rotaciones o agrupar representaciones parecidas.</p></div>
+</section>
+
+<section id="destilacion" data-title="Teacher" data-layout="question">
+  <div class="section-copy"><h2>La estudiante sigue una referencia</h2><p class="lead">La red maestra es una versión suavizada de la estudiante y produce objetivos estables.</p></div>
+  <div class="question-layout"><figure class="figure-media media-container" data-media-type="animation"><img src="{{ASSET:tema-04/presentacion/teacher-student-poster.webp}}" data-animated-src="{{ASSET:tema-04/presentacion/teacher-student.webp}}" alt="Animación del entrenamiento de DINO con una red estudiante y una red maestra." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>{{QUIZ:q401}}</div>
+  <div class="print-detail"><p>La estudiante se actualiza por gradiente. La maestra no recibe gradiente directo: sus pesos siguen un promedio móvil de los pesos de la estudiante. Ambas procesan vistas distintas de la misma imagen y se fuerza la consistencia de sus salidas.</p></div>
+</section>
+
+<section id="atencion" data-title="Atención" data-layout="visual">
+  <div class="section-copy"><h2>Emergen regiones coherentes</h2><p class="lead">Los mapas de atención pueden alinearse con objetos aunque no haya máscaras de entrenamiento.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/atencion-dino.jpeg}}" alt="Imagen de un animal y mapa de atención de DINO resaltando el objeto principal."><figcaption>La atención muestra dónde se concentra el modelo; no es una máscara validada por sí sola.</figcaption></figure>
+  <div class="print-detail"><p>En DINO v1 se observó que algunos heads de auto-atención de un Vision Transformer separaban objetos salientes del fondo. Es una capacidad emergente y una herramienta de interpretación, no una garantía de segmentación perfecta.</p></div>
+</section>
+
+<section id="copias" data-title="Copias" data-layout="visual">
+  <div class="section-copy"><h2>Reconocer la misma imagen</h2><p class="lead">Embeddings robustos permiten recuperar copias incluso después de varias transformaciones.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/copias-dino.jpeg}}" alt="Comparación de recuperación de copias de imágenes con DINO y otros enfoques."><figcaption>La similitud semántica puede resistir recortes, cambios de color o texto superpuesto.</figcaption></figure>
+  <div class="print-detail"><p>La identificación de copias es una aplicación de recuperación: se indexan embeddings y se buscan vecinos cercanos. El umbral debe evaluarse con transformaciones y negativos representativos.</p></div>
+</section>
+
+<section id="evolucion" data-title="Evolución" data-layout="visual">
+  <div class="section-copy"><h2>De DINO a DINOv3</h2><p class="lead">La familia escala datos y modelos mientras mejora la calidad de las características densas.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide media-container" data-media-type="animation"><img src="{{ASSET:tema-04/presentacion/evolucion-dino-poster.webp}}" data-animated-src="{{ASSET:tema-04/presentacion/evolucion-dino.webp}}" alt="Animación que compara mapas de características de distintas generaciones de DINO." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>
+  <div class="print-detail"><p>DINO apareció en 2021; DINOv2 se publicó en 2023 con un pipeline de datos curados; DINOv3 se presentó en 2025 y escaló el entrenamiento auto-supervisado, incorporando técnicas para conservar la calidad de características densas durante entrenamientos largos.</p></div>
+</section>
+
+<section id="datos" data-title="Datos" data-layout="visual">
+  <div class="section-copy"><h2>La curación también aprende</h2><p class="lead">DINOv2 usa embeddings para deduplicar y recuperar imágenes parecidas a un conjunto curado.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/datos-dinov2.jpeg}}" alt="Pipeline de curación de datos de DINOv2 con embeddings, deduplicación y recuperación."><figcaption>El modelo ayuda a construir un conjunto diverso sin etiquetar cada imagen.</figcaption></figure>
+  <div class="print-detail"><p>El flujo combina datos curados y no curados, calcula embeddings, elimina duplicados y recupera ejemplos visualmente próximos al conjunto de referencia. La calidad del backbone depende también de esta selección de datos.</p></div>
+</section>
+
+<section id="entrenamiento" data-title="Entrenamiento" data-layout="visual">
+  <div class="section-copy"><h2>Dos vistas de una imagen</h2><p class="lead">La estudiante observa detalles y aprende a concordar con el contexto de la maestra.</p></div>
+  <ol class="evolution-line evolution-line--5" aria-label="Proceso de entrenamiento DINO">
+    <li><strong>Aumentar</strong><span>Crops locales y globales.</span></li>
+    <li><strong>Estudiante</strong><span>Procesa varias vistas.</span></li>
+    <li><strong>Maestra</strong><span>Procesa vistas globales.</span></li>
+    <li><strong>Alinear</strong><span>Se comparan salidas.</span></li>
+    <li><strong>Actualizar</strong><span>Promedio móvil.</span></li>
+  </ol>
+  <div class="print-detail"><p>Las vistas preservan la identidad de la escena y cambian recorte, color u otras propiedades. El objetivo fuerza una representación consistente ante esas transformaciones sin usar una etiqueta de clase.</p></div>
+</section>
+
+<section id="capacidades" data-title="Capacidades" data-layout="visual">
+  <div class="section-copy"><h2>Una base para muchas tareas</h2><p class="lead">Las mismas características sirven para regiones, correspondencias, recuperación y clasificación.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/capacidades-dino.jpeg}}" alt="Ejemplos visuales de segmentación, correspondencias y detección a partir de características DINO."><figcaption>La tarea final añade una regla, un índice o una cabeza sobre el backbone.</figcaption></figure>
+  <div class="print-detail"><p>Los mapas densos apoyan segmentación y correspondencias; el token global resume la imagen para recuperación o clasificación con k-NN. Estas capacidades se evalúan por separado: una buena representación no sustituye la validación de la tarea final.</p></div>
+</section>
+
+<section id="embedding" data-title="Features" data-layout="visual">
+  <div class="section-copy"><h2>Global y por regiones</h2><p class="lead">DINO produce un resumen de imagen y una cuadrícula de embeddings por patch.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/extractor-dino.jpeg}}" alt="Visualización de características densas extraídas por DINO."><figcaption>El token global compara imágenes; los patches conservan información espacial.</figcaption></figure>
+  <div class="print-detail"><p>El notebook usa DINOv2 como extractor congelado. El token CLS se emplea para similitud global y los tokens de patch para visualizar o comparar regiones.</p></div>
+</section>
+
+<section id="similitud" data-title="Similitud" data-layout="question">
+  <div class="section-copy"><h2>Cercanía según el modelo</h2><p class="lead">La similitud coseno compara la dirección de dos embeddings normalizados.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Extrae</strong> un vector por imagen.</p><p><strong>Normaliza</strong> antes de comparar.</p><p><strong>Ordena</strong> vecinos y revisa errores.</p></div>{{QUIZ:q402}}</div>
+  <div class="print-detail"><p>Una similitud alta significa que el modelo representa las imágenes de forma próxima. No demuestra identidad píxel a píxel ni una categoría concreta.</p></div>
+</section>
+
+<section id="pca" data-title="PCA" data-layout="visual">
+  <div class="section-copy"><h2>Colorear las características</h2><p class="lead">PCA reduce los embeddings densos y revela variaciones espaciales dominantes.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/pca-dino.jpeg}}" alt="Imágenes y visualización RGB de componentes principales de características DINO."><figcaption>Los tres primeros componentes pueden mapearse a RGB para inspeccionar regiones.</figcaption></figure>
+  <div class="print-detail"><p>PCA es una proyección lineal para explorar estructura. Los colores no son clases predefinidas y pueden cambiar entre conjuntos o ajustes.</p></div>
+</section>
+
+<section id="vecinos" data-title="Vecinos" data-layout="visual">
+  <div class="section-copy"><h2>Buscar correspondencias visuales</h2><p class="lead">Un patch consulta qué regiones tienen una representación parecida.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-04/presentacion/vecinos-dino.jpeg}}" alt="Mapas de vecinos cercanos y correspondencias entre regiones de imágenes."><figcaption>Los vecinos permiten comprobar si la representación conserva partes equivalentes.</figcaption></figure>
+  <div class="print-detail"><p>La búsqueda de vecinos puede realizarse entre patches de la misma imagen, de imágenes distintas o de una base indexada. Sirve para correspondencias, recuperación y análisis de consistencia.</p></div>
+</section>
+
+<section id="dinov3-mapas" data-title="DINOv3" data-layout="visual">
+  <div class="section-copy"><h2>Características densas estables</h2><p class="lead">DINOv3 está diseñado para conservar detalle espacial al escalar el entrenamiento.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide media-container" data-media-type="animation"><img src="{{ASSET:tema-04/presentacion/dinov3-mapas-poster.webp}}" data-animated-src="{{ASSET:tema-04/presentacion/dinov3-mapas.webp}}" alt="Animación de mapas de características DINOv3 en distintas escenas." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>
+  <div class="print-detail"><p>DINOv3 introduce gram anchoring para combatir la degradación de mapas densos en entrenamientos prolongados. El resultado es un backbone congelado útil en tareas de imagen natural, aérea y satelital.</p></div>
+</section>
+
+<section id="dinov3-denso" data-title="Detalle" data-layout="visual">
+  <div class="section-copy"><h2>El mismo modelo, varias escalas</h2><p class="lead">Las representaciones densas separan regiones sin recibir una taxonomía de píxeles.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide media-container" data-media-type="animation"><img src="{{ASSET:tema-04/presentacion/dinov3-denso-poster.webp}}" data-animated-src="{{ASSET:tema-04/presentacion/dinov3-denso.webp}}" alt="Animación de características densas DINOv3 sobre objetos y paisajes." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>
+  <div class="print-detail"><p>Estas visualizaciones muestran estructura emergente, pero una aplicación necesita una cabeza o regla downstream, datos de validación y una métrica acorde al objetivo.</p></div>
+</section>
+
+<section id="eleccion" data-title="Elegir" data-layout="question">
+  <div class="section-copy"><h2>Representar no es decidir</h2><p class="lead">DINO encaja cuando faltan etiquetas y necesitas características reutilizables.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Úsalo</strong> para similitud, clustering o rasgos densos.</p><p><strong>Compara</strong> con supervisado si hay muchas etiquetas fiables.</p><p><strong>Mide</strong> coste y latencia en el hardware real.</p></div>{{QUIZ:q403}}</div>
+  <div class="print-detail"><p>Un modelo supervisado pequeño puede ser mejor en una tarea fija y un entorno controlado. DINO aporta valor cuando las clases cambian, la anotación es costosa o el mismo backbone debe alimentar varias tareas.</p></div>
+</section>
+
+<section id="normalidad" data-title="Normalidad" data-layout="visual">
+  <div class="section-copy"><h2>Aprender cómo se ve lo correcto</h2><p class="lead">La detección de anomalías parte de ejemplos normales, no de una lista completa de fallos.</p></div>
+  <div class="outcome-flow" aria-label="Construcción de una memoria de normalidad">
+    <div><strong>Referencias</strong><span>Imágenes sin defecto y bien alineadas.</span></div>
+    <div><strong>Patches</strong><span>Embeddings DINO normalizados.</span></div>
+    <div><strong>CoreSet</strong><span>Subconjunto que resume la variación normal.</span></div>
+  </div>
+  <div class="print-detail"><p>Un enfoque tipo PatchCore almacena representaciones de regiones normales. La cobertura de variaciones válidas —iluminación, postura, lote o cámara— es decisiva para evitar falsas alarmas.</p></div>
+</section>
+
+<section id="anomalias" data-title="Anomalías" data-layout="visual">
+  <div class="section-copy"><h2>La distancia localiza la desviación</h2><p class="lead">Cada patch nuevo se compara con su vecino normal más cercano.</p></div>
+  <ol class="evolution-line evolution-line--4" aria-label="Inferencia de anomalías con características DINO">
+    <li><strong>Imagen</strong><span>Extrae patches de test.</span></li>
+    <li><strong>kNN</strong><span>Busca vecinos normales.</span></li>
+    <li><strong>Mapa</strong><span>La distancia marca regiones.</span></li>
+    <li><strong>Umbral</strong><span>Convierte score en decisión.</span></li>
+  </ol>
+  <div class="print-detail"><p>La distancia puede ser coseno o L2. El heatmap se construye con scores por patch y el score global resume la imagen. Umbral, sensibilidad y localización deben validarse con fallos reales o simulados.</p></div>
+</section>
+
+<section id="practica" data-title="Colab" data-layout="practice">
+  <div class="section-copy"><h2>Explora los embeddings</h2><p class="lead">Extrae representaciones globales y densas con DINOv2.</p></div>
+  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Compara dos imágenes.</span></li><li><span>Interpreta patches y PCA.</span></li></ol>
+  <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/4_DINO.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+</section>

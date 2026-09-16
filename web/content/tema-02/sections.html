@@ -1,60 +1,106 @@
 <section id="hub" data-title="Hub" data-layout="visual">
-  <div class="section-copy"><h2>Un punto de partida</h2><p class="lead">Hugging Face reúne modelos, datos, demos y herramientas.</p></div>
-  <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-02/hugging-face.jpeg}}" alt="Logotipo de Hugging Face."><figcaption>El Hub aporta el identificador, los archivos y la documentación de cada modelo.</figcaption></figure>
+  <div class="section-copy"><h2>Modelos listos para explorar</h2><p class="lead">Hugging Face reúne modelos, datos, demos y herramientas en un mismo ecosistema.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-02/presentacion/portada-hugging-face.jpeg}}" alt="Logotipo de Hugging Face junto al nombre del servicio."><figcaption>El Hub permite descubrir recursos; su calidad y condiciones se revisan uno a uno.</figcaption></figure>
+  <div class="print-detail"><p>El repositorio sirve como punto de encuentro para publicar, documentar, versionar y reutilizar artefactos de aprendizaje automático. Descargar un modelo no garantiza que sea adecuado para el dominio, la licencia o los recursos disponibles.</p></div>
 </section>
 
 <section id="ecosistema" data-title="Ecosistema" data-layout="visual">
-  <div class="section-copy"><h2>Cuatro piezas conectadas</h2><p class="lead">Busca el recurso que necesitas antes de escribir código.</p></div>
-  <ol class="evolution-line" aria-label="Componentes del ecosistema Hugging Face">
+  <div class="section-copy"><h2>Cuatro piezas conectadas</h2><p class="lead">Cada pieza resuelve una parte distinta del trabajo con modelos.</p></div>
+  <ol class="evolution-line evolution-line--4" aria-label="Piezas del ecosistema Hugging Face">
     <li><strong>Models</strong><span>Pesos, configuración y model card.</span></li>
-    <li><strong>Datasets</strong><span>Datos para entrenar o evaluar.</span></li>
-    <li><strong>Spaces</strong><span>Demos para probar una interfaz.</span></li>
+    <li><strong>Datasets</strong><span>Datos con carga y procesado comunes.</span></li>
+    <li><strong>Transformers</strong><span>API para carga, inferencia y ajuste.</span></li>
+    <li><strong>Spaces</strong><span>Demos web para probar modelos.</span></li>
   </ol>
-  <div class="print-detail"><p>Transformers ofrece una API común para muchas arquitecturas. El Hub contiene recursos de autores distintos, con calidad y condiciones de uso que se revisan por separado.</p></div>
+  <div class="print-detail"><p>Model Hub y Dataset Hub almacenan recursos versionados. Transformers ofrece clases y pipelines para arquitecturas compatibles. Spaces permite publicar interfaces, habitualmente con Gradio o Streamlit.</p></div>
+</section>
+
+<section id="flujo" data-title="Flujo" data-layout="visual">
+  <div class="section-copy"><h2>De la búsqueda a tu aplicación</h2><p class="lead">Primero exploras, después pruebas y solo entonces integras.</p></div>
+  <div class="outcome-flow" aria-label="Flujo habitual de uso">
+    <div><strong>1. Buscar</strong><span>Filtra por tarea, licencia y librería.</span></div>
+    <div><strong>2. Probar</strong><span>Lee la ficha y usa una demo o notebook.</span></div>
+    <div><strong>3. Integrar</strong><span>Fija versión, mide y documenta.</span></div>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide print-detail"><img src="{{ASSET:tema-02/presentacion/model-hub.webp}}" alt="Captura del catálogo de modelos de Hugging Face."><figcaption>El catálogo se filtra por tarea y metadatos; la decisión se toma con evidencia propia.</figcaption></figure>
 </section>
 
 <section id="buscar" data-title="Buscar" data-layout="question">
-  <div class="section-copy"><h2>Empieza por la tarea</h2><p class="lead">Un filtro reduce opciones; la model card permite decidir.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Tarea</strong> que quieres resolver.</p><p><strong>Dominio</strong> de tus imágenes o datos.</p><p><strong>Licencia</strong> y recursos que admite tu entorno.</p></div>{{QUIZ:q201}}</div>
+  <div class="section-copy"><h2>Empieza por la tarea</h2><p class="lead">El filtro reduce candidatos; la documentación decide cuáles merece la pena probar.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Tarea</strong> y tipo de salida que necesitas.</p><p><strong>Dominio</strong> de las imágenes de uso real.</p><p><strong>Entorno</strong> de hardware, latencia y memoria.</p></div>{{QUIZ:q201}}</div>
+  <div class="print-detail"><p>Las descargas, los likes y la fecha de actualización ayudan a priorizar la inspección, pero no sustituyen una evaluación en el dominio objetivo.</p></div>
 </section>
 
-<section id="model-card" data-title="Model card" data-layout="visual">
-  <div class="section-copy"><h2>Lee antes de descargar</h2><p class="lead">La model card explica qué se entrenó, cómo usarlo y cuándo puede fallar.</p></div>
-  <div class="outcome-flow" aria-label="Información esencial de una model card"><div><strong>Uso</strong><span>Tarea, entradas y ejemplo de inferencia.</span></div><div><strong>Límites</strong><span>Datos, sesgos y casos que requieren cuidado.</span></div><div><strong>Archivos</strong><span>Pesos, configuración y licencia de la versión.</span></div></div>
+<section id="model-card" data-title="Ficha" data-layout="visual">
+  <div class="section-copy"><h2>La ficha cuenta la historia</h2><p class="lead">Una model card útil explica origen, uso, resultados y límites.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Contenido esencial de una model card">
+    <div><strong>Uso</strong><span>Tarea, entradas, código y casos previstos.</span></div>
+    <div><strong>Evidencia</strong><span>Datos, métricas y condiciones de evaluación.</span></div>
+    <div><strong>Riesgos</strong><span>Sesgos, fallos conocidos y licencia.</span></div>
+  </div>
+  <div class="print-detail"><p>Conviene registrar el identificador y la revisión exacta del repositorio. Dos versiones con el mismo nombre pueden cambiar archivos, configuración o resultados.</p></div>
 </section>
 
-<section id="licencia" data-title="Licencia" data-layout="question">
-  <div class="section-copy"><h2>La licencia forma parte del modelo</h2><p class="lead">La licencia de código, pesos y datos puede diferir.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Comprueba</strong> el repositorio y los pesos exactos.</p><p><strong>Lee</strong> obligaciones, restricciones y avisos.</p><p><strong>Registra</strong> la versión que llevas a producción.</p></div>{{QUIZ:q202}}</div>
-  <div class="print-detail"><p>Esta lección no ofrece asesoramiento legal. Para un uso comercial o distribuido, revisar la licencia y los términos publicados de cada recurso concreto.</p></div>
+<section id="licencias" data-title="Licencias" data-layout="visual">
+  <div class="section-copy"><h2>Descargar no significa poder usar</h2><p class="lead">Código, pesos, datos y aplicación final pueden tener condiciones distintas.</p></div>
+  <div class="comparison-lanes" aria-label="Preguntas para revisar una licencia">
+    <div><strong>Permisos</strong><span>Uso comercial, modificación y redistribución.</span></div>
+    <div><strong>Obligaciones</strong><span>Atribución, avisos, publicación o uso responsable.</span></div>
+    <div><strong>Restricciones</strong><span>Ámbitos excluidos, investigación o cláusulas específicas.</span></div>
+  </div>
+  <div class="print-detail"><p>Apache-2.0, MIT y BSD suelen ser permisivas, pero hay que leer el texto concreto. OpenRAIL y licencias personalizadas pueden añadir restricciones de uso. Las variantes Creative Commons y las licencias “research only” no son intercambiables. Para una decisión jurídica o comercial, revisar los términos del recurso y del caso de uso.</p></div>
+</section>
+
+<section id="licencia" data-title="Revisión" data-layout="question">
+  <div class="section-copy"><h2>Revisa el artefacto completo</h2><p class="lead">La etiqueta del repositorio es el inicio de la revisión, no su conclusión.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Identifica</strong> la versión y todos sus archivos.</p><p><strong>Comprueba</strong> términos de código, pesos y datos.</p><p><strong>Registra</strong> la decisión y las obligaciones.</p></div>{{QUIZ:q202}}</div>
 </section>
 
 <section id="carga" data-title="Carga" data-layout="visual">
-  <div class="section-copy"><h2>Del Hub a memoria</h2><p class="lead">La primera carga descarga archivos; después la caché puede reutilizarlos.</p></div>
-  <ol class="evolution-line" aria-label="Proceso de carga de un modelo"><li><strong>Identificador</strong><span>Elige una versión del Hub.</span></li><li><strong>Archivos</strong><span>Descarga configuración y pesos.</span></li><li><strong>Memoria</strong><span>Carga el modelo en CPU o GPU.</span></li></ol>
+  <div class="section-copy"><h2>Del Hub a la memoria</h2><p class="lead">La primera ejecución descarga archivos; las siguientes pueden reutilizar la caché.</p></div>
+  <ol class="evolution-line evolution-line--4" aria-label="Etapas de carga de un modelo">
+    <li><strong>Identificador</strong><span>Repositorio y revisión.</span></li>
+    <li><strong>Descarga</strong><span>Configuración y pesos.</span></li>
+    <li><strong>Memoria</strong><span>CPU, GPU y precisión.</span></li>
+    <li><strong>Inferencia</strong><span>Entrada, modelo y salida.</span></li>
+  </ol>
+  <div class="print-detail"><p>La caché local evita repetir transferencias, pero no reduce la memoria necesaria para ejecutar el modelo. En entornos reproducibles conviene fijar una revisión y controlar la ubicación de caché.</p></div>
 </section>
 
-<section id="from-pretrained" data-title="Código" data-layout="visual">
-  <div class="section-copy"><h2>Una API, muchas arquitecturas</h2><p class="lead"><code>from_pretrained</code> carga los archivos que describe el identificador.</p></div>
+<section id="archivos" data-title="Archivos" data-layout="visual">
+  <div class="section-copy"><h2>Cada archivo cumple una función</h2><p class="lead">La configuración describe la arquitectura; los pesos contienen lo aprendido.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Archivos habituales de un modelo Transformers">
+    <div><strong>config.json</strong><span>Arquitectura, tamaños y etiquetas.</span></div>
+    <div><strong>model.safetensors</strong><span>Parámetros, a veces repartidos en fragmentos.</span></div>
+    <div><strong>Preprocesador</strong><span>Resolución, normalización o tokenización.</span></div>
+  </div>
+  <div class="print-detail"><p>Safetensors evita ejecutar código de deserialización basado en pickle y permite leer los pesos de forma eficiente. Aun así, se debe revisar el repositorio y cualquier código personalizado solicitado por el modelo.</p></div>
+</section>
+
+<section id="from-pretrained" data-title="API" data-layout="visual">
+  <div class="section-copy"><h2>Una API, muchas arquitecturas</h2><p class="lead"><code>from_pretrained</code> reconstruye el procesador y el modelo desde su repositorio.</p></div>
   <pre class="code-sample"><code>from transformers import AutoImageProcessor, AutoModelForImageClassification
 
 model_id = "google/vit-base-patch16-224"
 processor = AutoImageProcessor.from_pretrained(model_id)
 model = AutoModelForImageClassification.from_pretrained(model_id)</code></pre>
-  <div class="print-detail"><p>El notebook utiliza este patrón. El modelo, sus requisitos de memoria y las etiquetas dependen del identificador elegido.</p></div>
+  <div class="print-detail"><p>Las clases Auto eligen una implementación compatible con la configuración. Para reproducibilidad se puede indicar una revisión concreta. El dispositivo y el tipo numérico se eligen según memoria, latencia y soporte del modelo.</p></div>
 </section>
 
 <section id="pipeline" data-title="Pipeline" data-layout="question">
-  <div class="section-copy"><h2>Una prueba rápida</h2><p class="lead">Un pipeline prepara la entrada y devuelve una salida con el formato de la tarea.</p></div>
+  <div class="section-copy"><h2>Una prueba en pocas líneas</h2><p class="lead">Un pipeline reúne preprocesado, inferencia y posprocesado para una tarea común.</p></div>
   <div class="question-layout question-layout--text"><pre class="code-sample"><code>from transformers import pipeline
 
-classifier = pipeline("image-classification",
-                      model="google/vit-base-patch16-224")
-result = classifier("imagen.jpg")</code></pre>{{QUIZ:q203}}</div>
+detector = pipeline(
+    "object-detection",
+    model="PekingU/rtdetr_r50vd"
+)
+results = detector("imagen.jpg")</code></pre>{{QUIZ:q203}}</div>
+  <div class="print-detail"><p>El pipeline es ideal para explorar. En producción, las clases específicas permiten controlar mejor el batching, el dispositivo, la precisión, el preprocesado y el formato de salida.</p></div>
 </section>
 
 <section id="practica" data-title="Colab" data-layout="practice">
-  <div class="section-copy"><h2>Busca y prueba un modelo</h2><p class="lead">Trabaja sobre tu propia copia del cuaderno.</p></div>
-  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Prueba el modelo de clasificación propuesto.</span></li><li><span>Elige otro modelo y lee su model card.</span></li></ol>
+  <div class="section-copy"><h2>Busca y prueba un modelo</h2><p class="lead">Compara la documentación con lo que observas al ejecutar el cuaderno.</p></div>
+  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Ejecuta el modelo propuesto.</span></li><li><span>Elige otro y justifica la decisión.</span></li></ol>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/2_HF_Intro.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
 </section>

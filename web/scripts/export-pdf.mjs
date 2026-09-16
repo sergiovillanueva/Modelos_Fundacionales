@@ -9,6 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WEB_ROOT = path.resolve(__dirname, '..');
 const topicId = process.argv[2] || '01-deteccion';
+const previewPort = 4180;
 const pdfName = `tema-${topicId}.pdf`;
 const PUBLIC_OUTPUT = path.resolve(WEB_ROOT, 'public', 'descargas', pdfName);
 const DIST_OUTPUT = path.resolve(WEB_ROOT, 'dist', 'descargas', pdfName);
@@ -30,14 +31,14 @@ async function exportPdf() {
   buildSite();
 
   const serverScript = path.resolve(WEB_ROOT, 'node_modules', 'http-server', 'bin', 'http-server');
-  const server = spawn(process.execPath, [serverScript, 'dist', '-p', '4173', '-c-1'], {
+  const server = spawn(process.execPath, [serverScript, 'dist', '-p', String(previewPort), '-c-1'], {
     cwd: WEB_ROOT,
     stdio: 'ignore'
   });
 
   let browser;
   try {
-    const url = `http://127.0.0.1:4173/temas/${topicId}/index.html`;
+    const url = `http://127.0.0.1:${previewPort}/temas/${topicId}/index.html`;
     await waitForServer(url);
     browser = await chromium.launch();
     const page = await browser.newPage();

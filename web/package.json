@@ -10,7 +10,10 @@
     "test:e2e": "playwright test",
     "check": "node scripts/validate.mjs",
     "pdf": "node scripts/export-pdf.mjs",
-    "pdf:tema-02": "node scripts/export-pdf.mjs 02-hugging-face"
+    "pdf:tema-02": "node scripts/export-pdf.mjs 02-hugging-face",
+    "pdf:tema-03": "node scripts/export-pdf.mjs 03-multimodalidad",
+    "pdf:tema-04": "node scripts/export-pdf.mjs 04-dino",
+    "pdf:tema-05": "node scripts/export-pdf.mjs 05-sam"
   },
   "dependencies": {
     "@playwright/test": "^1.63.0",

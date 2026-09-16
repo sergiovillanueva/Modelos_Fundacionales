@@ -1,8 +1,98 @@
-<section id="sam" data-title="SAM" data-layout="visual"><div class="section-copy"><h2>Segmentar es dibujar un contorno</h2><p class="lead">SAM devuelve una máscara: los píxeles que pertenecen al objeto indicado.</p></div><figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/image-71-1.jpeg}}" alt="Introducción visual a Segment Anything Model."></figure></section>
-<section id="mascara" data-title="Máscara" data-layout="visual"><div class="section-copy"><h2>Más precisión que una caja</h2><p class="lead">Una caja aproxima la posición; una máscara delimita el objeto a nivel de píxel.</p></div><figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/image-72-1.jpeg}}" alt="Comparación entre segmentación y otras tareas de visión."></figure></section>
-<section id="prompt" data-title="Prompt" data-layout="question"><div class="section-copy"><h2>Señala lo que importa</h2><p class="lead">Un punto, una caja o una máscara previa guía la segmentación.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Punto positivo</strong> dentro del objeto.</p><p><strong>Punto negativo</strong> sobre lo que queda fuera.</p><p><strong>Caja</strong> que acota una región.</p></div>{{QUIZ:q501}}</div></section>
-<section id="arquitectura" data-title="SAM 2" data-layout="visual"><div class="section-copy"><h2>Codificar antes de preguntar</h2><p class="lead">SAM separa la representación visual del prompt y el decodificador de máscaras.</p></div><figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/image-74-1.jpeg}}" alt="Arquitectura de SAM 2."></figure></section>
-<section id="refinar" data-title="Refinar" data-layout="question"><div class="section-copy"><h2>Un segundo punto cambia la máscara</h2><p class="lead">Los prompts adicionales corrigen una región ambigua sin volver a entrenar.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Empieza</strong> con un punto dentro.</p><p><strong>Añade</strong> negativos en zonas que sobran.</p><p><strong>Revisa</strong> la máscara antes de usarla.</p></div>{{QUIZ:q502}}</div></section>
-<section id="evolucion" data-title="Versiones" data-layout="visual"><div class="section-copy"><h2>La familia cambia por versión</h2><p class="lead">La práctica usa SAM 2; no asumas capacidades de vídeo o prompts de otra versión.</p></div><div class="print-detail"><p>Consultar el checkpoint y documentación concretos antes de afirmar capacidades de SAM 1, 2 o 3.</p></div></section>
-<section id="limites" data-title="Límites" data-layout="question"><div class="section-copy"><h2>Segmentar no reconoce automáticamente</h2><p class="lead">SAM delimita la región indicada, pero no aporta por sí solo una clase ni una decisión fiable.</p></div><div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Combina</strong> SAM con detector o clasificador si necesitas nombre.</p><p><strong>Evalúa</strong> bordes y objetos pequeños en tu dominio.</p><p><strong>Supervisa</strong> resultados cuando el error importe.</p></div>{{QUIZ:q503}}</div></section>
-<section id="practica" data-title="Colab" data-layout="practice"><div class="section-copy"><h2>Segmenta con puntos</h2><p class="lead">Prueba puntos positivos y negativos en tu copia del cuaderno.</p></div><ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Segmenta un objeto con un punto.</span></li><li><span>Refina la máscara con puntos negativos.</span></li></ol><a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/5_SAM.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a></section>
+<section id="sam" data-title="Inicio" data-layout="visual">
+  <div class="section-copy"><h2>Segmentar cualquier objeto</h2><p class="lead">La familia SAM convierte una indicación visual o textual en máscaras precisas.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/portada-sam.jpeg}}" alt="Colección de escenas con objetos segmentados mediante máscaras de colores."><figcaption>SAM 1 trabaja con imagen; SAM 2 añade vídeo; SAM 3 incorpora conceptos abiertos.</figcaption></figure>
+  <div class="print-detail"><p>Segment Anything es una familia de modelos promptables. Las capacidades dependen de la versión: no todos los checkpoints aceptan texto ni mantienen memoria temporal.</p></div>
+</section>
+
+<section id="segmentacion" data-title="Máscara" data-layout="visual">
+  <div class="section-copy"><h2>Una decisión por píxel</h2><p class="lead">La máscara delimita la forma del objeto, mientras una caja solo aproxima su posición.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/tipos-segmentacion.jpeg}}" alt="Comparación visual entre imagen, segmentación semántica, por instancias y panóptica."><figcaption>El mismo píxel puede recibir categoría e identidad según la tarea.</figcaption></figure>
+  <div class="print-detail"><p>La segmentación permite medir contornos, áreas y solapes. Una máscara no implica que el modelo conozca la clase correcta: localización y reconocimiento son problemas relacionados pero distintos.</p></div>
+</section>
+
+<section id="tipos" data-title="Tipos" data-layout="visual">
+  <div class="section-copy"><h2>Tres preguntas diferentes</h2><p class="lead">Categoría, identidad y cobertura completa definen el tipo de segmentación.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Tipos de segmentación de imagen">
+    <div><strong>Semántica</strong><span>¿Qué clase ocupa cada píxel?</span></div>
+    <div><strong>Instancias</strong><span>¿Qué objeto individual ocupa cada píxel?</span></div>
+    <div><strong>Panóptica</strong><span>¿Qué clase e instancia cubren toda la escena?</span></div>
+  </div>
+  <div class="print-detail"><p>La semántica une objetos de una misma clase; la segmentación por instancias los separa; la panóptica combina ambas y asigna también las regiones de fondo etiquetables.</p></div>
+</section>
+
+<section id="sam1" data-title="SAM 1" data-layout="visual">
+  <div class="section-copy"><h2>Codificar una vez, preguntar muchas</h2><p class="lead">SAM 1 separa el encoder de imagen del prompt y del decoder de máscaras.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam1.jpeg}}" alt="Arquitectura de SAM 1 con encoder de imagen, encoder de prompt y decoder de máscara."><figcaption>El embedding de imagen se reutiliza durante una interacción con varios prompts.</figcaption></figure>
+  <div class="print-detail"><p>Un Vision Transformer produce el embedding costoso. El prompt encoder representa puntos, cajas o una máscara previa. Un decoder ligero cruza ambas fuentes y puede ofrecer varias máscaras cuando la indicación es ambigua.</p></div>
+</section>
+
+<section id="sam2" data-title="SAM 2" data-layout="visual">
+  <div class="section-copy"><h2>La memoria conecta fotogramas</h2><p class="lead">SAM 2 extiende la interacción a vídeo mediante un banco de memoria temporal.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam2.jpeg}}" alt="Arquitectura de SAM 2 con encoder de imagen, memoria y decoder de máscara."><figcaption>La memoria conserva información del objeto para propagarlo en el vídeo.</figcaption></figure>
+  <div class="print-detail"><p>El backbone jerárquico Hiera extrae características. Memory attention consulta fotogramas previos y prompts para mantener identidad frente a movimiento u oclusión. Las correcciones del usuario pueden propagarse a otros fotogramas.</p></div>
+</section>
+
+<section id="sam3" data-title="SAM 3" data-layout="visual">
+  <div class="section-copy"><h2>Un concepto encuentra sus instancias</h2><p class="lead">SAM 3 detecta, segmenta y sigue objetos descritos con texto o ejemplos visuales.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam3.jpeg}}" alt="Arquitectura de SAM 3 con encoder de percepción, detector y tracker."><figcaption>El detector encuentra nuevas instancias; el tracker mantiene su identidad.</figcaption></figure>
+  <div class="print-detail"><p>SAM 3 añade promptable concept segmentation: frases nominales abiertas y ejemplares definen el concepto. Una arquitectura unificada combina detección y seguimiento sobre imagen o vídeo, manteniendo también los prompts visuales de la familia.</p></div>
+</section>
+
+<section id="evolucion" data-title="Evolución" data-layout="visual">
+  <div class="section-copy"><h2>Imagen, vídeo y conceptos</h2><p class="lead">Cada generación amplía el tipo de entrada y la persistencia de la máscara.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide media-container" data-media-type="animation"><img src="{{ASSET:tema-05/presentacion/evolucion-sam-poster.webp}}" data-animated-src="{{ASSET:tema-05/presentacion/evolucion-sam.webp}}" alt="Animación que compara el resultado de SAM 1, SAM 2 y SAM 3." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>
+  <div class="print-detail"><p>SAM 1 (2023) introdujo la segmentación promptable en imagen. SAM 2 (2024) unificó imagen y vídeo con memoria. SAM 3 (2025) añadió segmentación abierta por conceptos mediante texto y ejemplares, además de detección y tracking.</p></div>
+</section>
+
+<section id="motor-datos" data-title="Datos" data-layout="visual">
+  <div class="section-copy"><h2>El modelo acelera sus etiquetas</h2><p class="lead">El motor de datos alterna anotación humana, asistencia y generación automática.</p></div>
+  <ol class="evolution-line" aria-label="Motor de datos de SAM">
+    <li><strong>Manual</strong><span>Personas dibujan las primeras máscaras.</span></li>
+    <li><strong>Asistida</strong><span>SAM propone y una persona corrige.</span></li>
+    <li><strong>Automática</strong><span>Se conservan propuestas de alta calidad.</span></li>
+  </ol>
+  <div class="print-detail"><p>Este ciclo permitió construir SA-1B a gran escala: aproximadamente 11 millones de imágenes y 1.1 mil millones de máscaras. En la fase final, la gran mayoría de máscaras se generó automáticamente y se filtró por criterios de calidad.</p></div>
+</section>
+
+<section id="promptable" data-title="Prompts" data-layout="visual">
+  <div class="section-copy"><h2>Indicar sin reentrenar</h2><p class="lead">Un prompt convierte la intención del usuario en una condición espacial o semántica.</p></div>
+  <div class="plain-columns plain-columns--3" aria-label="Prompts visuales de SAM">
+    <div><strong>Puntos</strong><span>Incluyen o excluyen zonas concretas.</span></div>
+    <div><strong>Caja</strong><span>Acota el objeto con rapidez.</span></div>
+    <div><strong>Máscara</strong><span>Refina una propuesta anterior.</span></div>
+  </div>
+  <div class="print-detail"><p>Un prompt no modifica los pesos. SAM 1 y SAM 2 trabajan de forma nativa con indicaciones visuales; el texto suele requerir un modelo externo como Grounding DINO. SAM 3 incorpora texto y ejemplares como prompts nativos para conceptos.</p></div>
+</section>
+
+<section id="prompt" data-title="Puntos" data-layout="question">
+  <div class="section-copy"><h2>Un clic elige el objeto</h2><p class="lead">El punto positivo señala una región que debe pertenecer a la máscara.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Positivo</strong> dentro del objeto.</p><p><strong>Negativo</strong> en una zona que sobra.</p><p><strong>Varios</strong> para resolver ambigüedad.</p></div>{{QUIZ:q501}}</div>
+  <div class="print-detail"><p>La primera indicación puede admitir varias interpretaciones —objeto completo, parte o subparte—. Por eso algunas versiones devuelven varias máscaras candidatas con puntuaciones.</p></div>
+</section>
+
+<section id="refinar" data-title="Refinar" data-layout="question">
+  <div class="section-copy"><h2>Corregir sin volver a entrenar</h2><p class="lead">Los nuevos clics añaden información sobre qué incluir y qué excluir.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Observa</strong> dónde falla el contorno.</p><p><strong>Añade</strong> el prompt en esa región.</p><p><strong>Repite</strong> hasta alcanzar el criterio.</p></div>{{QUIZ:q502}}</div>
+  <div class="print-detail"><p>En vídeo con SAM 2, una corrección puede actualizar la memoria y propagarse. La interacción debe evaluarse por calidad final y por número de clics o tiempo requerido.</p></div>
+</section>
+
+<section id="conceptos" data-title="Conceptos" data-layout="visual">
+  <div class="section-copy"><h2>Texto y ejemplos cambian la búsqueda</h2><p class="lead">SAM 3 puede segmentar todas las instancias que coinciden con un concepto.</p></div>
+  <div class="comparison-lanes comparison-lanes--two" aria-label="Prompts de concepto de SAM 3">
+    <div><strong>Texto</strong><span>Una frase nominal como “paraguas rojo a rayas”.</span></div>
+    <div><strong>Ejemplar</strong><span>Un recorte muestra visualmente qué instancias buscar.</span></div>
+  </div>
+  <div class="print-detail"><p>Los prompts de concepto son útiles para encontrar, contar o seguir varias instancias. Una consulta lógica compleja puede requerir un VLM que razone y use SAM como herramienta.</p></div>
+</section>
+
+<section id="limites" data-title="Elegir" data-layout="question">
+  <div class="section-copy"><h2>La máscara no nombra la especie</h2><p class="lead">SAM delimita; otra señal debe reconocer, decidir o justificar.</p></div>
+  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Úsalo</strong> con objetos nuevos y anotación interactiva.</p><p><strong>Combínalo</strong> con detector, clasificador o VLM.</p><p><strong>Compara</strong> modelos ligeros en entornos fijos.</p></div>{{QUIZ:q503}}</div>
+  <div class="print-detail"><p>SAM resulta valioso con poca anotación, interacción humana o vídeo. Un modelo supervisado pequeño puede ser más rápido y barato para clases estables y fondos controlados. Siempre hay que evaluar bordes, objetos pequeños, oclusiones y consumo de memoria.</p></div>
+</section>
+
+<section id="practica" data-title="Colab" data-layout="practice">
+  <div class="section-copy"><h2>Segmenta y corrige</h2><p class="lead">Prueba cómo cambian las máscaras con puntos positivos y negativos.</p></div>
+  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Segmenta con un punto.</span></li><li><span>Refina y compara máscaras.</span></li></ol>
+  <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/5_SAM.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
+</section>
