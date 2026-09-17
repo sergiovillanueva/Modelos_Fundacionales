@@ -1,17 +1,215 @@
 [
-  {"sectionId":"ver","sourceSlides":[55],"originalAsset":"ppt/media/image-55-1.jpeg","webAsset":"public/assets/tema-04/presentacion/portada-dino.jpeg","claim":"DINO aprende representaciones visuales sin etiquetas humanas.","url":"https://arxiv.org/abs/2104.14294","checkedOn":"2026-09-16","status":"verified","note":"Portada y definición cotejadas con PDF y PPTX."},
-  {"sectionId":"supervision","sourceSlides":[56],"originalAsset":"ppt/media/image-56-1.jpeg","webAsset":"public/assets/tema-04/presentacion/auto-supervision.jpeg","claim":"La auto-supervisión crea señales desde la estructura de las imágenes.","url":"","checkedOn":"2026-09-16","status":"corrected","note":"Se eliminó la afirmación de que escala eficientemente a billones de imágenes como regla general."},
-  {"sectionId":"pretextos","sourceSlides":[57],"originalAsset":"ppt/media/image-57-1.gif","webAsset":"public/assets/tema-04/presentacion/auto-supervision.webp","claim":"Contraste, enmascarado, rotación y clustering son ejemplos de señales auto-supervisadas.","url":"","checkedOn":"2026-09-16","status":"verified","note":"GIF convertido a WebP controlable con póster."},
-  {"sectionId":"destilacion","sourceSlides":[58,63],"originalAsset":"ppt/media/image-58-9.gif","webAsset":"public/assets/tema-04/presentacion/teacher-student.webp","claim":"La estudiante aprende de una maestra actualizada por promedio móvil sobre vistas diferentes.","url":"https://arxiv.org/abs/2104.14294","checkedOn":"2026-09-16","status":"verified","note":"Mecanismo y cinco pasos recuperados."},
-  {"sectionId":"atencion","sourceSlides":[59],"originalAsset":"ppt/media/image-59-9.jpeg","webAsset":"public/assets/tema-04/presentacion/atencion-dino.jpeg","claim":"Algunos mapas de atención se alinean con objetos sin máscaras de entrenamiento.","url":"https://arxiv.org/abs/2104.14294","checkedOn":"2026-09-16","status":"corrected","note":"Se presenta como capacidad emergente y no como segmentación garantizada."},
-  {"sectionId":"copias","sourceSlides":[60],"originalAsset":"ppt/media/image-60-1.jpeg","webAsset":"public/assets/tema-04/presentacion/copias-dino.jpeg","claim":"Los embeddings DINO pueden recuperar copias transformadas de una imagen.","url":"https://arxiv.org/abs/2104.14294","checkedOn":"2026-09-16","status":"verified","note":"Aplicación recuperada con advertencia sobre umbrales."},
-  {"sectionId":"evolucion","sourceSlides":[61],"originalAsset":"ppt/media/image-61-1.gif","webAsset":"public/assets/tema-04/presentacion/evolucion-dino.webp","claim":"DINO, DINOv2 y DINOv3 amplían escala y calidad de las características.","url":"https://ai.meta.com/blog/dinov3-self-supervised-vision-model/","checkedOn":"2026-09-16","status":"corrected","note":"DINOv2 se fecha en 2023 y DINOv3 en 2025, corrigiendo la cronología del PPTX."},
-  {"sectionId":"datos","sourceSlides":[62],"originalAsset":"ppt/media/image-62-11.jpeg","webAsset":"public/assets/tema-04/presentacion/datos-dinov2.jpeg","claim":"DINOv2 usa embeddings para deduplicar y recuperar datos no curados similares a un conjunto curado.","url":"https://arxiv.org/abs/2304.07193","checkedOn":"2026-09-16","status":"verified","note":"Pipeline de datos original recuperado."},
-  {"sectionId":"capacidades","sourceSlides":[64],"originalAsset":"ppt/media/image-64-1.jpeg","webAsset":"public/assets/tema-04/presentacion/capacidades-dino.jpeg","claim":"Las features DINO sirven para atención, correspondencias, recuperación y clasificadores simples.","url":"https://arxiv.org/abs/2104.14294","checkedOn":"2026-09-16","status":"corrected","note":"Se diferencia la representación de la tarea downstream."},
-  {"sectionId":"embedding","sourceSlides":[65],"originalAsset":"ppt/media/image-65-1.jpeg","webAsset":"public/assets/tema-04/presentacion/extractor-dino.jpeg","claim":"El backbone produce representación global y características densas por patch.","url":"https://huggingface.co/facebook/dinov2-base","checkedOn":"2026-09-16","status":"verified","note":"Alineado con el checkpoint del notebook."},
-  {"sectionId":"similitud","sourceSlides":[65,66],"originalAsset":"","webAsset":"","claim":"La similitud coseno ordena embeddings según su dirección y permite revisar vecinos visuales.","url":"","checkedOn":"2026-09-16","status":"verified","note":"La sección interactiva queda registrada explícitamente en la trazabilidad."},
-  {"sectionId":"pca","sourceSlides":[66],"originalAsset":"ppt/media/image-66-1.jpeg; ppt/media/image-66-2.jpeg","webAsset":"public/assets/tema-04/presentacion/pca-dino.jpeg; public/assets/tema-04/presentacion/vecinos-dino.jpeg","claim":"PCA, t-SNE/UMAP y vecinos cercanos permiten inspeccionar la estructura de las features.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Se recuperaron las cuatro técnicas de visualización del original y se distinguen proyecciones lineales, no lineales y búsqueda de vecinos."},
-  {"sectionId":"dinov3-mapas","sourceSlides":[67,68],"originalAsset":"ppt/media/image-67-1.gif; ppt/media/image-68-1.gif","webAsset":"public/assets/tema-04/presentacion/dinov3-mapas.webp; public/assets/tema-04/presentacion/dinov3-denso.webp","claim":"DINOv3 preserva características densas útiles en dominios variados.","url":"https://ai.meta.com/research/dinov3/","checkedOn":"2026-09-16","status":"verified","note":"Dos GIF convertidos a animaciones controlables; gram anchoring se documenta en detalle."},
-  {"sectionId":"eleccion","sourceSlides":[69],"originalAsset":"","webAsset":"","claim":"DINO resulta útil con pocas etiquetas o features reutilizables; no siempre supera un modelo supervisado específico.","url":"","checkedOn":"2026-09-16","status":"verified","note":"Criterios de uso y descarte recuperados sin reglas universales."},
-  {"sectionId":"normalidad","sourceSlides":[70],"originalAsset":"ppt/media/image-70-*","webAsset":"","claim":"Un enfoque tipo PatchCore compara patches de test con una memoria de referencias normales.","url":"https://arxiv.org/abs/2106.08265","checkedOn":"2026-09-16","status":"verified","note":"El pipeline se dividió en construcción de memoria e inferencia."}
+  {
+    "sectionId": "ver",
+    "sourceSlides": [
+      55
+    ],
+    "originalAsset": "ppt/media/image-55-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/portada-dino.jpeg",
+    "claim": "DINO aprende representaciones visuales sin etiquetas humanas.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Portada y definición cotejadas con PDF y PPTX."
+  },
+  {
+    "sectionId": "supervision",
+    "sourceSlides": [
+      56
+    ],
+    "originalAsset": "ppt/media/image-56-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/auto-supervision.jpeg",
+    "claim": "La auto-supervisión crea señales desde la estructura de las imágenes.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se eliminó la afirmación de que escala eficientemente a billones de imágenes como regla general."
+  },
+  {
+    "sectionId": "pretextos",
+    "sourceSlides": [
+      57
+    ],
+    "originalAsset": "ppt/media/image-57-1.gif",
+    "webAsset": "public/assets/tema-04/presentacion/auto-supervision.webp",
+    "claim": "Contraste, enmascarado, rotación y clustering son ejemplos de señales auto-supervisadas.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "GIF convertido a WebP controlable con póster."
+  },
+  {
+    "sectionId": "destilacion",
+    "sourceSlides": [
+      58,
+      63
+    ],
+    "originalAsset": "ppt/media/image-58-9.gif",
+    "webAsset": "public/assets/tema-04/presentacion/teacher-student.webp",
+    "claim": "La estudiante aprende de una maestra actualizada por promedio móvil sobre vistas diferentes.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Mecanismo y cinco pasos recuperados."
+  },
+  {
+    "sectionId": "atencion",
+    "sourceSlides": [
+      59
+    ],
+    "originalAsset": "ppt/media/image-59-9.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/atencion-dino.jpeg",
+    "claim": "Algunos mapas de atención se alinean con objetos sin máscaras de entrenamiento.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se presenta como capacidad emergente y no como segmentación garantizada."
+  },
+  {
+    "sectionId": "copias",
+    "sourceSlides": [
+      60
+    ],
+    "originalAsset": "ppt/media/image-60-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/copias-dino.jpeg",
+    "claim": "Los embeddings DINO pueden recuperar copias transformadas de una imagen.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Aplicación recuperada con advertencia sobre umbrales."
+  },
+  {
+    "sectionId": "evolucion",
+    "sourceSlides": [
+      61
+    ],
+    "originalAsset": "ppt/media/image-61-1.gif",
+    "webAsset": "public/assets/tema-04/presentacion/evolucion-dino.webp",
+    "claim": "DINO, DINOv2 y DINOv3 amplían escala y calidad de las características.",
+    "url": "https://ai.meta.com/blog/dinov3-self-supervised-vision-model/",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "DINOv2 se fecha en 2023 y DINOv3 en 2025, corrigiendo la cronología del PPTX."
+  },
+  {
+    "sectionId": "datos",
+    "sourceSlides": [
+      62
+    ],
+    "originalAsset": "ppt/media/image-62-11.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/datos-dinov2.jpeg",
+    "claim": "DINOv2 usa embeddings para deduplicar y recuperar datos no curados similares a un conjunto curado.",
+    "url": "https://arxiv.org/abs/2304.07193",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Pipeline de datos original recuperado."
+  },
+  {
+    "sectionId": "capacidades",
+    "sourceSlides": [
+      64
+    ],
+    "originalAsset": "ppt/media/image-64-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/capacidades-dino.jpeg",
+    "claim": "Las features DINO sirven para atención, correspondencias, recuperación y clasificadores simples.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se diferencia la representación de la tarea downstream."
+  },
+  {
+    "sectionId": "embedding",
+    "sourceSlides": [
+      65
+    ],
+    "originalAsset": "ppt/media/image-65-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/extractor-dino.jpeg",
+    "claim": "El backbone produce representación global y características densas por patch.",
+    "url": "https://huggingface.co/facebook/dinov2-base",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Alineado con el checkpoint del notebook."
+  },
+  {
+    "sectionId": "similitud",
+    "sourceSlides": [
+      65,
+      66
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "La similitud coseno ordena embeddings según su dirección y permite revisar vecinos visuales.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "La sección interactiva queda registrada explícitamente en la trazabilidad."
+  },
+  {
+    "sectionId": "dinov3-mapas",
+    "sourceSlides": [
+      67,
+      68
+    ],
+    "originalAsset": "ppt/media/image-67-1.gif; ppt/media/image-68-1.gif",
+    "webAsset": "public/assets/tema-04/presentacion/dinov3-mapas.webp; public/assets/tema-04/presentacion/dinov3-denso.webp",
+    "claim": "DINOv3 preserva características densas útiles en dominios variados.",
+    "url": "https://ai.meta.com/research/dinov3/",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Dos GIF convertidos a animaciones controlables; gram anchoring se documenta en detalle."
+  },
+  {
+    "sectionId": "eleccion",
+    "sourceSlides": [
+      69
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "DINO resulta útil con pocas etiquetas o features reutilizables; no siempre supera un modelo supervisado específico.",
+    "url": "",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Criterios de uso y descarte recuperados sin reglas universales."
+  },
+  {
+    "sectionId": "normalidad",
+    "sourceSlides": [
+      70
+    ],
+    "originalAsset": "ppt/media/image-70-*",
+    "webAsset": "src/lib/anomaly.js",
+    "claim": "Un parche se considera anómalo cuando su distancia al vecino más cercano del banco de normalidad supera el umbral.",
+    "url": "https://arxiv.org/abs/2106.08265",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla nueva que hace manipulable el paso 6 de la diapositiva 70. Espacio esquemático de dos dimensiones, declarado como tal en la propia pantalla; la distancia y el vecino los calcula scorePatch, con pruebas unitarias en tests/anomaly.test.mjs. El banco no contiene ningún ejemplo de defecto: por eso el método sirve cuando los fallos son raros o desconocidos."
+  },
+  {
+    "sectionId": "ver",
+    "sourceSlides": [
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "El tema 4 reproduce las diapositivas 55 a 70 del PDF con su título, su texto y sus bloques completos.",
+    "url": "docs/Modelos-fundacionales-en-vision-artificial.pdf",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Traslado literal pedido por el profesor. Cada diapositiva ocupa una pantalla; las tres preguntas y el banco de normalidad ocupan pantallas propias intercaladas."
+  }
 ]

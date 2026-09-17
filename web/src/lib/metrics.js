@@ -63,3 +63,28 @@ export function matchDetections(truths, predictions, {scoreThreshold = 0.5, iouT
   };
 }
 
+/**
+ * Supresión de no-máximos: el post-procesado que DETR elimina.
+ *
+ * Se recorren las cajas de mayor a menor puntuación. Cada caja que sobrevive suprime a las
+ * que solapan con ella por encima del umbral. El umbral es un hiperparámetro: demasiado bajo
+ * borra objetos vecinos legítimos y demasiado alto deja duplicados.
+ */
+export function nonMaxSuppression(boxes, iouThreshold = 0.5) {
+  const ordered = [...boxes].sort((left, right) => right.score - left.score);
+  const kept = [];
+  const suppressedBy = new Map();
+
+  for (const candidate of ordered) {
+    const winner = kept.find((box) => iou(box.box, candidate.box) > iouThreshold);
+    if (winner) suppressedBy.set(candidate.id, winner.id);
+    else kept.push(candidate);
+  }
+
+  return {
+    kept: kept.map((box) => box.id),
+    suppressedBy,
+    keptCount: kept.length,
+    suppressedCount: ordered.length - kept.length
+  };
+}

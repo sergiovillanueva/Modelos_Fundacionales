@@ -126,5 +126,26 @@
     "checkedOn": "2026-09-16",
     "status": "verified",
     "note": "Pantalla nueva, sin diapositiva de origen. La escena simula el comportamiento que el alumno debe anticipar y no es la salida de un modelo; así se indica en el detalle impreso. La ambigüedad entre objeto, parte y subparte queda explicada en ese mismo texto."
+  },
+  {
+    "sectionId": "sam",
+    "sourceSlides": [
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-05/sections.html",
+    "claim": "El tema 5 reproduce las diapositivas 71 a 79 del PDF con su título, su texto y sus bloques completos.",
+    "url": "docs/Modelos-fundacionales-en-vision-artificial.pdf",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Traslado literal pedido por el profesor. Cada diapositiva ocupa una pantalla; las tres preguntas y la simulación de prompts por puntos ocupan pantallas propias intercaladas."
   }
 ]

@@ -50,3 +50,30 @@ body.course-ready { padding-bottom: 0; }
 .candidate-list { gap: 4mm; margin-bottom: 0; }
 .candidate { font-size: 10pt; }
 .candidate-track { height: 4px; }
+
+/* Diapositivas fieles al PDF: cada sección debe caber en su A4 sin recortar contenido. */
+.slide-lead { margin-bottom: 6mm; font-size: 10.5pt; line-height: 1.5; }
+.slide-prose p, .slide-prose li { font-size: 10.5pt; line-height: 1.5; }
+.slide-prose > * { margin-bottom: 3mm; }
+.slide-prose li { margin-bottom: 1.5mm; }
+.slide-subtitle { margin: 6mm auto 3mm; font-size: 13pt; }
+.slide-split { grid-template-columns: 1.05fr .95fr; gap: 8mm; align-items: start; }
+.note-grid { gap: 5mm 7mm; }
+.note-grid h3 { font-size: 11pt; }
+.note-grid p, .note-grid ul { font-size: 10pt; line-height: 1.45; }
+.stage-list { gap: 3mm; }
+.stage-list--columns { gap: 5mm 7mm; }
+.stage-list h3 { font-size: 10.5pt; }
+.stage-list p { margin-top: 1.5mm; font-size: 10pt; line-height: 1.4; }
+.formula { margin: 3mm 0; font-size: 11pt; }
+.slide-split .figure-media img { max-height: 78mm; object-fit: contain; }
+.note-grid figure img { max-height: 46mm; object-fit: contain; }
+.iou-score strong { font-size: 34pt; }
+.iou-stage svg { max-height: 50mm; }
+.iou-message { margin: 2mm 0; }
+.slide-callout { margin-top: 5mm; padding: 4mm 5mm; font-size: 10pt; line-height: 1.5; }
+.lab-layout--even { grid-template-columns: 1fr 1fr; gap: 8mm; }
+.field select { min-height: 0; padding: 2mm 3mm; font-size: 10pt; }
+.field label { font-size: 9.5pt; }
+.verdict { margin-bottom: 3mm; font-size: 16pt; }
+.lab-disclaimer { margin-top: 4mm; font-size: 9pt; }

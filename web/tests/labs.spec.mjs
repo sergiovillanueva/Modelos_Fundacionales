@@ -114,3 +114,63 @@ test('los laboratorios nuevos caben en móvil sin desbordar', async ({page}) => 
     }
   }
 });
+
+test('el comprobador de licencias cambia el veredicto según el uso', async ({page}) => {
+  await page.goto('/temas/02-hugging-face/index.html#comprobar');
+  const verdict = page.locator('[data-license-verdict]');
+  await expect(verdict).toHaveText('Permitido con condiciones');
+
+  await page.locator('[data-license-use]').selectOption('interno');
+  await expect(verdict).toHaveText('Permitido');
+
+  await page.locator('[data-license-choice]').selectOption('cc-by-nc');
+  await expect(verdict).toHaveText('No permitido');
+  await expect(page.locator('[data-license-reason]')).toContainText('uso comercial');
+
+  await page.locator('[data-license-use]').selectOption('investigacion');
+  await expect(verdict).toHaveText('Permitido');
+
+  await page.locator('[data-license-choice]').selectOption('apache-2.0');
+  await page.locator('[data-license-use]').selectOption('servicio');
+  await expect(verdict).toHaveText('Permitido');
+});
+
+test('el laboratorio de OKS muestra que el mismo error no penaliza igual', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#oks');
+  await expect(page.locator('[data-joint="ojo"] [data-joint-value]')).toHaveText('0,80');
+  await expect(page.locator('[data-joint="cadera"] [data-joint-value]')).toHaveText('0,99');
+
+  await page.locator('[data-oks-distance]').fill('0');
+  await expect(page.locator('[data-oks-message]')).toContainText('todos los puntos valen 1,00');
+  await expect(page.locator('[data-joint="ojo"] [data-joint-value]')).toHaveText('1,00');
+
+  await page.locator('[data-oks-distance]').fill('20');
+  const ojo = await page.locator('[data-joint="ojo"] [data-joint-value]').textContent();
+  const cadera = await page.locator('[data-joint="cadera"] [data-joint-value]').textContent();
+  expect(Number(ojo.replace(',', '.'))).toBeLessThan(Number(cadera.replace(',', '.')));
+});
+
+test('el banco de normalidad marca anomalía solo al alejarse', async ({page}) => {
+  await page.goto('/temas/04-dino/index.html#normalidad');
+  const verdict = page.locator('[data-anomaly-verdict]');
+  await expect(verdict).toHaveText('Anomalía');
+
+  await page.locator('[data-anomaly-position]').fill('0');
+  await expect(verdict).toHaveText('Normal');
+  await expect(page.locator('[data-anomaly-message]')).toContainText('nada que señalar');
+
+  await page.locator('[data-anomaly-position]').fill('100');
+  await expect(verdict).toHaveText('Anomalía');
+  const score = await page.locator('[data-anomaly-score]').textContent();
+  expect(Number(score.replace(',', '.'))).toBeGreaterThan(14);
+});
+
+test('los laboratorios de los temas 4 y 6 caben en móvil', async ({page}) => {
+  for (const width of [390, 320]) {
+    await page.setViewportSize({width, height: 844});
+    for (const url of ['/temas/04-dino/index.html#normalidad', '/temas/06-otras-tareas/index.html#oks', '/temas/02-hugging-face/index.html#comprobar']) {
+      await page.goto(url);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+    }
+  }
+});

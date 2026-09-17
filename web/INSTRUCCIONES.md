@@ -36,7 +36,42 @@ Conservar ese patrón visual al ampliar el contenido. **Cuatro pasos no es el l�
 | Corrección | 1–2 frases, visibles después de responder |
 | Colab | Hasta 3 pasos cortos y un enlace principal |
 
-Si falta espacio, dividir la idea en otro paso. Los matices adicionales pueden ir en el notebook o en `.print-detail`, que solo se muestra en el PDF. **Nunca ocultar una definición imprescindible para resolver la actividad web.**
+Estos límites rigen las pantallas propias del curso. Una pantalla que traslada una diapositiva del PDF conserva su texto completo: ver «Fidelidad al PDF» más abajo. Si falta espacio en una pantalla propia, dividir la idea en otro paso. Los matices adicionales pueden ir en el notebook o en `.print-detail`, que solo se muestra en el PDF. **Nunca ocultar una definición imprescindible para resolver la actividad web.**
+
+## Fidelidad al PDF: el tema 01 manda
+
+El profesor pidió el 17 de septiembre de 2026 que la web reproduzca el contenido del PDF de origen `../docs/Modelos-fundacionales-en-vision-artificial.pdf`, no un resumen. **Los seis temas ya están trasladados así.** No volver a condensarlos: las 94 diapositivas del PDF están en la web con su texto completo.
+
+Qué significa en la práctica:
+
+- **Una pantalla por diapositiva.** El título de la pantalla es el de la diapositiva y el texto se conserva con su redacción, sus bloques y sus listas. Reparto actual: diapositivas 4–30 en el tema 01, 31–36 en el 02, 37–54 en el 03, 55–70 en el 04, 71–79 en el 05 y 80–93 en el 06. Las diapositivas 1–3 y la 94 se resuelven con portada, créditos y navegación.
+- **Los límites de texto de la tabla anterior no aplican a una pantalla que traslada una diapositiva.** Siguen aplicando a `navTitle`, a `data-title` y a las pantallas de ejercicio o simulación, que sí son breves.
+- **Los extras van en pantallas propias intercaladas**, nunca amontonados dentro de una diapositiva. En el tema 01 son siete preguntas, dos animaciones y dos simulaciones.
+- **Se omiten los elementos sin valor docente:** iconos decorativos, la marca de agua de Gamma y las imágenes humorísticas. Todo lo demás se recupera, incluidas las imágenes que faltaban en el PPTX exportado.
+- **Cada diapositiva se registra** en `plan/COBERTURA.json` con su pantalla, y los recursos recuperados en `content/tema-XX/sources.json`.
+
+### Componentes para trasladar una diapositiva
+
+| Clase | Cuándo usarla |
+| --- | --- |
+| `slide-lead` | Párrafo de entrada de la diapositiva, centrado bajo el título |
+| `slide-prose` | Columna de texto con párrafos, negritas y listas |
+| `slide-split` | Texto e imagen en paralelo; `slide-split--media-first` invierte el orden |
+| `note-grid` | Bloques con encabezado y acento lateral; `note-grid--two` para dos columnas anchas |
+| `stage-list` | Pasos numerados; `stage-list--columns` los reparte en rejilla |
+| `formula` con `frac` | Fórmulas como Precision = TP / (TP + FP), sin imagen |
+| `slide-subtitle` | Subtítulo dentro de la pantalla, para los apartados de una diapositiva larga |
+| `slide-callout` | Aviso destacado que la diapositiva resalta en un recuadro propio |
+| `note-grid` con `is-ok`, `is-warn` o `is-stop` | Bloques que la diapositiva codifica por color; el texto sigue diciendo el estado |
+| `stage-list--four` | Fila de cuatro pasos, como las de flujo del PDF |
+
+Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna.
+
+### Las tres salidas siguen conviviendo
+
+- **Web:** la pantalla crece todo lo que necesite y se recorre con la barra flotante. La barra reserva espacio al final del documento.
+- **Presentación:** cada diapositiva envuelve su contenido en `.slide-fit` y `src/js/presentation.js` la reduce lo justo para caber en 1280 × 720, igual que un lienzo de diapositiva. No hace falta recortar texto para que entre.
+- **PDF:** `print.css` ajusta los componentes para que cada pantalla ocupe una página A4. Una diapositiva muy densa puede necesitar dos páginas; lo que no se admite es contenido cortado.
 
 ## Navegación
 
@@ -118,7 +153,7 @@ Antes de crear estilos nuevos, reutilizar los que ya existen en `widgets.css`:
 | `candidate-list` | Ranking con barra y valor por fila, resaltando `is-winner` |
 | `prompt-modes` | Control segmentado de dos opciones con `aria-pressed` |
 
-Los tres laboratorios actuales son `equilibrio` (tema 01, umbral y métricas), `cercania` (tema 03, similitud coseno) y `marcar` (tema 05, puntos positivos y negativos). Su lógica está en `src/lib/metrics.js`, `src/lib/embeddings.js` y `src/lib/prompting.js`, y sus comprobaciones de navegador en `tests/labs.spec.mjs`.
+Los laboratorios actuales son `equilibrio` (tema 01, umbral y métricas), `comprobar` (tema 02, licencia frente a caso de uso), `cercania` (tema 03, similitud coseno), `normalidad` (tema 04, banco de normalidad tipo PatchCore), `marcar` (tema 05, puntos positivos y negativos) y `oks` (tema 06, tolerancia por articulación). Su lógica vive en `src/lib/`: `metrics.js`, `licensing.js`, `embeddings.js`, `anomaly.js`, `prompting.js` y `keypoints.js`. Cada uno tiene pruebas unitarias propias y comprobaciones de navegador en `tests/labs.spec.mjs`.
 
 Un módulo nuevo se conecta en `src/js/reading.js` y en `src/js/presentation.js`. Si la interacción usa `role="button"`, comprobar que sigue en el selector de `keyboardCondition` de `presentation.js` para que Reveal no se quede con la barra espaciadora.
 

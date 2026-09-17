@@ -4,6 +4,11 @@ import {initIouDemo} from './iou-demo.js';
 import {initThresholdLab} from './threshold-lab.js';
 import {initPromptLab} from './prompt-lab.js';
 import {initSimilarityLab} from './similarity-lab.js';
+import {initLicenseLab} from './license-lab.js';
+import {initOksLab} from './oks-lab.js';
+import {initAnomalyLab} from './anomaly-lab.js';
+import {initNmsLab} from './nms-lab.js';
+import {initCompareMedia} from './compare-media.js';
 
 initMediaControls();
 initQuizzes();
@@ -11,6 +16,11 @@ initIouDemo();
 initThresholdLab();
 initPromptLab();
 initSimilarityLab();
+initLicenseLab();
+initOksLab();
+initAnomalyLab();
+initNmsLab();
+initCompareMedia();
 
 const panels = [...document.querySelectorAll('.reading-content > section')];
 const previous = document.querySelector('[data-step-previous]');

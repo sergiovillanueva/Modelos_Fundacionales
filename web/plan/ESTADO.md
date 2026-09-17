@@ -13,15 +13,15 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 27 pantallas, 7 preguntas, 2 animaciones, IoU, umbral en vivo y Colab |
-| Tema 02 · Hugging Face | 12 pantallas, 3 preguntas, 2 recursos y Colab |
-| Tema 03 · Multimodal | 20 pantallas, 3 preguntas, 9 recursos, similitud coseno en vivo y Colab |
-| Tema 04 · DINO | 20 pantallas, 3 preguntas, 5 animaciones, 9 imágenes y Colab |
-| Tema 05 · SAM | 15 pantallas, 3 preguntas, 1 animación, 5 imágenes, prompts por puntos y Colab |
-| Tema 06 · Más visión | 19 pantallas, 3 preguntas, 8 imágenes y Colab |
-| Cobertura PPTX | 94/94 diapositivas con destino; 77 revisadas y 17 adaptadas |
+| Tema 01 · Detección | 36 pantallas fieles al PDF: 27 diapositivas, 7 preguntas, 2 animaciones y 2 simulaciones |
+| Tema 02 · Hugging Face | 11 pantallas fieles al PDF: 6 diapositivas, 3 preguntas y el comprobador de licencias |
+| Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
+| Tema 04 · DINO | 21 pantallas fieles al PDF: 16 diapositivas, 3 preguntas y el banco de normalidad |
+| Tema 05 · SAM | 14 pantallas fieles al PDF: 9 diapositivas, 3 preguntas y los prompts por puntos |
+| Tema 06 · Más visión | 19 pantallas fieles al PDF: 14 diapositivas, 3 preguntas y el laboratorio de OKS |
+| Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados: 27, 12, 20, 20, 15 y 19 páginas |
+| PDFs | Temas 01–06 disponibles y regenerados: 37, 11, 23, 21, 14 y 19 páginas |
 
 ## Tema 06 · cierre de la migración
 
@@ -36,6 +36,64 @@ Las diapositivas 80–93 y las 27 celdas de `6_Otras_tareas.ipynb` se distribuye
 - Colab: cinco tareas ejecutables por separado y ampliación para combinar dos pipelines.
 
 La diapositiva 94 se integra en la práctica final como cierre; las diapositivas 1–3 se resuelven mediante portada, créditos y navegación. Las correcciones y omisiones intencionales se detallan en [AUDITORIA-TEMA-06.md](AUDITORIA-TEMA-06.md).
+
+## Traslado literal de los temas 04, 05 y 06 · 17 de septiembre
+
+Con estos tres, **las 94 diapositivas del PDF están en la web con su texto completo**. Cada diapositiva ocupa una pantalla; los ejercicios y las simulaciones van en pantallas propias intercaladas.
+
+| Tema | Diapositivas | Pantallas | Extras intercalados |
+| --- | --- | --- | --- |
+| 04 · DINO | 55–70 (16) | 21 | 3 preguntas, banco de normalidad, 5 animaciones, Colab |
+| 05 · SAM | 71–79 (9) | 14 | 3 preguntas, prompts por puntos, 1 animación, Colab |
+| 06 · Más visión | 80–93 (14) | 19 | 3 preguntas, laboratorio de OKS, Colab |
+
+Dos pantallas nuevas, las dos con matemática real y tests:
+
+- **`oks` (tema 06)** hace manipulable lo que afirma la diapositiva 83. Mueves el error de predicción y comparas ojo, muñeca y cadera con las sigmas publicadas de COCO. Con 5 px sobre una persona de 150 px de escala, el ojo cae a 0,80 y la cadera se queda en 0,99: el mismo error en píxeles, cuatro veces más penalizado en un punto rígido.
+- **`normalidad` (tema 04)** hace manipulable el paso 6 de la diapositiva 70. Alejas un parche de test del banco de normalidad y ves cómo su distancia al vecino más cercano cruza el umbral. El banco no contiene ni un ejemplo de defecto, que es justo el punto del método.
+
+Ambas declaran en pantalla que el espacio es esquemático y calculan sus cifras en `src/lib/keypoints.js` y `src/lib/anomaly.js`, con 13 pruebas unitarias nuevas.
+
+Comprobaciones: 34 pruebas unitarias y 21 de navegador correctas. Capturas de los tres temas en escritorio, móvil y presentación. PDF regenerados con una página por pantalla: 21, 14 y 19 páginas.
+
+Verificador de fidelidad: `scripts` locales comparan frase a frase el PDF con la web. Las diferencias que quedan en los seis temas son erratas del original corregidas, normalizaciones de plural y artefactos de extracción de glifos matemáticos.
+
+## Traslado literal de los temas 02 y 03 · 17 de septiembre
+
+Mismo criterio que el tema 01: una pantalla por diapositiva, con su título y su texto completo, y los ejercicios en pantallas propias intercaladas.
+
+| Tema | Diapositivas | Pantallas | Extras intercalados |
+| --- | --- | --- | --- |
+| 02 · Hugging Face | 31–36 (6) | 11 | 3 preguntas, comprobador de licencias, Colab |
+| 03 · Multimodal | 37–54 (18) | 23 | 3 preguntas, simulación de similitud coseno, Colab |
+
+Añadido en el tema 02: **comprobador de licencias** (`comprobar`). Cruza ocho licencias con cuatro casos de uso y responde permitido, permitido con condiciones o no permitido, con el motivo concreto. La tabla codifica lo que dice la diapositiva 34 y se comprueba con seis pruebas unitarias en `tests/licensing.test.mjs`. Se presenta como orientación para buscar modelo, nunca como asesoramiento legal, y la pantalla lo dice.
+
+Conservado del trabajo anterior: la simulación de similitud coseno del tema 03 pasa a acompañar a la diapositiva 42, que es justo donde el PDF explica el cálculo de similitud. La gráfica comparativa de la diapositiva 53 vuelve a la pantalla, junto a la regla de decisión rápida.
+
+Componentes nuevos: `slide-callout` para los avisos destacados de una diapositiva, los estados `is-ok`, `is-warn` e `is-stop` de `note-grid`, y `stage-list--four` para las filas de cuatro pasos.
+
+Comprobaciones: `npm run build`, `npm run check` y `npm test` correctos con 21 pruebas unitarias; `npm run test:e2e` correcto con 18; capturas de los dos temas en escritorio, móvil y presentación; PDF de cada tema regenerado, con una página por pantalla en ambos.
+
+Pendiente: los temas 04, 05 y 06 siguen en su versión resumida.
+
+## Traslado literal del tema 01 · 17 de septiembre
+
+Encargo del profesor: la web debe llevar el contenido del PDF de origen, no un resumen, con ejercicios y animaciones intercalados. El tema 01 ya está así y queda como modelo; la regla está escrita en [INSTRUCCIONES.md](../INSTRUCCIONES.md), sección «Fidelidad al PDF».
+
+- Las diapositivas 4 a 30 ocupan **27 pantallas**, una por diapositiva, con su título y su texto completo.
+- Entre medias hay **9 pantallas propias**: siete preguntas, la simulación de umbral y el paso de Colab. El laboratorio de IoU acompaña ahora al texto y a la fórmula de la diapositiva 24 en la misma pantalla.
+- Total: **36 pantallas**, 7 preguntas, 2 animaciones y 2 simulaciones.
+- Recuperada del PPTX la imagen de la fórmula de IoU (`image-24-1.jpeg`), que faltaba en la web.
+- Se omiten iconos decorativos, la marca de agua de Gamma y el meme de la diapositiva 16.
+
+Componentes nuevos en `widgets.css` para trasladar diapositivas: `slide-lead`, `slide-prose`, `slide-split`, `note-grid`, `stage-list`, `formula` y `slide-subtitle`.
+
+Los tres formatos siguen cuadrando. En presentación, `src/js/presentation.js` mide cada diapositiva y la reduce lo justo para caber en 1280 × 720, de modo que una diapositiva densa ya no se corta. En papel, el PDF del tema pasa de 26 a **37 páginas**: 35 secciones ocupan una página y solo `iou`, la más densa, usa dos sin cortar contenido.
+
+Comprobaciones: `npm run build`, `npm run check` y `npm test` correctos con 15 pruebas unitarias; `npm run test:e2e` correcto con 17; `node tests/visual-check.mjs 01-deteccion` recapturado en escritorio, móvil y presentación; PDF del tema regenerado y revisado página a página.
+
+Pendiente: los temas 02 a 06 siguen en su versión resumida. Si el profesor quiere el mismo traslado, se repite el proceso tema a tema con estos componentes.
 
 ## Revisión visual e interactiva del 16 de septiembre
 

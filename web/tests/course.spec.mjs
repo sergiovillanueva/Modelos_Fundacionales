@@ -6,7 +6,7 @@ test('la portada es breve, muestra la marca y abre el primer tema', async ({page
   await expect(page.getByAltText('Datamecum')).toBeVisible();
   await expect(page.getByRole('navigation', {name: 'Temas'})).toBeVisible();
   await page.getByRole('link', {name: 'Empezar'}).click();
-  await expect(page.getByRole('heading', {name: 'De píxeles a significado'})).toBeVisible();
+  await expect(page.getByRole('heading', {name: 'Enseñando a las máquinas a ver'})).toBeVisible();
   await expect(page.locator('.reading-content > section:visible')).toHaveCount(1);
   await expect(page.locator('.step-tabs, .reading-sidebar, .study-detail:visible')).toHaveCount(0);
 });
@@ -14,10 +14,10 @@ test('la portada es breve, muestra la marca y abre el primer tema', async ({page
 test('siguiente, anterior y el historial mantienen el paso', async ({page}) => {
   await page.goto('/temas/01-deteccion/index.html');
   await page.getByRole('button', {name: 'Siguiente'}).click();
-  await expect(page.getByRole('heading', {name: '¿Qué salida necesitas?'})).toBeFocused();
+  await expect(page.getByRole('heading', {name: 'Tareas principales en visión artificial'})).toBeFocused();
   await expect(page).toHaveURL(/#tareas$/);
   await page.getByRole('button', {name: 'Siguiente'}).click();
-  await expect(page.locator('#inicio')).toBeVisible();
+  await expect(page.locator('#salida')).toBeVisible();
   await page.goBack();
   await expect(page.locator('#tareas')).toBeVisible();
   await page.reload();
@@ -59,7 +59,7 @@ test('se puede avanzar con teclado y usar las flechas del deslizador', async ({p
   await page.goto('/temas/01-deteccion/index.html#tareas');
   await page.getByRole('button', {name: 'Siguiente'}).focus();
   await page.keyboard.press('Enter');
-  await expect(page.locator('#inicio')).toBeVisible();
+  await expect(page.locator('#salida')).toBeVisible();
   await page.goto('/temas/01-deteccion/index.html#iou');
   await page.locator('[data-iou-offset]').focus();
   await page.keyboard.press('ArrowRight');
@@ -68,12 +68,12 @@ test('se puede avanzar con teclado y usar las flechas del deslizador', async ({p
 });
 
 test('la pregunta da una explicación inmediata y conserva la respuesta', async ({page}) => {
-  await page.goto('/temas/01-deteccion/index.html#tareas');
+  await page.goto('/temas/01-deteccion/index.html#salida');
   await page.locator('#q01-a').check();
-  await expect(page.locator('#tareas .quiz-status')).toHaveClass(/incorrect/);
-  await expect(page.locator('#tareas .quiz-status')).not.toBeEmpty();
+  await expect(page.locator('#salida .quiz-status')).toHaveClass(/incorrect/);
+  await expect(page.locator('#salida .quiz-status')).not.toBeEmpty();
   await page.locator('#q01-b').check();
-  await expect(page.locator('#tareas .quiz-status')).toHaveClass(/correct/);
+  await expect(page.locator('#salida .quiz-status')).toHaveClass(/correct/);
   await page.getByRole('button', {name: 'Siguiente'}).click();
   await page.getByRole('button', {name: 'Anterior'}).click();
   await expect(page.locator('#q01-b')).toBeChecked();

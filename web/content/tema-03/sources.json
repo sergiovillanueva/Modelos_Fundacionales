@@ -158,7 +158,7 @@
     "note": "La anatomía se recreó como diagrama semántico accesible."
   },
   {
-    "sectionId": "qwen",
+    "sectionId": "vlm",
     "sourceSlides": [
       51
     ],
@@ -166,7 +166,7 @@
     "webAsset": "",
     "claim": "Qwen2.5-VL puede analizar documentos, gráficos y salidas estructuradas.",
     "url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
-    "checkedOn": "2026-09-16",
+    "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Se conserva el modelo usado en el notebook y su coste relativo."
   },
@@ -184,7 +184,7 @@
     "note": "Ejemplos buenos y malos se conservan en el detalle impreso."
   },
   {
-    "sectionId": "elegir",
+    "sectionId": "eleccion",
     "sourceSlides": [
       53
     ],
@@ -192,9 +192,9 @@
     "webAsset": "public/assets/tema-03/presentacion/comparativa-modelos.webp",
     "claim": "La salida y la latencia orientan la familia de modelo.",
     "url": "",
-    "checkedOn": "2026-09-16",
-    "status": "corrected",
-    "note": "La gráfica queda como material impreso; la web usa una regla de decisión cualitativa."
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "La gráfica vuelve a la pantalla junto a la regla de decisión, tal como aparece en la diapositiva. Ordena capacidades relativas y no mide latencia en un hardware concreto."
   },
   {
     "sectionId": "validar",
@@ -219,5 +219,35 @@
     "checkedOn": "2026-09-16",
     "status": "verified",
     "note": "Pantalla nueva, sin diapositiva de origen. Espacio esquemático de dos dimensiones, declarado como tal en pantalla; los valores salen de cosineSimilarity y no están escritos a mano."
+  },
+  {
+    "sectionId": "unir",
+    "sourceSlides": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-03/sections.html",
+    "claim": "El tema 3 reproduce las diapositivas 37 a 54 del PDF con su título, su texto y sus bloques completos.",
+    "url": "docs/Modelos-fundacionales-en-vision-artificial.pdf",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Traslado literal del tema 03 pedido por el profesor. Cada diapositiva ocupa una pantalla; las tres preguntas y la simulación de similitud coseno ocupan pantallas propias intercaladas. Se omiten iconos decorativos y la marca de agua de Gamma."
   }
 ]

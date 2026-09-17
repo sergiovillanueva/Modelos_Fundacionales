@@ -1,102 +1,229 @@
 <section id="hub" data-title="Hub" data-layout="visual">
-  <div class="section-copy"><h2>Modelos listos para explorar</h2><p class="lead">Hugging Face reúne modelos, datos, demos y herramientas en un mismo ecosistema.</p></div>
-  <figure class="figure-media lesson-image lesson-image--medium"><img src="{{ASSET:tema-02/presentacion/portada-hugging-face.jpeg}}" alt="Logotipo de Hugging Face junto al nombre del servicio."><figcaption>El Hub permite descubrir recursos; su calidad y condiciones se revisan uno a uno.</figcaption></figure>
-  <div class="print-detail"><p>El repositorio sirve como punto de encuentro para publicar, documentar, versionar y reutilizar artefactos de aprendizaje automático. Descargar un modelo no garantiza que sea adecuado para el dominio, la licencia o los recursos disponibles.</p></div>
+  <div class="section-copy"><h2>2. El ecosistema de modelos de IA</h2></div>
+  <p class="slide-lead">Buscar, evaluar licencias y usar modelos fácilmente.</p>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>Hugging Face se ha convertido en el <strong>repositorio central de facto</strong> para modelos de IA modernos, datasets, demos interactivas y herramientas de desarrollo. Su ecosistema integrado permite descubrir, probar y desplegar modelos.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-02/presentacion/portada-hugging-face.jpeg}}" alt="Logotipo de Hugging Face.">
+    </figure>
+  </div>
 </section>
 
 <section id="ecosistema" data-title="Ecosistema" data-layout="visual">
-  <div class="section-copy"><h2>Cuatro piezas conectadas</h2><p class="lead">Cada pieza resuelve una parte distinta del trabajo con modelos.</p></div>
-  <ol class="evolution-line evolution-line--4" aria-label="Piezas del ecosistema Hugging Face">
-    <li><strong>Models</strong><span>Pesos, configuración y model card.</span></li>
-    <li><strong>Datasets</strong><span>Datos con carga y procesado comunes.</span></li>
-    <li><strong>Transformers</strong><span>API para carga, inferencia y ajuste.</span></li>
-    <li><strong>Spaces</strong><span>Demos web para probar modelos.</span></li>
+  <div class="section-copy"><h2>El ecosistema Hugging Face</h2></div>
+  <p class="slide-lead">Hugging Face no es solo un repositorio, es un <strong>ecosistema completo de cuatro pilares interconectados</strong>.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Model Hub</h3>
+      <p>Catálogo con más de 500.000 modelos preentrenados para todas las tareas imaginables: visión, NLP, audio, multimodal.</p>
+    </div>
+    <div>
+      <h3>Datasets</h3>
+      <p>Más de 100.000 datasets públicos listos para entrenar y evaluar, con APIs unificadas de carga y procesamiento.</p>
+    </div>
+    <div>
+      <h3>Spaces</h3>
+      <p>Demos web interactivas con Gradio o Streamlit, desplegadas sin servidor. Prueba modelos en segundos con interfaz gráfica.</p>
+    </div>
+    <div>
+      <h3>Transformers</h3>
+      <p>Librería Python que unifica la API de carga, inferencia y fine-tuning para miles de arquitecturas diferentes.</p>
+    </div>
+  </div>
+  <h3 class="slide-subtitle">El flujo típico</h3>
+  <ol class="stage-list stage-list--columns stage-list--four">
+    <li><h3>Buscar modelo</h3></li>
+    <li><h3>Probar en Space</h3></li>
+    <li><h3>Descargar con Transformers</h3></li>
+    <li><h3>Integrar en tu aplicación</h3></li>
   </ol>
-  <div class="print-detail"><p>Model Hub y Dataset Hub almacenan recursos versionados. Transformers ofrece clases y pipelines para arquitecturas compatibles. Spaces permite publicar interfaces, habitualmente con Gradio o Streamlit.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-02/presentacion/model-hub.webp}}" alt="Tarjeta del catálogo de modelos de Hugging Face.">
+    <figcaption><a href="https://huggingface.co/models" target="_blank" rel="noopener noreferrer">huggingface.co/models</a></figcaption>
+  </figure>
 </section>
 
-<section id="flujo" data-title="Flujo" data-layout="visual">
-  <div class="section-copy"><h2>De la búsqueda a tu aplicación</h2><p class="lead">Primero exploras, después pruebas y solo entonces integras.</p></div>
-  <div class="outcome-flow" aria-label="Flujo habitual de uso">
-    <div><strong>1. Buscar</strong><span>Filtra por tarea, licencia y librería.</span></div>
-    <div><strong>2. Probar</strong><span>Lee la ficha y usa una demo o notebook.</span></div>
-    <div><strong>3. Integrar</strong><span>Fija versión, mide y documenta.</span></div>
+<section id="buscar" data-title="Buscar" data-layout="visual">
+  <div class="section-copy"><h2>Cómo buscar modelos efectivamente</h2></div>
+  <div class="slide-prose">
+    <p>El Model Hub permite <strong>filtrar por múltiples criterios</strong> para encontrar exactamente lo que necesitas:</p>
+    <ul>
+      <li><strong>Tarea:</strong> object-detection, image-classification, text-generation, etc.</li>
+      <li><strong>Licencia:</strong> Apache-2.0, MIT, CreativeML, Research-only.</li>
+      <li><strong>Popularidad:</strong> número de descargas, likes, fecha de última actualización.</li>
+    </ul>
+    <p><strong>La Model Card es tu mejor amiga.</strong> Cada modelo debe incluir:</p>
   </div>
-  <figure class="figure-media lesson-image lesson-image--wide print-detail"><img src="{{ASSET:tema-02/presentacion/model-hub.webp}}" alt="Captura del catálogo de modelos de Hugging Face."><figcaption>El catálogo se filtra por tarea y metadatos; la decisión se toma con evidencia propia.</figcaption></figure>
-</section>
-
-<section id="buscar" data-title="Buscar" data-layout="question">
-  <div class="section-copy"><h2>Empieza por la tarea</h2><p class="lead">El filtro reduce candidatos; la documentación decide cuáles merece la pena probar.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Tarea</strong> y tipo de salida que necesitas.</p><p><strong>Dominio</strong> de las imágenes de uso real.</p><p><strong>Entorno</strong> de hardware, latencia y memoria.</p></div>{{QUIZ:q201}}</div>
-  <div class="print-detail"><p>Las descargas, los likes y la fecha de actualización ayudan a priorizar la inspección, pero no sustituyen una evaluación en el dominio objetivo.</p></div>
-</section>
-
-<section id="model-card" data-title="Ficha" data-layout="visual">
-  <div class="section-copy"><h2>La ficha cuenta la historia</h2><p class="lead">Una model card útil explica origen, uso, resultados y límites.</p></div>
-  <div class="plain-columns plain-columns--3" aria-label="Contenido esencial de una model card">
-    <div><strong>Uso</strong><span>Tarea, entradas, código y casos previstos.</span></div>
-    <div><strong>Evidencia</strong><span>Datos, métricas y condiciones de evaluación.</span></div>
-    <div><strong>Riesgos</strong><span>Sesgos, fallos conocidos y licencia.</span></div>
+  <div class="note-grid">
+    <div>
+      <h3>Descripción y uso</h3>
+      <p>Para qué fue entrenado, qué tareas resuelve, cómo usarlo con código de ejemplo.</p>
+    </div>
+    <div>
+      <h3>Limitaciones</h3>
+      <p>Sesgos conocidos, casos donde falla, advertencias de seguridad y aspectos éticos.</p>
+    </div>
+    <div>
+      <h3>Licencia</h3>
+      <p>Términos legales de uso: ¿puedes usarlo comercialmente? ¿Debes atribuir autoría?</p>
+    </div>
+    <div>
+      <h3>Archivos</h3>
+      <p>Configuración JSON, pesos del modelo (.safetensors preferido), tokenizers, ejemplos.</p>
+    </div>
+    <div>
+      <h3>Métricas</h3>
+      <p>Resultados en benchmarks estándar, comparación con otros modelos.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>Conviene registrar el identificador y la revisión exacta del repositorio. Dos versiones con el mismo nombre pueden cambiar archivos, configuración o resultados.</p></div>
+  <div class="print-detail"><p>Las descargas y los likes sirven para descubrir candidatos, no para decidir cuál funciona mejor en tu dominio. La fecha de última actualización avisa de modelos abandonados.</p></div>
+</section>
+
+<section id="criterios" data-title="Criterios" data-layout="question">
+  <div class="section-copy">
+    <h2>Antes de descargar, lee la ficha</h2>
+    <p class="lead">La Model Card contesta si el modelo sirve para tu caso antes de gastar tiempo.</p>
+  </div>
+  {{QUIZ:q201}}
+  <div class="print-detail"><p>Un dominio sensible obliga a revisar para qué se entrenó el modelo, con qué datos y qué limitaciones declara. El número de descargas no responde a ninguna de esas preguntas.</p></div>
 </section>
 
 <section id="licencias" data-title="Licencias" data-layout="visual">
-  <div class="section-copy"><h2>Descargar no significa poder usar</h2><p class="lead">Código, pesos, datos y aplicación final pueden tener condiciones distintas.</p></div>
-  <div class="comparison-lanes" aria-label="Preguntas para revisar una licencia">
-    <div><strong>Permisos</strong><span>Uso comercial, modificación y redistribución.</span></div>
-    <div><strong>Obligaciones</strong><span>Atribución, avisos, publicación o uso responsable.</span></div>
-    <div><strong>Restricciones</strong><span>Ámbitos excluidos, investigación o cláusulas específicas.</span></div>
+  <div class="section-copy"><h2>Licencias: evita problemas legales</h2></div>
+  <p class="slide-lead">La licencia del modelo determina <strong>cómo puedes usarlo legalmente</strong>. Ignorar este aspecto puede causar problemas serios en producción.</p>
+  <div class="note-grid">
+    <div class="is-ok">
+      <h3>Comercial OK</h3>
+      <ul>
+        <li><strong>Apache-2.0:</strong> muy permisiva, ideal para empresas.</li>
+        <li><strong>MIT:</strong> similar a Apache, aún más simple.</li>
+        <li><strong>BSD:</strong> variantes 2-clause y 3-clause, ambas permisivas.</li>
+      </ul>
+    </div>
+    <div class="is-warn">
+      <h3>Con restricciones</h3>
+      <ul>
+        <li><strong>OpenRAIL/CreativeML:</strong> uso comercial OK, pero con cláusulas de uso responsable.</li>
+        <li><strong>CC BY-SA:</strong> requiere compartir derivados bajo la misma licencia.</li>
+      </ul>
+    </div>
+    <div class="is-stop">
+      <h3>No comercial</h3>
+      <ul>
+        <li><strong>Research Only:</strong> solo investigación académica.</li>
+        <li><strong>CC BY-NC:</strong> prohibido uso comercial.</li>
+      </ul>
+    </div>
   </div>
-  <div class="print-detail"><p>Apache-2.0, MIT y BSD suelen ser permisivas, pero hay que leer el texto concreto. OpenRAIL y licencias personalizadas pueden añadir restricciones de uso. Las variantes Creative Commons y las licencias “research only” no son intercambiables. Para una decisión jurídica o comercial, revisar los términos del recurso y del caso de uso.</p></div>
+  <p class="slide-callout"><strong>Caso especial AGPL:</strong> algunas familias YOLO populares usan AGPL, que <strong>obliga a publicar tu código fuente completo</strong> si integras el modelo en una aplicación web o servicio. Si no quieres publicar tu código, busca alternativas con Apache-2.0 como RT-DETR o RF-DETR.</p>
+  <div class="print-detail"><p>Las condiciones se revisan por artefacto y por versión: el repositorio de código y los pesos publicados pueden llevar licencias distintas, y ambas pueden cambiar entre versiones. Esta clasificación orienta la búsqueda; la decisión final se toma leyendo la licencia vigente del artefacto concreto.</p></div>
+</section>
+
+<section id="comprobar" data-title="Comprobar" data-layout="lab">
+  <div class="section-copy">
+    <h2>Comprueba licencia y caso de uso</h2>
+    <p class="lead">La misma licencia cambia de respuesta según lo que vayas a hacer con el modelo.</p>
+  </div>
+  <div class="lab-layout lab-layout--even" data-license-lab>
+    <div class="lab-readout lab-readout--controls">
+      <p class="field">
+        <label for="license-choice">Licencia del modelo</label>
+        <select id="license-choice" data-license-choice>
+          <option value="apache-2.0">Apache-2.0</option>
+          <option value="mit">MIT</option>
+          <option value="bsd">BSD 2 o 3 cláusulas</option>
+          <option value="openrail">OpenRAIL / CreativeML</option>
+          <option value="cc-by-sa">CC BY-SA</option>
+          <option value="agpl" selected>AGPL</option>
+          <option value="research">Research Only</option>
+          <option value="cc-by-nc">CC BY-NC</option>
+        </select>
+      </p>
+      <p class="field">
+        <label for="license-use">Qué vas a hacer</label>
+        <select id="license-use" data-license-use>
+          <option value="investigacion">Investigación académica</option>
+          <option value="interno">Prototipo o uso interno</option>
+          <option value="producto">Producto comercial que distribuyes</option>
+          <option value="servicio" selected>Servicio web o SaaS</option>
+        </select>
+      </p>
+    </div>
+    <div class="lab-readout">
+      <p class="verdict is-condiciones" data-license-verdict aria-live="polite">Permitido con condiciones</p>
+      <p class="lab-message" data-license-reason>La cláusula de red obliga a publicar tu código fuente completo aunque solo lo ofrezcas por web. Alternativas Apache-2.0: RT-DETR o RF-DETR.</p>
+      <p class="lab-disclaimer">Orientación para buscar, no asesoramiento legal. La licencia real se lee en el artefacto y la versión que vayas a usar.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>La tabla recoge lo que explica la diapositiva anterior. Los tres casos que más sorprenden: AGPL no obliga a nada mientras no distribuyas ni sirvas el modelo, pero sí en cuanto lo expones por web; una licencia no comercial tampoco vale para un prototipo interno de empresa, porque el propósito ya es comercial; y CC BY-SA permite vender, pero obliga a publicar los derivados con la misma licencia.</p></div>
 </section>
 
 <section id="licencia" data-title="Revisión" data-layout="question">
-  <div class="section-copy"><h2>Revisa el artefacto completo</h2><p class="lead">La etiqueta del repositorio es el inicio de la revisión, no su conclusión.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Identifica</strong> la versión y todos sus archivos.</p><p><strong>Comprueba</strong> términos de código, pesos y datos.</p><p><strong>Registra</strong> la decisión y las obligaciones.</p></div>{{QUIZ:q202}}</div>
-</section>
-
-<section id="carga" data-title="Carga" data-layout="visual">
-  <div class="section-copy"><h2>Del Hub a la memoria</h2><p class="lead">La primera ejecución descarga archivos; las siguientes pueden reutilizar la caché.</p></div>
-  <ol class="evolution-line evolution-line--4" aria-label="Etapas de carga de un modelo">
-    <li><strong>Identificador</strong><span>Repositorio y revisión.</span></li>
-    <li><strong>Descarga</strong><span>Configuración y pesos.</span></li>
-    <li><strong>Memoria</strong><span>CPU, GPU y precisión.</span></li>
-    <li><strong>Inferencia</strong><span>Entrada, modelo y salida.</span></li>
-  </ol>
-  <div class="print-detail"><p>La caché local evita repetir transferencias, pero no reduce la memoria necesaria para ejecutar el modelo. En entornos reproducibles conviene fijar una revisión y controlar la ubicación de caché.</p></div>
-</section>
-
-<section id="archivos" data-title="Archivos" data-layout="visual">
-  <div class="section-copy"><h2>Cada archivo cumple una función</h2><p class="lead">La configuración describe la arquitectura; los pesos contienen lo aprendido.</p></div>
-  <div class="plain-columns plain-columns--3" aria-label="Archivos habituales de un modelo Transformers">
-    <div><strong>config.json</strong><span>Arquitectura, tamaños y etiquetas.</span></div>
-    <div><strong>model.safetensors</strong><span>Parámetros, a veces repartidos en fragmentos.</span></div>
-    <div><strong>Preprocesador</strong><span>Resolución, normalización o tokenización.</span></div>
+  <div class="section-copy">
+    <h2>Código y pesos pueden diferir</h2>
+    <p class="lead">Un repositorio permisivo no garantiza que los pesos lo sean.</p>
   </div>
-  <div class="print-detail"><p>Safetensors evita ejecutar código de deserialización basado en pickle y permite leer los pesos de forma eficiente. Aun así, se debe revisar el repositorio y cualquier código personalizado solicitado por el modelo.</p></div>
+  {{QUIZ:q202}}
+  <div class="print-detail"><p>Conviene revisar la licencia del repositorio, la del checkpoint concreto y la de los datos de entrenamiento cuando se declara, además de la versión a la que se aplican.</p></div>
 </section>
 
-<section id="from-pretrained" data-title="API" data-layout="visual">
-  <div class="section-copy"><h2>Una API, muchas arquitecturas</h2><p class="lead"><code>from_pretrained</code> reconstruye el procesador y el modelo desde su repositorio.</p></div>
-  <pre class="code-sample"><code>from transformers import AutoImageProcessor, AutoModelForImageClassification
-
-model_id = "google/vit-base-patch16-224"
-processor = AutoImageProcessor.from_pretrained(model_id)
-model = AutoModelForImageClassification.from_pretrained(model_id)</code></pre>
-  <div class="print-detail"><p>Las clases Auto eligen una implementación compatible con la configuración. Para reproducibilidad se puede indicar una revisión concreta. El dispositivo y el tipo numérico se eligen según memoria, latencia y soporte del modelo.</p></div>
+<section id="carga" data-title="Usar" data-layout="visual">
+  <div class="section-copy"><h2>Usar modelos</h2></div>
+  <p class="slide-lead">La librería Transformers hace que cargar y usar modelos sea <strong>muy sencillo</strong>. El modelo mental clave:</p>
+  <ol class="stage-list stage-list--columns stage-list--four">
+    <li>
+      <h3>Hub remoto</h3>
+      <p>El modelo vive en Hugging Face Hub identificado por su nombre (ej: «facebook/detr-resnet-50»).</p>
+    </li>
+    <li>
+      <h3>Descarga a caché</h3>
+      <p>Primera ejecución: descarga config.json, pesos .safetensors, y metadatos a ~/.cache/huggingface/</p>
+    </li>
+    <li>
+      <h3>Carga en memoria</h3>
+      <p>El modelo se instancia en RAM/VRAM según el dispositivo (CPU/GPU) que especifiques.</p>
+    </li>
+    <li>
+      <h3>Inferencia</h3>
+      <p>Procesas inputs y obtienes predicciones. Puedes usar GPU y mixed precision para acelerar.</p>
+    </li>
+  </ol>
+  <h3 class="slide-subtitle">Buenas prácticas</h3>
+  <div class="slide-prose">
+    <ul>
+      <li><strong>Seguridad:</strong> prefiere .safetensors sobre .bin (formato más seguro).</li>
+      <li><strong>Offline:</strong> predescarga con snapshot_download, controla cache_dir.</li>
+      <li><strong>Rendimiento:</strong> usa float16 y device="cuda" cuando tengas GPU.</li>
+      <li><strong>Pipelines:</strong> para pruebas rápidas, usa pipeline("task"); en producción, clases específicas dan más control.</li>
+    </ul>
+  </div>
 </section>
 
-<section id="pipeline" data-title="Pipeline" data-layout="question">
-  <div class="section-copy"><h2>Una prueba en pocas líneas</h2><p class="lead">Un pipeline reúne preprocesado, inferencia y posprocesado para una tarea común.</p></div>
-  <div class="question-layout question-layout--text"><pre class="code-sample"><code>from transformers import pipeline
+<section id="pipeline" data-title="Pipeline" data-layout="visual">
+  <div class="section-copy"><h2>Inferencia en 3 líneas de código</h2></div>
+  <pre class="code-sample"><code>from transformers import pipeline
 
-detector = pipeline(
-    "object-detection",
-    model="PekingU/rtdetr_r50vd"
-)
-results = detector("imagen.jpg")</code></pre>{{QUIZ:q203}}</div>
-  <div class="print-detail"><p>El pipeline es ideal para explorar. En producción, las clases específicas permiten controlar mejor el batching, el dispositivo, la precisión, el preprocesado y el formato de salida.</p></div>
+# 1. Cargar modelo (automáticamente baja config y pesos)
+detector = pipeline("object-detection", model="facebook/rt-detr-l")
+
+# 2. Inferencia
+results = detector("imagen.jpg")
+
+# 3. Resultado
+print(results)  # [{'label': 'cat', 'score': 0.99, 'box': {...}}]</code></pre>
+  <p class="slide-callout">La librería <strong>transformers</strong> maneja la descarga, el pre-procesamiento y la inferencia automáticamente.</p>
+  <div class="print-detail"><p>El identificador del modelo determina qué arquitectura y qué preprocesador se instancian. Para reproducibilidad conviene fijar también la revisión. En producción, las clases específicas permiten controlar batching, dispositivo, precisión y formato de salida.</p></div>
+</section>
+
+<section id="inferencia" data-title="Simplificar" data-layout="question">
+  <div class="section-copy">
+    <h2>Qué te ahorra un pipeline</h2>
+    <p class="lead">Conviene saber qué pasos quedan ocultos antes de llevarlo a producción.</p>
+  </div>
+  {{QUIZ:q203}}
+  <div class="print-detail"><p>El pipeline reúne preprocesado, inferencia y posprocesado para una tarea común. No elige el modelo por ti ni garantiza el mejor rendimiento en tu dominio.</p></div>
 </section>
 
 <section id="practica" data-title="Colab" data-layout="practice">

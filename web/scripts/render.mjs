@@ -112,6 +112,13 @@ export function renderTopic(course, topic, mode = 'reading', outputPath) {
     return renderQuiz(question);
   });
 
+  if (!isReading) {
+    // Cada diapositiva envuelve su contenido para poder escalarlo y que quepa en 1280 x 720.
+    content = extractSections(content)
+      .map((section) => `<section ${section.attrs}><div class="slide-fit">${section.innerHtml}</div></section>`)
+      .join('\n');
+  }
+
   const readingUrl = relativeUrl(pageOutputPath, `temas/${topic.id}/index.html`);
   const presentationUrl = relativeUrl(pageOutputPath, `temas/${topic.id}/presentar.html`);
   const pdfUrl = relativeUrl(pageOutputPath, `descargas/tema-${topic.id}.pdf`);

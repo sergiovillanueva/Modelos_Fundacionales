@@ -1,67 +1,239 @@
 <section id="sam" data-title="Inicio" data-layout="visual">
-  <div class="section-copy"><h2>Segmentar cualquier objeto</h2><p class="lead">La familia SAM convierte una indicación visual o textual en máscaras precisas.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/portada-sam.jpeg}}" alt="Colección de escenas con objetos segmentados mediante máscaras de colores."><figcaption>SAM 1 trabaja con imagen; SAM 2 añade vídeo; SAM 3 incorpora conceptos abiertos.</figcaption></figure>
-  <div class="print-detail"><p>Segment Anything es una familia de modelos promptables. Las capacidades dependen de la versión: no todos los checkpoints aceptan texto ni mantienen memoria temporal.</p></div>
+  <div class="section-copy"><h2>5. SAM: Segment Anything (v1, v2, v3)</h2></div>
+  <p class="slide-lead">Segmentación universal en imagen y vídeo, con prompts.</p>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>SAM (Segment Anything Model) es la evolución del modelo de segmentación más versátil: segmenta cualquier objeto en cualquier imagen mediante prompts simples (puntos, cajas, máscaras), y mantiene coherencia temporal en vídeo sin entrenar para clases específicas.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-05/presentacion/portada-sam.jpeg}}" alt="Ilustración de apertura del bloque dedicado a SAM.">
+    </figure>
+  </div>
 </section>
 
 <section id="segmentacion" data-title="Máscara" data-layout="visual">
-  <div class="section-copy"><h2>Una decisión por píxel</h2><p class="lead">La máscara delimita la forma del objeto, mientras una caja solo aproxima su posición.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/tipos-segmentacion.jpeg}}" alt="Comparación visual entre imagen, segmentación semántica, por instancias y panóptica."><figcaption>El mismo píxel puede recibir categoría e identidad según la tarea.</figcaption></figure>
-  <div class="print-detail"><p>La segmentación permite medir contornos, áreas y solapes. Una máscara no implica que el modelo conozca la clase correcta: localización y reconocimiento son problemas relacionados pero distintos.</p></div>
-</section>
-
-<section id="tipos" data-title="Tipos" data-layout="visual">
-  <div class="section-copy"><h2>Tres preguntas diferentes</h2><p class="lead">Categoría, identidad y cobertura completa definen el tipo de segmentación.</p></div>
-  <div class="plain-columns plain-columns--3" aria-label="Tipos de segmentación de imagen">
-    <div><strong>Semántica</strong><span>¿Qué clase ocupa cada píxel?</span></div>
-    <div><strong>Instancias</strong><span>¿Qué objeto individual ocupa cada píxel?</span></div>
-    <div><strong>Panóptica</strong><span>¿Qué clase e instancia cubren toda la escena?</span></div>
+  <div class="section-copy"><h2>¿Qué es segmentación?</h2></div>
+  <p class="slide-lead">La segmentación de imágenes es una tarea básica en visión artificial que va más allá de la simple detección. Su objetivo es asignar una etiqueta de clase a cada píxel de una imagen, delimitando el contorno exacto de los objetos y el fondo.</p>
+  <h3 class="slide-subtitle">Tipos de segmentación</h3>
+  <div class="note-grid">
+    <div>
+      <h3>Semántica</h3>
+      <p>Cada píxel se clasifica en una categoría (por ejemplo, «coche», «persona», «fondo»). No distingue entre instancias individuales del mismo tipo de objeto: todos los coches reciben la misma máscara y etiqueta.</p>
+    </div>
+    <div>
+      <h3>Por instancias</h3>
+      <p>Cada objeto individual detectado recibe una máscara única y su propia etiqueta. Permite distinguir entre objetos del mismo tipo, como «coche 1», «coche 2», «persona A», «persona B».</p>
+    </div>
+    <div>
+      <h3>Panóptica</h3>
+      <p>Combina la segmentación semántica y por instancias. Asigna una máscara única y una etiqueta a cada instancia de objeto cubriendo toda la imagen. Es la más completa pero también la más compleja.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>La semántica une objetos de una misma clase; la segmentación por instancias los separa; la panóptica combina ambas y asigna también las regiones de fondo etiquetables.</p></div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-05/presentacion/tipos-segmentacion.jpeg}}" alt="Comparación visual entre segmentación semántica, por instancias y panóptica sobre la misma escena.">
+  </figure>
 </section>
 
 <section id="sam1" data-title="SAM 1" data-layout="visual">
-  <div class="section-copy"><h2>Codificar una vez, preguntar muchas</h2><p class="lead">SAM 1 separa el encoder de imagen del prompt y del decoder de máscaras.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam1.jpeg}}" alt="Arquitectura de SAM 1 con encoder de imagen, encoder de prompt y decoder de máscara."><figcaption>El embedding de imagen se reutiliza durante una interacción con varios prompts.</figcaption></figure>
-  <div class="print-detail"><p>Un Vision Transformer produce el embedding costoso. El prompt encoder representa puntos, cajas o una máscara previa. Un decoder ligero cruza ambas fuentes y puede ofrecer varias máscaras cuando la indicación es ambigua.</p></div>
+  <div class="section-copy"><h2>Arquitectura de SAM 1</h2></div>
+  <p class="slide-lead">Un diseño eficiente basado en tres componentes desacoplados.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Image encoder (el componente pesado)</h3>
+      <ul>
+        <li>Basado en Vision Transformer (ViT-H) preentrenado con MAE.</li>
+        <li>Se ejecuta una única vez por imagen, generando un embedding reutilizable.</li>
+        <li>Costoso computacionalmente, pero desacoplado de la interacción.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Prompt encoder (el componente ligero)</h3>
+      <ul>
+        <li>Codifica entradas en tiempo real: puntos, cajas y texto (con positional encodings).</li>
+        <li>También procesa máscaras previas (con convoluciones).</li>
+        <li>Convierte la intención del usuario en embeddings compatibles.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Mask decoder (el cerebro rápido)</h3>
+      <ul>
+        <li>Arquitectura Transformer ligera (two-way transformer).</li>
+        <li>Realiza cross-attention entre embeddings de imagen y prompts.</li>
+        <li>Predice 3 máscaras de salida (whole, part, subpart) para resolver ambigüedad.</li>
+        <li>Latencia muy baja (unos 50 ms en navegador web).</li>
+      </ul>
+    </div>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-05/presentacion/arquitectura-sam1.jpeg}}" alt="Arquitectura de SAM 1 con image encoder, prompt encoder y mask decoder.">
+  </figure>
+  <div class="print-detail"><p>SAM 1 admite puntos, cajas y máscaras de forma nativa. El texto como prompt requiere un modelo externo, por ejemplo Grounding DINO o CLIP, que traduzca la frase a una indicación espacial.</p></div>
 </section>
 
 <section id="sam2" data-title="SAM 2" data-layout="visual">
-  <div class="section-copy"><h2>La memoria conecta fotogramas</h2><p class="lead">SAM 2 extiende la interacción a vídeo mediante un banco de memoria temporal.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam2.jpeg}}" alt="Arquitectura de SAM 2 con encoder de imagen, memoria y decoder de máscara."><figcaption>La memoria conserva información del objeto para propagarlo en el vídeo.</figcaption></figure>
-  <div class="print-detail"><p>El backbone jerárquico Hiera extrae características. Memory attention consulta fotogramas previos y prompts para mantener identidad frente a movimiento u oclusión. Las correcciones del usuario pueden propagarse a otros fotogramas.</p></div>
+  <div class="section-copy"><h2>Arquitectura de SAM 2</h2></div>
+  <p class="slide-lead">Unificando imágenes y vídeo con memoria temporal.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Encoder jerárquico (Hiera): la evolución</h3>
+      <ul>
+        <li>Sustituye al ViT plano de SAM 1 por una arquitectura jerárquica (Hiera), un enfoque más potente.</li>
+        <li>Procesa imágenes en múltiples escalas, capturando detalles finos y contexto global de forma simultánea.</li>
+        <li>Mucho más eficiente, permitiendo el procesamiento de vídeo en tiempo real (streaming processing).</li>
+        <li>Calcula los features del fotograma una sola vez, optimizando el rendimiento.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Mecanismo de memoria: la revolución</h3>
+      <ul>
+        <li>Componente clave que permite entender el vídeo y mantener la coherencia temporal.</li>
+        <li><strong>Memory bank:</strong> almacena información de fotogramas pasados y del fotograma inicial (el prompt).</li>
+        <li><strong>Memory attention:</strong> permite al modelo «mirar atrás» para mantener la identidad del objeto a lo largo del tiempo.</li>
+        <li>Maneja oclusiones, recordando el objeto incluso si desaparece momentáneamente de la vista.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Decodificador de máscaras y prompting: la interacción</h3>
+      <ul>
+        <li>Recibe tanto los prompts del usuario (clics, cajas) como el contexto proporcionado por la memoria.</li>
+        <li>Predice máscaras para el fotograma actual y actualiza la memoria para futuros procesamientos.</li>
+        <li><strong>Ambiguity-aware:</strong> genera 3 opciones de máscara si hay ambigüedad en la segmentación.</li>
+        <li>Capaz de corregir la segmentación de todo el vídeo con una única corrección en un solo fotograma (propagación).</li>
+      </ul>
+    </div>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-05/presentacion/arquitectura-sam2.jpeg}}" alt="Arquitectura de SAM 2 con encoder jerárquico, banco de memoria y atención a la memoria.">
+  </figure>
 </section>
 
 <section id="sam3" data-title="SAM 3" data-layout="visual">
-  <div class="section-copy"><h2>Primero presencia, después posición</h2><p class="lead">Un token estima si el concepto existe; detector y tracker localizan y mantienen sus instancias.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-05/presentacion/arquitectura-sam3.jpeg}}" alt="Arquitectura de SAM 3 con encoder de percepción, detector, token de presencia y tracker."><figcaption>Separar reconocimiento y localización ayuda a reducir falsos positivos de vocabulario abierto.</figcaption></figure>
-  <div class="print-detail"><p>SAM 3 condiciona la percepción con texto o ejemplares visuales. El Presence Token estima de forma global si el concepto solicitado aparece en la imagen; las object queries se concentran en localizar sus instancias. Un detector basado en DETR encuentra objetos nuevos y el tracker heredado de SAM 2 conserva identidades mediante memoria, pudiendo reiniciarse cuando reaparece una instancia.</p></div>
+  <div class="section-copy"><h2>Arquitectura de SAM 3</h2></div>
+  <p class="slide-lead">Unificación de detección y tracking con desacoplamiento de reconocimiento.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Backbone unificado y prompting multimodal</h3>
+      <ul>
+        <li>Utiliza un Perception Encoder (PE) compartido, preentrenado con alineación visión-lenguaje (contrastive learning).</li>
+        <li><strong>Nuevos prompts:</strong> acepta texto (frases nominales como «un gato rayado») e image exemplars (ejemplos visuales positivos o negativos).</li>
+        <li><strong>Fusion encoder:</strong> un nuevo módulo que condiciona los embeddings de imagen con los tokens del prompt antes de la decodificación.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Diseño dual: detector y tracker</h3>
+      <ul>
+        <li><strong>Detector (DETR-based):</strong> procesa cada frame independientemente para encontrar nuevos objetos que coincidan con el concepto.</li>
+        <li><strong>Tracker (herencia de SAM 2):</strong> utiliza el mecanismo de memoria para propagar identidades temporalmente.</li>
+        <li><strong>Sinergia:</strong> el detector alimenta al tracker con nuevos objetos; el tracker mantiene la coherencia temporal. Si el tracker falla, el detector puede reiniciarlo.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Innovación clave: el Presence Token</h3>
+      <ul>
+        <li>Soluciona el conflicto entre reconocer («¿qué es?») y localizar («¿dónde está?»).</li>
+        <li>Introduce un token global que predice la probabilidad de que el concepto exista en la imagen, P(presence).</li>
+        <li>Las queries de objetos solo se enfocan en la localización condicional, P(match | presence).</li>
+        <li>Resultado: reduce drásticamente los falsos positivos en vocabulario abierto al distinguir entre la existencia y la posición del objeto.</li>
+      </ul>
+    </div>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-05/presentacion/arquitectura-sam3.jpeg}}" alt="Arquitectura de SAM 3 con Perception Encoder, fusion encoder, detector y tracker.">
+  </figure>
 </section>
 
 <section id="evolucion" data-title="Evolución" data-layout="visual">
-  <div class="section-copy"><h2>Imagen, vídeo y conceptos</h2><p class="lead">Cada generación amplía el tipo de entrada y la persistencia de la máscara.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide media-container" data-media-type="animation"><img src="{{ASSET:tema-05/presentacion/evolucion-sam-poster.webp}}" data-animated-src="{{ASSET:tema-05/presentacion/evolucion-sam.webp}}" alt="Animación que compara el resultado de SAM 1, SAM 2 y SAM 3." class="interactive-media"><button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button></figure>
-  <div class="print-detail"><p>SAM 1 (2023) introdujo la segmentación promptable en imagen. SAM 2 (2024) unificó imagen y vídeo con memoria. SAM 3 (2025) añadió segmentación abierta por conceptos mediante texto y ejemplares, además de detección y tracking.</p></div>
+  <div class="section-copy"><h2>Evolución: SAM, SAM 2 y SAM 3</h2></div>
+  <p class="slide-lead">La familia de modelos Segment Anything (SAM) ha evolucionado rápidamente, ampliando sus capacidades de segmentación universal desde imágenes estáticas hasta el análisis complejo de vídeo con prompts contextuales.</p>
+  <ol class="stage-list stage-list--columns">
+    <li>
+      <h3>2023 · SAM 1</h3>
+      <p>Segmentación universal en imagen con prompts de puntos y cajas. Dataset SA-1B: unos 11 millones de imágenes y 1.100 millones de máscaras.</p>
+    </li>
+    <li>
+      <h3>2024 · SAM 2</h3>
+      <p>Extiende a vídeo con memoria en streaming; más preciso y hasta 6 veces más rápido que SAM 1 en imagen. Dataset SA-V: unos 51.000 vídeos y 643.000 masklets.</p>
+    </li>
+    <li>
+      <h3>2025 · SAM 3</h3>
+      <p>Modelo unificado que detecta, segmenta y sigue todas las instancias de un concepto, dado por texto o por ejemplos, en imagen y vídeo.</p>
+    </li>
+  </ol>
+  <figure class="figure-media lesson-image lesson-image--medium media-container" data-media-type="animation">
+    <img src="{{ASSET:tema-05/presentacion/evolucion-sam-poster.webp}}" data-animated-src="{{ASSET:tema-05/presentacion/evolucion-sam.webp}}" alt="Animación que recorre las tres generaciones de SAM." class="interactive-media">
+    <button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button>
+  </figure>
 </section>
 
 <section id="motor-datos" data-title="Datos" data-layout="visual">
-  <div class="section-copy"><h2>El modelo acelera sus etiquetas</h2><p class="lead">El motor de datos alterna anotación humana, asistencia y generación automática.</p></div>
-  <ol class="evolution-line" aria-label="Motor de datos de SAM">
-    <li><strong>Manual</strong><span>Personas dibujan las primeras máscaras.</span></li>
-    <li><strong>Asistida</strong><span>SAM propone y una persona corrige.</span></li>
-    <li><strong>Automática</strong><span>Se conservan propuestas de alta calidad.</span></li>
+  <div class="section-copy"><h2>The data engine: cómo escalar a 1B de máscaras</h2></div>
+  <p class="slide-lead">La creación del dataset SA-1B, clave para el entrenamiento de SAM, se logró mediante un innovador proceso iterativo de «motor de datos», combinando la inteligencia humana con la capacidad de autoaprendizaje del modelo para escalar la anotación.</p>
+  <ol class="stage-list stage-list--columns">
+    <li>
+      <h3>Anotación manual</h3>
+      <p>Expertos humanos realizan anotaciones detalladas en un subconjunto inicial de imágenes. En esta fase, el modelo aún no tiene suficiente conocimiento.</p>
+    </li>
+    <li>
+      <h3>Anotación semi-automática</h3>
+      <p>El modelo, preentrenado con datos manuales, propone máscaras que los humanos revisan y corrigen. Esta interacción acelera el aprendizaje del modelo, que mejora exponencialmente.</p>
+    </li>
+    <li>
+      <h3>Anotación totalmente automática</h3>
+      <p>Una vez que el modelo es robusto, anota imágenes completas de forma autónoma. Solo se aceptan las máscaras con alta confianza, permitiendo un escalado masivo de datos.</p>
+    </li>
   </ol>
-  <div class="print-detail"><p>Este ciclo permitió construir SA-1B a gran escala: aproximadamente 11 millones de imágenes y 1.1 mil millones de máscaras. En la fase final, la gran mayoría de máscaras se generó automáticamente y se filtró por criterios de calidad.</p></div>
+  <p class="slide-callout"><strong>Conclusión:</strong> SA-1B es 99,1 % generado automáticamente por el propio SAM, demostrando el poder del bucle de auto-mejora.</p>
 </section>
 
 <section id="promptable" data-title="Prompts" data-layout="visual">
-  <div class="section-copy"><h2>Indicar sin reentrenar</h2><p class="lead">Un prompt convierte la intención del usuario en una condición espacial o semántica.</p></div>
-  <div class="plain-columns plain-columns--3" aria-label="Prompts visuales de SAM">
-    <div><strong>Puntos</strong><span>Incluyen o excluyen zonas concretas.</span></div>
-    <div><strong>Caja</strong><span>Acota el objeto con rapidez.</span></div>
-    <div><strong>Máscara</strong><span>Refina una propuesta anterior.</span></div>
+  <div class="section-copy"><h2>«Promptable segmentation»: la idea central</h2></div>
+  <p class="slide-lead">La segmentación promptable es la capacidad de un modelo de visión artificial para segmentar objetos en imágenes o vídeos basándose en diferentes tipos de prompts (indicaciones). Esto permite una interacción flexible y eficiente sin necesidad de reentrenar el modelo.</p>
+  <h3 class="slide-subtitle">Tipos de prompts y sus capacidades</h3>
+  <div class="note-grid">
+    <div>
+      <h3>Puntos</h3>
+      <ul>
+        <li><strong>Múltiples puntos:</strong> incluye o excluye áreas específicas para refinar la máscara deseada.</li>
+        <li><strong>Precisión:</strong> útil para objetos ambiguos o con bordes complejos.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cajas (bounding box)</h3>
+      <ul>
+        <li><strong>Delimitación amplia:</strong> dibuja una caja alrededor del objeto; SAM la convierte en una máscara precisa.</li>
+        <li><strong>Rapidez:</strong> ideal para segmentación rápida de objetos bien definidos.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Máscara inicial</h3>
+      <ul>
+        <li><strong>Refinamiento:</strong> proporciona una máscara aproximada (rough) y el modelo perfecciona los bordes y rellena huecos.</li>
+        <li><strong>Perfeccionamiento:</strong> útil para mejorar segmentaciones previas o manuales.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Texto</h3>
+      <ul>
+        <li><strong>SAM 1 y SAM 2:</strong> mediante adaptadores (CLIP o Grounding DINO), se puede usar texto como «el coche rojo».</li>
+        <li><strong>SAM 3 (nativo):</strong> interpreta directamente prompts de texto («el árbol de la izquierda») para generar máscaras.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Ejemplar (crop)</h3>
+      <ul>
+        <li><strong>SAM 3:</strong> a partir de un recorte de ejemplo, segmenta todas las instancias del mismo concepto en la imagen o vídeo.</li>
+        <li><strong>Generalización:</strong> ideal para tareas de conteo o seguimiento de objetos idénticos.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Segment everything</h3>
+      <ul>
+        <li><strong>Cobertura completa:</strong> genera una máscara para cada objeto detectable en la imagen sin prompts específicos.</li>
+        <li><strong>Análisis exhaustivo:</strong> útil para la inspección completa de escenas complejas.</li>
+      </ul>
+    </div>
   </div>
-  <div class="print-detail"><p>Un prompt no modifica los pesos. SAM 1 y SAM 2 trabajan de forma nativa con indicaciones visuales; el texto suele requerir un modelo externo como Grounding DINO. SAM 3 incorpora texto y ejemplares como prompts nativos para conceptos.</p></div>
+  <p class="slide-callout">Meta AI publica un <strong>Segment Anything Playground</strong>, un espacio interactivo para probar estos prompts sobre medios propios.</p>
 </section>
 
 <section id="marcar" data-title="Marcar" data-layout="lab">
@@ -102,29 +274,53 @@
 </section>
 
 <section id="prompt" data-title="Puntos" data-layout="question">
-  <div class="section-copy"><h2>Un clic elige el objeto</h2><p class="lead">El punto positivo señala una región que debe pertenecer a la máscara.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Positivo</strong> dentro del objeto.</p><p><strong>Negativo</strong> en una zona que sobra.</p><p><strong>Varios</strong> para resolver ambigüedad.</p></div>{{QUIZ:q501}}</div>
-  <div class="print-detail"><p>La primera indicación puede admitir varias interpretaciones —objeto completo, parte o subparte—. Por eso algunas versiones devuelven varias máscaras candidatas con puntuaciones.</p></div>
+  <div class="section-copy">
+    <h2>Un clic elige el objeto</h2>
+    <p class="lead">El punto positivo señala una región que debe pertenecer a la máscara.</p>
+  </div>
+  {{QUIZ:q501}}
+  <div class="print-detail"><p>La primera indicación puede admitir varias interpretaciones: objeto completo, parte o subparte. Por eso algunas versiones devuelven varias máscaras candidatas con puntuaciones.</p></div>
 </section>
 
 <section id="refinar" data-title="Refinar" data-layout="question">
-  <div class="section-copy"><h2>Corregir sin volver a entrenar</h2><p class="lead">Los nuevos clics añaden información sobre qué incluir y qué excluir.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Observa</strong> dónde falla el contorno.</p><p><strong>Añade</strong> el prompt en esa región.</p><p><strong>Repite</strong> hasta alcanzar el criterio.</p></div>{{QUIZ:q502}}</div>
+  <div class="section-copy">
+    <h2>Corregir sin volver a entrenar</h2>
+    <p class="lead">Los nuevos clics añaden información sobre qué incluir y qué excluir.</p>
+  </div>
+  {{QUIZ:q502}}
   <div class="print-detail"><p>En vídeo con SAM 2, una corrección puede actualizar la memoria y propagarse. La interacción debe evaluarse por calidad final y por número de clics o tiempo requerido.</p></div>
 </section>
 
-<section id="conceptos" data-title="Conceptos" data-layout="visual">
-  <div class="section-copy"><h2>Texto y ejemplos cambian la búsqueda</h2><p class="lead">SAM 3 puede segmentar todas las instancias que coinciden con un concepto.</p></div>
-  <div class="comparison-lanes comparison-lanes--two" aria-label="Prompts de concepto de SAM 3">
-    <div><strong>Texto</strong><span>Una frase nominal como “paraguas rojo a rayas”.</span></div>
-    <div><strong>Ejemplar</strong><span>Un recorte muestra visualmente qué instancias buscar.</span></div>
+<section id="limites" data-title="Elegir" data-layout="visual">
+  <div class="section-copy"><h2>Cuándo usar (y cuándo no) SAM</h2></div>
+  <div class="note-grid note-grid--two">
+    <div class="is-ok">
+      <h3>Úsalo si… (ideal para flexibilidad y zero-shot)</h3>
+      <ul>
+        <li><strong>Segmentación zero-shot crítica:</strong> necesitas segmentar objetos desconocidos, raros o que no existían en tu dataset de entrenamiento (por ejemplo microscopía o imagen submarina, underwater).</li>
+        <li><strong>Vídeo y coherencia temporal:</strong> requieres rastrear objetos que se mueven, ocultan y reaparecen sin entrenar un tracker específico, gracias a la memoria de SAM 2 y 3.</li>
+        <li><strong>Interacción humana (human-in-the-loop):</strong> estás construyendo herramientas de anotación de datos o edición donde el usuario refina el resultado con clics o cajas.</li>
+        <li><strong>Búsqueda por conceptos (SAM 3):</strong> necesitas encontrar todas las instancias de un concepto abstracto («tornillos oxidados») usando texto o ejemplos visuales, no solo puntos.</li>
+        <li><strong>Escasez de datos:</strong> no tienes miles de máscaras anotadas para entrenar un modelo supervisado tradicional.</li>
+      </ul>
+    </div>
+    <div class="is-stop">
+      <h3>Evítalo si… (mejor usar modelos supervisados clásicos)</h3>
+      <ul>
+        <li><strong>Restricciones de hardware extremas (edge):</strong> necesitas inferencia en milisegundos en dispositivos IoT o móviles antiguos. Aunque eficiente, SAM 3 requiere GPU potentes (H200) para latencias de unos 30 ms en cargas altas.</li>
+        <li><strong>Entorno cerrado y repetitivo:</strong> si tu problema es «detectar botellas en una cinta transportadora», con clases fijas y fondo controlado, un modelo ligero como RF-DETR-Seg será mucho más rápido y barato de desplegar.</li>
+        <li><strong>Razonamiento complejo:</strong> SAM 3 entiende frases nominales simples. Si necesitas lógica compleja, necesitas un VLM.</li>
+      </ul>
+    </div>
   </div>
-  <div class="print-detail"><p>Los prompts de concepto son útiles para encontrar, contar o seguir varias instancias. Una consulta lógica compleja puede requerir un VLM que razone y use SAM como herramienta.</p></div>
 </section>
 
-<section id="limites" data-title="Elegir" data-layout="question">
-  <div class="section-copy"><h2>La máscara no nombra la especie</h2><p class="lead">SAM delimita; otra señal debe reconocer, decidir o justificar.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Úsalo</strong> con objetos nuevos y anotación interactiva.</p><p><strong>Combínalo</strong> con detector, clasificador o VLM.</p><p><strong>Compara</strong> modelos ligeros en entornos fijos.</p></div>{{QUIZ:q503}}</div>
+<section id="conceptos" data-title="Conceptos" data-layout="question">
+  <div class="section-copy">
+    <h2>La máscara no nombra la especie</h2>
+    <p class="lead">SAM delimita; otra señal debe reconocer, decidir o justificar.</p>
+  </div>
+  {{QUIZ:q503}}
   <div class="print-detail"><p>SAM resulta valioso con poca anotación, interacción humana o vídeo. Un modelo supervisado pequeño puede ser más rápido y barato para clases estables y fondos controlados. Siempre hay que evaluar bordes, objetos pequeños, oclusiones y consumo de memoria.</p></div>
 </section>
 

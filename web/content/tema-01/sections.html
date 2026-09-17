@@ -1,239 +1,476 @@
 <section id="ver" data-title="Ver" data-layout="visual">
-  <div class="section-copy">
-    <h2>De píxeles a significado</h2>
-    <p class="lead">Una imagen empieza como números. La tarea decide qué información buscamos.</p>
+  <div class="section-copy"><h2>Enseñando a las máquinas a ver</h2></div>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>La Visión Artificial es la disciplina de la inteligencia artificial que busca capacitar a las máquinas para <strong>extraer información significativa y comprender el mundo a partir de imágenes y vídeos digitales</strong>, imitando la percepción humana.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/vision-humana-maquina.jpeg}}" alt="Comparación entre visión humana y visión computacional ante una misma escena: el ojo y el cerebro frente a un sensor y un ordenador.">
+    </figure>
   </div>
-  <figure class="figure-media lesson-image lesson-image--wide">
-    <img src="{{ASSET:tema-01/presentacion/vision-humana-maquina.jpeg}}" alt="Comparación entre visión humana y visión computacional ante una misma escena.">
-    <figcaption>El modelo conecta patrones visuales con una salida útil.</figcaption>
-  </figure>
+  <h3 class="slide-subtitle">La brecha semántica: ¿cómo lo ve un humano vs. una máquina?</h3>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Visión humana</h3>
+      <p>Inmediatamente identificamos «un gato naranja durmiendo en un sofá» y comprendemos su contexto.</p>
+    </div>
+    <div>
+      <h3>Visión computacional</h3>
+      <p>Una máquina percibe una compleja <strong>matriz de millones de píxeles</strong>, cada uno con valores numéricos RGB como [255, 128, 64…].</p>
+    </div>
+  </div>
   <div class="print-detail"><p>Las imágenes digitales son matrices de píxeles. La visión artificial aprende representaciones que permiten asociar esos valores con objetos, relaciones o regiones.</p></div>
 </section>
 
-<section id="tareas" data-title="Tareas" data-layout="question">
-  <div class="section-copy"><h2>¿Qué salida necesitas?</h2><p class="lead">La misma imagen admite tareas distintas.</p></div>
-  <div class="question-layout">
+<section id="tareas" data-title="Tareas" data-layout="visual">
+  <div class="section-copy"><h2>Tareas principales en visión artificial</h2></div>
+  <div class="slide-split">
+    <div class="note-grid">
+      <div>
+        <h3>Clasificación</h3>
+        <p>Identifica qué objetos están presentes en una imagen.</p>
+      </div>
+      <div>
+        <h3>Detección de objetos</h3>
+        <p>Localiza y clasifica los objetos individuales dentro de un recuadro delimitador.</p>
+      </div>
+      <div>
+        <h3>Segmentación</h3>
+        <p>Define el contorno exacto de cada objeto a nivel de píxel.</p>
+      </div>
+      <div>
+        <h3>Detección de anomalías</h3>
+        <p>Identifica eventos o datos inusuales que no coinciden con un patrón esperado.</p>
+      </div>
+      <div>
+        <h3>Estimación de pose</h3>
+        <p>Localiza puntos clave (articulaciones) en personas o animales para comprender su postura.</p>
+      </div>
+      <div>
+        <h3>Otras</h3>
+        <p>OCR, estimación de profundidad, superresolución, keypoint matching…</p>
+      </div>
+    </div>
     <figure class="figure-media media-container" data-media-type="animation">
-      <img src="{{ASSET:tema-01/car-task-poster.webp}}" data-animated-src="{{ASSET:tema-01/car-task.webp}}" alt="Un coche: la animación compara distintas tareas de visión" width="500" height="500" class="interactive-media">
+      <img src="{{ASSET:tema-01/car-task-poster.webp}}" data-animated-src="{{ASSET:tema-01/car-task.webp}}" alt="Un coche: la animación compara distintas tareas de visión sobre la misma imagen" width="500" height="500" class="interactive-media">
       <button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button>
     </figure>
-    {{QUIZ:q01}}
   </div>
+</section>
+
+<section id="salida" data-title="Salida" data-layout="question">
+  <div class="section-copy">
+    <h2>¿Qué salida necesitas?</h2>
+    <p class="lead">La misma imagen admite tareas distintas.</p>
+  </div>
+  {{QUIZ:q01}}
   <div class="print-detail"><p>La clasificación da una etiqueta global. La detección devuelve cajas y categorías por instancia. La segmentación delimita píxeles. Otros problemas incluyen anomalías, pose, OCR, profundidad y superresolución.</p></div>
 </section>
 
 <section id="inicio" data-title="Detección" data-layout="visual">
-  <div class="section-copy">
-    <h2>Detectar es localizar</h2>
-    <p class="lead">Cada detección combina una caja, una categoría y una puntuación.</p>
+  <div class="section-copy"><h2>1. Detección de objetos</h2></div>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>La detección de objetos va más allá de la simple clasificación. Su <strong>objetivo principal es localizar y clasificar múltiples objetos simultáneamente</strong> dentro de una imagen, proporcionando para cada uno una caja delimitadora, su categoría y un score de confianza.</p>
+      <p><strong>Diferencias clave:</strong></p>
+      <ul>
+        <li><strong>Clasificación:</strong> identifica qué hay en la imagen (una etiqueta global).</li>
+        <li><strong>Detección:</strong> localiza cada objeto con cajas y etiquetas múltiples.</li>
+        <li><strong>Segmentación:</strong> delimita el contorno exacto píxel a píxel.</li>
+        <li><strong>Detección de anomalías:</strong> hay algo raro en esta imagen.</li>
+      </ul>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/deteccion-calle.jpeg}}" alt="Escena urbana con cajas delimitadoras sobre coches y peatones.">
+    </figure>
   </div>
-  <figure class="figure-media detection-example">
-    <img src="{{ASSET:tema-01/presentacion/deteccion-calle.jpeg}}" alt="Calle con coches y peatones, cada uno rodeado por una caja de detección.">
-    <figcaption>Caja · categoría · puntuación de confianza</figcaption>
-  </figure>
-  <div class="print-detail"><p>La puntuación ordena las predicciones según el modelo. No equivale automáticamente a una probabilidad calibrada y no dice por sí sola si la caja está bien situada.</p></div>
 </section>
 
 <section id="familias" data-title="Familias" data-layout="visual">
-  <div class="section-copy">
-    <h2>Tres familias de detectores</h2>
-    <p class="lead">Dos etapas, una etapa y detectores con transformer organizan el problema de formas diferentes.</p>
-  </div>
+  <div class="section-copy"><h2>Tipos de arquitecturas de Object Detection</h2></div>
+  <p class="slide-lead">Hay muchos tipos de arquitecturas, estas son las familias más importantes.</p>
   <figure class="figure-media lesson-image lesson-image--wide">
-    <img src="{{ASSET:tema-01/presentacion/familias-deteccion.jpeg}}" alt="Árbol de familias de arquitecturas de detección, desde modelos CNN y transformers.">
-    <figcaption>El árbol sirve como mapa. Nos centraremos en las ideas que separan las familias.</figcaption>
+    <img src="{{ASSET:tema-01/presentacion/familias-deteccion.jpeg}}" alt="Árbol de familias de detección: modelos basados en CNN, con propuestas de región o regresión, y modelos basados en transformer, de detección extremo a extremo o ViT.">
   </figure>
-  <div class="print-detail"><p>Las taxonomías cambian con el tiempo y hay modelos híbridos. Esta clasificación ayuda a situar los ejemplos del tema, no a decidir qué detector es mejor sin medirlo.</p></div>
+  <div class="print-detail"><p>La rama basada en CNN se divide en frameworks con propuestas de región (R-CNN, SPP-Net, Fast R-CNN, Faster R-CNN, FPN) y frameworks de regresión o clasificación directa (YOLO, SSD, RetinaNet). La rama basada en transformer agrupa detección extremo a extremo (DETR, Deformable DETR, Efficient DETR, Sparse DETR) y arquitecturas ViT (ViT, DeiT, CaiT, CvT).</p></div>
 </section>
 
 <section id="historia" data-title="Historia" data-layout="visual">
-  <div class="section-copy">
-    <h2>Cómo cambió el recorrido</h2>
-    <p class="lead">Tres etapas cambiaron cómo se proponen, predicen y asignan las cajas.</p>
-  </div>
-  <ol class="evolution-line" aria-label="Evolución histórica de los detectores de objetos">
-    <li><strong>2014–2016 · Dos etapas</strong><span>R-CNN propone regiones y después las clasifica.</span></li>
-    <li><strong>2015→ · Una etapa</strong><span>YOLO predice cajas y clases en una sola pasada.</span></li>
-    <li><strong>2020→ · Transformers</strong><span>DETR aprende queries y asignación uno a uno.</span></li>
+  <div class="section-copy"><h2>Evolución histórica de los detectores</h2></div>
+  <p class="slide-lead">Los modelos de detección de objetos han evolucionado significativamente en la última década, nos centraremos en tres grandes etapas arquitectónicas.</p>
+  <ol class="stage-list">
+    <li>
+      <h3>Two-Stage (2014-2016)</h3>
+      <p>R-CNN, Fast R-CNN, Faster R-CNN: arquitecturas de dos etapas que primero proponen regiones candidatas y luego las clasifican. Precisos pero complejos y lentos.</p>
+    </li>
+    <li>
+      <h3>One-Stage (2015 →)</h3>
+      <p>YOLO revoluciona el campo: una sola red neuronal procesa la imagen completa en tiempo real, prediciendo cajas y clases simultáneamente mediante una cuadrícula.</p>
+    </li>
+    <li>
+      <h3>Transformers (2020 →)</h3>
+      <p>DETR y RF-DETR: pipelines limpios basados en atención, sin anchors predefinidos ni supresión de no-máximos (NMS). Arquitectura más simple y generalizable.</p>
+    </li>
   </ol>
-  <div class="print-detail"><p>Las fechas sitúan la aparición de las ideas, no el fin de cada familia. Los modelos de dos etapas, una etapa y transformer siguen coexistiendo, y hay diseños híbridos.</p></div>
 </section>
 
 <section id="cnn" data-title="CNN" data-layout="visual">
-  <div class="section-copy">
-    <h2>Patrones, capa a capa</h2>
-    <p class="lead">Las convoluciones extraen rasgos locales que capas posteriores combinan.</p>
-  </div>
+  <div class="section-copy"><h2>Redes neuronales convolucionales (CNNs)</h2></div>
+  <p class="slide-lead">Las Redes Neuronales Convolucionales (CNNs) son una parte muy importante de la visión artificial moderna. Están diseñadas para procesar datos visuales directamente, utilizando capas especializadas que detectan características como bordes, texturas y patrones en las imágenes de manera jerárquica.</p>
   <figure class="figure-media lesson-image lesson-image--medium media-container" data-media-type="animation">
-      <img src="{{ASSET:tema-01/presentacion/cnn-poster.webp}}" data-animated-src="{{ASSET:tema-01/presentacion/cnn.webp}}" alt="Animación de una red convolucional que transforma una imagen en mapas de características." class="interactive-media">
+    <img src="{{ASSET:tema-01/presentacion/cnn-poster.webp}}" data-animated-src="{{ASSET:tema-01/presentacion/cnn.webp}}" alt="Animación de una red convolucional que transforma una imagen en mapas de características." class="interactive-media">
     <button type="button" class="media-toggle btn-toggle-anim" aria-label="Ver animación"><span aria-hidden="true">▷</span> <span class="anim-status-label">Ver animación</span></button>
   </figure>
+  <div class="slide-prose">
+    <p>Este enfoque permite a las CNNs aprender representaciones complejas de las imágenes, lo que las hace excepcionalmente potentes para estas tareas.</p>
+  </div>
   <div class="print-detail"><p>Las CNN incorporan localidad e invariancia aproximada a traslaciones. Siguen siendo componentes útiles en muchos detectores; el contexto global y la atención son decisiones de arquitectura, no una carencia universal de todas las CNN.</p></div>
 </section>
 
 <section id="dos-etapas" data-title="Dos etapas" data-layout="visual">
-  <div class="section-copy">
-    <h2>Primero regiones, después clases</h2>
-    <p class="lead">Una RPN propone regiones; ROI Pooling reutiliza features; otra cabeza clasifica y refina.</p>
+  <div class="section-copy"><h2>Two-Stage: precisión a costa de complejidad</h2></div>
+  <div class="slide-split slide-split--media-first">
+    <div class="slide-prose">
+      <p>Los detectores de dos etapas, como la familia R-CNN, dividen el problema en <strong>dos fases secuenciales</strong>: primero generan propuestas de regiones candidatas (lugares donde podría haber objetos), y luego clasifican y refinan cada propuesta.</p>
+      <p><strong>ROI Pooling</strong> acelera el proceso al extraer features de forma eficiente, pero el pipeline sigue siendo computacionalmente costoso. La generación inicial de regiones puede proponer cientos de candidatos, ralentizando la inferencia.</p>
+      <p><strong>Trade-off característico:</strong> excelente precisión en benchmarks, pero latencia elevada para aplicaciones en tiempo real. Ideales cuando la exactitud es más importante que la velocidad. Difícil de optimizar.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/two-stage.jpeg}}" alt="Esquema de un detector de dos etapas: imagen, CNN, mapa de características, Region Proposal Network, propuestas, ROI pooling y clasificador.">
+    </figure>
   </div>
-  <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/two-stage.jpeg}}" alt="Esquema de detector de dos etapas con propuestas de regiones, mapas de características y clasificación.">
-    <figcaption>Más candidatos permiten refinar mejor, pero aumentan cálculo y latencia.</figcaption>
-  </figure>
-  <div class="print-detail"><p>R-CNN, Fast R-CNN y Faster R-CNN son hitos de esta familia. La primera etapa puede producir cientos de candidatos. La segunda extrae features de cada región, asigna una clase y ajusta la caja. Es una opción razonable cuando la exactitud pesa más que la latencia, pero las cifras concretas dependen de implementación, datos y hardware.</p></div>
-</section>
-
-<section id="progreso" data-title="Progreso" data-layout="visual">
-  <div class="section-copy">
-    <h2>Eliminar trabajo repetido</h2>
-    <p class="lead">Cada cambio de diseño buscó compartir más cálculo entre las regiones de una imagen.</p>
-  </div>
-  <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/rcnn-velocidad.jpeg}}" alt="Comparativa histórica del tiempo de inferencia de R-CNN, Fast R-CNN y Faster R-CNN.">
-    <figcaption>Comparación histórica: los tiempos solo se interpretan con su hardware y protocolo originales.</figcaption>
-  </figure>
 </section>
 
 <section id="rcnn" data-title="R-CNN" data-layout="visual">
-  <div class="section-copy">
-    <h2>Una propuesta se convierte en candidato</h2>
-    <p class="lead">R-CNN ilustra el recorrido de una región desde la imagen hasta la clase.</p>
-  </div>
+  <div class="section-copy"><h2>R-CNN</h2></div>
+  <p class="slide-lead">Region proposal + CNN + clasificador.</p>
   <figure class="figure-media lesson-image lesson-image--wide">
-    <img src="{{ASSET:tema-01/presentacion/rcnn.jpeg}}" alt="Diagrama de R-CNN: imagen, propuestas de región, CNN, vector de características y clasificadores.">
+    <img src="{{ASSET:tema-01/presentacion/rcnn.jpeg}}" alt="Esquema de R-CNN: imagen de entrada, propuestas de región, recorte redimensionado, CNN que produce un vector de características y clasificadores SVM por clase.">
+    <figcaption>Girshick et al. (2014), «Rich feature hierarchies for accurate object detection and semantic segmentation».</figcaption>
   </figure>
+</section>
+
+<section id="progreso" data-title="Velocidad" data-layout="visual">
+  <div class="section-copy"><h2>Comparación de velocidad de RCNNs</h2></div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-01/presentacion/rcnn-velocidad.jpeg}}" alt="Tabla comparativa de RCNN, Fast RCNN y Faster RCNN por método y tiempo de generación de propuestas, tiempo de predicción por imagen y factor de aceleración.">
+  </figure>
+  <div class="print-detail"><p>La tabla compara tres generaciones. Método de propuestas: Selective Search en RCNN y Fast RCNN, RPN en Faster RCNN. Tiempo de generación: 1500 ms, 1500 ms y 10 ms. Predicción sobre las propuestas por imagen: 47000 ms, 320 ms y 190 ms. Factor de aceleración: X, 25X y 250X.</p></div>
+</section>
+
+<section id="yolo" data-title="YOLO" data-layout="visual">
+  <div class="section-copy"><h2>YOLO: detección como regresión directa</h2></div>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>YOLO (You Only Look Once) reformula la detección como un <strong>problema de regresión único</strong>. La imagen se divide en una cuadrícula S×S, donde cada celda predice directamente las cajas delimitadoras y las probabilidades de clase de los objetos cuyo centro cae en ella.</p>
+      <p><strong>Ventaja clave:</strong> una única pasada hacia adelante por la red permite velocidades de procesamiento en tiempo real (30+ FPS), manteniendo precisión competitiva. Esta arquitectura one-stage elimina la necesidad de generar propuestas de región por separado.</p>
+      <ul>
+        <li>Cada celda predice múltiples cajas con sus scores de confianza.</li>
+        <li>Las predicciones ocurren simultáneamente para toda la imagen.</li>
+        <li>Ideal para aplicaciones que requieren latencia mínima.</li>
+      </ul>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/yolo-v1.jpeg}}" alt="Esquema de YOLOv1: cuadrícula S×S sobre la imagen, cajas con confianza y mapa de probabilidad de clase que se combinan en las detecciones finales.">
+    </figure>
+  </div>
+</section>
+
+<section id="arquitectura-yolo" data-title="Arquitectura" data-layout="visual">
+  <div class="section-copy"><h2>La arquitectura YOLO: velocidad y simplicidad</h2></div>
+  <p class="slide-lead">Cómo el modelo procesa la imagen en una sola pasada («You Only Look Once»).</p>
+  <div class="slide-split">
+    <ol class="stage-list">
+      <li>
+        <h3>La estrategia de la cuadrícula (S×S Grid)</h3>
+        <p>YOLO divide la imagen de entrada en una cuadrícula. Si el centro de un objeto cae en una celda específica, esa celda es la responsable de detectarlo.</p>
+      </li>
+      <li>
+        <h3>Predicción simultánea (bounding boxes + clases)</h3>
+        <p>Cada celda predice recuadros (bounding boxes) con su ubicación, tamaño y nivel de confianza, y la categoría del objeto (mapa de probabilidad), todo al mismo tiempo.</p>
+      </li>
+      <li>
+        <h3>Arquitectura unificada (CNN)</h3>
+        <p>Una única Red Neuronal Convolucional (CNN) procesa la imagen completa, conectando directamente los píxeles de entrada con las coordenadas y clases de salida, eliminando etapas intermedias complejas.</p>
+      </li>
+    </ol>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/yolo-arquitectura.jpeg}}" alt="Resumen de YOLO: esquema de entrada y cuadrícula, arquitectura convolucional completa y función de pérdida.">
+    </figure>
+  </div>
 </section>
 
 <section id="una-etapa" data-title="Una etapa" data-layout="question">
   <div class="section-copy">
-    <h2>Una pasada, muchas predicciones</h2>
-    <p class="lead">YOLOv1 popularizó la idea de producir cajas y clases directamente desde la imagen.</p>
+    <h2>Una sola pasada, una sola red</h2>
+    <p class="lead">Comprueba en qué se diferencia un detector de una etapa.</p>
   </div>
-  <div class="question-layout">
-    <figure class="figure-media lesson-image lesson-image--medium">
-      <img src="{{ASSET:tema-01/presentacion/yolo-resumen.webp}}" alt="Resumen visual de YOLOv1: cuadrícula, cajas, confianza, clases y detecciones finales.">
-    </figure>
-    {{QUIZ:q02}}
-  </div>
-  <div class="print-detail"><p>La cuadrícula S×S es una explicación histórica de YOLOv1. Las variantes posteriores cambiaron detalles importantes, por lo que no debe describirse toda la familia moderna con ese único diagrama.</p></div>
-</section>
-
-<section id="yolo" data-title="YOLO" data-layout="visual">
-  <div class="section-copy">
-    <h2>La cuadrícula de YOLOv1</h2>
-    <p class="lead">En la formulación original, una celda responde por objetos cuyo centro cae en ella.</p>
-  </div>
-  <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/yolo-v1.jpeg}}" alt="Diagrama de YOLOv1 con cuadrícula, cajas delimitadoras, confianza y mapa de clases.">
-    <figcaption>Esquema histórico de YOLOv1, no una descripción de todas las versiones posteriores.</figcaption>
-  </figure>
-</section>
-
-<section id="arquitectura-yolo" data-title="Arquitectura" data-layout="visual">
-  <div class="section-copy">
-    <h2>De la imagen a las cajas</h2>
-    <p class="lead">YOLOv1 usa una cuadrícula y predice cajas, confianza y clases de forma conjunta.</p>
-  </div>
-  <figure class="figure-media lesson-image lesson-image--wide">
-    <img src="{{ASSET:tema-01/presentacion/yolo-arquitectura.jpeg}}" alt="Arquitectura original de YOLOv1 desde la imagen de entrada hasta las predicciones de cajas y clases.">
-    <figcaption>Una sola CNN conecta la imagen completa con todas las predicciones.</figcaption>
-  </figure>
-  <div class="print-detail"><p>En YOLOv1, la celda que contiene el centro del objeto asume su detección. Cada celda predice cajas, confianza y probabilidades de clase. Las versiones posteriores cambiaron asignación, backbones, objetivos y posprocesado; la cuadrícula es una referencia histórica, no una plantilla universal.</p></div>
+  {{QUIZ:q02}}
+  <div class="print-detail"><p>Un detector de una etapa predice cajas y clases en una única pasada sobre toda la imagen, sin una fase previa que proponga regiones candidatas.</p></div>
 </section>
 
 <section id="evolucion-yolo" data-title="Evolución" data-layout="visual">
-  <div class="section-copy">
-    <h2>La familia siguió cambiando</h2>
-    <p class="lead">Cada versión cambió una parte del entrenamiento, la arquitectura o la experiencia de uso.</p>
-  </div>
-  <ol class="evolution-line evolution-line--7" aria-label="Evolución de la familia YOLO entre 2016 y 2024">
-    <li><strong>2016 · v1</strong><span>Predicción directa.</span></li>
-    <li><strong>2018 · v3</strong><span>Varias escalas.</span></li>
-    <li><strong>2020 · v4</strong><span>CSP y Mosaic.</span></li>
-    <li><strong>2020 · v5</strong><span>Flujo PyTorch.</span></li>
-    <li><strong>2022 · v7</strong><span>E-ELAN.</span></li>
-    <li><strong>2023 · v8</strong><span>Anchor-free y multitarea.</span></li>
-    <li><strong>2024 · v9</strong><span>PGI y GELAN.</span></li>
+  <div class="section-copy"><h2>Evolución de la familia YOLO (2016-2024)</h2></div>
+  <p class="slide-lead">La serie YOLO ha transformado la detección de objetos, pasando de un concepto novedoso a un ecosistema robusto y versátil.</p>
+  <ol class="evolution-line evolution-line--7" aria-label="Hitos de la familia YOLO entre 2016 y 2024">
+    <li><strong>2016 · v1</strong><span>El origen de la detección en tiempo real: un solo vistazo para detectar objetos, superando a los métodos de dos etapas.</span></li>
+    <li><strong>2018 · v3</strong><span>Estableció el estándar con predicción multiescala y el backbone Darknet-53, optimizando la detección de objetos pequeños.</span></li>
+    <li><strong>2020 · v4</strong><span>Maximizó la velocidad con CSPDarknet y «Bag of Freebies» (por ejemplo, Mosaic), optimizado para rendimiento en C++.</span></li>
+    <li><strong>2020 · v5</strong><span>Democratizó YOLO con su implementación en PyTorch, destacando por su facilidad de uso y accesibilidad.</span></li>
+    <li><strong>2022 · v7</strong><span>Alcanzó el estado del arte en velocidad y precisión para dispositivos Edge con la innovadora arquitectura E-ELAN.</span></li>
+    <li><strong>2023 · v8</strong><span>Cambio a Anchor-Free y unificó la API para detección, segmentación y estimación de pose. Publicado por ultralytics.</span></li>
+    <li><strong>2024 · v9</strong><span>Introdujo PGI y GELAN para resolver la pérdida de información en redes profundas sin coste computacional adicional.</span></li>
   </ol>
-  <div class="print-detail"><p>La cronología resume hitos del material original. “YOLO” no identifica una única arquitectura ni una única organización. Las comparativas entre generaciones deben indicar implementación, checkpoint, resolución, hardware y protocolo; no se puede inferir el mejor modelo solo por el número de versión.</p></div>
 </section>
 
-<section id="contexto" data-title="Contexto" data-layout="visual">
+<section id="contexto" data-title="Límites CNN" data-layout="visual">
+  <div class="section-copy"><h2>Por qué las CNNs no son suficientes</h2></div>
+  <p class="slide-lead">Aunque las CNNs revolucionaron la visión artificial, presentan limitaciones arquitectónicas que restringen su capacidad para tareas más complejas, especialmente en escenarios con objetos distantes o relaciones espaciales no evidentes.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Campo receptivo limitado</h3>
+      <p>Las CNNs procesan información en parches locales. Para entender relaciones a larga distancia, necesitan muchas capas, lo que aumenta la profundidad del modelo y dificulta la propagación de gradientes. Esto es ineficiente para capturar el contexto global de una imagen.</p>
+    </div>
+    <div>
+      <h3>Sesgo inductivo fuerte</h3>
+      <p>Asumen una fuerte localidad espacial e invarianza a traslación. Esto es útil para objetos que aparecen en cualquier lugar de la imagen, pero dificulta la modelización de relaciones abstractas o estructuras que no se ajustan a patrones de vecindad directa.</p>
+    </div>
+    <div>
+      <h3>Componentes Ad-Hoc</h3>
+      <p>Dependen de elementos manuales y heurísticos como los «anchors» predefinidos (cajas de diferente tamaño y aspecto) y el proceso de Supresión de No Máximos (NMS) para eliminar redundancia. Estos componentes añaden complejidad, hiperparámetros y son difíciles de optimizar globalmente.</p>
+    </div>
+  </div>
+</section>
+
+<section id="nms" data-title="NMS" data-layout="lab">
   <div class="section-copy">
-    <h2>Qué intenta simplificar DETR</h2>
-    <p class="lead">Las CNN aportan localidad; los detectores clásicos añaden heurísticas para relacionar y depurar predicciones.</p>
+    <h2>El umbral de NMS es un hiperparámetro</h2>
+    <p class="lead">Baja el umbral y desaparece un coche entero; súbelo y vuelven los duplicados.</p>
   </div>
-  <div class="plain-columns plain-columns--3" aria-label="Decisiones arquitectónicas previas a DETR">
-    <div><strong>Contexto</strong><span>Las capas locales necesitan combinarse para relacionar zonas lejanas.</span></div>
-    <div><strong>Sesgo</strong><span>La localidad es útil, pero condiciona qué patrones se aprenden con facilidad.</span></div>
-    <div><strong>Heurísticas</strong><span>Anchors y NMS añaden reglas e hiperparámetros al pipeline.</span></div>
+  <div class="lab-layout" data-nms-lab>
+    <div class="lab-stage">
+      <svg viewBox="0 0 160 96" role="img" aria-label="Dos coches solapados con cinco cajas candidatas. Al mover el umbral de IoU, las cajas suprimidas se apagan.">
+        <rect class="nms-scene" x="0" y="72" width="160" height="24"/>
+        <g class="nms-car">
+          <rect x="60" y="42" width="52" height="26" rx="6"/>
+          <rect x="74" y="32" width="26" height="12" rx="4"/>
+        </g>
+        <g class="nms-wheel"><circle cx="72" cy="68" r="5"/><circle cx="102" cy="68" r="5"/></g>
+        <g class="nms-car">
+          <rect x="24" y="44" width="52" height="26" rx="6"/>
+          <rect x="38" y="34" width="26" height="12" rx="4"/>
+        </g>
+        <g class="nms-wheel"><circle cx="36" cy="70" r="5"/><circle cx="66" cy="70" r="5"/></g>
+        <g class="candidate-box is-kept" data-candidate-box="a1" data-object="coche-a" data-score="0.95">
+          <rect x="20" y="30" width="60" height="44"/>
+          <text x="20" y="28">0,95</text>
+        </g>
+        <g class="candidate-box is-suppressed" data-candidate-box="a2" data-object="coche-a" data-score="0.88">
+          <rect x="26" y="33" width="58" height="43"/>
+          <text x="60" y="81">0,88</text>
+        </g>
+        <g class="candidate-box is-suppressed" data-candidate-box="a3" data-object="coche-a" data-score="0.72">
+          <rect x="15" y="26" width="59" height="44"/>
+          <text x="15" y="24">0,72</text>
+        </g>
+        <g class="candidate-box is-kept" data-candidate-box="b1" data-object="coche-b" data-score="0.91">
+          <rect x="56" y="30" width="60" height="44"/>
+          <text x="104" y="28">0,91</text>
+        </g>
+        <g class="candidate-box is-suppressed" data-candidate-box="b2" data-object="coche-b" data-score="0.64">
+          <rect x="50" y="33" width="60" height="44"/>
+          <text x="98" y="81">0,64</text>
+        </g>
+      </svg>
+      <p class="lab-note">Cinco cajas candidatas sobre dos coches. El detector las propone todas antes de filtrar.</p>
+    </div>
+    <div class="lab-readout">
+      <div class="metric-pair">
+        <p class="metric"><span>Cajas que quedan</span><strong data-nms-kept>2</strong></p>
+        <p class="metric"><span>Suprimidas</span><strong data-nms-suppressed>3</strong></p>
+      </div>
+      <p class="lab-message" data-nms-message aria-live="polite">Una caja por coche: el umbral limpia los duplicados sin borrar objetos.</p>
+      <label for="nms-threshold">Umbral de IoU para suprimir <b data-nms-value>0,50</b></label>
+      <input type="range" id="nms-threshold" data-nms-threshold min="5" max="95" value="50" step="1">
+      <div class="range-ends" aria-hidden="true"><span>Suprime mucho</span><span>Suprime poco</span></div>
+    </div>
   </div>
-  <div class="print-detail"><p>Estas propiedades no convierten a toda CNN en insuficiente: son decisiones con ventajas y costes. DETR propone otra formulación basada en atención, queries y predicción de conjuntos para optimizar el detector de extremo a extremo y evitar anchors y NMS en su diseño original.</p></div>
+  <div class="print-detail"><p>Esta página recoge el estado con umbral 0,50. El algoritmo recorre las cajas de mayor a menor puntuación: cada superviviente suprime a las que solapan con ella por encima del umbral. Con 0,20 la caja del primer coche llega a suprimir la del segundo, porque comparten un 25 % de área, y se pierde un objeto real. Con 0,80 apenas se suprime nada y quedan las cinco cajas. No hay un valor universalmente correcto: depende de cuánto se solapen los objetos del dominio, y por eso DETR y RF-DETR eliminan este paso mediante la asignación uno a uno durante el entrenamiento.</p></div>
 </section>
 
 <section id="detr" data-title="DETR" data-layout="visual">
-  <div class="section-copy">
-    <h2>Consultas para objetos</h2>
-    <p class="lead">DETR predice un conjunto de candidatos a partir de características visuales y consultas aprendidas.</p>
+  <div class="section-copy"><h2>DETR: Transformers para detección</h2></div>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>DETR (DEtection TRansformer) introduce un <strong>paradigma completamente nuevo</strong>: utiliza una arquitectura encoder-decoder con «object queries» aprendibles que predicen un conjunto fijo de objetos directamente.</p>
+      <p><strong>Pipeline simplificado:</strong> un backbone (como ResNet) extrae features visuales, el encoder Transformer las procesa globalmente, y el decoder utiliza N queries (típicamente 100) para predecir N potenciales objetos, cada uno con su caja y clase.</p>
+      <ul>
+        <li>Sin hiperparámetros de NMS que ajustar.</li>
+        <li>Sin anchors dependientes del dataset.</li>
+        <li>Arquitectura end-to-end diferenciable y limpia.</li>
+      </ul>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/detr.jpeg}}" alt="Arquitectura de DETR: encoder y decoder Transformer, object queries y cabezas FFN que predicen clase y caja.">
+    </figure>
   </div>
-  <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/detr-resumen.webp}}" alt="Diagrama resumido de DETR con imagen, características, transformer y consultas de objetos.">
-    <figcaption>Una consulta puede acabar asociada a una caja y una clase.</figcaption>
-  </figure>
-  <div class="print-detail"><p>El diseño original utiliza un encoder y un decoder transformer. Los detalles concretos, como número de consultas o backbone, pertenecen a una versión específica.</p></div>
 </section>
 
-<section id="matching" data-title="Matching" data-layout="question">
+<section id="matching" data-title="Matching" data-layout="visual">
+  <div class="section-copy"><h2>Fin del NMS: matching húngaro</h2></div>
+  <p class="slide-lead">Una de las mayores innovaciones de DETR es la eliminación del proceso de Supresión de No Máximos (NMS) gracias al matching húngaro, simplificando radicalmente el pipeline de detección, un algoritmo de asignación bipartita que encuentra la correspondencia óptima entre predicciones y objetos reales durante el entrenamiento. Esto elimina la necesidad de anchors predefinidos y supresión de no-máximos (NMS).</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>YOLO (pre-NMS): predicciones redundantes</h3>
+      <figure>
+        <img src="{{ASSET:tema-01/presentacion/nms-comparacion.jpeg}}" alt="Cajas duplicadas sobre un mismo coche antes de la supresión de no-máximos y una única caja después.">
+      </figure>
+      <p>Predice miles de cajas candidatas y necesita un proceso de filtrado (NMS) para eliminar las duplicadas.</p>
+    </div>
+    <div>
+      <h3>DETR: predicciones directas y únicas</h3>
+      <figure>
+        <img src="{{ASSET:tema-01/presentacion/detr-predicciones.jpeg}}" alt="Escena urbana con una predicción única por objeto, sin cajas duplicadas.">
+      </figure>
+      <p>Asigna una predicción única a cada objeto real utilizando un algoritmo de matching húngaro basado en un coste global.</p>
+    </div>
+  </div>
+</section>
+
+<section id="asignacion" data-title="Asignación" data-layout="question">
   <div class="section-copy">
-    <h2>Asignar antes de aprender</h2>
-    <p class="lead">Durante el entrenamiento, DETR relaciona predicciones y objetos reales uno a uno.</p>
+    <h2>Una predicción por objeto</h2>
+    <p class="lead">La asignación bipartita ocurre durante el entrenamiento, no en la inferencia.</p>
   </div>
-  <div class="question-layout">
-    <figure class="figure-media lesson-image lesson-image--medium">
-      <img src="{{ASSET:tema-01/presentacion/nms-comparacion.jpeg}}" alt="Comparación visual entre supresión de no máximos y asignación bipartita de predicciones a objetos de referencia.">
-    </figure>
-    {{QUIZ:q03}}
-  </div>
-  <div class="print-detail"><p>La asignación bipartita define objetivos para calcular la pérdida durante entrenamiento. No es el mismo proceso que aplicar supresión de no máximos durante inferencia.</p></div>
+  {{QUIZ:q03}}
+  <div class="print-detail"><p>El coste combina clase y geometría. Al forzar una correspondencia uno a uno, el modelo aprende a no duplicar predicciones y deja de necesitar NMS al inferir.</p></div>
 </section>
 
 <section id="rf-detr" data-title="RF-DETR" data-layout="visual">
-  <div class="section-copy">
-    <h2>Del backbone a las cajas</h2>
-    <p class="lead">RF-DETR combina features multiescala, atención deformable y queries que se refinan.</p>
+  <div class="section-copy"><h2>RF-DETR</h2></div>
+  <p class="slide-lead">RF-DETR representa un avance significativo al integrar eficientemente la potencia de los Transformers con innovaciones clave, superando a menudo a otros modelos en velocidad y precisión. Su diseño permite una detección de objetos en tiempo real, adaptable a diversas tareas.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Backbone DINOv2 pre-entrenado</h3>
+      <p>Utiliza un potente vision transformer pre-entrenado para un reconocimiento robusto de patrones visuales, lo que facilita una rápida adaptación y reduce la necesidad de grandes volúmenes de datos para nuevas tareas.</p>
+    </div>
+    <div>
+      <h3>Atención deformable eficiente</h3>
+      <p>A diferencia de la autoatención estándar, este mecanismo se centra en un pequeño conjunto de puntos de muestreo clave, permitiendo procesar mapas de características de alta resolución de manera eficiente y mejorando la detección de objetos pequeños.</p>
+    </div>
+    <div>
+      <h3>Pipeline modular y sin anchors</h3>
+      <p>Su diseño flexible elimina la necesidad de anchors predefinidos y la supresión de no-máximos (NMS), simplificando la arquitectura y haciéndola más generalizable y fácil de optimizar para distintas aplicaciones.</p>
+    </div>
   </div>
-  <div class="question-layout question-layout--text architecture-walkthrough">
-    <figure class="figure-media lesson-image lesson-image--medium">
-      <img src="{{ASSET:tema-01/presentacion/rf-detr.jpeg}}" alt="Diagrama de RF-DETR con combinación multiescala, atención deformable, queries y cajas de salida.">
-    </figure>
-    <ol class="compact-process" aria-label="Flujo de RF-DETR">
-      <li><span><strong>Combina</strong> features de varias escalas.</span></li>
-      <li><span><strong>Alinea</strong> puntos relevantes con atención deformable.</span></li>
-      <li><span><strong>Consulta</strong> el encoder mediante object queries.</span></li>
-      <li><span><strong>Refina</strong> las predicciones en el decoder.</span></li>
-      <li><span><strong>Entrega</strong> cajas sin anchors ni NMS.</span></li>
-    </ol>
+</section>
+
+<section id="rf-detr-flujo" data-title="Flujo" data-layout="visual">
+  <div class="section-copy"><h2>RF-DETR paso a paso</h2></div>
+  <p class="slide-lead">El funcionamiento de RF-DETR se basa en una arquitectura de transformer diseñada para la detección de objetos, procesando la información visual a través de una serie de pasos secuenciales y refinamientos.</p>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/rf-detr.jpeg}}" alt="Diagrama de RF-DETR: mapas de características multiescala, autoatención deformable en el encoder, cross-attention con object queries en el decoder y predicción de cajas.">
+  </figure>
+  <ol class="stage-list stage-list--columns">
+    <li>
+      <h3>Combinación de features multiescala</h3>
+      <p>RF-DETR integra features provenientes de diferentes escalas de resolución de la imagen. Esto se realiza antes de que los datos lleguen al encoder del Transformer, asegurando una comprensión contextual rica desde el principio.</p>
+    </li>
+    <li>
+      <h3>Alineación con atención deformable en el encoder</h3>
+      <p>El encoder del Transformer procesa estas features multiescala y utiliza un mecanismo de atención deformable. Este enfoque permite alinear y enfocar eficientemente las características más relevantes, ajustándose dinámicamente.</p>
+    </li>
+    <li>
+      <h3>Interacción de queries con Cross-Attention</h3>
+      <p>Las «object queries» interactúan con los niveles de features del encoder a través de un mecanismo de cross-attention. Esto permite que cada query acceda a información relevante de diversas escalas para proponer ubicaciones.</p>
+    </li>
+    <li>
+      <h3>Refinamiento de predicciones en el decoder</h3>
+      <p>El decoder de RF-DETR consta de múltiples capas que refinan iterativamente las predicciones de los objetos. Cada capa toma las predicciones de la anterior y las mejora.</p>
+    </li>
+    <li>
+      <h3>Salida final de bounding boxes</h3>
+      <p>Finalmente, el modelo genera directamente las bounding boxes para cada objeto, sin la necesidad de post-procesamiento como NMS, lo que agiliza el proceso de detección.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="ultralytics" data-title="Ultralytics" data-layout="visual">
+  <div class="section-copy"><h2>Por qué NO usamos ultralytics en clase</h2></div>
+  <p class="slide-lead">Ultralytics, a pesar de su popularidad, presenta varias características que lo hacen inadecuado para el entorno académico y de investigación que buscamos promover, especialmente porque queremos fomentar el uso de código verdaderamente open source, transparente y con licencias que no limiten la investigación ni el desarrollo industrial.</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Licencia problemática</h3>
+      <p>La combinación de licencias AGPL y comercial fuerza a los usuarios a liberar su código o a pagar, lo que contradice el espíritu de un verdadero open-source y limita su uso comercial.</p>
+    </div>
+    <div>
+      <h3>Apropiación de marca YOLO</h3>
+      <p>La designación de sus versiones (YOLOv5-YOLOv11) como «YOLO oficial» es engañosa, ya que no provienen de la familia original de Joseph Redmon ni de la línea académica, causando desinformación generalizada.</p>
+    </div>
+    <div>
+      <h3>Código no modular</h3>
+      <p>El código está fuertemente orientado a su interfaz de línea de comandos (CLI), lo que dificulta su estudio, comprensión interna y adaptación para fines de investigación o proyectos más personalizados.</p>
+    </div>
+    <div>
+      <h3>Limitaciones académicas</h3>
+      <p>Su enfoque lo hace poco apto para la enseñanza y la investigación seria. La falta de modularidad y la escasa reproducibilidad científica lo alejan de los estándares de los papers académicos.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>La descripción del material usa un backbone visual preentrenado de la familia DINOv2, features multiescala, atención deformable y un decoder que refina iterativamente las queries. La arquitectura exacta depende de la variante y del checkpoint cargado por el notebook.</p></div>
+  <div class="print-detail"><p>Las condiciones de licencia se revisan por versión y por artefacto: el código y los pesos pueden tener términos distintos y cambiar entre versiones. Conviene comprobar la licencia vigente del repositorio y del checkpoint concreto antes de decidir.</p></div>
+</section>
+
+<section id="rf-detr-clase" data-title="Por qué sí" data-layout="visual">
+  <div class="section-copy"><h2>Por qué SÍ usamos RF-DETR en clase</h2></div>
+  <p class="slide-lead">RF-DETR es la base de nuestro currículo de detección de objetos por su diseño avanzado, su alineación con los principios de la investigación y la enseñanza moderna en visión artificial, y porque es un proyecto completamente open source bajo licencia Apache 2.0.</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Licencia Apache 2.0</h3>
+      <p>Libre para industria, investigación y enseñanza. Sin obligaciones ocultas que limiten la innovación o el despliegue de proyectos.</p>
+    </div>
+    <div>
+      <h3>Arquitectura moderna y clara</h3>
+      <p>Basado en la familia DETR, ofrece una comprensión profunda de cómo funciona un detector de objetos de vanguardia, sin la complejidad de sistemas heredados.</p>
+    </div>
+    <div>
+      <h3>Código limpio y modular</h3>
+      <p>Diseñado para ser fácil de leer, modificar y explicar a alumnos, facilitando la experimentación y el aprendizaje de la implementación práctica.</p>
+    </div>
+    <div>
+      <h3>Muy buen rendimiento</h3>
+      <p>Ofrece una velocidad de inferencia y entrenamiento superior a muchos modelos YOLO modernos, optimizando los tiempos de desarrollo y prueba en el aula.</p>
+    </div>
+  </div>
 </section>
 
 <section id="eleccion" data-title="Elegir" data-layout="visual">
-  <div class="section-copy">
-    <h2>Elegir requiere condiciones</h2>
-    <p class="lead">Calidad, latencia, licencia y mantenimiento solo se comparan con versión, datos y hardware explícitos.</p>
+  <div class="section-copy"><h2>RF-DETR vs YOLO en producción</h2></div>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p>La elección entre RF-DETR y YOLO depende de tus <strong>prioridades específicas de producción</strong>.</p>
+      <p><strong>Consideraciones prácticas:</strong></p>
+      <ul>
+        <li><strong>Licencia:</strong> YOLO suele usar AGPL (obliga a publicar código modificado); RF-DETR usa Apache 2.0 (más permisiva).</li>
+        <li><strong>Mantenibilidad:</strong> RF-DETR evita el ajuste manual de anchors y thresholds de NMS.</li>
+        <li><strong>Adopción:</strong> YOLO tiene ecosistema más maduro y extenso.</li>
+      </ul>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/comparativa-latencia.jpeg}}" alt="Dos gráficas sobre MS COCO que enfrentan latencia contra mAP para RF-DETR, LW-DETR, D-FINE y YOLO11.">
+      <figcaption>Latencia frente a mAP en MS COCO, medida en T4 con TensorRT10 y FP16.</figcaption>
+    </figure>
   </div>
-  <figure class="figure-media lesson-image lesson-image--wide">
-    <img src="{{ASSET:tema-01/presentacion/comparativa-latencia.jpeg}}" alt="Gráficas de una comparativa de precisión y latencia entre detectores.">
-    <figcaption>Una gráfica tiene sentido solo con su protocolo de medida y versiones concretas.</figcaption>
-  </figure>
-  <div class="print-detail"><p>RF-DETR es la elección docente de este curso. Eso no demuestra que sea el mejor detector para cada producto: la decisión requiere una evaluación en el dominio, condiciones de despliegue y revisión de licencias de la versión concreta.</p></div>
+  <div class="print-detail"><p>Las curvas proceden del repositorio de RF-DETR y se miden en un hardware concreto. Antes de decidir conviene reproducir la medida en el dispositivo de destino, con el tamaño de entrada, la precisión numérica y el tamaño de lote que se vayan a usar realmente.</p></div>
 </section>
 
 <section id="iou" data-title="IoU" data-layout="lab">
-  <div class="section-copy">
-    <h2>¿Cuánto coinciden las cajas?</h2>
-    <p class="lead">IoU = área compartida ÷ área total ocupada.</p>
+  <div class="section-copy"><h2>IoU (Intersection over Union)</h2></div>
+  <div class="slide-prose">
+    <p>La <strong>Intersection over Union (IoU)</strong> es una métrica fundamental que mide el solapamiento entre dos cajas delimitadoras: una caja predicha por nuestro modelo y una caja de verdad (ground truth). Esta métrica es crucial para determinar si una predicción es correcta (True Positive) o no (False Positive), y su valor se encuentra en un rango de 0 (sin solapamiento) a 1 (solapamiento perfecto).</p>
+    <p>Para visualizarlo, considera una caja delimitadora predicha por el modelo (en rojo) y la caja de verdad que marca la ubicación real de un objeto (en verde). La IoU calcula el área donde ambas cajas se superponen, dividida por el área total que ocupan ambas cajas combinadas.</p>
   </div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-01/presentacion/iou-formula.jpeg}}" alt="Fórmula del IoU: área de solapamiento dividida entre área de unión, ilustrada con dos cajas que se superponen.">
+  </figure>
   <div class="iou-lab" data-iou-demo>
     <div class="iou-stage">
       <svg viewBox="0 0 100 82" role="img" aria-label="Caja de referencia y predicción: mueve la predicción para comparar su solapamiento">
@@ -253,55 +490,93 @@
       <div class="range-ends" aria-hidden="true"><span>Juntas</span><span>Separadas</span></div>
     </div>
   </div>
+  <h3 class="slide-subtitle">Umbrales típicos de IoU</h3>
+  <div class="slide-prose">
+    <ul>
+      <li><strong>IoU &gt; 0.5:</strong> es el umbral común para considerar una detección como True Positive (TP), especialmente utilizado en el conjunto de datos COCO.</li>
+      <li><strong>IoU &gt; 0.75:</strong> un umbral más estricto que se usa para evaluar la alta precisión de las detecciones.</li>
+      <li><strong>IoU &lt; umbral:</strong> cualquier detección con un IoU inferior al umbral establecido se clasifica como False Positive (FP).</li>
+    </ul>
+  </div>
+  <h3 class="slide-subtitle">¿Por qué es importante?</h3>
+  <div class="slide-prose">
+    <ul>
+      <li>Sin IoU, no podríamos distinguir eficazmente entre True Positives (detecciones correctas) y False Positives (falsas alarmas).</li>
+      <li>Es la base para el cálculo de métricas más complejas como la precisión, el recall, la Average Precision (AP) y la mean Average Precision (mAP).</li>
+      <li>Determina directamente la calidad y la exactitud espacial de las detecciones de objetos de nuestro modelo.</li>
+    </ul>
+  </div>
   <div class="print-detail"><p>IoU vale 1 cuando ambas cajas coinciden y 0 cuando no comparten área. Para decidir TP, FP y FN también se tiene en cuenta la clase, la correspondencia uno a uno y un protocolo de evaluación.</p></div>
 </section>
 
 <section id="errores" data-title="Errores" data-layout="visual">
-  <div class="section-copy">
-    <h2>Contar aciertos y fallos</h2>
-    <p class="lead">Una predicción puede acertar, duplicar un objeto o dejar un objeto sin detectar.</p>
+  <div class="section-copy"><h2>Fundamentos: TP, FP, FN (y por qué no hay TN)</h2></div>
+  <div class="note-grid">
+    <div>
+      <h3>TP (True positives)</h3>
+      <p>Detecciones correctas: cajas predichas que coinciden con objetos reales (IoU &gt; umbral).</p>
+    </div>
+    <div>
+      <h3>FP (False positives)</h3>
+      <p>Falsas alarmas: cajas predichas donde no hay objeto real o con IoU muy bajo.</p>
+    </div>
+    <div>
+      <h3>FN (False negatives)</h3>
+      <p>Objetos perdidos: objetos reales que el modelo no detectó.</p>
+    </div>
   </div>
-  <div class="outcome-flow" aria-label="Esquema de TP, FP y FN">
-    <div><strong>TP</strong><span>Caja y clase que corresponden a un objeto real.</span></div>
-    <div><strong>FP</strong><span>Falsa alarma o predicción duplicada.</span></div>
-    <div><strong>FN</strong><span>Objeto real que quedó sin predicción.</span></div>
+  <h3 class="slide-subtitle">Por qué NO existen True Negatives (TN) en object detection</h3>
+  <div class="slide-prose">
+    <p>La métrica de True Negatives, común en problemas de clasificación binaria, no aplica de la misma manera en la detección de objetos:</p>
+    <ul>
+      <li><strong>En clasificación binaria:</strong> TN = «predice que no hay gato y efectivamente no hay gato».</li>
+      <li><strong>En detección de objetos:</strong> el modelo predice cajas delimitadoras en ubicaciones específicas donde cree que hay un objeto.</li>
+      <li>No existe el concepto explícito de «predecir ausencia de objeto en una ubicación».</li>
+      <li>Las ubicaciones donde no se predice nada son infinitas e impracticables de medir.</li>
+    </ul>
+    <p>Por esta razón, las métricas en detección de objetos se enfocan únicamente en <strong>TP, FP y FN</strong>, ya que son los resultados relevantes de las predicciones del modelo.</p>
   </div>
-  <div class="print-detail"><p>En detección no se suele usar un recuento práctico de verdaderos negativos de fondo. Las ubicaciones sin objetos son enormes y no se enumeran como predicciones negativas individuales.</p></div>
 </section>
 
-<section id="precision-recall" data-title="Métricas" data-layout="question">
-  <div class="section-copy">
-    <h2>Precisión y recall responden a preguntas distintas</h2>
-    <p class="lead">La precisión mira las predicciones; el recall mira los objetos reales.</p>
+<section id="precision-recall" data-title="Métricas" data-layout="visual">
+  <div class="section-copy"><h2>Métricas de evaluación: precision y recall</h2></div>
+  <p class="slide-lead">En la detección de objetos, entender la calidad de las predicciones va más allá de solo saber si se detectó algo. Precision y recall nos dan una visión completa de la fiabilidad y exhaustividad del modelo.</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>La importancia de la precisión</h3>
+      <p>Mide la <strong>confiabilidad de las detecciones positivas</strong>. Un detector con alta precisión minimiza los falsos positivos (detectar algo que no está ahí o identificarlo incorrectamente). Es crucial en aplicaciones donde un error de detección tiene costes elevados, como en inspección de calidad o sistemas de seguridad.</p>
+      <p class="formula">Precision = <span class="frac"><span>TP</span><span>TP + FP</span></span></p>
+      <p>Esto responde a la pregunta: «De todas mis predicciones, ¿cuántas son correctas?».</p>
+    </div>
+    <div>
+      <h3>La importancia del recall</h3>
+      <p>Mide la <strong>capacidad del modelo para encontrar todos los objetos relevantes</strong> en una imagen. Un alto recall significa pocos falsos negativos (no detectar un objeto que sí está presente). Es vital en escenarios donde es crítico no omitir ningún objeto, como la detección de personas en vigilancia o tumores en imágenes médicas.</p>
+      <p class="formula">Recall = <span class="frac"><span>TP</span><span>TP + FN</span></span></p>
+      <p>Esto responde a la pregunta: «De todos los objetos reales, ¿cuántos detecté?».</p>
+    </div>
   </div>
-  <div class="question-layout">
-    <figure class="figure-media lesson-image lesson-image--medium">
-      <img src="{{ASSET:tema-01/presentacion/precision-recall.webp}}" alt="Curva de precisión y recall que muestra cómo cambian al variar un umbral de confianza.">
-      <figcaption>Precisión = TP / (TP + FP). Recall = TP / (TP + FN).</figcaption>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p><strong>Ejemplos prácticos de interpretación:</strong></p>
+      <ul>
+        <li>Si un modelo tiene una precision alta (por ejemplo, 0.9), significa que el 90 % de las detecciones que realiza son correctas. Es muy fiable en lo que afirma haber encontrado.</li>
+        <li>Si un modelo tiene un recall alto (por ejemplo, 0.8), significa que detectó el 80 % de todos los objetos que realmente estaban presentes en las imágenes. Es bueno para no perder objetos.</li>
+      </ul>
+      <p>Es importante entender que precision y recall a menudo presentan un <strong>trade-off</strong>. Mejorar una métrica a menudo puede llevar a la disminución de la otra. Por ejemplo, si un modelo es muy agresivo en sus detecciones para asegurar que no se pierda nada (alto recall), podría también generar más falsas alarmas (baja precision). La elección del equilibrio adecuado depende de los requisitos específicos de la aplicación.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/precision-recall.webp}}" alt="Curvas de precisión y recall frente al umbral de confianza, que se cruzan al subir el umbral.">
     </figure>
-    {{QUIZ:q05}}
   </div>
 </section>
 
-<section id="umbral" data-title="Umbral" data-layout="question">
+<section id="metricas" data-title="Calcular" data-layout="question">
   <div class="section-copy">
-    <h2>Filtrar no cambia las cajas</h2>
-    <p class="lead">El umbral de confianza decide qué predicciones se muestran; IoU evalúa su solapamiento.</p>
+    <h2>Calcula precisión y recall</h2>
+    <p class="lead">Aplica las dos fórmulas a un recuento concreto.</p>
   </div>
-  <div class="question-layout">
-    <figure class="figure-media confidence-figure">
-      <div class="confidence-scale" role="img" aria-label="Tres puntuaciones de confianza. Con un umbral de 0,50 se muestran 0,62 y 0,91, mientras 0,28 queda oculta.">
-        <div class="confidence-track" aria-hidden="true"></div>
-        <div class="confidence-threshold" aria-hidden="true"><span>umbral 0,50</span></div>
-        <div class="confidence-marker confidence-marker--hidden" style="--position: 28%"><strong>0,28</strong><span>ocultar</span></div>
-        <div class="confidence-marker" style="--position: 62%"><strong>0,62</strong><span>mostrar</span></div>
-        <div class="confidence-marker confidence-marker--high" style="--position: 91%"><strong>0,91</strong><span>mostrar</span></div>
-      </div>
-      <figcaption>El filtro cambia qué predicciones ves, no sus coordenadas.</figcaption>
-    </figure>
-    {{QUIZ:q06}}
-  </div>
-  <div class="print-detail"><p>Al subir el umbral suelen desaparecer predicciones de baja puntuación: pueden bajar los falsos positivos y también aumentar los falsos negativos. La curva precisión-recall estudia ese intercambio recorriendo muchos umbrales.</p></div>
+  {{QUIZ:q05}}
+  <div class="print-detail"><p>Con 3 TP, 1 FP y 2 FN: precisión = 3 / (3 + 1) = 0,75 y recall = 3 / (3 + 2) = 0,60. La precisión mira el denominador de las predicciones; el recall, el de los objetos reales.</p></div>
 </section>
 
 <section id="equilibrio" data-title="Equilibrio" data-layout="lab">
@@ -361,42 +636,108 @@
   <div class="print-detail"><p>Esta página recoge el estado con umbral 0,30. El emparejamiento sigue el protocolo habitual: las predicciones se ordenan por puntuación y cada una reclama el objeto libre con el que comparte más área, siempre que el IoU llegue a 0,50. La predicción de 0,24 solapa con el tercer objeto, pero llega tarde: ese objeto ya está emparejado, así que cuenta como falso positivo duplicado. Al subir el umbral desaparecen antes las predicciones dudosas: sube la precisión y baja el recall. La curva precisión-recall recorre ese intercambio umbral a umbral.</p></div>
 </section>
 
-<section id="ap-map" data-title="AP" data-layout="visual">
+<section id="umbral" data-title="Umbral" data-layout="question">
   <div class="section-copy">
-    <h2>Una curva resume umbrales</h2>
-    <p class="lead">AP resume precisión y recall al recorrer puntuaciones. mAP agrega AP según un protocolo.</p>
+    <h2>Filtrar no cambia las cajas</h2>
+    <p class="lead">El umbral de confianza decide qué predicciones se muestran; IoU evalúa su solapamiento.</p>
+  </div>
+  <div class="question-layout">
+    <figure class="figure-media confidence-figure">
+      <div class="confidence-scale" role="img" aria-label="Tres puntuaciones de confianza. Con un umbral de 0,50 se muestran 0,62 y 0,91, mientras 0,28 queda oculta.">
+        <div class="confidence-track" aria-hidden="true"></div>
+        <div class="confidence-threshold" aria-hidden="true"><span>umbral 0,50</span></div>
+        <div class="confidence-marker confidence-marker--hidden" style="--position: 28%"><strong>0,28</strong><span>ocultar</span></div>
+        <div class="confidence-marker" style="--position: 62%"><strong>0,62</strong><span>mostrar</span></div>
+        <div class="confidence-marker confidence-marker--high" style="--position: 91%"><strong>0,91</strong><span>mostrar</span></div>
+      </div>
+      <figcaption>El filtro cambia qué predicciones ves, no sus coordenadas.</figcaption>
+    </figure>
+    {{QUIZ:q06}}
+  </div>
+  <div class="print-detail"><p>Al subir el umbral suelen desaparecer predicciones de baja puntuación: pueden bajar los falsos positivos y también aumentar los falsos negativos. La curva precisión-recall estudia ese intercambio recorriendo muchos umbrales.</p></div>
+</section>
+
+<section id="ap-map" data-title="AP" data-layout="visual">
+  <div class="section-copy"><h2>Métricas de evaluación: AP y mAP</h2></div>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p><strong>AP (Average Precision):</strong> representa el área bajo la curva Precision-Recall. Mide la habilidad del modelo para detectar todos los objetos relevantes (recall alto) mientras mantiene un número bajo de falsos positivos (precisión alta). Un valor de AP más alto indica un mejor rendimiento.</p>
+      <p><strong>mAP (mean Average Precision):</strong> es la métrica estándar para evaluar detectores de objetos. Se calcula promediando los valores de AP para todas las clases de objetos detectadas, y a menudo, en diferentes umbrales de IoU (ej., mAP@0.5 o mAP@[0.5:0.95]).</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-01/presentacion/ap-map.jpeg}}" alt="Curva precisión-recall cuya área representa la average precision, con dos puntos marcados para umbrales de confianza 0.9 y 0.1.">
+    </figure>
+  </div>
+  <div class="print-detail"><p>Recorrer el umbral de confianza traza la curva: con umbral 0,9 la precisión es alta y el recall bajo; con 0,1 ocurre lo contrario. AP50 y AP promediada entre varios umbrales de IoU responden a protocolos distintos y no son intercambiables.</p></div>
+</section>
+
+<section id="dominio" data-title="Dominio" data-layout="visual">
+  <div class="section-copy"><h2>Límites prácticos: COCO y el mundo real</h2></div>
+  <div class="slide-prose">
+    <p>El dataset COCO, con sus 80 clases estándar (persona, coche, perro, silla…), es excelente para benchmarking pero normalmente <strong>no cubre las necesidades reales de industria o dominios especializados</strong>.</p>
+    <p><strong>Problema del dominio:</strong> una fábrica necesita detectar «tornillo oxidado», «conector suelto», «clip roto» o «soldadura defectuosa». Estos objetos específicos no existen en COCO.</p>
+    <p><strong>Coste de adaptación:</strong> re-anotar miles de imágenes para nuevas categorías es caro y lento. Entrenar desde cero o fine-tunear requiere tiempo de GPU, experimentación y validación.</p>
+    <p>Esta limitación motiva la necesidad de <strong>métodos más flexibles</strong>: detectores guiados por texto (zero-shot), modelos fundacionales multimodales, y técnicas que puedan adaptarse rápidamente a nuevos dominios sin anotación exhaustiva.</p>
   </div>
   <figure class="figure-media lesson-image lesson-image--medium">
-    <img src="{{ASSET:tema-01/presentacion/ap-map.jpeg}}" alt="Curva de precisión recall cuya área representa average precision.">
-    <figcaption>AP50 y AP promediada entre varios umbrales IoU responden a protocolos distintos.</figcaption>
+    <img src="{{ASSET:tema-01/presentacion/coco-ejemplos.jpeg}}" alt="Mosaico de imágenes de COCO anotadas con cajas y categorías de objetos cotidianos.">
   </figure>
 </section>
 
-<section id="dominio" data-title="Dominio" data-layout="question">
+<section id="vocabulario" data-title="Vocabulario" data-layout="question">
   <div class="section-copy">
     <h2>El vocabulario depende de los datos</h2>
     <p class="lead">Un checkpoint aprende las clases de sus datos. Tu aplicación puede necesitar otras.</p>
   </div>
-  <div class="question-layout">
-    <figure class="figure-media lesson-image lesson-image--medium">
-      <img src="{{ASSET:tema-01/presentacion/coco-ejemplos.jpeg}}" alt="Mosaico de ejemplos de COCO con cajas y categorías de objetos.">
-    </figure>
-    {{QUIZ:q07}}
+  {{QUIZ:q07}}
+  <div class="print-detail"><p>Un detector de vocabulario cerrado solo puede nombrar las categorías con las que fue entrenado. Ampliarlo exige anotar y reentrenar, o cambiar a un enfoque guiado por texto.</p></div>
+</section>
+
+<section id="evaluar" data-title="Evaluar" data-layout="visual">
+  <div class="section-copy"><h2>Buenas prácticas al evaluar detectores</h2></div>
+  <p class="slide-lead">Evaluar detectores va más allá de mirar mAP en COCO. Para deployment real, debes:</p>
+  <div class="slide-prose">
+    <p><strong>1. Medir en tu dominio específico:</strong> crea un conjunto de validación representativo de tus datos reales. Un modelo con 60 % mAP en COCO puede tener 40 % o 80 % en tu caso de uso particular.</p>
+    <p><strong>2. Balancear velocidad vs precisión:</strong> un detector con 2 % más de AP pero 50 % más lento puede no valer la pena si necesitas procesar 30 FPS. Mide latencia end-to-end, no solo teóricos.</p>
+    <p><strong>3. Analizar errores cualitativamente:</strong> inspecciona visualmente los casos de:</p>
+    <ul>
+      <li><strong>Falsos Positivos (FP):</strong> detecciones donde no hay objeto.</li>
+      <li><strong>Falsos Negativos (FN):</strong> objetos que el modelo no detectó.</li>
+      <li><strong>Casos límite:</strong> objetos parcialmente ocluidos, muy pequeños, o en condiciones de iluminación extrema.</li>
+    </ul>
+    <p>Los patrones de error te dirán si necesitas más datos, data augmentation específico, o cambiar de arquitectura.</p>
   </div>
 </section>
 
-<section id="evaluar" data-title="Evaluar" data-layout="question">
+<section id="criterio" data-title="Criterio" data-layout="question">
   <div class="section-copy">
     <h2>Mide donde vas a usarlo</h2>
     <p class="lead">Un benchmark no sustituye datos representativos, latencia medida y análisis de errores.</p>
   </div>
-  <div class="question-layout question-layout--text">
-    <div class="evaluation-list" aria-label="Qué revisar al evaluar un detector">
-      <p><strong>Datos</strong> que representen escenas, clases y condiciones reales.</p>
-      <p><strong>Latencia</strong> medida en el sistema de destino.</p>
-      <p><strong>Errores</strong> revisados: falsas alarmas, objetos omitidos y casos límite.</p>
+  {{QUIZ:q08}}
+  <div class="print-detail"><p>Un AP mejor en un benchmark público indica rendimiento sobre ese conjunto y ese protocolo. La decisión necesita además datos de tu dominio, latencia medida en el hardware de destino y revisión de los errores que importan.</p></div>
+</section>
+
+<section id="siguiente" data-title="Siguiente" data-layout="visual">
+  <div class="section-copy"><h2>El siguiente paso</h2></div>
+  <p class="slide-lead">La evolución de la Visión Artificial nos ayuda a superar limitaciones clave de estos modelos, abriendo paso a nuevas arquitecturas más flexibles y potentes.</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Limitaciones actuales</h3>
+      <ul>
+        <li>Solo 80 clases COCO</li>
+        <li>No entienden lenguaje</li>
+        <li>Requieren reentrenamiento</li>
+      </ul>
     </div>
-    {{QUIZ:q08}}
+    <div>
+      <h3>Modelos multimodales</h3>
+      <ul>
+        <li>Entienden texto + imagen</li>
+        <li>Zero-shot con lenguaje natural</li>
+        <li>Sin reentrenamiento constante</li>
+      </ul>
+    </div>
   </div>
 </section>
 

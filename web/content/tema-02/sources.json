@@ -1,8 +1,111 @@
 [
-  {"sectionId":"hub","sourceSlides":[31],"originalAsset":"ppt/media/image-31-1.jpeg","webAsset":"public/assets/tema-02/presentacion/portada-hugging-face.jpeg","claim":"Hugging Face reúne modelos, datasets, demos y herramientas.","url":"https://huggingface.co/docs/hub/index","checkedOn":"2026-09-16","status":"verified","note":"Introducción y recurso cotejados con PPTX y PDF."},
-  {"sectionId":"ecosistema","sourceSlides":[32],"originalAsset":"ppt/media/image-32-13.png","webAsset":"public/assets/tema-02/presentacion/model-hub.webp","claim":"Models, Datasets, Transformers y Spaces cubren funciones distintas del ecosistema.","url":"https://huggingface.co/docs","checkedOn":"2026-09-16","status":"verified","note":"Se conservaron los cuatro pilares sin cifras de catálogo que cambian con el tiempo."},
-  {"sectionId":"buscar","sourceSlides":[33],"originalAsset":"","webAsset":"","claim":"Filtros y model cards ayudan a seleccionar y evaluar un modelo.","url":"https://huggingface.co/docs/hub/model-cards","checkedOn":"2026-09-16","status":"verified","note":"El contenido de la model card se dividió en búsqueda y ficha."},
-  {"sectionId":"licencias","sourceSlides":[34],"originalAsset":"","webAsset":"","claim":"Código, pesos, datos y uso final pueden tener condiciones distintas.","url":"https://huggingface.co/docs/hub/model-cards#specifying-a-license","checkedOn":"2026-09-16","status":"corrected","note":"Se sustituyeron conclusiones jurídicas absolutas por un proceso de revisión del recurso concreto."},
-  {"sectionId":"carga","sourceSlides":[35],"originalAsset":"","webAsset":"","claim":"Los archivos se descargan, guardan en caché y cargan en RAM o VRAM para inferencia.","url":"https://huggingface.co/docs/hub/transformers","checkedOn":"2026-09-16","status":"verified","note":"El modelo mental se separó de archivos y API para mostrar una idea por pantalla."},
-  {"sectionId":"pipeline","sourceSlides":[36],"originalAsset":"","webAsset":"","claim":"Pipeline agrupa preparación de entrada, inferencia y posprocesado.","url":"https://huggingface.co/docs/transformers/quicktour","checkedOn":"2026-09-16","status":"verified","note":"El ejemplo usa un identificador público y mantiene la práctica enlazada al notebook."}
+  {
+    "sectionId": "hub",
+    "sourceSlides": [
+      31
+    ],
+    "originalAsset": "ppt/media/image-31-1.jpeg",
+    "webAsset": "public/assets/tema-02/presentacion/portada-hugging-face.jpeg",
+    "claim": "Hugging Face reúne modelos, datasets, demos y herramientas.",
+    "url": "https://huggingface.co/docs/hub/index",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Introducción y recurso cotejados con PPTX y PDF."
+  },
+  {
+    "sectionId": "ecosistema",
+    "sourceSlides": [
+      32
+    ],
+    "originalAsset": "ppt/media/image-32-13.png",
+    "webAsset": "public/assets/tema-02/presentacion/model-hub.webp",
+    "claim": "Models, Datasets, Transformers y Spaces cubren funciones distintas del ecosistema.",
+    "url": "https://huggingface.co/docs",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "Se conservaron los cuatro pilares sin cifras de catálogo que cambian con el tiempo."
+  },
+  {
+    "sectionId": "buscar",
+    "sourceSlides": [
+      33
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Filtros y model cards ayudan a seleccionar y evaluar un modelo.",
+    "url": "https://huggingface.co/docs/hub/model-cards",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "El contenido de la model card se dividió en búsqueda y ficha."
+  },
+  {
+    "sectionId": "licencias",
+    "sourceSlides": [
+      34
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Código, pesos, datos y uso final pueden tener condiciones distintas.",
+    "url": "https://huggingface.co/docs/hub/model-cards#specifying-a-license",
+    "checkedOn": "2026-09-16",
+    "status": "corrected",
+    "note": "Se sustituyeron conclusiones jurídicas absolutas por un proceso de revisión del recurso concreto."
+  },
+  {
+    "sectionId": "carga",
+    "sourceSlides": [
+      35
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Los archivos se descargan, guardan en caché y cargan en RAM o VRAM para inferencia.",
+    "url": "https://huggingface.co/docs/hub/transformers",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "El modelo mental se separó de archivos y API para mostrar una idea por pantalla."
+  },
+  {
+    "sectionId": "pipeline",
+    "sourceSlides": [
+      36
+    ],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Pipeline agrupa preparación de entrada, inferencia y posprocesado.",
+    "url": "https://huggingface.co/docs/transformers/quicktour",
+    "checkedOn": "2026-09-16",
+    "status": "verified",
+    "note": "El ejemplo usa un identificador público y mantiene la práctica enlazada al notebook."
+  },
+  {
+    "sectionId": "hub",
+    "sourceSlides": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "El tema 2 reproduce las diapositivas 31 a 36 del PDF con su título, su texto y sus bloques completos.",
+    "url": "docs/Modelos-fundacionales-en-vision-artificial.pdf",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Traslado literal del tema 02 pedido por el profesor. Cada diapositiva ocupa una pantalla; las tres preguntas y el comprobador de licencias ocupan pantallas propias intercaladas."
+  },
+  {
+    "sectionId": "comprobar",
+    "sourceSlides": [
+      34
+    ],
+    "originalAsset": "",
+    "webAsset": "src/lib/licensing.js",
+    "claim": "La misma licencia da respuestas distintas según el uso: investigación, prototipo interno, producto distribuido o servicio web.",
+    "url": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla nueva. La tabla codifica lo que explica la diapositiva 34 y se comprueba con tests unitarios. Se presenta como orientación para buscar modelo, no como asesoramiento legal, y la propia pantalla recuerda que la licencia se lee en el artefacto y la versión concretos."
+  }
 ]

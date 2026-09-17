@@ -1,158 +1,476 @@
 <section id="panorama" data-title="Inicio" data-layout="visual">
-  <div class="section-copy"><h2>Más formas de ver</h2><p class="lead">Una imagen puede revelar postura, texto, detalle, transparencia, correspondencias y profundidad.</p></div>
-  <div class="plain-columns plain-columns--3" aria-label="Tareas especializadas de visión artificial">
-    <div><strong>Pose</strong><span>Articulaciones y movimiento.</span></div>
-    <div><strong>OCR</strong><span>Texto y estructura documental.</span></div>
-    <div><strong>Superresolución</strong><span>Más píxeles y detalle plausible.</span></div>
-    <div><strong>Fondo</strong><span>Objeto y transparencia.</span></div>
-    <div><strong>Matching</strong><span>Puntos comunes entre vistas.</span></div>
-    <div><strong>Profundidad</strong><span>Distancia estimada por píxel.</span></div>
+  <div class="section-copy"><h2>Otras tareas fundacionales de visión artificial</h2></div>
+  <p class="slide-lead">Bonus extra.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Estimación de pose</h3>
+      <p>Identificar y localizar puntos clave del cuerpo humano o de objetos en imágenes y vídeos.</p>
+    </div>
+    <div>
+      <h3>OCR moderno</h3>
+      <p>Extraer texto de imágenes y documentos, transformándolo en datos editables y buscables.</p>
+    </div>
+    <div>
+      <h3>Super-resolución</h3>
+      <p>Mejorar la calidad y resolución de imágenes o vídeos, a menudo a partir de datos de baja resolución.</p>
+    </div>
+    <div>
+      <h3>Background removal</h3>
+      <p>Segmentar y eliminar automáticamente el fondo de una imagen, aislando el objeto principal.</p>
+    </div>
+    <div>
+      <h3>Estimación de profundidad</h3>
+      <p>Calcular la distancia de los objetos en una escena respecto a la cámara, creando mapas de profundidad.</p>
+    </div>
+    <div>
+      <h3>Image matching</h3>
+      <p>Encontrar correspondencias o similitudes entre dos o más imágenes para tareas como la localización o el reconocimiento.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>Este tema reúne tareas que amplían el repertorio del curso. La estimación de pose localiza puntos clave; el OCR extrae texto; la superresolución restaura imágenes; la eliminación de fondo estima transparencias; el image matching encuentra correspondencias; y la profundidad monocular aproxima la estructura 3D.</p></div>
 </section>
 
 <section id="pose" data-title="Pose" data-layout="visual">
-  <div class="section-copy"><h2>De píxeles a esqueleto</h2><p class="lead">La pose convierte el cuerpo en coordenadas, conexiones y confianza.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-06/presentacion/pose-keypoints.jpeg}}" alt="Esqueleto COCO con puntos numerados y una persona con articulaciones conectadas."><figcaption>COCO define 17 puntos para cabeza, brazos y piernas; cada predicción añade una confianza.</figcaption></figure>
-  <div class="print-detail"><p>La salida habitual es una lista de coordenadas (x, y) y una puntuación por punto. Conectar hombros, codos, muñecas, caderas, rodillas y tobillos crea una estructura geométrica que permite medir movimiento y ángulos articulares.</p></div>
-</section>
-
-<section id="pose-top-down" data-title="Top-down" data-layout="visual">
-  <div class="section-copy"><h2>Primero persona, después pose</h2><p class="lead">El enfoque top-down recorta cada persona antes de localizar sus articulaciones.</p></div>
-  <ol class="evolution-line" aria-label="Pipeline top-down de estimación de pose">
-    <li><strong>Detectar</strong><span>Obtener una caja por persona.</span></li>
-    <li><strong>Recortar</strong><span>Procesar cada región por separado.</span></li>
-    <li><strong>Estimar</strong><span>Predecir keypoints dentro de la caja.</span></li>
-  </ol>
-  <div class="print-detail"><p>ViTPose y HRNet suelen usarse en pipelines top-down. Este enfoque maneja bien cambios de escala, pero su coste crece con el número de personas. El cuaderno aplica exactamente esta secuencia: RT-DETR detecta personas y ViTPose estima sus puntos.</p></div>
+  <div class="section-copy"><h2>Estimación de pose humana: de píxeles a esqueletos</h2></div>
+  <p class="slide-lead">Estructurando el cuerpo humano en coordenadas digitales.</p>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p><strong>¿Qué es?</strong> Tarea de visión que localiza articulaciones clave (keypoints) para modelar la postura y el movimiento.</p>
+      <p><strong>El estándar (COCO-17):</strong> se buscan típicamente 17 puntos.</p>
+      <ul>
+        <li><strong>Cabeza:</strong> nariz, ojos (2), orejas (2).</li>
+        <li><strong>Tren superior:</strong> hombros (2), codos (2), muñecas (2).</li>
+        <li><strong>Tren inferior:</strong> caderas (2), rodillas (2), tobillos (2).</li>
+      </ul>
+      <p><strong>El output:</strong> una lista de coordenadas (x, y) más un score de confianza por punto.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-06/presentacion/pose-keypoints.jpeg}}" alt="Esqueleto COCO de 17 puntos clave sobre una persona.">
+    </figure>
+  </div>
+  <p class="slide-callout">Transformamos una matriz de píxeles ininteligible en una estructura geométrica analizable (skeleton).</p>
 </section>
 
 <section id="pose-enfoques" data-title="Enfoques" data-layout="visual">
-  <div class="section-copy"><h2>Tres maneras de agrupar</h2><p class="lead">La diferencia principal es cuándo se detectan las personas y cuándo se asignan los puntos.</p></div>
-  <div class="comparison-lanes" aria-label="Enfoques de estimación de pose">
-    <div><strong>Top-down</strong><span>Persona primero; pose después. Preciso, con coste por persona.</span></div>
-    <div><strong>Bottom-up</strong><span>Puntos primero; agrupación después. Útil en escenas concurridas.</span></div>
-    <div><strong>Una etapa</strong><span>Cajas y puntos en una pasada. Buen equilibrio para tiempo real.</span></div>
+  <div class="section-copy"><h2>Enfoques de modelado: top-down vs. bottom-up</h2></div>
+  <p class="slide-lead">Trade-off entre precisión y velocidad en multitudes.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Top-down (alta precisión)</h3>
+      <p><strong>Proceso:</strong> primero detecta personas (cajas), luego estima la pose dentro de cada una.</p>
+      <p><strong>Ejemplos:</strong> HRNet, ViTPose.</p>
+      <ul>
+        <li>Pros: máxima precisión, robustez a distintas escalas.</li>
+        <li>Contras: lento en grandes aglomeraciones, con coste lineal en el número de personas.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Bottom-up (alta velocidad)</h3>
+      <p><strong>Proceso:</strong> detecta todos los puntos clave de la imagen a la vez, luego los agrupa en personas.</p>
+      <p><strong>Ejemplo:</strong> OpenPose.</p>
+      <ul>
+        <li>Pros: velocidad constante, independiente del número de personas.</li>
+        <li>Contras: menos preciso, el agrupamiento de puntos es complejo.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Single-stage (el equilibrio moderno)</h3>
+      <p><strong>Proceso:</strong> redes como YOLO-Pose predicen cajas y puntos simultáneamente en una sola pasada (end-to-end).</p>
+      <ul>
+        <li>Ventaja: velocidad en tiempo real con precisión competitiva, ideal para dispositivos edge.</li>
+      </ul>
+    </div>
   </div>
-  <div class="print-detail"><p>OpenPose popularizó el enfoque bottom-up. Modelos de una etapa como YOLO-Pose predicen detección y keypoints conjuntamente. La elección depende de densidad de personas, latencia, hardware, tamaño de los sujetos y precisión requerida; no existe un ganador universal.</p></div>
 </section>
 
 <section id="pose-modelos" data-title="Modelos" data-layout="visual">
-  <div class="section-copy"><h2>Elegir por el escenario</h2><p class="lead">La arquitectura importa menos que el número de personas, el dispositivo y el error tolerable.</p></div>
-  <div class="plain-columns" aria-label="Modelos de estimación de pose">
-    <div><strong>MediaPipe</strong><span>Aplicaciones interactivas, cuerpo, manos o cara.</span></div>
-    <div><strong>YOLO-Pose</strong><span>Detección multipersona con una sola red.</span></div>
-    <div><strong>OpenPose</strong><span>Referencia bottom-up, influyente y exigente.</span></div>
-    <div><strong>HRNet / ViTPose</strong><span>Pipelines top-down orientados a precisión.</span></div>
+  <div class="section-copy"><h2>Modelos destacados y evaluación</h2></div>
+  <p class="slide-lead">Herramientas prácticas para cada escenario.</p>
+  <ol class="stage-list">
+    <li>
+      <h3>MediaPipe (Google)</h3>
+      <p>Funciona eficientemente en CPU. Ideal para aplicaciones de fitness, filtros AR o escenarios de una sola persona. El problema es que solo da los keypoints de una sola persona. También sirve para manos y cara.</p>
+    </li>
+    <li>
+      <h3>YOLOv8-Pose (ultralytics)</h3>
+      <p>El estándar industrial actual. Ofrece un equilibrio óptimo entre velocidad y precisión. Excelente para detección multi-persona y es fácil de entrenar y adaptar.</p>
+    </li>
+    <li>
+      <h3>OpenPose (CMU)</h3>
+      <p>El pionero académico que estableció las bases. Aunque influyente, hoy en día es computacionalmente pesado en comparación con opciones más modernas.</p>
+    </li>
+    <li>
+      <h3>HRNet</h3>
+      <p>Prioridad en precisión extrema. Cuando la exactitud es crítica (análisis médico, biomecánico) y la velocidad de inferencia es secundaria.</p>
+    </li>
+  </ol>
+  <h3 class="slide-subtitle">¿Cómo medimos la calidad? La métrica OKS</h3>
+  <div class="slide-prose">
+    <p>OKS (Object Keypoint Similarity) es el equivalente a IoU para esqueletos. No mide la distancia en píxeles de forma bruta, sino una «similitud perceptual» entre los puntos clave detectados y los reales.</p>
+    <p>El OKS <strong>penaliza de forma inteligente</strong>: un error de 5 píxeles en un punto rígido como el ojo penaliza mucho más que un error de 5 píxeles en una articulación flexible como la muñeca o la cadera.</p>
   </div>
-  <div class="print-detail"><p>Antes de comparar modelos hay que fijar el dataset, resolución, hardware y objetivo. MediaPipe prioriza integración y eficiencia; YOLO-Pose simplifica el tiempo real; OpenPose es una referencia académica; HRNet y ViTPose son opciones top-down. Las capacidades concretas dependen de la versión y del checkpoint.</p></div>
+  <figure class="figure-media lesson-image lesson-image--medium">
+    <img src="{{ASSET:tema-06/presentacion/pose-evaluacion.jpeg}}" alt="Comparación entre el esqueleto predicho y el real para ilustrar la evaluación con OKS.">
+  </figure>
 </section>
 
-<section id="oks" data-title="OKS" data-layout="question">
-  <div class="section-copy"><h2>Medir un esqueleto</h2><p class="lead">OKS normaliza el error por tamaño de la persona y tolerancia de cada articulación.</p></div>
-  <div class="question-layout"><figure class="figure-media lesson-image"><img src="{{ASSET:tema-06/presentacion/pose-evaluacion.jpeg}}" alt="Ejemplos de poses estimadas sobre personas en escenas deportivas."><figcaption>Object Keypoint Similarity resume cuánto se parecen dos conjuntos de puntos.</figcaption></figure>{{QUIZ:q601}}</div>
-  <div class="print-detail"><p>OKS cumple un papel parecido a IoU en detección, pero compara keypoints visibles. Un mismo error en píxeles pesa de forma distinta según la escala de la persona y la variabilidad habitual del punto. A partir de umbrales de OKS se calculan AP y AR de pose.</p></div>
+<section id="oks" data-title="OKS" data-layout="lab">
+  <div class="section-copy">
+    <h2>El mismo error no penaliza igual</h2>
+    <p class="lead">Cada articulación tiene su propia tolerancia: mueve el error y compara ojo, muñeca y cadera.</p>
+  </div>
+  <div class="lab-layout" data-oks-lab data-scale="150">
+    <div class="lab-stage">
+      <svg viewBox="0 0 100 120" role="img" aria-label="Esqueleto con el punto real y el punto predicho de ojo, muñeca y cadera. Al aumentar el error, el predicho se separa del real.">
+        <g class="skeleton">
+          <circle cx="50" cy="18" r="10"/>
+          <line x1="50" y1="28" x2="50" y2="70"/>
+          <line x1="50" y1="38" x2="30" y2="52"/>
+          <line x1="50" y1="38" x2="70" y2="52"/>
+          <line x1="50" y1="70" x2="38" y2="100"/>
+          <line x1="50" y1="70" x2="62" y2="100"/>
+        </g>
+        <g class="joint-truth">
+          <circle cx="46" cy="16" r="2.4"/>
+          <circle cx="70" cy="52" r="2.4"/>
+          <circle cx="50" cy="70" r="2.4"/>
+        </g>
+        <g class="joint-predicted">
+          <circle data-marker="ojo" cx="46" cy="16" r="2.4" transform="translate(1.67, 0)"/>
+          <circle data-marker="muneca" cx="70" cy="52" r="2.4" transform="translate(1.67, 0)"/>
+          <circle data-marker="cadera" cx="50" cy="70" r="2.4" transform="translate(1.67, 0)"/>
+        </g>
+        <text class="stage-note" x="16" y="16">ojo</text>
+        <text class="stage-note" x="76" y="50">muñeca</text>
+        <text class="stage-note" x="14" y="72">cadera</text>
+      </svg>
+      <p class="lab-note">Persona de 150 px de escala. Las tolerancias son las constantes de COCO.</p>
+    </div>
+    <div class="lab-readout">
+      <ul class="candidate-list">
+        <li class="candidate" data-joint="ojo" data-label="Ojo" data-sigma="0.025">
+          <span class="candidate-name">Ojo <small>rígido</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-joint-bar style="--bar-share: .8007"></span></span>
+          <span class="candidate-value" data-joint-value>0,80</span>
+        </li>
+        <li class="candidate is-winner" data-joint="muneca" data-label="Muñeca" data-sigma="0.062">
+          <span class="candidate-name">Muñeca <small>flexible</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-joint-bar style="--bar-share: .9645"></span></span>
+          <span class="candidate-value" data-joint-value>0,96</span>
+        </li>
+        <li class="candidate is-winner" data-joint="cadera" data-label="Cadera" data-sigma="0.107">
+          <span class="candidate-name">Cadera <small>flexible</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-joint-bar style="--bar-share: .9879"></span></span>
+          <span class="candidate-value" data-joint-value>0,99</span>
+        </li>
+      </ul>
+      <p class="lab-message" data-oks-message aria-live="polite">El mismo error de 5 px deja el ojo en 0,80 y la cadera en 0,99.</p>
+      <label for="oks-distance">Error de predicción <b data-oks-value>5 px</b></label>
+      <input type="range" id="oks-distance" data-oks-distance min="0" max="40" value="5" step="1">
+      <div class="range-ends" aria-hidden="true"><span>0 px</span><span>40 px</span></div>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el estado con 5 px de error. OKS aplica a cada punto exp(−d² / (2 s² k²)), donde d es el error en píxeles, s la escala de la persona y k = 2σ una constante propia de cada articulación medida sobre anotaciones humanas. Los ojos tienen σ = 0,025 y la cadera σ = 0,107, así que la cadera tolera más de cuatro veces el error antes de penalizar lo mismo. El OKS del esqueleto es la media de los puntos visibles, y sustituye al IoU cuando se calcula AP para pose.</p></div>
+</section>
+
+<section id="pose-oks-pregunta" data-title="Tolerancia" data-layout="question">
+  <div class="section-copy">
+    <h2>Cinco píxeles no son cinco píxeles</h2>
+    <p class="lead">La tolerancia de cada articulación sale de cómo de acuerdo se ponen los anotadores humanos.</p>
+  </div>
+  {{QUIZ:q601}}
+  <div class="print-detail"><p>Las constantes por articulación se estimaron midiendo la dispersión entre anotadores. Donde las personas coinciden mucho, como los ojos, el modelo tiene menos margen.</p></div>
 </section>
 
 <section id="pose-usos" data-title="Aplicaciones" data-layout="visual">
-  <div class="section-copy"><h2>Movimiento convertido en datos</h2><p class="lead">Ángulos y trayectorias permiten analizar técnica, ergonomía y rehabilitación.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-06/presentacion/pose-aplicaciones.jpeg}}" alt="Tres movimientos deportivos con esqueletos de pose superpuestos."><figcaption>Deporte y fitness · seguridad industrial · salud y rehabilitación.</figcaption></figure>
-  <div class="print-detail"><p>Las aplicaciones incluyen contar repeticiones, medir ángulos, detectar posturas de riesgo, generar alertas ante caídas, validar ejercicios de fisioterapia y analizar la marcha. En usos sensibles se debe validar el sistema por población, cámara, ropa, postura y entorno.</p></div>
-</section>
-
-<section id="pose-retos" data-title="Oclusión" data-layout="visual">
-  <div class="section-copy"><h2>Lo oculto sigue siendo incierto</h2><p class="lead">Una articulación puede desaparecer detrás del cuerpo, otra persona o un objeto.</p></div>
-  <ol class="evolution-line" aria-label="Tratamiento de oclusiones en pose">
-    <li><strong>Observar</strong><span>Conservar puntos visibles y su confianza.</span></li>
-    <li><strong>Recordar</strong><span>Usar fotogramas anteriores en vídeo.</span></li>
-    <li><strong>Inferir</strong><span>Aplicar restricciones anatómicas o pose 3D.</span></li>
-  </ol>
-  <div class="print-detail"><p>La memoria temporal y los modelos 3D pueden proponer posiciones plausibles para partes ocultas, pero no recuperan información observada. La interfaz debe conservar la incertidumbre en vez de presentar todos los puntos como igualmente fiables.</p></div>
+  <div class="section-copy"><h2>Impacto real y desafíos técnicos</h2></div>
+  <p class="slide-lead">Dónde genera valor la estimación de pose.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Sport y fitness</h3>
+      <ul>
+        <li><strong>Entrenador IA:</strong> conteo preciso de repeticiones (sentadillas, flexiones…).</li>
+        <li><strong>Análisis de técnica:</strong> medición de ángulos corporales para prevenir lesiones.</li>
+        <li>Aplicaciones en plataformas como Nike Training o Peloton.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Seguridad industrial y ergonomía</h3>
+      <ul>
+        <li><strong>Detección de posturas peligrosas:</strong> identificar movimientos de riesgo al levantar peso.</li>
+        <li><strong>«Hombre caído»:</strong> alertas de seguridad en tiempo real en entornos peligrosos.</li>
+        <li><strong>Optimización:</strong> mejora de la eficiencia en líneas de montaje.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Salud y rehabilitación</h3>
+      <ul>
+        <li><strong>Fisioterapia remota:</strong> validación de ejercicios en casa sin supervisión presencial.</li>
+        <li><strong>Análisis de marcha:</strong> detección temprana de patologías neurológicas o musculoesqueléticas.</li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="slide-subtitle">El gran reto: oclusiones y reconstrucción 3D</h3>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p><strong>El problema:</strong> la estimación de pose se complica cuando partes del cuerpo se ocultan entre sí o por objetos externos, perdiendo información crucial.</p>
+      <p><strong>La solución:</strong> modelos avanzados emplean memoria temporal para rastrear y predecir oclusiones, o realizan inferencia 3D para «imaginar» las partes ocultas basándose en la anatomía y el contexto.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-06/presentacion/pose-aplicaciones.jpeg}}" alt="Aplicaciones de la estimación de pose en deporte, industria y salud.">
+    </figure>
+  </div>
 </section>
 
 <section id="ocr" data-title="OCR" data-layout="visual">
-  <div class="section-copy"><h2>De imagen a información</h2><p class="lead">El OCR moderno puede reconocer texto y, con otros modelos, reconstruir la estructura del documento.</p></div>
-  <ol class="evolution-line" aria-label="Pipeline de OCR moderno">
-    <li><strong>Localizar</strong><span>Encontrar líneas o regiones de texto.</span></li>
-    <li><strong>Reconocer</strong><span>Convertir cada región en caracteres.</span></li>
-    <li><strong>Estructurar</strong><span>Extraer campos, tablas o JSON.</span></li>
-  </ol>
-  <div class="print-detail"><p>Los sistemas clásicos suelen separar preprocesamiento, detección y reconocimiento. TrOCR usa un encoder visual y un decoder de texto en un sistema end-to-end, especialmente adecuado para imágenes ya recortadas. Un VLM puede interpretar el contexto y devolver una estructura, pero exige comprobar campos y formatos.</p></div>
+  <div class="section-copy"><h2>OCR moderno: de leer caracteres a entender documentos</h2></div>
+  <p class="slide-lead">La evolución de Tesseract a los transformers (TrOCR).</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>El pasado: enfoque clásico (Tesseract)</h3>
+      <p><strong>Metodología:</strong> basado en reglas heurísticas y detección de contornos para identificar caracteres individuales.</p>
+      <p><strong>Limitaciones comunes:</strong></p>
+      <ul>
+        <li>Falla con texto curvo, distorsionado o en perspectivas inusuales.</li>
+        <li>Poca robustez ante fuentes manuscritas complejas o variaciones tipográficas.</li>
+        <li>Sensible al ruido de fondo, baja resolución o iluminación deficiente.</li>
+        <li>Requiere preprocesamiento intensivo (normalización, binarización).</li>
+      </ul>
+    </div>
+    <div>
+      <h3>El presente: transformers para OCR (TrOCR y VLM)</h3>
+      <p><strong>Arquitectura end-to-end:</strong> utiliza Vision Transformers (ViT) para codificar la imagen de forma global y un modelo de lenguaje (como BERT o GPT) decodifica la secuencia de texto resultante.</p>
+      <p><strong>Ventaja fundamental:</strong> no «lee» letra a letra, sino que «entiende» la secuencia visual completa del texto en contexto, de forma similar a como los humanos leen.</p>
+      <p><strong>Estado del arte (SOTA):</strong></p>
+      <ul>
+        <li><strong>TrOCR (Microsoft):</strong> un referente específico para tareas de OCR.</li>
+        <li><strong>Qwen 2.5/3-VL:</strong> un VLM avanzado que integra OCR con capacidades de razonamiento multimodal.</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section id="ocr-herramientas" data-title="Herramientas" data-layout="visual">
-  <div class="section-copy"><h2>La salida decide la herramienta</h2><p class="lead">Una línea, una página completa y una factura estructurada requieren pipelines distintos.</p></div>
-  <div class="comparison-lanes" aria-label="Herramientas para OCR">
-    <div><strong>EasyOCR</strong><span>Detección y lectura multilínea para prototipos rápidos.</span></div>
-    <div><strong>TrOCR</strong><span>Reconocimiento transformer sobre líneas o palabras recortadas.</span></div>
-    <div><strong>VLM</strong><span>Comprensión documental y salida estructurada con validación.</span></div>
+  <div class="section-copy"><h2>Herramientas prácticas de OCR</h2></div>
+  <p class="slide-lead">Implementación rápida con Hugging Face y EasyOCR.</p>
+  <div class="note-grid">
+    <div>
+      <h3>EasyOCR: el comodín versátil</h3>
+      <p>Una opción todo terreno para cualquier proyecto. Es ligera, soporta más de 80 idiomas y funciona eficientemente en CPU. Ideal para prototipos rápidos y escenarios donde no se dispone de GPU.</p>
+    </div>
+    <div>
+      <h3>TrOCR (Hugging Face): precisión avanzada</h3>
+      <p>Ofrece la máxima precisión, especialmente diseñado para textos manuscritos, históricos o muy específicos. Requiere una GPU para un rendimiento óptimo debido a su arquitectura basada en Transformers.</p>
+    </div>
+    <div>
+      <h3>VLM (Qwen, GPT-4V): documentos estructurados</h3>
+      <p>Perfectos para casos de uso complejos como el procesamiento de facturas o tablas. Permiten extraer información estructurada, por ejemplo JSON, en lugar de solo texto plano, integrando visión y lenguaje para un razonamiento avanzado.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>EasyOCR integra detección y reconocimiento. TrOCR se centra en reconocer una región de texto y ofrece checkpoints para impreso o manuscrito. Los VLM pueden contestar preguntas sobre documentos o producir JSON, pero conviene validar cada campo y usar OCR especializado cuando la exactitud carácter a carácter sea prioritaria.</p></div>
 </section>
 
 <section id="superresolucion" data-title="Superresolución" data-layout="visual">
-  <div class="section-copy"><h2>Más detalle, no más verdad</h2><p class="lead">La red genera una versión de mayor resolución compatible con patrones aprendidos.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-06/presentacion/superresolucion.jpeg}}" alt="Comparación de una rana y un tigre ampliados con interpolación bicúbica y Swin2SR."><figcaption>Swin2SR recupera bordes y texturas plausibles frente a una ampliación bicúbica.</figcaption></figure>
-  <div class="print-detail"><p>Swin2SR usa bloques Swin Transformer V2 para superresolución y restauración de artefactos de compresión. Puede producir una imagen más nítida, pero los detalles generados son estimaciones: no prueban qué había en la escena original.</p></div>
+  <div class="section-copy"><h2>Super-resolución: restaurando el detalle perdido</h2></div>
+  <p class="slide-lead">El uso de deep learning para generar detalles plausibles de alta frecuencia a partir de una imagen de baja resolución, superando los límites de la interpolación tradicional (bilineal, bicúbica…).</p>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p><strong>El modelo SOTA: Swin2SR.</strong></p>
+      <ul>
+        <li>Basado en Swin Transformers V2, lo que le permite procesar imágenes de manera eficiente y global.</li>
+        <li>Entrenado para escalar la imagen y también para eliminar artefactos de compresión JPEG y ruido.</li>
+        <li><strong>Ventaja clave:</strong> recupera y sintetiza texturas finas (como pelo, tela o detalles faciales) que los métodos clásicos dejarían borrosas o artificiales.</li>
+      </ul>
+    </div>
+    <figure class="compare-media" data-compare data-before="la interpolación bicúbica" data-after="la salida de Swin2SR">
+      <div class="compare-stage" data-compare-stage style="--compare-x: 50%">
+        <img src="{{ASSET:tema-06/presentacion/superresolucion-rana-baja.webp}}" alt="Una rana arborícola ampliada con interpolación bicúbica: ruido de color y textura empastada.">
+        <div class="compare-overlay">
+          <img src="{{ASSET:tema-06/presentacion/superresolucion-rana-alta.webp}}" alt="La misma rana reconstruida con Swin2SR: bordes limpios y textura de piel recuperada.">
+        </div>
+        <span class="compare-line" aria-hidden="true"></span>
+        <span class="compare-tag compare-tag--after" aria-hidden="true">Swin2SR</span>
+        <span class="compare-tag compare-tag--before" aria-hidden="true">Bicúbica</span>
+      </div>
+      <div class="compare-controls">
+        <label for="compare-sr">Deslizar para comparar</label>
+        <input type="range" id="compare-sr" data-compare-position min="0" max="100" value="50" step="1">
+      </div>
+      <figcaption>Mira el recuadro rojo: la textura fina de la derecha la sintetiza el modelo.</figcaption>
+    </figure>
+  </div>
+  <p class="slide-callout"><strong>Nota importante:</strong> la super-resolución no es magia. El modelo «imagina» detalles basándose en patrones aprendidos de su vasto conjunto de entrenamiento, no reconstruye información que nunca existió.</p>
 </section>
 
-<section id="superresolucion-usos" data-title="Límites" data-layout="question">
-  <div class="section-copy"><h2>Mejorar sin inventar evidencia</h2><p class="lead">La utilidad visual puede aumentar aunque la fidelidad científica no lo haga.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Archivos</strong> restaurar fotos y vídeo antiguos.</p><p><strong>Catálogo</strong> homogeneizar imágenes de producto.</p><p><strong>Medicina</strong> validar antes de extraer conclusiones.</p></div>{{QUIZ:q602}}</div>
-  <div class="print-detail"><p>También puede ayudar a visualizar imágenes aéreas o satelitales. En medicina, inspección o investigación forense, una textura inventada puede confundirse con una señal real. La salida mejorada nunca debe reemplazar al original ni usarse para diagnóstico sin validación específica y supervisión experta.</p></div>
+<section id="superresolucion-usos" data-title="Límites" data-layout="visual">
+  <div class="section-copy"><h2>Aplicaciones reales y limitaciones</h2></div>
+  <p class="slide-lead">Dónde aplicar superresolución en industria.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Restauración de archivos</h3>
+      <ul>
+        <li>Digitalización de fotos antiguas o documentos históricos dañados.</li>
+        <li>Mejora de contenido multimedia antiguo (remasterización).</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Medicina e imagen satelital</h3>
+      <ul>
+        <li>Mejorar la legibilidad de escáneres médicos.</li>
+        <li>Zoom en imágenes aéreas o satelitales.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>E-commerce y marketing</h3>
+      <ul>
+        <li>Mejorar fotos de productos de baja calidad enviadas por usuarios o proveedores.</li>
+        <li>Lograr una apariencia profesional en la web para el catálogo de productos.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="slide-callout"><strong>Riesgo crítico: «alucinaciones».</strong> El modelo puede inventar un tumor o una mancha. Nunca usar para diagnóstico crítico sin supervisión.</p>
+</section>
+
+<section id="superresolucion-pregunta" data-title="Detalle" data-layout="question">
+  <div class="section-copy">
+    <h2>Detalle generado no es evidencia</h2>
+    <p class="lead">Lo que aparece al ampliar puede venir del modelo, no del sensor.</p>
+  </div>
+  {{QUIZ:q602}}
+  <div class="print-detail"><p>La superresolución sintetiza textura plausible a partir de patrones aprendidos. En un contexto diagnóstico, cualquier estructura nueva debe comprobarse sobre la imagen original.</p></div>
 </section>
 
 <section id="fondo" data-title="Fondo" data-layout="visual">
-  <div class="section-copy"><h2>Separar con transparencia</h2><p class="lead">Los bordes suaves necesitan una máscara continua, no una decisión binaria.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-06/presentacion/eliminacion-fondo.jpeg}}" alt="Ejemplos de objetos antes y después de retirar el fondo, con transparencia visible."><figcaption>Un canal alfa conserva transiciones en pelo, vidrio, humo y otros contornos difíciles.</figcaption></figure>
-  <div class="print-detail"><p>El alpha matting estima opacidades entre 0 y 1 para mezclar primer plano y fondo. Modelos como RMBG producen una máscara suave que puede convertirse en canal alfa. Conviene revisar halos, transparencias, objetos finos y la licencia del checkpoint antes de usarlo en producción.</p></div>
+  <div class="section-copy"><h2>Eliminación de fondo profesional</h2></div>
+  <p class="slide-lead">El reto del «alpha matting» y el modelo RMBG.</p>
+  <div class="slide-split">
+    <div class="note-grid note-grid--two">
+      <div>
+        <h3>El problema: bordes difusos</h3>
+        <p>Segmentar objetos sólidos es fácil. Pero elementos como el pelo, el pelaje o el vidrio transparente son extremadamente difíciles de separar debido a sus bordes difusos y semitransparentes.</p>
+      </div>
+      <div>
+        <h3>La solución: RMBG-1.4 (BRIA AI)</h3>
+        <p>Un modelo de vanguardia diseñado para el alpha matting. Genera un canal alfa de transparencia gradual en los bordes, no una máscara binaria. Esto permite recortes profesionales que se integran perfectamente en cualquier fondo, sin el efecto «pegatina».</p>
+      </div>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-06/presentacion/eliminacion-fondo.jpeg}}" alt="Recorte con canal alfa que conserva el detalle del pelo frente a una máscara binaria.">
+    </figure>
+  </div>
 </section>
 
 <section id="matching" data-title="Matching" data-layout="visual">
-  <div class="section-copy"><h2>La misma escena, otra vista</h2><p class="lead">El matching une puntos que representan el mismo lugar pese a perspectiva, luz u oclusión.</p></div>
-  <figure class="figure-media lesson-image lesson-image--wide"><img src="{{ASSET:tema-06/presentacion/image-matching.jpeg}}" alt="Correspondencias visuales trazadas entre pares de fotografías de edificios."><figcaption>SuperPoint o DISK detectan y describen puntos; LightGlue propone correspondencias y descarta muchas ambiguas.</figcaption></figure>
-  <div class="print-detail"><p>Los métodos aprendidos ofrecen robustez en escenas difíciles, mientras SIFT u ORB siguen siendo útiles cuando importan simplicidad, coste o ausencia de datos. Tras el matching se suele aplicar una comprobación geométrica —por ejemplo, RANSAC— para eliminar correspondencias incompatibles con la cámara.</p></div>
+  <div class="section-copy"><h2>Image matching: encontrando parejas visuales</h2></div>
+  <p class="slide-lead">El fin de los algoritmos heurísticos (SIFT, ORB…).</p>
+  <div class="slide-prose">
+    <p><strong>¿Qué es?</strong> Encontrar puntos idénticos en dos fotos de la misma escena tomadas desde ángulos diferentes, a pesar de cambios en la perspectiva o la iluminación. Esta tarea es fundamental para aplicaciones como la reconstrucción 3D, la realidad aumentada y la localización de robots.</p>
+  </div>
+  <h3 class="slide-subtitle">La nueva era: deep learning</h3>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Detector (SuperPoint, DISK)</h3>
+      <p>Una red neuronal avanzada que identifica los puntos clave y más distintivos (esquinas, texturas complejas) en una imagen, superando con creces la precisión de los algoritmos matemáticos clásicos.</p>
+    </div>
+    <div>
+      <h3>Matcher (LightGlue)</h3>
+      <p>Un modelo basado en Transformer que evalúa los puntos detectados en ambas imágenes y determina cuáles corresponden entre sí, filtrando eficazmente los errores geométricos y emparejamientos incorrectos.</p>
+    </div>
+  </div>
+  <figure class="figure-media lesson-image lesson-image--wide">
+    <img src="{{ASSET:tema-06/presentacion/image-matching.jpeg}}" alt="Correspondencias entre dos fotografías de la misma escena tomadas desde ángulos distintos.">
+  </figure>
+  <p class="slide-callout"><strong>Ventaja clave:</strong> este enfoque moderno funciona muy bien incluso con cambios de luz (día y noche), grandes variaciones de perspectiva y oclusiones, ofreciendo una gran robustez.</p>
 </section>
 
 <section id="reconstruccion" data-title="Reconstrucción" data-layout="visual">
-  <div class="section-copy"><h2>Correspondencias que crean geometría</h2><p class="lead">Varios puntos compartidos permiten relacionar cámaras, movimiento y estructura 3D.</p></div>
-  <div class="outcome-flow" aria-label="Aplicaciones del image matching">
-    <div><strong>Fotogrametría</strong><span>Reconstruir geometría y posiciones de cámara.</span></div>
-    <div><strong>SLAM</strong><span>Localizar un robot mientras construye un mapa.</span></div>
-    <div><strong>Panoramas</strong><span>Alinear imágenes solapadas en una vista continua.</span></div>
+  <div class="section-copy"><h2>Reconstruyendo el mundo en 3D</h2></div>
+  <p class="slide-lead">Aplicaciones críticas del matching.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Fotogrametría (SfM)</h3>
+      <p>Al identificar y conectar puntos coincidentes en múltiples fotos de una escena, se puede reconstruir la geometría 3D del objeto y la posición de la cámara en cada toma.</p>
+    </div>
+    <div>
+      <h3>SLAM (robótica)</h3>
+      <p>Un robot utiliza el matching de características para comprender su posición dentro de un entorno y construir un mapa del mismo, incluso mientras se mueve y explora.</p>
+    </div>
+    <div>
+      <h3>Panoramas (stitching)</h3>
+      <p>Permite fusionar sin problemas varias imágenes superpuestas en una única foto de gran formato o una vista de 360 grados, eliminando duplicados y alineando las perspectivas.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>Structure from Motion triangula puntos vistos desde varias cámaras. SLAM combina localización y mapa durante el movimiento. El stitching estima transformaciones entre imágenes para fusionarlas; necesita solape suficiente y una geometría compatible.</p></div>
 </section>
 
 <section id="profundidad" data-title="Profundidad" data-layout="visual">
-  <div class="section-copy"><h2>Una imagen, muchas distancias</h2><p class="lead">La profundidad monocular asigna a cada píxel una posición relativa en la escena.</p></div>
-  <div class="visual-pair" aria-label="Imagen RGB y mapas de profundidad correspondientes">
-    <figure><img src="{{ASSET:tema-06/presentacion/profundidad-rgb.jpeg}}" alt="Tres escenas RGB: una persona, una carretera y una mariposa."><figcaption>Entrada RGB</figcaption></figure>
-    <figure><img src="{{ASSET:tema-06/presentacion/profundidad-mapa.jpeg}}" alt="Mapas de profundidad coloreados de las tres escenas."><figcaption>Profundidad estimada</figcaption></figure>
+  <div class="section-copy"><h2>Depth estimation: 3D desde una sola imagen</h2></div>
+  <p class="slide-lead">La revolución de la profundidad monocular.</p>
+  <div class="note-grid">
+    <div>
+      <h3>Depth Anything V2/V3</h3>
+      <p>Un modelo fundacional entrenado con millones de imágenes etiquetadas y no etiquetadas, aprovechando la diversidad del mundo real.</p>
+    </div>
+    <div>
+      <h3>Capacidad</h3>
+      <p>Genera un mapa de profundidad (heatmap) donde el color indica la distancia relativa, revelando la estructura 3D subyacente.</p>
+    </div>
+    <div>
+      <h3>Robustez</h3>
+      <p>Funciona en una gran variedad de escenarios: interiores complejos, exteriores dinámicos, y con elementos desafiantes como objetos transparentes o superficies reflejantes.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>Depth Anything V2 es un modelo fundacional para profundidad monocular. Sus modelos generales producen profundidad relativa y se entrenan con una combinación de datos etiquetados y pseudoetiquetados. Un mapa de color ayuda a visualizar el orden de las superficies, pero el color no equivale automáticamente a metros.</p></div>
+  <figure class="compare-media" data-compare data-before="la imagen RGB" data-after="el mapa de profundidad">
+    <div class="compare-stage" data-compare-stage style="--compare-x: 50%">
+      <img src="{{ASSET:tema-06/presentacion/profundidad-escena-rgb.webp}}" alt="Un camión circulando por una carretera recta, con un coche al fondo y un poste a la izquierda.">
+      <div class="compare-overlay">
+        <img src="{{ASSET:tema-06/presentacion/profundidad-escena-mapa.webp}}" alt="La misma carretera como mapa de profundidad: el camión aparece muy claro por cercano y el cielo oscuro por lejano.">
+      </div>
+      <span class="compare-line" aria-hidden="true"></span>
+      <span class="compare-tag compare-tag--after" aria-hidden="true">Profundidad</span>
+      <span class="compare-tag compare-tag--before" aria-hidden="true">RGB</span>
+    </div>
+    <div class="compare-controls">
+      <label for="compare-depth">Deslizar para comparar</label>
+      <input type="range" id="compare-depth" data-compare-position min="0" max="100" value="50" step="1">
+    </div>
+    <figcaption>Una sola cámara y una sola imagen: el modelo deduce qué está cerca y qué está lejos.</figcaption>
+  </figure>
 </section>
 
 <section id="profundidad-usos" data-title="Aplicaciones" data-layout="visual">
-  <div class="section-copy"><h2>Un mapa, cuatro usos</h2><p class="lead">La distancia por píxel permite seleccionar planos, navegar y aproximar una escena 3D.</p></div>
-  <div class="plain-columns" aria-label="Aplicaciones de mapas de profundidad">
-    <div><strong>Bokeh</strong><span>Separar sujeto y fondo por distancia.</span></div>
-    <div><strong>Navegación</strong><span>Detectar obstáculos y espacio libre.</span></div>
-    <div><strong>Nube de puntos</strong><span>Proyectar RGB y profundidad en 3D.</span></div>
-    <div><strong>Filtro</strong><span>Conservar solo un intervalo de profundidad.</span></div>
+  <div class="section-copy"><h2>Aplicaciones depth</h2></div>
+  <p class="slide-lead">¿Para qué sirve un mapa de profundidad?</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Efecto retrato (bokeh)</h3>
+      <p>Desenfocar el fondo sintéticamente, creando imágenes con una profundidad de campo profesional y destacando el sujeto principal.</p>
+    </div>
+    <div>
+      <h3>Robótica y navegación</h3>
+      <p>Permitir que robots y vehículos autónomos detecten obstáculos y comprendan su entorno 3D, utilizando solo una cámara de bajo coste.</p>
+    </div>
+    <div>
+      <h3>Generación de nubes de puntos</h3>
+      <p>Convertir una foto plana en una estructura 3D navegable (malla o nube de puntos) al combinar la imagen RGB con su mapa de profundidad.</p>
+    </div>
+    <div>
+      <h3>Filtro de imagen</h3>
+      <p>Podemos eliminar partes de la imagen que no están en la escena que nos interesa aplicando un threshold.</p>
+    </div>
   </div>
-  <div class="print-detail"><p>Una nube de puntos necesita además los parámetros de cámara y una escala coherente. Para robótica de seguridad, una predicción monocular debe validarse y, con frecuencia, combinarse con sensores o restricciones temporales.</p></div>
+  <p class="slide-callout"><strong>Profundidad relativa vs. métrica.</strong> Estos modelos suelen estimar profundidad relativa (mapas de calor). Para obtener metros reales se necesita calibración de cámara o modelos específicos de metric depth estimation.</p>
 </section>
 
 <section id="profundidad-metrica" data-title="Escala" data-layout="question">
-  <div class="section-copy"><h2>Cerca y lejos no son metros</h2><p class="lead">La profundidad relativa ordena la escena; la métrica intenta recuperar distancias físicas.</p></div>
-  <div class="question-layout question-layout--text"><div class="evaluation-list"><p><strong>Relativa</strong> compara qué está delante o detrás.</p><p><strong>Métrica</strong> estima unidades físicas.</p><p><strong>Calibración</strong> aporta geometría y escala de cámara.</p></div>{{QUIZ:q603}}</div>
-  <div class="print-detail"><p>Los checkpoints generales de Depth Anything V2 estiman profundidad relativa. Para trabajar en metros se necesita un modelo entrenado para profundidad métrica, calibración u otra fuente de escala. Normalizar un mapa entre 0 y 1 solo cambia su representación; no lo convierte en distancia física.</p></div>
+  <div class="section-copy">
+    <h2>Relativa no es métrica</h2>
+    <p class="lead">Un mapa normalizado ordena distancias, pero no las mide.</p>
+  </div>
+  {{QUIZ:q603}}
+  <div class="print-detail"><p>Un mapa relativo dice qué está más cerca que qué. Para responder «a cuántos metros» hacen falta calibración de cámara, una referencia conocida o un modelo entrenado para profundidad métrica.</p></div>
 </section>
 
 <section id="practica" data-title="Colab" data-layout="practice">
-  <div class="section-copy"><h2>Elige una tarea y pruébala</h2><p class="lead">El cuaderno reúne pose, OCR, superresolución, fondo y profundidad con modelos de Hugging Face.</p></div>
-  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Ejecuta una tarea con tu imagen.</span></li><li><span>Compara la salida y combina dos tareas.</span></li></ol>
+  <div class="section-copy"><h2>Cinco tareas, un cuaderno</h2><p class="lead">Pose, OCR, superresolución, fondo y profundidad sobre tus propias imágenes.</p></div>
+  <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Ejecuta cada tarea por separado.</span></li><li><span>Combina dos pipelines y comenta el resultado.</span></li></ol>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/6_Otras_tareas.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
-  <div class="print-detail"><p>El cuaderno usa RT-DETR + ViTPose, TrOCR, Swin2SR, RMBG-1.4 y Depth Anything V2. Cada bloque descarga sus pesos la primera vez y algunos funcionan mejor con GPU; la disponibilidad de GPU gratuita en Colab no está garantizada. Empieza por una sola tarea, conserva la imagen original y describe qué errores observas. Como ampliación, combina dos salidas en un pipeline. Con esta práctica termina el recorrido del curso.</p></div>
+  <div class="print-detail"><p>Cada tarea es independiente: puedes ejecutar solo la que te interese. La ampliación consiste en encadenar dos pipelines, por ejemplo estimar profundidad y usar un umbral para recortar el fondo, o pasar un recorte con superresolución al OCR. Anota qué modelo, qué versión y qué error observas en cada paso.</p></div>
 </section>

@@ -229,12 +229,12 @@
       24
     ],
     "originalAsset": "ppt/media/image-24-1.jpeg",
-    "webAsset": "",
+    "webAsset": "public/assets/tema-01/presentacion/iou-formula.jpeg",
     "claim": "IoU relaciona intersección y unión de dos cajas.",
     "url": "",
-    "checkedOn": "2026-09-15",
+    "checkedOn": "2026-09-17",
     "status": "verified",
-    "note": "Se sustituyó el gráfico estático por una simulación local comprobada con tests."
+    "note": "La imagen de la fórmula se recuperó del PPTX al trasladar el tema al completo. Convive con la simulación local: la fórmula es la fuente y el deslizador permite comprobarla."
   },
   {
     "sectionId": "errores",
@@ -338,5 +338,44 @@
     "checkedOn": "2026-09-16",
     "status": "verified",
     "note": "Pantalla nueva, sin diapositiva de origen. Los recuentos los calcula matchDetections con el protocolo de emparejamiento por puntuación y umbral IoU 0,50; hay pruebas unitarias en tests/metrics.test.mjs."
+  },
+  {
+    "sectionId": "ver",
+    "sourceSlides": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "El tema 1 reproduce las diapositivas 4 a 30 del PDF con su título, su texto y sus bloques completos.",
+    "url": "docs/Modelos-fundacionales-en-vision-artificial.pdf",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Traslado literal pedido por el profesor. Cada diapositiva ocupa una pantalla y conserva su redacción; los ejercicios, las animaciones y las dos simulaciones ocupan pantallas propias intercaladas. Se omiten los iconos decorativos, la marca de agua de Gamma y el meme de la diapositiva 16, sin valor docente."
   }
 ]

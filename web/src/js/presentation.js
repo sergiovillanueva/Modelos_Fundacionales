@@ -5,6 +5,11 @@ import {initIouDemo} from './iou-demo.js';
 import {initThresholdLab} from './threshold-lab.js';
 import {initPromptLab} from './prompt-lab.js';
 import {initSimilarityLab} from './similarity-lab.js';
+import {initLicenseLab} from './license-lab.js';
+import {initOksLab} from './oks-lab.js';
+import {initAnomalyLab} from './anomaly-lab.js';
+import {initNmsLab} from './nms-lab.js';
+import {initCompareMedia} from './compare-media.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
@@ -13,6 +18,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   initThresholdLab();
   initPromptLab();
   initSimilarityLab();
+  initLicenseLab();
+  initOksLab();
+  initAnomalyLab();
+  initNmsLab();
+  initCompareMedia();
 
   const deck = new Reveal({
     hash: true,
@@ -36,6 +46,32 @@ document.addEventListener('DOMContentLoaded', async () => {
   await deck.initialize();
 
   // Update back to reading URL with current slide ID
+  // Una diapositiva fiel al original puede traer más contenido del que cabe en 1280 x 720.
+  // Se mide sin escalar y se reduce solo lo justo, como hace un lienzo de diapositiva.
+  function fitCurrentSlide() {
+    const slide = deck.getCurrentSlide();
+    const fit = slide?.querySelector('.slide-fit');
+    if (!fit) return;
+
+    fit.style.transform = 'none';
+    const styles = getComputedStyle(slide);
+    const available = slide.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom);
+    const needed = fit.scrollHeight;
+    const scale = needed > available ? Math.max(0.5, available / needed) : 1;
+    fit.style.transform = scale < 1 ? `scale(${scale})` : 'none';
+  }
+
+  async function fitWhenReady() {
+    fitCurrentSlide();
+    const images = [...(deck.getCurrentSlide()?.querySelectorAll('img') || [])];
+    await Promise.allSettled(images.map((image) => image.decode()));
+    fitCurrentSlide();
+  }
+
+  deck.on('slidechanged', fitWhenReady);
+  window.addEventListener('resize', fitCurrentSlide);
+  await fitWhenReady();
+
   const backBtn = document.getElementById('btn-back-reading');
   function updateBackUrl() {
     if (!backBtn) return;

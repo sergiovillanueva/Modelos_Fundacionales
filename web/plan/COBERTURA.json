@@ -122,17 +122,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Adaptada como introducción visual a visión artificial.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -167,17 +166,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Animación, explicación de salidas y pregunta adaptadas.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -200,17 +198,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Caja, categoría y puntuación explicadas con la imagen fuente.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -233,17 +230,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Taxonomía visual conservada como mapa de familias.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -256,26 +252,25 @@
       ],
       "topic": "01",
       "batch": "T1-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "historia"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Cronología restaurada; eliminado el recurso visual que repetía la taxonomía de la diapositiva 7.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -298,17 +293,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "GIF convertido a WebP controlable; texto corregido para evitar generalización universal.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -322,26 +316,25 @@
       ],
       "topic": "01",
       "batch": "T1-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "dos-etapas"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "RPN, ROI Pooling, candidatos y trade-off de latencia restaurados.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -364,17 +357,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Flujo R-CNN conservado en un paso visual.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -395,19 +387,18 @@
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Comparativa histórica conservada con advertencia de condiciones de medida.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -423,25 +414,23 @@
       "batch": "T1-D",
       "status": "adaptada",
       "sectionIds": [
-        "una-etapa",
         "yolo"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "agrupada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Idea de una etapa y diagrama histórico de YOLOv1 en dos pasos.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -455,26 +444,25 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "arquitectura-yolo"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Rejilla, predicción simultánea y arquitectura unificada recuperadas como formulación de YOLOv1.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -501,26 +489,25 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "evolucion-yolo"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Hitos YOLOv1, v3, v4, v5, v7, v8 y v9 recuperados sin comparativa universal de rendimiento.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -540,26 +527,25 @@
       ],
       "topic": "01",
       "batch": "T1-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "contexto"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Localidad, sesgo inductivo y heurísticas restaurados con una formulación no universal sobre CNN.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -582,17 +568,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Consultas de objetos y diagrama DETR adaptados.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -616,17 +601,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Matching de entrenamiento distinguido de NMS mediante diagrama y pregunta.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -650,26 +634,25 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "rf-detr"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Backbone preentrenado, atención deformable y diseño sin anchors explicados con cautela de variante.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -683,26 +666,25 @@
       ],
       "topic": "01",
       "batch": "T1-E",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "rf-detr"
+        "rf-detr-flujo"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Flujo multiescala de cinco pasos restaurado en la sección RF-DETR.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -725,24 +707,23 @@
       "batch": "T1-F",
       "status": "adaptada",
       "sectionIds": [
-        "eleccion"
+        "ultralytics"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Comparativa comercial sustituida por criterios de elección condicionados.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -765,24 +746,23 @@
       "batch": "T1-F",
       "status": "adaptada",
       "sectionIds": [
-        "eleccion"
+        "rf-detr-clase"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Afirmaciones de licencia y superioridad no verificadas no se publican como hechos.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -803,19 +783,18 @@
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Gráfica de latencia conservada con condición explícita de protocolo.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -838,17 +817,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Gráfico estático convertido en simulación de IoU con control accesible.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -876,17 +854,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "TP, FP y FN explicados en un esquema breve.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -906,27 +883,25 @@
       ],
       "topic": "01",
       "batch": "T1-H",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "precision-recall",
-        "umbral"
+        "precision-recall"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Precisión, recall y efecto del umbral conectados sin repetir la visual de AP.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -940,26 +915,25 @@
       ],
       "topic": "01",
       "batch": "T1-H",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "ap-map"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Curva reservada a AP y mAP; protocolos de IoU distinguidos.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -982,17 +956,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Clases COCO y adaptación al dominio convertidas en pregunta.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -1014,17 +987,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Criterios de evaluación y pregunta de decisión incorporados.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-15",
-        "reviewer": "Revisión local de implementación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX/PDF cotejados visualmente",
-          "npm run build",
-          "npm run check",
-          "npm test",
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
           "npm run test:e2e",
-          "node tests/visual-check.mjs"
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -1039,26 +1011,25 @@
       ],
       "topic": "01",
       "batch": "T1-I",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "practica"
+        "siguiente"
       ],
       "otherDestinations": [
         "content/tema-01/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Transición desde vocabulario cerrado a modelos multimodales restaurada junto a la práctica.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-01/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs 01-deteccion en escritorio, móvil y presentación",
+          "PDF del tema regenerado e inspeccionado"
         ]
       }
     },
@@ -1072,7 +1043,7 @@
       ],
       "topic": "02",
       "batch": "T2-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "hub"
       ],
@@ -1081,17 +1052,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-02/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1117,27 +1087,25 @@
       ],
       "topic": "02",
       "batch": "T2-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "ecosistema",
-        "flujo"
+        "ecosistema"
       ],
       "otherDestinations": [
         "content/tema-02/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-02/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1150,27 +1118,25 @@
       ],
       "topic": "02",
       "batch": "T2-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "buscar",
-        "model-card"
+        "buscar"
       ],
       "otherDestinations": [
         "content/tema-02/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-02/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1184,27 +1150,25 @@
       ],
       "topic": "02",
       "batch": "T2-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "licencias",
-        "licencia"
+        "licencias"
       ],
       "otherDestinations": [
         "content/tema-02/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Proceso de revisión de licencias conservado; se retiraron conclusiones jurídicas absolutas.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-02/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1217,28 +1181,25 @@
       ],
       "topic": "02",
       "batch": "T2-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "carga",
-        "archivos",
-        "from-pretrained"
+        "carga"
       ],
       "otherDestinations": [
         "content/tema-02/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-02/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1252,7 +1213,7 @@
       ],
       "topic": "02",
       "batch": "T2-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "pipeline"
       ],
@@ -1261,17 +1222,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-02/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1285,7 +1245,7 @@
       ],
       "topic": "03",
       "batch": "T3-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "unir"
       ],
@@ -1294,17 +1254,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1333,26 +1292,25 @@
       ],
       "topic": "03",
       "batch": "T3-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "fundacionales"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1366,7 +1324,7 @@
       ],
       "topic": "03",
       "batch": "T3-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "multimodalidad"
       ],
@@ -1375,17 +1333,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1399,7 +1356,7 @@
       ],
       "topic": "03",
       "batch": "T3-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "zero-shot"
       ],
@@ -1408,17 +1365,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1432,7 +1388,7 @@
       ],
       "topic": "03",
       "batch": "T3-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "clip"
       ],
@@ -1441,17 +1397,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1474,7 +1429,7 @@
       ],
       "topic": "03",
       "batch": "T3-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "clip-flujo"
       ],
@@ -1483,17 +1438,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1510,7 +1464,7 @@
       ],
       "topic": "03",
       "batch": "T3-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "clip-entrenamiento"
       ],
@@ -1519,17 +1473,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1542,26 +1495,25 @@
       ],
       "topic": "03",
       "batch": "T3-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "clip-limites"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1575,7 +1527,7 @@
       ],
       "topic": "03",
       "batch": "T3-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "blip"
       ],
@@ -1584,17 +1536,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1607,7 +1558,7 @@
       ],
       "topic": "03",
       "batch": "T3-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "grounding"
       ],
@@ -1616,17 +1567,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1648,7 +1598,7 @@
       ],
       "topic": "03",
       "batch": "T3-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "grounding-flujo"
       ],
@@ -1657,17 +1607,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1690,26 +1639,25 @@
       ],
       "topic": "03",
       "batch": "T3-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "grounding-claves"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Vocabulario abierto explicado sin usar una cardinalidad infinita literal.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1722,7 +1670,7 @@
       ],
       "topic": "03",
       "batch": "T3-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "grounding-limites"
       ],
@@ -1731,17 +1679,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1757,26 +1704,25 @@
       ],
       "topic": "03",
       "batch": "T3-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "vlm"
+        "vlm-anatomia"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1789,26 +1735,25 @@
       ],
       "topic": "03",
       "batch": "T3-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "qwen"
+        "vlm"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1827,7 +1772,7 @@
       ],
       "topic": "03",
       "batch": "T3-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "prompting"
       ],
@@ -1836,17 +1781,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1860,26 +1804,25 @@
       ],
       "topic": "03",
       "batch": "T3-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "elegir"
+        "eleccion"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Regla de selección cualitativa; la gráfica queda como apoyo del PDF.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1895,26 +1838,25 @@
       ],
       "topic": "03",
       "batch": "T3-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "validar"
       ],
       "otherDestinations": [
         "content/tema-03/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Mitigaciones conservadas sin proponer un umbral universal.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-03/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1928,7 +1870,7 @@
       ],
       "topic": "04",
       "batch": "T4-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "ver"
       ],
@@ -1937,17 +1879,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1961,26 +1902,25 @@
       ],
       "topic": "04",
       "batch": "T4-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "supervision"
       ],
       "otherDestinations": [
         "content/tema-04/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -1994,7 +1934,7 @@
       ],
       "topic": "04",
       "batch": "T4-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "pretextos"
       ],
@@ -2003,17 +1943,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2035,7 +1974,7 @@
       ],
       "topic": "04",
       "batch": "T4-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "destilacion"
       ],
@@ -2044,17 +1983,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2076,26 +2014,25 @@
       ],
       "topic": "04",
       "batch": "T4-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "atencion"
       ],
       "otherDestinations": [
         "content/tema-04/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2109,7 +2046,7 @@
       ],
       "topic": "04",
       "batch": "T4-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "copias"
       ],
@@ -2118,17 +2055,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2142,26 +2078,25 @@
       ],
       "topic": "04",
       "batch": "T4-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "evolucion"
       ],
       "otherDestinations": [
         "content/tema-04/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Cronología corregida: DINOv2 (2023) y DINOv3 (2025).",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2185,7 +2120,7 @@
       ],
       "topic": "04",
       "batch": "T4-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "datos"
       ],
@@ -2194,17 +2129,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2222,7 +2156,7 @@
       ],
       "topic": "04",
       "batch": "T4-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "entrenamiento"
       ],
@@ -2231,17 +2165,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2263,26 +2196,25 @@
       ],
       "topic": "04",
       "batch": "T4-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "capacidades"
       ],
       "otherDestinations": [
         "content/tema-04/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2296,7 +2228,7 @@
       ],
       "topic": "04",
       "batch": "T4-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "embedding"
       ],
@@ -2305,17 +2237,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2330,28 +2261,25 @@
       ],
       "topic": "04",
       "batch": "T4-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "similitud",
-        "pca",
-        "vecinos"
+        "visualizar"
       ],
       "otherDestinations": [
         "content/tema-04/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Mapas de atención, PCA, t-SNE/UMAP, similitud y vecinos cercanos quedan trazados en la web.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2365,7 +2293,7 @@
       ],
       "topic": "04",
       "batch": "T4-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "dinov3-mapas"
       ],
@@ -2374,17 +2302,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2398,7 +2325,7 @@
       ],
       "topic": "04",
       "batch": "T4-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "dinov3-denso"
       ],
@@ -2407,17 +2334,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2430,26 +2356,25 @@
       ],
       "topic": "04",
       "batch": "T4-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "eleccion"
       ],
       "otherDestinations": [
         "content/tema-04/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2474,9 +2399,8 @@
       ],
       "topic": "04",
       "batch": "T4-D",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "normalidad",
         "anomalias"
       ],
       "otherDestinations": [
@@ -2484,17 +2408,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-04/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2508,26 +2431,25 @@
       ],
       "topic": "05",
       "batch": "T5-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "sam"
       ],
       "otherDestinations": [
         "content/tema-05/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Capacidades separadas por versión para no atribuir vídeo o texto a todos los checkpoints.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2541,27 +2463,25 @@
       ],
       "topic": "05",
       "batch": "T5-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "segmentacion",
-        "tipos"
+        "segmentacion"
       ],
       "otherDestinations": [
         "content/tema-05/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2575,26 +2495,25 @@
       ],
       "topic": "05",
       "batch": "T5-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "sam1"
       ],
       "otherDestinations": [
         "content/tema-05/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "SAM 1 conserva puntos, cajas y máscaras; el texto no se presenta como prompt nativo.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2608,7 +2527,7 @@
       ],
       "topic": "05",
       "batch": "T5-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "sam2"
       ],
@@ -2617,17 +2536,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2643,26 +2561,25 @@
       ],
       "topic": "05",
       "batch": "T5-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "sam3"
       ],
       "otherDestinations": [
         "content/tema-05/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Presence Token, detector y tracker recuperados; reconocimiento y localización se explican por separado.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2676,7 +2593,7 @@
       ],
       "topic": "05",
       "batch": "T5-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "evolucion"
       ],
@@ -2685,17 +2602,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2717,7 +2633,7 @@
       ],
       "topic": "05",
       "batch": "T5-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "motor-datos"
       ],
@@ -2726,17 +2642,16 @@
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2749,29 +2664,25 @@
       ],
       "topic": "05",
       "batch": "T5-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "promptable",
-        "prompt",
-        "refinar",
-        "conceptos"
+        "promptable"
       ],
       "otherDestinations": [
         "content/tema-05/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Prompts visuales, texto y ejemplares distinguidos por versión.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2784,26 +2695,25 @@
       ],
       "topic": "05",
       "batch": "T5-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "limites"
       ],
       "otherDestinations": [
         "content/tema-05/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido y recursos cotejados con PDF y PPTX; adaptados a una idea por pantalla.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-05/sources.json",
-          "npm run build",
-          "npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2829,25 +2739,25 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "panorama"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "adaptada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2863,25 +2773,25 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "pose"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "adaptada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2900,26 +2810,25 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "pose-top-down",
         "pose-enfoques"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2942,26 +2851,25 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "pose-modelos",
-        "oks"
+        "pose-modelos"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -2987,26 +2895,25 @@
       ],
       "topic": "06",
       "batch": "T6-A",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "pose-usos",
-        "pose-retos"
+        "pose-usos"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "adaptada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3020,25 +2927,25 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "ocr"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3063,25 +2970,25 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "ocr-herramientas"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3096,25 +3003,25 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "superresolucion"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3139,25 +3046,25 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "superresolucion-usos"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "adaptada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3175,25 +3082,25 @@
       ],
       "topic": "06",
       "batch": "T6-B",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "fondo"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3215,25 +3122,25 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "matching"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3258,25 +3165,25 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "reconstruccion"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "adaptada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3291,25 +3198,25 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
         "profundidad"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "corregida",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
@@ -3331,26 +3238,25 @@
       ],
       "topic": "06",
       "batch": "T6-C",
-      "status": "revisada",
+      "status": "adaptada",
       "sectionIds": [
-        "profundidad-usos",
-        "profundidad-metrica"
+        "profundidad-usos"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
-      "treatment": "adaptada",
+      "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Contenido cotejado con PDF, PPTX y notebook; distribuido en pantallas breves.",
+      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
       "review": {
-        "date": "2026-09-16",
-        "reviewer": "Auditoría local de cobertura y presentación",
+        "date": "2026-09-17",
+        "reviewer": "Traslado literal del PDF de origen",
         "evidence": [
-          "PPTX y PDF cotejados diapositiva a diapositiva",
-          "content/tema-06/sources.json",
-          "npm run build y npm run check",
-          "auditoría Playwright en escritorio, móvil y presentación",
-          "PDF regenerado e inspeccionado página a página"
+          "PDF de origen cotejado página a página",
+          "npm run build, npm run check y npm test",
+          "npm run test:e2e",
+          "node tests/visual-check.mjs en escritorio, móvil y presentación",
+          "PDF del tema regenerado: una página por pantalla"
         ]
       }
     },
