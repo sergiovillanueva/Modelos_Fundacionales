@@ -95,3 +95,27 @@ body.course-ready { padding-bottom: 0; }
 .chooser-result[hidden] { display: block !important; }
 .chooser-questions label { padding: 1mm 0; }
 .model-rows > div { padding: 2.5mm 0; font-size: 10pt; }
+
+/* La animacion de entrada arranca en opacity .35 y el PDF la congela ahi:
+   en papel no hay entrada, asi que se desactiva y las paginas salen a plena opacidad. */
+.course-ready .reading-content > section, .reading-content > section { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+/* Nitidez en papel: ninguna imagen se estira por encima de la resolucion que tiene.
+   A 96 px por pulgada de CSS, 1 mm son 3,78 px; a 140 dpi hacen falta 5,5 px por mm. */
+.compare-media { max-width: 130mm; }
+.compare-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; border: 0; box-shadow: none; overflow: visible; }
+.compare-stage img { max-height: 70mm; object-fit: contain; border: 1px solid var(--color-line); border-radius: var(--radius-media); }
+.compare-overlay { position: static; order: -1; clip-path: none; }
+.compare-line { display: none; }
+.compare-tag { bottom: -1mm; }
+.scene-picker { display: none; }
+.scene-note { margin-top: 4mm; font-size: 9.5pt; }
+.media-container img { max-width: 112mm; }
+.detection-example img { max-width: 88mm; }
+.slide-split .media-container img { max-width: 88mm; }
+.lesson-image--wide { max-width: 130mm; }
+.lesson-image--medium { max-width: 105mm; }
+.ocr-stage { max-width: 76mm; margin: 0 auto; }
+.anomaly-stage { max-width: 104mm; margin: 0 auto; }
+.mode-lab .mask-prompts { display: none; }
+.mode-lab .code-sample[hidden] { display: none; }

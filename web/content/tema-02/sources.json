@@ -162,5 +162,16 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Los cuatro identificadores existen en el Hub: google/vit-base-patch16-224, openai/clip-vit-base-patch32, IDEA-Research/grounding-dino-tiny y Salesforce/blip-image-captioning-base. Se añade la detección cerrada con PekingU/rtdetr_r50vd, que es la que enlaza con el detector del tema 01."
+  },
+  {
+    "sectionId": "probar",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "Un Space ejecuta el modelo en el navegador y las páginas de tarea del Hub reúnen modelos, datasets y demos vivas.",
+    "url": "https://huggingface.co/tasks",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Los seis enlaces se comprobaron uno a uno el 17 de septiembre de 2026: dos Spaces que estaban funcionando, BRIA RMBG 1.4 y Depth Anything V2, y cuatro páginas de tarea, que son estables. Se descartaron los Spaces de YOLO-World y OWLSAM porque tenían error de construcción y de arranque, lo que ilustra el aviso de la propia pantalla."
   }
 ]

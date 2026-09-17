@@ -14,14 +14,35 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
 | Tema 01 · Detección | 40 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones, el puente al Hub y las tres salidas de RF-DETR |
-| Tema 02 · Hugging Face | 12 pantallas fieles al PDF: 6 diapositivas, 3 preguntas, el comprobador de licencias y el constructor de pipeline |
+| Tema 02 · Hugging Face | 13 pantallas fieles al PDF: 6 diapositivas, 3 preguntas, el comprobador de licencias, el constructor de pipeline y los Spaces para probar |
 | Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
 | Tema 04 · DINO | 24 pantallas fieles al PDF: 16 diapositivas, 3 preguntas, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
 | Tema 05 · SAM | 15 pantallas fieles al PDF: 9 diapositivas, 3 preguntas, los prompts por puntos y el recorte sobre fondo negro |
-| Tema 06 · Más visión | 20 pantallas fieles al PDF: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala y el de OCR |
+| Tema 06 · Más visión | 21 pantallas fieles al PDF: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR y la verificación geométrica |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados: 46, 16, 28, 28, 18 y 25 páginas |
+| PDFs | Temas 01–06 disponibles y regenerados a plena opacidad: 46, 18, 28, 28, 18 y 26 páginas |
+
+## El PDF salía lavado · 17 de septiembre
+
+El profesor avisa de que los PDF se exportan borrosos. Eran dos cosas distintas y la primera es la que se veía.
+
+**La causa principal.** Las pantallas entran con una animación, `lesson-enter`, que arranca en `opacity: .35`. Al imprimir, todas las secciones se muestran a la vez y cada una empieza su animación; el exportador congela la página en el fotograma cero, así que las **46 páginas del tema 1 salían al 35 % de opacidad**. Texto gris lavado, fotos desvaídas y sensación de borroso. Se desactiva la animación en `print.css` y el PDF sale a plena opacidad. Hay una prueba de navegador que comprueba que en medio `print` ninguna sección tiene animación y todas están a opacidad 1.
+
+**La causa secundaria.** Diez imágenes se imprimían por debajo de 150 puntos por pulgada, la peor a 61, porque el maquetado las estiraba por encima de su resolución. Ninguna imagen se estira ya más allá de lo que da su fichero: los comparadores pasan a imprimirse en dos columnas con las dos imágenes enteras en vez de la cortina al 50 %, y hay topes de ancho para los pósteres de animación, la placa del OCR y la alfombra. Queda una sola imagen por debajo de 140 ppp, con mediana de 391.
+
+Medido con un script que recorre las 156 pantallas en medio `print`, compara el ancho impreso en milímetros con el ancho real del fichero y ordena por resolución efectiva.
+
+## Verificación geométrica y Spaces · 17 de septiembre
+
+| Pantalla | Tema | Qué hace |
+| --- | --- | --- |
+| La mitad de las parejas sobran | 06 | El umbral de reproyección decide qué emparejamientos encajan con la escena. Cuatro son errores típicos y dos limítrofes se cuelan al abrir el umbral |
+| Pruébalo ahora, sin instalar nada | 02 | Seis enlaces comprobados a Spaces y a páginas de tarea, el reto de diez minutos y el aviso de no subir imágenes de cliente a un Space público |
+
+La homografía de la pantalla de matching es real, calculada con `getPerspectiveTransform`, y el error de reproyección de cada pareja lo calcula el navegador con `src/lib/matching.js`. De los Spaces que se probaron, los de YOLO-World y OWLSAM estaban caídos, así que los enlaces apuntan a las páginas de tarea salvo dos demos que sí funcionaban: eso mismo se explica en la pantalla.
+
+Pruebas: **75 unitarias** y **41 de navegador**. Auditoría de las 156 pantallas en escritorio y móvil sin incidencias.
 
 ## Laboratorios nuevos y explicaciones · 17 de septiembre
 
@@ -292,6 +313,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-17 | Interactivos | Comparador de máscara sobre fondo negro, comparador de atención con tres escenas y constructor de pipeline |
 | 2026-09-17 | Costura 01–02 | Puente al Hub al final del tema 01, detección cerrada en el constructor y un identificador de modelo corregido |
 | 2026-09-17 | Laboratorios | Coseno con grupos y longitudes, PCA explicado, inspección de alfombra, pose con escala, OCR de placa y las tres salidas de RF-DETR |
+| 2026-09-17 | PDF y matching | Arreglada la opacidad y la resolución de los PDF, verificación geométrica en el tema 06 y Spaces comprobados en el tema 02 |
 
 ## Al modificar un tema
 

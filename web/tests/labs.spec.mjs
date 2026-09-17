@@ -432,3 +432,43 @@ test('las tres salidas de RF-DETR cambian la clase y el código', async ({page})
   await expect(page.locator('[data-output="esqueletos"]')).toContainText('RFDETRKeypointPreview');
   await expect(page.locator('[data-output="cajas"]')).toBeHidden();
 });
+
+test('la verificación geométrica separa parejas coherentes de casualidades', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#verificacion');
+  await expect(page.locator('[data-matching-kept]')).toHaveText('9');
+  await expect(page.locator('[data-matching-verdict]')).toHaveText('Estimación sólida');
+  await expect(page.locator('.match.is-outlier')).toHaveCount(6);
+
+  await page.locator('[data-matching-threshold]').fill('0.25');
+  await expect(page.locator('[data-matching-verdict]')).toHaveText('Sin solución');
+
+  await page.locator('[data-matching-threshold]').fill('10');
+  await expect(page.locator('[data-matching-kept]')).toHaveText('11');
+  await expect(page.locator('[data-matching-message]')).toContainText('se han colado');
+});
+
+test('la pantalla de Spaces enlaza fuera con enlaces seguros', async ({page}) => {
+  await page.goto('/temas/02-hugging-face/index.html#probar');
+  const enlaces = page.locator('#probar a[href^="https://huggingface.co"]');
+  await expect(enlaces).toHaveCount(6);
+  for (const enlace of await enlaces.all()) {
+    await expect(enlace).toHaveAttribute('target', '_blank');
+    await expect(enlace).toHaveAttribute('rel', /noopener/);
+  }
+});
+
+test('en papel las pantallas salen a plena opacidad y sin animación de entrada', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html');
+  await page.emulateMedia({media: 'print'});
+  const estado = await page.evaluate(() => {
+    const secciones = [...document.querySelectorAll('.reading-content > section')].slice(0, 6);
+    return secciones.map((seccion) => {
+      const estilo = getComputedStyle(seccion);
+      return {opacidad: estilo.opacity, animacion: estilo.animationName};
+    });
+  });
+  for (const {opacidad, animacion} of estado) {
+    expect(Number(opacidad)).toBe(1);
+    expect(animacion).toBe('none');
+  }
+});

@@ -390,6 +390,55 @@ model = model.to("cuda").eval()</code></pre>
   <div class="print-detail"><p>Lista consultada el 17 de septiembre de 2026 y pensada como punto de partida, no como ranking. Los tamaños son aproximados y la licencia debe confirmarse en la ficha del modelo y de sus pesos antes de usarlo, porque puede cambiar entre versiones. Fíjate en el caso de RMBG-1.4: excelente para recortar fondo, pero su licencia no permite uso comercial sin acuerdo.</p></div>
 </section>
 
+<section id="probar" data-title="Probar" data-layout="practice">
+  <div class="section-copy">
+    <h2>Pruébalo ahora, sin instalar nada</h2>
+    <p class="lead">Un Space es el modelo ya montado y corriendo en el navegador. Arrastras tu foto y ves la salida, sin entorno, sin pesos y sin GPU.</p>
+  </div>
+  <div class="note-grid">
+    <div>
+      <h3>Quitar el fondo</h3>
+      <p>Sube una foto de producto y descarga el recorte con transparencia. Es el modelo del tema 6 puesto a trabajar.</p>
+      <p><a href="https://huggingface.co/spaces/briaai/BRIA-RMBG-1.4" target="_blank" rel="noopener noreferrer">Space de BRIA RMBG 1.4</a></p>
+    </div>
+    <div>
+      <h3>Profundidad de una sola foto</h3>
+      <p>Sube cualquier foto y mira el mapa de distancias. Prueba con una imagen con espejos o cristales y verás dónde falla.</p>
+      <p><a href="https://huggingface.co/spaces/depth-anything/Depth-Anything-V2" target="_blank" rel="noopener noreferrer">Space de Depth Anything V2</a></p>
+    </div>
+    <div>
+      <h3>Detectar escribiendo la clase</h3>
+      <p>Página de la tarea, con los modelos, los datasets y los Spaces que están vivos hoy. Escribe «una caja de cartón» y mira qué encuentra.</p>
+      <p><a href="https://huggingface.co/tasks/zero-shot-object-detection" target="_blank" rel="noopener noreferrer">Tarea: detección zero-shot</a></p>
+    </div>
+    <div>
+      <h3>Segmentar</h3>
+      <p>La misma idea para máscaras: modelos de segmentación semántica, de instancias y promptable, con demos que puedes abrir al momento.</p>
+      <p><a href="https://huggingface.co/tasks/image-segmentation" target="_blank" rel="noopener noreferrer">Tarea: segmentación de imagen</a></p>
+    </div>
+    <div>
+      <h3>Puntos clave</h3>
+      <p>Pose de personas y puntos de interés para matching, con los 413 modelos que hay publicados y sus demos.</p>
+      <p><a href="https://huggingface.co/tasks/keypoint-detection" target="_blank" rel="noopener noreferrer">Tarea: detección de puntos clave</a></p>
+    </div>
+    <div>
+      <h3>Preguntar sobre una imagen</h3>
+      <p>Los modelos que reciben imagen y texto y responden. Sube una foto de una etiqueta y pídele los campos en JSON.</p>
+      <p><a href="https://huggingface.co/tasks/image-text-to-text" target="_blank" rel="noopener noreferrer">Tarea: imagen y texto a texto</a></p>
+    </div>
+  </div>
+  <h3 class="slide-subtitle">El reto de diez minutos</h3>
+  <ul class="checklist">
+    <li><strong>Busca por tarea, no por nombre</strong><span>Entra en la página de la tarea que te interesa y ordena por descargas del último mes.</span></li>
+    <li><strong>Abre un Space y sube una foto tuya</strong><span>Una de tu trabajo, no una de internet. Lo que falle aquí va a fallar en producción.</span></li>
+    <li><strong>Mira la licencia antes de emocionarte</strong><span>Está en la ficha del modelo, no en la del Space. Si pone AGPL o «research only», anótalo.</span></li>
+    <li><strong>Copia el fragmento de la ficha</strong><span>Casi todas traen tres líneas listas para pegar en el cuaderno.</span></li>
+    <li><strong>Apunta el tamaño y la fecha</strong><span>Parámetros y última actualización. Un modelo abandonado hace tres años es una deuda, no un atajo.</span></li>
+  </ul>
+  <p class="slide-callout"><strong>Dos avisos antes de subir nada.</strong> Un Space público procesa tu imagen en el servidor de quien lo publicó, así que ahí no van fotos de cliente, de personas identificables ni de piezas bajo acuerdo de confidencialidad. Y los Spaces se duermen, se rompen y desaparecen: por eso los enlaces de arriba apuntan a la página de la tarea, que sigue viva aunque una demo concreta caiga.</p>
+  <div class="print-detail"><p>Un Space es un repositorio con una aplicación Gradio o Streamlit y un fichero de dependencias, que Hugging Face construye y ejecuta. En el nivel gratuito corre en CPU y se duerme tras un rato sin visitas, de ahí que a veces tarde en arrancar o falle al construirse. Cualquiera puede duplicar un Space en su cuenta con el botón de duplicar, cambiarle el modelo y tener su propia demo en minutos, que es la forma más rápida de enseñar un resultado a alguien que no programa. Para un piloto interno conviene duplicarlo en privado en lugar de usar el público.</p></div>
+</section>
+
 <section id="checklist" data-title="Checklist" data-layout="practice">
   <div class="section-copy">
     <h2>Antes de quedarte con un modelo del Hub</h2>

@@ -20,6 +20,7 @@ import {initSceneCompare} from './scene-compare.js';
 import {initPipelineLab} from './pipeline-lab.js';
 import {initAnomalyMap} from './anomaly-map.js';
 import {initModeSwitch} from './mode-switch.js';
+import {initMatchingLab} from './matching-lab.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initPipelineLab();
   initAnomalyMap();
   initModeSwitch();
+  initMatchingLab();
 
   const deck = new Reveal({
     hash: true,

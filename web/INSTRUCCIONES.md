@@ -75,6 +75,9 @@ Qué significa en la práctica:
 | `pipeline-lab` | Constructor de código: elecciones a la izquierda, bloque copiable a la derecha |
 | `mode-switch` | Botones que eligen qué bloque de salida se ve, con capa opcional sobre la imagen |
 | `anomaly-map` | Mapa de anomalía por celdas sobre una foto, con umbral de rechazo |
+| `matching-lab` | Dos vistas y sus parejas, filtradas por el error de reproyección |
+
+Al imprimir, toda animación de entrada se congela en su primer fotograma: `lesson-enter` arranca en `opacity: .35` y dejaba el PDF entero lavado. Cualquier animación nueva debe desactivarse en `print.css`. Del mismo modo, ninguna imagen debe imprimirse por encima de su resolución: a 96 px por pulgada de CSS, un fichero de 640 px no debe pasar de unos 108 mm de ancho si se quieren 150 puntos por pulgada.
 
 Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna. Por la misma razón, **un contenedor cuyo texto cambia en tiempo de ejecución necesita ancho definido** (`width: min(900px, 100%)`), no solo `max-width`: si no, cambia de tamaño cada vez que cambia el mensaje y la escena da un salto.
 

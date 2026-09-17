@@ -19,6 +19,7 @@ import {initSceneCompare} from './scene-compare.js';
 import {initPipelineLab} from './pipeline-lab.js';
 import {initAnomalyMap} from './anomaly-map.js';
 import {initModeSwitch} from './mode-switch.js';
+import {initMatchingLab} from './matching-lab.js';
 
 initMediaControls();
 initQuizzes();
@@ -41,6 +42,7 @@ initSceneCompare();
 initPipelineLab();
 initAnomalyMap();
 initModeSwitch();
+initMatchingLab();
 
 const panels = [...document.querySelectorAll('.reading-content > section')];
 const previous = document.querySelector('[data-step-previous]');

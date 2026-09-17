@@ -457,6 +457,19 @@
   .mask-layer { transition: none; }
 }
 
+/* Verificacion geometrica: dos vistas y las parejas que encajan o no con la escena. */
+.match-frame path { fill: var(--color-wash); stroke: #b3bbc9; stroke-width: .8; }
+.match-lines line { stroke: #aab3c2; stroke-width: .6; transition: stroke var(--duration-fast) ease, opacity var(--duration-fast) ease; }
+.match-lines circle { fill: #8b95a7; transition: fill var(--duration-fast) ease; }
+.match.is-inlier line { stroke: var(--color-primary); stroke-width: .9; }
+.match.is-inlier circle { fill: var(--color-primary-dark); }
+.match.is-outlier line { stroke: var(--color-error-text); stroke-dasharray: 2 2; opacity: .6; }
+.match.is-outlier circle { fill: var(--color-error-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .match-lines line, .match-lines circle { transition: none; }
+}
+
 /* Conmutador de modos con un bloque de codigo por salida. */
 .mode-lab { display: grid; gap: 16px; width: min(760px, 100%); margin: 0 auto; text-align: left; }
 .mode-lab .mask-prompts { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }

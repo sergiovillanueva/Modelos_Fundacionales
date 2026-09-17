@@ -284,5 +284,18 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Laboratorio nuevo sobre una foto del propio material del curso. Las cajas están medidas a mano sobre la imagen para ilustrar el formato de salida y la pantalla lo declara; las transcripciones son las que se leen en la serigrafía."
+  },
+  {
+    "sectionId": "verificacion",
+    "sourceSlides": [
+      91
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "La verificación geométrica separa las parejas coherentes con la escena de las que solo se parecen.",
+    "url": "https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Laboratorio nuevo que desarrolla el paso que la diapositiva 91 menciona de pasada. La escena es un esquema con una homografía real calculada con getPerspectiveTransform; el error de reproyección de cada pareja lo calcula el navegador con src/lib/matching.js. Cuatro parejas son errores típicos del matching y dos son limítrofes, a 4,5 y 7,5 px, para que se vea qué entra al abrir el umbral."
   }
 ]
