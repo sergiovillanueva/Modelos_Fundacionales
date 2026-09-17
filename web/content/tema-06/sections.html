@@ -116,11 +116,11 @@
 <section id="oks" data-title="OKS" data-layout="lab">
   <div class="section-copy">
     <h2>El mismo error no penaliza igual</h2>
-    <p class="lead">Cada articulación tiene su propia tolerancia: mueve el error y compara ojo, muñeca y cadera.</p>
+    <p class="lead">La tolerancia depende de la articulación y del tamaño de la persona. Mueve las dos cosas y mira cuándo la pose deja de contar como acierto.</p>
   </div>
   <div class="lab-layout" data-oks-lab data-scale="150">
     <div class="lab-stage">
-      <svg viewBox="0 0 100 120" role="img" aria-label="Esqueleto con el punto real y el punto predicho de ojo, muñeca y cadera. Al aumentar el error, el predicho se separa del real.">
+      <svg viewBox="0 0 100 120" role="img" aria-label="Esqueleto con el punto real y el punto predicho de ojo, muñeca y cadera. Al aumentar el error o al reducir el tamaño de la persona, el predicho se separa del real.">
         <g class="skeleton">
           <circle cx="50" cy="18" r="10"/>
           <line x1="50" y1="28" x2="50" y2="70"/>
@@ -135,17 +135,22 @@
           <circle cx="50" cy="70" r="2.4"/>
         </g>
         <g class="joint-predicted">
-          <circle data-marker="ojo" cx="46" cy="16" r="2.4" transform="translate(1.67, 0)"/>
-          <circle data-marker="muneca" cx="70" cy="52" r="2.4" transform="translate(1.67, 0)"/>
-          <circle data-marker="cadera" cx="50" cy="70" r="2.4" transform="translate(1.67, 0)"/>
+          <circle data-marker="ojo" cx="46" cy="16" r="2.4" transform="translate(3.67, 0)"/>
+          <circle data-marker="muneca" cx="70" cy="52" r="2.4" transform="translate(3.67, 0)"/>
+          <circle data-marker="cadera" cx="50" cy="70" r="2.4" transform="translate(3.67, 0)"/>
         </g>
         <text class="stage-note" x="16" y="16">ojo</text>
         <text class="stage-note" x="76" y="50">muñeca</text>
         <text class="stage-note" x="14" y="72">cadera</text>
       </svg>
-      <p class="lab-note">Persona de 150 px de escala. Las tolerancias son las constantes de COCO.</p>
+      <p class="lab-note">El muñeco mide siempre lo mismo y representa a la persona entera: si la persona encoge, el mismo error en píxeles se ve mayor sobre ella. Las tolerancias son las constantes de COCO.</p>
     </div>
     <div class="lab-readout">
+      <p class="verdict is-permitido" data-oks-verdict aria-live="polite">Cuenta como acierto</p>
+      <div class="metric-pair">
+        <p class="metric"><span>OKS del esqueleto</span><strong data-oks-pose>0,92</strong></p>
+        <p class="metric"><span>Umbral de acierto</span><strong>0,50</strong></p>
+      </div>
       <ul class="candidate-list">
         <li class="candidate" data-joint="ojo" data-label="Ojo" data-sigma="0.025">
           <span class="candidate-name">Ojo <small>rígido</small></span>
@@ -163,13 +168,17 @@
           <span class="candidate-value" data-joint-value>0,99</span>
         </li>
       </ul>
-      <p class="lab-message" data-oks-message aria-live="polite">El mismo error de 5 px deja el ojo en 0,80 y la cadera en 0,99.</p>
+      <p class="lab-message" data-oks-message aria-live="polite">En una persona de 150 px, 5 px dejan el ojo en 0,80 y la cadera en 0,99. El ojo pierde medio punto a partir de 9 px.</p>
       <label for="oks-distance">Error de predicción <b data-oks-value>5 px</b></label>
       <input type="range" id="oks-distance" data-oks-distance min="0" max="40" value="5" step="1">
       <div class="range-ends" aria-hidden="true"><span>0 px</span><span>40 px</span></div>
+      <label for="oks-scale">Tamaño de la persona <b data-oks-scale-value>150 px</b></label>
+      <input type="range" id="oks-scale" data-oks-scale min="60" max="400" value="150" step="10">
+      <div class="range-ends" aria-hidden="true"><span>60 px, al fondo</span><span>400 px, en primer plano</span></div>
     </div>
   </div>
-  <div class="print-detail"><p>Esta página recoge el estado con 5 px de error. OKS aplica a cada punto exp(−d² / (2 s² k²)), donde d es el error en píxeles, s la escala de la persona y k = 2σ una constante propia de cada articulación medida sobre anotaciones humanas. Los ojos tienen σ = 0,025 y la cadera σ = 0,107, así que la cadera tolera más de cuatro veces el error antes de penalizar lo mismo. El OKS del esqueleto es la media de los puntos visibles, y sustituye al IoU cuando se calcula AP para pose.</p></div>
+  <p class="slide-callout">Esto explica el fallo más habitual en planta: el modelo va bien con la persona cerca y se desmorona con la persona al fondo, aunque el error en píxeles sea el mismo. Las dos salidas son acercar la cámara o trabajar en top-down, detectando primero a cada persona y recortándola para que llegue grande al modelo de pose.</p>
+  <div class="print-detail"><p>Esta página recoge el estado con 5 px de error en una persona de 150 px. OKS aplica a cada punto exp(−d² / (2 s² k²)), donde d es el error en píxeles, s la escala de la persona y k = 2σ una constante propia de cada articulación medida sobre anotaciones humanas. Los ojos tienen σ = 0,025 y la cadera σ = 0,107, así que la cadera tolera más de cuatro veces el error antes de penalizar lo mismo. La escala entra dividiendo, de modo que la tolerancia en píxeles es proporcional al tamaño de la persona: en una persona de 60 px el ojo pierde medio punto a partir de 4 px, y en una de 400 px aguanta hasta 24 px. El OKS del esqueleto es la media de los puntos visibles, y sustituye al IoU cuando se calcula AP para pose: COCO promedia AP con umbrales de 0,50 a 0,95, así que el 0,50 de esta pantalla es el criterio más indulgente de los diez.</p></div>
 </section>
 
 <section id="pose-oks-pregunta" data-title="Tolerancia" data-layout="question">
@@ -266,6 +275,80 @@
       <p>Perfectos para casos de uso complejos como el procesamiento de facturas o tablas. Permiten extraer información estructurada, por ejemplo JSON, en lugar de solo texto plano, integrando visión y lenguaje para un razonamiento avanzado.</p>
     </div>
   </div>
+</section>
+
+<section id="ocr-lab" data-title="Leer la placa" data-layout="lab">
+  <div class="section-copy">
+    <h2>Lo que devuelve cada generación de OCR</h2>
+    <p class="lead">La misma foto de una placa, leída de tres formas. Cambia la herramienta y mira qué recibe tu programa.</p>
+  </div>
+  <div class="lab-layout lab-layout--even" data-mode-switch>
+    <figure class="ocr-stage">
+      <div class="ocr-frame">
+        <img src="{{ASSET:tema-06/presentacion/placa-ocr.webp}}" alt="Placa de circuito impreso verde con serigrafía: Easy Pulse, www.Embedded-Lab.com, Place finger, SENSOR, PULSE y las referencias de los componentes.">
+        <svg class="ocr-boxes" viewBox="0 0 455 422" data-mode-overlay aria-hidden="true">
+        <rect x="357" y="70" width="44" height="13"><title>PULSE</title></rect>
+        <rect x="163" y="122" width="47" height="16"><title>MCP6004</title></rect>
+        <rect x="161" y="189" width="36" height="18"><title>IC2</title></rect>
+        <rect x="71" y="221" width="36" height="19"><title>VCC</title></rect>
+        <rect x="71" y="283" width="38" height="19"><title>GND</title></rect>
+        <rect x="126" y="317" width="25" height="16"><title>R1</title></rect>
+        <rect x="250" y="252" width="120" height="26"><title>Place finger</title></rect>
+        <rect x="282" y="281" width="55" height="19"><title>SENSOR</title></rect>
+        <rect x="103" y="344" width="135" height="34"><title>Easy Pulse</title></rect>
+        <rect x="82" y="378" width="175" height="23"><title>www.Embedded-Lab.com</title></rect>
+        </svg>
+      </div>
+      <figcaption>Serigrafía de una placa real, con texto pequeño, girado por el brillo del cobre y mezclado con los componentes.</figcaption>
+    </figure>
+    <div class="lab-readout">
+      <p class="field-label" id="ocr-mode-label">Qué herramienta usas</p>
+      <div class="mask-prompts" role="group" aria-labelledby="ocr-mode-label">
+        <button type="button" data-mode="plano" aria-pressed="true"
+          data-note="Sale una tira de caracteres y poco más. El orden lo inventa el recorrido por líneas, así que «VCC EN VOUT GND» y las referencias de las resistencias se mezclan sin que puedas saber qué va con qué.">Tesseract: solo texto</button>
+        <button type="button" data-mode="cajas" data-overlay="true"
+          data-note="Cada trozo de texto llega con sus coordenadas, y eso ya permite programar: leer solo la zona del conector, comprobar que la serigrafía está completa o recortar cada etiqueta para revisarla.">EasyOCR o TrOCR: texto y cajas</button>
+        <button type="button" data-mode="json" data-overlay="true"
+          data-note="El modelo entrega los campos que le pides, no la transcripción. Lo que antes eran doscientas líneas de reglas para agrupar texto ahora es una frase en el prompt. A cambio pesa más, tarda más y a veces se inventa un campo.">VLM: campos estructurados</button>
+      </div>
+      <pre class="code-sample" data-output="plano"><code>C1  C5  R6  C4  PULSE
+T1  R3  MCP6004
+IC2  R4  R11  R10  R5  R9
+J1  VCC  EN  VOUT  GND
+R1  R2  R7  R8
+Place finger  SENSOR
+Easy Pulse
+www.Embedded-Lab.com</code></pre>
+      <pre class="code-sample" data-output="cajas" hidden><code>texto                  posición     tamaño
+PULSE                  (357,  70)   44 x 13
+MCP6004                (163, 122)   47 x 16
+IC2                    (161, 189)   36 x 18
+VCC                    ( 71, 221)   36 x 19
+GND                    ( 71, 283)   38 x 19
+R1                     (126, 317)   25 x 16
+Place finger           (250, 252)  120 x 26
+SENSOR                 (282, 281)   55 x 19
+Easy Pulse             (103, 344)  135 x 34
+www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
+      <pre class="code-sample" data-output="json" hidden><code>{
+  "placa": "Easy Pulse",
+  "fabricante": "www.Embedded-Lab.com",
+  "integrado": "MCP6004",
+  "conector": {
+    "referencia": "J1",
+    "pines": ["VCC", "EN", "VOUT", "GND"]
+  },
+  "sensor": {
+    "etiqueta": "SENSOR",
+    "instruccion": "Place finger"
+  },
+  "resistencias": ["R1", "R2", "R4", "R5", "R7", "R8", "R9", "R10", "R11"]
+}</code></pre>
+      <p class="lab-message" data-mode-note aria-live="polite">Sale una tira de caracteres y poco más. El orden lo inventa el recorrido por líneas, así que «VCC EN VOUT GND» y las referencias de las resistencias se mezclan sin que puedas saber qué va con qué.</p>
+    </div>
+  </div>
+  <p class="slide-callout">La pregunta útil no es qué herramienta lee mejor, sino qué necesita tu programa. Para contar si la serigrafía está impresa basta la primera; para comprobar que cada referencia está junto a su componente hacen falta coordenadas; para rellenar un parte de recepción con el modelo y el fabricante, el tercero te ahorra el pegamento.</p>
+  <div class="print-detail"><p>Las cajas de esta pantalla están medidas a mano sobre la foto para ilustrar el formato de salida, no las ha producido un OCR. Tres cosas que se ven en esta imagen y que aparecen en cualquier planta: el texto de la serigrafía es de bajo contraste sobre verde y el brillo del cobre lo rompe, hay texto a distintas escalas en la misma foto, y varias referencias quedan parcialmente tapadas por los componentes. Por eso la resolución de captura manda más que el modelo: con menos de veinte píxeles de altura por carácter, ningún OCR actual lee de forma fiable. Sobre latencia y coste, Tesseract corre en CPU en decenas de milisegundos, un modelo de detección más reconocimiento ronda las décimas de segundo en GPU, y un VLM se va a varios segundos por imagen, así que en línea suele combinarse: detección rápida siempre y VLM solo sobre las piezas dudosas.</p></div>
 </section>
 
 <section id="superresolucion" data-title="Superresolución" data-layout="visual">

@@ -459,5 +459,16 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla puente nueva, sin diapositiva de origen. Cose el final del tema 01 con el tema 02: los pesos que baja la receta vienen de un sitio con nombre, licencia y ficha. El identificador y el nombre de clase salen de la ficha del modelo. Hasta este curso RF-DETR solo se distribuía por el paquete de Roboflow, que es el motivo por el que el tema 02 venía después."
+  },
+  {
+    "sectionId": "tres-salidas",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "El paquete rfdetr ofrece detección, segmentación de instancias y puntos clave con la misma llamada.",
+    "url": "https://rfdetr.roboflow.com/",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Segmentación y puntos clave salieron después de grabar el mazo: las clases RFDETRSegPreview y RFDETRKeypointPreview están en acceso temprano, el paquete abierto es Apache 2.0 y los puntos son los 17 de COCO. Comprobado en la documentación de Roboflow."
   }
 ]

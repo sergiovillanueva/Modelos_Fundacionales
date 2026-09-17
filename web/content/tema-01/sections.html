@@ -831,6 +831,59 @@ model = RfDetrForObjectDetection.from_pretrained("Roboflow/rf-detr-medium")</cod
   <div class="print-detail"><p>Las dos vías cargan los mismos pesos y se diferencian en el envoltorio. El paquete <code>rfdetr</code> expone la API de Roboflow, con <code>predict</code> y el entrenamiento propio; <code>transformers</code> expone la interfaz común de la librería, que es la que comparten todos los modelos de los temas siguientes y la que permite intercambiar un detector por otro sin reescribir el resto. El identificador y el nombre de clase están tomados de la ficha del modelo, consultada el 17 de septiembre de 2026. Hasta este curso RF-DETR solo estaba disponible por el paquete, así que esta equivalencia es nueva.</p></div>
 </section>
 
+<section id="tres-salidas" data-title="Tres salidas" data-layout="practice">
+  <div class="section-copy">
+    <h2>La misma familia hace tres cosas</h2>
+    <p class="lead">El paquete que acabas de usar trae ahora segmentación y puntos clave. Cambia la clase y cambia lo que recibes, con la misma foto y las mismas tres líneas.</p>
+  </div>
+  <div class="mode-lab" data-mode-switch>
+    <div class="mask-prompts" role="group" aria-label="Qué salida quieres">
+      <button type="button" data-mode="cajas" aria-pressed="true"
+        data-note="Una caja por objeto, en píxeles. Sirve para contar, para disparar un aviso y para recortar la zona antes de mirarla con más detalle.">Cajas</button>
+      <button type="button" data-mode="mascaras"
+        data-note="Una máscara por objeto, del tamaño de la imagen. Con ella se mide área y contorno, se calcula qué porcentaje de la cinta ocupa el producto y se recorta con transparencia.">Máscaras</button>
+      <button type="button" data-mode="esqueletos"
+        data-note="Diecisiete puntos por persona, con su confianza. De ahí salen los ángulos de las articulaciones, el conteo de repeticiones y las alertas de postura.">Esqueletos</button>
+    </div>
+    <pre class="code-sample" data-copy data-output="cajas"><code>from rfdetr import RFDETRMedium
+
+modelo = RFDETRMedium()
+salida = modelo.predict("foto.jpg", threshold=0.5)
+
+print(salida.xyxy)        # una caja por objeto
+print(salida.class_id)    # su clase de COCO</code></pre>
+    <pre class="code-sample" data-copy data-output="mascaras" hidden><code>from rfdetr import RFDETRSegPreview
+
+modelo = RFDETRSegPreview()
+salida = modelo.predict("foto.jpg", threshold=0.5)
+
+print(salida.mask.shape)          # una máscara por objeto
+print(salida.mask[0].sum())       # área del primero, en píxeles</code></pre>
+    <pre class="code-sample" data-copy data-output="esqueletos" hidden><code>import cv2
+from rfdetr import RFDETRKeypointPreview
+
+modelo = RFDETRKeypointPreview()
+imagen = cv2.cvtColor(cv2.imread("foto.jpg"), cv2.COLOR_BGR2RGB)
+puntos = modelo.predict(imagen, threshold=0.5)
+
+print(puntos.xy.shape)                  # personas x 17 puntos x 2
+print(puntos.keypoint_confidence[0])    # confianza de cada punto</code></pre>
+    <p class="lab-message" data-mode-note aria-live="polite">Una caja por objeto, en píxeles. Sirve para contar, para disparar un aviso y para recortar la zona antes de mirarla con más detalle.</p>
+  </div>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>El ejercicio</h3>
+      <p>Haz una foto a tu mesa, con una persona dentro si puedes, y pasa las tres. Luego responde con cada salida a la misma pregunta: ¿cuánto ocupa ese objeto? La caja da un rectángulo, la máscara da los píxeles de verdad y el esqueleto no responde, porque mide otra cosa.</p>
+    </div>
+    <div>
+      <h3>Para pintarlo</h3>
+      <p>Las tres salidas son objetos de <code>supervision</code>, así que se dibujan con <code>sv.BoxAnnotator</code>, <code>sv.MaskAnnotator</code> y <code>sv.EdgeAnnotator</code> sin tocar nada más.</p>
+    </div>
+  </div>
+  <p class="slide-callout">Que las tres tareas salgan de la misma familia no es una comodidad de la API: comparten el mismo backbone DINOv2 y solo cambia la cabeza. Es el argumento de todo el curso visto en tres líneas de código.</p>
+  <div class="print-detail"><p>Segmentación y puntos clave se publican como «preview», es decir, acceso temprano pensado sobre todo para ajustar el modelo con un dataset propio; las clases son <code>RFDETRSegPreview</code> y <code>RFDETRKeypointPreview</code>, y la licencia del paquete abierto es Apache 2.0. Los puntos clave son los 17 de COCO, los mismos que se evalúan con OKS en el tema 6. Las variantes de detección aparecen en el tema 1, la segmentación es lo que se estudia en el tema 5 con SAM y la pose, en el tema 6: esta pantalla adelanta que el mismo paquete cubre las tres, con la diferencia de que aquí las clases son las de COCO y con SAM se segmenta cualquier cosa sin lista de clases. Consultado el 17 de septiembre de 2026 en la documentación de Roboflow.</p></div>
+</section>
+
 <section id="presupuesto" data-title="Presupuesto" data-layout="lab">
   <div class="section-copy">
     <h2>¿Cuánto cuesta anotar tu dataset?</h2>

@@ -392,6 +392,42 @@
   <div class="print-detail"><p>PCA es una proyección lineal útil para colorear características densas. t-SNE y UMAP son técnicas no lineales que proyectan embeddings a 2D para explorar vecindarios. Ninguna crea etiquetas ni demuestra por sí sola que un cluster sea una clase real.</p></div>
 </section>
 
+<section id="pca-color" data-title="Colores" data-layout="visual">
+  <div class="section-copy"><h2>De 768 números a un color</h2></div>
+  <p class="slide-lead">Las imágenes de colores chillones que ilustran DINO no son un filtro ni un mapa de calor. Son las características del modelo pintadas, y el procedimiento cabe en cuatro pasos.</p>
+  <ol class="stage-list stage-list--columns stage-list--four">
+    <li>
+      <h3>Un vector por parche</h3>
+      <p>La imagen se parte en parches de 16 × 16 píxeles y el modelo devuelve un vector por parche, de 768 números en un ViT base. Una imagen de 224 × 224 da 196 vectores.</p>
+    </li>
+    <li>
+      <h3>PCA sobre todos los parches</h3>
+      <p>Se juntan esos vectores y se buscan las tres direcciones en las que más varían. Es álgebra pura, sin entrenamiento ni etiquetas.</p>
+    </li>
+    <li>
+      <h3>Tres números por parche</h3>
+      <p>Cada parche se proyecta sobre esas tres direcciones. Los 768 números se quedan en tres, que es justo lo que cabe en un color.</p>
+    </li>
+    <li>
+      <h3>Los tres números se pintan</h3>
+      <p>Se reescalan a 0-255 y se usan como rojo, verde y azul. El parche vuelve a su sitio en la rejilla y aparece la imagen de colores.</p>
+    </li>
+  </ol>
+  <div class="slide-split">
+    <div class="slide-prose">
+      <p><strong>Por qué el ala de un avión sale del mismo color que el ala de un pájaro.</strong> El color no lo decide el píxel, lo decide el vector. Dos parches con vectores parecidos reciben proyecciones parecidas y, por tanto, el mismo color, aunque uno sea metal gris y el otro plumas marrones.</p>
+      <p>Que el modelo los haya dejado cerca significa que ha aprendido algo sobre ellos sin que nadie se lo dijera: los dos son superficies alargadas que salen de un cuerpo central y sostienen la figura. Esa es la afirmación fuerte de DINO, y el color es solo la forma de verla.</p>
+      <p>Con el mismo razonamiento, la rueda de un coche y la rueda de una bicicleta caen juntas, y el cielo cae con el mar. Lo que agrupa es el papel que juega la región, no su textura.</p>
+    </div>
+    <figure class="figure-media">
+      <img src="{{ASSET:tema-04/presentacion/pca-dino.jpeg}}" alt="Dos vistas aéreas pintadas con los tres primeros componentes principales de las características DINO: carreteras en magenta, vegetación en verde y agua en azul.">
+      <figcaption>Aquí las carreteras salen magenta en las dos imágenes, y la vegetación verde. Ningún color estaba definido de antemano.</figcaption>
+    </figure>
+  </div>
+  <p class="slide-callout">Para qué sirve más allá de la ilustración: es la forma rápida de comprobar si un modelo entiende tus imágenes antes de montar nada encima. Si al pintar el PCA de tus piezas la zona buena y la zona defectuosa salen de colores distintos, ese backbone te vale; si sale todo del mismo color, cambia de modelo o de resolución antes de perder una semana.</p>
+  <div class="print-detail"><p>Dos avisos prácticos. El primero: los colores no son comparables entre imágenes salvo que el PCA se ajuste con todas a la vez, porque cada ajuste elige sus propias direcciones y el signo de cada componente es arbitrario. Por eso las figuras publicadas suelen calcular el PCA sobre el conjunto entero de imágenes que enseñan. El segundo: la primera componente suele separar objeto y fondo más que partes concretas, así que es habitual usarla como máscara, quedarse solo con los parches del objeto y repetir el PCA sobre ellos para que las tres componentes se gasten en distinguir partes. El procedimiento no depende de DINO: se puede aplicar a las características densas de cualquier modelo, y lo que cambia de uno a otro es cuánta estructura aparece.</p></div>
+</section>
+
 <section id="dinov3-mapas" data-title="DINOv3" data-layout="visual">
   <div class="section-copy"><h2>DINO v3</h2></div>
   <figure class="figure-media lesson-image lesson-image--wide media-container" data-media-type="animation">
@@ -509,6 +545,46 @@
     </div>
   </div>
   <div class="print-detail"><p>Esta página recoge el estado con el parche al 55 % del recorrido. El banco no contiene ni un solo ejemplo de defecto: por eso el método sirve cuando los fallos son raros o desconocidos. Un parche se considera anómalo cuando ningún vector del banco se le parece lo suficiente, y el umbral se fija observando parches normales de validación, no adivinando. Con cada parche puntuado así, la imagen completa produce un heatmap y un score global.</p></div>
+</section>
+
+<section id="inspeccion" data-title="Inspección" data-layout="lab">
+  <div class="section-copy">
+    <h2>Aceptar o rechazar la pieza</h2>
+    <p class="lead">La misma alfombra, buena y con un defecto. Mueve el umbral y mira qué celdas se encienden en cada una.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-anomaly-map data-grid="16">
+    <figure class="anomaly-stage">
+      <div class="anomaly-frame">
+        <img data-anomaly-photo src="{{ASSET:tema-04/presentacion/alfombra-defecto.webp}}" alt="Tejido de alfombra gris con un nudo de hilos sueltos en la parte inferior izquierda.">
+        <svg class="anomaly-grid" viewBox="0 0 16 16" preserveAspectRatio="none" data-anomaly-grid aria-hidden="true"></svg>
+      </div>
+      <figcaption>Cada celda es un parche. El color de fondo es su puntuación; el borde marca las que superan el umbral.</figcaption>
+    </figure>
+    <div class="lab-readout">
+      <p class="verdict is-prohibido" data-anomaly-map-verdict aria-live="polite">Se rechaza</p>
+      <div class="metric-pair">
+        <p class="metric"><span>Celdas marcadas</span><strong data-anomaly-count>13</strong></p>
+        <p class="metric"><span>Puntuación más alta</span><strong data-anomaly-max>1,89</strong></p>
+      </div>
+      <p class="field-label" id="anomaly-piece-label">Qué pieza pasa por la cámara</p>
+      <div class="mask-prompts" role="group" aria-labelledby="anomaly-piece-label">
+        <button type="button" data-anomaly-piece aria-pressed="true" data-faulty="true"
+          data-photo="{{ASSET:tema-04/presentacion/alfombra-defecto.webp}}"
+          data-photo-alt="Tejido de alfombra gris con un nudo de hilos sueltos en la parte inferior izquierda."
+          data-scores='[1.26,1.02,0.88,0.65,0.76,0.9,0.9,0.86,0.7,0.74,0.84,0.94,0.98,1.1,0.95,0.8,1.03,0.92,0.83,0.85,0.91,1.01,0.96,0.88,0.82,0.77,0.87,0.91,1.06,1.25,1.18,1.06,0.81,0.79,0.75,0.91,0.92,0.95,0.87,0.83,0.87,0.81,0.84,0.88,1.02,1.23,1.2,1.17,0.64,0.76,0.79,0.89,0.87,0.91,0.88,0.79,0.82,0.78,0.75,0.76,0.93,1.1,1.11,1.08,0.76,0.79,0.79,0.8,0.84,0.83,0.8,0.75,0.78,0.83,0.75,0.81,0.83,0.92,0.9,0.95,0.8,0.9,0.95,0.98,0.94,0.92,0.88,0.81,0.79,0.81,0.78,0.83,0.87,0.94,0.97,1.0,0.82,0.89,1.01,0.98,0.95,0.92,0.97,0.94,0.9,0.83,0.83,0.79,0.81,0.79,0.89,0.95,0.73,0.86,1.03,1.06,1.04,1.0,1.01,0.91,0.81,0.87,0.93,0.94,0.83,0.81,0.85,0.85,0.98,0.91,0.98,1.07,1.27,1.18,1.08,0.85,0.81,0.89,0.96,0.97,0.82,0.76,0.73,0.74,1.17,1.18,1.36,1.45,1.69,1.37,1.19,0.72,0.78,1.03,1.14,1.1,0.83,0.78,0.75,0.78,1.35,1.24,1.45,1.67,1.89,1.46,1.15,0.77,0.85,0.92,1.02,0.93,0.86,0.81,0.8,0.76,1.26,1.18,1.42,1.57,1.67,1.27,1.09,0.81,0.83,0.87,0.97,1.01,1.01,1.02,0.97,0.92,1.14,0.95,1.04,1.2,1.34,1.17,0.96,0.85,0.78,0.74,0.79,0.94,1.07,1.12,1.04,0.95,1.13,0.96,0.94,0.86,1.11,1.1,1.09,0.85,0.76,0.74,0.85,0.95,1.01,1.01,1.02,1.04,1.07,0.94,0.9,0.83,1.09,1.08,1.04,0.8,0.78,0.79,0.95,0.96,0.96,0.86,1.0,1.14,1.16,1.0,0.89,0.81,1.02,0.99,0.99,0.77,0.83,0.8,1.05,1.02,1.03,0.83,1.05,1.26]'>Pieza con defecto</button>
+        <button type="button" data-anomaly-piece data-faulty="false"
+          data-photo="{{ASSET:tema-04/presentacion/alfombra-buena.webp}}"
+          data-photo-alt="Tejido de alfombra gris uniforme, sin defectos visibles."
+          data-scores='[0.77,0.94,1.0,1.03,0.84,0.87,0.8,0.89,0.91,0.84,0.9,0.82,0.81,0.89,1.08,1.27,0.81,0.91,0.9,0.9,0.79,0.83,0.76,0.81,0.82,0.87,0.91,0.87,0.8,0.94,1.03,1.17,1.07,0.99,0.84,0.76,0.72,1.11,1.03,1.1,0.87,1.04,1.04,0.96,0.88,0.98,1.04,1.11,1.22,1.07,0.91,0.84,0.88,1.23,1.11,1.15,0.87,0.98,0.99,1.02,0.93,0.91,0.95,1.06,1.28,1.15,0.97,0.9,0.85,1.18,1.14,1.18,0.92,0.96,1.04,1.07,1.05,0.89,0.9,0.92,1.14,1.11,0.99,0.98,0.91,0.89,0.86,0.78,0.77,0.77,0.91,1.02,1.01,0.89,0.84,0.83,0.96,0.98,0.93,0.91,0.77,0.77,0.92,0.91,0.86,0.8,0.91,0.98,1.0,0.9,0.9,0.84,0.99,0.95,0.98,0.98,0.9,0.81,0.89,0.93,0.99,0.91,0.99,0.92,0.94,0.87,0.95,1.0,0.86,0.85,0.96,1.02,0.97,0.91,0.98,1.07,1.16,1.0,1.06,0.91,0.97,0.84,0.96,1.05,0.89,0.84,0.94,0.98,1.01,0.91,0.89,0.93,1.09,1.04,1.02,0.85,0.85,0.81,0.97,1.17,0.84,0.85,0.93,0.99,1.04,0.98,0.96,0.9,0.95,0.95,0.89,0.84,0.79,0.85,0.97,1.13,0.88,0.92,0.96,0.88,0.94,0.9,0.91,0.9,0.9,0.92,0.76,0.79,0.72,0.84,0.95,1.1,0.93,1.0,1.03,0.98,1.02,1.01,0.99,0.96,0.93,0.91,0.73,0.74,0.69,0.8,0.89,1.04,0.87,0.93,0.98,0.93,0.97,0.98,0.92,0.92,0.89,0.89,0.85,0.82,0.83,0.87,0.96,0.99,0.95,0.97,0.99,1.0,1.04,1.04,0.9,0.82,0.82,0.85,0.95,0.91,0.93,0.9,0.94,0.94,0.97,0.98,1.0,0.98,1.04,1.05,0.82,0.72,0.72,0.83,1.03,1.04,1.07,0.98,0.95,0.88]'>Pieza buena</button>
+      </div>
+      <p class="lab-message" data-anomaly-map-message aria-live="polite">El defecto queda marcado con 13 celdas, y la más alta llega a 1,89. La pieza sale de la línea.</p>
+      <label for="anomaly-threshold">Umbral de rechazo <b data-anomaly-threshold-value>1,30</b></label>
+      <input type="range" id="anomaly-threshold" data-anomaly-threshold min="0.9" max="1.9" value="1.3" step="0.05">
+      <div class="range-ends" aria-hidden="true"><span>0,90 · desconfiado</span><span>1,90 · permisivo</span></div>
+    </div>
+  </div>
+  <p class="slide-callout">Así se monta una inspección real: el banco se llena con piezas buenas de la propia línea, el umbral se fija con un lote de validación mirando cuántas falsas alarmas aguanta el proceso, y el mapa sirve para enseñar al operario <em>dónde</em> está el problema, no solo que existe.</p>
+  <div class="print-detail"><p>Esta página recoge el estado de la pieza defectuosa con umbral 1,30. Las puntuaciones están precalculadas con un descriptor clásico, no con DINO: cada celda de 35 × 35 píxeles se resume en siete estadísticas de intensidad y de gradiente, se normaliza con las celdas buenas y se puntúa por la distancia a la celda buena más parecida, que es exactamente la regla de PatchCore. Una celda de la pieza buena se compara con las demás celdas buenas y nunca consigo misma, así que su puntuación es honesta. El mapa se suaviza con una media de 3 × 3 para que un parche raro suelto no dispare la alarma. Con este descriptor la pieza buena llega como máximo a 1,28 y la defectuosa a 1,89: el margen existe pero es estrecho, y por debajo de 1,20 aparecen falsas alarmas. Con características de DINOv2 el margen se abre, que es justamente el motivo de usarlas, y el cuaderno del tema lo comprueba con el mismo par de imágenes.</p></div>
 </section>
 
 <section id="anomalia-pregunta" data-title="Umbral" data-layout="question">

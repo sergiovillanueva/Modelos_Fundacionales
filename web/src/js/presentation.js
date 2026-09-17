@@ -18,6 +18,8 @@ import {initVramLab} from './vram-lab.js';
 import {initModelTable} from './model-table.js';
 import {initSceneCompare} from './scene-compare.js';
 import {initPipelineLab} from './pipeline-lab.js';
+import {initAnomalyMap} from './anomaly-map.js';
+import {initModeSwitch} from './mode-switch.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
@@ -39,6 +41,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   initModelTable();
   initSceneCompare();
   initPipelineLab();
+  initAnomalyMap();
+  initModeSwitch();
 
   const deck = new Reveal({
     hash: true,

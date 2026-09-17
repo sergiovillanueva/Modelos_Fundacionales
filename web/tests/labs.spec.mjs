@@ -64,15 +64,14 @@ test('un concepto en texto devuelve todas las instancias', async ({page}) => {
 
 test('girar el vector de la imagen cambia el texto ganador', async ({page}) => {
   await page.goto(SIMILARITY_URL);
-  await expect(page.locator('.candidate.is-winner .candidate-name')).toHaveText('un gato');
-  await expect(page.locator('[data-candidate="gato"] [data-candidate-value]')).toHaveText('0,97');
+  await expect(page.locator('.candidate.is-winner .candidate-name')).toContainText('un gato');
 
-  await page.locator('[data-similarity-angle]').fill('41');
-  await expect(page.locator('.candidate.is-winner .candidate-name')).toHaveText('un perro');
+  await page.locator('[data-similarity-angle]').fill('60');
+  await expect(page.locator('.candidate.is-winner .candidate-name')).toContainText('un perro');
   await expect(page.locator('[data-similarity-winner]')).toContainText('un perro');
 
-  await page.locator('[data-similarity-angle]').fill('115');
-  await expect(page.locator('.candidate.is-winner .candidate-name')).toHaveText('una bicicleta');
+  await page.locator('[data-similarity-angle]').fill('130');
+  await expect(page.locator('.candidate.is-winner .candidate-name')).toContainText('una bicicleta');
   await expect(page.locator('[data-candidate="bicicleta"] [data-candidate-value]')).toHaveText('1,00');
 });
 
@@ -368,4 +367,68 @@ test('el constructor de pipeline rehace el código con cada elección', async ({
   await page.getByRole('button', {name: 'GPU'}).click();
   await expect(code).toContainText('device="cuda"');
   await expect(page.locator('[data-pipeline-note]')).toContainText('Grounding DINO');
+});
+
+test('el coseno gana aunque otro texto esté más cerca en línea recta', async ({page}) => {
+  await page.goto(SIMILARITY_URL);
+  await expect(page.locator('[data-candidate="gato"] [data-candidate-value]')).toHaveText('0,99');
+  await expect(page.locator('[data-candidate="perro"] [data-candidate-distance]')).toContainText('0,17');
+  await expect(page.locator('[data-similarity-winner]')).toContainText('un gato');
+  await expect(page.locator('[data-similarity-winner]')).toContainText('más cerca en línea recta');
+
+  await page.locator('[data-similarity-angle]').fill('140');
+  await expect(page.locator('[data-similarity-winner]')).toContainText('una bicicleta');
+});
+
+test('la pose depende del tamaño de la persona', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#oks');
+  await expect(page.locator('[data-oks-verdict]')).toHaveText('Cuenta como acierto');
+  await expect(page.locator('[data-oks-pose]')).toHaveText('0,92');
+
+  await page.locator('[data-oks-scale]').fill('60');
+  await page.locator('[data-oks-distance]').fill('12');
+  await expect(page.locator('[data-oks-verdict]')).toHaveText('Cuenta como fallo');
+  await expect(page.locator('[data-oks-message]')).toContainText('persona de 60 px');
+});
+
+test('el umbral de inspección decide entre falsa alarma y escape', async ({page}) => {
+  await page.goto('/temas/04-dino/index.html#inspeccion');
+  await expect(page.locator('[data-anomaly-map-verdict]')).toHaveText('Se rechaza');
+  await expect(page.locator('[data-anomaly-count]')).toHaveText('13');
+  await expect(page.locator('.anomaly-grid rect')).toHaveCount(256);
+
+  await page.locator('[data-anomaly-threshold]').fill('1.9');
+  await expect(page.locator('[data-anomaly-map-verdict]')).toHaveText('Se acepta');
+  await expect(page.locator('[data-anomaly-map-message]')).toContainText('se escapa');
+
+  await page.getByRole('button', {name: 'Pieza buena'}).click();
+  await page.locator('[data-anomaly-threshold]').fill('1');
+  await expect(page.locator('[data-anomaly-map-message]')).toContainText('Falsa alarma');
+});
+
+test('el laboratorio de OCR cambia salida y cajas', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#ocr-lab');
+  await expect(page.locator('[data-output="plano"]')).toBeVisible();
+  await expect(page.locator('[data-output="json"]')).toBeHidden();
+  await expect(page.locator('[data-mode-overlay]')).not.toHaveClass(/is-visible/);
+
+  await page.getByRole('button', {name: 'VLM: campos estructurados'}).click();
+  await expect(page.locator('[data-output="json"]')).toBeVisible();
+  await expect(page.locator('[data-output="plano"]')).toBeHidden();
+  await expect(page.locator('[data-mode-overlay]')).toHaveClass(/is-visible/);
+  await expect(page.locator('[data-mode-note]')).toContainText('campos que le pides');
+});
+
+test('las tres salidas de RF-DETR cambian la clase y el código', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#tres-salidas');
+  await expect(page.locator('[data-output="cajas"]')).toContainText('RFDETRMedium');
+  await expect(page.locator('[data-output="mascaras"]')).toBeHidden();
+
+  await page.getByRole('button', {name: 'Máscaras'}).click();
+  await expect(page.locator('[data-output="mascaras"]')).toContainText('RFDETRSegPreview');
+  await expect(page.locator('[data-mode-note]')).toContainText('área y contorno');
+
+  await page.getByRole('button', {name: 'Esqueletos'}).click();
+  await expect(page.locator('[data-output="esqueletos"]')).toContainText('RFDETRKeypointPreview');
+  await expect(page.locator('[data-output="cajas"]')).toBeHidden();
 });

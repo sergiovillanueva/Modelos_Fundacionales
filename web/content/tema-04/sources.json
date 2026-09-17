@@ -257,5 +257,29 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla interactiva nueva. Los seis recortes salen de la figura de la diapositiva 64, que ya estaba en el material: cada par es una casilla de foto y su casilla de atención contigua, sin retocar."
+  },
+  {
+    "sectionId": "pca-color",
+    "sourceSlides": [
+      66
+    ],
+    "originalAsset": "ppt/media/image-66-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/pca-dino.jpeg",
+    "claim": "Los colores de las visualizaciones de DINO son las tres primeras componentes principales de las características densas.",
+    "url": "https://arxiv.org/abs/2304.07193",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla explicativa nueva que desarrolla la tarjeta «PCA de features» de la diapositiva 66: de dónde sale cada color, por qué dos partes con el mismo papel reciben el mismo, y los dos avisos de que los colores no son comparables entre imágenes y de que la primera componente suele separar objeto y fondo."
+  },
+  {
+    "sectionId": "inspeccion",
+    "sourceSlides": [],
+    "originalAsset": "assets/carpet_ok.jpg y assets/carpet_nok.jpg",
+    "webAsset": "public/assets/tema-04/presentacion/alfombra-buena.webp y alfombra-defecto.webp",
+    "claim": "Con un banco de piezas buenas, el umbral decide entre falsas alarmas y defectos que se escapan.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Laboratorio nuevo con dos fotos del propio material del curso. Las puntuaciones están precalculadas con un descriptor clásico de intensidad y gradiente, no con DINO, y la pantalla lo declara: cada celda se compara con la celda buena más parecida, que es la regla de PatchCore, y una celda buena nunca se compara consigo misma. La pieza buena llega a 1,28 y la defectuosa a 1,89."
   }
 ]

@@ -141,54 +141,59 @@
 <section id="cercania" data-title="Cercanía" data-layout="lab">
   <div class="section-copy">
     <h2>Gana el texto más cercano</h2>
-    <p class="lead">La similitud coseno compara direcciones: mueve la imagen y mira qué texto se queda más cerca.</p>
+    <p class="lead">La similitud coseno compara direcciones, no longitudes: mueve la imagen y mira qué texto se queda más cerca.</p>
   </div>
-  <div class="lab-layout" data-similarity-lab data-centre-x="80" data-centre-y="86" data-radius="46">
+  <div class="lab-layout" data-similarity-lab data-centre-x="80" data-centre-y="86" data-radius="46" data-image-length="0.55">
     <div class="lab-stage">
-      <svg viewBox="0 0 160 104" role="img" aria-label="Espacio de embeddings esquemático: cuatro textos fijos y un vector de imagen que gira. El texto con mayor similitud coseno queda resaltado.">
+      <svg viewBox="0 0 160 104" role="img" aria-label="Espacio de embeddings esquemático: cuatro textos a distancias distintas del origen, agrupados en animales y vehículos, y un vector de imagen que gira. El texto con mayor similitud coseno queda resaltado.">
         <path class="space-arc" d="M 34 86 A 46 46 0 0 1 126 86"/>
-        <g class="space-anchors">
-          <g class="anchor is-winner" data-anchor="gato"><line x1="80" y1="86" x2="123.2" y2="70.3"/><text x="130.7" y="69.5">un gato</text></g>
-          <g class="anchor" data-anchor="perro"><line x1="80" y1="86" x2="103" y2="46.2"/><text x="107" y="41.2">un perro</text></g>
-          <g class="anchor" data-anchor="bicicleta"><line x1="80" y1="86" x2="60.6" y2="44.3"/><text x="57.2" y="39.1" text-anchor="end">una bicicleta</text></g>
-          <g class="anchor" data-anchor="coche"><line x1="80" y1="86" x2="38.3" y2="66.6"/><text x="31.1" y="65.2" text-anchor="end">un coche</text></g>
+        <g class="space-groups">
+          <line x1="122.0" y1="67.3" x2="99.2" y2="66.1"/>
+          <line x1="51.9" y1="52.5" x2="57.7" y2="74.1"/>
         </g>
-        <line class="image-vector" data-similarity-arrow x1="80" y1="86" x2="117.7" y2="59.6"/>
+        <g class="space-anchors">
+          <g class="anchor is-winner" data-anchor="gato"><line x1="80" y1="86" x2="122.0" y2="67.3"/><circle cx="122.0" cy="67.3" r="2"/><text x="128.9" y="64.2">un gato</text></g>
+          <g class="anchor" data-anchor="perro"><line x1="80" y1="86" x2="99.2" y2="66.1"/><circle cx="99.2" cy="66.1" r="2"/><text x="104.4" y="60.8">un perro</text></g>
+          <g class="anchor" data-anchor="bicicleta"><line x1="80" y1="86" x2="51.9" y2="52.5"/><circle cx="51.9" cy="52.5" r="2"/><text x="47.1" y="46.8" text-anchor="end">una bicicleta</text></g>
+          <g class="anchor" data-anchor="coche"><line x1="80" y1="86" x2="57.7" y2="74.1"/><circle cx="57.7" cy="74.1" r="2"/><text x="51.0" y="70.6" text-anchor="end">un coche</text></g>
+        </g>
+        <line class="image-vector" data-similarity-arrow x1="80" y1="86" x2="101.9" y2="73.3"/>
         <circle class="space-origin" cx="80" cy="86" r="2.6"/>
         <text class="space-note" x="80" y="99" text-anchor="middle">la imagen</text>
       </svg>
-      <p class="lab-note">Esquema con dos dimensiones. CLIP compara vectores de varios cientos.</p>
+      <p class="lab-note">Los cuatro textos están a distancias distintas del origen y aun así solo cuenta el ángulo. Las líneas de puntos unen los dos que el modelo ha dejado cerca: gato con perro, bicicleta con coche.</p>
     </div>
     <div class="lab-readout">
       <ul class="candidate-list">
-        <li class="candidate is-winner" data-candidate="gato" data-label="un gato" data-angle="20">
-          <span class="candidate-name">un gato</span>
-          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .9830"></span></span>
-          <span class="candidate-value" data-candidate-value>0,97</span>
+        <li class="candidate is-winner" data-candidate="gato" data-label="un gato" data-angle="24" data-length="1">
+          <span class="candidate-name">un gato <small data-candidate-distance>distancia 0,46</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .9975"></span></span>
+          <span class="candidate-value" data-candidate-value>0,99</span>
         </li>
-        <li class="candidate" data-candidate="perro" data-label="un perro" data-angle="60">
-          <span class="candidate-name">un perro</span>
-          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .9532"></span></span>
-          <span class="candidate-value" data-candidate-value>0,91</span>
+        <li class="candidate is-closest" data-candidate="perro" data-label="un perro" data-angle="46" data-length="0.6">
+          <span class="candidate-name">un perro <small data-candidate-distance>distancia 0,17</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .9805"></span></span>
+          <span class="candidate-value" data-candidate-value>0,96</span>
         </li>
-        <li class="candidate" data-candidate="bicicleta" data-label="una bicicleta" data-angle="115">
-          <span class="candidate-name">una bicicleta</span>
-          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .5868"></span></span>
-          <span class="candidate-value" data-candidate-value>0,17</span>
+        <li class="candidate" data-candidate="bicicleta" data-label="una bicicleta" data-angle="130" data-length="0.95">
+          <span class="candidate-name">una bicicleta <small data-candidate-distance>distancia 1,18</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .4130"></span></span>
+          <span class="candidate-value" data-candidate-value>&minus;0,17</span>
         </li>
-        <li class="candidate" data-candidate="coche" data-label="un coche" data-angle="155">
-          <span class="candidate-name">un coche</span>
-          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .2500"></span></span>
-          <span class="candidate-value" data-candidate-value>&minus;0,50</span>
+        <li class="candidate" data-candidate="coche" data-label="un coche" data-angle="152" data-length="0.55">
+          <span class="candidate-name">un coche <small data-candidate-distance>distancia 0,96</small></span>
+          <span class="candidate-track"><span class="candidate-bar" data-candidate-bar style="--bar-share: .2350"></span></span>
+          <span class="candidate-value" data-candidate-value>&minus;0,53</span>
         </li>
       </ul>
-      <p class="lab-message" data-similarity-winner aria-live="polite">El texto más cercano es «un gato», con similitud 0,97.</p>
+      <p class="lab-message" data-similarity-winner aria-live="polite">Gana «un gato» por ángulo (0,99), aunque «un perro» esté más cerca en línea recta: 0,17 frente a 0,46.</p>
       <label for="similarity-angle">Girar el vector de la imagen</label>
-      <input type="range" id="similarity-angle" data-similarity-angle min="0" max="175" value="35" step="1">
+      <input type="range" id="similarity-angle" data-similarity-angle min="0" max="175" value="30" step="1">
       <div class="range-ends" aria-hidden="true"><span>0°</span><span>175°</span></div>
     </div>
   </div>
-  <div class="print-detail"><p>La similitud coseno solo mira el ángulo entre vectores normalizados: vale 1 cuando apuntan igual, 0 cuando son perpendiculares y −1 cuando se oponen. La clasificación zero-shot consiste en escribir los candidatos, codificarlos y quedarse con el más cercano. De ahí se siguen dos consecuencias prácticas: la lista de candidatos condiciona la respuesta, porque el modelo elige siempre uno, y la formulación del texto desplaza su vector, así que reescribir el prompt puede cambiar el ganador sin tocar la imagen.</p></div>
+  <p class="slide-callout">Para qué sirve esto en la práctica: es el motor de la búsqueda por texto en un catálogo de imágenes, de la deduplicación («¿tengo ya esta foto?») y del primer filtro de moderación. En los tres casos se codifica una vez, se guardan los vectores y luego cada consulta es un producto escalar.</p>
+  <div class="print-detail"><p>La similitud coseno solo mira el ángulo entre vectores: vale 1 cuando apuntan igual, 0 cuando son perpendiculares y −1 cuando se oponen. Por eso dos vectores de longitud muy distinta pueden ser casi idénticos para el modelo, como pasa aquí con la imagen y «un gato». La longitud de un embedding recoge sobre todo cuánta señal tiene el parche o el texto, no de qué habla, así que la práctica habitual es normalizar los vectores antes de guardarlos; con vectores normalizados, ordenar por coseno y ordenar por distancia euclídea dan el mismo resultado, y la distancia deja de estorbar. La agrupación tampoco es casual: los conceptos que aparecen juntos en los pares de entrenamiento acaban en direcciones próximas, y por eso gato y perro caen a un lado y bicicleta y coche al otro. De ahí se siguen dos consecuencias prácticas: la lista de candidatos condiciona la respuesta, porque el modelo elige siempre uno, y la formulación del texto desplaza su vector, así que reescribir el prompt puede cambiar el ganador sin tocar la imagen.</p></div>
 </section>
 
 <section id="clip-entrenamiento" data-title="Contraste" data-layout="visual">

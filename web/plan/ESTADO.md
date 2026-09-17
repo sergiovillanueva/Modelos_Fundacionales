@@ -13,15 +13,34 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 39 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones y el puente al Hub |
+| Tema 01 · Detección | 40 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones, el puente al Hub y las tres salidas de RF-DETR |
 | Tema 02 · Hugging Face | 12 pantallas fieles al PDF: 6 diapositivas, 3 preguntas, el comprobador de licencias y el constructor de pipeline |
 | Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
-| Tema 04 · DINO | 22 pantallas fieles al PDF: 16 diapositivas, 3 preguntas, el banco de normalidad y el comparador de atención |
+| Tema 04 · DINO | 24 pantallas fieles al PDF: 16 diapositivas, 3 preguntas, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
 | Tema 05 · SAM | 15 pantallas fieles al PDF: 9 diapositivas, 3 preguntas, los prompts por puntos y el recorte sobre fondo negro |
-| Tema 06 · Más visión | 19 pantallas fieles al PDF: 14 diapositivas, 3 preguntas y el laboratorio de OKS |
+| Tema 06 · Más visión | 20 pantallas fieles al PDF: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala y el de OCR |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados: 45, 16, 28, 25, 18 y 22 páginas |
+| PDFs | Temas 01–06 disponibles y regenerados: 46, 16, 28, 28, 18 y 25 páginas |
+
+## Laboratorios nuevos y explicaciones · 17 de septiembre
+
+Encargo del profesor: que la pantalla de coseno no tenga todos los textos en el mismo radio y se vean grupos, explicar mejor de dónde salen los colores de DINO, un detector de pieza buena y pieza mala, dar una vuelta a la pantalla de pose, algo más en OCR y más casos de uso en general.
+
+| Pantalla | Tema | Qué cambia |
+| --- | --- | --- |
+| Gana el texto más cercano | 03 | Los cuatro textos pasan a longitudes distintas y a dos grupos. Gana «un gato» por ángulo aunque «un perro» esté casi tres veces más cerca en línea recta |
+| De 768 números a un color | 04 | Pantalla nueva: los cuatro pasos de parche a PCA a color, y por qué el ala del avión sale del color del ala del pájaro |
+| Aceptar o rechazar la pieza | 04 | Laboratorio nuevo con dos fotos reales de alfombra: el umbral decide entre falsa alarma y defecto que se escapa |
+| El mismo error no penaliza igual | 06 | Gana la escala de la persona como segundo control y el veredicto con umbral 0,50 |
+| Lo que devuelve cada generación de OCR | 06 | Laboratorio nuevo sobre la serigrafía de una placa: texto suelto, texto con coordenadas o campos estructurados |
+| La misma familia hace tres cosas | 01 | Pantalla nueva: RF-DETR ya trae segmentación y puntos clave, con la misma llamada y un ejercicio de una foto |
+
+Dos decisiones de honestidad, con el mismo criterio que las máscaras de GrabCut del tema 05. Las puntuaciones de la alfombra salen de un descriptor clásico de intensidad y gradiente, no de DINO, y cada celda buena se compara con las demás celdas buenas y nunca consigo misma; con ese descriptor la pieza buena llega a 1,28 y la defectuosa a 1,89, margen suficiente para la lección y estrecho para que se vea por qué conviene DINOv2. Las cajas del OCR están medidas a mano sobre la foto para enseñar el formato de salida. Las dos pantallas lo declaran en su pie.
+
+Componentes nuevos: `mode-switch` conmuta bloques de salida y una capa opcional sobre la imagen, y lo usan el laboratorio de OCR y el de las tres salidas de RF-DETR; `anomaly-map` pinta el mapa de anomalía y aplica el umbral. Lógica nueva con pruebas en `src/lib/inspection.js` y `src/lib/embeddings.js`.
+
+Pruebas: **71 unitarias** y **39 de navegador**. Auditoría de las 154 pantallas en escritorio y móvil sin incidencias.
 
 ## Costura entre el tema 01 y el tema 02 · 17 de septiembre
 
@@ -272,6 +291,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-17 | Títulos y rótulos | Cuatro encabezados devueltos a la letra del mazo, subtítulo de la diapositiva 64 recuperado y nombres YOLOv1 a YOLOv9 en la línea de tiempo |
 | 2026-09-17 | Interactivos | Comparador de máscara sobre fondo negro, comparador de atención con tres escenas y constructor de pipeline |
 | 2026-09-17 | Costura 01–02 | Puente al Hub al final del tema 01, detección cerrada en el constructor y un identificador de modelo corregido |
+| 2026-09-17 | Laboratorios | Coseno con grupos y longitudes, PCA explicado, inspección de alfombra, pose con escala, OCR de placa y las tres salidas de RF-DETR |
 
 ## Al modificar un tema
 

@@ -216,9 +216,9 @@
     "webAsset": "src/js/similarity-lab.js",
     "claim": "La clasificación zero-shot se resuelve quedándose con el texto candidato de mayor similitud coseno con la imagen.",
     "url": "https://arxiv.org/abs/2103.00020",
-    "checkedOn": "2026-09-16",
+    "checkedOn": "2026-09-17",
     "status": "verified",
-    "note": "Pantalla nueva, sin diapositiva de origen. Espacio esquemático de dos dimensiones, declarado como tal en pantalla; los valores salen de cosineSimilarity y no están escritos a mano."
+    "note": "Pantalla nueva, sin diapositiva de origen. Espacio esquemático de dos dimensiones, declarado como tal en pantalla; los valores salen de cosineSimilarity y no están escritos a mano. Los cuatro textos pasan a estar a distancias distintas del origen y agrupados en animales y vehículos, para que se vea que el coseno solo mira el ángulo: gana «un gato» aunque «un perro» esté casi tres veces más cerca en línea recta."
   },
   {
     "sectionId": "unir",

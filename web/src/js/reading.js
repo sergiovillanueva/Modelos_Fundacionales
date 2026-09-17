@@ -17,6 +17,8 @@ import {initVramLab} from './vram-lab.js';
 import {initModelTable} from './model-table.js';
 import {initSceneCompare} from './scene-compare.js';
 import {initPipelineLab} from './pipeline-lab.js';
+import {initAnomalyMap} from './anomaly-map.js';
+import {initModeSwitch} from './mode-switch.js';
 
 initMediaControls();
 initQuizzes();
@@ -37,6 +39,8 @@ initVramLab();
 initModelTable();
 initSceneCompare();
 initPipelineLab();
+initAnomalyMap();
+initModeSwitch();
 
 const panels = [...document.querySelectorAll('.reading-content > section')];
 const previous = document.querySelector('[data-step-previous]');
