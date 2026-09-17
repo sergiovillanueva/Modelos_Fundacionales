@@ -10,6 +10,7 @@ import {initOksLab} from './oks-lab.js';
 import {initAnomalyLab} from './anomaly-lab.js';
 import {initNmsLab} from './nms-lab.js';
 import {initCompareMedia} from './compare-media.js';
+import {initGridLab} from './grid-lab.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initAnomalyLab();
   initNmsLab();
   initCompareMedia();
+  initGridLab();
 
   const deck = new Reveal({
     hash: true,

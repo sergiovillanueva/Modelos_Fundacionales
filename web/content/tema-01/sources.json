@@ -377,5 +377,32 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Traslado literal pedido por el profesor. Cada diapositiva ocupa una pantalla y conserva su redacción; los ejercicios, las animaciones y las dos simulaciones ocupan pantallas propias intercaladas. Se omiten los iconos decorativos, la marca de agua de Gamma y el meme de la diapositiva 16, sin valor docente."
+  },
+  {
+    "sectionId": "cuadricula",
+    "sourceSlides": [
+      14
+    ],
+    "originalAsset": "",
+    "webAsset": "src/lib/grid.js",
+    "claim": "La celda donde cae el centro de un objeto es la responsable de detectarlo, así que dos centros en la misma celda dejan un objeto fuera.",
+    "url": "https://arxiv.org/abs/1506.02640",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla nueva que hace manipulable la regla de la diapositiva 14. Parte de la cuadrícula 7 × 7 de YOLOv1. Al bajarla, los dos centros cercanos comparten celda. Subirla no lo garantiza: con 8 × 8 y 12 × 12 vuelven a caer juntos, porque lo que decide es dónde quedan las líneas. Comprobado en tests/grid.test.mjs."
+  },
+  {
+    "sectionId": "nms",
+    "sourceSlides": [
+      16,
+      18
+    ],
+    "originalAsset": "",
+    "webAsset": "src/lib/metrics.js",
+    "claim": "El umbral de NMS es un hiperparámetro sin valor universal: demasiado bajo borra objetos vecinos y demasiado alto deja duplicados.",
+    "url": "https://arxiv.org/abs/2005.12872",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla nueva que conecta la crítica a los componentes ad-hoc de la diapositiva 16 con la supresión que DETR elimina en la 18. Implementa el algoritmo voraz real sobre cinco cajas candidatas; con 0,20 la caja del primer coche suprime la del segundo. Comprobado en tests/metrics.test.mjs."
   }
 ]

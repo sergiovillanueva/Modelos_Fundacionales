@@ -77,3 +77,10 @@ body.course-ready { padding-bottom: 0; }
 .field label { font-size: 9.5pt; }
 .verdict { margin-bottom: 3mm; font-size: 16pt; }
 .lab-disclaimer { margin-top: 4mm; font-size: 9pt; }
+.compare-media { max-width: 150mm; }
+.compare-stage { --compare-x: 50% !important; cursor: default; }
+.compare-stage img { max-height: 90mm; object-fit: cover; object-position: left top; }
+.compare-controls { display: none; }
+.compare-tag { bottom: 3mm; padding: 1mm 3mm; font-size: 8pt; }
+.compare-media figcaption { margin-top: 4mm; font-size: 9.5pt; }
+.candidate-box.is-suppressed rect { opacity: .7; }

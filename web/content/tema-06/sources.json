@@ -109,12 +109,12 @@
       87
     ],
     "originalAsset": "ppt/media/image-87-2.jpeg",
-    "webAsset": "public/assets/tema-06/presentacion/superresolucion.jpeg",
+    "webAsset": "public/assets/tema-06/presentacion/superresolucion-rana-baja.webp y superresolucion-rana-alta.webp",
     "claim": "Swin2SR aplica Swin Transformer V2 a superresolución y restauración de imágenes comprimidas.",
     "url": "https://huggingface.co/docs/transformers/model_doc/swin2sr",
-    "checkedOn": "2026-09-16",
-    "status": "corrected",
-    "note": "Swin2SR se presenta como ejemplo representativo, no como SOTA universal."
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "La figura original compara bicúbica y Swin2SR en columnas. Se dividió por la mitad y se recortó al panel de la rana para montar un comparador deslizante sobre el mismo encuadre. La pantalla recuerda que la textura de la derecha la sintetiza el modelo."
   },
   {
     "sectionId": "superresolucion-usos",
@@ -174,12 +174,12 @@
       92
     ],
     "originalAsset": "ppt/media/image-92-1.jpeg + ppt/media/image-92-2.jpeg",
-    "webAsset": "public/assets/tema-06/presentacion/profundidad-rgb.jpeg + public/assets/tema-06/presentacion/profundidad-mapa.jpeg",
+    "webAsset": "public/assets/tema-06/presentacion/profundidad-escena-rgb.webp y profundidad-escena-mapa.webp",
     "claim": "Depth Anything V2 ofrece modelos generales de profundidad relativa monocular.",
     "url": "https://github.com/DepthAnything/Depth-Anything-V2",
-    "checkedOn": "2026-09-16",
-    "status": "corrected",
-    "note": "La web sigue la versión V2 usada por el notebook y evita atribuir metros a un mapa relativo."
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Las dos imágenes de la diapositiva 92 se recortaron al panel de la carretera y se alinearon al mismo tamaño para montarlas en un comparador deslizante. Los archivos originales completos se conservan junto a los recortes."
   },
   {
     "sectionId": "profundidad-usos",

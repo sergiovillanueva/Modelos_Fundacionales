@@ -64,6 +64,7 @@ Qué significa en la práctica:
 | `slide-callout` | Aviso destacado que la diapositiva resalta en un recuadro propio |
 | `note-grid` con `is-ok`, `is-warn` o `is-stop` | Bloques que la diapositiva codifica por color; el texto sigue diciendo el estado |
 | `stage-list--four` | Fila de cuatro pasos, como las de flujo del PDF |
+| `compare-media` | Comparador deslizante entre dos imágenes alineadas; en papel imprime las dos mitades |
 
 Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna.
 
@@ -153,7 +154,7 @@ Antes de crear estilos nuevos, reutilizar los que ya existen en `widgets.css`:
 | `candidate-list` | Ranking con barra y valor por fila, resaltando `is-winner` |
 | `prompt-modes` | Control segmentado de dos opciones con `aria-pressed` |
 
-Los laboratorios actuales son `equilibrio` (tema 01, umbral y métricas), `comprobar` (tema 02, licencia frente a caso de uso), `cercania` (tema 03, similitud coseno), `normalidad` (tema 04, banco de normalidad tipo PatchCore), `marcar` (tema 05, puntos positivos y negativos) y `oks` (tema 06, tolerancia por articulación). Su lógica vive en `src/lib/`: `metrics.js`, `licensing.js`, `embeddings.js`, `anomaly.js`, `prompting.js` y `keypoints.js`. Cada uno tiene pruebas unitarias propias y comprobaciones de navegador en `tests/labs.spec.mjs`.
+Los laboratorios actuales son `cuadricula` y `nms` (tema 01, cuadrícula de YOLO y supresión de no-máximos), `equilibrio` (tema 01, umbral y métricas), `comprobar` (tema 02, licencia frente a caso de uso), `cercania` (tema 03, similitud coseno), `normalidad` (tema 04, banco de normalidad tipo PatchCore), `marcar` (tema 05, puntos positivos y negativos) y `oks` (tema 06, tolerancia por articulación). Su lógica vive en `src/lib/`: `metrics.js`, `grid.js`, `licensing.js`, `embeddings.js`, `anomaly.js`, `prompting.js` y `keypoints.js`. Para comparar dos imágenes alineadas está `compare-media`, que el tema 06 usa en profundidad y superresolución. Cada uno tiene pruebas unitarias propias y comprobaciones de navegador en `tests/labs.spec.mjs`.
 
 Un módulo nuevo se conecta en `src/js/reading.js` y en `src/js/presentation.js`. Si la interacción usa `role="button"`, comprobar que sigue en el selector de `keyboardCondition` de `presentation.js` para que Reveal no se quede con la barra espaciadora.
 

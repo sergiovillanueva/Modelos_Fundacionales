@@ -13,7 +13,7 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 36 pantallas fieles al PDF: 27 diapositivas, 7 preguntas, 2 animaciones y 2 simulaciones |
+| Tema 01 · Detección | 38 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones y 4 simulaciones |
 | Tema 02 · Hugging Face | 11 pantallas fieles al PDF: 6 diapositivas, 3 preguntas y el comprobador de licencias |
 | Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
 | Tema 04 · DINO | 21 pantallas fieles al PDF: 16 diapositivas, 3 preguntas y el banco de normalidad |
@@ -21,7 +21,7 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Tema 06 · Más visión | 19 pantallas fieles al PDF: 14 diapositivas, 3 preguntas y el laboratorio de OKS |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados: 37, 11, 23, 21, 14 y 19 páginas |
+| PDFs | Temas 01–06 disponibles y regenerados: 39, 11, 23, 21, 14 y 19 páginas |
 
 ## Tema 06 · cierre de la migración
 
@@ -36,6 +36,30 @@ Las diapositivas 80–93 y las 27 celdas de `6_Otras_tareas.ipynb` se distribuye
 - Colab: cinco tareas ejecutables por separado y ampliación para combinar dos pipelines.
 
 La diapositiva 94 se integra en la práctica final como cierre; las diapositivas 1–3 se resuelven mediante portada, créditos y navegación. Las correcciones y omisiones intencionales se detallan en [AUDITORIA-TEMA-06.md](AUDITORIA-TEMA-06.md).
+
+## Repaso e interactivos del 17 de septiembre
+
+Encargo: revisar el conjunto y añadir cosas manipulables, en concreto un comparador deslizante entre una imagen y su mapa de profundidad.
+
+Cuatro pantallas nuevas, todas con lógica propia y pruebas:
+
+| Pantalla | Tema | Qué hace |
+| --- | --- | --- |
+| `profundidad` | 06 | Comparador deslizante entre la foto de la carretera y su mapa de profundidad, sobre el mismo encuadre |
+| `superresolucion` | 06 | Comparador deslizante entre la interpolación bicúbica y la salida de Swin2SR |
+| `nms` | 01 | Umbral de supresión de no-máximos sobre cinco cajas candidatas y dos coches solapados |
+| `cuadricula` | 01 | Cuadrícula S × S de YOLO y qué celda se responsabiliza de cada objeto |
+
+El comparador (`compare-media`) es un componente reutilizable: cortina con `clip-path`, deslizador accesible y arrastre sobre la propia imagen. Funciona en las tres salidas, y en papel imprime las dos mitades.
+
+Dos cosas que descubrieron las pruebas y que se han incorporado a la enseñanza:
+
+- **El umbral de NMS no tiene valor universal.** Con 0,20 la caja del primer coche suprime la del segundo y se pierde un objeto real; con 0,80 sobreviven las cinco. Es justo el argumento de la diapositiva 16 contra los componentes ad-hoc.
+- **Subir S no garantiza separar objetos cercanos.** Con 7 × 7 los tres centros tienen celda propia, pero con 8 × 8 y con 12 × 12 dos vuelven a caer juntos, porque lo que decide es dónde quedan las líneas. Está recogido en el detalle impreso.
+
+Auditoría automática de las **126 pantallas** en escritorio y móvil: sin desbordamientos, sin imágenes rotas, sin texto alternativo ausente, sin enlaces vacíos y sin pantallas desproporcionadas. Marcó dos pantallas con muy poco texto visible (`progreso` y `dinov3-mapas`), que ahora llevan un pie que orienta la mirada.
+
+Estado de las pruebas: **46 unitarias** y **25 de navegador**, todas correctas. PDF regenerados.
 
 ## Traslado literal de los temas 04, 05 y 06 · 17 de septiembre
 

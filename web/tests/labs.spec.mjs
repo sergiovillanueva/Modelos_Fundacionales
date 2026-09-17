@@ -174,3 +174,59 @@ test('los laboratorios de los temas 4 y 6 caben en móvil', async ({page}) => {
     }
   }
 });
+
+test('el umbral de NMS pasa de borrar un coche a dejar duplicados', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#nms');
+  await expect(page.locator('[data-nms-kept]')).toHaveText('2');
+  await expect(page.locator('[data-nms-message]')).toContainText('Una caja por coche');
+
+  await page.locator('[data-nms-threshold]').fill('15');
+  await expect(page.locator('[data-nms-kept]')).toHaveText('1');
+  await expect(page.locator('[data-nms-message]')).toContainText('se pierde un objeto real');
+  await expect(page.locator('[data-candidate-box="b1"]')).toHaveClass(/is-suppressed/);
+
+  await page.locator('[data-nms-threshold]').fill('90');
+  await expect(page.locator('[data-nms-kept]')).toHaveText('5');
+  await expect(page.locator('[data-nms-suppressed]')).toHaveText('0');
+  await expect(page.locator('[data-nms-message]')).toContainText('sobreviven duplicados');
+});
+
+test('el comparador deslizante recorta la imagen superpuesta', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#profundidad');
+  const stage = page.locator('#profundidad [data-compare-stage]');
+  const clip = () => stage.evaluate((node) => node.style.getPropertyValue('--compare-x'));
+
+  await expect(await clip()).toBe('50%');
+  await page.locator('#profundidad [data-compare-position]').fill('0');
+  await expect(await clip()).toBe('0%');
+  await page.locator('#profundidad [data-compare-position]').fill('100');
+  await expect(await clip()).toBe('100%');
+
+  await page.goto('/temas/06-otras-tareas/index.html#superresolucion');
+  await expect(page.locator('#superresolucion [data-compare-stage] img')).toHaveCount(2);
+});
+
+test('sin JavaScript los comparadores muestran las dos mitades', async ({browser}) => {
+  const context = await browser.newContext({javaScriptEnabled: false});
+  const page = await context.newPage();
+  await page.goto('http://127.0.0.1:4173/temas/06-otras-tareas/index.html');
+  const stage = page.locator('#profundidad [data-compare-stage]');
+  await expect(await stage.evaluate((node) => node.style.getPropertyValue('--compare-x'))).toBe('50%');
+  await expect(page.locator('#nms')).toHaveCount(0);
+  await context.close();
+});
+
+test('la cuadrícula de YOLO reparte o comparte celdas según su tamaño', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#cuadricula');
+  await expect(page.locator('[data-grid-count]')).toHaveText('3 de 3');
+  await expect(page.locator('#cuadricula .grid-cell.is-shared')).toHaveCount(0);
+
+  await page.locator('[data-grid-size]').fill('4');
+  await expect(page.locator('[data-grid-count]')).toHaveText('2 de 3');
+  await expect(page.locator('#cuadricula .grid-cell.is-shared')).toHaveCount(1);
+  await expect(page.locator('[data-grid-message]')).toContainText('misma celda');
+
+  await page.locator('[data-grid-size]').fill('13');
+  await expect(page.locator('[data-grid-count]')).toHaveText('3 de 3');
+  await expect(page.locator('#cuadricula .grid-lines line')).toHaveCount(24);
+});

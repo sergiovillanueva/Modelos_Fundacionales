@@ -9,6 +9,7 @@ import {initOksLab} from './oks-lab.js';
 import {initAnomalyLab} from './anomaly-lab.js';
 import {initNmsLab} from './nms-lab.js';
 import {initCompareMedia} from './compare-media.js';
+import {initGridLab} from './grid-lab.js';
 
 initMediaControls();
 initQuizzes();
@@ -21,6 +22,7 @@ initOksLab();
 initAnomalyLab();
 initNmsLab();
 initCompareMedia();
+initGridLab();
 
 const panels = [...document.querySelectorAll('.reading-content > section')];
 const previous = document.querySelector('[data-step-previous]');

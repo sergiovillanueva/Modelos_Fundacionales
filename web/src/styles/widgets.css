@@ -422,3 +422,10 @@
 @media (prefers-reduced-motion: reduce) {
   .candidate-box rect { transition: none; }
 }
+
+/* Cuadrícula de YOLO: celdas responsables y colisiones entre centros. */
+.grid-scene { fill: var(--color-wash); }
+.grid-lines line { stroke: #b3bbc9; stroke-width: .5; }
+.grid-cell { fill: var(--color-primary); fill-opacity: .16; }
+.grid-cell.is-shared { fill: var(--color-error-text); fill-opacity: .22; }
+.grid-objects circle { fill: var(--color-primary-dark); stroke: #fff; stroke-width: 1.2; }

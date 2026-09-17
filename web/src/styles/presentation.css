@@ -69,3 +69,7 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .note-grid h3, .reveal .stage-list h3 { font-size: 19px; }
 .reveal .note-grid p, .reveal .note-grid ul, .reveal .stage-list p { font-size: 17px; line-height: 1.45; }
 .reveal .formula { font-size: 19px; }
+.reveal .compare-media { max-width: 560px; }
+.reveal .compare-controls label { font-size: 16px; }
+.reveal .compare-media figcaption { font-size: 16px; }
+.reveal .compare-tag { font-size: 13px; }

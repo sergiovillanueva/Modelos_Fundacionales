@@ -154,6 +154,7 @@
   <div class="section-copy"><h2>Comparación de velocidad de RCNNs</h2></div>
   <figure class="figure-media lesson-image lesson-image--wide">
     <img src="{{ASSET:tema-01/presentacion/rcnn-velocidad.jpeg}}" alt="Tabla comparativa de RCNN, Fast RCNN y Faster RCNN por método y tiempo de generación de propuestas, tiempo de predicción por imagen y factor de aceleración.">
+    <figcaption>El salto está en la generación de propuestas: Selective Search tarda 1500 ms y la RPN de Faster R-CNN, 10 ms.</figcaption>
   </figure>
   <div class="print-detail"><p>La tabla compara tres generaciones. Método de propuestas: Selective Search en RCNN y Fast RCNN, RPN en Faster RCNN. Tiempo de generación: 1500 ms, 1500 ms y 10 ms. Predicción sobre las propuestas por imagen: 47000 ms, 320 ms y 190 ms. Factor de aceleración: X, 25X y 250X.</p></div>
 </section>
@@ -198,6 +199,49 @@
       <img src="{{ASSET:tema-01/presentacion/yolo-arquitectura.jpeg}}" alt="Resumen de YOLO: esquema de entrada y cuadrícula, arquitectura convolucional completa y función de pérdida.">
     </figure>
   </div>
+</section>
+
+<section id="cuadricula" data-title="Cuadrícula" data-layout="lab">
+  <div class="section-copy">
+    <h2>Una celda se responsabiliza de un objeto</h2>
+    <p class="lead">Baja la cuadrícula y mira qué pasa cuando dos centros caen en la misma celda.</p>
+  </div>
+  <div class="lab-layout" data-grid-lab data-width="160" data-height="100">
+    <div class="lab-stage">
+      <svg viewBox="0 0 160 100" role="img" aria-label="Escena con tres objetos y una cuadrícula S por S. Se resalta la celda responsable de cada objeto.">
+        <rect class="grid-scene" x="0" y="0" width="160" height="100" rx="3"/>
+        <g class="grid-cells" data-grid-cells>
+          <rect class="grid-cell" x="45.71" y="42.86" width="22.86" height="14.29"/>
+          <rect class="grid-cell" x="45.71" y="57.14" width="22.86" height="14.29"/>
+          <rect class="grid-cell" x="114.29" y="42.86" width="22.86" height="14.29"/>
+        </g>
+        <g class="grid-lines" data-grid-lines>
+          <line x1="22.86" x2="22.86" y1="0" y2="100"/><line x1="45.71" x2="45.71" y1="0" y2="100"/>
+          <line x1="68.57" x2="68.57" y1="0" y2="100"/><line x1="91.43" x2="91.43" y1="0" y2="100"/>
+          <line x1="114.29" x2="114.29" y1="0" y2="100"/><line x1="137.14" x2="137.14" y1="0" y2="100"/>
+          <line y1="14.29" y2="14.29" x1="0" x2="160"/><line y1="28.57" y2="28.57" x1="0" x2="160"/>
+          <line y1="42.86" y2="42.86" x1="0" x2="160"/><line y1="57.14" y2="57.14" x1="0" x2="160"/>
+          <line y1="71.43" y2="71.43" x1="0" x2="160"/><line y1="85.71" y2="85.71" x1="0" x2="160"/>
+        </g>
+        <g class="grid-objects">
+          <circle data-object-centre="o1" data-label="coche izquierdo" cx="46" cy="52" r="3.2"/>
+          <circle data-object-centre="o2" data-label="coche central" cx="50" cy="58" r="3.2"/>
+          <circle data-object-centre="o3" data-label="coche derecho" cx="118" cy="44" r="3.2"/>
+        </g>
+      </svg>
+      <p class="lab-note">Cada punto es el centro de un objeto. YOLOv1 usaba una cuadrícula de 7 × 7.</p>
+    </div>
+    <div class="lab-readout">
+      <div class="metric-pair">
+        <p class="metric"><span>Objetos con celda propia</span><strong data-grid-count>3 de 3</strong></p>
+      </div>
+      <p class="lab-message" data-grid-message aria-live="polite">Cada objeto cae en una celda distinta: la cuadrícula puede hacerse cargo de todos.</p>
+      <label for="grid-size">Tamaño de la cuadrícula <b data-grid-value>7 × 7</b></label>
+      <input type="range" id="grid-size" data-grid-size min="2" max="13" value="7" step="1">
+      <div class="range-ends" aria-hidden="true"><span>2 × 2</span><span>13 × 13</span></div>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el estado con una cuadrícula de 7 × 7, la que usaba YOLOv1. Al bajar a 6 × 6 o menos, los centros de los dos coches de la izquierda caen en la misma celda y esa celda solo puede responsabilizarse de uno: es la limitación más citada de YOLOv1 con objetos juntos o pequeños. Subir S reparte mejor los centros en general, pero no lo garantiza: con 8 × 8 y con 12 × 12 esos dos centros vuelven a caer juntos, porque lo que decide es dónde quedan las líneas de la rejilla. Además, más celdas multiplican las predicciones y el coste. Las versiones posteriores atacan el problema con predicción multiescala y, más tarde, con enfoques anchor-free.</p></div>
 </section>
 
 <section id="una-etapa" data-title="Una etapa" data-layout="question">

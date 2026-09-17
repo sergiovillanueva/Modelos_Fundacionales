@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {iou, matchDetections} from '../src/lib/metrics.js';
+import {iou, matchDetections, nonMaxSuppression} from '../src/lib/metrics.js';
 
 test('IoU devuelve 1 para cajas iguales', () => {
   assert.equal(iou([20, 20, 60, 60], [20, 20, 60, 60]), 1);
@@ -72,4 +72,50 @@ test('un solapamiento por debajo del umbral IoU no es un acierto', () => {
   assert.equal(result.truePositives, 0);
   assert.equal(result.falsePositives, 1);
   assert.equal(result.outcomes.get('p1').outcome, 'fp');
+});
+
+const nmsBoxes = [
+  {id: 'a1', object: 'a', score: 0.95, box: [20, 30, 80, 74]},
+  {id: 'a2', object: 'a', score: 0.88, box: [26, 33, 84, 76]},
+  {id: 'a3', object: 'a', score: 0.72, box: [15, 26, 74, 70]},
+  {id: 'b1', object: 'b', score: 0.91, box: [56, 30, 116, 74]},
+  {id: 'b2', object: 'b', score: 0.64, box: [50, 33, 110, 77]}
+];
+
+test('NMS conserva una caja por objeto con un umbral razonable', () => {
+  const result = nonMaxSuppression(nmsBoxes, 0.5);
+  assert.deepEqual(result.kept, ['a1', 'b1']);
+  assert.equal(result.suppressedCount, 3);
+});
+
+test('NMS siempre conserva la caja de mayor puntuación', () => {
+  for (const threshold of [0.05, 0.3, 0.6, 0.95]) {
+    assert.ok(nonMaxSuppression(nmsBoxes, threshold).kept.includes('a1'));
+  }
+});
+
+test('un umbral demasiado bajo borra el objeto vecino', () => {
+  const result = nonMaxSuppression(nmsBoxes, 0.2);
+  assert.deepEqual(result.kept, ['a1']);
+  assert.equal(result.suppressedBy.get('b1'), 'a1');
+});
+
+test('un umbral demasiado alto deja pasar los duplicados', () => {
+  assert.equal(nonMaxSuppression(nmsBoxes, 0.9).keptCount, nmsBoxes.length);
+});
+
+test('el número de cajas conservadas nunca baja al subir el umbral', () => {
+  let previous = 0;
+  for (let threshold = 0.05; threshold <= 0.95; threshold += 0.05) {
+    const current = nonMaxSuppression(nmsBoxes, threshold).keptCount;
+    assert.ok(current >= previous, `baja en el umbral ${threshold.toFixed(2)}`);
+    previous = current;
+  }
+});
+
+test('NMS registra qué caja suprimió a cada descartada', () => {
+  const result = nonMaxSuppression(nmsBoxes, 0.5);
+  assert.equal(result.suppressedBy.get('a2'), 'a1');
+  assert.equal(result.suppressedBy.get('b2'), 'b1');
+  assert.equal(result.suppressedBy.has('a1'), false);
 });
