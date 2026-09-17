@@ -23,6 +23,31 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
 | PDFs | Temas 01–06 disponibles y regenerados a plena opacidad: 46, 18, 28, 28, 18 y 26 páginas |
 
+## Cuadernos de Colab revisados · 17 de septiembre
+
+Primera revisión de los seis cuadernos desde que se grabaron. Copia intacta en `old/backup-2026-09-17/`.
+
+**Lo que fallaba al ejecutar.** En el cuaderno 1, la comparación que cierra el fine-tuning cargaba el modelo entrenado y después llamaba al genérico, con las líneas del custom comentadas: enseñaba dos veces lo mismo. Ahora compara de verdad y avisa si todavía no hay checkpoint. La celda de entrenamiento comprobaba si existía el dataset de baloncesto, imprimía que no y entrenaba igual, así que reventaba desde dentro de `train()`; ahora se detiene con el enlace de Roboflow Universe y lo que tiene que haber en la carpeta. En el cuaderno 5, la plantilla del ejercicio tenía listas de coordenadas vacías que eran un error de sintaxis al descomentarlas.
+
+**Lo que había envejecido.** `torch_dtype` quedó obsoleto en transformers 4.56 en favor de `dtype`: cambiado en los cuadernos 3 y 5. El resto de llamadas se cotejó una a una con la documentación vigente y están al día: SAM 2 con `Sam2Model` y `post_process_masks`, Grounding DINO con `threshold` y `text_threshold`, VitPose con su `dataset_index`, y el pipeline de profundidad. La carga de RMBG-1.4, que ejecuta código del propio repositorio, va ahora dentro de un `try` que explica la alternativa en vez de cortar la clase.
+
+**Lo que se abre con GPU.** Ninguno declaraba acelerador, así que Colab los abría en CPU y Qwen2.5-VL o SAM 2.1 large eran inusables. Los seis llevan ya `accelerator: GPU` en su metadata y una insignia de Colab en la primera celda. El cuaderno 3 guardaba las salidas de siete celdas y pesaba 487 KB; limpio pesa 24 KB y el alumno no ve los resultados antes de ejecutar.
+
+**Lo que se ha añadido**, sin tocar la estructura de ninguno:
+
+| Añadido | Dónde | Por qué |
+| --- | --- | --- |
+| Deslizador del umbral con `ipywidgets` | 1 | Antes había que editar un número a mano |
+| Anotadores de `supervision` | 1 | Tres líneas y el resultado se parece al de las demos |
+| Foto con la cámara del portátil | 1 y 6 | Detectar sobre uno mismo, o sacar el esqueleto en clase |
+| Segmentación y puntos clave de RF-DETR | 1 | Salieron después de grabar el curso |
+| RF-DETR desde el Hub | 2 | El año pasado solo existía por el paquete de Roboflow |
+| Nota sobre SAM 3 | 5 | Incorpora el texto como indicación propia y ahorra el apaño de encadenar Grounding DINO |
+
+El cuaderno 4 ya tenía la línea de DINOv3 comentada con el aviso del token, así que se quedó como estaba.
+
+**Sin ejecutar.** Aquí no hay GPU ni las librerías instaladas, así que la revisión es estática: JSON válido, las 78 celdas de código compilan y cada API contrastada con su documentación. Conviene una pasada completa en Colab antes de clase, sobre todo del fine-tuning del cuaderno 1 y de RMBG en el 6.
+
 ## El PDF salía lavado · 17 de septiembre
 
 El profesor avisa de que los PDF se exportan borrosos. Eran dos cosas distintas y la primera es la que se veía.
@@ -294,7 +319,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 
 ## Pendientes externos
 
-1. Los notebooks se enlazan pero no se han ejecutado ni modificado; los modelos pesados siguen en Colab.
+1. Los notebooks se revisaron y actualizaron el 17 de septiembre de 2026, con copia en `old/backup-2026-09-17/`, pero no se han ejecutado: los modelos pesados siguen en Colab y hace falta una pasada allí antes de clase.
 2. El enlace de Colab usa el remoto `sergiovillanueva/Modelos_Fundacionales` y quedará disponible al subir el notebook y la web a la rama `main`.
 3. No hay almacenamiento de respuestas, cuentas ni resultados compartidos; la web permanece estática.
 4. Este trabajo no publica ni despliega cambios.
@@ -314,6 +339,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-17 | Costura 01–02 | Puente al Hub al final del tema 01, detección cerrada en el constructor y un identificador de modelo corregido |
 | 2026-09-17 | Laboratorios | Coseno con grupos y longitudes, PCA explicado, inspección de alfombra, pose con escala, OCR de placa y las tres salidas de RF-DETR |
 | 2026-09-17 | PDF y matching | Arreglada la opacidad y la resolución de los PDF, verificación geométrica en el tema 06 y Spaces comprobados en el tema 02 |
+| 2026-09-17 | Cuadernos | Seis cuadernos revisados: tres fallos de ejecución, `dtype` nuevo, GPU por defecto, cámara, deslizador y celdas de RF-DETR |
 
 ## Al modificar un tema
 

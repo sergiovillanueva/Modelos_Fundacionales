@@ -218,10 +218,10 @@
       92,
       94
     ],
-    "originalAsset": "6_Otras_tareas.ipynb",
+    "originalAsset": "6_Otras_Tareas.ipynb",
     "webAsset": "",
     "claim": "El notebook practica pose, OCR, superresolución, eliminación de fondo y Depth Anything V2.",
-    "url": "https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/6_Otras_tareas.ipynb",
+    "url": "https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/6_Otras_Tareas.ipynb",
     "checkedOn": "2026-09-16",
     "status": "verified",
     "note": "Revisadas las 27 celdas; image matching queda como teoría y la última pantalla integra el cierre general."
@@ -261,7 +261,7 @@
     "url": "",
     "checkedOn": "2026-09-17",
     "status": "verified",
-    "note": "Pantalla práctica nueva, sin diapositiva de origen. Recetario copiable con un fragmento por tarea, tomado del cuaderno 6_Otras_tareas.ipynb."
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Recetario copiable con un fragmento por tarea, tomado del cuaderno 6_Otras_Tareas.ipynb."
   },
   {
     "sectionId": "checklist",

@@ -61,7 +61,7 @@
       "navTitle": "Más visión",
       "status": "available",
       "contentDir": "tema-06",
-      "notebookPath": "6_Otras_tareas.ipynb",
+      "notebookPath": "6_Otras_Tareas.ipynb",
       "description": "Pose humana, OCR, superresolución, eliminación de fondo, correspondencias visuales y profundidad monocular."
     }
   ]
