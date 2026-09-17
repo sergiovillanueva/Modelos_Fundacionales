@@ -151,5 +151,16 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist derivada de las diapositivas 33 y 34."
+  },
+  {
+    "sectionId": "pipeline-armar",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "Las cuatro tareas comparten la misma llamada de `pipeline` y solo cambian el identificador del modelo y los argumentos propios de la tarea.",
+    "url": "https://huggingface.co/docs/transformers/main_classes/pipelines",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Los cuatro identificadores existen en el Hub: google/vit-base-patch16-224, openai/clip-vit-base-patch32, IDEA-Research/grounding-dino-tiny y Salesforce/blip-image-captioning-base."
   }
 ]

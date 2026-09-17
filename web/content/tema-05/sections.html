@@ -143,7 +143,7 @@
 </section>
 
 <section id="evolucion" data-title="Evolución" data-layout="visual">
-  <div class="section-copy"><h2>Evolución: SAM, SAM 2 y SAM 3</h2></div>
+  <div class="section-copy"><h2>Evolución: SAM → SAM 2 → SAM 3</h2></div>
   <p class="slide-lead">La familia de modelos Segment Anything (SAM) ha evolucionado rápidamente, ampliando sus capacidades de segmentación universal desde imágenes estáticas hasta el análisis complejo de vídeo con prompts contextuales.</p>
   <ol class="stage-list stage-list--columns">
     <li>
@@ -166,7 +166,7 @@
 </section>
 
 <section id="motor-datos" data-title="Datos" data-layout="visual">
-  <div class="section-copy"><h2>The data engine: cómo escalar a 1B de máscaras</h2></div>
+  <div class="section-copy"><h2>El motor de datos (data engine): cómo escalar a 1B de máscaras</h2></div>
   <p class="slide-lead">La creación del dataset SA-1B, clave para el entrenamiento de SAM, se logró mediante un innovador proceso iterativo de «motor de datos», combinando la inteligencia humana con la capacidad de autoaprendizaje del modelo para escalar la anotación.</p>
   <ol class="stage-list stage-list--columns">
     <li>
@@ -186,7 +186,7 @@
 </section>
 
 <section id="promptable" data-title="Prompts" data-layout="visual">
-  <div class="section-copy"><h2>«Promptable segmentation»: la idea central</h2></div>
+  <div class="section-copy"><h2>"Promptable segmentation": la idea central</h2></div>
   <p class="slide-lead">La segmentación promptable es la capacidad de un modelo de visión artificial para segmentar objetos en imágenes o vídeos basándose en diferentes tipos de prompts (indicaciones). Esto permite una interacción flexible y eficiente sin necesidad de reentrenar el modelo.</p>
   <h3 class="slide-subtitle">Tipos de prompts y sus capacidades</h3>
   <div class="note-grid">
@@ -269,6 +269,29 @@
     </div>
   </div>
   <div class="print-detail"><p>Esta página recoge el estado con un punto sobre la sandía izquierda. La diferencia que conviene retener no es visual sino de interfaz: un punto o una caja identifican <em>dónde</em>, y devuelven la instancia que hay ahí; un concepto en texto o un ejemplar identifican <em>qué</em>, y devuelven todas las coincidencias. SAM 1 y SAM 2 admiten de forma nativa lo primero, y para lo segundo necesitan un modelo externo que traduzca el texto; SAM 3 incorpora el texto y los ejemplares como prompts propios. Las máscaras de esta demostración se calcularon con GrabCut a partir de una caja, no con SAM: el cuaderno del tema las genera con el modelo real.</p></div>
+</section>
+
+<section id="mascara-sola" data-title="Fondo negro" data-layout="lab">
+  <div class="section-copy"><h2>Qué devuelve exactamente una máscara</h2></div>
+  <p class="slide-lead">Desliza para quitar el fondo. Lo que queda es la salida de la segmentación: una lista de píxeles por instancia, cada una con su contorno, no un recorte rectangular.</p>
+  <figure class="compare-media" data-compare data-before="la foto completa" data-after="las instancias recortadas sobre fondo negro">
+    <div class="compare-stage" data-compare-stage style="--compare-x: 50%">
+      <img src="{{ASSET:tema-05/presentacion/fruteria.webp}}" alt="Puesto de frutería con sandías, piñas, granadas, limas y naranjas ordenadas por montones.">
+      <div class="compare-overlay">
+        <img src="{{ASSET:tema-05/presentacion/fruteria-segmentada.webp}}" alt="La misma escena con el fondo en negro: solo quedan las dos sandías, la piña y el montón de limas, cada uno con su contorno de color.">
+      </div>
+      <span class="compare-line" aria-hidden="true"></span>
+      <span class="compare-tag compare-tag--after" aria-hidden="true">Segmentado</span>
+      <span class="compare-tag compare-tag--before" aria-hidden="true">Foto</span>
+    </div>
+    <div class="compare-controls">
+      <label for="compare-mascara">Deslizar para quitar el fondo</label>
+      <input type="range" id="compare-mascara" data-compare-position min="0" max="100" value="50" step="1">
+    </div>
+    <figcaption>Cuatro instancias con su contorno. Fíjate en las hojas de la piña y en el borde entre las dos filas de limas: ahí es donde se nota la calidad del recorte.</figcaption>
+  </figure>
+  <p class="slide-callout">Una máscara pesa poco y se guarda comprimida (RLE en COCO). Con ella puedes contar objetos, medir su área en píxeles o recortarlos con transparencia, cosas que una caja no permite.</p>
+  <div class="print-detail"><p>La imagen de la derecha se compone multiplicando la foto por la unión de las cuatro máscaras, que es lo mismo que hace cualquier herramienta de recorte automático. Las máscaras están precalculadas con GrabCut a partir de una caja, no con SAM: el cuaderno del tema las genera con el modelo real. Un detalle que se ve al deslizar: el contorno de las limas rodea el montón entero porque la indicación fue una caja sobre el montón, no sobre una lima suelta.</p></div>
 </section>
 
 <section id="prompt" data-title="Puntos" data-layout="question">

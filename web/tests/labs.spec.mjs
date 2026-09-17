@@ -333,3 +333,39 @@ test('la receta se puede copiar', async ({page, context}) => {
   const copiado = await page.evaluate(() => navigator.clipboard.readText());
   expect(copiado).toContain('RFDETRMedium');
 });
+
+test('el selector de escena cambia las dos imágenes del comparador', async ({page}) => {
+  await page.goto('/temas/04-dino/index.html#atencion-comparar');
+  const antes = page.locator('[data-scene-before]');
+  const despues = page.locator('[data-scene-after]');
+
+  await expect(antes).toHaveAttribute('src', /jirafas-foto/);
+  await expect(despues).toHaveAttribute('src', /jirafas-atencion/);
+
+  await page.getByRole('button', {name: 'Bicicleta'}).click();
+  await expect(antes).toHaveAttribute('src', /bici-foto/);
+  await expect(despues).toHaveAttribute('src', /bici-atencion/);
+  await expect(page.locator('[data-scene-note]')).toContainText('la bicicleta');
+  await expect(page.getByRole('button', {name: 'Jirafas'})).toHaveAttribute('aria-pressed', 'false');
+
+  // La cortina sigue respondiendo después de cambiar de escena.
+  await page.locator('#atencion-comparar [data-compare-position]').fill('20');
+  const stage = page.locator('#atencion-comparar [data-compare-stage]');
+  await expect(await stage.evaluate((node) => node.style.getPropertyValue('--compare-x'))).toBe('20%');
+});
+
+test('el constructor de pipeline rehace el código con cada elección', async ({page}) => {
+  await page.goto('/temas/02-hugging-face/index.html#pipeline-armar');
+  const code = page.locator('[data-pipeline-code]');
+
+  await expect(code).toContainText('image-classification');
+  await expect(code).toContainText('device="cpu"');
+
+  await page.getByRole('button', {name: 'Localizar objetos descritos con palabras'}).click();
+  await expect(code).toContainText('zero-shot-object-detection');
+  await expect(code).toContainText('candidate_labels');
+
+  await page.getByRole('button', {name: 'GPU'}).click();
+  await expect(code).toContainText('device="cuda"');
+  await expect(page.locator('[data-pipeline-note]')).toContainText('Grounding DINO');
+});

@@ -15,6 +15,8 @@ import {initChoosers} from './chooser.js';
 import {initBudgetLab} from './budget-lab.js';
 import {initVramLab} from './vram-lab.js';
 import {initModelTable} from './model-table.js';
+import {initSceneCompare} from './scene-compare.js';
+import {initPipelineLab} from './pipeline-lab.js';
 
 initMediaControls();
 initQuizzes();
@@ -33,6 +35,8 @@ initChoosers();
 initBudgetLab();
 initVramLab();
 initModelTable();
+initSceneCompare();
+initPipelineLab();
 
 const panels = [...document.querySelectorAll('.reading-content > section')];
 const previous = document.querySelector('[data-step-previous]');

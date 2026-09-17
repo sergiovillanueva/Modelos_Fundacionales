@@ -217,6 +217,44 @@ print(results)  # [{'label': 'cat', 'score': 0.99, 'box': {...}}]</code></pre>
   <div class="print-detail"><p>El identificador del modelo determina qué arquitectura y qué preprocesador se instancian. Para reproducibilidad conviene fijar también la revisión. En producción, las clases específicas permiten controlar batching, dispositivo, precisión y formato de salida.</p></div>
 </section>
 
+<section id="pipeline-armar" data-title="Armar" data-layout="lab">
+  <div class="section-copy"><h2>Arma tu pipeline</h2></div>
+  <p class="slide-lead">Elige qué quieres hacer y dónde vas a ejecutarlo. El código de abajo es el que se pega en el cuaderno, con el modelo del Hub que corresponde a esa tarea.</p>
+  <div class="pipeline-lab" data-pipeline-lab>
+    <div class="pipeline-groups">
+      <fieldset>
+        <legend>Qué quieres hacer</legend>
+        <div class="pipeline-options">
+          <button type="button" data-pipeline-task="clasificar" aria-pressed="true">Clasificar la imagen entera</button>
+          <button type="button" data-pipeline-task="buscar">Decidir entre textos que yo escribo</button>
+          <button type="button" data-pipeline-task="detectar">Localizar objetos descritos con palabras</button>
+          <button type="button" data-pipeline-task="describir">Describir la escena en una frase</button>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Dónde lo ejecutas</legend>
+        <div class="pipeline-options pipeline-options--row">
+          <button type="button" data-pipeline-device="cpu" aria-pressed="true">CPU</button>
+          <button type="button" data-pipeline-device="gpu">GPU</button>
+        </div>
+      </fieldset>
+    </div>
+    <div class="pipeline-output">
+      <pre class="code-sample" data-copy><code data-pipeline-code>from transformers import pipeline
+
+pipe = pipeline(
+    "image-classification",
+    model="google/vit-base-patch16-224",
+    device="cpu",
+)
+salida = pipe("foto.jpg")
+print(salida[:3])</code></pre>
+      <p class="pipeline-note" data-pipeline-note aria-live="polite">ViT base, 86 M de parámetros. Devuelve etiquetas de las 1.000 de ImageNet, así que solo sirve si tus clases están ahí. Arranca en cualquier portátil. Cuenta con segundos por imagen.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Las cuatro tareas usan la misma llamada y cambian el identificador del modelo, que es lo que hace el Hub cómodo para probar. Las dos que aceptan <code>candidate_labels</code> (CLIP y Grounding DINO) son las que permiten cambiar de clases sin reentrenar. El argumento <code>device</code> admite «cpu» o «cuda»; con varias tarjetas se indica el índice.</p></div>
+</section>
+
 <section id="inferencia" data-title="Simplificar" data-layout="question">
   <div class="section-copy">
     <h2>Qué te ahorra un pipeline</h2>

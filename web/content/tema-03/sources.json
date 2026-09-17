@@ -21,9 +21,9 @@
     "webAsset": "",
     "claim": "El preentrenamiento produce representaciones generales que se transfieren a otras tareas.",
     "url": "",
-    "checkedOn": "2026-09-16",
+    "checkedOn": "2026-09-17",
     "status": "corrected",
-    "note": "Se conservaron definición, importancia y capacidades sin repetir cifras promocionales."
+    "note": "Se conservaron definición, importancia y capacidades sin repetir cifras promocionales. Se recuperó la glosa «(segmentaciones)» de las máscaras de SAM."
   },
   {
     "sectionId": "multimodalidad",
@@ -61,9 +61,9 @@
     "webAsset": "public/assets/tema-03/presentacion/clip-arquitectura.jpeg; public/assets/tema-03/presentacion/clip-similitud.jpeg",
     "claim": "CLIP usa dos encoders y compara embeddings de imagen y texto.",
     "url": "https://arxiv.org/abs/2103.00020",
-    "checkedOn": "2026-09-16",
-    "status": "verified",
-    "note": "Arquitectura e inferencia se explican en dos pantallas."
+    "checkedOn": "2026-09-17",
+    "status": "corrected",
+    "note": "Arquitectura e inferencia se explican en dos pantallas. Título devuelto a la letra del mazo: «CLIP: imagen - texto (Retrieval/Zero-Shot)»."
   },
   {
     "sectionId": "clip-entrenamiento",
@@ -114,9 +114,9 @@
     "webAsset": "public/assets/tema-03/presentacion/grounding-dino.jpeg",
     "claim": "Grounding DINO localiza con consultas de texto mediante fusión visión-lenguaje.",
     "url": "https://github.com/IDEA-Research/GroundingDINO",
-    "checkedOn": "2026-09-16",
-    "status": "verified",
-    "note": "Introducción, arquitectura y autoetiquetado se distribuyen en varias pantallas."
+    "checkedOn": "2026-09-17",
+    "status": "corrected",
+    "note": "Introducción, arquitectura y autoetiquetado se distribuyen en varias pantallas. Título devuelto a la letra del mazo: «Grounding DINO: texto → cajas (Open-Vocabulary)»."
   },
   {
     "sectionId": "grounding-claves",

@@ -151,9 +151,9 @@
     "webAsset": "",
     "claim": "YOLOv1, v3, v4, v5, v7, v8 y v9 introducen hitos distintos entre 2016 y 2024.",
     "url": "",
-    "checkedOn": "2026-09-16",
-    "status": "verified",
-    "note": "La cronología se recuperó sin convertirla en una clasificación universal de rendimiento."
+    "checkedOn": "2026-09-17",
+    "status": "corrected",
+    "note": "La cronología se recuperó sin convertirla en una clasificación universal de rendimiento. La línea de tiempo vuelve a nombrar las versiones como YOLOv1 a YOLOv9, igual que la diapositiva 15."
   },
   {
     "sectionId": "contexto",

@@ -146,6 +146,48 @@
   <div class="print-detail"><p>Los mapas de atención son una señal interna del modelo y se alinean a menudo con objetos, pero no son una máscara de segmentación garantizada ni validada píxel a píxel.</p></div>
 </section>
 
+<section id="atencion-comparar" data-title="Comparar" data-layout="lab">
+  <div class="section-copy"><h2>La atención, encima de la foto</h2></div>
+  <p class="slide-lead">Desliza para pasar de la imagen al mapa de atención del modelo. Nadie le dijo dónde estaba el objeto: estas máscaras salen de un entrenamiento sin una sola etiqueta.</p>
+  <figure class="compare-media" data-compare data-scene-compare data-before="la foto" data-after="el mapa de atención">
+    <div class="scene-picker" role="group" aria-label="Elegir escena">
+      <button type="button" data-scene aria-pressed="true"
+        data-before-src="{{ASSET:tema-04/presentacion/atencion-jirafas-foto.webp}}"
+        data-before-alt="Dos jirafas de pie sobre hierba seca, con arbustos detrás."
+        data-after-src="{{ASSET:tema-04/presentacion/atencion-jirafas-atencion.webp}}"
+        data-after-alt="Mapa de atención que ilumina las siluetas de las dos jirafas y apaga la hierba y los arbustos."
+        data-note="Dos animales del mismo tipo y el mapa los separa a los dos, con más intensidad en cuellos y cabezas.">Jirafas</button>
+      <button type="button" data-scene
+        data-before-src="{{ASSET:tema-04/presentacion/atencion-bici-foto.webp}}"
+        data-before-alt="Una bicicleta apoyada frente a la fachada de una casa con puertas de colores."
+        data-after-src="{{ASSET:tema-04/presentacion/atencion-bici-atencion.webp}}"
+        data-after-alt="Mapa de atención que marca el contorno de la bicicleta y deja la fachada en oscuro."
+        data-note="La fachada ocupa casi toda la imagen y aun así el modelo se queda con la bicicleta y sus dos ruedas.">Bicicleta</button>
+      <button type="button" data-scene
+        data-before-src="{{ASSET:tema-04/presentacion/atencion-perro-foto.webp}}"
+        data-before-alt="Un perro negro tumbado sobre un sillón de flores en un salón."
+        data-after-src="{{ASSET:tema-04/presentacion/atencion-perro-atencion.webp}}"
+        data-after-alt="Mapa de atención centrado en el perro, con el sillón de flores apagado alrededor."
+        data-note="El sillón estampado es justo el tipo de fondo que engaña a un detector clásico, y aquí queda fuera.">Perro</button>
+    </div>
+    <div class="compare-stage" data-compare-stage style="--compare-x: 50%">
+      <img data-scene-before src="{{ASSET:tema-04/presentacion/atencion-jirafas-foto.webp}}" alt="Dos jirafas de pie sobre hierba seca, con arbustos detrás.">
+      <div class="compare-overlay">
+        <img data-scene-after src="{{ASSET:tema-04/presentacion/atencion-jirafas-atencion.webp}}" alt="Mapa de atención que ilumina las siluetas de las dos jirafas y apaga la hierba y los arbustos.">
+      </div>
+      <span class="compare-line" aria-hidden="true"></span>
+      <span class="compare-tag compare-tag--after" aria-hidden="true">Atención</span>
+      <span class="compare-tag compare-tag--before" aria-hidden="true">Foto</span>
+    </div>
+    <div class="compare-controls">
+      <label for="compare-atencion">Deslizar para comparar</label>
+      <input type="range" id="compare-atencion" data-compare-position min="0" max="100" value="50" step="1">
+    </div>
+    <p class="scene-note" data-scene-note aria-live="polite">Dos animales del mismo tipo y el mapa los separa a los dos, con más intensidad en cuellos y cabezas.</p>
+  </figure>
+  <div class="print-detail"><p>Los recortes salen de la figura original del artículo de DINO, que muestra la atención del token de clase en la última capa de un ViT entrenado sin etiquetas. El mapa tiene la resolución de los parches, de ahí el aspecto cuadriculado: con parches de 8 píxeles se ve más fino que con parches de 16. Conviene recordar que es una señal interna del modelo y no una máscara validada píxel a píxel, así que sirve para entender qué mira y no como salida de segmentación.</p></div>
+</section>
+
 <section id="copias" data-title="Copias" data-layout="visual">
   <div class="section-copy"><h2>DINO: identificación de copias de imágenes</h2></div>
   <div class="slide-split">
@@ -241,7 +283,8 @@
 </section>
 
 <section id="capacidades" data-title="Capacidades" data-layout="visual">
-  <div class="section-copy"><h2>Lo que DINO aprende solo: descubrimientos importantes</h2></div>
+  <div class="section-copy"><h2>Lo que DINO aprende solo</h2></div>
+  <h3 class="slide-subtitle">Descubrimientos importantes</h3>
   <p class="slide-lead">DINO es una forma eficiente de aprender representaciones y también revela una serie de capacidades emergentes que no fueron explícitamente entrenadas, demostrando cómo el modelo adquiere una comprensión profunda de la escena visual.</p>
   <div class="note-grid">
     <div>

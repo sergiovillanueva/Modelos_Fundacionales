@@ -113,9 +113,9 @@
     "webAsset": "public/assets/tema-04/presentacion/capacidades-dino.jpeg",
     "claim": "Las features DINO sirven para atención, correspondencias, recuperación y clasificadores simples.",
     "url": "https://arxiv.org/abs/2104.14294",
-    "checkedOn": "2026-09-16",
+    "checkedOn": "2026-09-17",
     "status": "corrected",
-    "note": "Se diferencia la representación de la tarea downstream."
+    "note": "Se diferencia la representación de la tarea downstream. Se devolvió el título a «Lo que DINO aprende solo» y se recuperó el subtítulo «Descubrimientos importantes» de la diapositiva 64."
   },
   {
     "sectionId": "embedding",
@@ -244,5 +244,18 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist derivada de la diapositiva 70."
+  },
+  {
+    "sectionId": "atencion-comparar",
+    "sourceSlides": [
+      64
+    ],
+    "originalAsset": "ppt/media/image-64-1.jpeg",
+    "webAsset": "public/assets/tema-04/presentacion/atencion-{jirafas,bici,perro}-{foto,atencion}.webp",
+    "claim": "Los mapas de atención de DINO se alinean con el objeto principal sin haber visto una sola etiqueta.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla interactiva nueva. Los seis recortes salen de la figura de la diapositiva 64, que ya estaba en el material: cada par es una casilla de foto y su casilla de atención contigua, sin retocar."
   }
 ]

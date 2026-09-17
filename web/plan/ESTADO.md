@@ -14,14 +14,34 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
 | Tema 01 · Detección | 38 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones y 4 simulaciones |
-| Tema 02 · Hugging Face | 11 pantallas fieles al PDF: 6 diapositivas, 3 preguntas y el comprobador de licencias |
+| Tema 02 · Hugging Face | 12 pantallas fieles al PDF: 6 diapositivas, 3 preguntas, el comprobador de licencias y el constructor de pipeline |
 | Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
-| Tema 04 · DINO | 21 pantallas fieles al PDF: 16 diapositivas, 3 preguntas y el banco de normalidad |
-| Tema 05 · SAM | 14 pantallas fieles al PDF: 9 diapositivas, 3 preguntas y los prompts por puntos |
+| Tema 04 · DINO | 22 pantallas fieles al PDF: 16 diapositivas, 3 preguntas, el banco de normalidad y el comparador de atención |
+| Tema 05 · SAM | 15 pantallas fieles al PDF: 9 diapositivas, 3 preguntas, los prompts por puntos y el recorte sobre fondo negro |
 | Tema 06 · Más visión | 19 pantallas fieles al PDF: 14 diapositivas, 3 preguntas y el laboratorio de OKS |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados: 39, 11, 23, 21, 14 y 19 páginas |
+| PDFs | Temas 01–06 disponibles y regenerados: 44, 16, 28, 25, 18 y 22 páginas |
+
+## Tres pantallas interactivas · 17 de septiembre
+
+Encargo del profesor: un deslizador entre la foto y su segmentación sobre fondo negro, algo con gracia en el tema de Hugging Face y una pantalla nueva en DINO.
+
+| Pantalla | Tema | Qué se manipula |
+| --- | --- | --- |
+| Qué devuelve exactamente una máscara | 05 | Una cortina quita el fondo y deja las cuatro instancias recortadas con su contorno |
+| La atención, encima de la foto | 04 | Tres escenas y una cortina entre la imagen y el mapa de atención del modelo |
+| Arma tu pipeline | 02 | Cuatro tareas y dos dispositivos componen el código de `pipeline` que se copia |
+
+La imagen segmentada del tema 05 se compone multiplicando la foto por la unión de las máscaras de GrabCut que ya usaba el laboratorio de indicaciones, así que no aparece ninguna fuente nueva. De paso se recalculó la máscara de la piña, cuya caja estaba mal situada y recortaba las botellas del fondo.
+
+Los seis recortes del tema 04 salen de la figura que ya estaba en la diapositiva 64: cada par es una casilla de foto y la casilla de atención contigua, recortadas sin retocar.
+
+El constructor del tema 02 genera el código en `src/lib/pipeline.js`, con cinco pruebas unitarias. Los cuatro modelos que ofrece existen en el Hub y las dos tareas de clases abiertas son las que aceptan `candidate_labels`, que es justo lo que distingue un modelo fundacional de un clasificador cerrado.
+
+Componentes nuevos: `scene-compare` cambia el par de imágenes de cualquier comparador, y `pipeline-lab` rehace el bloque de código sin tocar el botón de copiar.
+
+Pruebas: **58 unitarias** y **34 de navegador**. Auditoría de las 149 pantallas en escritorio y móvil sin incidencias.
 
 ## Tema 06 · cierre de la migración
 
@@ -126,6 +146,8 @@ Ambas declaran en pantalla que el espacio es esquemático y calculan sus cifras 
 Comprobaciones: 34 pruebas unitarias y 21 de navegador correctas. Capturas de los tres temas en escritorio, móvil y presentación. PDF regenerados con una página por pantalla: 21, 14 y 19 páginas.
 
 Verificador de fidelidad: `scripts` locales comparan frase a frase el PDF con la web. Las diferencias que quedan en los seis temas son erratas del original corregidas, normalizaciones de plural y artefactos de extracción de glifos matemáticos.
+
+Verificador de títulos y rótulos: el anterior solo compara frases de 45 caracteres o más, así que se añadió un segundo cotejo que saca la primera forma de texto de cada `ppt/slides/slideN.xml` y la contrasta con el `h2` de su sección, más un tercero que busca cada párrafo corto del PPTX dentro de la sección que le corresponde. De 90 títulos coinciden 86. Los cuatro restantes son decisiones tomadas: `rf-detr-flujo` y `dinov3-denso` desambiguan títulos que el mazo repite en dos diapositivas seguidas, y `evolucion` y `motor-datos` traducen al español los dos únicos títulos que el mazo dejó en inglés. De 450 rótulos cortos faltan 32 en su sección, todos por numeración que la web genera con `ol`, por la corrección de erratas (hyperparámetros, re-entrenar) o por la nota «*GIF Animado» que el mazo se dejó escrita.
 
 ## Traslado literal de los temas 02 y 03 · 17 de septiembre
 
@@ -233,6 +255,8 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-16 | Auditoría T2–T5 | Diapositivas 31–79 recuperadas en 65 pantallas con 27 recursos fuente y correcciones registradas |
 | 2026-09-16 | Fidelidad T1–T5 | Pérdidas y repeticiones corregidas sin alterar el recorrido de pantallas |
 | 2026-09-16 | T6-A a T6-C y G-B | Diapositivas 80–94 en 19 pantallas, práctica, PDF y cierre del curso |
+| 2026-09-17 | Títulos y rótulos | Cuatro encabezados devueltos a la letra del mazo, subtítulo de la diapositiva 64 recuperado y nombres YOLOv1 a YOLOv9 en la línea de tiempo |
+| 2026-09-17 | Interactivos | Comparador de máscara sobre fondo negro, comparador de atención con tres escenas y constructor de pipeline |
 
 ## Al modificar un tema
 

@@ -507,6 +507,33 @@
 .model-rows span { color: var(--color-text-muted); font-size: .88rem; }
 .model-rows .model-license { color: var(--color-primary-dark); font-weight: 500; }
 
+/* Selector de escena sobre un comparador: cambia el par de imágenes sin tocar la cortina. */
+.scene-picker { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 16px; }
+.scene-picker button { padding: 8px 16px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-pill); background: #fff; color: var(--color-text-main); cursor: pointer; font-family: var(--font-body); font-size: .88rem; transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease; }
+.scene-picker button:hover { border-color: var(--color-primary); }
+.scene-picker button[aria-pressed="true"] { border-color: var(--color-primary-dark); background: var(--color-primary-soft); font-weight: 500; }
+.scene-note { margin: 14px 0 0; color: var(--color-text-muted); font-size: .88rem; line-height: 1.5; text-align: center; min-height: 3em; }
+
+/* Constructor de pipeline: la tarea y el dispositivo componen el código que se copia. */
+.pipeline-lab { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 36px; align-items: start; width: min(920px, 100%); margin: 0 auto; text-align: left; }
+.pipeline-groups { display: grid; gap: 22px; min-width: 0; }
+.pipeline-groups fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.pipeline-groups legend { padding: 0; margin-bottom: 10px; color: var(--color-text-main); font-size: .98rem; font-weight: 500; }
+.pipeline-options { display: grid; gap: 8px; }
+.pipeline-options--row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pipeline-options button { padding: 10px 14px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-control); background: #fff; color: var(--color-text-main); cursor: pointer; font-family: var(--font-body); font-size: .9rem; line-height: 1.35; text-align: left; transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease; }
+.pipeline-options button:hover { border-color: var(--color-primary); }
+.pipeline-options button[aria-pressed="true"] { border-color: var(--color-primary-dark); background: var(--color-primary-soft); font-weight: 500; }
+.pipeline-options--row button { text-align: center; }
+.pipeline-output { display: grid; gap: 14px; min-width: 0; }
+.pipeline-output .code-sample { margin: 0; }
+.pipeline-note { margin: 0; color: var(--color-text-muted); font-size: .9rem; line-height: 1.55; min-height: 4.4em; }
+
+@media (max-width: 860px) {
+  .pipeline-lab { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .pipeline-note { min-height: 0; }
+}
+
 @media (max-width: 860px) {
   .calc-layout { grid-template-columns: 1fr; gap: 26px; }
 }

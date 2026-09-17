@@ -31,7 +31,7 @@
       <ul>
         <li><strong>CLIP:</strong> 400 millones de pares imagen-texto.</li>
         <li><strong>DINOv2:</strong> 142 millones de imágenes (sin etiquetas).</li>
-        <li><strong>SAM:</strong> 11 millones de imágenes y 1.000 millones de máscaras.</li>
+        <li><strong>SAM:</strong> 11 millones de imágenes y 1.000 millones de máscaras (segmentaciones).</li>
       </ul>
     </div>
   </div>
@@ -87,7 +87,7 @@
 </section>
 
 <section id="clip" data-title="CLIP" data-layout="visual">
-  <div class="section-copy"><h2>CLIP: imagen y texto (retrieval y zero-shot)</h2></div>
+  <div class="section-copy"><h2>CLIP: imagen - texto (Retrieval/Zero-Shot)</h2></div>
   <div class="slide-prose">
     <p>CLIP (Contrastive Language-Image Pre-training) aprende un <strong>espacio de embeddings compartido</strong> donde imágenes y textos similares están cerca y diferentes están lejos.</p>
     <p><strong>Arquitectura:</strong> un encoder de imagen y un encoder de texto procesan sus respectivas entradas en paralelo, proyectándolas al mismo espacio vectorial. La similitud se mide con producto escalar o coseno.</p>
@@ -257,7 +257,7 @@
 </section>
 
 <section id="grounding" data-title="Grounding" data-layout="visual">
-  <div class="section-copy"><h2>Grounding DINO: texto a cajas (open-vocabulary)</h2></div>
+  <div class="section-copy"><h2>Grounding DINO: texto → cajas (Open-Vocabulary)</h2></div>
   <div class="slide-prose">
     <p>Grounding DINO combina la potencia de DINO (detección) con la comprensión lingüística para realizar <strong>detección guiada por lenguaje natural</strong> sin clases fijas.</p>
     <p><strong>Cómo funciona:</strong> le das un prompt textual («encuentra todos los tornillos oxidados» o «localiza cascos amarillos») y el modelo devuelve bounding boxes para cada coincidencia, sin haber sido entrenado explícitamente en esas categorías.</p>

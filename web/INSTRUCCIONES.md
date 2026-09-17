@@ -71,6 +71,8 @@ Qué significa en la práctica:
 | `chooser` | Asistente de decisión: preguntas en radio y un resultado por combinación, declarado en `data-when` |
 | `model-table` | Tabla filtrable de modelos reales, con la fecha de consulta |
 | `mask-stage` | Foto real con capas de máscara precalculadas que se encienden por indicación |
+| `scene-picker` dentro de `compare-media` | Botones que cambian el par de imágenes del comparador; cada uno trae sus dos rutas y sus dos textos alternativos |
+| `pipeline-lab` | Constructor de código: elecciones a la izquierda, bloque copiable a la derecha |
 
 Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna. Por la misma razón, **un contenedor cuyo texto cambia en tiempo de ejecución necesita ancho definido** (`width: min(900px, 100%)`), no solo `max-width`: si no, cambia de tamaño cada vez que cambia el mensaje y la escena da un salto.
 

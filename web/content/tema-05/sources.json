@@ -73,9 +73,9 @@
     "webAsset": "public/assets/tema-05/presentacion/evolucion-sam.webp",
     "claim": "SAM 1 amplía a SAM 2 con vídeo y a SAM 3 con conceptos abiertos.",
     "url": "https://ai.meta.com/research/sam3/",
-    "checkedOn": "2026-09-16",
-    "status": "verified",
-    "note": "GIF convertido a WebP controlable y cronología cotejada."
+    "checkedOn": "2026-09-17",
+    "status": "corrected",
+    "note": "GIF convertido a WebP controlable y cronología cotejada. Título devuelto a la letra del mazo: «Evolution — SAM → SAM2 → SAM3»."
   },
   {
     "sectionId": "motor-datos",
@@ -180,5 +180,16 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist derivada de la diapositiva 79."
+  },
+  {
+    "sectionId": "mascara-sola",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "public/assets/tema-05/presentacion/fruteria-segmentada.webp",
+    "claim": "La salida de la segmentación es un mapa de píxeles por instancia, no un recorte rectangular.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla interactiva nueva. La imagen de la derecha multiplica la foto por la unión de las cuatro máscaras de GrabCut ya publicadas y pinta el contorno de cada instancia. La máscara de la piña se recalculó con una caja mejor situada."
   }
 ]

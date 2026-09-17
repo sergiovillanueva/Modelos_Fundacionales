@@ -16,6 +16,8 @@ import {initChoosers} from './chooser.js';
 import {initBudgetLab} from './budget-lab.js';
 import {initVramLab} from './vram-lab.js';
 import {initModelTable} from './model-table.js';
+import {initSceneCompare} from './scene-compare.js';
+import {initPipelineLab} from './pipeline-lab.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
@@ -35,6 +37,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   initBudgetLab();
   initVramLab();
   initModelTable();
+  initSceneCompare();
+  initPipelineLab();
 
   const deck = new Reveal({
     hash: true,
