@@ -206,7 +206,7 @@
   <pre class="code-sample"><code>from transformers import pipeline
 
 # 1. Cargar modelo (automáticamente baja config y pesos)
-detector = pipeline("object-detection", model="facebook/rt-detr-l")
+detector = pipeline("object-detection", model="PekingU/rtdetr_r50vd")
 
 # 2. Inferencia
 results = detector("imagen.jpg")
@@ -226,6 +226,7 @@ print(results)  # [{'label': 'cat', 'score': 0.99, 'box': {...}}]</code></pre>
         <legend>Qué quieres hacer</legend>
         <div class="pipeline-options">
           <button type="button" data-pipeline-task="clasificar" aria-pressed="true">Clasificar la imagen entera</button>
+          <button type="button" data-pipeline-task="detectar-coco">Detectar los 80 objetos de COCO</button>
           <button type="button" data-pipeline-task="buscar">Decidir entre textos que yo escribo</button>
           <button type="button" data-pipeline-task="detectar">Localizar objetos descritos con palabras</button>
           <button type="button" data-pipeline-task="describir">Describir la escena en una frase</button>

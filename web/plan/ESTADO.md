@@ -13,7 +13,7 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 38 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones y 4 simulaciones |
+| Tema 01 · Detección | 39 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones y el puente al Hub |
 | Tema 02 · Hugging Face | 12 pantallas fieles al PDF: 6 diapositivas, 3 preguntas, el comprobador de licencias y el constructor de pipeline |
 | Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
 | Tema 04 · DINO | 22 pantallas fieles al PDF: 16 diapositivas, 3 preguntas, el banco de normalidad y el comparador de atención |
@@ -21,7 +21,21 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Tema 06 · Más visión | 19 pantallas fieles al PDF: 14 diapositivas, 3 preguntas y el laboratorio de OKS |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados: 44, 16, 28, 25, 18 y 22 páginas |
+| PDFs | Temas 01–06 disponibles y regenerados: 45, 16, 28, 25, 18 y 22 páginas |
+
+## Costura entre el tema 01 y el tema 02 · 17 de septiembre
+
+El profesor plantea si este curso conviene dar Hugging Face antes que detección, ahora que RF-DETR ya está publicado en el Hub. Se mantiene el orden y se arregla lo que de verdad chirriaba, que era el salto entre los dos temas.
+
+Qué pasaba: el tema 01 no nombraba Hugging Face ni una vez y cargaba el detector con el paquete `rfdetr`; dos temas después el alumno aprendía a cargar un detector con `pipeline`, sin que nadie dijera que son la misma cosa por dos caminos.
+
+- Pantalla nueva al final del tema 01, «¿De dónde han salido esos pesos?»: las dos vías de carga del mismo RF-DETR, la del paquete y la del Hub, con el identificador `Roboflow/rf-detr-medium` y su licencia. Cierra preguntando lo que abre el tema 02.
+- El constructor de pipeline del tema 02 gana la detección cerrada con `PekingU/rtdetr_r50vd`, que es la tarea que enlaza hacia atrás con el tema 01.
+- Corregido un identificador del original: `facebook/rt-detr-l` no existe en el Hub. Se sustituye por `PekingU/rtdetr_r50vd`, el punto de control oficial de RT-DETR, también Apache 2.0.
+
+Por qué no se cambia el orden de los temas: la dependencia va en un solo sentido. El tema 02 está construido sobre el vocabulario del 01, su ejemplo central de `pipeline` es detección y seis de sus nueve candidatos solo significan algo si ya sabes qué es una caja. Además el tema 02 abre con una diapositiva numerada, «2. El ecosistema de modelos de IA», y toda la web está documentada como recorrido fiel del PDF, así que invertir obligaría a renumerar el mazo y a rehacer la correspondencia en `COBERTURA.json` y en los seis `sources.json`.
+
+Pruebas: **59 unitarias** y **34 de navegador**. Auditoría de las 150 pantallas en escritorio y móvil sin incidencias.
 
 ## Tres pantallas interactivas · 17 de septiembre
 
@@ -145,7 +159,7 @@ Ambas declaran en pantalla que el espacio es esquemático y calculan sus cifras 
 
 Comprobaciones: 34 pruebas unitarias y 21 de navegador correctas. Capturas de los tres temas en escritorio, móvil y presentación. PDF regenerados con una página por pantalla: 21, 14 y 19 páginas.
 
-Verificador de fidelidad: `scripts` locales comparan frase a frase el PDF con la web. Las diferencias que quedan en los seis temas son erratas del original corregidas, normalizaciones de plural y artefactos de extracción de glifos matemáticos.
+Verificador de fidelidad: `scripts` locales comparan frase a frase el PDF con la web. Las diferencias que quedan en los seis temas son erratas del original corregidas, normalizaciones de plural y artefactos de extracción de glifos matemáticos, más el identificador de modelo de la diapositiva 36 que no resuelve en el Hub.
 
 Verificador de títulos y rótulos: el anterior solo compara frases de 45 caracteres o más, así que se añadió un segundo cotejo que saca la primera forma de texto de cada `ppt/slides/slideN.xml` y la contrasta con el `h2` de su sección, más un tercero que busca cada párrafo corto del PPTX dentro de la sección que le corresponde. De 90 títulos coinciden 86. Los cuatro restantes son decisiones tomadas: `rf-detr-flujo` y `dinov3-denso` desambiguan títulos que el mazo repite en dos diapositivas seguidas, y `evolucion` y `motor-datos` traducen al español los dos únicos títulos que el mazo dejó en inglés. De 450 rótulos cortos faltan 32 en su sección, todos por numeración que la web genera con `ol`, por la corrección de erratas (hyperparámetros, re-entrenar) o por la nota «*GIF Animado» que el mazo se dejó escrita.
 
@@ -257,6 +271,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-16 | T6-A a T6-C y G-B | Diapositivas 80–94 en 19 pantallas, práctica, PDF y cierre del curso |
 | 2026-09-17 | Títulos y rótulos | Cuatro encabezados devueltos a la letra del mazo, subtítulo de la diapositiva 64 recuperado y nombres YOLOv1 a YOLOv9 en la línea de tiempo |
 | 2026-09-17 | Interactivos | Comparador de máscara sobre fondo negro, comparador de atención con tres escenas y constructor de pipeline |
+| 2026-09-17 | Costura 01–02 | Puente al Hub al final del tema 01, detección cerrada en el constructor y un identificador de modelo corregido |
 
 ## Al modificar un tema
 

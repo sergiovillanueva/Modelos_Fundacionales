@@ -36,3 +36,11 @@ test('una combinación inventada no devuelve código', () => {
   assert.equal(pipelineSnippet('inventada', 'cpu'), null);
   assert.equal(pipelineSnippet('clasificar', 'tpu'), null);
 });
+
+test('la detección cerrada usa el umbral y no candidate_labels', () => {
+  const snippet = pipelineSnippet('detectar-coco', 'gpu');
+  assert.ok(snippet.includes('"object-detection",'));
+  assert.ok(snippet.includes('model="PekingU/rtdetr_r50vd"'));
+  assert.ok(snippet.includes('threshold=0.5'));
+  assert.ok(!snippet.includes('candidate_labels'));
+});

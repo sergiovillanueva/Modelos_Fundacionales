@@ -14,6 +14,15 @@ export const PIPELINE_TASKS = [
     note: 'ViT base, 86 M de parámetros. Devuelve etiquetas de las 1.000 de ImageNet, así que solo sirve si tus clases están ahí.'
   },
   {
+    id: 'detectar-coco',
+    label: 'Detectar los 80 objetos de COCO',
+    task: 'object-detection',
+    model: 'PekingU/rtdetr_r50vd',
+    call: 'salida = pipe("foto.jpg", threshold=0.5)',
+    print: 'print([(d["label"], round(d["score"], 2)) for d in salida])',
+    note: 'RT-DETR es un detector en tiempo real de la misma generación que el RF-DETR del tema 1, y aquí se carga en una línea. Las clases siguen siendo las 80 de COCO.'
+  },
+  {
     id: 'buscar',
     label: 'Decidir entre textos que yo escribo',
     task: 'zero-shot-image-classification',

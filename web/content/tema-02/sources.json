@@ -72,10 +72,10 @@
     "originalAsset": "",
     "webAsset": "",
     "claim": "Pipeline agrupa preparación de entrada, inferencia y posprocesado.",
-    "url": "https://huggingface.co/docs/transformers/quicktour",
-    "checkedOn": "2026-09-16",
-    "status": "verified",
-    "note": "El ejemplo usa un identificador público y mantiene la práctica enlazada al notebook."
+    "url": "https://huggingface.co/PekingU/rtdetr_r50vd",
+    "checkedOn": "2026-09-17",
+    "status": "corrected",
+    "note": "El ejemplo usa un identificador público y mantiene la práctica enlazada al notebook. El identificador «facebook/rt-detr-l» del original no existe en el Hub: se sustituye por PekingU/rtdetr_r50vd, el punto de control oficial de RT-DETR, Apache 2.0."
   },
   {
     "sectionId": "hub",
@@ -161,6 +161,6 @@
     "url": "https://huggingface.co/docs/transformers/main_classes/pipelines",
     "checkedOn": "2026-09-17",
     "status": "verified",
-    "note": "Pantalla práctica nueva, sin diapositiva de origen. Los cuatro identificadores existen en el Hub: google/vit-base-patch16-224, openai/clip-vit-base-patch32, IDEA-Research/grounding-dino-tiny y Salesforce/blip-image-captioning-base."
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Los cuatro identificadores existen en el Hub: google/vit-base-patch16-224, openai/clip-vit-base-patch32, IDEA-Research/grounding-dino-tiny y Salesforce/blip-image-captioning-base. Se añade la detección cerrada con PekingU/rtdetr_r50vd, que es la que enlaza con el detector del tema 01."
   }
 ]

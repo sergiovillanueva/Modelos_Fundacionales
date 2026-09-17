@@ -448,5 +448,16 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist operativa derivada de las diapositivas 28 y 29."
+  },
+  {
+    "sectionId": "del-hub",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "RF-DETR está publicado en el Hub como Roboflow/rf-detr-medium con licencia Apache 2.0 y se carga con RfDetrForObjectDetection.",
+    "url": "https://huggingface.co/Roboflow/rf-detr-medium",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla puente nueva, sin diapositiva de origen. Cose el final del tema 01 con el tema 02: los pesos que baja la receta vienen de un sitio con nombre, licencia y ficha. El identificador y el nombre de clase salen de la ficha del modelo. Hasta este curso RF-DETR solo se distribuía por el paquete de Roboflow, que es el motivo por el que el tema 02 venía después."
   }
 ]

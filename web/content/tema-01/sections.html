@@ -808,6 +808,29 @@ print(detections.class_id, detections.confidence, detections.xyxy)</code></pre>
   <div class="print-detail"><p>RF-DETR se publica bajo Apache 2.0 y devuelve las clases de COCO. Para un vocabulario propio hace falta fine-tuning con un dataset anotado, que es lo que mide la pantalla siguiente.</p></div>
 </section>
 
+<section id="del-hub" data-title="Los pesos" data-layout="practice">
+  <div class="section-copy">
+    <h2>¿De dónde han salido esos pesos?</h2>
+    <p class="lead">La receta anterior baja un modelo ya entrenado antes de detectar nada. Ese paso silencioso es el tema siguiente.</p>
+  </div>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Por el paquete de Roboflow</h3>
+      <p>Es lo que acabas de ejecutar. <code>rfdetr</code> trae el modelo, la descarga y el <code>predict</code> en una sola pieza, y es también por donde se reentrena con tus propias imágenes.</p>
+    </div>
+    <div>
+      <h3>Por el Hub de Hugging Face</h3>
+      <p>El mismo RF-DETR está publicado como <code>Roboflow/rf-detr-medium</code> con licencia Apache 2.0, así que <code>transformers</code> lo carga igual que a cualquier otro modelo del curso.</p>
+    </div>
+  </div>
+  <pre class="code-sample" data-copy><code>from transformers import AutoImageProcessor, RfDetrForObjectDetection
+
+processor = AutoImageProcessor.from_pretrained("Roboflow/rf-detr-medium")
+model = RfDetrForObjectDetection.from_pretrained("Roboflow/rf-detr-medium")</code></pre>
+  <p class="slide-callout">Ese identificador de dos partes, <strong>quién publica</strong> y <strong>qué publica</strong>, es la unidad con la que se trabaja a partir de aquí. El tema 2 va de leer lo que hay detrás: qué licencia trae, cuánta memoria pide y cómo elegir entre los cientos que dicen hacer lo mismo.</p>
+  <div class="print-detail"><p>Las dos vías cargan los mismos pesos y se diferencian en el envoltorio. El paquete <code>rfdetr</code> expone la API de Roboflow, con <code>predict</code> y el entrenamiento propio; <code>transformers</code> expone la interfaz común de la librería, que es la que comparten todos los modelos de los temas siguientes y la que permite intercambiar un detector por otro sin reescribir el resto. El identificador y el nombre de clase están tomados de la ficha del modelo, consultada el 17 de septiembre de 2026. Hasta este curso RF-DETR solo estaba disponible por el paquete, así que esta equivalencia es nueva.</p></div>
+</section>
+
 <section id="presupuesto" data-title="Presupuesto" data-layout="lab">
   <div class="section-copy">
     <h2>¿Cuánto cuesta anotar tu dataset?</h2>
