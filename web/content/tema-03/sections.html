@@ -488,6 +488,119 @@
   </div>
 </section>
 
+<section id="receta" data-title="Receta" data-layout="practice">
+  <div class="section-copy">
+    <h2>Clasificar sin entrenar nada</h2>
+    <p class="lead">Escribes las clases como texto y CLIP te ordena cuál encaja mejor.</p>
+  </div>
+  <pre class="code-sample" data-copy><code>import torch
+from PIL import Image
+from transformers import CLIPProcessor, CLIPModel
+
+clip_id = "openai/clip-vit-base-patch32"
+processor = CLIPProcessor.from_pretrained(clip_id)
+model = CLIPModel.from_pretrained(clip_id)
+
+image = Image.open("mi_imagen.jpg").convert("RGB")
+clases = ["una foto de una pieza en buen estado",
+          "una foto de una pieza con óxido",
+          "una foto de una pieza rota"]
+
+inputs = processor(text=clases, images=image, return_tensors="pt", padding=True)
+with torch.no_grad():
+    probs = model(**inputs).logits_per_image.softmax(dim=1)[0]
+
+for clase, p in zip(clases, probs):
+    print(f"{p:.2f}  {clase}")</code></pre>
+  <div class="slide-prose">
+    <ul>
+      <li>La plantilla <strong>«una foto de …»</strong> suele funcionar mejor que la palabra suelta.</li>
+      <li>El modelo <strong>siempre elige una</strong> de tus clases. Si ninguna encaja, te dará la menos mala: añade una clase «ninguna de las anteriores».</li>
+      <li>Evita las negaciones: «pieza en buen estado» funciona mucho mejor que «pieza sin óxido».</li>
+    </ul>
+  </div>
+</section>
+
+<section id="taller" data-title="Taller" data-layout="question">
+  <div class="section-copy">
+    <h2>Taller de prompts</h2>
+    <p class="lead">Dos prompts que fallan en clase y cómo se arreglan.</p>
+  </div>
+  {{QUIZ:q304}}
+  {{QUIZ:q305}}
+  <div class="print-detail"><p>Las tres reglas que resuelven la mayoría de los casos: pedir en positivo en lugar de en negativo, nombrar lo que se busca en vez de preguntar si algo está bien, y separar conceptos con un punto cuando el modelo es Grounding DINO. Para un VLM, además, conviene decir el formato de salida que esperas.</p></div>
+</section>
+
+<section id="asistente" data-title="Asistente" data-layout="lab">
+  <div class="section-copy">
+    <h2>¿Cuál de los cuatro te sirve?</h2>
+    <p class="lead">Responde a dos preguntas y sale el modelo, con la línea para empezar.</p>
+  </div>
+  <div class="chooser" data-chooser>
+    <div class="chooser-questions">
+      <fieldset data-chooser-question="salida">
+        <legend>¿Qué necesitas que devuelva?</legend>
+        <label><input type="radio" name="salida" value="puntuacion" checked> Una puntuación por cada opción que yo escriba</label>
+        <label><input type="radio" name="salida" value="frase"> Una frase escrita sobre la imagen</label>
+        <label><input type="radio" name="salida" value="cajas"> Cajas alrededor de lo que nombro</label>
+        <label><input type="radio" name="salida" value="estructura"> Datos estructurados o un razonamiento</label>
+      </fieldset>
+      <fieldset data-chooser-question="latencia">
+        <legend>¿Cuánta latencia aguantas?</legend>
+        <label><input type="radio" name="latencia" value="baja" checked> Poca: proceso muchas imágenes</label>
+        <label><input type="radio" name="latencia" value="alta"> Bastante: son pocas y me importa el resultado</label>
+      </fieldset>
+    </div>
+    <p class="chooser-status" data-chooser-status></p>
+    <div class="chooser-result" data-when="salida=puntuacion">
+      <h3>CLIP</h3>
+      <p>Ordena tus textos candidatos frente a la imagen. Es el más rápido y ligero, ideal como primer filtro de un catálogo.</p>
+      <p><code>CLIPModel.from_pretrained("openai/clip-vit-base-patch32")</code></p>
+    </div>
+    <div class="chooser-result" data-when="salida=frase latencia=baja" hidden>
+      <h3>BLIP</h3>
+      <p>Genera descripciones y responde preguntas sencillas sobre la imagen, con un coste muy inferior al de un VLM.</p>
+      <p><code>BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")</code></p>
+    </div>
+    <div class="chooser-result" data-when="salida=frase latencia=alta" hidden>
+      <h3>BLIP, y un VLM si te quedas corto</h3>
+      <p>Empieza por BLIP. Si necesitas que la frase razone o siga instrucciones, salta a Qwen-VL asumiendo el coste.</p>
+      <p><code>Salesforce/blip-image-captioning-base</code> y, si hace falta, <code>Qwen/Qwen2.5-VL-7B-Instruct</code></p>
+    </div>
+    <div class="chooser-result" data-when="salida=cajas" hidden>
+      <h3>Grounding DINO</h3>
+      <p>Le das una frase y devuelve cajas, sin haber sido entrenado en esa categoría. Separa conceptos con un punto.</p>
+      <p><code>AutoModelForZeroShotObjectDetection.from_pretrained("IDEA-Research/grounding-dino-base")</code></p>
+    </div>
+    <div class="chooser-result" data-when="salida=estructura latencia=alta" hidden>
+      <h3>Un VLM como Qwen2.5-VL</h3>
+      <p>Razona, compara y devuelve JSON con los campos que le pidas. Es el más pesado, así que resérvalo para donde aporte.</p>
+      <p><code>Qwen/Qwen2.5-VL-7B-Instruct</code></p>
+    </div>
+    <div class="chooser-result" data-when="salida=estructura latencia=baja" hidden>
+      <h3>Replantea el problema</h3>
+      <p>Razonar y extraer estructura es caro. Si necesitas volumen, resuelve primero con CLIP o Grounding DINO y manda al VLM solo los casos dudosos.</p>
+      <p>Ese filtrado en dos etapas suele bajar el coste un orden de magnitud sin perder los casos que importan.</p>
+    </div>
+  </div>
+</section>
+
+<section id="checklist" data-title="Checklist" data-layout="practice">
+  <div class="section-copy">
+    <h2>Antes de fiarte de una salida multimodal</h2>
+    <p class="lead">Siete comprobaciones para modelos que hablan con mucha seguridad.</p>
+  </div>
+  <ol class="checklist">
+    <li><strong>La lista de candidatos es completa</strong><span>Con CLIP el modelo elige siempre uno. Si falta la opción «ninguna», te devolverá la menos mala.</span></li>
+    <li><strong>Prompts en positivo</strong><span>«Tornillos en buen estado» en vez de «sin óxido». Las negaciones se entienden mal.</span></li>
+    <li><strong>Formato de salida pedido explícitamente</strong><span>Si esperas JSON, dilo y da un ejemplo de los campos.</span></li>
+    <li><strong>Alucinaciones buscadas a propósito</strong><span>Prueba con imágenes donde la respuesta correcta sea «no se ve». Un generativo tiende a inventar.</span></li>
+    <li><strong>Sesgos revisados con tus datos</strong><span>Valida con población y escenarios representativos de tu uso real.</span></li>
+    <li><strong>Umbral ajustado, no heredado</strong><span>Empieza en 0,5 y muévelo según veas falsos positivos o negativos.</span></li>
+    <li><strong>Humano en el bucle donde importa</strong><span>Medicina, seguridad y decisiones sobre personas siempre con revisión.</span></li>
+  </ol>
+</section>
+
 <section id="practica" data-title="Colab" data-layout="practice">
   <div class="section-copy"><h2>Cuatro formas de mirar</h2><p class="lead">Compara CLIP, BLIP, Grounding DINO y Qwen con la misma imagen.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Cambia imagen y prompts.</span></li><li><span>Contrasta salidas y errores.</span></li></ol>

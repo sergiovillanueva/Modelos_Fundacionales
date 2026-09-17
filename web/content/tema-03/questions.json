@@ -1,1 +1,115 @@
-[{"id":"q301","sectionId":"zero-shot","prompt":"Quieres separar fotos de interior y exterior sin entrenar un clasificador nuevo.","options":[{"id":"a","text":"Comparar la imagen con ambas descripciones de texto.","explanation":"Exacto: CLIP ordena categorías propuestas como texto."},{"id":"b","text":"Cambiar la resolución de la foto.","explanation":"La resolución no define categorías."},{"id":"c","text":"Usar una caja fija.","explanation":"La localización no resuelve una clasificación global."}],"correctOptionId":"a"},{"id":"q302","sectionId":"grounding","prompt":"Quieres localizar un defecto industrial nombrándolo en texto.","options":[{"id":"a","text":"Usar Grounding DINO y evaluar con imágenes etiquetadas.","explanation":"Exacto: el prompt guía la búsqueda, pero la evaluación valida el uso."},{"id":"b","text":"Suponer que el prompt elimina falsos positivos.","explanation":"El vocabulario abierto no evita errores."},{"id":"c","text":"Medir solo el tamaño del checkpoint.","explanation":"El tamaño no mide la calidad en tu dominio."}],"correctOptionId":"a"},{"id":"q303","sectionId":"elegir","prompt":"Necesitas una frase que describa una imagen.","options":[{"id":"a","text":"BLIP.","explanation":"Exacto: BLIP genera texto condicionado por una imagen."},{"id":"b","text":"CLIP.","explanation":"CLIP compara representaciones; no genera una descripción completa."},{"id":"c","text":"Grounding DINO.","explanation":"Grounding DINO busca cajas guiadas por texto."}],"correctOptionId":"a"}]
+[
+  {
+    "id": "q301",
+    "sectionId": "zero-shot",
+    "prompt": "Quieres separar fotos de interior y exterior sin entrenar un clasificador nuevo.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Comparar la imagen con ambas descripciones de texto.",
+        "explanation": "Exacto: CLIP ordena categorías propuestas como texto."
+      },
+      {
+        "id": "b",
+        "text": "Cambiar la resolución de la foto.",
+        "explanation": "La resolución no define categorías."
+      },
+      {
+        "id": "c",
+        "text": "Usar una caja fija.",
+        "explanation": "La localización no resuelve una clasificación global."
+      }
+    ],
+    "correctOptionId": "a"
+  },
+  {
+    "id": "q302",
+    "sectionId": "grounding",
+    "prompt": "Quieres localizar un defecto industrial nombrándolo en texto.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Usar Grounding DINO y evaluar con imágenes etiquetadas.",
+        "explanation": "Exacto: el prompt guía la búsqueda, pero la evaluación valida el uso."
+      },
+      {
+        "id": "b",
+        "text": "Suponer que el prompt elimina falsos positivos.",
+        "explanation": "El vocabulario abierto no evita errores."
+      },
+      {
+        "id": "c",
+        "text": "Medir solo el tamaño del checkpoint.",
+        "explanation": "El tamaño no mide la calidad en tu dominio."
+      }
+    ],
+    "correctOptionId": "a"
+  },
+  {
+    "id": "q303",
+    "sectionId": "elegir",
+    "prompt": "Necesitas una frase que describa una imagen.",
+    "options": [
+      {
+        "id": "a",
+        "text": "BLIP.",
+        "explanation": "Exacto: BLIP genera texto condicionado por una imagen."
+      },
+      {
+        "id": "b",
+        "text": "CLIP.",
+        "explanation": "CLIP compara representaciones; no genera una descripción completa."
+      },
+      {
+        "id": "c",
+        "text": "Grounding DINO.",
+        "explanation": "Grounding DINO busca cajas guiadas por texto."
+      }
+    ],
+    "correctOptionId": "a"
+  },
+  {
+    "id": "q304",
+    "prompt": "Quieres que Grounding DINO encuentre a la vez cascos puestos y cabezas sin casco. ¿Qué prompt escribes?",
+    "correctOptionId": "c",
+    "options": [
+      {
+        "id": "a",
+        "text": "«no hay personas sin casco»",
+        "explanation": "Es una negación y una comprobación, no una descripción de lo que hay que localizar. El modelo no sabe qué caja devolver."
+      },
+      {
+        "id": "b",
+        "text": "«seguridad en la obra»",
+        "explanation": "Describe el objetivo, no el objeto. Grounding DINO necesita el sustantivo concreto que tiene que encontrar en la imagen."
+      },
+      {
+        "id": "c",
+        "text": "«persona con casco . persona sin casco»",
+        "explanation": "Correcto. Dos conceptos en positivo, separados por el punto que Grounding DINO usa para distinguirlos, y cada uno nombra algo visible."
+      }
+    ]
+  },
+  {
+    "id": "q305",
+    "prompt": "Le pides a un VLM que revise fotos de piezas y te devuelva los defectos. ¿Qué instrucción funciona mejor?",
+    "correctOptionId": "b",
+    "options": [
+      {
+        "id": "a",
+        "text": "«¿Está bien esta pieza?»",
+        "explanation": "Admite un sí o un no sin criterio. Dos fotos parecidas darán respuestas distintas porque nada fija qué cuenta como defecto."
+      },
+      {
+        "id": "b",
+        "text": "«Lista los defectos visibles en esta pieza metálica. Devuelve JSON con los campos tipo, ubicación y confianza. Si no ves ninguno, devuelve una lista vacía.»",
+        "explanation": "Correcto. Pide en positivo, fija el formato de salida y contempla explícitamente el caso sin defectos, que es donde más alucinan los generativos."
+      },
+      {
+        "id": "c",
+        "text": "«Describe la imagen con el máximo detalle posible»",
+        "explanation": "Genera mucho texto y poca información utilizable. Una salida más larga no es una salida más correcta ni más fácil de procesar."
+      }
+    ]
+  }
+]

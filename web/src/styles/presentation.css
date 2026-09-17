@@ -73,3 +73,13 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .compare-controls label { font-size: 16px; }
 .reveal .compare-media figcaption { font-size: 16px; }
 .reveal .compare-tag { font-size: 13px; }
+.reveal .checklist strong { font-size: 19px; }
+.reveal .checklist span { font-size: 17px; }
+.reveal .calc-figure strong { font-size: 40px; }
+.reveal .chooser-questions legend { font-size: 19px; }
+.reveal .chooser-questions label { font-size: 17px; }
+.reveal .chooser-result h3 { font-size: 21px; }
+.reveal .chooser-result p { font-size: 18px; }
+.reveal .model-rows > div { font-size: 16px; }
+.reveal .mask-stage figcaption { font-size: 14px; }
+.reveal .mask-prompts button { font-size: 16px; }

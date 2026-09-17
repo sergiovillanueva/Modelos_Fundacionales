@@ -251,5 +251,27 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Traslado literal pedido por el profesor. Cada diapositiva ocupa una pantalla; las tres preguntas y el laboratorio de OKS ocupan pantallas propias intercaladas. La diapositiva 94, de despedida, se resuelve en los créditos."
+  },
+  {
+    "sectionId": "recetario",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "Las seis tareas del tema arrancan con el mismo patrón de pipeline de Transformers.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Recetario copiable con un fragmento por tarea, tomado del cuaderno 6_Otras_tareas.ipynb."
+  },
+  {
+    "sectionId": "checklist",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "Seis comprobaciones comunes a las seis tareas.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist que separa lo que mide de lo que genera."
   }
 ]

@@ -404,5 +404,49 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla nueva que conecta la crítica a los componentes ad-hoc de la diapositiva 16 con la supresión que DETR elimina en la 18. Implementa el algoritmo voraz real sobre cinco cajas candidatas; con 0,20 la caja del primer coche suprime la del segundo. Comprobado en tests/metrics.test.mjs."
+  },
+  {
+    "sectionId": "receta",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "src/js/copy-code.js",
+    "claim": "La inferencia con RF-DETR cabe en seis líneas: cargar, abrir la imagen y predecir con un umbral.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Receta copiable tomada del cuaderno 1_OD.ipynb del curso."
+  },
+  {
+    "sectionId": "presupuesto",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "src/lib/planning.js",
+    "claim": "Anotar un dataset propio cuesta clases por imágenes por segundos, más un 30 % de revisión.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Calculadora nueva. Estimación de orden de magnitud declarada en pantalla, con pruebas en tests/planning.test.mjs."
+  },
+  {
+    "sectionId": "caso",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "El umbral se elige según qué error cuesta más en la aplicación concreta.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Asistente de decisión que aplica el intercambio precisión-recall a cuatro escenarios reales."
+  },
+  {
+    "sectionId": "checklist",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "Ocho comprobaciones antes de llevar un detector a producción.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist operativa derivada de las diapositivas 28 y 29."
   }
 ]

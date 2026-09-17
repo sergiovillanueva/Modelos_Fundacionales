@@ -211,5 +211,38 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Traslado literal pedido por el profesor. Cada diapositiva ocupa una pantalla; las tres preguntas y el banco de normalidad ocupan pantallas propias intercaladas."
+  },
+  {
+    "sectionId": "receta",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "Un vector por imagen con DINOv2 congelado, normalizado antes de comparar.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Receta copiable tomada del cuaderno 4_DINO.ipynb."
+  },
+  {
+    "sectionId": "montaje",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "Un detector de anomalías se monta con imágenes normales, un banco y un umbral fijado con validación.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Guía operativa que desarrolla los seis pasos de la diapositiva 70."
+  },
+  {
+    "sectionId": "checklist",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "Seis comprobaciones antes de fiarse de un banco de normalidad.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist derivada de la diapositiva 70."
   }
 ]

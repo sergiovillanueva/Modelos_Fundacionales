@@ -785,6 +785,117 @@
   </div>
 </section>
 
+<section id="receta" data-title="Receta" data-layout="practice">
+  <div class="section-copy">
+    <h2>Detectar objetos en seis líneas</h2>
+    <p class="lead">Lo mínimo que necesitas para tener cajas sobre una imagen tuya.</p>
+  </div>
+  <pre class="code-sample" data-copy><code>from rfdetr import RFDETRMedium
+from PIL import Image
+
+model = RFDETRMedium()
+image = Image.open("mi_imagen.jpg").convert("RGB")
+
+detections = model.predict(image, threshold=0.5)
+print(detections.class_id, detections.confidence, detections.xyxy)</code></pre>
+  <div class="slide-prose">
+    <ul>
+      <li><strong>threshold</strong> es el umbral de confianza: súbelo si ves falsas alarmas, bájalo si se pierden objetos.</li>
+      <li><strong>xyxy</strong> son las coordenadas de cada caja en píxeles, en el orden x mínimo, y mínimo, x máximo, y máximo.</li>
+      <li>La primera ejecución descarga los pesos. En Colab conviene llamar antes a <code>model.optimize_for_inference()</code>.</li>
+    </ul>
+  </div>
+  <div class="print-detail"><p>RF-DETR se publica bajo Apache 2.0 y devuelve las clases de COCO. Para un vocabulario propio hace falta fine-tuning con un dataset anotado, que es lo que mide la pantalla siguiente.</p></div>
+</section>
+
+<section id="presupuesto" data-title="Presupuesto" data-layout="lab">
+  <div class="section-copy">
+    <h2>¿Cuánto cuesta anotar tu dataset?</h2>
+    <p class="lead">La cuenta que decide si fine-tuneas o te apoyas primero en un detector guiado por texto.</p>
+  </div>
+  <div class="calc-layout" data-budget-lab>
+    <div class="calc-controls">
+      <p>
+        <label for="budget-classes">Clases que necesitas <b data-budget-value="classes">4</b></label>
+        <input type="range" id="budget-classes" data-budget-classes min="1" max="40" value="4" step="1">
+      </p>
+      <p>
+        <label for="budget-images">Imágenes por clase <b data-budget-value="imagesPerClass">300</b></label>
+        <input type="range" id="budget-images" data-budget-images min="50" max="2000" value="300" step="50">
+      </p>
+      <p>
+        <label for="budget-seconds">Segundos por imagen <b data-budget-value="secondsPerImage">45</b></label>
+        <input type="range" id="budget-seconds" data-budget-seconds min="10" max="180" value="45" step="5">
+      </p>
+    </div>
+    <div class="calc-results">
+      <p class="calc-figure"><span>Imágenes que anotar</span><strong data-budget-total-images>1200</strong></p>
+      <p class="calc-figure"><span>Horas, con revisión incluida</span><strong data-budget-hours>20</strong></p>
+      <p class="calc-figure"><span>Jornadas de una persona</span><strong data-budget-days>3,3</strong></p>
+      <p class="calc-note" data-budget-message>Coste asumible para un conjunto propio. Aun así, empieza validando con zero-shot para saber si hace falta.</p>
+      <p class="calc-disclaimer">Estimación de orden de magnitud. Suma un 30 % de revisión sobre el tiempo de anotación y cuenta 6 horas productivas por jornada.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>La página recoge el caso de 4 clases, 300 imágenes por clase y 45 segundos por imagen. Las cifras que más se disparan son las clases y los segundos por imagen: anotar segmentación o puntos clave multiplica el tiempo respecto a poner cajas. Antes de asumir ese coste conviene comprobar cuánto resuelve un detector guiado por texto sin anotar nada, que es el tema siguiente.</p></div>
+</section>
+
+<section id="caso" data-title="Tu caso" data-layout="lab">
+  <div class="section-copy">
+    <h2>¿Qué error te sale más caro?</h2>
+    <p class="lead">El umbral no se elige en abstracto: depende de qué duele más en tu aplicación.</p>
+  </div>
+  <div class="chooser" data-chooser>
+    <div class="chooser-questions">
+      <fieldset data-chooser-question="caso">
+        <legend>¿Para qué usas el detector?</legend>
+        <label><input type="radio" name="caso" value="seguridad" checked> Seguridad: detectar a una persona en zona restringida</label>
+        <label><input type="radio" name="caso" value="calidad"> Inspección: encontrar piezas defectuosas antes de enviarlas</label>
+        <label><input type="radio" name="caso" value="inventario"> Inventario: contar producto en una estantería</label>
+        <label><input type="radio" name="caso" value="analitica"> Analítica: estimar flujo de gente en una calle</label>
+      </fieldset>
+    </div>
+    <p class="chooser-status" data-chooser-status></p>
+    <div class="chooser-result" data-when="caso=seguridad">
+      <h3>Prioriza el recall</h3>
+      <p>No detectar a alguien que sí está es el fallo grave. Una falsa alarma cuesta una comprobación; un objeto perdido cuesta el incidente.</p>
+      <p><strong>Qué hacer:</strong> baja el umbral de confianza y asume más falsos positivos. Añade una segunda comprobación, humana o automática, para filtrarlos.</p>
+    </div>
+    <div class="chooser-result" data-when="caso=calidad" hidden>
+      <h3>Prioriza el recall, con revisión humana</h3>
+      <p>Dejar pasar una pieza defectuosa llega al cliente; marcar una buena solo cuesta una revisión en planta.</p>
+      <p><strong>Qué hacer:</strong> umbral bajo y una estación de revisión. Mide cuántas piezas buenas estás parando, porque ese es el coste que notará producción.</p>
+    </div>
+    <div class="chooser-result" data-when="caso=inventario" hidden>
+      <h3>Prioriza la precisión</h3>
+      <p>Contar de más es peor que contar de menos: dispara reposiciones y pedidos equivocados que nadie revisa.</p>
+      <p><strong>Qué hacer:</strong> sube el umbral hasta que apenas haya duplicados y vigila el recuento frente a un conteo manual de control.</p>
+    </div>
+    <div class="chooser-result" data-when="caso=analitica" hidden>
+      <h3>Busca el equilibrio y mide la tendencia</h3>
+      <p>Aquí no importa cada persona concreta sino que el sesgo sea estable. Un error constante se corrige; uno que cambia con la hora o el clima, no.</p>
+      <p><strong>Qué hacer:</strong> deja el umbral intermedio y valida sobre grabaciones de momentos distintos, no sobre una sola.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>La regla general: si el coste de perder un objeto supera al de revisar una falsa alarma, baja el umbral; si es al revés, súbelo. Y en todos los casos, mide el efecto sobre tus propios datos, no sobre el benchmark.</p></div>
+</section>
+
+<section id="checklist" data-title="Checklist" data-layout="practice">
+  <div class="section-copy">
+    <h2>Antes de poner un detector en producción</h2>
+    <p class="lead">Ocho comprobaciones que evitan casi todos los sustos.</p>
+  </div>
+  <ol class="checklist">
+    <li><strong>Conjunto de validación propio</strong><span>Imágenes de tu dominio, tus cámaras y tus condiciones de luz. No basta el mAP del benchmark.</span></li>
+    <li><strong>Umbral elegido con criterio</strong><span>Decidido según qué error cuesta más en tu caso, no dejado en el valor por defecto.</span></li>
+    <li><strong>Latencia medida en el dispositivo real</strong><span>End to end, incluyendo carga, preprocesado y posprocesado. No el número del paper.</span></li>
+    <li><strong>Revisión visual de los errores</strong><span>Mira falsos positivos, falsos negativos y casos límite: ocluidos, pequeños, contraluz.</span></li>
+    <li><strong>Licencia comprobada</strong><span>Del repositorio y de los pesos, en la versión concreta que vas a desplegar.</span></li>
+    <li><strong>Versión y revisión fijadas</strong><span>Anota el identificador del modelo y su revisión para poder reproducir el resultado.</span></li>
+    <li><strong>Comportamiento ante entradas raras</strong><span>Imagen vacía, muy oscura, resolución distinta, formato inesperado.</span></li>
+    <li><strong>Plan de seguimiento</strong><span>Cómo vas a detectar que el rendimiento cae cuando cambien las condiciones.</span></li>
+  </ol>
+</section>
+
 <section id="practica" data-title="Colab" data-layout="practice">
   <div class="section-copy">
     <h2>Ahora, con tu propia imagen</h2>

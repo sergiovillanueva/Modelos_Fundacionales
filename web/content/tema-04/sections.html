@@ -477,6 +477,83 @@
   <div class="print-detail"><p>Hace falta una referencia de normalidad y un criterio de distancia. Sin banco y sin umbral, un embedding es solo un punto en el espacio.</p></div>
 </section>
 
+<section id="receta" data-title="Receta" data-layout="practice">
+  <div class="section-copy">
+    <h2>Un vector por imagen, sin etiquetas</h2>
+    <p class="lead">El extractor que alimenta búsqueda por similitud, clustering y detección de anomalías.</p>
+  </div>
+  <pre class="code-sample" data-copy><code>import torch
+from PIL import Image
+from transformers import AutoImageProcessor, AutoModel
+
+model_id = "facebook/dinov2-base"
+processor = AutoImageProcessor.from_pretrained(model_id)
+model = AutoModel.from_pretrained(model_id).eval()
+
+def embedding(ruta):
+    image = Image.open(ruta).convert("RGB")
+    inputs = processor(images=image, return_tensors="pt")
+    with torch.no_grad():
+        salida = model(**inputs).last_hidden_state
+    cls = salida[:, 0]                      # resumen global de la imagen
+    return torch.nn.functional.normalize(cls, dim=-1)
+
+a, b = embedding("pieza_1.jpg"), embedding("pieza_2.jpg")
+print("similitud:", float(a @ b.T))</code></pre>
+  <div class="slide-prose">
+    <ul>
+      <li>El <strong>token CLS</strong> resume la imagen entera. Los demás, <code>salida[:, 1:]</code>, son un vector por parche y sirven para lo espacial.</li>
+      <li><strong>Normaliza siempre</strong> antes de comparar: la similitud coseno mide dirección, no longitud.</li>
+      <li>El modelo va congelado. No hay entrenamiento aquí, solo extracción.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="montaje" data-title="Montaje" data-layout="practice">
+  <div class="section-copy">
+    <h2>Montar un detector de anomalías en una tarde</h2>
+    <p class="lead">Sin un solo ejemplo de defecto, con las cifras de la diapositiva anterior.</p>
+  </div>
+  <ol class="stage-list">
+    <li>
+      <h3>Reúne entre 10 y 50 imágenes normales</h3>
+      <p>De la misma cámara, la misma distancia y la misma luz que vas a tener en producción. La variabilidad que no esté aquí se marcará como anomalía.</p>
+    </li>
+    <li>
+      <h3>Extrae embeddings por parche y normaliza</h3>
+      <p>Usa los tokens de parche, no solo el CLS, y normaliza con L2. Así cada región tiene su propia representación.</p>
+    </li>
+    <li>
+      <h3>Construye el banco con un CoreSet del 1 al 10 %</h3>
+      <p>No guardes todos los vectores: quédate con un subconjunto que cubra el espacio. Reduce memoria y acelera la búsqueda sin perder cobertura.</p>
+    </li>
+    <li>
+      <h3>Fija el umbral con imágenes normales de validación</h3>
+      <p>Puntúa unas cuantas imágenes buenas que no estén en el banco y coloca el umbral por encima de su distancia máxima, con margen. No lo adivines.</p>
+    </li>
+    <li>
+      <h3>Puntúa y revisa el heatmap, no solo el número</h3>
+      <p>El máximo por parche da el score de la imagen; el mapa completo te dice si el modelo mira donde tú mirarías.</p>
+    </li>
+  </ol>
+  <p class="slide-callout"><strong>Señal de alarma:</strong> si el heatmap se enciende en el fondo o en los bordes en vez de en la pieza, el problema es el encuadre o la iluminación, no el modelo.</p>
+</section>
+
+<section id="checklist" data-title="Checklist" data-layout="practice">
+  <div class="section-copy">
+    <h2>Antes de fiarte de un banco de normalidad</h2>
+    <p class="lead">Seis comprobaciones para un método que no ha visto ni un defecto.</p>
+  </div>
+  <ol class="checklist">
+    <li><strong>Las imágenes normales cubren la variación real</strong><span>Turnos, lotes, luz de mañana y de tarde. Lo que falte se marcará como anomalía.</span></li>
+    <li><strong>Encuadre estable</strong><span>Si la pieza cambia de posición entre fotos, la distancia sube sin que haya defecto.</span></li>
+    <li><strong>Umbral fijado con validación</strong><span>Con imágenes buenas apartadas, no con las del propio banco.</span></li>
+    <li><strong>Heatmap revisado a ojo</strong><span>Que se encienda donde está el defecto y no en el fondo.</span></li>
+    <li><strong>Falsos positivos contados</strong><span>Cuántas piezas buenas estás parando. Ese es el coste que notará producción.</span></li>
+    <li><strong>Plan de actualización</strong><span>Qué haces cuando cambie el proveedor, el lote o la iluminación.</span></li>
+  </ol>
+</section>
+
 <section id="practica" data-title="Colab" data-layout="practice">
   <div class="section-copy"><h2>Explora los embeddings</h2><p class="lead">Extrae representaciones globales y densas con DINOv2.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Compara dos imágenes.</span></li><li><span>Interpreta patches y PCA.</span></li></ol>

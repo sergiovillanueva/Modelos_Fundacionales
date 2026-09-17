@@ -3,7 +3,6 @@ import {initMediaControls} from './media.js';
 import {initQuizzes} from './quiz.js';
 import {initIouDemo} from './iou-demo.js';
 import {initThresholdLab} from './threshold-lab.js';
-import {initPromptLab} from './prompt-lab.js';
 import {initSimilarityLab} from './similarity-lab.js';
 import {initLicenseLab} from './license-lab.js';
 import {initOksLab} from './oks-lab.js';
@@ -11,20 +10,31 @@ import {initAnomalyLab} from './anomaly-lab.js';
 import {initNmsLab} from './nms-lab.js';
 import {initCompareMedia} from './compare-media.js';
 import {initGridLab} from './grid-lab.js';
+import {initMaskLab} from './mask-lab.js';
+import {initCopyCode} from './copy-code.js';
+import {initChoosers} from './chooser.js';
+import {initBudgetLab} from './budget-lab.js';
+import {initVramLab} from './vram-lab.js';
+import {initModelTable} from './model-table.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
   initQuizzes();
   initIouDemo();
   initThresholdLab();
-  initPromptLab();
-  initSimilarityLab();
+    initSimilarityLab();
   initLicenseLab();
   initOksLab();
   initAnomalyLab();
   initNmsLab();
   initCompareMedia();
   initGridLab();
+  initMaskLab();
+  initCopyCode();
+  initChoosers();
+  initBudgetLab();
+  initVramLab();
+  initModelTable();
 
   const deck = new Reveal({
     hash: true,

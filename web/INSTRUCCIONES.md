@@ -65,6 +65,12 @@ Qué significa en la práctica:
 | `note-grid` con `is-ok`, `is-warn` o `is-stop` | Bloques que la diapositiva codifica por color; el texto sigue diciendo el estado |
 | `stage-list--four` | Fila de cuatro pasos, como las de flujo del PDF |
 | `compare-media` | Comparador deslizante entre dos imágenes alineadas; en papel imprime las dos mitades |
+| `code-sample` con `data-copy` | Bloque de código con botón de copiar; el botón no sale en el PDF |
+| `checklist` | Lista de comprobaciones con casilla; pensada para imprimirse |
+| `calc-layout` | Calculadora: controles a la izquierda, cifras a la derecha |
+| `chooser` | Asistente de decisión: preguntas en radio y un resultado por combinación, declarado en `data-when` |
+| `model-table` | Tabla filtrable de modelos reales, con la fecha de consulta |
+| `mask-stage` | Foto real con capas de máscara precalculadas que se encienden por indicación |
 
 Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna. Por la misma razón, **un contenedor cuyo texto cambia en tiempo de ejecución necesita ancho definido** (`width: min(900px, 100%)`), no solo `max-width`: si no, cambia de tamaño cada vez que cambia el mensaje y la escena da un salto.
 
@@ -73,6 +79,16 @@ Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen aut
 - **Web:** la pantalla crece todo lo que necesite y se recorre con la barra flotante. La barra reserva espacio al final del documento.
 - **Presentación:** cada diapositiva envuelve su contenido en `.slide-fit` y `src/js/presentation.js` la reduce lo justo para caber en 1280 × 720, igual que un lienzo de diapositiva. No hace falta recortar texto para que entre.
 - **PDF:** `print.css` ajusta los componentes para que cada pantalla ocupe una página A4. Una diapositiva muy densa puede necesitar dos páginas; lo que no se admite es contenido cortado.
+
+## Contenido práctico
+
+El profesor pidió el 17 de septiembre de 2026 menos teoría y más práctica. El contenido del PDF se mantiene íntegro; lo que se añade son pantallas que se usan.
+
+- **Cada tema cierra con receta, herramienta y checklist**, en ese orden, justo antes del paso de Colab.
+- **Las recetas salen del cuaderno del tema**, no se inventan. Si cambia el cuaderno, cambia la receta.
+- **Toda cifra que calcule una herramienta vive en `src/lib/` con pruebas.** Las estimaciones declaran en pantalla que lo son y con qué supuestos.
+- **Las listas de modelos llevan fecha de consulta** y recuerdan que la licencia se comprueba en la ficha, porque cambia entre versiones.
+- Una demostración que no ejecuta el modelo real lo dice en la propia pantalla, no solo en el PDF.
 
 ## Navegación
 

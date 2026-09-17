@@ -468,6 +468,64 @@
   <div class="print-detail"><p>Un mapa relativo dice qué está más cerca que qué. Para responder «a cuántos metros» hacen falta calibración de cámara, una referencia conocida o un modelo entrenado para profundidad métrica.</p></div>
 </section>
 
+<section id="recetario" data-title="Recetario" data-layout="practice">
+  <div class="section-copy">
+    <h2>Las seis tareas, seis recetas</h2>
+    <p class="lead">Lo mínimo para arrancar cada una. Todas siguen el mismo patrón de Transformers.</p>
+  </div>
+  <pre class="code-sample" data-copy><code>from transformers import pipeline
+from PIL import Image
+
+image = Image.open("mi_imagen.jpg").convert("RGB")
+
+# 1. Pose: puntos clave del cuerpo
+pose = pipeline("keypoint-detection", model="usyd-community/vitpose-base-simple")
+print(pose(image))
+
+# 2. OCR: texto de la imagen
+ocr = pipeline("image-to-text", model="microsoft/trocr-base-printed")
+print(ocr(image))
+
+# 3. Superresolución: más detalle
+sr = pipeline("image-to-image", model="caidas/swin2SR-classical-sr-x2-64")
+sr(image).save("ampliada.png")
+
+# 4. Fondo: recorte con canal alfa
+fondo = pipeline("image-segmentation", model="briaai/RMBG-1.4")
+fondo(image).save("sin_fondo.png")
+
+# 5. Profundidad: distancia relativa
+depth = pipeline("depth-estimation", model="depth-anything/Depth-Anything-V2-Small-hf")
+depth(image)["depth"].save("profundidad.png")
+
+# 6. Matching: correspondencias entre dos fotos
+match = pipeline("keypoint-matching", model="ETH-CVG/lightglue_superpoint")
+print(match([[Image.open("vista_1.jpg"), Image.open("vista_2.jpg")]]))</code></pre>
+  <div class="slide-prose">
+    <ul>
+      <li>Cada tarea es independiente: ejecuta solo la que necesites y no cargues el resto.</li>
+      <li>Revisa la licencia antes de llevarlo a producción. <strong>RMBG-1.4 no permite uso comercial</strong> sin acuerdo con BRIA.</li>
+      <li>Para encadenar dos, empieza por profundidad y usa el mapa como máscara: es la combinación más directa.</li>
+    </ul>
+  </div>
+  <div class="print-detail"><p>Los identificadores corresponden a modelos publicados en Hugging Face a fecha de septiembre de 2026. La API de <code>pipeline</code> puede cambiar el nombre de alguna tarea entre versiones de transformers; si una falla, busca la tarea en la ficha del modelo. El cuaderno del tema ejecuta estas seis con imágenes de ejemplo y deja el encadenado como ejercicio.</p></div>
+</section>
+
+<section id="checklist" data-title="Checklist" data-layout="practice">
+  <div class="section-copy">
+    <h2>Antes de usar cualquiera de estas seis</h2>
+    <p class="lead">Seis comprobaciones comunes a tareas muy distintas.</p>
+  </div>
+  <ol class="checklist">
+    <li><strong>Sabes qué es medida y qué es generación</strong><span>Pose y profundidad estiman; superresolución sintetiza. No se usan igual como evidencia.</span></li>
+    <li><strong>La licencia permite tu uso</strong><span>Varias de estas familias tienen restricciones comerciales. Compruébalo por modelo.</span></li>
+    <li><strong>La escala está resuelta</strong><span>Si necesitas metros, un mapa relativo no sirve: hace falta calibración o un modelo métrico.</span></li>
+    <li><strong>Probado con tus imágenes</strong><span>Resolución, encuadre y calidad reales, no las fotos de la demo.</span></li>
+    <li><strong>Sin diagnóstico automático</strong><span>En medicina o seguridad, revisión humana sobre la imagen original.</span></li>
+    <li><strong>Coste por imagen calculado</strong><span>Si vas a procesar miles, mide tiempo y memoria antes de comprometerte.</span></li>
+  </ol>
+</section>
+
 <section id="practica" data-title="Colab" data-layout="practice">
   <div class="section-copy"><h2>Cinco tareas, un cuaderno</h2><p class="lead">Pose, OCR, superresolución, fondo y profundidad sobre tus propias imágenes.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Ejecuta cada tarea por separado.</span></li><li><span>Combina dos pipelines y comenta el resultado.</span></li></ol>

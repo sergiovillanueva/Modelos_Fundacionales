@@ -236,41 +236,39 @@
   <p class="slide-callout">Meta AI publica un <strong>Segment Anything Playground</strong>, un espacio interactivo para probar estos prompts sobre medios propios.</p>
 </section>
 
-<section id="marcar" data-title="Marcar" data-layout="lab">
+<section id="segmentar" data-title="Segmentar" data-layout="lab">
   <div class="section-copy">
-    <h2>Marca un punto y mira la máscara</h2>
-    <p class="lead">Un punto positivo propone el objeto entero; uno negativo retira la parte que sobra.</p>
+    <h2>La indicación decide qué sale</h2>
+    <p class="lead">Un punto devuelve una instancia; un concepto en texto devuelve todas las que coinciden.</p>
   </div>
-  <div class="lab-layout lab-layout--wide" data-prompt-lab>
-    <div class="lab-stage">
-      <svg viewBox="0 0 200 124" aria-label="Escena esquemática con una furgoneta, un árbol y la carretera. Cada zona acepta un punto de inclusión o exclusión.">
-        <rect class="scene-prop" x="29" y="66" width="6" height="32"/>
-        <g class="scene-regions">
-          <rect class="region" data-region="carretera" data-object="carretera" data-name="la carretera" role="button" tabindex="0" x="0" y="98" width="200" height="26" rx="3"/>
-          <circle class="region" data-region="arbol" data-object="arbol" data-name="el árbol" role="button" tabindex="0" cx="32" cy="52" r="17"/>
-          <rect class="region is-inside" data-region="carroceria" data-object="furgoneta" data-name="la carrocería" data-start="positive" role="button" tabindex="0" x="62" y="62" width="104" height="36" rx="7"/>
-          <rect class="region is-inside" data-region="cabina" data-object="furgoneta" data-name="la cabina" role="button" tabindex="0" x="86" y="40" width="56" height="24" rx="6"/>
-          <path class="region is-inside" data-region="ruedas" data-object="furgoneta" data-name="las ruedas" role="button" tabindex="0" d="M 76 100 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0 M 134 100 a 10 10 0 1 0 20 0 a 10 10 0 1 0 -20 0"/>
-        </g>
-        <g class="scene-dots">
-          <g class="prompt-dot is-empty" data-dot="carretera" transform="translate(46,112)"><circle r="7"/><text y="3">+</text></g>
-          <g class="prompt-dot is-empty" data-dot="arbol" transform="translate(32,52)"><circle r="7"/><text y="3">+</text></g>
-          <g class="prompt-dot is-positive" data-dot="carroceria" transform="translate(118,80)"><circle r="7"/><text y="3">+</text></g>
-          <g class="prompt-dot is-empty" data-dot="cabina" transform="translate(114,52)"><circle r="7"/><text y="3">+</text></g>
-          <g class="prompt-dot is-empty" data-dot="ruedas" transform="translate(86,100)"><circle r="7"/><text y="3">+</text></g>
-        </g>
-      </svg>
-    </div>
+  <div class="lab-layout lab-layout--wide" data-mask-lab>
+    <figure class="mask-stage">
+      <img src="{{ASSET:tema-05/presentacion/fruteria.webp}}" alt="Puesto de frutería con sandías, piñas, granadas, limas y naranjas ordenadas por montones.">
+      <img class="mask-layer is-visible" data-mask="sandia" src="{{ASSET:tema-05/presentacion/fruteria-sandia.webp}}" alt="" aria-hidden="true">
+      <img class="mask-layer" data-mask="sandia-derecha" src="{{ASSET:tema-05/presentacion/fruteria-sandia-derecha.webp}}" alt="" aria-hidden="true">
+      <img class="mask-layer" data-mask="limas" src="{{ASSET:tema-05/presentacion/fruteria-limas.webp}}" alt="" aria-hidden="true">
+      <img class="mask-layer" data-mask="pina" src="{{ASSET:tema-05/presentacion/fruteria-pina.webp}}" alt="" aria-hidden="true">
+      <figcaption>Máscaras precalculadas para esta demostración con un algoritmo clásico a partir de una caja. En el cuaderno las genera SAM.</figcaption>
+    </figure>
     <div class="lab-readout">
-      <div class="prompt-modes" role="group" aria-label="Qué hace el siguiente clic">
-        <button type="button" data-prompt-mode="positive" aria-pressed="true">Incluir</button>
-        <button type="button" data-prompt-mode="negative" aria-pressed="false">Excluir</button>
+      <p class="field-label" id="mask-prompts-label">Qué le indicas al modelo</p>
+      <div class="mask-prompts" role="group" aria-labelledby="mask-prompts-label">
+        <button type="button" data-mask-prompt data-mask="sandia" data-instances="1" aria-pressed="true"
+          data-explanation="Un punto señala una región concreta, así que el modelo devuelve esa sandía y no la otra.">Un punto en la sandía izquierda</button>
+        <button type="button" data-mask-prompt data-mask="sandia-derecha" data-instances="1"
+          data-explanation="Mismo tipo de indicación, otra posición: cambia la instancia, no la categoría.">Un punto en la sandía derecha</button>
+        <button type="button" data-mask-prompt data-mask="sandia sandia-derecha" data-instances="2"
+          data-explanation="Un concepto en texto no señala un sitio: recupera todas las instancias que coinciden. Es lo que añade SAM 3.">Texto: «sandía»</button>
+        <button type="button" data-mask-prompt data-mask="limas" data-instances="1"
+          data-explanation="Una caja acota una zona y el modelo ajusta el contorno dentro. Aquí cae sobre el montón entero, no sobre una lima suelta.">Una caja sobre las limas</button>
+        <button type="button" data-mask-prompt data-mask="pina" data-instances="1"
+          data-explanation="Un objeto con bordes complicados, como las hojas de la piña, es donde más se nota la calidad del contorno.">Un punto en la piña</button>
       </div>
-      <p class="lab-message" data-prompt-message aria-live="polite">La máscara cubre la carrocería, la cabina y las ruedas.</p>
-      <p class="metric-counts"><span class="tally">Puntos colocados <strong data-prompt-count>1</strong></span></p>
+      <p class="lab-message" data-mask-message aria-live="polite">Un punto señala una región concreta, así que el modelo devuelve esa sandía y no la otra.</p>
+      <p class="metric-counts"><span class="tally">Instancias segmentadas <strong data-mask-count>1</strong></span></p>
     </div>
   </div>
-  <div class="print-detail"><p>Esta escena reproduce el comportamiento que conviene anticipar, no la salida de un modelo concreto. Un punto positivo sobre la carrocería propone la furgoneta completa: carrocería, cabina y ruedas. Un punto negativo sobre las ruedas las retira sin volver a empezar. Un punto sobre el árbol añade otro objeto, porque el prompt señala una región y no una categoría. En SAM real la primera indicación puede resultar ambigua entre objeto, parte y subparte, y por eso algunas versiones devuelven varias máscaras candidatas con su puntuación.</p></div>
+  <div class="print-detail"><p>Esta página recoge el estado con un punto sobre la sandía izquierda. La diferencia que conviene retener no es visual sino de interfaz: un punto o una caja identifican <em>dónde</em>, y devuelven la instancia que hay ahí; un concepto en texto o un ejemplar identifican <em>qué</em>, y devuelven todas las coincidencias. SAM 1 y SAM 2 admiten de forma nativa lo primero, y para lo segundo necesitan un modelo externo que traduzca el texto; SAM 3 incorpora el texto y los ejemplares como prompts propios. Las máscaras de esta demostración se calcularon con GrabCut a partir de una caja, no con SAM: el cuaderno del tema las genera con el modelo real.</p></div>
 </section>
 
 <section id="prompt" data-title="Puntos" data-layout="question">
@@ -322,6 +320,97 @@
   </div>
   {{QUIZ:q503}}
   <div class="print-detail"><p>SAM resulta valioso con poca anotación, interacción humana o vídeo. Un modelo supervisado pequeño puede ser más rápido y barato para clases estables y fondos controlados. Siempre hay que evaluar bordes, objetos pequeños, oclusiones y consumo de memoria.</p></div>
+</section>
+
+<section id="receta" data-title="Receta" data-layout="practice">
+  <div class="section-copy">
+    <h2>Segmentar con un punto</h2>
+    <p class="lead">Un clic, una máscara, sin entrenar nada para tu objeto.</p>
+  </div>
+  <pre class="code-sample" data-copy><code>import torch
+from PIL import Image
+from transformers import Sam2Model, Sam2Processor
+
+model_id = "facebook/sam2.1-hiera-large"
+model = Sam2Model.from_pretrained(model_id).eval()
+processor = Sam2Processor.from_pretrained(model_id)
+
+image = Image.open("mi_imagen.jpg").convert("RGB")
+puntos = [[[[450, 300]]]]          # un punto, en coordenadas de la imagen
+etiquetas = [[[1]]]                # 1 incluye, 0 excluye
+
+inputs = processor(images=image, input_points=puntos,
+                   input_labels=etiquetas, return_tensors="pt")
+with torch.no_grad():
+    salida = model(**inputs, multimask_output=True)
+
+mascaras = processor.post_process_masks(salida.pred_masks,
+                                        inputs["original_sizes"])[0]
+print(mascaras.shape, salida.iou_scores)</code></pre>
+  <div class="slide-prose">
+    <ul>
+      <li><strong>multimask_output</strong> devuelve tres candidatas para resolver la ambigüedad entre objeto, parte y subparte. Quédate con la de mayor <code>iou_scores</code> o enséñaselas al usuario.</li>
+      <li>Para <strong>corregir</strong>, añade otro punto con etiqueta 0 donde la máscara invada el fondo y vuelve a llamar.</li>
+      <li>El encoder de imagen es lo caro y se ejecuta una vez. Los clics posteriores son casi gratis.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="version" data-title="Versión" data-layout="lab">
+  <div class="section-copy">
+    <h2>¿Qué versión de SAM necesitas?</h2>
+    <p class="lead">Las tres segmentan, pero no aceptan las mismas indicaciones ni el mismo medio.</p>
+  </div>
+  <div class="chooser" data-chooser>
+    <div class="chooser-questions">
+      <fieldset data-chooser-question="medio">
+        <legend>¿Sobre qué trabajas?</legend>
+        <label><input type="radio" name="medio" value="imagen" checked> Imágenes sueltas</label>
+        <label><input type="radio" name="medio" value="video"> Vídeo, y hay que seguir el objeto</label>
+      </fieldset>
+      <fieldset data-chooser-question="indicacion">
+        <legend>¿Cómo vas a señalar lo que buscas?</legend>
+        <label><input type="radio" name="indicacion" value="espacial" checked> Con clics o cajas</label>
+        <label><input type="radio" name="indicacion" value="concepto"> Escribiendo qué es, o con un recorte de ejemplo</label>
+      </fieldset>
+    </div>
+    <p class="chooser-status" data-chooser-status></p>
+    <div class="chooser-result" data-when="medio=imagen indicacion=espacial">
+      <h3>SAM 1 basta</h3>
+      <p>Imagen y prompts espaciales es justo su caso. Es el más sencillo de desplegar y el encoder se ejecuta una vez por imagen.</p>
+      <p>Si ya tienes SAM 2 montado, úsalo igualmente: en imagen también es más rápido.</p>
+    </div>
+    <div class="chooser-result" data-when="medio=video indicacion=espacial" hidden>
+      <h3>SAM 2</h3>
+      <p>Su banco de memoria mantiene la identidad del objeto entre fotogramas y aguanta oclusiones. Una corrección en un fotograma se propaga al resto.</p>
+      <p><code>facebook/sam2.1-hiera-large</code></p>
+    </div>
+    <div class="chooser-result" data-when="medio=imagen indicacion=concepto" hidden>
+      <h3>SAM 3, o SAM 2 con un detector delante</h3>
+      <p>SAM 3 acepta texto y ejemplares de forma nativa y devuelve todas las instancias del concepto. La alternativa clásica es Grounding DINO produciendo cajas que alimentan a SAM 2.</p>
+      <p>Esa combinación es la que monta el cuaderno del tema.</p>
+    </div>
+    <div class="chooser-result" data-when="medio=video indicacion=concepto" hidden>
+      <h3>SAM 3</h3>
+      <p>Es el único que une las dos cosas: detecta por concepto y sigue las instancias en el tiempo, con el detector reiniciando al tracker cuando lo pierde.</p>
+      <p>Cuenta con que es el más exigente en hardware de los tres.</p>
+    </div>
+  </div>
+</section>
+
+<section id="checklist" data-title="Checklist" data-layout="practice">
+  <div class="section-copy">
+    <h2>Antes de montar SAM en un flujo real</h2>
+    <p class="lead">Seis comprobaciones sobre bordes, coste e interacción.</p>
+  </div>
+  <ol class="checklist">
+    <li><strong>Bordes difíciles probados</strong><span>Pelo, transparencias, objetos muy pequeños. Ahí es donde se cae la máscara.</span></li>
+    <li><strong>Ambigüedad resuelta</strong><span>Decide si te quedas con la máscara de mayor puntuación o le enseñas las tres al usuario.</span></li>
+    <li><strong>Coste de interacción medido</strong><span>Cuántos clics de media hacen falta para una máscara aceptable.</span></li>
+    <li><strong>Encoder reutilizado</strong><span>Una vez por imagen, no una por clic. Es la diferencia entre fluido y lento.</span></li>
+    <li><strong>Reconocimiento resuelto aparte</strong><span>SAM delimita pero no nombra. Decide quién pone la etiqueta.</span></li>
+    <li><strong>Alternativa ligera comparada</strong><span>Con clases fijas y fondo controlado, un modelo supervisado pequeño puede salir mejor y más barato.</span></li>
+  </ol>
 </section>
 
 <section id="practica" data-title="Colab" data-layout="practice">

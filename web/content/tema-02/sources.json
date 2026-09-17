@@ -107,5 +107,49 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla nueva. La tabla codifica lo que explica la diapositiva 34 y se comprueba con tests unitarios. Se presenta como orientación para buscar modelo, no como asesoramiento legal, y la propia pantalla recuerda que la licencia se lee en el artefacto y la versión concretos."
+  },
+  {
+    "sectionId": "receta",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "El mismo modelo se carga con pipeline para probar y con clases específicas para producción.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Receta copiable con las dos formas de la diapositiva 35 y 36."
+  },
+  {
+    "sectionId": "memoria",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "src/lib/planning.js",
+    "claim": "La memoria de inferencia es parámetros por bytes de la precisión más un margen para activaciones.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Calculadora nueva con pruebas unitarias. Los umbrales de las tarjetas son sus capacidades nominales."
+  },
+  {
+    "sectionId": "candidatos",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "Los modelos de visión del Hub se descartan antes por tarea y por licencia que por métricas.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Tabla de modelos reales publicados en Hugging Face, consultada el 17 de septiembre de 2026 y fechada en pantalla."
+  },
+  {
+    "sectionId": "checklist",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "Siete comprobaciones antes de quedarse con un modelo del Hub.",
+    "url": "",
+    "checkedOn": "2026-09-17",
+    "status": "verified",
+    "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist derivada de las diapositivas 33 y 34."
   }
 ]

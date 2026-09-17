@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 const THRESHOLD_URL = '/temas/01-deteccion/index.html#equilibrio';
-const PROMPT_URL = '/temas/05-sam/index.html#marcar';
+const MASK_URL = '/temas/05-sam/index.html#segmentar';
 const SIMILARITY_URL = '/temas/03-multimodalidad/index.html#cercania';
 
 test('el umbral mueve precisión y recall en direcciones opuestas', async ({page}) => {
@@ -38,43 +38,28 @@ test('la escena del umbral marca cada predicción como acierto o falsa alarma', 
   await expect(page.locator('[data-threshold-message]')).toContainText('repite un objeto');
 });
 
-test('un punto positivo propone el objeto entero y uno negativo retira la parte', async ({page}) => {
-  await page.goto(PROMPT_URL);
-  const message = page.locator('[data-prompt-message]');
-  await expect(message).toContainText('la carrocería, la cabina y las ruedas');
-  await expect(page.locator('[data-region="ruedas"]')).toHaveClass(/is-inside/);
+test('cada indicación enciende su máscara sobre la foto', async ({page}) => {
+  await page.goto(MASK_URL);
+  await expect(page.locator('.mask-layer[data-mask="sandia"]')).toHaveClass(/is-visible/);
+  await expect(page.locator('.mask-layer[data-mask="sandia-derecha"]')).not.toHaveClass(/is-visible/);
+  await expect(page.locator('[data-mask-count]')).toHaveText('1');
 
-  // La rueda trasera queda a la izquierda del recuadro que envuelve a las dos ruedas.
-  const clickWheel = async () => {
-    const box = await page.locator('[data-region="ruedas"]').boundingBox();
-    await page.mouse.click(box.x + box.width * 0.13, box.y + box.height * 0.5);
-  };
-
-  await page.getByRole('button', {name: 'Excluir'}).click();
-  await clickWheel();
-  await expect(page.locator('[data-region="ruedas"]')).not.toHaveClass(/is-inside/);
-  await expect(message).toContainText('sin las ruedas');
-  await expect(page.locator('[data-prompt-count]')).toHaveText('2');
-
-  await clickWheel();
-  await expect(page.locator('[data-region="ruedas"]')).toHaveClass(/is-inside/);
-  await expect(page.locator('[data-prompt-count]')).toHaveText('1');
+  await page.getByRole('button', {name: 'Un punto en la sandía derecha'}).click();
+  await expect(page.locator('.mask-layer[data-mask="sandia-derecha"]')).toHaveClass(/is-visible/);
+  await expect(page.locator('.mask-layer[data-mask="sandia"]')).not.toHaveClass(/is-visible/);
 });
 
-test('el árbol entra en la máscara solo si se le señala', async ({page}) => {
-  await page.goto(PROMPT_URL);
-  await expect(page.locator('[data-region="arbol"]')).not.toHaveClass(/is-inside/);
-  await page.locator('[data-region="arbol"]').click();
-  await expect(page.locator('[data-region="arbol"]')).toHaveClass(/is-inside/);
-  await expect(page.locator('[data-prompt-message]')).toContainText('el árbol');
-});
+test('un concepto en texto devuelve todas las instancias', async ({page}) => {
+  await page.goto(MASK_URL);
+  await page.getByRole('button', {name: 'Texto: «sandía»'}).click();
+  await expect(page.locator('.mask-layer[data-mask="sandia"]')).toHaveClass(/is-visible/);
+  await expect(page.locator('.mask-layer[data-mask="sandia-derecha"]')).toHaveClass(/is-visible/);
+  await expect(page.locator('[data-mask-count]')).toHaveText('2');
+  await expect(page.locator('[data-mask-message]')).toContainText('todas las instancias');
 
-test('las zonas de la escena responden al teclado sin cambiar de paso', async ({page}) => {
-  await page.goto(PROMPT_URL);
-  await page.locator('[data-region="cabina"]').focus();
-  await page.keyboard.press('Enter');
-  await expect(page.locator('#marcar')).toBeVisible();
-  await expect(page.locator('[data-prompt-count]')).toHaveText('2');
+  await page.getByRole('button', {name: 'Una caja sobre las limas'}).click();
+  await expect(page.locator('.mask-layer[data-mask="limas"]')).toHaveClass(/is-visible/);
+  await expect(page.locator('.mask-layer[data-mask="sandia"]')).not.toHaveClass(/is-visible/);
 });
 
 test('girar el vector de la imagen cambia el texto ganador', async ({page}) => {
@@ -98,7 +83,7 @@ test('los laboratorios conservan un ejemplo legible sin JavaScript', async ({bro
   await page.goto('http://127.0.0.1:4173/temas/01-deteccion/index.html');
   await expect(page.locator('#equilibrio [data-threshold-precision]')).toHaveText('0,75');
   await page.goto('http://127.0.0.1:4173/temas/05-sam/index.html');
-  await expect(page.locator('#marcar [data-region="carroceria"]')).toHaveClass(/is-inside/);
+  await expect(page.locator('#segmentar .mask-layer[data-mask="sandia"]')).toHaveClass(/is-visible/);
   await page.goto('http://127.0.0.1:4173/temas/03-multimodalidad/index.html');
   await expect(page.locator('#cercania .candidate.is-winner')).toHaveCount(1);
 
@@ -108,7 +93,7 @@ test('los laboratorios conservan un ejemplo legible sin JavaScript', async ({bro
 test('los laboratorios nuevos caben en móvil sin desbordar', async ({page}) => {
   for (const width of [390, 320]) {
     await page.setViewportSize({width, height: 844});
-    for (const url of [THRESHOLD_URL, PROMPT_URL, SIMILARITY_URL]) {
+    for (const url of [THRESHOLD_URL, MASK_URL, SIMILARITY_URL]) {
       await page.goto(url);
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
     }
@@ -277,3 +262,74 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
     }
   });
 }
+
+test('el presupuesto de anotación responde a los tres controles', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#presupuesto');
+  await expect(page.locator('[data-budget-total-images]')).toHaveText('1200');
+  await expect(page.locator('[data-budget-hours]')).toHaveText('20');
+
+  await page.locator('[data-budget-classes]').fill('20');
+  await expect(page.locator('[data-budget-total-images]')).toHaveText('6000');
+  await expect(page.locator('[data-budget-message]')).toContainText('dos semanas');
+});
+
+test('la calculadora de memoria descarta las tarjetas que no llegan', async ({page}) => {
+  await page.goto('/temas/02-hugging-face/index.html#memoria');
+  await expect(page.locator('[data-vram-total]')).toHaveText('0,8');
+  await expect(page.locator('.device-list li.is-out')).toHaveCount(0);
+
+  await page.locator('[data-vram-params]').fill('8000');
+  await page.locator('[data-vram-precision]').selectOption('fp32');
+  await expect(page.locator('.device-list li.is-out')).toHaveCount(5);
+  await expect(page.locator('[data-vram-message]')).toContainText('No cabe en ninguna');
+
+  // 8000 M en int8 son 10,8 GB: solo se queda fuera el portátil de 8 GB.
+  await page.locator('[data-vram-precision]').selectOption('int8');
+  await expect(page.locator('.device-list li.is-out')).toHaveCount(1);
+});
+
+test('el asistente de modelo cambia la recomendación con las respuestas', async ({page}) => {
+  await page.goto('/temas/03-multimodalidad/index.html#asistente');
+  await expect(page.locator('#asistente .chooser-result:visible')).toHaveText(/CLIP/);
+
+  await page.getByRole('radio', {name: 'Cajas alrededor de lo que nombro'}).check();
+  await expect(page.locator('#asistente .chooser-result:visible')).toHaveText(/Grounding DINO/);
+
+  await page.getByRole('radio', {name: 'Datos estructurados o un razonamiento'}).check();
+  await page.getByRole('radio', {name: /Bastante/}).check();
+  await expect(page.locator('#asistente .chooser-result:visible')).toHaveText(/Qwen2\.5-VL/);
+  await expect(page.locator('#asistente .chooser-result:visible')).toHaveCount(1);
+});
+
+test('el asistente de SAM distingue medio e indicación', async ({page}) => {
+  await page.goto('/temas/05-sam/index.html#version');
+  await expect(page.locator('#version .chooser-result:visible')).toHaveText(/SAM 1 basta/);
+
+  await page.getByRole('radio', {name: /Vídeo/}).check();
+  await expect(page.locator('#version .chooser-result:visible')).toHaveText(/SAM 2/);
+
+  await page.getByRole('radio', {name: /Escribiendo qué es/}).check();
+  await expect(page.locator('#version .chooser-result:visible')).toHaveText(/SAM 3/);
+});
+
+test('la tabla de candidatos filtra por tarea y licencia', async ({page}) => {
+  await page.goto('/temas/02-hugging-face/index.html#candidatos');
+  await expect(page.locator('[data-model-count]')).toHaveText('9');
+
+  await page.locator('[data-model-filter="task"]').selectOption('embeddings');
+  await expect(page.locator('[data-model-count]')).toHaveText('2');
+
+  await page.locator('[data-model-filter="license"]').selectOption('apache');
+  await expect(page.locator('[data-model-count]')).toHaveText('1');
+  await expect(page.locator('[data-model-row]:visible')).toContainText('dinov2');
+});
+
+test('la receta se puede copiar', async ({page, context}) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/temas/01-deteccion/index.html#receta');
+  await page.getByRole('button', {name: 'Copiar'}).click();
+  await expect(page.getByRole('button', {name: 'Copiado'})).toBeVisible();
+
+  const copiado = await page.evaluate(() => navigator.clipboard.readText());
+  expect(copiado).toContain('RFDETRMedium');
+});

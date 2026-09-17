@@ -84,3 +84,14 @@ body.course-ready { padding-bottom: 0; }
 .compare-tag { bottom: 3mm; padding: 1mm 3mm; font-size: 8pt; }
 .compare-media figcaption { margin-top: 4mm; font-size: 9.5pt; }
 .candidate-box.is-suppressed rect { opacity: .7; }
+.copy-button, .model-filters, .chooser-status { display: none !important; }
+.code-sample[data-copy] { padding-top: 6mm; }
+.checklist li { padding: 3mm 0; }
+.checklist strong { font-size: 11pt; }
+.checklist span { font-size: 10pt; }
+.calc-layout { grid-template-columns: 1fr 1fr; gap: 8mm; }
+.calc-figure strong { font-size: 20pt; }
+.chooser-result { padding: 4mm 5mm; }
+.chooser-result[hidden] { display: block !important; }
+.chooser-questions label { padding: 1mm 0; }
+.model-rows > div { padding: 2.5mm 0; font-size: 10pt; }

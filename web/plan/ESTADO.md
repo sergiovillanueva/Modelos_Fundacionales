@@ -37,6 +37,37 @@ Las diapositivas 80–93 y las 27 celdas de `6_Otras_tareas.ipynb` se distribuye
 
 La diapositiva 94 se integra en la práctica final como cierre; las diapositivas 1–3 se resuelven mediante portada, créditos y navegación. Las correcciones y omisiones intencionales se detallan en [AUDITORIA-TEMA-06.md](AUDITORIA-TEMA-06.md).
 
+## Bloque práctico del 17 de septiembre
+
+Encargo del profesor: menos teoría y más práctica, con cosas sencillas y aplicaciones reales. El contenido del PDF se mantiene íntegro; lo que cambia es que ahora cada tema termina con pantallas que se usan, no que se leen.
+
+**21 pantallas nuevas**, de 126 a 146 en total:
+
+| Tipo | Dónde | Qué hace |
+| --- | --- | --- |
+| Receta copiable | los seis temas | El código mínimo de cada tema, sacado de su cuaderno, con botón de copiar |
+| Checklist | los seis temas | Seis a ocho comprobaciones antes de llevar algo a producción; se imprime bien |
+| Presupuesto de anotación | 01 | Clases, imágenes y segundos por imagen a horas y jornadas |
+| Tu caso | 01 | Cuatro escenarios reales y hacia dónde mover el umbral en cada uno |
+| ¿Me cabe en la GPU? | 02 | Parámetros y precisión a memoria de inferencia, con cinco tarjetas concretas |
+| Candidatos reales | 02 | Nueve modelos de visión del Hub, filtrables por tarea y licencia |
+| Taller de prompts | 03 | Dos prompts que fallan en clase y su arreglo |
+| Asistente de modelo | 03 | Dos preguntas y sale CLIP, BLIP, Grounding DINO o VLM con su línea de código |
+| Montaje de anomalías | 04 | Los seis pasos de PatchCore como guía operativa |
+| ¿Qué versión de SAM? | 05 | Medio e indicación deciden entre SAM 1, 2 y 3 |
+
+La escena sintética de la furgoneta del tema 05 se retira. En su lugar, `segmentar` usa **una foto real** del material del curso y máscaras precalculadas con GrabCut a partir de una caja. Cambiando la indicación se ve la diferencia entre un prompt de instancia y uno de concepto, que es lo que separa SAM 1 de SAM 3. La pantalla declara que las máscaras no las produjo SAM.
+
+Componentes nuevos reutilizables: `copy-code` para cualquier bloque de código, `chooser` para los tres asistentes, `calc-layout` para las dos calculadoras, `checklist` y `model-table`.
+
+Tres fallos reales que destaparon las pruebas al escribirlas:
+
+- Los botones del selector de máscaras también llevaban `data-mask`, así que el módulo los trataba como capas.
+- En la tabla de modelos, `display: grid` en la fila ganaba al `display: none` del atributo `hidden`: el contador filtraba pero no se ocultaba ninguna fila.
+- El formateador de números tenía razón y el HTML estático no: en español un número de cuatro cifras va sin separador de millar.
+
+Pruebas: **53 unitarias** y **32 de navegador**. Auditoría de las 146 pantallas en escritorio y móvil sin incidencias. PDF regenerados: 44, 15, 28, 24, 17 y 22 páginas.
+
 ## Corrección: los laboratorios cambiaban de tamaño al mover su control
 
 El profesor señaló que el deslizador del umbral no iba suave y que a media carrera parecía haber un redimensionado. Lo había: **la rejilla del laboratorio cambiaba de ancho** según el texto del mensaje. Medido en el tema 01, `equilibrio` pasaba de 507 + 304 px a 420 + 252 px y volvía a 521 + 313 px, así que la escena SVG se recalculaba y daba un salto de 25 px.

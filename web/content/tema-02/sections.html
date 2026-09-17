@@ -226,6 +226,147 @@ print(results)  # [{'label': 'cat', 'score': 0.99, 'box': {...}}]</code></pre>
   <div class="print-detail"><p>El pipeline reúne preprocesado, inferencia y posprocesado para una tarea común. No elige el modelo por ti ni garantiza el mejor rendimiento en tu dominio.</p></div>
 </section>
 
+<section id="receta" data-title="Receta" data-layout="practice">
+  <div class="section-copy">
+    <h2>Del Hub a tu código</h2>
+    <p class="lead">Dos formas de cargar el mismo modelo: rápida para probar, específica para producción.</p>
+  </div>
+  <pre class="code-sample" data-copy><code># Para probar: el pipeline resuelve pre y posprocesado
+from transformers import pipeline
+
+detector = pipeline("object-detection", model="PekingU/rtdetr_r50vd")
+print(detector("mi_imagen.jpg"))
+
+# Para producción: control sobre dispositivo, precisión y salida
+import torch
+from transformers import AutoImageProcessor, AutoModelForObjectDetection
+
+model_id = "PekingU/rtdetr_r50vd"
+processor = AutoImageProcessor.from_pretrained(model_id, revision="main")
+model = AutoModelForObjectDetection.from_pretrained(model_id, revision="main")
+model = model.to("cuda").eval()</code></pre>
+  <div class="slide-prose">
+    <ul>
+      <li>Fija <strong>revision</strong> si quieres poder reproducir el resultado dentro de seis meses.</li>
+      <li>Descarga a caché la primera vez, a <code>~/.cache/huggingface/</code>. Para entornos sin red, <code>snapshot_download</code> antes.</li>
+      <li>Prefiere los pesos en <strong>.safetensors</strong> cuando el repositorio los ofrezca.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="memoria" data-title="Memoria" data-layout="lab">
+  <div class="section-copy">
+    <h2>¿Me cabe en la GPU?</h2>
+    <p class="lead">Primera pregunta al elegir modelo, y se responde con una multiplicación.</p>
+  </div>
+  <div class="calc-layout" data-vram-lab>
+    <div class="calc-controls">
+      <p>
+        <label for="vram-params">Parámetros del modelo <b data-vram-params-value>300 M</b></label>
+        <input type="range" id="vram-params" data-vram-params min="20" max="8000" value="300" step="20">
+      </p>
+      <p>
+        <label for="vram-precision">Precisión</label>
+        <select id="vram-precision" data-vram-precision>
+          <option value="fp32">float32</option>
+          <option value="fp16" selected>float16 o bfloat16</option>
+          <option value="int8">int8 cuantizado</option>
+        </select>
+      </p>
+      <ul class="device-list">
+        <li data-device="T4" data-gb="16">T4 · 16 GB</li>
+        <li data-device="L4" data-gb="24">L4 · 24 GB</li>
+        <li data-device="A100" data-gb="40">A100 · 40 GB</li>
+        <li data-device="Colab gratis" data-gb="15">Colab gratis · 15 GB</li>
+        <li data-device="Portátil" data-gb="8">Portátil · 8 GB</li>
+      </ul>
+    </div>
+    <div class="calc-results">
+      <p class="calc-figure"><span>Memoria estimada para inferencia</span><strong data-vram-total>0,8</strong><em> GB</em></p>
+      <p class="calc-figure"><span>Solo los pesos</span><strong data-vram-weights>0,6</strong><em> GB</em></p>
+      <p class="calc-note" data-vram-message>Cabe en 5 de las 5 tarjetas de la lista, contando solo inferencia.</p>
+      <p class="calc-disclaimer">Pesos por precisión más un 35 % de margen para activaciones y fragmentación, con lotes pequeños. Entrenar necesita bastante más, porque además guarda gradientes y estados del optimizador.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>La cuenta es directa: parámetros por bytes de cada precisión. En float32 cada parámetro ocupa 4 bytes, en float16 dos y cuantizado a int8 uno. Por eso pasar de float32 a float16 es lo primero que se prueba cuando un modelo no entra, y suele costar muy poca calidad en inferencia.</p></div>
+</section>
+
+<section id="candidatos" data-title="Candidatos" data-layout="visual">
+  <div class="section-copy">
+    <h2>Candidatos reales para visión</h2>
+    <p class="lead">Filtra por tarea y por licencia, que son los dos criterios que descartan antes.</p>
+  </div>
+  <div class="model-table" data-model-table>
+    <div class="model-filters">
+      <p>
+        <label for="filter-task">Tarea</label>
+        <select id="filter-task" data-model-filter="task">
+          <option value="todas">Todas</option>
+          <option value="deteccion">Detección</option>
+          <option value="deteccion-texto">Detección por texto</option>
+          <option value="segmentacion">Segmentación</option>
+          <option value="embeddings">Embeddings</option>
+        </select>
+      </p>
+      <p>
+        <label for="filter-license">Licencia</label>
+        <select id="filter-license" data-model-filter="license">
+          <option value="todas">Todas</option>
+          <option value="apache">Apache-2.0</option>
+          <option value="otra">Otras</option>
+        </select>
+      </p>
+      <p><span class="calc-disclaimer">Modelos visibles: <strong data-model-count>7</strong></span></p>
+    </div>
+    <div class="model-rows">
+      <div data-model-row data-task="deteccion" data-license="apache">
+        <code>PekingU/rtdetr_r50vd</code><span>Detección COCO, tiempo real</span><span class="model-license">Apache-2.0</span><span>~42 M</span>
+      </div>
+      <div data-model-row data-task="deteccion" data-license="apache">
+        <code>facebook/detr-resnet-50</code><span>El DETR original, de referencia</span><span class="model-license">Apache-2.0</span><span>~41 M</span>
+      </div>
+      <div data-model-row data-task="deteccion" data-license="apache">
+        <code>hustvl/yolos-small</code><span>Detección con ViT puro</span><span class="model-license">Apache-2.0</span><span>~31 M</span>
+      </div>
+      <div data-model-row data-task="deteccion-texto" data-license="apache">
+        <code>IDEA-Research/grounding-dino-base</code><span>Cajas a partir de una frase</span><span class="model-license">Apache-2.0</span><span>~233 M</span>
+      </div>
+      <div data-model-row data-task="deteccion-texto" data-license="apache">
+        <code>google/owlv2-base-patch16</code><span>Vocabulario abierto por texto</span><span class="model-license">Apache-2.0</span><span>~154 M</span>
+      </div>
+      <div data-model-row data-task="segmentacion" data-license="apache">
+        <code>facebook/sam2.1-hiera-large</code><span>Segmentación con prompts, imagen y vídeo</span><span class="model-license">Apache-2.0</span><span>~224 M</span>
+      </div>
+      <div data-model-row data-task="embeddings" data-license="apache">
+        <code>facebook/dinov2-base</code><span>Features densas sin etiquetas</span><span class="model-license">Apache-2.0</span><span>~86 M</span>
+      </div>
+      <div data-model-row data-task="embeddings" data-license="otra">
+        <code>openai/clip-vit-base-patch32</code><span>Imagen y texto en un espacio común</span><span class="model-license">MIT</span><span>~151 M</span>
+      </div>
+      <div data-model-row data-task="segmentacion" data-license="otra">
+        <code>briaai/RMBG-1.4</code><span>Recorte de fondo con canal alfa</span><span class="model-license">No comercial</span><span>~44 M</span>
+      </div>
+    </div>
+  </div>
+  <div class="print-detail"><p>Lista consultada el 17 de septiembre de 2026 y pensada como punto de partida, no como ranking. Los tamaños son aproximados y la licencia debe confirmarse en la ficha del modelo y de sus pesos antes de usarlo, porque puede cambiar entre versiones. Fíjate en el caso de RMBG-1.4: excelente para recortar fondo, pero su licencia no permite uso comercial sin acuerdo.</p></div>
+</section>
+
+<section id="checklist" data-title="Checklist" data-layout="practice">
+  <div class="section-copy">
+    <h2>Antes de quedarte con un modelo del Hub</h2>
+    <p class="lead">Siete comprobaciones que evitan rehacer el trabajo.</p>
+  </div>
+  <ol class="checklist">
+    <li><strong>La tarea coincide</strong><span>La etiqueta del Hub dice lo que necesitas, no algo parecido.</span></li>
+    <li><strong>La licencia permite tu uso</strong><span>Comprobada en el repositorio y en los pesos, para la versión que vas a usar.</span></li>
+    <li><strong>La ficha declara limitaciones</strong><span>Sesgos, casos donde falla, datos de entrenamiento. Si no dice nada, desconfía.</span></li>
+    <li><strong>Cabe en tu hardware</strong><span>Con la precisión que vas a usar y con margen para el lote.</span></li>
+    <li><strong>Formato de pesos seguro</strong><span>.safetensors antes que .bin.</span></li>
+    <li><strong>Revisión anotada</strong><span>Identificador y revisión guardados para poder reproducir.</span></li>
+    <li><strong>Probado con tus datos</strong><span>Una decena de imágenes tuyas dicen más que cualquier métrica publicada.</span></li>
+  </ol>
+</section>
+
 <section id="practica" data-title="Colab" data-layout="practice">
   <div class="section-copy"><h2>Busca y prueba un modelo</h2><p class="lead">Compara la documentación con lo que observas al ejecutar el cuaderno.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Ejecuta el modelo propuesto.</span></li><li><span>Elige otro y justifica la decisión.</span></li></ol>
