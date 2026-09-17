@@ -46,7 +46,35 @@ Primera revisión de los seis cuadernos desde que se grabaron. Copia intacta en 
 
 El cuaderno 4 ya tenía la línea de DINOv3 comentada con el aviso del token, así que se quedó como estaba.
 
-**Sin ejecutar.** Aquí no hay GPU ni las librerías instaladas, así que la revisión es estática: JSON válido, las 78 celdas de código compilan y cada API contrastada con su documentación. Conviene una pasada completa en Colab antes de clase, sobre todo del fine-tuning del cuaderno 1 y de RMBG en el 6.
+**Cuadernos 5 y 6: mas amenos.** SAM 2.1 large descarga 1.796 MB y en clase eso se nota: el cuaderno 5 pasa a `small`, 369 MB, con registro para volver al grande en una linea. Ademas gana un selector de punto con deslizadores, que es la version de aula del clic del que habla el paper, y un recorte con transparencia que se pega sobre otra foto y se guarda como PNG. El cuaderno 6 gana tres cosas: la superresolucion comparada con zoom sobre un recorte, que es donde de verdad se aprecia; la foto levantada en 3D a partir del mapa de profundidad; y un corte de la escena por distancia, que es el desenfoque de retrato del movil explicado en cinco lineas. El fondo, ademas de quitarse, se sustituye por otro.
+
+Las funciones nuevas que no dependen del modelo se probaron aqui con datos simulados: recorte, pegado, aritmetica del zoom, nube de puntos y corte por distancia.
+
+**Cuaderno 4: DINOv3 y por que el PCA salia ruidoso.** El profesor reporta que la visualizacion PCA no se parece a las demos oficiales. Son tres causas acumuladas, y las tres estan corregidas:
+
+1. **Tokens de registro.** DINOv3 coloca cuatro tokens de registro entre el CLS y los parches. El cuaderno cortaba por `[1:]`, asi que esos cuatro entraban en la rejilla y desplazaban la imagen entera. Ahora corta por `[1 + num_register_tokens:]`, que es lo que documenta transformers, y comprueba que el numero de parches cuadra con la rejilla antes de seguir.
+2. **Tamaño de entrada.** La imagen entraba a resolucion original, que casi nunca es multiplo del tamaño de parche: el modelo descarta la franja sobrante y la rejilla calculada deja de corresponderse con los tokens. Ahora se redimensiona a un multiplo exacto.
+3. **El fondo.** La causa mas visible. La primera componente principal separa objeto y fondo, asi que aplicando PCA a toda la imagen dos de las tres componentes se gastan en el cielo y la hierba. La receta de las demos es usar la primera componente como mascara y repetir el PCA solo con los parches del objeto. El cuaderno enseña las dos versiones una al lado de la otra, que es la mejor forma de explicarlo.
+
+El cuaderno pasa a **DINOv3** con un registro de modelos, `ELEGIDO`, y respaldo automatico a DINOv2 si faltan las condiciones aceptadas o el token, que es lo habitual el primer dia. Ademas de arreglar el PCA, se reescribe para que se entienda que hay dentro: que devuelve el modelo token a token, la rejilla de parches dibujada sobre la foto, una matriz de similitud coseno entre cinco imagenes, correspondencias parche a parche entre dos fotos distintas, el PCA compartido entre varias imagenes y una deteccion de anomalias sobre la alfombra buena y la defectuosa, con banco de normalidad y umbral fijado sin mirar el defecto.
+
+**Ensayo sin GPU.** Se probo el cuaderno entero con un torch simulado y rasgos falsos pero con estructura, para comprobar formas, reshapes y figuras. Aparecio un fallo de metodo que no daba error: al medir la pieza buena contra un banco que contiene sus propios parches, cada parche se encuentra a si mismo, la puntuacion sale cero y el umbral tambien, de modo que cualquier pieza se rechazaria. La funcion admite ahora `es_del_banco=True` y mira al segundo vecino mas parecido.
+
+**Lo que aparecio al ejecutarlo en Colab.** El profesor probo el cuaderno 1 y salieron tres fallos, todos por la version nueva de `rfdetr`:
+
+- `class_names` paso de diccionario a lista, asi que la celda que listaba las clases moria con `AttributeError: 'list' object has no attribute 'items'`.
+- Peor y mas silencioso: las etiquetas salian corridas, una persona como `bicycle` y un coche como `motorcycle`. La causa es que en los modelos COCO el `class_id` es el identificador original del dataset, que llega a 90 con diez huecos (12, 26, 29, 30, 45, 66, 68, 69, 71 y 83), mientras que `class_names` solo tiene los 80 nombres seguidos. Indexar la lista con ese identificador desplaza todo. Ahora hay una funcion `nombres_de()` que lee `detections.data["class_name"]`, que es lo que el propio modelo adjunta ya resuelto, con respaldo por identificador para versiones antiguas y para modelos propios. Probada contra los cuatro casos posibles.
+- `train()` dejo de traer sus dependencias: la celda instala `rfdetr[train,loggers]` si falta, y una nota avisa de reiniciar el entorno si aun asi falla.
+
+Con el mismo criterio se reforzo el cuaderno 6, que daba por hecho que la persona era la clase 0 del detector: ahora filtra por nombre en `id2label`.
+
+**Cuaderno 3: un VLM mas ligero y mas nuevo.** El profesor pidio bajar el peso de la descarga sin perder la deteccion con JSON, que es lo que mejor funciona de ese cuaderno, y despues si habia algo aun mas moderno. Tamaños reales consultados en el Hub: Qwen2.5-VL-3B descarga 7,51 GB, Qwen3-VL-2B 4,26 GB y Qwen3.5-2B 4,55 GB. Se queda Qwen3.5-2B, de febrero de 2026, cuya ficha declara que supera a los Qwen3-VL en comprension visual y cuya torre de vision es la misma. Generacion mas nueva hay, Qwen3.8 de agosto de 2026, pero su multimodal mas pequeño es de 27B y son 55,6 GB: no cabe en la GPU de Colab.
+
+El cuaderno lleva ahora un registro de modelos y cambiar de uno a otro es cambiar la variable `ELEGIDO`, con Qwen3.5-2B, Qwen3-VL-2B y Qwen2.5-VL-3B preparados. Las celdas de Qwen2.5 se quedan ademas comentadas en su sitio. Una salvedad anotada en el propio cuaderno: el grounding con cajas esta documentado para Qwen3-VL, con cookbook oficial, y no para Qwen3.5, asi que si las detecciones salieran peor, volver es cambiar una palabra.
+
+El cambio de version trae una trampa que confirma el cookbook oficial de Qwen: Qwen2.5-VL devolvia las cajas en pixeles absolutos y las familias nuevas las devuelven de 0 a 1000. Sin convertirlas, todas las detecciones se apelotonan en la esquina superior izquierda, y no salta ningun error. Por eso cada modelo del registro declara su convencion, `escalar_caja()` hace la conversion y avisa por pantalla cuando una caja se sale de la imagen, que es la señal de que la convencion elegida no es la que toca. El troceado del JSON se reescribio para aguantar salidas sin vallado, generaciones cortadas a medias y coordenadas invertidas; las funciones puras estan probadas contra esos seis casos.
+
+**Sin ejecutar del todo.** Aqui no hay GPU ni librerias, asi que el resto de la revision es estatica: JSON valido, las 79 celdas de codigo compilan y cada API contrastada con su documentacion. Falta una pasada completa en Colab del fine-tuning del cuaderno 1 y de RMBG en el 6.
 
 ## El PDF salía lavado · 17 de septiembre
 
@@ -340,6 +368,10 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-17 | Laboratorios | Coseno con grupos y longitudes, PCA explicado, inspección de alfombra, pose con escala, OCR de placa y las tres salidas de RF-DETR |
 | 2026-09-17 | PDF y matching | Arreglada la opacidad y la resolución de los PDF, verificación geométrica en el tema 06 y Spaces comprobados en el tema 02 |
 | 2026-09-17 | Cuadernos | Seis cuadernos revisados: tres fallos de ejecución, `dtype` nuevo, GPU por defecto, cámara, deslizador y celdas de RF-DETR |
+| 2026-09-17 | Cuaderno 1 | Arreglado con lo visto al ejecutar: nombres de clase por identificador COCO, listado de clases y dependencias de entrenamiento |
+| 2026-09-17 | Cuaderno 3 | Qwen3.5-2B en lugar de Qwen2.5-VL-3B: 4,55 GB frente a 7,51 GB, registro de modelos y conversion de coordenadas 0-1000 |
+| 2026-09-17 | Cuaderno 4 | DINOv3 con respaldo a DINOv2, PCA sin ruido, correspondencias entre parches y deteccion de anomalias con la alfombra |
+| 2026-09-17 | Cuadernos 5 y 6 | SAM small por defecto, deslizador de punto y recorte pegable; zoom en superresolucion, nube de puntos 3D y corte por distancia |
 
 ## Al modificar un tema
 
