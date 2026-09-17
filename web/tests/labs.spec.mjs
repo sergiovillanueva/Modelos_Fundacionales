@@ -230,3 +230,50 @@ test('la cuadrícula de YOLO reparte o comparte celdas según su tamaño', async
   await expect(page.locator('[data-grid-count]')).toHaveText('3 de 3');
   await expect(page.locator('#cuadricula .grid-lines line')).toHaveCount(24);
 });
+
+// Un margen automático convierte la rejilla en ancho de contenido: al cambiar el mensaje
+// cambiaba de tamaño y la escena daba un salto. Debe mantenerse quieta.
+const LAB_CONTROLS = [
+  ['/temas/01-deteccion/index.html#equilibrio', 'equilibrio', '[data-threshold-score]', ['0', '42', '60', '96']],
+  ['/temas/01-deteccion/index.html#iou', 'iou', '[data-iou-offset]', ['20', '40', '60']],
+  ['/temas/01-deteccion/index.html#nms', 'nms', '[data-nms-threshold]', ['10', '50', '90']],
+  ['/temas/01-deteccion/index.html#cuadricula', 'cuadricula', '[data-grid-size]', ['2', '7', '13']],
+  ['/temas/03-multimodalidad/index.html#cercania', 'cercania', '[data-similarity-angle]', ['0', '41', '175']],
+  ['/temas/04-dino/index.html#normalidad', 'normalidad', '[data-anomaly-position]', ['0', '55', '100']],
+  ['/temas/06-otras-tareas/index.html#oks', 'oks', '[data-oks-distance]', ['0', '5', '40']]
+];
+
+for (const [width, height] of [[1440, 900], [390, 844]]) {
+  test(`los laboratorios no cambian de tamaño al mover su control (${width} px)`, async ({page}) => {
+    await page.setViewportSize({width, height});
+
+    for (const [url, section, control, values] of LAB_CONTROLS) {
+      await page.goto(url, {waitUntil: 'networkidle'});
+      // Sin esperar a las imágenes, la primera medida cae antes de que la sección tome su altura.
+      await page.locator(`#${section} img`).evaluateAll((images) =>
+        Promise.all(images.map((image) => image.decode().catch(() => {})))
+      );
+      const lab = page.locator(`#${section} .lab-layout, #${section} .iou-lab`);
+      const sizes = new Set();
+      const tops = [];
+
+      for (const value of values) {
+        await page.locator(control).fill(value);
+        // Relativo a la sección: enfocar el control puede desplazar el scroll de la página.
+        const medida = await page.evaluate((id) => {
+          const parent = document.getElementById(id);
+          const node = parent.querySelector('.lab-layout, .iou-lab');
+          const a = node.getBoundingClientRect();
+          const b = parent.getBoundingClientRect();
+          return {width: Math.round(a.width), height: Math.round(a.height), offset: a.top - b.top};
+        }, section);
+        sizes.add(`${medida.width}x${medida.height}`);
+        tops.push(medida.offset);
+      }
+
+      expect(sizes, `${section} cambia de tamaño: ${[...sizes].join(' | ')}`).toHaveProperty('size', 1);
+      // Un píxel de diferencia es el redondeo del centrado vertical, no un salto.
+      expect(Math.max(...tops) - Math.min(...tops), `${section} se desplaza dentro de su pantalla: ${tops.map((t) => t.toFixed(1)).join(' | ')}`).toBeLessThanOrEqual(1);
+    }
+  });
+}

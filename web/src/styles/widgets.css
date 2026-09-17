@@ -40,7 +40,7 @@
 .quiz-status:not(:empty) { animation: feedback-enter var(--duration-base) var(--ease-out); }
 .quiz-status.correct { color: var(--color-success-text); }
 .quiz-status.incorrect { color: var(--color-error-text); }
-.iou-lab { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(200px, .75fr); gap: 60px; align-items: center; max-width: 830px; margin: 28px auto 0; }
+.iou-lab { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(200px, .75fr); gap: 60px; align-items: center; width: min(830px, 100%); margin: 28px auto 0; }
 .iou-stage { border-radius: 10px; background: #f3f9fd; padding: 12px 22px; }
 .lab-stage { border-radius: var(--radius-media); background: linear-gradient(180deg, #f7fcfe 0%, var(--color-wash-accent) 100%); padding: 16px 22px; }
 .iou-stage svg { display: block; width: 100%; max-height: 330px; overflow: visible; }
@@ -127,7 +127,7 @@
   .quiz-box legend { font-size: 1.06rem; margin-bottom: 12px; }
   .quiz-option { padding: 13px 6px; }
   .quiz-status { min-height: 0; }
-  .iou-lab { grid-template-columns: 1fr; gap: 20px; max-width: 430px; margin-top: 20px; }
+  .iou-lab { grid-template-columns: 1fr; gap: 20px; width: min(430px, 100%); margin-top: 20px; }
   .iou-stage { padding: 0 20px; }
   .iou-stage svg { max-height: 230px; }
   .iou-controls { display: grid; grid-template-columns: 90px 1fr; column-gap: 22px; align-items: end; }
@@ -183,12 +183,15 @@
 }
 
 /* Laboratorios guiados: una escena a la izquierda y una lectura de resultados a la derecha. */
-.lab-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(210px, .75fr); gap: 56px; align-items: center; max-width: 900px; margin: 28px auto 0; }
+/* El ancho debe ser definido: con margen automático la rejilla se ajusta al contenido y
+   cambia de tamaño cada vez que cambia el texto del mensaje. */
+.lab-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(210px, .75fr); gap: 56px; align-items: center; width: min(900px, 100%); margin: 28px auto 0; }
 .lab-stage svg { display: block; width: 100%; max-height: 340px; overflow: visible; }
 .lab-readout label { display: block; margin-bottom: 8px; font-size: .92rem; }
 .lab-readout label b { color: var(--color-primary-dark); font-weight: 600; font-variant-numeric: tabular-nums; }
 .lab-readout input[type="range"] { display: block; width: 100%; min-height: 28px; margin: 0; accent-color: var(--color-primary-dark); cursor: ew-resize; }
-.lab-message { min-height: 42px; margin: 10px 0 22px; color: var(--color-text-muted); font-size: .95rem; line-height: 1.45; }
+/* Dos líneas reservadas: los mensajes ocupan una o dos y así la escena no se desplaza. */
+.lab-message { min-height: 2.9em; margin: 10px 0 22px; color: var(--color-text-muted); font-size: .95rem; line-height: 1.45; }
 .metric-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .metric { margin: 0; }
 .metric span { display: block; color: var(--color-text-muted); font-size: .85rem; }
@@ -211,15 +214,15 @@
 .prediction.is-filtered text { fill: #99a2b1; }
 
 @media (max-width: 700px) {
-  .lab-layout { grid-template-columns: 1fr; gap: 18px; max-width: 430px; margin-top: 20px; }
+  .lab-layout { grid-template-columns: 1fr; gap: 18px; width: min(430px, 100%); margin-top: 20px; }
   .lab-stage { padding: 10px 16px; }
   .lab-stage svg { max-height: 240px; }
   .metric strong { font-size: 2.4rem; }
-  .lab-message { min-height: 0; margin: 10px 0 16px; }
+  .lab-message { margin: 10px 0 16px; }
 }
 
 /* Escena de segmentación guiada: cada zona acepta un punto y la máscara responde al instante. */
-.lab-layout--wide { grid-template-columns: minmax(0, 1.45fr) minmax(200px, .55fr); max-width: 940px; }
+.lab-layout--wide { grid-template-columns: minmax(0, 1.45fr) minmax(200px, .55fr); width: min(940px, 100%); }
 .scene-prop { fill: #b6bfcd; }
 .scene-dots { pointer-events: none; }
 .region { stroke: #fff; stroke-width: .8; cursor: pointer; transition: fill var(--duration-base) ease, fill-opacity var(--duration-base) ease; }
@@ -353,7 +356,7 @@
 .verdict.is-condiciones { color: #7d4e06; }
 .verdict.is-prohibido { color: var(--color-error-text); }
 .lab-disclaimer { margin: 18px 0 0; color: var(--color-text-muted); font-size: .8rem; line-height: 1.45; text-align: left; }
-.lab-layout--even { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; align-items: start; max-width: 860px; }
+.lab-layout--even { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; align-items: start; width: min(860px, 100%); }
 .lab-layout--even .lab-readout--controls { align-content: start; }
 
 @media (max-width: 700px) {

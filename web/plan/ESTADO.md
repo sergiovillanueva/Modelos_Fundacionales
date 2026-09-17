@@ -37,6 +37,20 @@ Las diapositivas 80–93 y las 27 celdas de `6_Otras_tareas.ipynb` se distribuye
 
 La diapositiva 94 se integra en la práctica final como cierre; las diapositivas 1–3 se resuelven mediante portada, créditos y navegación. Las correcciones y omisiones intencionales se detallan en [AUDITORIA-TEMA-06.md](AUDITORIA-TEMA-06.md).
 
+## Corrección: los laboratorios cambiaban de tamaño al mover su control
+
+El profesor señaló que el deslizador del umbral no iba suave y que a media carrera parecía haber un redimensionado. Lo había: **la rejilla del laboratorio cambiaba de ancho** según el texto del mensaje. Medido en el tema 01, `equilibrio` pasaba de 507 + 304 px a 420 + 252 px y volvía a 521 + 313 px, así que la escena SVG se recalculaba y daba un salto de 25 px.
+
+Causa: `margin: 28px auto 0` sobre un hijo de una sección en columna flexible. El margen automático desactiva el estirado y el elemento pasa a medir su contenido, de modo que el ancho dependía de la frase más larga del mensaje. Es el mismo fallo que ya se había corregido en `slide-split`.
+
+Arreglo: ancho definido con `width: min(900px, 100%)` en `lab-layout`, sus variantes y `iou-lab`. Además, `lab-message` reserva dos líneas, que es lo máximo que ocupan los mensajes en móvil, para que el bloque tampoco crezca en vertical.
+
+Afectaba a los siete laboratorios con deslizador, no solo al del umbral. Medidos todos en escritorio y móvil: ninguno cambia de tamaño al recorrer su control.
+
+Queda una prueba de regresión en `tests/labs.spec.mjs` que recorre los siete y compara tamaño y posición dentro de su pantalla. Mide relativo a la sección porque enfocar el control puede desplazar el scroll de la página, algo que confundió la primera versión de la prueba.
+
+Pruebas: 46 unitarias y 27 de navegador. PDF regenerados.
+
 ## Repaso e interactivos del 17 de septiembre
 
 Encargo: revisar el conjunto y añadir cosas manipulables, en concreto un comparador deslizante entre una imagen y su mapa de profundidad.

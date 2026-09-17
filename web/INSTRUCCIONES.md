@@ -66,7 +66,7 @@ Qué significa en la práctica:
 | `stage-list--four` | Fila de cuatro pasos, como las de flujo del PDF |
 | `compare-media` | Comparador deslizante entre dos imágenes alineadas; en papel imprime las dos mitades |
 
-Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna.
+Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna. Por la misma razón, **un contenedor cuyo texto cambia en tiempo de ejecución necesita ancho definido** (`width: min(900px, 100%)`), no solo `max-width`: si no, cambia de tamaño cada vez que cambia el mensaje y la escena da un salto.
 
 ### Las tres salidas siguen conviviendo
 
