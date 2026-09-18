@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {relativeUrl} from './paths.mjs';
+import {relativeUrl, absoluteUrl} from './paths.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -132,8 +132,14 @@ export function renderTopic(course, topic, mode = 'reading', outputPath) {
     return relativeUrl(pageOutputPath, target);
   });
 
+  // ABS_URL da la direccion con dominio: canonical y og: no admiten rutas relativas
+  rendered = rendered.replace(/\{\{ABS_URL:([^}]+)\}\}/g, (_, target) => {
+    return absoluteUrl(course.siteUrl, target);
+  });
+
   const tokens = {
     TITLE: topicTitle,
+    PAGE_URL: absoluteUrl(course.siteUrl, pageOutputPath),
     COURSE_TITLE: course.title,
     AUTHOR: course.author,
     TOPIC_TITLE: topicTitle,

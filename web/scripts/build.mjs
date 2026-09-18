@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {relativeUrl} from './paths.mjs';
+import {relativeUrl, absoluteUrl} from './paths.mjs';
 import {renderTopic, buildTopicNavigation} from './render.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -60,16 +60,21 @@ function copyVendorAssets() {
   }
 }
 
-function replaceTemplateTokens(template, tokens, pageOutputPath) {
+function replaceTemplateTokens(template, tokens, pageOutputPath, siteUrl = '') {
   let result = template;
-  
+
   // Replace REL_PATH tokens first
   result = result.replace(/\{\{REL_PATH:([^}]+)\}\}/g, (_, target) => {
     return relativeUrl(pageOutputPath, target);
   });
 
+  // ABS_URL da la direccion con dominio: canonical y las etiquetas og: no admiten rutas relativas
+  result = result.replace(/\{\{ABS_URL:([^}]+)\}\}/g, (_, target) => {
+    return absoluteUrl(siteUrl, target);
+  });
+
   // Replace standard tokens
-  for (const [key, value] of Object.entries(tokens)) {
+  for (const [key, value] of Object.entries({PAGE_URL: absoluteUrl(siteUrl, pageOutputPath), ...tokens})) {
     const token = `{{${key}}}`;
     result = result.replaceAll(token, value);
   }
@@ -103,7 +108,7 @@ export function buildSite() {
     COURSE_TITLE: course.title,
     TOPIC_NAV: buildTopicNavigation(course, null, 'index.html'),
     START_URL: `temas/${firstTopic.id}/index.html`
-  }, 'index.html');
+  }, 'index.html', course.siteUrl);
   fs.writeFileSync(path.join(DIST_DIR, 'index.html'), home, 'utf8');
 
   // Render creditos.html
@@ -114,7 +119,7 @@ export function buildSite() {
     AUTHOR: course.author,
     REPO_URL: course.repository
   };
-  const renderedCredits = replaceTemplateTokens(creditsTemplate, creditsTokens, creditsOutputPath);
+  const renderedCredits = replaceTemplateTokens(creditsTemplate, creditsTokens, creditsOutputPath, course.siteUrl);
   fs.writeFileSync(path.resolve(DIST_DIR, creditsOutputPath), renderedCredits, 'utf8');
 
   // Render 404.html
@@ -124,7 +129,7 @@ export function buildSite() {
     COURSE_TITLE: course.title,
     AUTHOR: course.author
   };
-  const rendered404 = replaceTemplateTokens(notFoundTemplate, notFoundTokens, notFoundOutputPath);
+  const rendered404 = replaceTemplateTokens(notFoundTemplate, notFoundTokens, notFoundOutputPath, course.siteUrl);
   fs.writeFileSync(path.resolve(DIST_DIR, notFoundOutputPath), rendered404, 'utf8');
 
   // Render available topics

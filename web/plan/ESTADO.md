@@ -375,6 +375,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-18 | Dominio | `datamecum.sergiovillanuevalopez.com` como dominio del Worker, declarado junto al apex en `wrangler.json` |
 | 2026-09-18 | Icono de marca | Favicon con el simbolo de Datamecum en 32, 180 y 512 px mas `.ico`, enlazado en las cinco plantillas |
 | 2026-09-18 | Cuaderno 5 | Qwen3.5-2B en la parte de Qwen + SAM: 4,55 GB frente a 7,51 GB, con la conversion de coordenadas 0-1000 que necesita SAM |
+| 2026-09-18 | Tarjeta social | Imagen de 1200 x 630 con logo y titulo, canonical y etiquetas og: con URL absoluta, presentacion y 404 sin indexar |
 
 ## Al modificar un tema
 

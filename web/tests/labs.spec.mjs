@@ -444,7 +444,7 @@ test('la verificación geométrica separa parejas coherentes de casualidades', a
 
   await page.locator('[data-matching-threshold]').fill('10');
   await expect(page.locator('[data-matching-kept]')).toHaveText('11');
-  await expect(page.locator('[data-matching-message]')).toContainText('se han colado');
+  await expect(page.locator('[data-matching-message]')).toContainText('Se han colado');
 });
 
 test('la pantalla de Spaces enlaza fuera con enlaces seguros', async ({page}) => {
