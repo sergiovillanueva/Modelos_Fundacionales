@@ -372,6 +372,9 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-17 | Cuaderno 3 | Qwen3.5-2B en lugar de Qwen2.5-VL-3B: 4,55 GB frente a 7,51 GB, registro de modelos y conversion de coordenadas 0-1000 |
 | 2026-09-17 | Cuaderno 4 | DINOv3 con respaldo a DINOv2, PCA sin ruido, correspondencias entre parches y deteccion de anomalias con la alfombra |
 | 2026-09-17 | Cuadernos 5 y 6 | SAM small por defecto, deslizador de punto y recorte pegable; zoom en superresolucion, nube de puntos 3D y corte por distancia |
+| 2026-09-18 | Dominio | `datamecum.sergiovillanuevalopez.com` como dominio del Worker, declarado junto al apex en `wrangler.json` |
+| 2026-09-18 | Icono de marca | Favicon con el simbolo de Datamecum en 32, 180 y 512 px mas `.ico`, enlazado en las cinco plantillas |
+| 2026-09-18 | Cuaderno 5 | Qwen3.5-2B en la parte de Qwen + SAM: 4,55 GB frente a 7,51 GB, con la conversion de coordenadas 0-1000 que necesita SAM |
 
 ## Al modificar un tema
 
