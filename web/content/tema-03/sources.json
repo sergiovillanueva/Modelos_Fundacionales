@@ -293,5 +293,49 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Checklist derivada de la diapositiva 54."
+  },
+  {
+    "sectionId": "receta",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-03/sections.html",
+    "claim": "CLIP espera las clases en inglés.",
+    "url": "https://huggingface.co/openai/clip-vit-base-patch32",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "La receta escribía las clases en castellano; el cuaderno 3 ya las usa en inglés. Se añade el aviso equivalente para Grounding DINO, cuyo codificador de texto es BERT, en la pantalla de prompts."
+  },
+  {
+    "sectionId": "grounding",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-03/sections.html",
+    "claim": "El DINO de Grounding DINO es un detector de la familia DETR, distinto del DINO autosupervisado.",
+    "url": "https://arxiv.org/abs/2203.03605",
+    "checkedOn": "2026-10-01",
+    "status": "verified",
+    "note": "DINO detector: Zhang et al., 2022. DINO autosupervisado: Caron et al., 2021, tema 4. Aviso nuevo para evitar la confusión."
+  },
+  {
+    "sectionId": "clip-entrenamiento",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-03/sections.html",
+    "claim": "Un lote de 32.768 pares tiene más de mil millones de combinaciones incorrectas.",
+    "url": "https://arxiv.org/abs/2103.00020",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "32.768 al cuadrado son 1.073.741.824 parejas; el mazo decía «millones». El tamaño de lote es el del paper de CLIP."
+  },
+  {
+    "sectionId": "vlm",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-03/sections.html",
+    "claim": "El cuaderno usa Qwen3.5-2B; el formato de las cajas cambia entre Qwen2.5-VL y Qwen3.",
+    "url": "https://huggingface.co/Qwen/Qwen3.5-2B",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "La web nombraba Qwen2.5-VL y el asistente recomendaba Qwen2.5-VL-7B, que no cabe cómodo en la GPU gratuita de Colab."
   }
 ]

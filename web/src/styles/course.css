@@ -9,6 +9,7 @@
 .credits-intro { color: var(--color-text-muted); margin-bottom: 38px; }
 .credits-section { padding-block: 24px; border-top: 1px solid #e9edf3; }
 .credits-section h2 { font-size: 1.2rem; }
+.credits-section h3 { margin: 22px 0 8px; font-size: 1rem; color: var(--color-text-main); }
 .credits-section p { margin: 6px 0; }
 .credits-section li + li { margin-top: 8px; }
 .credits-section ul { padding-left: 20px; }

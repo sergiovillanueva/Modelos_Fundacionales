@@ -296,7 +296,7 @@ test('el asistente de modelo cambia la recomendación con las respuestas', async
 
   await page.getByRole('radio', {name: 'Datos estructurados o un razonamiento'}).check();
   await page.getByRole('radio', {name: /Bastante/}).check();
-  await expect(page.locator('#asistente .chooser-result:visible')).toHaveText(/Qwen2\.5-VL/);
+  await expect(page.locator('#asistente .chooser-result:visible')).toHaveText(/Qwen3\.5/);
   await expect(page.locator('#asistente .chooser-result:visible')).toHaveCount(1);
 });
 
@@ -416,7 +416,7 @@ test('el laboratorio de OCR cambia salida y cajas', async ({page}) => {
   await expect(page.locator('[data-output="json"]')).toBeVisible();
   await expect(page.locator('[data-output="plano"]')).toBeHidden();
   await expect(page.locator('[data-mode-overlay]')).toHaveClass(/is-visible/);
-  await expect(page.locator('[data-mode-note]')).toContainText('campos que le pides');
+  await expect(page.locator('#ocr-lab [data-mode-note]')).toContainText('campos que le pides');
 });
 
 test('las tres salidas de RF-DETR cambian la clase y el código', async ({page}) => {
@@ -471,4 +471,22 @@ test('en papel las pantallas salen a plena opacidad y sin animación de entrada'
     expect(Number(opacidad)).toBe(1);
     expect(animacion).toBe('none');
   }
+});
+
+test('el recetario enseña una receta cada vez y en papel las seis', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#recetario');
+  const recetas = page.locator('#recetario [data-output]');
+  await expect(recetas).toHaveCount(6);
+  await expect(page.locator('#recetario [data-output="pose"]')).toBeVisible();
+  await expect(page.locator('#recetario [data-output="matching"]')).toBeHidden();
+
+  await page.locator('#recetario').getByRole('button', {name: 'Matching'}).click();
+  await expect(page.locator('#recetario [data-output="matching"]')).toBeVisible();
+  await expect(page.locator('#recetario [data-output="pose"]')).toBeHidden();
+  await expect(page.locator('#recetario [data-mode-note]')).toContainText('SuperPoint');
+
+  await page.emulateMedia({media: 'print'});
+  const visibles = await page.locator('#recetario pre.code-sample').evaluateAll((list) =>
+    list.filter((pre) => getComputedStyle(pre).display !== 'none').length);
+  expect(visibles).toBe(6);
 });

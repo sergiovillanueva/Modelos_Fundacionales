@@ -297,5 +297,49 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Laboratorio nuevo que desarrolla el paso que la diapositiva 91 menciona de pasada. La escena es un esquema con una homografía real calculada con getPerspectiveTransform; el error de reproyección de cada pareja lo calcula el navegador con src/lib/matching.js. Cuatro parejas son errores típicos del matching y dos son limítrofes, a 4,5 y 7,5 px, para que se vea qué entra al abrir el umbral."
+  },
+  {
+    "sectionId": "recetario",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "Recetas reescritas para transformers 5: sin pipelines image-to-text, image-to-image ni keypoint-detection.",
+    "url": "https://github.com/huggingface/transformers/blob/v5.18.0/src/transformers/pipelines/__init__.py",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "La lista de tareas de la 5.18 tiene 24 entradas y no incluye image-to-text ni image-to-image; keypoint-detection no existe tampoco en la 4.57. Pose, OCR y superresolución cargan las clases del modelo como el cuaderno 6. RMBG-1.4 necesita trust_remote_code=True. La ficha de ETH-CVG/lightglue_superpoint limita el uso a investigación no comercial por SuperPoint."
+  },
+  {
+    "sectionId": "metrica-oks",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "Las constantes de OKS salen de la discrepancia entre anotadores, no de la rigidez de la articulación.",
+    "url": "https://cocodataset.org/#keypoints-eval",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "La diapositiva de modelos y OKS se divide en dos pantallas para que la definición de OKS llegue sola antes del laboratorio. Se añade ViTPose, el modelo del cuaderno, y la licencia AGPL de YOLO-Pose."
+  },
+  {
+    "sectionId": "ocr",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "Tesseract reconoce líneas con una red LSTM desde la versión 4.",
+    "url": "https://github.com/tesseract-ocr/tesseract",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "El mazo lo describía solo como reglas y contornos, que era la versión 3. TrOCR inicializa su decoder desde RoBERTa y lee una línea recortada. Swin2SR (2022) pasa de «SOTA» a «el modelo del cuaderno»."
+  },
+  {
+    "sectionId": "profundidad",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-06/sections.html",
+    "claim": "Depth Anything V2 maneja cristales y espejos mucho mejor que la V1.",
+    "url": "https://arxiv.org/abs/2406.09414",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "Según el paper, la V1 era vulnerable a objetos transparentes y reflejos y la V2 los resuelve con datos sintéticos precisos. El tema 2 invitaba a probarlo con espejos «para ver dónde falla»; se cambia a comprobar si acierta. V2: 595.000 imágenes sintéticas y 62 millones reales con pseudoetiquetas, encoder DINOv2."
   }
 ]

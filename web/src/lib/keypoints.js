@@ -1,9 +1,9 @@
 /**
  * OKS (Object Keypoint Similarity), la métrica con la que COCO evalúa esqueletos.
  *
- * Cada articulación tiene su propia constante de tolerancia: las rígidas, como los ojos,
- * admiten mucho menos error que las flexibles, como la cadera. Por eso el mismo desplazamiento
- * en píxeles penaliza de forma muy distinta según el punto.
+ * Cada articulación tiene su propia constante de tolerancia, medida por cuánto discrepan los
+ * anotadores al marcarla: los puntos de la cara, como los ojos, admiten mucho menos error que la
+ * cadera. Por eso el mismo desplazamiento en píxeles penaliza de forma muy distinta según el punto.
  */
 export const COCO_SIGMAS = [
   {id: 'nariz', label: 'Nariz', sigma: 0.026, kind: 'rígido'},

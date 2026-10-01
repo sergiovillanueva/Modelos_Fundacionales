@@ -119,3 +119,6 @@ body.course-ready { padding-bottom: 0; }
 .anomaly-stage { max-width: 104mm; margin: 0 auto; }
 .mode-lab .mask-prompts { display: none; }
 .mode-lab .code-sample[hidden] { display: none; }
+/* A recipe book prints every recipe, not only the selected tab */
+.mode-lab--print-all .code-sample[hidden] { display: block; }
+.mode-lab--print-all .lab-message { display: none; }

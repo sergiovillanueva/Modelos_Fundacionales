@@ -44,3 +44,34 @@ test('la detección cerrada usa el umbral y no candidate_labels', () => {
   assert.ok(snippet.includes('threshold=0.5'));
   assert.ok(!snippet.includes('candidate_labels'));
 });
+
+// Pipeline tasks in transformers 5.18 (src/transformers/pipelines/__init__.py). image-to-text and
+// image-to-image were removed in version 5, and keypoint-detection never existed.
+const TRANSFORMERS_5_TASKS = new Set([
+  'audio-classification', 'automatic-speech-recognition', 'text-to-audio', 'feature-extraction',
+  'text-classification', 'token-classification', 'table-question-answering', 'document-question-answering',
+  'fill-mask', 'text-generation', 'zero-shot-classification', 'zero-shot-image-classification',
+  'zero-shot-audio-classification', 'image-classification', 'image-feature-extraction', 'image-segmentation',
+  'image-text-to-text', 'object-detection', 'zero-shot-object-detection', 'depth-estimation',
+  'video-classification', 'mask-generation', 'keypoint-matching', 'any-to-any'
+]);
+
+test('cada tarea del constructor existe en transformers 5', () => {
+  for (const task of PIPELINE_TASKS) {
+    assert.ok(TRANSFORMERS_5_TASKS.has(task.task), `${task.id}: «${task.task}» no es una tarea de pipeline en transformers 5`);
+  }
+});
+
+test('ningún bloque de código del curso llama a una pipeline que ya no existe', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const content = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1')), '../content');
+  for (const dir of fs.readdirSync(content).filter((name) => name.startsWith('tema-'))) {
+    const html = fs.readFileSync(path.join(content, dir, 'sections.html'), 'utf8');
+    for (const block of html.match(/<pre class="code-sample"[\s\S]*?<\/pre>/g) || []) {
+      for (const [, task] of block.matchAll(/pipeline\(\s*"([a-z-]+)"/g)) {
+        assert.ok(TRANSFORMERS_5_TASKS.has(task), `${dir}: pipeline("${task}") no existe en transformers 5`);
+      }
+    }
+  }
+});

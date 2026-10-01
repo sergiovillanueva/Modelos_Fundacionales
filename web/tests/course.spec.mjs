@@ -82,9 +82,9 @@ test('la pregunta da una explicación inmediata y conserva la respuesta', async 
 test('IoU muestra los extremos y conserva el paso al presentar', async ({page}) => {
   await page.goto('/temas/01-deteccion/index.html#iou');
   await page.locator('[data-iou-offset]').fill('20');
-  await expect(page.locator('[data-iou-value]')).toHaveText('1.00');
+  await expect(page.locator('[data-iou-value]')).toHaveText('1,00');
   await page.locator('[data-iou-offset]').fill('60');
-  await expect(page.locator('[data-iou-value]')).toHaveText('0.00');
+  await expect(page.locator('[data-iou-value]')).toHaveText('0,00');
   await page.locator('.course-material > summary').click();
   await page.getByRole('link', {name: 'Presentar'}).click();
   await expect(page.locator('.slides > section.present')).toHaveAttribute('id', 'iou');

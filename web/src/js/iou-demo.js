@@ -1,5 +1,9 @@
 import {iou} from '../lib/metrics.js';
 
+function formatIou(value) {
+  return value.toFixed(2).replace('.', ',');
+}
+
 export function initIouDemo(root = document) {
   const lab = root.querySelector('[data-iou-demo]');
   if (!lab) return;
@@ -26,10 +30,10 @@ export function initIouDemo(root = document) {
     predictionLabel?.setAttribute('x', String(x + 20));
     intersection.setAttribute('x', String(overlapStart));
     intersection.setAttribute('width', String(Math.max(0, overlapEnd - overlapStart)));
-    output.textContent = value.toFixed(2);
+    output.textContent = formatIou(value);
     message.textContent = value === 1 ? 'Coincidencia perfecta.'
       : value === 0 ? 'Sin solapamiento.' : 'Solapamiento parcial.';
-    slider.setAttribute('aria-valuetext', `IoU ${value.toFixed(2)}. ${message.textContent}`);
+    slider.setAttribute('aria-valuetext', `IoU ${formatIou(value)}. ${message.textContent}`);
   }
 
   slider.addEventListener('input', update);

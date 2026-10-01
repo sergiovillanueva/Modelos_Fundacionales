@@ -2853,23 +2853,22 @@
       "batch": "T6-A",
       "status": "adaptada",
       "sectionIds": [
-        "pose-modelos"
+        "pose-modelos",
+        "metrica-oks"
       ],
       "otherDestinations": [
         "content/tema-06/sources.json"
       ],
       "treatment": "contenido",
       "missingConcepts": [],
-      "note": "Trasladada al completo: la pantalla reproduce el título, el texto y los bloques de la diapositiva. Los ejercicios y simulaciones del tema ocupan pantallas propias entre medias.",
+      "note": "Trasladada al completo en dos pantallas: los modelos en una y la definición de OKS en otra, justo antes del laboratorio de OKS. Se añade ViTPose, el modelo del cuaderno, y la licencia AGPL de YOLO-Pose.",
       "review": {
-        "date": "2026-09-17",
-        "reviewer": "Traslado literal del PDF de origen",
+        "date": "2026-10-01",
+        "reviewer": "Revisión exhaustiva tema por tema",
         "evidence": [
-          "PDF de origen cotejado página a página",
+          "Datos contrastados con documentación y papers",
           "npm run build, npm run check y npm test",
-          "npm run test:e2e",
-          "node tests/visual-check.mjs en escritorio, móvil y presentación",
-          "PDF del tema regenerado: una página por pantalla"
+          "Auditoría de renderizado en escritorio, móvil y presentación"
         ]
       }
     },

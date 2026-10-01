@@ -173,5 +173,40 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Los seis enlaces se comprobaron uno a uno el 17 de septiembre de 2026: dos Spaces que estaban funcionando, BRIA RMBG 1.4 y Depth Anything V2, y cuatro páginas de tarea, que son estables. Se descartaron los Spaces de YOLO-World y OWLSAM porque tenían error de construcción y de arranque, lo que ilustra el aviso de la propia pantalla."
+  },
+  {
+    "sectionId": "ecosistema",
+    "sourceSlides": [
+      32
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "El Hub tiene más de tres millones de modelos y más de un millón de datasets.",
+    "url": "https://huggingface.co/models",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "Contadores de las páginas de modelos (3.111.410) y datasets (1.070.845). El mazo decía 500.000 y 100.000. Transformers cubre cientos de arquitecturas, no miles."
+  },
+  {
+    "sectionId": "probar",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "Los Spaces admiten Gradio, Docker o HTML estático; crear uno con Gradio o Docker pide plan de pago.",
+    "url": "https://huggingface.co/docs/hub/spaces-overview",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "Streamlit ya no es un SDK directo. Las cuentas gratuitas pueden alojar hasta dos Spaces de Gradio en ZeroGPU y los estáticos son gratis."
+  },
+  {
+    "sectionId": "receta",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-02/sections.html",
+    "claim": "Para reproducir hay que fijar la revisión con el hash de un commit.",
+    "url": "",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "La receta usaba revision=\"main\", que es una rama y no fija nada. Se elige además el dispositivo con torch.cuda.is_available(), que era el uso pendiente del import."
   }
 ]

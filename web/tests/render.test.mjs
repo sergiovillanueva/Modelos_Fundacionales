@@ -50,3 +50,17 @@ test('la imagen de la tarjeta existe y mide lo que dicen las etiquetas', () => {
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);
 });
+
+test('cada contador estático de modelos coincide con las filas de su tabla', () => {
+  // The printed page and the no-JS page show the static number, so it must match the rows.
+  for (const item of course.topics.filter((t) => t.status === 'available')) {
+    const html = renderTopic(course, item, 'reading');
+    for (const table of html.split('data-model-table').slice(1)) {
+      const block = table.split('</section>')[0];
+      const shown = block.match(/data-model-count>(\d+)</);
+      if (!shown) continue;
+      const rows = (block.match(/data-model-row/g) || []).length;
+      assert.equal(Number(shown[1]), rows, `${item.id}: el contador dice ${shown[1]} y hay ${rows} filas`);
+    }
+  }
+});

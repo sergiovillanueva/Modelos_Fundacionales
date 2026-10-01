@@ -37,6 +37,10 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .evolution-line--7 li { padding-inline: 10px; }
 .reveal .evolution-line--7 strong { font-size: 17px; }
 .reveal .evolution-line--7 span { font-size: 14px; }
+.reveal .evolution-line--continued { max-width: 1120px; margin-top: 22px; }
+.reveal .evolution-line--continued li { padding-inline: 10px; }
+.reveal .evolution-line--continued strong { font-size: 17px; }
+.reveal .evolution-line--continued span { font-size: 14px; }
 .reveal .architecture-walkthrough { max-width: 1050px; grid-template-columns: 480px 1fr; gap: 52px; }
 .reveal .compact-process li { padding-block: 8px; font-size: 17px; }
 .reveal .confidence-figure { max-width: 320px; }
@@ -70,6 +74,13 @@ html, body.presentation-body { height: 100%; margin: 0; overflow: hidden; backgr
 .reveal .note-grid p, .reveal .note-grid ul, .reveal .stage-list p { font-size: 17px; line-height: 1.45; }
 .reveal .formula { font-size: 19px; }
 .reveal .compare-media { max-width: 560px; }
+/* The square inspection photo set the slide height; a narrower one leaves room for the readout */
+.reveal .anomaly-stage { max-width: 400px; margin-inline: auto; }
+/* Recipe book on a slide: choices and note on the left, the long recipe on the right */
+.reveal .mode-lab--six { width: 100%; max-width: 1160px; grid-template-columns: 290px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 32px; align-items: start; }
+.reveal .mode-lab--six .mask-prompts { grid-column: 1; grid-row: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.reveal .mode-lab--six .lab-message { grid-column: 1; grid-row: 2; font-size: 17px; }
+.reveal .mode-lab--six .code-sample { grid-column: 2; grid-row: 1 / span 2; font-size: 13px; line-height: 1.4; }
 .reveal .compare-controls label { font-size: 16px; }
 .reveal .compare-media figcaption { font-size: 16px; }
 .reveal .compare-tag { font-size: 13px; }

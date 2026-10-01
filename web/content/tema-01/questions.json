@@ -17,7 +17,7 @@
     "options": [
       {"id": "a", "text": "Propone regiones y las clasifica en un segundo recorrido.", "explanation": "Eso describe la organización clásica de dos etapas."},
       {"id": "b", "text": "No necesita imágenes de entrenamiento.", "explanation": "La arquitectura no elimina la necesidad de datos para aprender."},
-      {"id": "c", "text": "Predice localización y categoría en una misma ruta de detección.", "explanation": "Exacto: esa es la idea central, aunque los detalles cambian entre versiones."}
+      {"id": "c", "text": "Predice localización y categoría en una sola pasada de la red.", "explanation": "Exacto: esa es la idea central, aunque los detalles cambian entre versiones."}
     ],
     "correctOptionId": "c"
   },
@@ -46,7 +46,7 @@
   {
     "id": "q06",
     "sectionId": "umbral",
-    "prompt": "Subes el umbral de confianza y mantienes fijas las predicciones candidatas.",
+    "prompt": "Subes el umbral de confianza sin cambiar las predicciones candidatas. ¿Qué pasa con las cajas que se muestran?",
     "options": [
       {"id": "a", "text": "Se conservan las mismas o menos cajas.", "explanation": "Exacto: el filtro elimina las puntuaciones que quedan por debajo del nuevo umbral."},
       {"id": "b", "text": "Aparecen categorías nuevas.", "explanation": "El umbral filtra predicciones; no amplía el vocabulario del modelo."},

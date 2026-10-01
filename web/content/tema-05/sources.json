@@ -191,5 +191,27 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla interactiva nueva. La imagen de la derecha multiplica la foto por la unión de las cuatro máscaras de GrabCut ya publicadas y pinta el contorno de cada instancia. La máscara de la piña se recalculó con una caja mejor situada."
+  },
+  {
+    "sectionId": "promptable",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-05/sections.html",
+    "claim": "SAM 3 acepta frases nominales cortas; el razonamiento espacial queda para un VLM.",
+    "url": "https://arxiv.org/abs/2511.16719",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "El ejemplo «el árbol de la izquierda» contradecía la pantalla de límites del propio tema. En SAM 1, el texto se probó con CLIP en el paper pero no forma parte del modelo publicado."
+  },
+  {
+    "sectionId": "receta",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-05/sections.html",
+    "claim": "La receta y el asistente usan SAM 2.1 small, igual que el cuaderno.",
+    "url": "https://huggingface.co/facebook/sam2.1-hiera-small",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "Antes usaban la large, de 1,8 GB, cinco veces más descarga."
   }
 ]

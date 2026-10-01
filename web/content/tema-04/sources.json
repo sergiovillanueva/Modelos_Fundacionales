@@ -281,5 +281,38 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Laboratorio nuevo con dos fotos del propio material del curso. Las puntuaciones están precalculadas con un descriptor clásico de intensidad y gradiente, no con DINO, y la pantalla lo declara: cada celda se compara con la celda buena más parecida, que es la regla de PatchCore, y una celda buena nunca se compara consigo misma. La pieza buena llega a 1,28 y la defectuosa a 1,89."
+  },
+  {
+    "sectionId": "evolucion",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "DINO 2021, DINOv2 2023, DINOv3 2025; DINOv2 es el backbone de RF-DETR y Depth Anything.",
+    "url": "https://arxiv.org/abs/2508.10104",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "El mazo mostraba 2022 y 2024 y una nota en el PDF admitía las fechas reales. Decía además que DINO es la base de SAM y de Grounding DINO: SAM usa un encoder preentrenado con MAE y el DINO de Grounding DINO es un detector. DINOv3: 7.000 millones de parámetros, LVD-1689M y Gram anchoring, según su informe técnico."
+  },
+  {
+    "sectionId": "supervision",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "ImageNet completo: 14 millones de imágenes y más de 20.000 categorías; la versión de competición, 1.000.",
+    "url": "https://www.image-net.org/",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "El mazo mezclaba las dos cifras y escribía «billones», calco de billions. Se retiran los «millones de dólares», sin fuente."
+  },
+  {
+    "sectionId": "destilacion",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "content/tema-04/sections.html",
+    "claim": "La estudiante recibe todas las vistas y la maestra solo las globales.",
+    "url": "https://arxiv.org/abs/2104.14294",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "Según el paper de DINO, todos los recortes pasan por la estudiante y solo los globales por la maestra. El mazo daba a la estudiante solo los locales. k-NN de ViT-B/8: 77,4 % en ImageNet; detección de copias en Copydays frente a Multigrain."
   }
 ]

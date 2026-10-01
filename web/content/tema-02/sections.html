@@ -3,7 +3,7 @@
   <p class="slide-lead">Buscar, evaluar licencias y usar modelos fácilmente.</p>
   <div class="slide-split">
     <div class="slide-prose">
-      <p>Hugging Face se ha convertido en el <strong>repositorio central de facto</strong> para modelos de IA modernos, datasets, demos interactivas y herramientas de desarrollo. Su ecosistema integrado permite descubrir, probar y desplegar modelos.</p>
+      <p>Hugging Face es hoy el <strong>repositorio de referencia</strong> para modelos de IA, datasets, demos interactivas y herramientas de desarrollo. Desde la misma web se busca un modelo, se prueba y se descarga.</p>
     </div>
     <figure class="figure-media">
       <img src="{{ASSET:tema-02/presentacion/portada-hugging-face.jpeg}}" alt="Logotipo de Hugging Face.">
@@ -13,23 +13,23 @@
 
 <section id="ecosistema" data-title="Ecosistema" data-layout="visual">
   <div class="section-copy"><h2>El ecosistema Hugging Face</h2></div>
-  <p class="slide-lead">Hugging Face no es solo un repositorio, es un <strong>ecosistema completo de cuatro pilares interconectados</strong>.</p>
+  <p class="slide-lead">Hugging Face reúne <strong>cuatro piezas que se usan juntas</strong>.</p>
   <div class="note-grid">
     <div>
       <h3>Model Hub</h3>
-      <p>Catálogo con más de 500.000 modelos preentrenados para todas las tareas imaginables: visión, NLP, audio, multimodal.</p>
+      <p>Catálogo con más de tres millones de modelos preentrenados: visión, lenguaje, audio y multimodales.</p>
     </div>
     <div>
       <h3>Datasets</h3>
-      <p>Más de 100.000 datasets públicos listos para entrenar y evaluar, con APIs unificadas de carga y procesamiento.</p>
+      <p>Más de un millón de datasets públicos para entrenar y evaluar, con una API común de carga y procesamiento.</p>
     </div>
     <div>
       <h3>Spaces</h3>
-      <p>Demos web interactivas con Gradio o Streamlit, desplegadas sin servidor. Prueba modelos en segundos con interfaz gráfica.</p>
+      <p>Demos web interactivas, casi siempre con Gradio, que Hugging Face aloja y ejecuta. Pruebas un modelo en segundos sin instalar nada.</p>
     </div>
     <div>
       <h3>Transformers</h3>
-      <p>Librería Python que unifica la API de carga, inferencia y fine-tuning para miles de arquitecturas diferentes.</p>
+      <p>Librería Python con una misma API de carga, inferencia y fine-tuning para cientos de arquitecturas distintas.</p>
     </div>
   </div>
   <h3 class="slide-subtitle">El flujo típico</h3>
@@ -171,7 +171,7 @@
 
 <section id="carga" data-title="Usar" data-layout="visual">
   <div class="section-copy"><h2>Usar modelos</h2></div>
-  <p class="slide-lead">La librería Transformers hace que cargar y usar modelos sea <strong>muy sencillo</strong>. El modelo mental clave:</p>
+  <p class="slide-lead">La librería Transformers hace que cargar y usar modelos sea <strong>muy sencillo</strong>. Esto es lo que pasa por debajo:</p>
   <ol class="stage-list stage-list--columns stage-list--four">
     <li>
       <h3>Hub remoto</h3>
@@ -193,7 +193,7 @@
   <h3 class="slide-subtitle">Buenas prácticas</h3>
   <div class="slide-prose">
     <ul>
-      <li><strong>Seguridad:</strong> prefiere .safetensors sobre .bin (formato más seguro).</li>
+      <li><strong>Seguridad:</strong> prefiere .safetensors sobre .bin; los .bin usan pickle, que puede ejecutar código al cargarse.</li>
       <li><strong>Offline:</strong> predescarga con snapshot_download, controla cache_dir.</li>
       <li><strong>Rendimiento:</strong> usa float16 y device="cuda" cuando tengas GPU.</li>
       <li><strong>Pipelines:</strong> para pruebas rápidas, usa pipeline("task"); en producción, clases específicas dan más control.</li>
@@ -253,7 +253,7 @@ print(salida[:3])</code></pre>
       <p class="pipeline-note" data-pipeline-note aria-live="polite">ViT base, 86 M de parámetros. Devuelve etiquetas de las 1.000 de ImageNet, así que solo sirve si tus clases están ahí. Arranca en cualquier portátil. Cuenta con segundos por imagen.</p>
     </div>
   </div>
-  <div class="print-detail"><p>Las cuatro tareas usan la misma llamada y cambian el identificador del modelo, que es lo que hace el Hub cómodo para probar. Las dos que aceptan <code>candidate_labels</code> (CLIP y Grounding DINO) son las que permiten cambiar de clases sin reentrenar. El argumento <code>device</code> admite «cpu» o «cuda»; con varias tarjetas se indica el índice.</p></div>
+  <div class="print-detail"><p>Las cinco tareas usan la misma llamada y cambian el identificador del modelo, que es lo que hace el Hub cómodo para probar. Las dos que aceptan <code>candidate_labels</code> (CLIP y Grounding DINO) son las que permiten cambiar de clases sin reentrenar. El argumento <code>device</code> admite «cpu» o «cuda»; con varias tarjetas se indica el índice.</p></div>
 </section>
 
 <section id="inferencia" data-title="Simplificar" data-layout="question">
@@ -281,12 +281,15 @@ import torch
 from transformers import AutoImageProcessor, AutoModelForObjectDetection
 
 model_id = "PekingU/rtdetr_r50vd"
-processor = AutoImageProcessor.from_pretrained(model_id, revision="main")
-model = AutoModelForObjectDetection.from_pretrained(model_id, revision="main")
-model = model.to("cuda").eval()</code></pre>
+revision = "main"  # para reproducir, pon aquí el hash de un commit
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+processor = AutoImageProcessor.from_pretrained(model_id, revision=revision)
+model = AutoModelForObjectDetection.from_pretrained(model_id, revision=revision)
+model = model.to(device).eval()</code></pre>
   <div class="slide-prose">
     <ul>
-      <li>Fija <strong>revision</strong> si quieres poder reproducir el resultado dentro de seis meses.</li>
+      <li>Fija <strong>revision</strong> con el hash de un commit (pestaña «Files and versions» del modelo) si quieres reproducir el resultado dentro de seis meses. «main» no fija nada: avanza cada vez que el autor sube cambios.</li>
       <li>Descarga a caché la primera vez, a <code>~/.cache/huggingface/</code>. Para entornos sin red, <code>snapshot_download</code> antes.</li>
       <li>Prefiere los pesos en <strong>.safetensors</strong> cuando el repositorio los ofrezca.</li>
     </ul>
@@ -355,7 +358,7 @@ model = model.to("cuda").eval()</code></pre>
           <option value="otra">Otras</option>
         </select>
       </p>
-      <p><span class="calc-disclaimer">Modelos visibles: <strong data-model-count>7</strong></span></p>
+      <p><span class="calc-disclaimer">Modelos visibles: <strong data-model-count>9</strong></span></p>
     </div>
     <div class="model-rows">
       <div data-model-row data-task="deteccion" data-license="apache">
@@ -403,7 +406,7 @@ model = model.to("cuda").eval()</code></pre>
     </div>
     <div>
       <h3>Profundidad de una sola foto</h3>
-      <p>Sube cualquier foto y mira el mapa de distancias. Prueba con una imagen con espejos o cristales y verás dónde falla.</p>
+      <p>Sube cualquier foto y mira el mapa de distancias. Prueba con espejos o cristales, que hacían fallar a la versión anterior, y comprueba si acierta.</p>
       <p><a href="https://huggingface.co/spaces/depth-anything/Depth-Anything-V2" target="_blank" rel="noopener noreferrer">Space de Depth Anything V2</a></p>
     </div>
     <div>
@@ -418,7 +421,7 @@ model = model.to("cuda").eval()</code></pre>
     </div>
     <div>
       <h3>Puntos clave</h3>
-      <p>Pose de personas y puntos de interés para matching, con los 413 modelos que hay publicados y sus demos.</p>
+      <p>Pose de personas y puntos de interés para matching, con más de 400 modelos publicados y sus demos.</p>
       <p><a href="https://huggingface.co/tasks/keypoint-detection" target="_blank" rel="noopener noreferrer">Tarea: detección de puntos clave</a></p>
     </div>
     <div>
@@ -427,16 +430,22 @@ model = model.to("cuda").eval()</code></pre>
       <p><a href="https://huggingface.co/tasks/image-text-to-text" target="_blank" rel="noopener noreferrer">Tarea: imagen y texto a texto</a></p>
     </div>
   </div>
-  <h3 class="slide-subtitle">El reto de diez minutos</h3>
+  <p class="slide-callout"><strong>Dos avisos antes de subir nada.</strong> Un Space público procesa tu imagen en el servidor de quien lo publicó, así que ahí no van fotos de cliente, de personas identificables ni de piezas bajo acuerdo de confidencialidad. Y los Spaces se duermen, se rompen y desaparecen: por eso los enlaces de arriba apuntan a la página de la tarea, que sigue viva aunque una demo concreta caiga.</p>
+  <div class="print-detail"><p>Un Space es un repositorio con una aplicación (Gradio, Docker o HTML estático) que Hugging Face construye y ejecuta. En el hardware gratuito, CPU Basic, se duerme tras un rato sin visitas, de ahí que a veces tarde en arrancar o falle al construirse. Con el botón de duplicar tienes tu propia copia para cambiarle el modelo, la forma más rápida de enseñar un resultado a alguien que no programa. Ten en cuenta que crear un Space con Gradio o Docker pide hoy un plan de pago, salvo hasta dos Spaces de Gradio en ZeroGPU para cuentas gratuitas; los de HTML estático son gratis. Para un piloto interno conviene duplicarlo en privado en lugar de usar el público.</p></div>
+</section>
+
+<section id="reto" data-title="Reto" data-layout="practice">
+  <div class="section-copy">
+    <h2>El reto de diez minutos</h2>
+    <p class="lead">Cinco pasos con una foto de tu trabajo para saber si un modelo del Hub te sirve.</p>
+  </div>
   <ul class="checklist">
     <li><strong>Busca por tarea, no por nombre</strong><span>Entra en la página de la tarea que te interesa y ordena por descargas del último mes.</span></li>
     <li><strong>Abre un Space y sube una foto tuya</strong><span>Una de tu trabajo, no una de internet. Lo que falle aquí va a fallar en producción.</span></li>
     <li><strong>Mira la licencia antes de emocionarte</strong><span>Está en la ficha del modelo, no en la del Space. Si pone AGPL o «research only», anótalo.</span></li>
     <li><strong>Copia el fragmento de la ficha</strong><span>Casi todas traen tres líneas listas para pegar en el cuaderno.</span></li>
-    <li><strong>Apunta el tamaño y la fecha</strong><span>Parámetros y última actualización. Un modelo abandonado hace tres años es una deuda, no un atajo.</span></li>
+    <li><strong>Apunta el tamaño y la fecha</strong><span>Parámetros y última actualización. Un modelo abandonado hace tres años te tocará mantenerlo a ti.</span></li>
   </ul>
-  <p class="slide-callout"><strong>Dos avisos antes de subir nada.</strong> Un Space público procesa tu imagen en el servidor de quien lo publicó, así que ahí no van fotos de cliente, de personas identificables ni de piezas bajo acuerdo de confidencialidad. Y los Spaces se duermen, se rompen y desaparecen: por eso los enlaces de arriba apuntan a la página de la tarea, que sigue viva aunque una demo concreta caiga.</p>
-  <div class="print-detail"><p>Un Space es un repositorio con una aplicación Gradio o Streamlit y un fichero de dependencias, que Hugging Face construye y ejecuta. En el nivel gratuito corre en CPU y se duerme tras un rato sin visitas, de ahí que a veces tarde en arrancar o falle al construirse. Cualquiera puede duplicar un Space en su cuenta con el botón de duplicar, cambiarle el modelo y tener su propia demo en minutos, que es la forma más rápida de enseñar un resultado a alguien que no programa. Para un piloto interno conviene duplicarlo en privado en lugar de usar el público.</p></div>
 </section>
 
 <section id="checklist" data-title="Checklist" data-layout="practice">

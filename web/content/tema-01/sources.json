@@ -202,11 +202,11 @@
     ],
     "originalAsset": "ppt/media/image-19-*; ppt/media/image-20-1.jpeg",
     "webAsset": "public/assets/tema-01/presentacion/rf-detr.jpeg",
-    "claim": "RF-DETR combina features multiescala, atención deformable, queries y refinamiento directo de cajas.",
-    "url": "",
-    "checkedOn": "2026-09-16",
+    "claim": "La figura es la de Deformable DETR; RF-DETR hereda su decoder y sustituye el encoder por DINOv2.",
+    "url": "https://arxiv.org/abs/2010.04159",
+    "checkedOn": "2026-10-01",
     "status": "corrected",
-    "note": "Se recuperó el flujo de cinco pasos; los detalles dependientes de variante se mantienen como contexto, no como regla universal."
+    "note": "El mazo presentaba la figura 1 de Deformable DETR (Zhu et al., 2021) como arquitectura de RF-DETR, con la atención deformable en el encoder. Según el paper de RF-DETR (arXiv 2511.09554, sección de arquitectura), su encoder es DINOv2 con atención por ventanas alternada con global, un proyector reescala la salida a varias escalas y la atención deformable queda en el cross-attention del decoder. La pantalla se reencuadra como linaje y los cinco pasos se reescriben."
   },
   {
     "sectionId": "eleccion",
@@ -470,5 +470,57 @@
     "checkedOn": "2026-09-17",
     "status": "verified",
     "note": "Pantalla práctica nueva, sin diapositiva de origen. Segmentación y puntos clave salieron después de grabar el mazo: las clases RFDETRSegPreview y RFDETRKeypointPreview están en acceso temprano, el paquete abierto es Apache 2.0 y los puntos son los 17 de COCO. Comprobado en la documentación de Roboflow."
+  },
+  {
+    "sectionId": "evolucion-yolo",
+    "sourceSlides": [
+      15
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "Hitos de YOLO corregidos y ampliados hasta YOLO26.",
+    "url": "https://docs.ultralytics.com/models/",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "YOLOv1 era más rápido pero menos preciso que Faster R-CNN (63,4 frente a 73,2 de mAP en VOC 2007), no «superior». YOLOv7 se describe con la cifra de su paper (5 a 160 FPS) en lugar de «estado del arte para Edge». Segunda fila nueva: YOLOv10 (Tsinghua, sin NMS), YOLO11 (Ultralytics), YOLO12 (comunitario, atención por áreas) y YOLO26 (Ultralytics, enero de 2026, cabeza uno a uno opcional y sin DFL), según la documentación de Ultralytics."
+  },
+  {
+    "sectionId": "rf-detr",
+    "sourceSlides": [
+      19
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "RF-DETR 2XL es el primer detector en tiempo real que supera 60 AP en COCO; la versión nano da 48,0 AP.",
+    "url": "https://arxiv.org/abs/2511.09554",
+    "checkedOn": "2026-10-01",
+    "status": "verified",
+    "note": "Datos del resumen del paper (ICLR 2026). La búsqueda de arquitectura con pesos compartidos produce la familia de nano a 2XL sin reentrenar. Se retira la afirmación de que entrena más rápido que YOLO, que ninguna fuente sostenía."
+  },
+  {
+    "sectionId": "ultralytics",
+    "sourceSlides": [
+      21
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "Las versiones de Ultralytics son YOLOv5, YOLOv8, YOLO11 y YOLO26.",
+    "url": "https://docs.ultralytics.com/models/",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "El mazo decía «YOLOv5-YOLOv11», que atribuía a Ultralytics v6 (Meituan), v7 y v9 (Wang y Liao) y v10 (Tsinghua). AGPL-3.0 se describe como licencia open source con obligación de publicar el código, en lugar de «contraria al open source»."
+  },
+  {
+    "sectionId": "iou",
+    "sourceSlides": [
+      24
+    ],
+    "originalAsset": "",
+    "webAsset": "content/tema-01/sections.html",
+    "claim": "IoU 0,5 es el umbral de PASCAL VOC; la métrica principal de COCO promedia diez umbrales de 0,50 a 0,95.",
+    "url": "https://cocodataset.org/#detection-eval",
+    "checkedOn": "2026-10-01",
+    "status": "corrected",
+    "note": "El mazo atribuía el umbral 0,5 a COCO. La pantalla pasa a dos columnas para caber en presentación sin reducirse al mínimo."
   }
 ]

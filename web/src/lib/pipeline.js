@@ -27,32 +27,32 @@ export const PIPELINE_TASKS = [
     label: 'Decidir entre textos que yo escribo',
     task: 'zero-shot-image-classification',
     model: 'openai/clip-vit-base-patch32',
-    call: 'etiquetas = ["una caja rota", "una caja intacta"]\nsalida = pipe("foto.jpg", candidate_labels=etiquetas)',
+    call: 'etiquetas = ["a broken box", "an intact box"]  # CLIP entiende inglés\nsalida = pipe("foto.jpg", candidate_labels=etiquetas)',
     print: 'print(salida)',
-    note: 'CLIP compara la imagen con cada texto. Cambiar las clases es cambiar la lista, sin reentrenar nada.'
+    note: 'CLIP compara la imagen con cada texto, escrito en inglés. Cambiar las clases es cambiar la lista, sin reentrenar nada.'
   },
   {
     id: 'detectar',
     label: 'Localizar objetos descritos con palabras',
     task: 'zero-shot-object-detection',
     model: 'IDEA-Research/grounding-dino-tiny',
-    call: 'etiquetas = ["una caja", "una persona"]\nsalida = pipe("foto.jpg", candidate_labels=etiquetas)',
+    call: 'etiquetas = ["a box", "a person"]  # Grounding DINO entiende inglés\nsalida = pipe("foto.jpg", candidate_labels=etiquetas)',
     print: 'print([(d["label"], round(d["score"], 2)) for d in salida])',
-    note: 'Grounding DINO devuelve cajas con su puntuación. Pide conceptos concretos: «una caja de cartón» funciona mejor que «objeto».'
+    note: 'Grounding DINO devuelve cajas con su puntuación. Pide conceptos concretos y en inglés: «a cardboard box» funciona mejor que «object».'
   },
   {
     id: 'describir',
     label: 'Describir la escena en una frase',
-    task: 'image-to-text',
+    task: 'image-text-to-text',
     model: 'Salesforce/blip-image-captioning-base',
-    call: 'salida = pipe("foto.jpg")',
+    call: 'salida = pipe("foto.jpg", text="A photo of")',
     print: 'print(salida[0]["generated_text"])',
     note: 'BLIP redacta un pie de foto en inglés. Útil para indexar imágenes, poco fiable para leer cifras o texto pequeño.'
   }
 ];
 
 export const PIPELINE_DEVICES = [
-  {id: 'cpu', label: 'CPU', value: 'cpu', note: 'Arranca en cualquier portátil. Cuenta con segundos por imagen.'},
+  {id: 'cpu', label: 'CPU', value: 'cpu', note: 'Arranca en cualquier portátil. Cuenta con hasta unos segundos por imagen en los modelos grandes.'},
   {id: 'gpu', label: 'GPU', value: 'cuda', note: 'Con la GPU de Colab bajas a décimas de segundo por imagen.'}
 ];
 

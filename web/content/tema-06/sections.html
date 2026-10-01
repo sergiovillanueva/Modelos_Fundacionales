@@ -1,6 +1,6 @@
 <section id="panorama" data-title="Inicio" data-layout="visual">
   <div class="section-copy"><h2>Otras tareas fundacionales de visión artificial</h2></div>
-  <p class="slide-lead">Bonus extra.</p>
+  <p class="slide-lead">Seis tareas más, cada una con su modelo fundacional.</p>
   <div class="note-grid">
     <div>
       <h3>Estimación de pose</h3>
@@ -11,11 +11,11 @@
       <p>Extraer texto de imágenes y documentos, transformándolo en datos editables y buscables.</p>
     </div>
     <div>
-      <h3>Super-resolución</h3>
+      <h3>Superresolución</h3>
       <p>Mejorar la calidad y resolución de imágenes o vídeos, a menudo a partir de datos de baja resolución.</p>
     </div>
     <div>
-      <h3>Background removal</h3>
+      <h3>Eliminación de fondo</h3>
       <p>Segmentar y eliminar automáticamente el fondo de una imagen, aislando el objeto principal.</p>
     </div>
     <div>
@@ -23,7 +23,7 @@
       <p>Calcular la distancia de los objetos en una escena respecto a la cámara, creando mapas de profundidad.</p>
     </div>
     <div>
-      <h3>Image matching</h3>
+      <h3>Correspondencias entre imágenes</h3>
       <p>Encontrar correspondencias o similitudes entre dos o más imágenes para tareas como la localización o el reconocimiento.</p>
     </div>
   </div>
@@ -83,16 +83,16 @@
 </section>
 
 <section id="pose-modelos" data-title="Modelos" data-layout="visual">
-  <div class="section-copy"><h2>Modelos destacados y evaluación</h2></div>
+  <div class="section-copy"><h2>Modelos destacados</h2></div>
   <p class="slide-lead">Herramientas prácticas para cada escenario.</p>
   <ol class="stage-list">
     <li>
       <h3>MediaPipe (Google)</h3>
-      <p>Funciona eficientemente en CPU. Ideal para aplicaciones de fitness, filtros AR o escenarios de una sola persona. El problema es que solo da los keypoints de una sola persona. También sirve para manos y cara.</p>
+      <p>Funciona bien en CPU y en el móvil. Pensado para fitness, filtros AR y escenas con una o pocas personas cerca de la cámara. Tiene también modelos para manos y cara.</p>
     </li>
     <li>
-      <h3>YOLOv8-Pose (ultralytics)</h3>
-      <p>El estándar industrial actual. Ofrece un equilibrio óptimo entre velocidad y precisión. Excelente para detección multi-persona y es fácil de entrenar y adaptar.</p>
+      <h3>YOLO-Pose (Ultralytics)</h3>
+      <p>YOLOv8, YOLO11 y YOLO26 en versión pose: varias personas en una pasada, buen equilibrio entre velocidad y precisión y fáciles de reentrenar. Licencia AGPL-3.0, como el resto de Ultralytics (tema 1).</p>
     </li>
     <li>
       <h3>OpenPose (CMU)</h3>
@@ -102,11 +102,18 @@
       <h3>HRNet</h3>
       <p>Prioridad en precisión extrema. Cuando la exactitud es crítica (análisis médico, biomecánico) y la velocidad de inferencia es secundaria.</p>
     </li>
+    <li>
+      <h3>ViTPose (el del cuaderno)</h3>
+      <p>Top-down sobre un ViT sencillo: en el cuaderno, RT-DETR encuentra a las personas y ViTPose les pone los 17 puntos. Licencia Apache 2.0.</p>
+    </li>
   </ol>
-  <h3 class="slide-subtitle">¿Cómo medimos la calidad? La métrica OKS</h3>
+</section>
+
+<section id="metrica-oks" data-title="Métrica" data-layout="visual">
+  <div class="section-copy"><h2>¿Cómo medimos la calidad? La métrica OKS</h2></div>
   <div class="slide-prose">
-    <p>OKS (Object Keypoint Similarity) es el equivalente a IoU para esqueletos. No mide la distancia en píxeles de forma bruta, sino una «similitud perceptual» entre los puntos clave detectados y los reales.</p>
-    <p>El OKS <strong>penaliza de forma inteligente</strong>: un error de 5 píxeles en un punto rígido como el ojo penaliza mucho más que un error de 5 píxeles en una articulación flexible como la muñeca o la cadera.</p>
+    <p>OKS (Object Keypoint Similarity) hace con los esqueletos lo que IoU hace con las cajas: convierte la distancia entre cada punto predicho y el real en una puntuación de 0 a 1, corregida por el tamaño de la persona y por lo difícil que es marcar esa articulación.</p>
+    <p>Por eso <strong>el mismo error no penaliza igual</strong>: 5 píxeles de error en el ojo, que los anotadores marcan con mucha precisión, cuestan bastante más que 5 píxeles en la cadera, cuya posición exacta es más difícil de fijar.</p>
   </div>
   <figure class="figure-media lesson-image lesson-image--medium">
     <img src="{{ASSET:tema-06/presentacion/pose-evaluacion.jpeg}}" alt="Comparación entre el esqueleto predicho y el real para ilustrar la evaluación con OKS.">
@@ -153,17 +160,17 @@
       </div>
       <ul class="candidate-list">
         <li class="candidate" data-joint="ojo" data-label="Ojo" data-sigma="0.025">
-          <span class="candidate-name">Ojo <small>rígido</small></span>
+          <span class="candidate-name">Ojo <small>σ 0,025</small></span>
           <span class="candidate-track"><span class="candidate-bar" data-joint-bar style="--bar-share: .8007"></span></span>
           <span class="candidate-value" data-joint-value>0,80</span>
         </li>
         <li class="candidate is-winner" data-joint="muneca" data-label="Muñeca" data-sigma="0.062">
-          <span class="candidate-name">Muñeca <small>flexible</small></span>
+          <span class="candidate-name">Muñeca <small>σ 0,062</small></span>
           <span class="candidate-track"><span class="candidate-bar" data-joint-bar style="--bar-share: .9645"></span></span>
           <span class="candidate-value" data-joint-value>0,96</span>
         </li>
         <li class="candidate is-winner" data-joint="cadera" data-label="Cadera" data-sigma="0.107">
-          <span class="candidate-name">Cadera <small>flexible</small></span>
+          <span class="candidate-name">Cadera <small>σ 0,107</small></span>
           <span class="candidate-track"><span class="candidate-bar" data-joint-bar style="--bar-share: .9879"></span></span>
           <span class="candidate-value" data-joint-value>0,99</span>
         </li>
@@ -195,11 +202,11 @@
   <p class="slide-lead">Dónde genera valor la estimación de pose.</p>
   <div class="note-grid">
     <div>
-      <h3>Sport y fitness</h3>
+      <h3>Deporte y fitness</h3>
       <ul>
         <li><strong>Entrenador IA:</strong> conteo preciso de repeticiones (sentadillas, flexiones…).</li>
         <li><strong>Análisis de técnica:</strong> medición de ángulos corporales para prevenir lesiones.</li>
-        <li>Aplicaciones en plataformas como Nike Training o Peloton.</li>
+        <li>Por ejemplo, Peloton Guide cuenta repeticiones con una cámara.</li>
       </ul>
     </div>
     <div>
@@ -221,7 +228,7 @@
   <h3 class="slide-subtitle">El gran reto: oclusiones y reconstrucción 3D</h3>
   <div class="slide-split">
     <div class="slide-prose">
-      <p><strong>El problema:</strong> la estimación de pose se complica cuando partes del cuerpo se ocultan entre sí o por objetos externos, perdiendo información crucial.</p>
+      <p><strong>El problema:</strong> la estimación de pose se complica cuando partes del cuerpo se ocultan entre sí o tras otros objetos, y se pierde información.</p>
       <p><strong>La solución:</strong> modelos avanzados emplean memoria temporal para rastrear y predecir oclusiones, o realizan inferencia 3D para «imaginar» las partes ocultas basándose en la anatomía y el contexto.</p>
     </div>
     <figure class="figure-media">
@@ -236,7 +243,7 @@
   <div class="note-grid note-grid--two">
     <div>
       <h3>El pasado: enfoque clásico (Tesseract)</h3>
-      <p><strong>Metodología:</strong> basado en reglas heurísticas y detección de contornos para identificar caracteres individuales.</p>
+      <p><strong>Metodología:</strong> hasta la versión 3 segmentaba caracteres con reglas y contornos; desde la 4 (2018) reconoce líneas con una red LSTM, pero sigue necesitando texto limpio y horizontal.</p>
       <p><strong>Limitaciones comunes:</strong></p>
       <ul>
         <li>Falla con texto curvo, distorsionado o en perspectivas inusuales.</li>
@@ -247,12 +254,12 @@
     </div>
     <div>
       <h3>El presente: transformers para OCR (TrOCR y VLM)</h3>
-      <p><strong>Arquitectura end-to-end:</strong> utiliza Vision Transformers (ViT) para codificar la imagen de forma global y un modelo de lenguaje (como BERT o GPT) decodifica la secuencia de texto resultante.</p>
-      <p><strong>Ventaja fundamental:</strong> no «lee» letra a letra, sino que «entiende» la secuencia visual completa del texto en contexto, de forma similar a como los humanos leen.</p>
+      <p><strong>Arquitectura end-to-end:</strong> utiliza Vision Transformers (ViT) para codificar la imagen de forma global y un decoder de texto (en TrOCR, inicializado desde RoBERTa) genera la secuencia de caracteres.</p>
+      <p><strong>Lo que cambia:</strong> lee la línea entera de una vez, con el contexto de las letras vecinas, en lugar de reconocer caracteres sueltos.</p>
       <p><strong>Estado del arte (SOTA):</strong></p>
       <ul>
         <li><strong>TrOCR (Microsoft):</strong> un referente específico para tareas de OCR.</li>
-        <li><strong>Qwen 2.5/3-VL:</strong> un VLM avanzado que integra OCR con capacidades de razonamiento multimodal.</li>
+        <li><strong>Qwen3-VL y Qwen3.5:</strong> VLM que leen y además razonan sobre el texto, por ejemplo devolviendo en JSON los campos de una factura.</li>
       </ul>
     </div>
   </div>
@@ -268,10 +275,10 @@
     </div>
     <div>
       <h3>TrOCR (Hugging Face): precisión avanzada</h3>
-      <p>Ofrece la máxima precisión, especialmente diseñado para textos manuscritos, históricos o muy específicos. Requiere una GPU para un rendimiento óptimo debido a su arquitectura basada en Transformers.</p>
+      <p>Muy preciso en texto impreso y en manuscrito, según la variante. Lee una sola línea ya recortada, así que necesita un detector de texto delante. Va mucho mejor con GPU.</p>
     </div>
     <div>
-      <h3>VLM (Qwen, GPT-4V): documentos estructurados</h3>
+      <h3>VLM (Qwen, Gemini, GPT): documentos estructurados</h3>
       <p>Perfectos para casos de uso complejos como el procesamiento de facturas o tablas. Permiten extraer información estructurada, por ejemplo JSON, en lugar de solo texto plano, integrando visión y lenguaje para un razonamiento avanzado.</p>
     </div>
   </div>
@@ -347,20 +354,20 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
       <p class="lab-message" data-mode-note aria-live="polite">Sale una tira de caracteres y poco más. El orden lo inventa el recorrido por líneas, así que «VCC EN VOUT GND» y las referencias de las resistencias se mezclan sin que puedas saber qué va con qué.</p>
     </div>
   </div>
-  <p class="slide-callout">La pregunta útil no es qué herramienta lee mejor, sino qué necesita tu programa. Para contar si la serigrafía está impresa basta la primera; para comprobar que cada referencia está junto a su componente hacen falta coordenadas; para rellenar un parte de recepción con el modelo y el fabricante, el tercero te ahorra el pegamento.</p>
+  <p class="slide-callout">La pregunta útil es qué necesita tu programa, más que qué herramienta lee mejor. Para contar si la serigrafía está impresa basta la primera; para comprobar que cada referencia está junto a su componente hacen falta coordenadas; para rellenar un parte de recepción con el modelo y el fabricante, el tercero te ahorra el pegamento.</p>
   <div class="print-detail"><p>Las cajas de esta pantalla están medidas a mano sobre la foto para ilustrar el formato de salida, no las ha producido un OCR. Tres cosas que se ven en esta imagen y que aparecen en cualquier planta: el texto de la serigrafía es de bajo contraste sobre verde y el brillo del cobre lo rompe, hay texto a distintas escalas en la misma foto, y varias referencias quedan parcialmente tapadas por los componentes. Por eso la resolución de captura manda más que el modelo: con menos de veinte píxeles de altura por carácter, ningún OCR actual lee de forma fiable. Sobre latencia y coste, Tesseract corre en CPU en decenas de milisegundos, un modelo de detección más reconocimiento ronda las décimas de segundo en GPU, y un VLM se va a varios segundos por imagen, así que en línea suele combinarse: detección rápida siempre y VLM solo sobre las piezas dudosas.</p></div>
 </section>
 
 <section id="superresolucion" data-title="Superresolución" data-layout="visual">
-  <div class="section-copy"><h2>Super-resolución: restaurando el detalle perdido</h2></div>
+  <div class="section-copy"><h2>Superresolución: restaurando el detalle perdido</h2></div>
   <p class="slide-lead">El uso de deep learning para generar detalles plausibles de alta frecuencia a partir de una imagen de baja resolución, superando los límites de la interpolación tradicional (bilineal, bicúbica…).</p>
   <div class="slide-split">
     <div class="slide-prose">
-      <p><strong>El modelo SOTA: Swin2SR.</strong></p>
+      <p><strong>El modelo del cuaderno: Swin2SR (2022).</strong></p>
       <ul>
         <li>Basado en Swin Transformers V2, lo que le permite procesar imágenes de manera eficiente y global.</li>
         <li>Entrenado para escalar la imagen y también para eliminar artefactos de compresión JPEG y ruido.</li>
-        <li><strong>Ventaja clave:</strong> recupera y sintetiza texturas finas (como pelo, tela o detalles faciales) que los métodos clásicos dejarían borrosas o artificiales.</li>
+        <li><strong>Lo que aporta:</strong> recupera y sintetiza texturas finas (como pelo, tela o detalles faciales) que los métodos clásicos dejarían borrosas o artificiales.</li>
       </ul>
     </div>
     <figure class="compare-media" data-compare data-before="la interpolación bicúbica" data-after="la salida de Swin2SR">
@@ -380,7 +387,7 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
       <figcaption>Mira el recuadro rojo: la textura fina de la derecha la sintetiza el modelo.</figcaption>
     </figure>
   </div>
-  <p class="slide-callout"><strong>Nota importante:</strong> la super-resolución no es magia. El modelo «imagina» detalles basándose en patrones aprendidos de su vasto conjunto de entrenamiento, no reconstruye información que nunca existió.</p>
+  <p class="slide-callout"><strong>Nota importante:</strong> la superresolución no es magia. El modelo «imagina» detalles a partir de los patrones que vio al entrenar; no reconstruye información que nunca existió.</p>
 </section>
 
 <section id="superresolucion-usos" data-title="Límites" data-layout="visual">
@@ -432,7 +439,7 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
       </div>
       <div>
         <h3>La solución: RMBG-1.4 (BRIA AI)</h3>
-        <p>Un modelo de vanguardia diseñado para el alpha matting. Genera un canal alfa de transparencia gradual en los bordes, no una máscara binaria. Esto permite recortes profesionales que se integran perfectamente en cualquier fondo, sin el efecto «pegatina».</p>
+        <p>Modelo pensado para alpha matting: genera un canal alfa con transparencia gradual en los bordes en lugar de una máscara binaria, así que el recorte encaja en cualquier fondo sin efecto «pegatina». Su licencia no permite uso comercial sin acuerdo con BRIA.</p>
       </div>
     </div>
     <figure class="figure-media">
@@ -443,25 +450,25 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
 
 <section id="matching" data-title="Matching" data-layout="visual">
   <div class="section-copy"><h2>Image matching: encontrando parejas visuales</h2></div>
-  <p class="slide-lead">El fin de los algoritmos heurísticos (SIFT, ORB…).</p>
+  <p class="slide-lead">De los algoritmos clásicos (SIFT, ORB…) a las redes.</p>
   <div class="slide-prose">
-    <p><strong>¿Qué es?</strong> Encontrar puntos idénticos en dos fotos de la misma escena tomadas desde ángulos diferentes, a pesar de cambios en la perspectiva o la iluminación. Esta tarea es fundamental para aplicaciones como la reconstrucción 3D, la realidad aumentada y la localización de robots.</p>
+    <p><strong>¿Qué es?</strong> Encontrar puntos idénticos en dos fotos de la misma escena tomadas desde ángulos diferentes, a pesar de cambios en la perspectiva o la iluminación. Es la base de la reconstrucción 3D, la realidad aumentada y la localización de robots.</p>
   </div>
   <h3 class="slide-subtitle">La nueva era: deep learning</h3>
   <div class="note-grid note-grid--two">
     <div>
       <h3>Detector (SuperPoint, DISK)</h3>
-      <p>Una red neuronal avanzada que identifica los puntos clave y más distintivos (esquinas, texturas complejas) en una imagen, superando con creces la precisión de los algoritmos matemáticos clásicos.</p>
+      <p>Una red que localiza los puntos más distintivos de la imagen (esquinas, texturas) y describe cada uno con un vector. Aguanta mejor que SIFT los cambios fuertes de luz y de punto de vista.</p>
     </div>
     <div>
       <h3>Matcher (LightGlue)</h3>
-      <p>Un modelo basado en Transformer que evalúa los puntos detectados en ambas imágenes y determina cuáles corresponden entre sí, filtrando eficazmente los errores geométricos y emparejamientos incorrectos.</p>
+      <p>Un Transformer que compara los puntos de las dos imágenes, decide cuáles se corresponden y descarta los que no tienen pareja. Los errores geométricos que se le escapan se filtran después con RANSAC, como en la pantalla siguiente.</p>
     </div>
   </div>
   <figure class="figure-media lesson-image lesson-image--wide">
     <img src="{{ASSET:tema-06/presentacion/image-matching.jpeg}}" alt="Correspondencias entre dos fotografías de la misma escena tomadas desde ángulos distintos.">
   </figure>
-  <p class="slide-callout"><strong>Ventaja clave:</strong> este enfoque moderno funciona muy bien incluso con cambios de luz (día y noche), grandes variaciones de perspectiva y oclusiones, ofreciendo una gran robustez.</p>
+  <p class="slide-callout"><strong>Dónde se nota:</strong> con cambios de luz (de día a noche), grandes variaciones de perspectiva y oclusiones, justo donde los métodos clásicos fallan más.</p>
 </section>
 
 <section id="verificacion" data-title="Verificar" data-layout="lab">
@@ -576,7 +583,7 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
 
 <section id="reconstruccion" data-title="Reconstrucción" data-layout="visual">
   <div class="section-copy"><h2>Reconstruyendo el mundo en 3D</h2></div>
-  <p class="slide-lead">Aplicaciones críticas del matching.</p>
+  <p class="slide-lead">Tres usos del matching.</p>
   <div class="note-grid">
     <div>
       <h3>Fotogrametría (SfM)</h3>
@@ -595,11 +602,11 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
 
 <section id="profundidad" data-title="Profundidad" data-layout="visual">
   <div class="section-copy"><h2>Depth estimation: 3D desde una sola imagen</h2></div>
-  <p class="slide-lead">La revolución de la profundidad monocular.</p>
+  <p class="slide-lead">Profundidad con una sola cámara y una sola foto.</p>
   <div class="note-grid">
     <div>
       <h3>Depth Anything V2/V3</h3>
-      <p>Un modelo fundacional entrenado con millones de imágenes etiquetadas y no etiquetadas, aprovechando la diversidad del mundo real.</p>
+      <p>Un modelo fundacional con encoder DINOv2. La V2 se entrenó con 595.000 imágenes sintéticas etiquetadas y 62 millones de imágenes reales con pseudoetiquetas.</p>
     </div>
     <div>
       <h3>Capacidad</h3>
@@ -607,7 +614,7 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
     </div>
     <div>
       <h3>Robustez</h3>
-      <p>Funciona en una gran variedad de escenarios: interiores complejos, exteriores dinámicos, y con elementos desafiantes como objetos transparentes o superficies reflejantes.</p>
+      <p>Aguanta interiores, exteriores y escenas con mucho detalle. Cristales y espejos, que hacían fallar a la V1, los maneja mucho mejor gracias a los datos sintéticos; aun así, compruébalo con tus imágenes.</p>
     </div>
   </div>
   <figure class="compare-media" data-compare data-before="la imagen RGB" data-after="el mapa de profundidad">
@@ -629,7 +636,7 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
 </section>
 
 <section id="profundidad-usos" data-title="Aplicaciones" data-layout="visual">
-  <div class="section-copy"><h2>Aplicaciones depth</h2></div>
+  <div class="section-copy"><h2>Aplicaciones de la profundidad</h2></div>
   <p class="slide-lead">¿Para qué sirve un mapa de profundidad?</p>
   <div class="note-grid note-grid--two">
     <div>
@@ -645,11 +652,11 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
       <p>Convertir una foto plana en una estructura 3D navegable (malla o nube de puntos) al combinar la imagen RGB con su mapa de profundidad.</p>
     </div>
     <div>
-      <h3>Filtro de imagen</h3>
-      <p>Podemos eliminar partes de la imagen que no están en la escena que nos interesa aplicando un threshold.</p>
+      <h3>Recorte por distancia</h3>
+      <p>Un umbral sobre el mapa elimina lo que queda más lejos (o más cerca) de lo que interesa, sin clases ni etiquetas.</p>
     </div>
   </div>
-  <p class="slide-callout"><strong>Profundidad relativa vs. métrica.</strong> Estos modelos suelen estimar profundidad relativa (mapas de calor). Para obtener metros reales se necesita calibración de cámara o modelos específicos de metric depth estimation.</p>
+  <p class="slide-callout"><strong>Profundidad relativa vs. métrica.</strong> Estos modelos suelen estimar profundidad relativa (mapas de calor). Para obtener metros reales se necesita calibración de cámara o un modelo de profundidad métrica; Depth Anything V2 tiene variantes métricas para interior y exterior.</p>
 </section>
 
 <section id="profundidad-metrica" data-title="Escala" data-layout="question">
@@ -664,44 +671,107 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
 <section id="recetario" data-title="Recetario" data-layout="practice">
   <div class="section-copy">
     <h2>Las seis tareas, seis recetas</h2>
-    <p class="lead">Lo mínimo para arrancar cada una. Todas siguen el mismo patrón de Transformers.</p>
+    <p class="lead">Lo mínimo para arrancar cada una, con el mismo código que usa el cuaderno. Elige la tarea.</p>
   </div>
-  <pre class="code-sample" data-copy><code>from transformers import pipeline
+  <div class="mode-lab mode-lab--six mode-lab--print-all" data-mode-switch>
+    <div class="mask-prompts" role="group" aria-label="Qué tarea">
+      <button type="button" data-mode="pose" aria-pressed="true"
+        data-note="Top-down: RT-DETR encuentra a las personas y ViTPose les pone 17 puntos. ViTPose no busca personas por su cuenta; sin las cajas no hace nada.">Pose</button>
+      <button type="button" data-mode="ocr"
+        data-note="TrOCR lee una sola línea de texto ya recortada. Para una página entera o una placa hace falta un detector de texto delante, o un VLM.">OCR</button>
+      <button type="button" data-mode="superresolucion"
+        data-note="Duplica el lado de la imagen. El detalle nuevo lo pone el modelo, así que no sirve como prueba de lo que había.">Superresolución</button>
+      <button type="button" data-mode="fondo"
+        data-note="RMBG ejecuta código de su propio repositorio, de ahí trust_remote_code. Su licencia no permite uso comercial sin acuerdo con BRIA.">Fondo</button>
+      <button type="button" data-mode="profundidad"
+        data-note="Profundidad relativa: claro es cerca y oscuro lejos, sin metros. Para medir distancias hace falta un modelo métrico o calibrar la cámara.">Profundidad</button>
+      <button type="button" data-mode="matching"
+        data-note="Parejas de puntos entre dos fotos de la misma escena, cada una con su puntuación. Los pesos de SuperPoint son solo para investigación no comercial.">Matching</button>
+    </div>
+    <pre class="code-sample" data-copy data-output="pose"><code># Pose: personas y sus 17 puntos
+import torch
 from PIL import Image
+from transformers import AutoProcessor, RTDetrForObjectDetection, VitPoseForPoseEstimation
 
 image = Image.open("mi_imagen.jpg").convert("RGB")
 
-# 1. Pose: puntos clave del cuerpo
-pose = pipeline("keypoint-detection", model="usyd-community/vitpose-base-simple")
-print(pose(image))
+# 1. Encontrar a las personas
+det_processor = AutoProcessor.from_pretrained("PekingU/rtdetr_r50vd_coco_o365")
+detector = RTDetrForObjectDetection.from_pretrained("PekingU/rtdetr_r50vd_coco_o365")
+with torch.no_grad():
+    detections = detector(**det_processor(images=image, return_tensors="pt"))
+found = det_processor.post_process_object_detection(
+    detections, target_sizes=[(image.height, image.width)], threshold=0.5)[0]
+person_id = [i for i, name in detector.config.id2label.items() if name == "person"][0]
+boxes = found["boxes"][found["labels"] == person_id].numpy()
+boxes[:, 2:] -= boxes[:, :2]   # ViTPose quiere x, y, ancho, alto
 
-# 2. OCR: texto de la imagen
-ocr = pipeline("image-to-text", model="microsoft/trocr-base-printed")
-print(ocr(image))
+# 2. Ponerles el esqueleto
+pose_processor = AutoProcessor.from_pretrained("usyd-community/vitpose-plus-base")
+pose_model = VitPoseForPoseEstimation.from_pretrained("usyd-community/vitpose-plus-base")
+inputs = pose_processor(image, boxes=[boxes], return_tensors="pt")
+inputs["dataset_index"] = torch.tensor([0])   # 0: los 17 puntos de COCO
+with torch.no_grad():
+    poses = pose_model(**inputs)
+people = pose_processor.post_process_pose_estimation(poses, boxes=[boxes])[0]
+print(len(people), people[0]["keypoints"].shape)   # personas, (17, 2)</code></pre>
+    <pre class="code-sample" data-copy data-output="ocr" hidden><code># OCR: texto de una línea
+import torch
+from PIL import Image
+from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 
-# 3. Superresolución: más detalle
-sr = pipeline("image-to-image", model="caidas/swin2SR-classical-sr-x2-64")
-sr(image).save("ampliada.png")
+line = Image.open("una_linea.jpg").convert("RGB")   # una sola línea, ya recortada
+processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-printed")
+model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-printed")
 
-# 4. Fondo: recorte con canal alfa
-fondo = pipeline("image-segmentation", model="briaai/RMBG-1.4")
-fondo(image).save("sin_fondo.png")
+pixel_values = processor(line, return_tensors="pt").pixel_values
+with torch.no_grad():
+    ids = model.generate(pixel_values)
+print(processor.batch_decode(ids, skip_special_tokens=True)[0])</code></pre>
+    <pre class="code-sample" data-copy data-output="superresolucion" hidden><code># Superresolución: el doble de lado
+import numpy as np
+import torch
+from PIL import Image
+from transformers import AutoImageProcessor, Swin2SRForImageSuperResolution
 
-# 5. Profundidad: distancia relativa
+image = Image.open("mi_imagen.jpg").convert("RGB")
+processor = AutoImageProcessor.from_pretrained("caidas/swin2SR-classical-sr-x2-64")
+model = Swin2SRForImageSuperResolution.from_pretrained("caidas/swin2SR-classical-sr-x2-64")
+
+with torch.no_grad():
+    output = model(**processor(image, return_tensors="pt"))
+pixels = output.reconstruction.squeeze().clamp(0, 1).permute(1, 2, 0).numpy()
+Image.fromarray((pixels * 255).astype(np.uint8)).save("ampliada.png")</code></pre>
+    <pre class="code-sample" data-copy data-output="fondo" hidden><code># Fondo: recorte con canal alfa
+from transformers import pipeline
+
+# RMBG ejecuta código de su propio repositorio: hay que permitirlo
+remover = pipeline("image-segmentation", model="briaai/RMBG-1.4", trust_remote_code=True)
+cutout = remover("mi_imagen.jpg")                   # RGBA con el fondo transparente
+cutout.save("sin_fondo.png")
+mask = remover("mi_imagen.jpg", return_mask=True)   # solo el canal alfa</code></pre>
+    <pre class="code-sample" data-copy data-output="profundidad" hidden><code># Profundidad: distancia relativa
+from transformers import pipeline
+
 depth = pipeline("depth-estimation", model="depth-anything/Depth-Anything-V2-Small-hf")
-depth(image)["depth"].save("profundidad.png")
+result = depth("mi_imagen.jpg")
+result["depth"].save("profundidad.png")   # claro es cerca, oscuro lejos</code></pre>
+    <pre class="code-sample" data-copy data-output="matching" hidden><code># Matching: correspondencias entre dos fotos
+from transformers import pipeline
 
-# 6. Matching: correspondencias entre dos fotos
-match = pipeline("keypoint-matching", model="ETH-CVG/lightglue_superpoint")
-print(match([[Image.open("vista_1.jpg"), Image.open("vista_2.jpg")]]))</code></pre>
+matcher = pipeline("keypoint-matching", model="ETH-CVG/lightglue_superpoint")
+matches = matcher(["vista_1.jpg", "vista_2.jpg"], threshold=0.9)
+print(len(matches), matches[0])   # un punto en cada foto y su puntuación</code></pre>
+    <p class="lab-message" data-mode-note aria-live="polite">Top-down: RT-DETR encuentra a las personas y ViTPose les pone 17 puntos. ViTPose no busca personas por su cuenta; sin las cajas no hace nada.</p>
+  </div>
   <div class="slide-prose">
     <ul>
       <li>Cada tarea es independiente: ejecuta solo la que necesites y no cargues el resto.</li>
-      <li>Revisa la licencia antes de llevarlo a producción. <strong>RMBG-1.4 no permite uso comercial</strong> sin acuerdo con BRIA.</li>
+      <li>Revisa la licencia antes de llevarlo a producción. <strong>RMBG-1.4 y LightGlue con SuperPoint no permiten uso comercial</strong> sin acuerdo.</li>
       <li>Para encadenar dos, empieza por profundidad y usa el mapa como máscara: es la combinación más directa.</li>
     </ul>
   </div>
-  <div class="print-detail"><p>Los identificadores corresponden a modelos publicados en Hugging Face a fecha de septiembre de 2026. La API de <code>pipeline</code> puede cambiar el nombre de alguna tarea entre versiones de transformers; si una falla, busca la tarea en la ficha del modelo. El cuaderno del tema ejecuta estas seis con imágenes de ejemplo y deja el encadenado como ejercicio.</p></div>
+  <div class="print-detail"><p>Las recetas están contrastadas el 1 de octubre de 2026 con el código de transformers 5.18. En la versión 5 ya no existen las tareas de pipeline image-to-text ni image-to-image, y nunca ha existido una de keypoint-detection: por eso pose, OCR y superresolución cargan el modelo directamente, igual que el cuaderno. El cuaderno ejecuta cinco de las seis tareas con imágenes de ejemplo, todas menos matching, y deja el encadenado como ejercicio.</p></div>
 </section>
 
 <section id="checklist" data-title="Checklist" data-layout="practice">
