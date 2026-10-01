@@ -31,7 +31,7 @@ body.course-ready { padding-bottom: 0; }
 .outcome-flow div { min-height: 0; padding: 6mm; }
 .evaluation-list { max-width: 100%; }
 .evolution-line { max-width: 100%; }
-.print-detail { display: block; margin-top: 12mm; color: var(--color-text-muted); font-size: 11pt; line-height: 1.6; }
+.print-detail { display: block; margin-top: 8mm; color: var(--color-text-muted); font-size: 10pt; line-height: 1.5; }
 .print-detail p { margin: 0; }
 
 /* Laboratorios en papel: se conserva el ejemplo y su lectura; desaparecen los controles. */
@@ -91,8 +91,12 @@ body.course-ready { padding-bottom: 0; }
 .checklist span { font-size: 10pt; }
 .calc-layout { grid-template-columns: 1fr 1fr; gap: 8mm; }
 .calc-figure strong { font-size: 20pt; }
-.chooser-result { padding: 4mm 5mm; }
+.chooser-result { margin-top: 3mm; padding: 2.5mm 4mm; }
+.chooser-result p { margin-bottom: 1.5mm; }
 .chooser-result[hidden] { display: block !important; }
+/* On paper every recommendation is shown: two columns keep them on one page */
+.chooser { display: grid; grid-template-columns: 1fr 1fr; gap: 0 5mm; }
+.chooser > :not(.chooser-result) { grid-column: 1 / -1; }
 .chooser-questions label { padding: 1mm 0; }
 .model-rows > div { padding: 2.5mm 0; font-size: 10pt; }
 
@@ -115,10 +119,12 @@ body.course-ready { padding-bottom: 0; }
 .slide-split .media-container img { max-width: 88mm; }
 .lesson-image--wide { max-width: 130mm; }
 .lesson-image--medium { max-width: 105mm; }
-.ocr-stage { max-width: 76mm; margin: 0 auto; }
+.ocr-stage { max-width: 64mm; margin: 0 auto; }
 .anomaly-stage { max-width: 104mm; margin: 0 auto; }
-.mode-lab .mask-prompts { display: none; }
+/* Mode buttons do nothing on paper, wherever the switch lives */
+[data-mode-switch] .mask-prompts, [data-mode-switch] .mask-prompts + .field-label, [data-mode-switch] .field-label:has(+ .mask-prompts) { display: none; }
 .mode-lab .code-sample[hidden] { display: none; }
 /* A recipe book prints every recipe, not only the selected tab */
 .mode-lab--print-all .code-sample[hidden] { display: block; }
+.mode-lab--print-all .code-sample { break-inside: avoid; }
 .mode-lab--print-all .lab-message { display: none; }

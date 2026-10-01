@@ -1,6 +1,6 @@
 # Estado de la migración
 
-Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
+Actualizado: 1 de octubre de 2026. Este archivo es el punto de reanudación.
 
 ## Próxima acción
 
@@ -13,15 +13,37 @@ Actualizado: 16 de septiembre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 40 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones, el puente al Hub y las tres salidas de RF-DETR |
-| Tema 02 · Hugging Face | 13 pantallas fieles al PDF: 6 diapositivas, 3 preguntas, el comprobador de licencias, el constructor de pipeline y los Spaces para probar |
-| Tema 03 · Multimodal | 23 pantallas fieles al PDF: 18 diapositivas, 3 preguntas y la similitud coseno en vivo |
-| Tema 04 · DINO | 24 pantallas fieles al PDF: 16 diapositivas, 3 preguntas, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
-| Tema 05 · SAM | 15 pantallas fieles al PDF: 9 diapositivas, 3 preguntas, los prompts por puntos y el recorte sobre fondo negro |
-| Tema 06 · Más visión | 21 pantallas fieles al PDF: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR y la verificación geométrica |
+| Tema 01 · Detección | 44 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones, el puente al Hub, las tres salidas de RF-DETR, presupuesto y caso |
+| Tema 02 · Hugging Face | 18 pantallas: 6 diapositivas, 3 preguntas, el comprobador de licencias, el constructor de pipeline, la memoria de GPU, los Spaces y el reto de diez minutos |
+| Tema 03 · Multimodal | 27 pantallas: 18 diapositivas, 5 preguntas, la similitud coseno en vivo y el asistente de modelo |
+| Tema 04 · DINO | 27 pantallas: 16 diapositivas, 3 preguntas, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
+| Tema 05 · SAM | 18 pantallas: 9 diapositivas, 3 preguntas, los prompts por puntos, el recorte sobre fondo negro y el asistente de versión |
+| Tema 06 · Más visión | 24 pantallas: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR, la verificación geométrica y el recetario por pestañas |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 disponibles y regenerados a plena opacidad: 46, 18, 28, 28, 18 y 26 páginas |
+| PDFs | Temas 01–06 regenerados el 1 de octubre: 44, 18, 27, 27, 18 y 26 páginas |
+
+## Revisión exhaustiva · 1 de octubre
+
+Encargo del profesor: revisar todo el curso tema por tema, contenido, renderizado y PDF, y corregir lo necesario.
+
+**Método.** Lectura completa de los seis temas y auditoría automática de las 158 pantallas en escritorio a 1440 px, móvil a 390 y 320 px y presentación a 1280 × 720: desbordamientos, imágenes rotas o ampliadas por encima de su resolución, escala de cada diapositiva, errores de consola y peticiones fallidas. Cada dato corregido se contrastó con el paper, la documentación o la ficha del modelo y queda registrado en el `sources.json` de su tema.
+
+**Errores de contenido corregidos, por tema:**
+
+- **01.** El diagrama presentado como arquitectura de RF-DETR era la figura 1 de Deformable DETR; la pantalla pasa a contar el linaje (RF-DETR conserva el decoder y pone DINOv2 en el encoder). YOLOv1 era más rápido pero menos preciso que los detectores de dos etapas. Ultralytics no publicó v6, v7, v9 ni v10. El umbral 0,5 de IoU es el de PASCAL VOC, y COCO promedia de 0,50 a 0,95. Tres referencias mandaban al tema equivocado. La línea de tiempo se amplía con YOLOv10, YOLO11, YOLO12 y YOLO26.
+- **02.** La receta fijaba la versión con `revision="main"`, que es una rama y no fija nada. Cifras del Hub actualizadas: 3,1 millones de modelos y 1,07 millones de datasets. Los Spaces se describen como son hoy (Gradio, Docker o HTML estático; crear uno que ejecute código pide plan de pago). El contador de la tabla de candidatos decía 7 con 9 filas. El reto de diez minutos pasa a su propia pantalla.
+- **03.** CLIP y Grounding DINO esperan los prompts en inglés, y la receta y el constructor del tema 02 los tenían en castellano. El DINO de Grounding DINO es un detector, distinto del DINO autosupervisado del tema 04. Un lote de 32.768 pares tiene más de mil millones de pares negativos. Qwen se alinea con el cuaderno (Qwen3.5-2B) con aviso del cambio de formato de las cajas.
+- **04.** DINO no es la base de SAM ni de Grounding DINO; sí lo es de RF-DETR y de Depth Anything. Fechas reales en pantalla (2021, 2023, 2025) y datos de DINOv3 verificados. ImageNet y «billones» corregidos. Según el paper, la estudiante ve todas las vistas y la maestra solo las globales.
+- **05.** El alcance de SAM 3, frases nominales cortas, ya no se contradice entre pantallas, y SAM 1 no acepta texto en el modelo publicado. Receta y asistente con SAM 2.1 small, el del cuaderno.
+- **06.** Tres recetas fallaban con transformers 5: `image-to-text` e `image-to-image` desaparecieron en esa versión y `keypoint-detection` no ha existido nunca. El recetario usa ahora el código del cuaderno, con una receta por pestaña. LightGlue con SuperPoint es de uso no comercial. OKS se explica por la discrepancia entre anotadores, no por la rigidez de la articulación. Tesseract, MediaPipe, Swin2SR y Depth Anything actualizados. La diapositiva 83 ocupa dos pantallas para que la definición de OKS llegue sola antes del laboratorio.
+- **Créditos.** Referencias académicas de los seis temas, no solo del 01.
+
+**Maquetación.** En 36 pantallas había dos bloques pegados sin separación; una regla común los espacia. Las diapositivas que bajaban del 60 % de escala se reorganizaron (IoU, Pruébalo ahora, inspección, recetario) y la más reducida queda en el 62 %, unos 18 px de texto proyectada en 1080p. Los mapas de atención de DINO ya no se amplían por encima de su resolución. En papel, los asistentes imprimen sus recomendaciones en dos columnas, los botones de modo no se imprimen y las notas `.print-detail` van a 10 pt.
+
+**Pruebas nuevas:** contador estático frente a filas, URL absolutas y tarjeta social, tareas de `pipeline` existentes en transformers 5 en el constructor y en cualquier bloque de código, y recetario en pantalla y en papel.
+
+Estado: 84 pruebas unitarias y 43 de navegador correctas. PDF regenerados con una página por pantalla salvo el recetario, que ocupa tres con cada receta entera: 44, 18, 27, 27, 18 y 26 páginas.
 
 ## Cuadernos de Colab revisados · 17 de septiembre
 
@@ -376,6 +398,7 @@ Esto demuestra que la implementación local carga, navega y cabe. La aceptación
 | 2026-09-18 | Icono de marca | Favicon con el simbolo de Datamecum en 32, 180 y 512 px mas `.ico`, enlazado en las cinco plantillas |
 | 2026-09-18 | Cuaderno 5 | Qwen3.5-2B en la parte de Qwen + SAM: 4,55 GB frente a 7,51 GB, con la conversion de coordenadas 0-1000 que necesita SAM |
 | 2026-09-18 | Tarjeta social | Imagen de 1200 x 630 con logo y titulo, canonical y etiquetas og: con URL absoluta, presentacion y 404 sin indexar |
+| 2026-10-01 | Revisión exhaustiva | Seis temas revisados: errores de contenido corregidos con fuente, recetas válidas en transformers 5, separación entre bloques, diapositivas densas reorganizadas y PDF con una página por pantalla |
 
 ## Al modificar un tema
 

@@ -76,15 +76,20 @@ Qué significa en la práctica:
 | `mode-switch` | Botones que eligen qué bloque de salida se ve, con capa opcional sobre la imagen |
 | `anomaly-map` | Mapa de anomalía por celdas sobre una foto, con umbral de rechazo |
 | `matching-lab` | Dos vistas y sus parejas, filtradas por el error de reproyección |
+| `compare-media--small` | Comparador para fuentes de poca resolución: los recortes de 360 px se ven nítidos hasta unos 440 px |
+| `evolution-line--continued` | Segunda fila de una línea de tiempo larga, con el mismo ancho y cuerpo que la primera |
+| `mode-lab--six` y `mode-lab--print-all` | Conmutador de seis opciones en dos filas; en papel imprime todos los bloques, como el recetario del tema 06 |
 
 Al imprimir, toda animación de entrada se congela en su primer fotograma: `lesson-enter` arranca en `opacity: .35` y dejaba el PDF entero lavado. Cualquier animación nueva debe desactivarse en `print.css`. Del mismo modo, ninguna imagen debe imprimirse por encima de su resolución: a 96 px por pulgada de CSS, un fichero de 640 px no debe pasar de unos 108 mm de ancho si se quieren 150 puntos por pulgada.
 
 Un hijo directo de `slide-split` no puede llevar `margin: 0 auto`: el margen automático lo convierte en ancho de contenido y lo saca de su columna. Por la misma razón, **un contenedor cuyo texto cambia en tiempo de ejecución necesita ancho definido** (`width: min(900px, 100%)`), no solo `max-width`: si no, cambia de tamaño cada vez que cambia el mensaje y la escena da un salto.
 
+Los componentes de contenido no traen margen vertical propio: la separación entre dos bloques hermanos de una pantalla la pone una sola regla en `widgets.css`. No añadir márgenes sueltos para separar bloques; si un bloque nuevo se apila con otros, añadirlo a esa regla.
+
 ### Las tres salidas siguen conviviendo
 
 - **Web:** la pantalla crece todo lo que necesite y se recorre con la barra flotante. La barra reserva espacio al final del documento.
-- **Presentación:** cada diapositiva envuelve su contenido en `.slide-fit` y `src/js/presentation.js` la reduce lo justo para caber en 1280 × 720, igual que un lienzo de diapositiva. No hace falta recortar texto para que entre.
+- **Presentación:** cada diapositiva envuelve su contenido en `.slide-fit` y `src/js/presentation.js` la reduce lo justo para caber en 1280 × 720, igual que un lienzo de diapositiva. No hace falta recortar texto para que entre. Si una diapositiva baja del 60 % de escala, reorganizarla en columnas o dividir la pantalla propia en dos: proyectada en 1080p, por debajo de esa escala el texto queda pequeño.
 - **PDF:** `print.css` ajusta los componentes para que cada pantalla ocupe una página A4. Una diapositiva muy densa puede necesitar dos páginas; lo que no se admite es contenido cortado.
 
 ## Contenido práctico
@@ -183,9 +188,11 @@ Un módulo nuevo se conecta en `src/js/reading.js` y en `src/js/presentation.js`
 
 ### Recursos y Colab
 
-- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo. En lectura, limitar su altura en relación con la ventana y usar `object-fit: contain`: una imagen alta puede reducirse, pero nunca deformarse ni desplazar la navegación. Para una comparación inseparable —por ejemplo, RGB frente a profundidad— usar `visual-pair`; apilarla en móvil.
+- Imágenes y fuentes locales; conservar proporción, dimensiones reales y texto alternativo. En lectura, limitar su altura en relación con la ventana y usar `object-fit: contain`: una imagen alta puede reducirse, pero nunca deformarse ni desplazar la navegación. Para una comparación inseparable (por ejemplo, RGB frente a profundidad) usar `visual-pair`; apilarla en móvil.
 - Animaciones con póster inicial y un solo control **Ver animación / Detener**. Preferir WebP animado para las exclusiones de Git existentes.
 - Colab se abre mediante un enlace real al notebook en GitHub. El alumno guarda su copia en Drive.
+- El código de las recetas tiene que funcionar con la versión vigente de transformers. En la 5 desaparecieron las tareas de `pipeline` `image-to-text` e `image-to-image`, y `keypoint-detection` nunca existió; `tests/pipeline.test.mjs` guarda la lista de tareas de la 5.18 y falla si un bloque de código usa otra. Cuando una tarea no tiene `pipeline`, cargar el modelo directamente como hace el cuaderno.
+- CLIP y Grounding DINO aprendieron con textos en inglés: en el código, sus prompts y clases van en inglés aunque la pantalla los traduzca para explicarlos.
 - Una lista sencilla y un único enlace **Abrir en Colab**. No crear tarjetas coloreadas, autenticar con Google ni cargar modelos pesados en esta web.
 - Mantener autorías y licencias en los archivos correspondientes, sin ocupar la pantalla de aprendizaje.
 
