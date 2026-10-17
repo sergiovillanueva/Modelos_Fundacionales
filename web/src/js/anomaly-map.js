@@ -23,8 +23,9 @@ export function initAnomalyMap(root = document) {
     const message = lab.querySelector('[data-anomaly-map-message]');
 
     const size = Number(lab.dataset.grid || 16);
-    const cells = [];
-    for (let index = 0; index < size * size; index += 1) {
+    // The HTML may already carry the resolved cells; create them only when missing.
+    const cells = [...grid.querySelectorAll('rect')];
+    for (let index = cells.length; index < size * size; index += 1) {
       const rect = document.createElementNS(SVG, 'rect');
       rect.setAttribute('x', String(index % size));
       rect.setAttribute('y', String(Math.floor(index / size)));

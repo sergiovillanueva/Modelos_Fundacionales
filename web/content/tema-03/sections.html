@@ -219,6 +219,40 @@
   </ol>
 </section>
 
+<section id="contraste-lab" data-title="Temperatura" data-layout="lab">
+  <div class="section-copy">
+    <h2>La temperatura decide cuánto castiga un error</h2>
+    <p class="lead">Cuatro fotos y sus cuatro textos. Cada fila reparte la probabilidad entre los textos; la pérdida contrastiva quiere todo en la diagonal. La foto del gato aún se parece más a «un perro»: mira qué pasa con ella al cambiar la temperatura.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-contrast-lab>
+    <div class="lab-stage">
+      <table class="contrast-matrix">
+        <caption>Probabilidad de cada texto para cada foto</caption>
+        <thead><tr><th scope="col"><span class="sr-only">Foto</span></th><th scope="col">«un perro»</th><th scope="col">«un gato»</th><th scope="col">«un coche»</th><th scope="col">«una bici»</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Foto: perro</th><td data-contrast-cell="0-0" class="is-pair is-strong" style="--p: 0.877">88 %</td><td data-contrast-cell="0-1" style="--p: 0.123">12 %</td><td data-contrast-cell="0-2" style="--p: 0.000">0 %</td><td data-contrast-cell="0-3" style="--p: 0.000">0 %</td></tr>
+          <tr class="is-wrong"><th scope="row">Foto: gato</th><td data-contrast-cell="1-0" class="is-strong" style="--p: 0.747">75 %</td><td data-contrast-cell="1-1" class="is-pair" style="--p: 0.253">25 %</td><td data-contrast-cell="1-2" style="--p: 0.000">0 %</td><td data-contrast-cell="1-3" style="--p: 0.000">0 %</td></tr>
+          <tr><th scope="row">Foto: coche</th><td data-contrast-cell="2-0" style="--p: 0.000">0 %</td><td data-contrast-cell="2-1" style="--p: 0.000">0 %</td><td data-contrast-cell="2-2" class="is-pair is-strong" style="--p: 0.867">87 %</td><td data-contrast-cell="2-3" style="--p: 0.133">13 %</td></tr>
+          <tr><th scope="row">Foto: bici</th><td data-contrast-cell="3-0" style="--p: 0.000">0 %</td><td data-contrast-cell="3-1" style="--p: 0.001">0 %</td><td data-contrast-cell="3-2" style="--p: 0.105">11 %</td><td data-contrast-cell="3-3" class="is-pair is-strong" style="--p: 0.894">89 %</td></tr>
+        </tbody>
+      </table>
+      <p class="lab-note">Recuadradas, las parejas correctas. La fila marcada es la que el modelo todavía falla.</p>
+    </div>
+    <div class="lab-readout">
+      <div class="metric-pair">
+        <p class="metric"><span>Pérdida del lote</span><strong data-contrast-loss>0,38</strong></p>
+        <p class="metric"><span>Gato → «un gato»</span><strong data-contrast-cat>25 %</strong></p>
+      </div>
+      <p class="lab-message" data-contrast-message aria-live="polite">Zona útil: los pares correctos se llevan casi toda la probabilidad y el error del gato pesa sin dominar la pérdida.</p>
+      <label for="contrast-temperature">Temperatura τ <b data-contrast-value>0,07</b></label>
+      <input type="range" id="contrast-temperature" data-contrast-temperature min="0" max="12" value="5" step="1">
+      <div class="range-ends" aria-hidden="true"><span>Fría: afila</span><span>Caliente: aplana</span></div>
+      <p class="lab-disclaimer">Vectores de juguete de tres números, no salen de CLIP. CLIP usa 512 dimensiones o más, lotes de 32.768 pares y aprende τ durante el entrenamiento, empezando en 0,07.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el estado con τ = 0,07, el valor con el que CLIP empieza a entrenar: pérdida 0,38 y la foto del gato da un 25 % a «un gato» y un 75 % a «un perro». Las similitudes se dividen por τ antes del softmax. Con τ = 1 todas las filas quedan repartidas, la pérdida sube a 1,05 y un acierto apenas se distingue de un error. Con τ = 0,01 los aciertos llegan al 100 %, pero el gato da casi todo a «un perro» y la pérdida sube a 0,98. El mínimo de este lote está cerca de 0,05. Por eso CLIP no fija la temperatura: la aprende como un parámetro más.</p></div>
+</section>
+
 <section id="clip-limites" data-title="Límites CLIP" data-layout="visual">
   <div class="section-copy"><h2>Limitaciones de CLIP</h2></div>
   <div class="note-grid note-grid--two">

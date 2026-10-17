@@ -123,7 +123,7 @@
 <section id="oks" data-title="OKS" data-layout="lab">
   <div class="section-copy">
     <h2>El mismo error no penaliza igual</h2>
-    <p class="lead">La tolerancia depende de la articulación y del tamaño de la persona. Mueve las dos cosas y mira cuándo la pose deja de contar como acierto.</p>
+    <p class="lead">La tolerancia depende de la articulación y de la escala de la persona (la raíz de su área). Mueve las dos cosas y mira cuándo la pose deja de contar como acierto.</p>
   </div>
   <div class="lab-layout" data-oks-lab data-scale="150">
     <div class="lab-stage">
@@ -175,17 +175,17 @@
           <span class="candidate-value" data-joint-value>0,99</span>
         </li>
       </ul>
-      <p class="lab-message" data-oks-message aria-live="polite">En una persona de 150 px, 5 px dejan el ojo en 0,80 y la cadera en 0,99. El ojo pierde medio punto a partir de 9 px.</p>
+      <p class="lab-message" data-oks-message aria-live="polite">Con escala de 150 px, 5 px dejan el ojo en 0,80 y la cadera en 0,99. El ojo pierde medio punto a partir de 9 px.</p>
       <label for="oks-distance">Error de predicción <b data-oks-value>5 px</b></label>
       <input type="range" id="oks-distance" data-oks-distance min="0" max="40" value="5" step="1">
       <div class="range-ends" aria-hidden="true"><span>0 px</span><span>40 px</span></div>
-      <label for="oks-scale">Tamaño de la persona <b data-oks-scale-value>150 px</b></label>
+      <label for="oks-scale">Escala de la persona, √área <b data-oks-scale-value>150 px</b></label>
       <input type="range" id="oks-scale" data-oks-scale min="60" max="400" value="150" step="10">
       <div class="range-ends" aria-hidden="true"><span>60 px, al fondo</span><span>400 px, en primer plano</span></div>
     </div>
   </div>
   <p class="slide-callout">Esto explica el fallo más habitual en planta: el modelo va bien con la persona cerca y se desmorona con la persona al fondo, aunque el error en píxeles sea el mismo. Las dos salidas son acercar la cámara o trabajar en top-down, detectando primero a cada persona y recortándola para que llegue grande al modelo de pose.</p>
-  <div class="print-detail"><p>Esta página recoge el estado con 5 px de error en una persona de 150 px. OKS aplica a cada punto exp(−d² / (2 s² k²)), donde d es el error en píxeles, s la escala de la persona y k = 2σ una constante propia de cada articulación medida sobre anotaciones humanas. Los ojos tienen σ = 0,025 y la cadera σ = 0,107, así que la cadera tolera más de cuatro veces el error antes de penalizar lo mismo. La escala entra dividiendo, de modo que la tolerancia en píxeles es proporcional al tamaño de la persona: en una persona de 60 px el ojo pierde medio punto a partir de 4 px, y en una de 400 px aguanta hasta 24 px. El OKS del esqueleto es la media de los puntos visibles, y sustituye al IoU cuando se calcula AP para pose: COCO promedia AP con umbrales de 0,50 a 0,95, así que el 0,50 de esta pantalla es el criterio más indulgente de los diez.</p></div>
+  <div class="print-detail"><p>Esta página recoge el estado con 5 px de error y escala de 150 px. La escala de COCO es la raíz del área de la persona, y el OKS de la pantalla promedia solo tres articulaciones para que se vea el efecto. OKS aplica a cada punto exp(−d² / (2 s² k²)), donde d es el error en píxeles, s la escala de la persona y k = 2σ una constante propia de cada articulación medida sobre anotaciones humanas. Los ojos tienen σ = 0,025 y la cadera σ = 0,107, así que la cadera tolera más de cuatro veces el error antes de penalizar lo mismo. La escala entra dividiendo, de modo que la tolerancia en píxeles es proporcional al tamaño de la persona: en una persona de 60 px el ojo pierde medio punto a partir de 4 px, y en una de 400 px aguanta hasta 24 px. El OKS del esqueleto es la media de los puntos visibles, y sustituye al IoU cuando se calcula AP para pose: COCO promedia AP con umbrales de 0,50 a 0,95, así que el 0,50 de esta pantalla es el criterio más indulgente de los diez.</p></div>
 </section>
 
 <section id="pose-oks-pregunta" data-title="Tolerancia" data-layout="question">
@@ -306,7 +306,7 @@
         <rect x="82" y="378" width="175" height="23"><title>www.Embedded-Lab.com</title></rect>
         </svg>
       </div>
-      <figcaption>Serigrafía de una placa real, con texto pequeño, girado por el brillo del cobre y mezclado con los componentes.</figcaption>
+      <figcaption>Serigrafía de una placa real, con texto pequeño, girado por el brillo del cobre y mezclado con los componentes. Las cajas están medidas a mano para enseñar el formato de salida.</figcaption>
     </figure>
     <div class="lab-readout">
       <p class="field-label" id="ocr-mode-label">Qué herramienta usas</p>
@@ -633,6 +633,29 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
     </div>
     <figcaption>Una sola cámara y una sola imagen: el modelo deduce qué está cerca y qué está lejos.</figcaption>
   </figure>
+</section>
+
+<section id="profundidad-corte" data-title="Corte" data-layout="lab">
+  <div class="section-copy">
+    <h2>Recortar una foto por distancia</h2>
+    <p class="lead">El mapa de profundidad de la pantalla anterior, usado como filtro: todo lo que queda más lejos que el corte se aclara. No hacen falta clases ni etiquetas: basta un umbral sobre la cercanía.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-depth-lab data-rgb="{{ASSET:tema-06/presentacion/profundidad-escena-rgb.webp}}" data-closeness="{{ASSET:tema-06/presentacion/profundidad-escena-cercania.webp}}">
+    <div class="lab-stage">
+      <img class="depth-photo" data-depth-photo src="{{ASSET:tema-06/presentacion/profundidad-recorte.webp}}" width="1046" height="522" alt="La carretera con el camión: lo que queda más lejos que el corte aparece aclarado y lo cercano conserva su color.">
+    </div>
+    <div class="lab-readout">
+      <div class="metric-pair">
+        <p class="metric"><span>Imagen que se conserva</span><strong data-depth-share>42 %</strong></p>
+      </div>
+      <p class="lab-message" data-depth-message aria-live="polite">Queda la trasera del camión, y la pantalla que muestra otra carretera sigue entera: el modelo le da la distancia del camión aunque enseñe una carretera lejana.</p>
+      <label for="depth-threshold">Corte de cercanía <b data-depth-value>100</b> de 255</label>
+      <input type="range" id="depth-threshold" data-depth-threshold min="0" max="250" value="100" step="5">
+      <div class="range-ends" aria-hidden="true"><span>Lejos</span><span>Cerca</span></div>
+      <p class="lab-disclaimer">Mapa precalculado, el de la pantalla anterior; el corte se aplica en tu navegador. La escala es relativa: 100 no equivale a ninguna distancia en metros.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el corte en 100 de 255, que conserva el 42 % de la imagen: la trasera del camión, el asfalto cercano y el coche de la derecha. El costado del camión se aleja de la cámara y queda fuera. La pantalla trasera, que muestra la carretera de delante, se conserva entera porque el modelo mide a qué distancia está la superficie de la pantalla; la carretera que aparece en ella no cuenta. Con el corte en 30 solo desaparece el cielo; por encima de 135 el camión entero queda al otro lado.</p></div>
 </section>
 
 <section id="profundidad-usos" data-title="Aplicaciones" data-layout="visual">

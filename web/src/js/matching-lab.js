@@ -29,7 +29,7 @@ export function initMatchingLab(root = document) {
 
   function update() {
     const threshold = Number(slider.value);
-    const {scored, inliers, reliable, solvable} = verifyMatches(homography, pairs, threshold);
+    const {scored, inliers, reliable, solvable, contaminated} = verifyMatches(homography, pairs, threshold, {noise: ruido});
 
     for (const pair of scored) {
       pair.node.classList.toggle('is-inlier', pair.error <= threshold);
@@ -41,7 +41,7 @@ export function initMatchingLab(root = document) {
     if (dropped) dropped.textContent = String(scored.length - inliers.length);
 
     if (verdict) {
-      verdict.textContent = reliable ? 'Estimación sólida' : solvable ? 'Estimación frágil' : 'Sin solución';
+      verdict.textContent = reliable ? 'Estimación sólida' : !solvable ? 'Sin solución' : contaminated ? 'Estimación contaminada' : 'Estimación frágil';
       verdict.classList.toggle('is-permitido', reliable);
       verdict.classList.toggle('is-condiciones', !reliable && solvable);
       verdict.classList.toggle('is-prohibido', !solvable);

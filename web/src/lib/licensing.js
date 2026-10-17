@@ -38,8 +38,8 @@ const RULES = {
   'copyleft-red': {
     investigacion: ['permitido', 'Permitido. La obligación de publicar el código aparece al distribuir o al ofrecer un servicio.'],
     interno: ['permitido', 'Sin distribución no se dispara la obligación. En cuanto lo publiques o lo sirvas, sí.'],
-    producto: ['condiciones', 'Obliga a publicar tu código fuente completo. Si no quieres, busca una alternativa Apache-2.0 como RT-DETR o RF-DETR.'],
-    servicio: ['condiciones', 'La cláusula de red obliga a publicar tu código fuente completo aunque solo lo ofrezcas por web. Alternativas Apache-2.0: RT-DETR o RF-DETR.']
+    producto: ['condiciones', 'Obliga a publicar el código de la aplicación que lo incorpora. Si no quieres, busca una alternativa Apache-2.0 como RT-DETR o RF-DETR.'],
+    servicio: ['condiciones', 'La cláusula de red obliga a publicar el código de la aplicación que lo incorpora aunque solo la ofrezcas por web. Alternativas Apache-2.0: RT-DETR o RF-DETR.']
   },
   'no-comercial': {
     investigacion: ['permitido', 'Este es justo su caso de uso previsto.'],

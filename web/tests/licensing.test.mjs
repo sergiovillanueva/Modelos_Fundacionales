@@ -25,7 +25,7 @@ test('AGPL solo obliga cuando distribuyes o sirves el modelo', () => {
   assert.equal(evaluateLicense('agpl', 'interno').verdict, 'permitido');
   assert.equal(evaluateLicense('agpl', 'producto').verdict, 'condiciones');
   assert.equal(evaluateLicense('agpl', 'servicio').verdict, 'condiciones');
-  assert.match(evaluateLicense('agpl', 'servicio').reason, /código fuente completo/);
+  assert.match(evaluateLicense('agpl', 'servicio').reason, /código de la aplicación que lo incorpora/);
 });
 
 test('una licencia no comercial tampoco vale para un prototipo interno', () => {

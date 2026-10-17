@@ -127,6 +127,51 @@
   <div class="print-detail"><p>Las CNN incorporan localidad e invariancia aproximada a traslaciones. Siguen dentro de muchos detectores actuales, y una CNN también capta contexto global si se le añaden capas de atención o un campo receptivo grande.</p></div>
 </section>
 
+<section id="convolucion" data-title="Convolución" data-layout="lab">
+  <div class="section-copy">
+    <h2>Lo que hace una capa convolucional</h2>
+    <p class="lead">Un filtro de 3 × 3 recorre la imagen: cada píxel de salida es la suma de sus nueve vecinos multiplicados por nueve pesos. Cambia el filtro y mira qué se enciende; toca o pasa el ratón por las imágenes para ver la cuenta.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-conv-lab data-probe-x="53" data-probe-y="57">
+    <div class="lab-stage">
+      <div class="conv-pair">
+        <figure>
+          <div class="conv-frame">
+            <img data-conv-input src="{{ASSET:tema-01/presentacion/conv-entrada.webp}}" width="192" height="108" alt="Fachadas de edificios de una calle, en escala de grises y a baja resolución.">
+            <span class="conv-probe" data-conv-probe style="left: 27.083%; top: 51.852%; width: 1.563%; height: 2.778%" aria-hidden="true"></span>
+          </div>
+          <figcaption>Entrada, 192 × 108 píxeles</figcaption>
+        </figure>
+        <figure>
+          <div class="conv-frame" data-conv-pad tabindex="0" aria-label="Punto de lectura. Muévelo con las flechas; con mayúsculas avanza de cinco en cinco.">
+            <img data-conv-output src="{{ASSET:tema-01/presentacion/conv-vertical.webp}}" width="192" height="108" alt="Mapa de características con el filtro bordes verticales.">
+            <span class="conv-probe" data-conv-probe style="left: 27.083%; top: 51.852%; width: 1.563%; height: 2.778%" aria-hidden="true"></span>
+          </div>
+          <figcaption>Mapa de características</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="lab-readout">
+      <div class="mask-prompts" role="group" aria-label="Filtro">
+        <button type="button" data-conv-kernel="vertical" aria-pressed="true">Bordes verticales</button>
+        <button type="button" data-conv-kernel="horizontal" aria-pressed="false">Bordes horizontales</button>
+        <button type="button" data-conv-kernel="blur" aria-pressed="false">Desenfoque</button>
+        <button type="button" data-conv-kernel="sharpen" aria-pressed="false">Realce</button>
+      </div>
+      <div class="conv-math">
+        <div><span class="conv-caption">Vecindario</span><div class="conv-grid"><span data-conv-patch>17</span><span data-conv-patch>47</span><span data-conv-patch>122</span><span data-conv-patch>18</span><span data-conv-patch>51</span><span data-conv-patch>124</span><span data-conv-patch>20</span><span data-conv-patch>51</span><span data-conv-patch>122</span></div></div>
+        <span class="conv-op" aria-hidden="true">×</span>
+        <div><span class="conv-caption">Pesos <i data-conv-divisor></i></span><div class="conv-grid conv-grid--kernel"><span data-conv-weight class="is-negative">−1</span><span data-conv-weight>0</span><span data-conv-weight class="is-positive">1</span><span data-conv-weight class="is-negative">−2</span><span data-conv-weight>0</span><span data-conv-weight class="is-positive">2</span><span data-conv-weight class="is-negative">−1</span><span data-conv-weight>0</span><span data-conv-weight class="is-positive">1</span></div></div>
+        <span class="conv-op" aria-hidden="true">=</span>
+        <div><span class="conv-caption">Salida</span><strong data-conv-sum>419</strong></div>
+      </div>
+      <p class="lab-message" data-conv-message aria-live="polite">Se encienden los cambios de luz de izquierda a derecha: las aristas verticales de los edificios. El cielo, liso, queda negro.</p>
+      <p class="lab-disclaimer">Filtros escritos a mano y calculados en tu navegador. Una CNN aprende sus pesos durante el entrenamiento, y los de su primera capa acaban pareciéndose a estos.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el filtro de bordes verticales: pesos negativos a la izquierda y positivos a la derecha, de modo que la suma es grande donde la luz cambia en horizontal y cero en las zonas lisas. En el punto marcado, sobre una arista del edificio de la izquierda, la salida vale 419. El filtro de bordes horizontales es el mismo girado 90 grados y enciende cornisas y filas de ventanas. El desenfoque promedia los vecinos y el realce resta los vecinos al centro. Una capa convolucional aplica decenas de filtros como estos a la vez, y las capas siguientes combinan sus mapas para detectar texturas, partes y objetos.</p></div>
+</section>
+
 <section id="dos-etapas" data-title="Dos etapas" data-layout="visual">
   <div class="section-copy"><h2>Two-Stage: precisión a costa de complejidad</h2></div>
   <div class="slide-split slide-split--media-first">
@@ -295,7 +340,7 @@
 <section id="nms" data-title="NMS" data-layout="lab">
   <div class="section-copy">
     <h2>El umbral de NMS es un hiperparámetro</h2>
-    <p class="lead">Baja el umbral y desaparece un coche entero; súbelo y vuelven los duplicados.</p>
+    <p class="lead">El NMS mide cuánto se solapan dos cajas (su IoU, que se define unas pantallas más adelante). Baja el umbral y desaparece un coche entero; súbelo y vuelven los duplicados.</p>
   </div>
   <div class="lab-layout" data-nms-lab>
     <div class="lab-stage">
@@ -387,6 +432,77 @@
   </div>
 </section>
 
+<section id="asignacion-lab" data-title="Coste global" data-layout="lab">
+  <div class="section-copy">
+    <h2>Emparejar de una en una no basta</h2>
+    <p class="lead">Mueve p1, la predicción más segura, hacia el coche B. Emparejar por orden de confianza le da B y deja a p2 sin pareja útil; la asignación húngara minimiza el coste total.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-assignment-lab>
+    <div class="lab-stage">
+      <svg viewBox="0 0 160 86" role="img" aria-label="Tres coches en fila, A, B y C, y cuatro cajas predichas. El color de cada caja indica a qué coche se asigna.">
+        <rect class="nms-scene" x="0" y="72" width="160" height="14"/>
+        <g class="match-car">
+          <rect x="13" y="50" width="34" height="16" rx="4"/><rect x="20" y="40" width="20" height="12" rx="3"/>
+          <circle cx="21" cy="67" r="4"/><circle cx="39" cy="67" r="4"/>
+          <text x="30" y="61.5">A</text>
+        </g>
+        <g class="match-car">
+          <rect x="58" y="50" width="34" height="16" rx="4"/><rect x="65" y="40" width="20" height="12" rx="3"/>
+          <circle cx="66" cy="67" r="4"/><circle cx="84" cy="67" r="4"/>
+          <text x="75" y="61.5">B</text>
+        </g>
+        <g class="match-car">
+          <rect x="108" y="50" width="34" height="16" rx="4"/><rect x="115" y="40" width="20" height="12" rx="3"/>
+          <circle cx="116" cy="67" r="4"/><circle cx="134" cy="67" r="4"/>
+          <text x="125" y="61.5">C</text>
+        </g>
+        <g class="match-box is-to-2" data-prediction="2">
+          <rect x="103" y="29" width="40" height="40"/>
+          <text x="143" y="80" text-anchor="end">p3 0,86<tspan> → C</tspan></text>
+        </g>
+        <g class="match-box is-to-0" data-prediction="1">
+          <rect x="57" y="31" width="40" height="40"/>
+          <text x="57" y="80">p2 0,90<tspan> → A</tspan></text>
+        </g>
+        <g class="match-box is-to-none" data-prediction="3">
+          <rect x="118" y="4" width="32" height="20"/>
+          <text x="115" y="16" text-anchor="end">p4 0,31<tspan> → ∅</tspan></text>
+        </g>
+        <g class="match-box is-to-1" data-prediction="0">
+          <rect x="36" y="28" width="40" height="40"/>
+          <text x="36" y="25">p1 0,94<tspan> → B</tspan></text>
+        </g>
+      </svg>
+      <table class="cost-matrix">
+        <caption>Coste de cada pareja: 1 − IoU</caption>
+        <thead><tr><th scope="col"><span class="sr-only">Predicción</span></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">p1</th><td data-cost-cell="0-0">0,80</td><td data-cost-cell="0-1" class="is-chosen is-to-1">0,67</td><td data-cost-cell="0-2">1,00</td></tr>
+          <tr><th scope="row">p2</th><td data-cost-cell="1-0" class="is-chosen is-to-0">1,00</td><td data-cost-cell="1-1">0,14</td><td data-cost-cell="1-2">1,00</td></tr>
+          <tr><th scope="row">p3</th><td data-cost-cell="2-0">1,00</td><td data-cost-cell="2-1">1,00</td><td data-cost-cell="2-2" class="is-chosen is-to-2">0,14</td></tr>
+          <tr><th scope="row">p4</th><td data-cost-cell="3-0">1,00</td><td data-cost-cell="3-1">1,00</td><td data-cost-cell="3-2">1,00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="lab-readout">
+      <div class="prompt-modes" role="group" aria-label="Cómo se empareja">
+        <button type="button" data-assignment-mode="greedy" aria-pressed="true">Por confianza</button>
+        <button type="button" data-assignment-mode="optimal" aria-pressed="false">Húngara</button>
+      </div>
+      <div class="metric-pair">
+        <p class="metric"><span>Coste por confianza</span><strong data-assignment-greedy>1,81</strong></p>
+        <p class="metric"><span>Coste húngaro</span><strong data-assignment-optimal>1,08</strong></p>
+      </div>
+      <p class="lab-message" data-assignment-message aria-live="polite">p1 elige primero y se queda con B, que es el que más solapa. p2 tiene que conformarse con A, al que no toca: el coste total sube a 1,81.</p>
+      <label for="assignment-position">Posición horizontal de p1 <b data-assignment-value>36</b></label>
+      <input type="range" id="assignment-position" data-assignment-position min="10" max="50" value="36" step="1">
+      <div class="range-ends" aria-hidden="true"><span>Sobre A</span><span>Entre A y B</span></div>
+      <p class="lab-disclaimer">Coste simplificado: solo cuenta el solape. DETR suma además el error de clase y la distancia L1 entre cajas.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el estado con p1 en x = 36, emparejando por orden de confianza. p1 solapa un 33 % con B y un 20 % con A, así que elige B; p2, que cubría B casi perfectamente, se queda con A y no lo toca. Coste total: 1,81. La asignación húngara prueba el reparto completo y prefiere p1 con A y p2 con B: 1,08. Con p1 por debajo de x = 34 los dos métodos coinciden. DETR usa la húngara durante el entrenamiento; p4, la predicción sobrante, aprende a decir «ningún objeto».</p></div>
+</section>
+
 <section id="asignacion" data-title="Asignación" data-layout="question">
   <div class="section-copy">
     <h2>Una predicción por objeto</h2>
@@ -454,7 +570,7 @@
   <div class="note-grid note-grid--two">
     <div>
       <h3>Licencia problemática</h3>
-      <p>Código y pesos van con AGPL-3.0, que obliga a publicar el código de cualquier aplicación que los use, aunque solo se ofrezca como servicio en red. Para evitarlo hay que pagar su licencia comercial. AGPL es open source, pero choca con la mayoría de usos industriales.</p>
+      <p>Código y pesos van con AGPL-3.0, que obliga a publicar el código de la aplicación que los incorpora cuando la distribuyes, y también cuando solo la ofreces como servicio en red. Para evitarlo hay que pagar su licencia comercial. AGPL es open source, pero choca con la mayoría de usos industriales.</p>
     </div>
     <div>
       <h3>Apropiación de marca YOLO</h3>
@@ -502,7 +618,7 @@
       <p>La elección entre RF-DETR y YOLO depende de tus <strong>prioridades específicas de producción</strong>.</p>
       <p><strong>Consideraciones prácticas:</strong></p>
       <ul>
-        <li><strong>Licencia:</strong> los YOLO de Ultralytics usan AGPL-3.0, que obliga a publicar el código de la aplicación; RF-DETR usa Apache 2.0, que no lo exige.</li>
+        <li><strong>Licencia:</strong> los YOLO de Ultralytics usan AGPL-3.0, que obliga a publicar el código de la aplicación que los incorpora al distribuirla o servirla; RF-DETR usa Apache 2.0, que no lo exige.</li>
         <li><strong>Mantenibilidad:</strong> RF-DETR evita el ajuste manual de anchors y umbrales de NMS.</li>
         <li><strong>Adopción:</strong> YOLO tiene más tutoriales, integraciones y formatos de exportación probados, y más gente que ya lo conoce.</li>
       </ul>
@@ -619,7 +735,7 @@
         <li><strong>Precisión 0,9:</strong> el 90 % de las detecciones son correctas. Puedes fiarte de lo que dice haber encontrado.</li>
         <li><strong>Recall 0,8:</strong> ha encontrado el 80 % de los objetos que había. Se le escapa uno de cada cinco.</li>
       </ul>
-      <p>Las dos suelen moverse en direcciones opuestas, un <strong>trade-off</strong>. Un modelo que detecta con mucha manga ancha para no perderse nada (recall alto) también da más falsas alarmas (precisión baja). El punto de equilibrio lo decide la aplicación.</p>
+      <p>Las dos suelen tirar en direcciones opuestas, un <strong>trade-off</strong>, aunque la precisión no siempre sube al filtrar. Un modelo que detecta con mucha manga ancha para no perderse nada (recall alto) también da más falsas alarmas (precisión baja). El punto de equilibrio lo decide la aplicación.</p>
     </div>
     <figure class="figure-media">
       <img src="{{ASSET:tema-01/presentacion/precision-recall.webp}}" alt="Curvas de precisión y recall frente al umbral de confianza, que se cruzan al subir el umbral.">
@@ -639,7 +755,7 @@
 <section id="equilibrio" data-title="Equilibrio" data-layout="lab">
   <div class="section-copy">
     <h2>Subir el umbral cambia el equilibrio</h2>
-    <p class="lead">Precisión y recall se mueven en direcciones opuestas cuando filtras por puntuación.</p>
+    <p class="lead">Al filtrar por puntuación el recall solo puede bajar; la precisión suele subir, aunque no siempre.</p>
   </div>
   <div class="lab-layout" data-threshold-lab>
     <div class="lab-stage">
@@ -726,6 +842,62 @@
     </figure>
   </div>
   <div class="print-detail"><p>Recorrer el umbral de confianza traza la curva: con umbral 0,9 la precisión es alta y el recall bajo; con 0,1 ocurre lo contrario. AP50 y AP promediada entre varios umbrales de IoU responden a protocolos distintos y no son intercambiables.</p></div>
+</section>
+
+<section id="ap-lab" data-title="Construir la AP" data-layout="lab">
+  <div class="section-copy">
+    <h2>La curva se dibuja bajando el umbral</h2>
+    <p class="lead">Ocho detecciones de una clase, ordenadas por confianza, para seis objetos reales. Cada vez que el umbral deja pasar una más, la curva gana un punto; la AP es el área bajo su escalera.</p>
+  </div>
+  <div class="lab-layout lab-layout--wide" data-ap-lab>
+    <div class="lab-stage">
+      <svg viewBox="0 0 200 116" role="img" aria-label="Curva precisión-recall de ocho detecciones con el área bajo la curva sombreada hasta el umbral elegido.">
+        <path class="ap-area" d="M30 98 L30 8 L56.67 8 L56.67 8 L83.33 8 L83.33 26 L110 26 L110 26 L136.67 26 L136.67 41.75 L163.33 41.75 L163.33 98 Z"/>
+        <path class="ap-area is-done" data-ap-area-done d="M30 98 L30 8 L56.67 8 L56.67 8 L83.33 8 L83.33 26 L110 26 L110 26 L110 98 Z"/>
+        <g class="ap-axis">
+          <line x1="30" y1="98" x2="190" y2="98"/><line x1="30" y1="8" x2="30" y2="98"/>
+          <text x="30" y="106" text-anchor="middle">0</text><text x="110" y="106" text-anchor="middle">0,5</text><text x="190" y="106" text-anchor="middle">1</text>
+          <text x="26" y="100" text-anchor="end">0</text><text x="26" y="55" text-anchor="end">0,5</text><text x="26" y="10" text-anchor="end">1</text>
+          <text class="ap-axis-title" x="110" y="114" text-anchor="middle">Recall</text>
+          <text class="ap-axis-title" x="8" y="53" text-anchor="middle" transform="rotate(-90 8 53)">Precisión</text>
+        </g>
+        <polyline class="ap-curve" points="56.67,8 83.33,8 83.33,38 110,30.5 136.67,26 136.67,38 136.67,46.57 163.33,41.75"/>
+        <line class="ap-guide" data-ap-guide-x x1="110" y1="30.5" x2="110" y2="98"/>
+        <line class="ap-guide" data-ap-guide-y x1="30" y1="30.5" x2="110" y2="30.5"/>
+        <circle data-ap-dot class="ap-dot is-in" cx="56.67" cy="8" r="2.2"/>
+        <circle data-ap-dot class="ap-dot is-in" cx="83.33" cy="8" r="2.2"/>
+        <circle data-ap-dot class="ap-dot is-in" cx="83.33" cy="38" r="2.2"/>
+        <circle data-ap-dot class="ap-dot is-in" cx="110" cy="30.5" r="2.2"/>
+        <circle data-ap-dot class="ap-dot" cx="136.67" cy="26" r="2.2"/>
+        <circle data-ap-dot class="ap-dot" cx="136.67" cy="38" r="2.2"/>
+        <circle data-ap-dot class="ap-dot" cx="136.67" cy="46.57" r="2.2"/>
+        <circle data-ap-dot class="ap-dot" cx="163.33" cy="41.75" r="2.2"/>
+        <circle class="ap-marker" data-ap-marker cx="110" cy="30.5" r="3.6"/>
+      </svg>
+      <ol class="ap-ranking" aria-label="Detecciones ordenadas por confianza">
+        <li data-ap-rank class="is-tp is-in"><span>0,95</span><b>TP</b></li>
+        <li data-ap-rank class="is-tp is-in"><span>0,90</span><b>TP</b></li>
+        <li data-ap-rank class="is-fp is-in"><span>0,82</span><b>FP</b></li>
+        <li data-ap-rank class="is-tp is-in"><span>0,76</span><b>TP</b></li>
+        <li data-ap-rank class="is-tp"><span>0,64</span><b>TP</b></li>
+        <li data-ap-rank class="is-fp"><span>0,51</span><b>FP</b></li>
+        <li data-ap-rank class="is-fp"><span>0,43</span><b>FP</b></li>
+        <li data-ap-rank class="is-tp"><span>0,30</span><b>TP</b></li>
+      </ol>
+    </div>
+    <div class="lab-readout">
+      <div class="metric-pair">
+        <p class="metric"><span>Precisión</span><strong data-ap-precision>0,75</strong></p>
+        <p class="metric"><span>Recall</span><strong data-ap-recall>0,50</strong></p>
+      </div>
+      <p class="metric-counts"><span>Área acumulada <b data-ap-area-value>0,47</b></span><span>AP final <b>0,70</b></span></p>
+      <p class="lab-message" data-ap-message aria-live="polite">Con umbral 0,76 entra un acierto: el recall sube a 0,50 y la precisión queda en 0,75.</p>
+      <label for="ap-count">Umbral de confianza <b data-ap-value>0,76</b></label>
+      <input type="range" id="ap-count" data-ap-count min="1" max="8" value="4" step="1">
+      <div class="range-ends" aria-hidden="true"><span>Umbral alto</span><span>Umbral bajo</span></div>
+    </div>
+  </div>
+  <div class="print-detail"><p>Esta página recoge el estado con umbral 0,76: cuatro detecciones aceptadas, tres aciertos y un falso positivo, con precisión 0,75 y recall 0,50. Cada falso positivo baja la precisión sin mover el recall; cada acierto sube el recall. Para calcular el área, cada punto toma la mejor precisión que se alcanza a ese recall o a uno mayor, y por eso la curva sombreada es una escalera. Con las ocho detecciones el recall se queda en 0,83 porque un objeto no lo encontró ninguna, y la AP vale 0,70. COCO usa 101 puntos de recall en vez de todos, con el mismo principio.</p></div>
 </section>
 
 <section id="dominio" data-title="Dominio" data-layout="visual">

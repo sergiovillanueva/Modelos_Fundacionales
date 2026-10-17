@@ -21,6 +21,12 @@ import {initPipelineLab} from './pipeline-lab.js';
 import {initAnomalyMap} from './anomaly-map.js';
 import {initModeSwitch} from './mode-switch.js';
 import {initMatchingLab} from './matching-lab.js';
+import {initAssignmentLab} from './assignment-lab.js';
+import {initApLab} from './ap-lab.js';
+import {initContrastLab} from './contrast-lab.js';
+import {initConvLab} from './conv-lab.js';
+import {initMomentumLab} from './momentum-lab.js';
+import {initDepthLab} from './depth-lab.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initMediaControls();
@@ -45,6 +51,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   initAnomalyMap();
   initModeSwitch();
   initMatchingLab();
+  initAssignmentLab();
+  initApLab();
+  initContrastLab();
+  initConvLab();
+  initMomentumLab();
+  initDepthLab();
 
   const deck = new Reveal({
     hash: true,

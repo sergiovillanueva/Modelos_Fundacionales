@@ -35,7 +35,14 @@
 .lesson { width: min(1080px, calc(100% - 64px)); margin: 0 auto; }
 .reading-content > section { padding: 60px 0 30px; scroll-margin-top: 124px; }
 .course-ready { padding-bottom: 104px; }
-.course-ready .reading-content > section { display: flex; flex-direction: column; justify-content: center; min-height: calc(100svh - 210px); animation: lesson-enter 280ms var(--ease-out); }
+.course-ready .reading-content > section { display: flex; flex-direction: column; justify-content: center; min-height: calc(100svh - 210px); }
+/* The blocks of a screen enter one after another: title first, activity last */
+.course-ready .reading-content > section > * { animation: block-enter 460ms var(--ease-out) both; }
+.course-ready .reading-content > section > :nth-child(2) { animation-delay: 70ms; }
+.course-ready .reading-content > section > :nth-child(3) { animation-delay: 140ms; }
+.course-ready .reading-content > section > :nth-child(4) { animation-delay: 210ms; }
+.course-ready .reading-content > section > :nth-child(5) { animation-delay: 280ms; }
+.course-ready .reading-content > section > :nth-child(n + 6) { animation-delay: 340ms; }
 .course-ready .lesson-image img { max-height: min(52svh, 500px); margin-inline: auto; object-fit: contain; }
 .reading-content > section[hidden] { display: none; }
 .lesson-nav { display: none; }
@@ -55,6 +62,11 @@
 .course-ready .lesson-nav::before { content: ''; position: absolute; left: 22px; right: 22px; top: 0; height: 2px; border-radius: var(--radius-pill); background: var(--color-line); }
 .course-ready .lesson-nav::after { content: ''; position: absolute; left: 22px; top: 0; width: calc((100% - 44px) * var(--step-progress, 0)); height: 2px; border-radius: var(--radius-pill); background: linear-gradient(90deg, var(--color-brand-accent), var(--color-primary)); transition: width var(--duration-base) var(--ease-out); }
 .step-counter em { font-style: normal; color: var(--color-text-main); font-weight: 500; }
+
+@keyframes block-enter {
+  from { opacity: .35; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
 
 @keyframes lesson-enter {
   from { opacity: .35; transform: translateY(8px); }
@@ -88,6 +100,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .course-ready .reading-content > section { animation: none; }
+  .course-ready .reading-content > section, .course-ready .reading-content > section > * { animation: none; }
   .course-ready .lesson-nav::after { transition: none; }
 }

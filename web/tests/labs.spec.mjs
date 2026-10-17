@@ -237,6 +237,8 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
       await page.locator(`#${section} img`).evaluateAll((images) =>
         Promise.all(images.map((image) => image.decode().catch(() => {})))
       );
+      // The blocks slide in when the screen appears; measure once they have settled.
+      await page.evaluate(() => Promise.all(document.getAnimations().map((animation) => animation.finished.catch(() => {}))));
       const lab = page.locator(`#${section} .lab-layout, #${section} .iou-lab`);
       const sizes = new Set();
       const tops = [];
@@ -380,7 +382,7 @@ test('el coseno gana aunque otro texto esté más cerca en línea recta', async 
   await expect(page.locator('[data-similarity-winner]')).toContainText('una bicicleta');
 });
 
-test('la pose depende del tamaño de la persona', async ({page}) => {
+test('la pose depende de la escala de la persona', async ({page}) => {
   await page.goto('/temas/06-otras-tareas/index.html#oks');
   await expect(page.locator('[data-oks-verdict]')).toHaveText('Cuenta como acierto');
   await expect(page.locator('[data-oks-pose]')).toHaveText('0,92');
@@ -388,7 +390,7 @@ test('la pose depende del tamaño de la persona', async ({page}) => {
   await page.locator('[data-oks-scale]').fill('60');
   await page.locator('[data-oks-distance]').fill('12');
   await expect(page.locator('[data-oks-verdict]')).toHaveText('Cuenta como fallo');
-  await expect(page.locator('[data-oks-message]')).toContainText('persona de 60 px');
+  await expect(page.locator('[data-oks-message]')).toContainText('escala de 60 px');
 });
 
 test('el umbral de inspección decide entre falsa alarma y escape', async ({page}) => {
@@ -489,4 +491,108 @@ test('el recetario enseña una receta cada vez y en papel las seis', async ({pag
   const visibles = await page.locator('#recetario pre.code-sample').evaluateAll((list) =>
     list.filter((pre) => getComputedStyle(pre).display !== 'none').length);
   expect(visibles).toBe(6);
+});
+
+test('emparejar por confianza falla donde la asignación húngara acierta', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#asignacion-lab');
+  const lab = page.locator('[data-assignment-lab]');
+  await expect(lab.locator('[data-assignment-greedy]')).toHaveText('1,81');
+  await expect(lab.locator('[data-assignment-optimal]')).toHaveText('1,08');
+  await expect(lab.locator('[data-prediction="0"]')).toHaveClass(/is-to-1/);
+  await expect(lab.locator('[data-prediction="3"]')).toHaveClass(/is-to-none/);
+
+  await lab.locator('[data-assignment-mode="optimal"]').click();
+  await expect(lab.locator('[data-assignment-mode="optimal"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(lab.locator('[data-prediction="0"]')).toHaveClass(/is-to-0/);
+  await expect(lab.locator('[data-cost-cell="1-1"]')).toHaveClass(/is-chosen/);
+
+  await lab.locator('[data-assignment-position]').fill('20');
+  await expect(lab.locator('[data-assignment-message]')).toContainText('Las dos coinciden');
+});
+
+test('bajar el umbral añade puntos a la curva precisión-recall', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#ap-lab');
+  const lab = page.locator('[data-ap-lab]');
+  await expect(lab.locator('[data-ap-precision]')).toHaveText('0,75');
+  await expect(lab.locator('[data-ap-recall]')).toHaveText('0,50');
+
+  await lab.locator('[data-ap-count]').fill('3');
+  await expect(lab.locator('[data-ap-precision]')).toHaveText('0,67');
+  await expect(lab.locator('[data-ap-message]')).toContainText('falso positivo');
+
+  await lab.locator('[data-ap-count]').fill('8');
+  await expect(lab.locator('[data-ap-area-value]')).toHaveText('0,70');
+  await expect(lab.locator('[data-ap-rank].is-in')).toHaveCount(8);
+});
+
+test('la temperatura de CLIP tiene un punto útil entre aplanar y castigar', async ({page}) => {
+  await page.goto('/temas/03-multimodalidad/index.html#contraste-lab');
+  const lab = page.locator('[data-contrast-lab]');
+  await expect(lab.locator('[data-contrast-loss]')).toHaveText('0,38');
+  await expect(lab.locator('[data-contrast-cat]')).toHaveText('25 %');
+
+  await lab.locator('[data-contrast-temperature]').fill('0');
+  await expect(lab.locator('[data-contrast-loss]')).toHaveText('0,98');
+  await expect(lab.locator('[data-contrast-message]')).toContainText('dispara la pérdida');
+
+  await lab.locator('[data-contrast-temperature]').fill('12');
+  await expect(lab.locator('[data-contrast-loss]')).toHaveText('1,05');
+});
+
+test('el filtro de la convolución cambia el mapa y la cuenta del punto', async ({page}) => {
+  await page.goto('/temas/01-deteccion/index.html#convolucion');
+  const lab = page.locator('[data-conv-lab]');
+  await expect(lab.locator('[data-conv-sum]')).toHaveText('419');
+  await expect(lab.locator('[data-conv-output]')).toHaveAttribute('src', /^data:image\/png/);
+
+  await lab.locator('[data-conv-kernel="blur"]').click();
+  await expect(lab.locator('[data-conv-divisor]')).toHaveText('÷ 16');
+  await expect(lab.locator('[data-conv-message]')).toContainText('media ponderada');
+
+  await lab.locator('[data-conv-pad]').focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(lab.locator('[data-conv-patch]').first()).toHaveText('47');
+});
+
+test('más momentum calma a la maestra', async ({page}) => {
+  await page.goto('/temas/04-dino/index.html#momentum');
+  const lab = page.locator('[data-momentum-lab]');
+  await expect(lab.locator('[data-momentum-window]')).toHaveText('20');
+  await lab.locator('[data-momentum-value]').fill('0');
+  await expect(lab.locator('[data-momentum-window]')).toHaveText('2');
+  await expect(lab.locator('[data-momentum-message]')).toContainText('hereda su ruido');
+  await lab.locator('[data-momentum-value]').fill('6');
+  await expect(lab.locator('[data-momentum-window]')).toHaveText('250');
+});
+
+test('el corte por profundidad cambia lo que se conserva', async ({page}) => {
+  await page.goto('/temas/06-otras-tareas/index.html#profundidad-corte');
+  const lab = page.locator('[data-depth-lab]');
+  await expect(lab.locator('canvas')).toHaveCount(1);
+  await expect(lab.locator('[data-depth-share]')).toHaveText('42 %');
+  await lab.locator('[data-depth-threshold]').fill('200');
+  await expect(lab.locator('[data-depth-share]')).toHaveText('2 %');
+  await expect(lab.locator('[data-depth-message]')).toContainText('coche de la derecha');
+});
+
+test('los laboratorios de octubre caben en móvil y se leen sin JavaScript', async ({browser, page}) => {
+  const urls = ['/temas/01-deteccion/index.html#convolucion', '/temas/01-deteccion/index.html#asignacion-lab',
+    '/temas/01-deteccion/index.html#ap-lab', '/temas/03-multimodalidad/index.html#contraste-lab',
+    '/temas/04-dino/index.html#momentum', '/temas/06-otras-tareas/index.html#profundidad-corte'];
+  for (const width of [390, 320]) {
+    await page.setViewportSize({width, height: 844});
+    for (const url of urls) {
+      await page.goto(url);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), url).toBeLessThanOrEqual(1);
+    }
+  }
+
+  const context = await browser.newContext({javaScriptEnabled: false});
+  const plain = await context.newPage();
+  await plain.goto('http://127.0.0.1:4173/temas/01-deteccion/index.html');
+  await expect(plain.locator('#asignacion-lab [data-assignment-greedy]')).toHaveText('1,81');
+  await expect(plain.locator('#convolucion [data-conv-output]')).toHaveAttribute('src', /conv-vertical/);
+  await plain.goto('http://127.0.0.1:4173/temas/06-otras-tareas/index.html');
+  await expect(plain.locator('#profundidad-corte img[data-depth-photo]')).toBeVisible();
+  await context.close();
 });

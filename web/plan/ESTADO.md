@@ -1,6 +1,6 @@
 # Estado de la migración
 
-Actualizado: 1 de octubre de 2026. Este archivo es el punto de reanudación.
+Actualizado: 16 de octubre de 2026. Este archivo es el punto de reanudación.
 
 ## Próxima acción
 
@@ -13,15 +13,34 @@ Actualizado: 1 de octubre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 44 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 4 simulaciones, el puente al Hub, las tres salidas de RF-DETR, presupuesto y caso |
+| Tema 01 · Detección | 47 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 7 simulaciones (con la convolución, la asignación húngara y la curva AP), el puente al Hub, las tres salidas de RF-DETR, presupuesto y caso |
 | Tema 02 · Hugging Face | 18 pantallas: 6 diapositivas, 3 preguntas, el comprobador de licencias, el constructor de pipeline, la memoria de GPU, los Spaces y el reto de diez minutos |
-| Tema 03 · Multimodal | 27 pantallas: 18 diapositivas, 5 preguntas, la similitud coseno en vivo y el asistente de modelo |
-| Tema 04 · DINO | 27 pantallas: 16 diapositivas, 3 preguntas, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
+| Tema 03 · Multimodal | 28 pantallas: 18 diapositivas, 5 preguntas, la similitud coseno en vivo, la temperatura de CLIP y el asistente de modelo |
+| Tema 04 · DINO | 28 pantallas: 16 diapositivas, 3 preguntas, el momentum de la maestra, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
 | Tema 05 · SAM | 18 pantallas: 9 diapositivas, 3 preguntas, los prompts por puntos, el recorte sobre fondo negro y el asistente de versión |
-| Tema 06 · Más visión | 24 pantallas: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR, la verificación geométrica y el recetario por pestañas |
+| Tema 06 · Más visión | 25 pantallas: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR, la verificación geométrica, el recorte por profundidad y el recetario por pestañas |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01–06 regenerados el 1 de octubre: 44, 18, 27, 27, 18 y 26 páginas |
+| PDFs | Temas 01, 03, 04 y 06 regenerados el 16 de octubre: 47, 18, 28, 28, 18 y 27 páginas |
+
+## Mejoras visuales e interactivas · 16 de octubre
+
+Encargo del profesor: hacer la web más atractiva, mejorar animaciones e interactivos y añadir lo que ayude a entender. Se consultó a Codex una vez, en solo lectura, y se compararon sus propuestas con las propias.
+
+**Seis laboratorios nuevos.** Cada uno tiene su lógica en `src/lib`, pruebas en `tests/new-labs.test.mjs` y en `tests/labs.spec.mjs`, estado inicial resuelto en el HTML y texto de detalle para el PDF.
+
+- **01 · `convolucion`** (tras `cnn`): cuatro filtros de 3 × 3 sobre un recorte de la foto de la calle, con la cuenta del vecindario bajo el puntero o con las flechas. `src/lib/convolution.js`; respaldo estático `conv-vertical.webp` sobre `conv-entrada.webp`, ambos WebP sin pérdida porque el `.gitignore` excluye los PNG.
+- **01 · `asignacion-lab`** (tras `matching`): emparejar por confianza frente a la asignación húngara con una matriz de costes 1 − IoU. A partir de x = 34 la codiciosa cuesta 1,81 y la óptima 1,08. `src/lib/assignment.js`.
+- **01 · `ap-lab`** (tras `ap-map`): ocho detecciones para seis objetos; bajar el umbral añade puntos y sombrea la escalera interpolada. AP = 0,70. `src/lib/ranking.js`.
+- **03 · `contraste-lab`** (tras `clip-entrenamiento`): matriz 4 × 4 de probabilidades y pérdida simétrica de CLIP según τ. Con el gato mal colocado, la pérdida tiene su mínimo cerca de 0,05. `src/lib/contrastive.js`.
+- **04 · `momentum`** (tras `destilacion`): estudiante ruidosa y maestra como media móvil, m de 0,5 a 0,999. `src/lib/momentum.js`.
+- **06 · `profundidad-corte`** (tras `profundidad`): umbral sobre el mapa de cercanía de la foto del camión. El mapa en grises (`profundidad-escena-cercania.webp`) se obtuvo invirtiendo la paleta del mapa coloreado; el respaldo es `profundidad-recorte.webp`. `src/lib/depth.js`.
+
+**Correcciones a raíz de la revisión de Codex.** La verificación geométrica distingue «Estimación contaminada» cuando entra una pareja falsa por debajo del umbral. OKS habla de escala, no de persona. AGPL afecta al código de la aplicación que incorpora el modelo. El filtro por puntuación puede bajar la precisión en algún tramo. La inspección del tema 04 trae las 256 celdas en el HTML.
+
+**Aspecto.** Entrada escalonada de los bloques de cada pantalla (desactivada en papel y con movimiento reducido) y nodos numerados unidos por una línea en las listas de pasos.
+
+**Evidencia.** 96 pruebas unitarias y 50 de navegador en verde; build y validación correctos; las seis pantallas revisadas a 1440 px, 390 px, en presentación a 1280 × 720 y en el PDF.
 
 ## Revisión exhaustiva · 1 de octubre
 

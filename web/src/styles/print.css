@@ -102,7 +102,8 @@ body.course-ready { padding-bottom: 0; }
 
 /* La animacion de entrada arranca en opacity .35 y el PDF la congela ahi:
    en papel no hay entrada, asi que se desactiva y las paginas salen a plena opacidad. */
-.course-ready .reading-content > section, .reading-content > section { animation: none !important; opacity: 1 !important; transform: none !important; }
+.course-ready .reading-content > section, .reading-content > section,
+.course-ready .reading-content > section > * { animation: none !important; opacity: 1 !important; transform: none !important; }
 
 /* Nitidez en papel: ninguna imagen se estira por encima de la resolucion que tiene.
    A 96 px por pulgada de CSS, 1 mm son 3,78 px; a 140 dpi hacen falta 5,5 px por mm. */
@@ -128,3 +129,11 @@ body.course-ready { padding-bottom: 0; }
 .mode-lab--print-all .code-sample[hidden] { display: block; }
 .mode-lab--print-all .code-sample { break-inside: avoid; }
 .mode-lab--print-all .lab-message { display: none; }
+
+/* Labs added in October 2026: buttons do nothing on paper and nothing moves */
+[data-assignment-lab] .prompt-modes, [data-conv-lab] .mask-prompts { display: none; }
+.match-box rect, .cost-matrix td, .ap-marker, .ap-ranking li, .contrast-matrix td { transition: none !important; }
+.cost-matrix, .contrast-matrix { font-size: 9pt; }
+.contrast-matrix td { height: 9mm; }
+.depth-photo { max-width: 120mm; margin: 0 auto; }
+.conv-pair { max-width: 120mm; }

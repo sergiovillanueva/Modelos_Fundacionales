@@ -43,3 +43,21 @@ test('el umbral reparte las parejas y decide si hay estimación', () => {
   const permisivo = verifyMatches(DESPLAZA, parejas, 100, {minimum: 4});
   assert.equal(permisivo.outliers.length, 0);
 });
+
+test('una pareja colada por un umbral holgado contamina la estimación aunque sobren parejas', () => {
+  const parejas = [
+    {source: [0, 0], observed: [10, 5]},
+    {source: [1, 1], observed: [11, 6]},
+    {source: [2, 2], observed: [12, 7]},
+    {source: [3, 3], observed: [13, 8]},
+    {source: [4, 4], observed: [20, 9]}
+  ];
+  const limpio = verifyMatches(DESPLAZA, parejas, 1, {minimum: 4, noise: 3});
+  assert.equal(limpio.reliable, true);
+  assert.equal(limpio.contaminated, 0);
+
+  const holgado = verifyMatches(DESPLAZA, parejas, 10, {minimum: 4, noise: 3});
+  assert.equal(holgado.inliers.length, 5);
+  assert.equal(holgado.contaminated, 1);
+  assert.equal(holgado.reliable, false);
+});

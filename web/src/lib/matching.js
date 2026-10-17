@@ -25,7 +25,7 @@ export function reprojectionError(homography, source, observed) {
  * `minimum` es cuántas parejas coherentes se piden para fiarse del resultado:
  * una homografía se calcula con cuatro y se considera sólida bastante por encima.
  */
-export function verifyMatches(homography, pairs, threshold, {minimum = 8} = {}) {
+export function verifyMatches(homography, pairs, threshold, {minimum = 8, noise = Infinity} = {}) {
   const scored = pairs.map((pair) => ({
     ...pair,
     error: reprojectionError(homography, pair.source, pair.observed)
@@ -38,7 +38,9 @@ export function verifyMatches(homography, pairs, threshold, {minimum = 8} = {}) 
     inliers,
     outliers,
     ratio: scored.length ? inliers.length / scored.length : 0,
-    reliable: inliers.length >= minimum,
+    // Pairs accepted only because the threshold is loose: above the measurement noise.
+    contaminated: inliers.filter((pair) => pair.error > noise).length,
+    reliable: inliers.length >= minimum && !inliers.some((pair) => pair.error > noise),
     solvable: inliers.length >= 4
   };
 }

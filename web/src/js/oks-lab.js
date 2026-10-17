@@ -69,8 +69,8 @@ export function initOksLab(root = document) {
     const cadera = scores.find((item) => item.joint.id === 'cadera');
     const margenOjo = distanceForOks(UMBRAL, ojo.joint.sigma, scale);
     message.textContent = distance === 0
-      ? `Sin error, todos los puntos valen 1,00. En una persona de ${formatPx(scale)}, el ojo aguanta hasta ${formatPx(margenOjo)} antes de bajar de ${formatOks(UMBRAL)}.`
-      : `En una persona de ${formatPx(scale)}, ${distance} px dejan el ojo en ${formatOks(ojo.oks)} y la cadera en ${formatOks(cadera.oks)}. El ojo pierde medio punto a partir de ${formatPx(margenOjo)}.`;
+      ? `Sin error, todos los puntos valen 1,00. Con escala de ${formatPx(scale)}, el ojo aguanta hasta ${formatPx(margenOjo)} antes de bajar de ${formatOks(UMBRAL)}.`
+      : `Con escala de ${formatPx(scale)}, ${distance} px dejan el ojo en ${formatOks(ojo.oks)} y la cadera en ${formatOks(cadera.oks)}. El ojo pierde medio punto a partir de ${formatPx(margenOjo)}.`;
 
     slider.setAttribute(
       'aria-valuetext',
