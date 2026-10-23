@@ -332,7 +332,7 @@ test('la receta se puede copiar', async ({page, context}) => {
   await expect(page.getByRole('button', {name: 'Copiado'})).toBeVisible();
 
   const copiado = await page.evaluate(() => navigator.clipboard.readText());
-  expect(copiado).toContain('RFDETRMedium');
+  expect(copiado).toContain('Roboflow/rf-detr-medium');
 });
 
 test('el selector de escena cambia las dos imágenes del comparador', async ({page}) => {

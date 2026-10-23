@@ -1,6 +1,6 @@
 # Estado de la migración
 
-Actualizado: 16 de octubre de 2026. Este archivo es el punto de reanudación.
+Actualizado: 23 de octubre de 2026. Este archivo es el punto de reanudación.
 
 ## Próxima acción
 
@@ -22,6 +22,23 @@ Actualizado: 16 de octubre de 2026. Este archivo es el punto de reanudación.
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
 | PDFs | Temas 01, 03, 04 y 06 regenerados el 16 de octubre: 47, 18, 28, 28, 18 y 27 páginas |
+
+## Cuadernos de Colab rehechos · 23 de octubre
+
+Encargo del profesor: que las seis prácticas sean fáciles para cualquier alumno, solo con Hugging Face, sin instalar nada en Colab, y comprobadas paso a paso.
+
+**Método.** Entorno de pruebas con las mismas versiones que el entorno GPU de Colab, leídas de `googlecolab/backend-info` (`pip-freeze.gpu.txt`): transformers 5.20.2, torch 2.11, datasets 4.8.5, timm 1.0.30, ipywidgets 7.7.1. Cada cuaderno se ejecuta celda a celda con nbclient, se revisan las salidas y todas las figuras, y se corrige hasta que todo pasa. Los cuadernos se generan con scripts y se guardan sin salidas.
+
+**Comunes a los seis.** Ninguna celda `pip install`. Bloque «Antes de empezar» (activar GPU, orden de ejecución, la copia es tuya). Función `cargar_imagen` con comprobación de errores. Dibujo de cajas con etiquetas legibles. Markdown con tildes. Ningún modelo con acceso restringido ni código remoto.
+
+- **1 · Detección.** Sin `rfdetr` ni `supervision`: RF-DETR (`Roboflow/rf-detr-medium`) con `pipeline` de transformers. Ajuste fino con `Trainer` sobre `rishitdagli/cppe-5`, que se descarga del Hub (antes había que bajar un dataset a Drive a mano). Configuración elegida midiendo mAP en el test de CPPE-5 con varias semillas: DINOv2 congelado (se entrenan 11,3 de 33,4 millones de parámetros), 3 épocas, lote 4, lr 2e-4 con coseno y 50 pasos de calentamiento. mAP 0,574 y 0,570 con dos semillas (mAP50 0,88), en 4,1 min con una RTX 3080 Ti. Entrenando el modelo entero salía entre 0,07 y 0,28 y variaba mucho de una ejecución a otra: en una de ellas el modelo no superaba 0,4 de confianza y no dibujaba nada.
+- **2 · Hugging Face.** `pipeline` primero y después sus tres pasos por dentro. `snapshot_download` con `allow_patterns` (330 MB en vez de 1,3 GB) y sin montar Drive. Licencias, incluidos los modelos *gated*.
+- **3 · Multimodal.** Fuera las celdas comentadas de Qwen2.5. Qwen3.5-2B con `AutoModelForImageTextToText` y `apply_chat_template`. Instrucciones enteras en inglés y formato JSON con `"label": "..."` (con `"name"` el modelo copiaba la palabra). Pregunta que falla a propósito para enseñar a validar, y truco de dos pasos (preguntar y luego detectar) para el ejemplo de Newton.
+- **4 · DINO.** DINOv3 desde la copia de `timm` (`timm/vit_small_patch16_dinov3.lvd1689m`), sin permisos; vectores idénticos (coseno 1,0) a los de `facebook/dinov3-vits16`. Corregidos dos fallos que ya estaban: el PCA compartido invertía objeto y fondo (ahora el fondo es el lado que toca los bordes) y el detector de anomalías marcaba los 1.600 parches (ahora usa la capa 7 de 12 y umbral = máximo de la pieza buena × 1,2: 0 parches en la buena, 65 en la defectuosa, sobre el nudo).
+- **5 · SAM.** Coordenadas de la sandía corregidas (antes recortaba una manzana). Ejemplo de puntos que sí cambia: pantalón, persona entera, persona sin cabeza. `segmentar_por_texto` (Grounding DINO) y `segmentar_con_vlm` (Qwen) con nombres distintos. Ejercicio del lago rehecho: da 2,54 km y el Reservoir mide 1,58 millas.
+- **6 · Otras tareas.** OCR con GOT-OCR 2.0 (lee varias líneas; TrOCR leía «HELLOWARD»). Quitar el fondo con RT-DETR y SAM 2 en lugar de RMBG-1.4 (código remoto y licencia no comercial). Ángulo del codo ejecutable. El archivo sigue llamándose `6_Otras_Tareas.ipynb` en GitHub.
+
+**Web alineada.** Tema 1: receta con `pipeline`, «¿De dónde han salido esos pesos?» con el Hub como vía principal, aviso de `pip install rfdetr` en «Tres salidas» y práctica con CPPE-5. Tema 4: DINOv3 sin permisos y capa intermedia en «Montaje». Tema 6: recetas de OCR y fondo nuevas, ejecutadas tal cual. PDF de los temas 1, 4 y 6 regenerados.
 
 ## Mejoras visuales e interactivas · 16 de octubre
 

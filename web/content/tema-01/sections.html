@@ -975,19 +975,19 @@
     <h2>Detectar objetos en seis líneas</h2>
     <p class="lead">Lo mínimo que necesitas para tener cajas sobre una imagen tuya.</p>
   </div>
-  <pre class="code-sample" data-copy><code>from rfdetr import RFDETRMedium
+  <pre class="code-sample" data-copy><code>from transformers import pipeline
 from PIL import Image
 
-model = RFDETRMedium()
+detector = pipeline("object-detection", model="Roboflow/rf-detr-medium")
 image = Image.open("mi_imagen.jpg").convert("RGB")
 
-detections = model.predict(image, threshold=0.5)
-print(detections.class_id, detections.confidence, detections.xyxy)</code></pre>
+for d in detector(image, threshold=0.5):
+    print(d["label"], round(d["score"], 2), d["box"])</code></pre>
   <div class="slide-prose">
     <ul>
       <li><strong>threshold</strong> es el umbral de confianza: súbelo si ves falsas alarmas, bájalo si se pierden objetos.</li>
-      <li><strong>xyxy</strong> son las coordenadas de cada caja en píxeles, en el orden x mínimo, y mínimo, x máximo, y máximo.</li>
-      <li>La primera ejecución descarga los pesos. En Colab conviene llamar antes a <code>model.optimize_for_inference()</code>.</li>
+      <li><strong>box</strong> son las coordenadas de cada caja en píxeles: <code>xmin</code> e <code>ymin</code> para la esquina superior izquierda, <code>xmax</code> e <code>ymax</code> para la inferior derecha.</li>
+      <li>La primera ejecución descarga los pesos, unos 135 MB. En Colab no hay que instalar nada: <code>transformers</code> ya viene incluido.</li>
     </ul>
   </div>
   <div class="print-detail"><p>RF-DETR se publica bajo Apache 2.0 y devuelve las clases de COCO. Para un vocabulario propio hace falta fine-tuning con un dataset anotado, cuyo coste estima la calculadora de presupuesto, tres pantallas más adelante.</p></div>
@@ -1000,12 +1000,12 @@ print(detections.class_id, detections.confidence, detections.xyxy)</code></pre>
   </div>
   <div class="note-grid note-grid--two">
     <div>
-      <h3>Por el paquete de Roboflow</h3>
-      <p>Es lo que acabas de ejecutar. <code>rfdetr</code> trae el modelo, la descarga y el <code>predict</code> en una sola pieza, y es también por donde se reentrena con tus propias imágenes.</p>
+      <h3>Por el Hub de Hugging Face</h3>
+      <p>Es lo que acabas de ejecutar. RF-DETR está publicado como <code>Roboflow/rf-detr-medium</code> con licencia Apache 2.0, y <code>pipeline</code> lo descarga y lo usa como a cualquier otro modelo del curso. Por dentro hace los dos pasos de abajo.</p>
     </div>
     <div>
-      <h3>Por el Hub de Hugging Face</h3>
-      <p>El mismo RF-DETR está publicado como <code>Roboflow/rf-detr-medium</code> con licencia Apache 2.0, así que <code>transformers</code> lo carga igual que a cualquier otro modelo del curso.</p>
+      <h3>Por el paquete de Roboflow</h3>
+      <p>La otra vía es <code>rfdetr</code>, que trae el modelo, su propio <code>predict</code> y su entrenamiento. No viene en Colab: se instala con <code>pip install rfdetr</code>.</p>
     </div>
   </div>
   <pre class="code-sample" data-copy><code>from transformers import AutoImageProcessor, RfDetrForObjectDetection
@@ -1013,13 +1013,13 @@ print(detections.class_id, detections.confidence, detections.xyxy)</code></pre>
 processor = AutoImageProcessor.from_pretrained("Roboflow/rf-detr-medium")
 model = RfDetrForObjectDetection.from_pretrained("Roboflow/rf-detr-medium")</code></pre>
   <p class="slide-callout">Ese identificador de dos partes, <strong>quién publica</strong> y <strong>qué publica</strong>, es la unidad con la que se trabaja a partir de aquí. El tema 2 va de leer lo que hay detrás: qué licencia trae, cuánta memoria pide y cómo elegir entre los cientos que dicen hacer lo mismo.</p>
-  <div class="print-detail"><p>Las dos vías cargan los mismos pesos y se diferencian en el envoltorio. El paquete <code>rfdetr</code> expone la API de Roboflow, con <code>predict</code> y el entrenamiento propio; <code>transformers</code> expone la interfaz común de la librería, que es la que comparten todos los modelos de los temas siguientes y la que permite intercambiar un detector por otro sin reescribir el resto. El identificador y el nombre de clase están tomados de la ficha del modelo, consultada el 17 de septiembre de 2026. El curso pasado RF-DETR solo se podía usar por el paquete; la integración en transformers es reciente.</p></div>
+  <div class="print-detail"><p>Las dos vías cargan los mismos pesos y se diferencian en el envoltorio. <code>transformers</code> expone la interfaz común de la librería, que es la que comparten todos los modelos de los temas siguientes y la que permite intercambiar un detector por otro sin reescribir el resto; por eso es la que usa el cuaderno, también para el ajuste fino. El paquete <code>rfdetr</code> expone la API de Roboflow, con <code>predict</code> y un entrenamiento propio. El identificador y el nombre de clase están tomados de la ficha del modelo, consultada el 17 de septiembre de 2026. El curso pasado RF-DETR solo se podía usar por el paquete; la integración en transformers es reciente.</p></div>
 </section>
 
 <section id="tres-salidas" data-title="Tres salidas" data-layout="practice">
   <div class="section-copy">
     <h2>La misma familia hace tres cosas</h2>
-    <p class="lead">El paquete que acabas de usar trae ahora segmentación y puntos clave. Cambia la clase y cambia lo que recibes, con la misma foto y las mismas tres líneas.</p>
+    <p class="lead">El paquete de Roboflow, <code>rfdetr</code>, trae además segmentación y puntos clave. Cambia la clase y cambia lo que recibes, con la misma foto y las mismas tres líneas. No viene en Colab: antes hay que ejecutar <code>pip install rfdetr</code>.</p>
   </div>
   <div class="mode-lab" data-mode-switch>
     <div class="mask-prompts" role="group" aria-label="Qué salida quieres">
@@ -1166,8 +1166,9 @@ print(puntos.keypoint_confidence[0])    # confianza de cada punto</code></pre>
     <li><span>Guarda una copia en Drive.</span></li>
     <li><span>Ejecuta el detector con una imagen.</span></li>
     <li><span>Cambia el umbral de confianza: <strong>0,25 · 0,50 · 0,75</strong>.</span></li>
+    <li><span>Entrena con CPPE-5 y compara el antes y el después.</span></li>
   </ol>
   <p class="lesson-bridge">Un detector cerrado reconoce sus clases; el tema 3 añade lenguaje y zero-shot.</p>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/1_OD.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
-  <div class="print-detail"><p>En Colab: Archivo → Guardar una copia en Drive. Empieza por inferencia. La disponibilidad de GPU varía; el entrenamiento necesita además el dataset indicado en el notebook. La comparación entre 0,25, 0,50 y 0,75 permite observar qué predicciones desaparecen sin confundir confianza con IoU. El tema 3 amplía el vocabulario cerrado con modelos que relacionan visión y lenguaje; antes, el tema 2 enseña de dónde salen los pesos.</p></div>
+  <div class="print-detail"><p>En Colab: Archivo → Guardar una copia en Drive. Empieza por inferencia. La disponibilidad de GPU varía. El ajuste fino descarga solo su dataset desde el Hub (CPPE-5, equipos de protección sanitaria), congela DINOv2 y entrena el resto en menos de 10 minutos en una GPU T4; no hay que instalar nada. La comparación entre 0,25, 0,50 y 0,75 permite observar qué predicciones desaparecen sin confundir confianza con IoU. El tema 3 amplía el vocabulario cerrado con modelos que relacionan visión y lenguaje; antes, el tema 2 enseña de dónde salen los pesos.</p></div>
 </section>

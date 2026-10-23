@@ -652,7 +652,7 @@ print("similitud:", float(a @ b.T))</code></pre>
   <div class="slide-prose">
     <ul>
       <li>El <strong>token CLS</strong> resume la imagen entera. Los demás, <code>salida[:, 1:]</code>, son un vector por parche y sirven para lo espacial.</li>
-      <li>Con DINOv3, el que usa el cuaderno, los parches empiezan después de cuatro tokens de registro: <code>salida[:, 5:]</code>. Sus pesos piden aceptar las condiciones en la ficha del Hub; DINOv2 no.</li>
+      <li>Con DINOv3, el que usa el cuaderno, los parches empiezan después de cuatro tokens de registro: <code>salida[:, 5:]</code>. La copia oficial de Meta pide acceso; el cuaderno usa la de <code>timm</code> en el Hub (<code>timm/vit_small_patch16_dinov3.lvd1689m</code>), con los mismos pesos y sin permisos.</li>
       <li><strong>Normaliza siempre</strong> antes de comparar: la similitud coseno mide dirección, no longitud.</li>
       <li>El modelo va congelado. No hay entrenamiento aquí, solo extracción.</li>
     </ul>
@@ -671,7 +671,7 @@ print("similitud:", float(a @ b.T))</code></pre>
     </li>
     <li>
       <h3>Extrae embeddings por parche y normaliza</h3>
-      <p>Usa los tokens de parche, no solo el CLS, y normaliza con L2. Así cada región tiene su propia representación.</p>
+      <p>Usa los tokens de parche, no solo el CLS, y normaliza con L2. Sácalos de una capa intermedia: en la última, cada vector mezcla información de toda la imagen y un defecto altera también los parches sanos, de modo que el umbral deja de separar.</p>
     </li>
     <li>
       <h3>Construye el banco con un CoreSet del 1 al 10 %</h3>
@@ -705,7 +705,7 @@ print("similitud:", float(a @ b.T))</code></pre>
 </section>
 
 <section id="practica" data-title="Colab" data-layout="practice">
-  <div class="section-copy"><h2>Explora los embeddings</h2><p class="lead">Extrae representaciones globales y densas con DINOv3. Si no tienes acceso a sus pesos, el cuaderno usa DINOv2.</p></div>
+  <div class="section-copy"><h2>Explora los embeddings</h2><p class="lead">Extrae representaciones globales y densas con DINOv3, sin cuenta ni permisos: el cuaderno lo carga desde la copia de <code>timm</code> en el Hub.</p></div>
   <ol class="practice-path"><li><span>Guarda una copia en Drive.</span></li><li><span>Compara dos imágenes.</span></li><li><span>Interpreta patches y PCA.</span></li></ol>
   <a href="https://colab.research.google.com/github/sergiovillanueva/Modelos_Fundacionales/blob/main/4_DINO.ipynb" target="_blank" rel="noopener noreferrer" class="primary-action colab-action">Abrir en Colab <span aria-hidden="true">↗</span></a>
   <div class="print-detail"><p>Compara el token global para similitud entre imágenes y los tokens de patch para estructura espacial. Observa si PCA, vecinos cercanos y distancia coseno cuentan una historia coherente; una visualización atractiva no sustituye la validación de la tarea final.</p></div>

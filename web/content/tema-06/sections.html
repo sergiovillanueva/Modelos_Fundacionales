@@ -701,11 +701,11 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
       <button type="button" data-mode="pose" aria-pressed="true"
         data-note="Top-down: RT-DETR encuentra a las personas y ViTPose les pone 17 puntos. ViTPose no busca personas por su cuenta; sin las cajas no hace nada.">Pose</button>
       <button type="button" data-mode="ocr"
-        data-note="TrOCR lee una sola línea de texto ya recortada. Para una página entera o una placa hace falta un detector de texto delante, o un VLM.">OCR</button>
+        data-note="GOT-OCR 2.0 lee la imagen entera, con varias líneas, sin recortar cada una antes. TrOCR, el clásico, solo lee una línea ya recortada.">OCR</button>
       <button type="button" data-mode="superresolucion"
         data-note="Duplica el lado de la imagen. El detalle nuevo lo pone el modelo, así que no sirve como prueba de lo que había.">Superresolución</button>
       <button type="button" data-mode="fondo"
-        data-note="RMBG ejecuta código de su propio repositorio, de ahí trust_remote_code. Su licencia no permite uso comercial sin acuerdo con BRIA.">Fondo</button>
+        data-note="Dos modelos encadenados: RT-DETR encuentra a las personas y SAM 2 convierte cada caja en una silueta. Los dos con licencia Apache 2.0 y sin código externo.">Fondo</button>
       <button type="button" data-mode="profundidad"
         data-note="Profundidad relativa: claro es cerca y oscuro lejos, sin metros. Para medir distancias hace falta un modelo métrico o calibrar la cámara.">Profundidad</button>
       <button type="button" data-mode="matching"
@@ -738,19 +738,20 @@ with torch.no_grad():
     poses = pose_model(**inputs)
 people = pose_processor.post_process_pose_estimation(poses, boxes=[boxes])[0]
 print(len(people), people[0]["keypoints"].shape)   # personas, (17, 2)</code></pre>
-    <pre class="code-sample" data-copy data-output="ocr" hidden><code># OCR: texto de una línea
+    <pre class="code-sample" data-copy data-output="ocr" hidden><code># OCR: todo el texto de la imagen, línea a línea
 import torch
 from PIL import Image
-from transformers import TrOCRProcessor, VisionEncoderDecoderModel
+from transformers import AutoModelForImageTextToText, AutoProcessor
 
-line = Image.open("una_linea.jpg").convert("RGB")   # una sola línea, ya recortada
-processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-printed")
-model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-printed")
+image = Image.open("mi_documento.jpg").convert("RGB")
+processor = AutoProcessor.from_pretrained("stepfun-ai/GOT-OCR-2.0-hf")
+model = AutoModelForImageTextToText.from_pretrained("stepfun-ai/GOT-OCR-2.0-hf", device_map="auto")
 
-pixel_values = processor(line, return_tensors="pt").pixel_values
+inputs = processor(image, return_tensors="pt").to(model.device, model.dtype)
 with torch.no_grad():
-    ids = model.generate(pixel_values)
-print(processor.batch_decode(ids, skip_special_tokens=True)[0])</code></pre>
+    ids = model.generate(**inputs, do_sample=False, tokenizer=processor.tokenizer,
+                         stop_strings="&lt;|im_end|&gt;", max_new_tokens=500)
+print(processor.decode(ids[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True))</code></pre>
     <pre class="code-sample" data-copy data-output="superresolucion" hidden><code># Superresolución: el doble de lado
 import numpy as np
 import torch
@@ -765,14 +766,37 @@ with torch.no_grad():
     output = model(**processor(image, return_tensors="pt"))
 pixels = output.reconstruction.squeeze().clamp(0, 1).permute(1, 2, 0).numpy()
 Image.fromarray((pixels * 255).astype(np.uint8)).save("ampliada.png")</code></pre>
-    <pre class="code-sample" data-copy data-output="fondo" hidden><code># Fondo: recorte con canal alfa
-from transformers import pipeline
+    <pre class="code-sample" data-copy data-output="fondo" hidden><code># Fondo: las personas recortadas sobre fondo transparente
+import numpy as np
+import torch
+from PIL import Image
+from transformers import AutoProcessor, RTDetrForObjectDetection, Sam2Model, Sam2Processor
 
-# RMBG ejecuta código de su propio repositorio: hay que permitirlo
-remover = pipeline("image-segmentation", model="briaai/RMBG-1.4", trust_remote_code=True)
-cutout = remover("mi_imagen.jpg")                   # RGBA con el fondo transparente
-cutout.save("sin_fondo.png")
-mask = remover("mi_imagen.jpg", return_mask=True)   # solo el canal alfa</code></pre>
+image = Image.open("mi_imagen.jpg").convert("RGB")
+
+# 1. Encontrar a las personas
+det_processor = AutoProcessor.from_pretrained("PekingU/rtdetr_r50vd_coco_o365")
+detector = RTDetrForObjectDetection.from_pretrained("PekingU/rtdetr_r50vd_coco_o365")
+with torch.no_grad():
+    detections = detector(**det_processor(images=image, return_tensors="pt"))
+found = det_processor.post_process_object_detection(
+    detections, target_sizes=[(image.height, image.width)], threshold=0.5)[0]
+boxes = [b.tolist() for b, l in zip(found["boxes"], found["labels"])
+         if detector.config.id2label[l.item()] == "person"]
+
+# 2. Convertir cada caja en una silueta con SAM 2
+sam_processor = Sam2Processor.from_pretrained("facebook/sam2.1-hiera-small")
+sam = Sam2Model.from_pretrained("facebook/sam2.1-hiera-small")
+inputs = sam_processor(images=image, input_boxes=[boxes], return_tensors="pt")
+with torch.no_grad():
+    outputs = sam(**inputs)
+masks = sam_processor.post_process_masks(outputs.pred_masks, inputs["original_sizes"])[0]
+best = outputs.iou_scores[0].argmax(dim=-1)                  # la mejor de las 3 máscaras de cada caja
+silhouette = masks[torch.arange(len(boxes)), best].any(dim=0).numpy()
+
+alpha = (silhouette * 255).astype(np.uint8)
+Image.fromarray(np.dstack([np.array(image), alpha])).save("sin_fondo.png")
+print(len(boxes), "persona(s), silueta de", int(silhouette.sum()), "píxeles")</code></pre>
     <pre class="code-sample" data-copy data-output="profundidad" hidden><code># Profundidad: distancia relativa
 from transformers import pipeline
 
@@ -790,11 +814,11 @@ print(len(matches), matches[0])   # un punto en cada foto y su puntuación</code
   <div class="slide-prose">
     <ul>
       <li>Cada tarea es independiente: ejecuta solo la que necesites y no cargues el resto.</li>
-      <li>Revisa la licencia antes de llevarlo a producción. <strong>RMBG-1.4 y LightGlue con SuperPoint no permiten uso comercial</strong> sin acuerdo.</li>
+      <li>Revisa la licencia antes de llevarlo a producción. <strong>LightGlue con SuperPoint no permite uso comercial</strong> sin acuerdo; el resto de recetas usa modelos con licencia Apache 2.0.</li>
       <li>Para encadenar dos, empieza por profundidad y usa el mapa como máscara: es la combinación más directa.</li>
     </ul>
   </div>
-  <div class="print-detail"><p>Las recetas están contrastadas el 1 de octubre de 2026 con el código de transformers 5.18. En la versión 5 ya no existen las tareas de pipeline image-to-text ni image-to-image, y nunca ha existido una de keypoint-detection: por eso pose, OCR y superresolución cargan el modelo directamente, igual que el cuaderno. El cuaderno ejecuta cinco de las seis tareas con imágenes de ejemplo, todas menos matching, y deja el encadenado como ejercicio.</p></div>
+  <div class="print-detail"><p>Las recetas están ejecutadas el 23 de octubre de 2026 con transformers 5.20, la versión que trae Colab. En la versión 5 ya no existen las tareas de pipeline image-to-text ni image-to-image, y nunca ha existido una de keypoint-detection: por eso pose, OCR y superresolución cargan el modelo directamente, igual que el cuaderno. Para quitar el fondo el curso usaba RMBG-1.4, que ejecuta código de su repositorio y no permite uso comercial; ahora se encadenan RT-DETR y SAM 2. El cuaderno ejecuta cinco de las seis tareas con imágenes de ejemplo, todas menos matching, y deja el encadenado como ejercicio.</p></div>
 </section>
 
 <section id="checklist" data-title="Checklist" data-layout="practice">
