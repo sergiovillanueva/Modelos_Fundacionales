@@ -9,12 +9,13 @@
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "playwright test",
     "check": "node scripts/validate.mjs",
-    "pdf": "node scripts/export-pdf.mjs",
+    "pdf": "node scripts/export-pdf.mjs all",
     "pdf:tema-02": "node scripts/export-pdf.mjs 02-hugging-face",
     "pdf:tema-03": "node scripts/export-pdf.mjs 03-multimodalidad",
     "pdf:tema-04": "node scripts/export-pdf.mjs 04-dino",
     "pdf:tema-05": "node scripts/export-pdf.mjs 05-sam",
-    "pdf:tema-06": "node scripts/export-pdf.mjs 06-otras-tareas"
+    "pdf:tema-06": "node scripts/export-pdf.mjs 06-otras-tareas",
+    "pdf:tema-01": "node scripts/export-pdf.mjs 01-deteccion"
   },
   "dependencies": {
     "@playwright/test": "^1.63.0",
@@ -22,6 +23,8 @@
     "reveal.js": "^6.0.2"
   },
   "devDependencies": {
+    "esbuild": "0.28.1",
+    "pdf-lib": "1.17.1",
     "wrangler": "^4.131.2"
   }
 }

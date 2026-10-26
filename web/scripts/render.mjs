@@ -8,6 +8,8 @@ const __dirname = path.dirname(__filename);
 const WEB_ROOT = path.resolve(__dirname, '..');
 const TEMPLATES_DIR = path.resolve(WEB_ROOT, 'templates');
 const CONTENT_DIR = path.resolve(WEB_ROOT, 'content');
+const ASSETS_DIR = path.resolve(WEB_ROOT, 'public', 'assets');
+const DATA_TYPES = {'.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg'};
 
 export function extractSections(sectionsHtml) {
   const sections = [];
@@ -59,9 +61,13 @@ export function buildCoursePlan(course, pageOutputPath) {
     const items = topics.map((item) => {
       const href = relativeUrl(pageOutputPath, `temas/${item.id}/index.html`);
       const colab = `https://colab.research.google.com/github/${repo}/blob/main/${item.notebookPath}`;
+      const pdf = relativeUrl(pageOutputPath, `descargas/tema-${item.id}.pdf`);
       return `<li>
           <a class="plan-topic" href="${href}"><span class="topic-number">${item.number}</span><span>${escapeHtml(item.title)}</span></a>
-          <a class="plan-colab" href="${colab}" target="_blank" rel="noopener noreferrer">Cuaderno ${Number(item.number)} en Colab <span aria-hidden="true">↗</span></a>
+          <span class="plan-links">
+            <a class="plan-colab" href="${colab}" target="_blank" rel="noopener noreferrer">Cuaderno ${Number(item.number)} en Colab <span aria-hidden="true">↗</span></a>
+            <a class="plan-pdf" href="${pdf}" download>PDF</a>
+          </span>
         </li>`;
     }).join('\n        ');
     return `<div class="plan-day">
@@ -77,6 +83,7 @@ export function buildCoursePlan(course, pageOutputPath) {
   <div class="plan-days">
     ${columns}
   </div>
+  <p class="plan-offline"><strong>Por si falla internet:</strong> <a href="${course.repository}/releases/latest/download/curso-sin-internet.zip">descarga el curso completo</a> (la web, los seis PDF y las prácticas ya ejecutadas). Descomprímelo y abre <code>web/index.html</code>: funciona sin conexión.</p>
 </section>`;
 }
 
@@ -107,9 +114,15 @@ function renderQuiz(question) {
 }
 
 export function processSectionAssets(html, pageOutputPath) {
-  return html.replace(/\{\{ASSET:([^}]+)\}\}/g, (_, assetPath) => {
-    return relativeUrl(pageOutputPath, `assets/${assetPath}`);
-  });
+  return html
+    // Images whose pixels a lab reads go inline: opened from disk, the browser blocks reading a separate file.
+    .replace(/\{\{ASSET_DATA:([^}]+)\}\}/g, (_, assetPath) => {
+      const file = path.join(ASSETS_DIR, assetPath);
+      const type = DATA_TYPES[path.extname(file).toLowerCase()];
+      if (!type) throw new Error(`ASSET_DATA no admite ${assetPath}`);
+      return `data:${type};base64,${fs.readFileSync(file).toString('base64')}`;
+    })
+    .replace(/\{\{ASSET:([^}]+)\}\}/g, (_, assetPath) => relativeUrl(pageOutputPath, `assets/${assetPath}`));
 }
 
 export function renderTopic(course, topic, mode = 'reading', outputPath) {
@@ -177,6 +190,13 @@ export function renderTopic(course, topic, mode = 'reading', outputPath) {
     PRESENTATION_URL: presentationUrl,
     PDF_URL: pdfUrl,
     TOPIC_NAV: buildTopicNavigation(course, topic, pageOutputPath),
+    // Data for the cover that only appears in the PDF
+    TOPIC_NAME: escapeHtml(topic.title),
+    TOPIC_NUMBER: String(Number(topic.number)),
+    TOPIC_DAY: String(topic.day || ''),
+    SITE_HOST: course.siteUrl.replace(/^https?:\/\//, ''),
+    NOTEBOOK_URL: `https://colab.research.google.com/github/${course.repository.replace('https://github.com/', '')}/blob/main/${topic.notebookPath}`,
+    NOTEBOOK_FILE: topic.notebookPath,
     CONTENT: content
   };
 

@@ -137,3 +137,24 @@ body.course-ready { padding-bottom: 0; }
 .contrast-matrix td { height: 9mm; }
 .depth-photo { max-width: 120mm; margin: 0 auto; }
 .conv-pair { max-width: 120mm; }
+
+/* Cover: the first page tells the student what the document is and where the rest of the course lives. */
+.print-cover { display: flex; flex-direction: column; justify-content: center; min-height: 245mm; padding: 0 6mm; break-after: page; }
+.print-cover-logo { width: 46mm; height: auto; margin-bottom: 18mm; }
+.print-cover-course { margin: 0 0 14mm; color: var(--color-text-muted); font-size: 13pt; font-weight: 500; }
+.print-cover-number { margin: 0 0 3mm; color: var(--color-primary-dark); font-family: var(--font-title); font-size: 18pt; font-weight: 700; }
+.lesson > h1.sr-only { display: none; }   /* on paper the cover heading takes its place */
+.print-cover-title { margin: 0 0 6mm; color: var(--color-text-main); font-family: var(--font-title); font-size: 38pt; font-weight: 700; letter-spacing: -.03em; line-height: 1.08; }
+.print-cover-day { margin: 0 0 22mm; color: var(--color-accent-dark); font-size: 13pt; font-weight: 500; }
+.print-cover-links { display: grid; gap: 4mm; margin: 0; padding-top: 8mm; border-top: 1px solid var(--color-line-strong); }
+.print-cover-links div { display: grid; grid-template-columns: 34mm 1fr; }
+.print-cover-links dt { color: var(--color-text-muted); font-size: 10pt; }
+.print-cover-links dd { margin: 0; font-size: 10.5pt; }
+.print-cover-links a { color: var(--color-primary-dark); text-decoration: none; }
+
+/* Code on paper: smaller so that most lines fit whole instead of wrapping mid-statement. */
+.code-sample { font-size: 7.6pt; line-height: 1.45; }
+
+/* With a fixed line height Chrome repeats the first line of each heading in the PDF bookmarks;
+   "normal" is almost the same height for this font and keeps the bookmarks clean. */
+.lesson h1, .lesson h2, .lesson h3 { line-height: normal; }

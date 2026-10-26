@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {buildSync} from 'esbuild';
 import {fileURLToPath} from 'node:url';
 import {relativeUrl, absoluteUrl} from './paths.mjs';
 import {renderTopic, buildTopicNavigation, buildCoursePlan} from './render.mjs';
@@ -94,7 +95,23 @@ export function buildSite() {
   // Copy public assets & static source styles/scripts
   copyDirRecursive(PUBLIC_DIR, DIST_DIR);
   copyDirRecursive(SRC_DIR, path.join(DIST_DIR, 'src'));
+
   copyVendorAssets();
+
+  // One classic script per page instead of ES modules, bundled from the copies in dist so that the
+  // Reveal import resolves against dist/vendor exactly as in the browser: module scripts do not run when the site is opened
+  // straight from disk (file://), and the course must also work offline from a downloaded folder.
+  buildSync({
+    entryPoints: {
+      'reading.bundle': path.join(DIST_DIR, 'src', 'js', 'reading.js'),
+      'presentation.bundle': path.join(DIST_DIR, 'src', 'js', 'presentation.js')
+    },
+    outdir: path.join(DIST_DIR, 'src', 'js'),
+    bundle: true,
+    format: 'iife',
+    target: 'es2020',
+    logLevel: 'warning'
+  });
 
   // Read course metadata
   const coursePath = path.resolve(CONTENT_DIR, 'course.json');

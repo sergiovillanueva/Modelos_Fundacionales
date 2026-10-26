@@ -200,6 +200,25 @@ Un módulo nuevo se conecta en `src/js/reading.js` y en `src/js/presentation.js`
 - Una lista sencilla y un único enlace **Abrir en Colab**. No crear tarjetas coloreadas, autenticar con Google ni cargar modelos pesados en esta web.
 - Mantener autorías y licencias en los archivos correspondientes, sin ocupar la pantalla de aprendizaje.
 
+### La web tiene que abrirse desde el disco
+
+`dist/` se reparte también dentro de `curso-sin-internet.zip` (ver `../sin-internet/LEEME.md`), y el alumno lo abre con doble clic, desde `file://`. Dos reglas salen de ahí:
+
+- **Nada de módulos ES en las plantillas.** Chrome no carga `<script type="module">` desde `file://`. `scripts/build.mjs` empaqueta con esbuild `src/js/reading.js` y `src/js/presentation.js` en `reading.bundle.js` y `presentation.bundle.js` (formato IIFE), y las plantillas cargan esos dos ficheros con `defer`. Un módulo nuevo se importa desde esos puntos de entrada y entra solo en el paquete.
+- **Imágenes que lee un laboratorio con canvas: `{{ASSET_DATA:ruta}}`.** Desde `file://` cada fichero es de un origen distinto y `getImageData` falla sobre una imagen normal. `ASSET_DATA` la incrusta como data URI al construir. Solo para las imágenes cuyos píxeles se leen (convolución del tema 01, profundidad del tema 06); el resto sigue con `{{ASSET:...}}`.
+
+La prueba «la web funciona abierta desde el disco» de `tests/labs.spec.mjs` abre `dist/` desde `file://` y mueve tres laboratorios.
+
+### Exportar los PDF
+
+`npm run pdf` regenera los seis (o `npm run pdf:tema-0N` para uno) en `public/descargas/` y `dist/descargas/`. Construir antes con `npm run build`. Cada PDF lleva:
+
+- Portada con logo, título del tema, día del curso, enlace a la web y al cuaderno de Colab (`.print-cover` en `templates/reading.html`, oculta en pantalla).
+- Pie con el curso, el tema y el número de página (plantilla en `scripts/export-pdf.mjs`).
+- Marcadores con los títulos h1, h2 y h3 de cada pantalla. Chrome los saca mal en dos casos y el exportador corrige ambos: si el título tiene un `line-height` fijo repite su primera línea (por eso `print.css` pone `line-height: normal` a los títulos de `.lesson`) y si el título ocupa dos líneas pega las palabras del salto. `fixBookmarks` reescribe cada marcador con el texto del DOM usando pdf-lib; si el número de marcadores no coincide con el de títulos, avisa y deja el PDF como estaba.
+
+Revisar al menos la portada, una pantalla con código y una con laboratorio de cada PDF regenerado.
+
 ## Presentación, móvil y accesibilidad
 
 - Reveal.js reutiliza el contenido. Cada diapositiva debe caber a 1280 × 720, incluida la corrección de preguntas. Solo enlace discreto **Volver**, controles de Reveal y número de diapositiva.

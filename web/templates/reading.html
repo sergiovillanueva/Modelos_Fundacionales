@@ -45,6 +45,17 @@
   </header>
   <main id="reading-main" class="lesson" tabindex="-1">
     <h1 class="sr-only">{{TOPIC_TITLE}}</h1>
+    <div class="print-cover">
+      <img class="print-cover-logo" src="{{REL_PATH:assets/brand/logo-transparent.webp}}" alt="" width="188" height="140">
+      <p class="print-cover-course">{{COURSE_TITLE}}</p>
+      <h1 class="print-cover-title">Tema {{TOPIC_NUMBER}}: {{TOPIC_NAME}}</h1>
+      <p class="print-cover-day">Día {{TOPIC_DAY}} del curso</p>
+      <dl class="print-cover-links">
+        <div><dt>Web del curso</dt><dd><a href="https://{{SITE_HOST}}">{{SITE_HOST}}</a></dd></div>
+        <div><dt>Práctica</dt><dd><a href="{{NOTEBOOK_URL}}">Cuaderno {{TOPIC_NUMBER}} en Colab</a> ({{NOTEBOOK_FILE}})</dd></div>
+        <div><dt>Profesor</dt><dd>{{AUTHOR}} · Datamecum</dd></div>
+      </dl>
+    </div>
     <div class="reading-content">{{CONTENT}}</div>
     <nav class="lesson-nav" aria-label="Avanzar por el tema">
       <button type="button" class="previous-step" data-step-previous aria-label="Anterior"><span aria-hidden="true">←</span> Anterior</button>
@@ -52,6 +63,6 @@
       <button type="button" class="next-step" data-step-next aria-label="Siguiente">Siguiente <span aria-hidden="true">→</span></button>
     </nav>
   </main>
-  <script type="module" src="{{REL_PATH:src/js/reading.js}}"></script>
+  <script defer src="{{REL_PATH:src/js/reading.bundle.js}}"></script>
 </body>
 </html>

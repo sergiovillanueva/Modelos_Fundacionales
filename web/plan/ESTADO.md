@@ -21,7 +21,20 @@ Actualizado: 26 de octubre de 2026. Este archivo es el punto de reanudación.
 | Tema 06 · Más visión | 26 pantallas: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR, la verificación geométrica, el recorte por profundidad y el recetario por pestañas |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
-| PDFs | Temas 01, 03, 04 y 06 regenerados el 16 de octubre: 47, 18, 28, 28, 18 y 27 páginas |
+| PDFs | Los seis regenerados el 26 de octubre, con portada: 49, 19, 29, 29, 19 y 29 páginas (21 MB en total) |
+| Sin internet | `curso-sin-internet.zip` en la release de GitHub y kit del profesor en `../sin-internet/` |
+
+## PDF para los alumnos y plan sin internet · 26 de octubre
+
+El profesor pidió PDF cuidados para repartir y un plan por si falla internet el día de clase (bloqueos de IP en España durante el fútbol). Tres planes, descritos en `../sin-internet/LEEME.md`: A, web y Colab; B, web y cuadernos en local (profesor) o el zip de GitHub (alumnos); C, los PDF.
+
+- **PDF.** Portada por tema (logo, título, día, enlaces a la web y al cuaderno), pie con curso, tema y página, código a 7,6 pt, marcadores limpios (47 a 107 por tema) gracias a `line-height: normal` en los títulos y a `fixBookmarks` con pdf-lib. Un solo navegador para los seis. Detalles en `INSTRUCCIONES.md`, «Exportar los PDF».
+- **Web desde el disco.** Scripts empaquetados con esbuild en IIFE y `{{ASSET_DATA:...}}` para las imágenes que leen los laboratorios con canvas. Prueba de navegador nueva desde `file://`.
+- **Portada.** Cada tema enlaza su PDF, y un párrafo final enlaza el zip sin conexión de la última release.
+- **Cuadernos.** `cargar_imagen` y el vídeo del cuaderno 1 miran primero en `assets/`; si no está, descargan como antes. En Colab no cambia nada.
+- **Kit del profesor (`../sin-internet/`).** `preparar.bat` crea `.venv-clase` con las versiones de Colab (torch cu128), descarga los 15 modelos, el dataset CPPE-5, el vídeo y la foto de COCO, y construye la web. `clase.bat` abre la web desde el disco y Jupyter en modo sin conexión.
+- **Paquete de los alumnos.** `paquete.py` ejecuta los seis cuadernos sin red (modo offline de Hugging Face y un proxy muerto), los convierte a HTML sin la salida de stderr y crea `curso-sin-internet.zip` con `web/`, `pdf/`, `cuadernos/` y `practicas-resueltas/`. Los seis cuadernos se ejecutaron sin red y sin errores.
+- **README** reescrito: dónde está el material, qué hacer si falla internet y una tabla con el orden de temas y cuadernos. Se quitó el temario antiguo con tiempos, que citaba modelos que ya no se usan (Qwen2.5-VL, TrOCR, EasyOCR, RMBG, LightGlue).
 
 ## Ajuste al programa de Datamecum · 26 de octubre
 

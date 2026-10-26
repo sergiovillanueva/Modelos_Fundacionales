@@ -605,4 +605,32 @@ test('la portada reparte los seis temas en dos días, cada uno con su cuaderno',
   await expect(days.nth(0).locator('.plan-topic')).toHaveCount(3);
   await expect(days.nth(1).locator('.plan-topic .topic-number')).toHaveText(['04', '05', '06']);
   await expect(days.nth(1).locator('.plan-colab').last()).toHaveAttribute('href', /6_Otras_Tareas\.ipynb$/);
+  await expect(days.nth(0).locator('.plan-pdf').first()).toHaveAttribute('href', 'descargas/tema-01-deteccion.pdf');
+  await expect(page.locator('.plan-offline a')).toHaveAttribute('href', /releases\/latest\/download\/curso-sin-internet\.zip$/);
+});
+
+test('la web funciona abierta desde el disco, sin servidor ni internet', async ({page}) => {
+  const {pathToFileURL} = await import('node:url');
+  const path = await import('node:path');
+  const local = (ruta) => pathToFileURL(path.resolve('dist', ruta)).href;
+  const errores = [];
+  page.on('pageerror', (error) => errores.push(error.message));
+
+  await page.goto(local('index.html'));
+  await expect(page.locator('.plan-topic')).toHaveCount(6);
+
+  await page.goto(local('temas/01-deteccion/index.html') + '#convolucion');
+  await expect(page.locator('[data-conv-output]')).toHaveAttribute('src', /^data:image\/png/);
+  await page.locator('[data-conv-kernel="blur"]').click();
+  await expect(page.locator('[data-conv-divisor]')).toHaveText('÷ 16');
+  await page.goto(local('temas/01-deteccion/index.html') + '#ap-lab');
+  await page.locator('[data-ap-count]').fill('8');
+  await expect(page.locator('[data-ap-area-value]')).toHaveText('0,70');
+
+  await page.goto(local('temas/06-otras-tareas/index.html') + '#profundidad-corte');
+  await expect(page.locator('[data-depth-lab] canvas')).toHaveCount(1);
+
+  await page.goto(local('temas/03-multimodalidad/presentar.html'));
+  await expect(page.locator('.reveal.ready')).toHaveCount(1);
+  expect(errores).toEqual([]);
 });
