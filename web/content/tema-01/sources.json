@@ -522,5 +522,16 @@
     "checkedOn": "2026-10-01",
     "status": "corrected",
     "note": "El mazo atribuía el umbral 0,5 a COCO. La pantalla pasa a dos columnas para caber en presentación sin reducirse al mínimo."
+  },
+  {
+    "sectionId": "tiempo-real",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "Tiempo real es unos 25-30 FPS; RF-DETR tiene versiones nano a large; ONNX con TensorRT u OpenVINO para producción. RF-DETR medium da unos 25 FPS en el vídeo del cuaderno 1 con una RTX 3080 Ti de portátil.",
+    "url": "https://huggingface.co/Roboflow/rf-detr-medium",
+    "checkedOn": "2026-10-26",
+    "status": "verified",
+    "note": "Pantalla nueva para cubrir el «tiempo real» del programa de Datamecum. La cifra de FPS se midió al ejecutar el cuaderno 1 el 26 de octubre de 2026."
   }
 ]

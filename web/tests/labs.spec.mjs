@@ -596,3 +596,13 @@ test('los laboratorios de octubre caben en móvil y se leen sin JavaScript', asy
   await expect(plain.locator('#profundidad-corte img[data-depth-photo]')).toBeVisible();
   await context.close();
 });
+
+test('la portada reparte los seis temas en dos días, cada uno con su cuaderno', async ({page}) => {
+  await page.goto('/index.html');
+  const days = page.locator('.plan-day');
+  await expect(days).toHaveCount(2);
+  await expect(days.nth(0).locator('h3')).toHaveText('Día 1');
+  await expect(days.nth(0).locator('.plan-topic')).toHaveCount(3);
+  await expect(days.nth(1).locator('.plan-topic .topic-number')).toHaveText(['04', '05', '06']);
+  await expect(days.nth(1).locator('.plan-colab').last()).toHaveAttribute('href', /6_Otras_Tareas\.ipynb$/);
+});

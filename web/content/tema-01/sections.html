@@ -631,6 +631,34 @@
   <div class="print-detail"><p>Las curvas proceden del repositorio de RF-DETR y se miden en un hardware concreto. Antes de decidir conviene reproducir la medida en el dispositivo de destino, con el tamaño de entrada, la precisión numérica y el tamaño de lote que se vayan a usar realmente.</p></div>
 </section>
 
+<section id="tiempo-real" data-title="Tiempo real" data-layout="visual">
+  <div class="section-copy"><h2>Del cuaderno al tiempo real</h2></div>
+  <p class="slide-lead">Un vídeo normal va a 25 o 30 fotogramas por segundo (FPS). Para seguirlo en directo, todo el trabajo de un fotograma tiene que caber en unos 35 milisegundos.</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Medir bien</h3>
+      <p>FPS es 1 entre el tiempo por fotograma. Se mide con un fotograma cada vez, tras unas pasadas de calentamiento y contando todo: leer, preparar la imagen, el modelo, el posproceso y el dibujo.</p>
+    </div>
+    <div>
+      <h3>Ganar velocidad sin reentrenar</h3>
+      <ul>
+        <li>Un modelo más pequeño: RF-DETR tiene versiones nano, small, medium, base y large.</li>
+        <li>Menos resolución de entrada y media precisión (FP16).</li>
+        <li>Detectar uno de cada N fotogramas y dejar que el seguidor cubra los demás.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Llevarlo a producción</h3>
+      <p>Exportar el modelo a ONNX y optimizarlo para el hardware: TensorRT en GPU de NVIDIA, OpenVINO en procesadores de Intel. Así están medidas las curvas de la pantalla anterior.</p>
+    </div>
+    <div>
+      <h3>Equipos pequeños</h3>
+      <p>Junto a la cámara, en un NVIDIA Jetson por ejemplo, se usan las versiones pequeñas y la exportación optimizada. La cifra que vale es la medida en ese equipo, no la del portátil.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>En el ejercicio de vídeo del cuaderno 1, RF-DETR medium procesa 200 fotogramas de 960 × 540 a unos 25 FPS en una RTX 3080 Ti de portátil, contando el proceso entero; una T4 de Colab va más despacio. Las versiones small y nano son más rápidas y algo menos precisas. Para decidir, se mide en el dispositivo de destino con la resolución, la precisión numérica y el tamaño de lote reales.</p></div>
+</section>
+
 <section id="iou" data-title="IoU" data-layout="lab">
   <div class="section-copy"><h2>IoU (Intersection over Union)</h2></div>
   <div class="slide-split">

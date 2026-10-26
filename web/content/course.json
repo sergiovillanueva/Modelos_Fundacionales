@@ -13,7 +13,8 @@
       "status": "available",
       "contentDir": "tema-01",
       "notebookPath": "1_OD.ipynb",
-      "description": "Qué hace un detector, cómo se distingue de otras tareas, cómo se mide con IoU y cómo probarlo en Colab."
+      "description": "Qué hace un detector, cómo se distingue de otras tareas, cómo se mide con IoU y cómo probarlo en Colab.",
+      "day": 1
     },
     {
       "id": "02-hugging-face",
@@ -23,7 +24,8 @@
       "status": "available",
       "contentDir": "tema-02",
       "notebookPath": "2_HF_Intro.ipynb",
-      "description": "Pipelines, transformadores visuales, datasets y despliegue de modelos preentrenados para visión por computador."
+      "description": "Pipelines, transformadores visuales, datasets y despliegue de modelos preentrenados para visión por computador.",
+      "day": 1
     },
     {
       "id": "03-multimodalidad",
@@ -33,7 +35,8 @@
       "status": "available",
       "contentDir": "tema-03",
       "notebookPath": "3_Multimodal.ipynb",
-      "description": "Integración de texto y visión con modelos tipo CLIP y BLIP para búsqueda semántica y razonamiento visual."
+      "description": "Integración de texto y visión con modelos tipo CLIP y BLIP para búsqueda semántica y razonamiento visual.",
+      "day": 1
     },
     {
       "id": "04-dino",
@@ -43,7 +46,8 @@
       "status": "available",
       "contentDir": "tema-04",
       "notebookPath": "4_DINO.ipynb",
-      "description": "Aprendizaje auto-supervisado en visión, mapas de atención interpretables y extracción densa de características."
+      "description": "Aprendizaje auto-supervisado en visión, mapas de atención interpretables y extracción densa de características.",
+      "day": 2
     },
     {
       "id": "05-sam",
@@ -53,7 +57,8 @@
       "status": "available",
       "contentDir": "tema-05",
       "notebookPath": "5_SAM.ipynb",
-      "description": "Segment Anything Model: segmentación 'zero-shot' mediante puntos, cajas y máscaras guiadas por prompts."
+      "description": "Segment Anything Model: segmentación 'zero-shot' mediante puntos, cajas y máscaras guiadas por prompts.",
+      "day": 2
     },
     {
       "id": "06-otras-tareas",
@@ -63,7 +68,8 @@
       "status": "available",
       "contentDir": "tema-06",
       "notebookPath": "6_Otras_Tareas.ipynb",
-      "description": "Pose humana, OCR, superresolución, eliminación de fondo, correspondencias visuales y profundidad monocular."
+      "description": "Pose humana, OCR, superresolución, eliminación de fondo, correspondencias visuales y profundidad monocular.",
+      "day": 2
     }
   ]
 }

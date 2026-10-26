@@ -691,6 +691,34 @@ www.Embedded-Lab.com   ( 82, 378)  175 x 23</code></pre>
   <div class="print-detail"><p>Un mapa relativo dice qué está más cerca que qué. Para responder «a cuántos metros» hacen falta calibración de cámara, una referencia conocida o un modelo entrenado para profundidad métrica.</p></div>
 </section>
 
+<section id="casos" data-title="Casos" data-layout="visual">
+  <div class="section-copy"><h2>Cuatro sectores, las tareas del curso</h2></div>
+  <p class="slide-lead">Los mismos modelos, combinados de otra manera, resuelven problemas muy distintos. Lo que cambia de un sector a otro es qué hay que vigilar.</p>
+  <div class="note-grid note-grid--two">
+    <div>
+      <h3>Vigilancia y seguridad</h3>
+      <p>Detectar y seguir personas y vehículos, contar los que entran en una zona, avisar de una caída con la pose. RF-DETR con un seguidor (tema 1) y ViTPose (este tema).</p>
+      <p><strong>Ojo:</strong> el Reglamento europeo de IA prohíbe desde febrero de 2025, salvo excepciones tasadas, la identificación biométrica remota en tiempo real en espacios públicos con fines policiales y el reconocimiento de emociones en el trabajo.</p>
+    </div>
+    <div>
+      <h3>Industria</h3>
+      <p>Defectos sin ejemplos de defecto, conteo de piezas, lectura de lotes y etiquetas, medidas con máscaras. DINOv3 con banco de normalidad (tema 4), SAM (tema 5) y OCR (este tema).</p>
+      <p><strong>Ojo:</strong> luz y encuadre estables, y un umbral fijado con piezas buenas.</p>
+    </div>
+    <div>
+      <h3>Robótica</h3>
+      <p>Saber qué está cerca con una sola cámara, recortar el objeto que hay que coger, encontrar objetos nuevos por su nombre. Depth Anything (este tema), SAM 2 (tema 5) y Grounding DINO (tema 3).</p>
+      <p><strong>Ojo:</strong> esta profundidad es relativa; para coger un objeto hacen falta metros.</p>
+    </div>
+    <div>
+      <h3>Automoción</h3>
+      <p>Vehículos, peatones y señales, la calzada separada del resto, distancias y matrículas. Detectores en tiempo real (tema 1), segmentación (tema 5), profundidad y OCR (este tema).</p>
+      <p><strong>Ojo:</strong> tiempo real en el hardware del coche, y noche, lluvia y contraluz en los datos de validación.</p>
+    </div>
+  </div>
+  <div class="print-detail"><p>Las prohibiciones del artículo 5 del Reglamento (UE) 2024/1689 se aplican desde el 2 de febrero de 2025. Entre ellas están la identificación biométrica remota en tiempo real en espacios de acceso público con fines policiales, salvo excepciones tasadas, y el reconocimiento de emociones en el lugar de trabajo y en centros educativos, salvo por motivos médicos o de seguridad. Contar personas sin identificarlas no entra en esas prohibiciones, pero sigue sujeto al RGPD. Para la profundidad métrica hace falta un modelo entrenado para ello, una cámara estéreo o calibración.</p></div>
+</section>
+
 <section id="recetario" data-title="Recetario" data-layout="practice">
   <div class="section-copy">
     <h2>Las seis tareas, seis recetas</h2>

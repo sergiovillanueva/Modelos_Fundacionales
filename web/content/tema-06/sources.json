@@ -341,5 +341,16 @@
     "checkedOn": "2026-10-01",
     "status": "corrected",
     "note": "Según el paper, la V1 era vulnerable a objetos transparentes y reflejos y la V2 los resuelve con datos sintéticos precisos. El tema 2 invitaba a probarlo con espejos «para ver dónde falla»; se cambia a comprobar si acierta. V2: 595.000 imágenes sintéticas y 62 millones reales con pseudoetiquetas, encoder DINOv2."
+  },
+  {
+    "sectionId": "casos",
+    "sourceSlides": [],
+    "originalAsset": "",
+    "webAsset": "",
+    "claim": "El artículo 5 del Reglamento (UE) 2024/1689 prohíbe desde el 2 de febrero de 2025 la identificación biométrica remota en tiempo real en espacios públicos con fines policiales (salvo excepciones) y el reconocimiento de emociones en el trabajo y la educación (salvo motivos médicos o de seguridad).",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+    "checkedOn": "2026-10-26",
+    "status": "verified",
+    "note": "Pantalla nueva para cubrir los casos de vigilancia, industria, robótica y automoción del programa de Datamecum; reúne modelos de los temas 1 a 6."
   }
 ]

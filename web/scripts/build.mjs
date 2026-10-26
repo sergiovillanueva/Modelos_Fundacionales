@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {relativeUrl, absoluteUrl} from './paths.mjs';
-import {renderTopic, buildTopicNavigation} from './render.mjs';
+import {renderTopic, buildTopicNavigation, buildCoursePlan} from './render.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -107,6 +107,7 @@ export function buildSite() {
   const home = replaceTemplateTokens(homeTemplate, {
     COURSE_TITLE: course.title,
     TOPIC_NAV: buildTopicNavigation(course, null, 'index.html'),
+    COURSE_PLAN: buildCoursePlan(course, 'index.html'),
     START_URL: `temas/${firstTopic.id}/index.html`
   }, 'index.html', course.siteUrl);
   fs.writeFileSync(path.join(DIST_DIR, 'index.html'), home, 'utf8');

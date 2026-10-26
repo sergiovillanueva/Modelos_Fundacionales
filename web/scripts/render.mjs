@@ -50,6 +50,36 @@ export function buildTopicNavigation(course, topic, pageOutputPath) {
   }).join('\n');
 }
 
+/** Home block with the course split by day: each topic with its reading page and its Colab notebook. */
+export function buildCoursePlan(course, pageOutputPath) {
+  const repo = course.repository.replace('https://github.com/', '');
+  const days = [...new Set(course.topics.map((item) => item.day).filter(Boolean))].sort();
+  const columns = days.map((day) => {
+    const topics = course.topics.filter((item) => item.day === day);
+    const items = topics.map((item) => {
+      const href = relativeUrl(pageOutputPath, `temas/${item.id}/index.html`);
+      const colab = `https://colab.research.google.com/github/${repo}/blob/main/${item.notebookPath}`;
+      return `<li>
+          <a class="plan-topic" href="${href}"><span class="topic-number">${item.number}</span><span>${escapeHtml(item.title)}</span></a>
+          <a class="plan-colab" href="${colab}" target="_blank" rel="noopener noreferrer">Cuaderno ${Number(item.number)} en Colab <span aria-hidden="true">↗</span></a>
+        </li>`;
+    }).join('\n        ');
+    return `<div class="plan-day">
+      <h3>Día ${day}</h3>
+      <ol class="plan-topics">
+        ${items}
+      </ol>
+    </div>`;
+  }).join('\n    ');
+  return `<section class="course-plan" aria-labelledby="course-plan-title">
+  <h2 id="course-plan-title">El curso en dos días</h2>
+  <p class="course-plan-lead">Cada tema tiene un cuaderno de Colab con el mismo número. Se siguen en orden: primero el tema, después su cuaderno.</p>
+  <div class="plan-days">
+    ${columns}
+  </div>
+</section>`;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')

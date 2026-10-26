@@ -1,6 +1,6 @@
 # Estado de la migración
 
-Actualizado: 23 de octubre de 2026. Este archivo es el punto de reanudación.
+Actualizado: 26 de octubre de 2026. Este archivo es el punto de reanudación.
 
 ## Próxima acción
 
@@ -13,15 +13,26 @@ Actualizado: 23 de octubre de 2026. Este archivo es el punto de reanudación.
 | Elemento | Estado |
 | --- | --- |
 | Portada, logo, navegación y estilo | Conservados; una idea por pantalla |
-| Tema 01 · Detección | 47 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 7 simulaciones (con la convolución, la asignación húngara y la curva AP), el puente al Hub, las tres salidas de RF-DETR, presupuesto y caso |
+| Tema 01 · Detección | 48 pantallas: 27 diapositivas, 7 preguntas, 2 animaciones, 7 simulaciones (con la convolución, la asignación húngara y la curva AP), el puente al Hub, las tres salidas de RF-DETR, presupuesto y caso |
 | Tema 02 · Hugging Face | 18 pantallas: 6 diapositivas, 3 preguntas, el comprobador de licencias, el constructor de pipeline, la memoria de GPU, los Spaces y el reto de diez minutos |
 | Tema 03 · Multimodal | 28 pantallas: 18 diapositivas, 5 preguntas, la similitud coseno en vivo, la temperatura de CLIP y el asistente de modelo |
 | Tema 04 · DINO | 28 pantallas: 16 diapositivas, 3 preguntas, el momentum de la maestra, el banco de normalidad, el comparador de atención, el PCA explicado y la inspección de la alfombra |
 | Tema 05 · SAM | 18 pantallas: 9 diapositivas, 3 preguntas, los prompts por puntos, el recorte sobre fondo negro y el asistente de versión |
-| Tema 06 · Más visión | 25 pantallas: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR, la verificación geométrica, el recorte por profundidad y el recetario por pestañas |
+| Tema 06 · Más visión | 26 pantallas: 14 diapositivas, 3 preguntas, el laboratorio de OKS con escala, el de OCR, la verificación geométrica, el recorte por profundidad y el recetario por pestañas |
 | Cobertura PPTX | 94/94 diapositivas con destino; las 91 de contenido trasladadas al completo |
 | Fuentes | `content/tema-01/sources.json` a `content/tema-06/sources.json` |
 | PDFs | Temas 01, 03, 04 y 06 regenerados el 16 de octubre: 47, 18, 28, 28, 18 y 27 páginas |
+
+## Ajuste al programa de Datamecum · 26 de octubre
+
+El programa oficial son dos sesiones: viernes 20 de noviembre, de 16:00 a 20:00 (YOLO v8/v9, SAM, CLIP, pose con MediaPipe y ViTPose, localización y segmentación, casos en vigilancia, industria, robótica y automoción) y sábado 21, de 9:00 a 13:00 (laboratorio: detección sobre vídeo de principio a fin, SAM + CLIP para búsqueda semántica). La teoría ya estaba cubierta; se añade lo que faltaba sin cuadernos ni temas nuevos, a petición del profesor.
+
+- **Tema 01 · `tiempo-real`** (tras `eleccion`): medir FPS, palancas sin reentrenar, ONNX con TensorRT u OpenVINO, equipos pequeños.
+- **Tema 06 · `casos`** (antes de `recetario`): vigilancia, industria, robótica y automoción, con la tarea, el modelo del curso y qué vigilar, incluido el artículo 5 del Reglamento (UE) 2024/1689.
+- **Cuaderno 1:** ejercicio extra de vídeo con `bedroom.mp4` del Hub (`hf-internal-testing/sam2-fixtures`): detección por fotograma, seguidor por IoU de unas 30 líneas, FPS y GIF. 24,8 FPS en la RTX 3080 Ti; el seguidor cuenta 3 personas porque el niño reaparece tras una oclusión, y el cuaderno lo explica.
+- **Cuaderno 3:** buscar fotos de la colección del curso con un texto (CLIP, `logits_per_text`). Acierta las cinco consultas de prueba.
+- **Cuaderno 5:** SAM en modo automático (`facebook/sam-vit-base`, 69 máscaras en la foto de la calle) y CLIP para elegir el recorte que encaja con el texto: taxi y bolso correctos.
+- **Orden por días.** Día 1: temas y cuadernos 1, 2 y 3; día 2: 4, 5 y 6. Cada tema lleva `day` en `content/course.json` y la portada muestra el bloque «El curso en dos días» (`buildCoursePlan` en `scripts/render.mjs`) con el enlace a cada tema y a su cuaderno de Colab. Cada cuaderno empieza con «Día N · Cuaderno X de 3» y el enlace a su tema, y acaba con el enlace al siguiente (el 3 cierra el día 1 y el 6 el curso). Prueba de navegador nueva para la portada: 51 en verde.
 
 ## Cuadernos de Colab rehechos · 23 de octubre
 
