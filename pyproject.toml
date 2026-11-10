@@ -1,0 +1,52 @@
+# Environment for the course notebooks, locally (Windows, Linux or Mac).
+# Same versions as the Google Colab GPU runtime on 9 November 2026
+# (https://github.com/googlecolab/backend-info, pip-freeze.gpu.txt), so a notebook behaves the same
+# here and in Colab. Packages Colab does not ship (rfdetr) are installed by the notebooks in Colab.
+#
+#   uv sync                         # creates .venv with everything
+#   uv run jupyter lab              # opens the notebooks
+
+[project]
+name = "modelos-fundacionales"
+version = "2026.11.9"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # Same as Colab
+    "torch==2.14.1",
+    "torchvision==0.29.1",
+    "transformers==5.22.1",
+    "huggingface_hub==1.33.0",
+    "accelerate==1.15.0",
+    "datasets==4.8.5",
+    "timm==1.0.31",
+    "safetensors==0.8.0",
+    "tokenizers==0.23.3",
+    "numpy==2.4.6",
+    "pillow==11.3.0",
+    "matplotlib==3.10.0",
+    "scipy==1.16.3",
+    "scikit-learn==1.6.1",
+    "opencv-python-headless==5.0.0.93",
+    "requests==2.32.4",
+    "pycocotools==2.0.11",
+    # Not in Colab: notebooks 1b and 6 install it there
+    "rfdetr[train]==1.12.0",
+    # Only to run the notebooks locally (Colab uses ipywidgets 7.7.1; JupyterLab 4 needs 8, same interact())
+    "ipywidgets==8.1.8",
+    "jupyterlab",
+    "ipykernel",
+]
+
+[tool.uv]
+package = false
+
+# CUDA 13 build of torch on Windows and Linux, as in Colab (needs an NVIDIA driver 580 or newer;
+# it also runs on CPU). On Mac, the regular build from PyPI.
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu130", marker = "sys_platform != 'darwin'" }]
+torchvision = [{ index = "pytorch-cu130", marker = "sys_platform != 'darwin'" }]
