@@ -29,7 +29,7 @@ dependencies = [
     "opencv-python-headless==5.0.0.93",
     "requests==2.32.4",
     "pycocotools==2.0.11",
-    # Not in Colab: notebooks 1b and 6 install it there
+    # Not in Colab: notebook 1 installs it there
     "rfdetr[train]==1.12.0",
     # Only to run the notebooks locally (Colab uses ipywidgets 7.7.1; JupyterLab 4 needs 8, same interact())
     "ipywidgets==8.1.8",
