@@ -1,5 +1,7 @@
 # Curso: Modelos fundacionales en visión artificial
 
+[![Licencia: CC BY-NC-SA 4.0](https://img.shields.io/badge/Licencia-CC%20BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
+
 Material del curso de Datamecum sobre modelos fundacionales de visión: seis temas en una web con simulaciones interactivas y seis cuadernos de Google Colab, uno por tema. Los cuadernos funcionan en Colab con las librerías que ya trae (el 1 instala además el paquete `rfdetr`, en un minuto), y en tu ordenador con el entorno de este repositorio, que tiene las mismas versiones.
 
 ## Dónde está el material
@@ -50,4 +52,10 @@ uv run jupyter lab
 ```
 
 `uv sync` descarga unos 5 GB la primera vez. Los modelos se bajan solos de Hugging Face al ejecutar cada cuaderno.
+
+## Autor y licencia
+
+Curso creado por [Sergio Villanueva López](https://github.com/sergiovillanueva), ingeniero de visión artificial con un doctorado industrial en detección de anomalías para inspección industrial.
+
+El material está bajo licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es): puedes usarlo, compartirlo y adaptarlo sin fines comerciales, citando al autor y compartiendo lo que adaptes con la misma licencia. No se puede usar en cursos o formaciones de pago sin permiso. Las imágenes, datos y modelos de terceros mantienen sus licencias. Ver [LICENSE](LICENSE).
 
